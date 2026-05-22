@@ -1,2 +1,0 @@
-k_cleavage_plasma_per_day,k_cleavage_tumor_per_day,efficacy_score,toxicity_score,objective,selectivity_ratio,is_feasible
-0.001,10.0,0.9999546000702375,0.000999500166624978,0.9989550999036125,10000.0,True

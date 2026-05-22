@@ -14,12 +14,29 @@ const TIMEOUT_MS = 60 * 60 * 1000;
 const POLL_INTERVAL_MS = 10000;
 const NUM_WORKERS = 3;
 
-const REPORT_INSTRUCTION = `\n\n最後に、この実験の全結果・手法・考察をまとめた report.md を作成してください。report.md には以下を含めること：
-- 実験目的と背景
-- 使用した手法・アルゴリズムの概要
-- 主要な結果と数値
-- 考察と今後の展望
-- 生成したファイル一覧`;
+const REPORT_INSTRUCTION = `\n\n最後に、以下の2つのファイルを必ず作成してください：
+
+1. **report.md** — この実験の全結果・手法・考察をまとめたレポート。以下を含めること：
+   - 実験目的と背景
+   - 使用した手法・アルゴリズムの概要
+   - 主要な結果と数値（生成した図を Markdown 画像記法 ![caption](figures/filename.png) で埋め込むこと）
+   - 考察と今後の展望
+   - 生成したファイル一覧
+   ※ 作成した図表はすべて report.md 内に画像として埋め込んでください。
+
+2. **paper.md** — この実験テーマに基づく学術論文形式の文書。以下の構成に従うこと：
+   - Title（英語）
+   - Abstract（300語程度、英語）
+   - 1. Introduction（研究背景・目的・貢献）
+   - 2. Related Work（関連研究のレビュー）
+   - 3. Methods（提案手法の詳細、数式・アルゴリズムを含む）
+   - 4. Experiments（実験設定・データセット・評価指標）
+   - 5. Results（実験結果の詳細、生成した図を ![Figure N](figures/filename.png) で埋め込むこと）
+   - 6. Discussion（結果の考察・限界・将来の方向性）
+   - 7. Conclusion（まとめ）
+   - References（参考文献リスト、適切なフォーマットで）
+   論文は学術的な文体で、定量的な結果と考察を充実させてください。
+   ※ 作成した図表はすべて paper.md 内に画像として埋め込んでください（Markdown 画像記法を使用）。`;
 
 const CO_SCIENTIST_SKILL = '525b1100-7bdf-4cd1-9693-0e3079107206';
 
@@ -170,13 +187,15 @@ async function runExperiment(page, experiment, workerId) {
         const fileName = file.file_path || file.filename || file.id;
         const filePath = path.join(filesDir, fileName);
         fs.mkdirSync(path.dirname(filePath), { recursive: true });
-        const fileResponse = await page.evaluate(async ({ projectId, fileId }) => {
-          const res = await fetch(`/api/projects/${projectId}/files/${fileId}/view`);
+        // Use /download endpoint for raw binary (preserves PNG, images, etc.)
+        const fileBuffer = await page.evaluate(async ({ projectId, fileId }) => {
+          const res = await fetch(`/api/projects/${projectId}/files/${fileId}/download`);
           if (!res.ok) return null;
-          return res.json();
+          const buf = await res.arrayBuffer();
+          return Array.from(new Uint8Array(buf));
         }, { projectId, fileId: file.id });
-        if (fileResponse !== null) {
-          fs.writeFileSync(filePath, fileResponse.content || '', 'utf-8');
+        if (fileBuffer !== null) {
+          fs.writeFileSync(filePath, Buffer.from(fileBuffer));
         }
       } catch (e) {
         // skip failed file

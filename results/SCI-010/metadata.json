@@ -1,11 +1,11 @@
 {
   "experiment_id": "SCI-010",
   "title": "ADC（抗体薬物複合体）ペイロード最適化",
-  "project_id": "01fee7c7-3371-4751-a47e-729ac27269fa",
-  "prompt_length": 428,
-  "output_length": 1589,
-  "file_count": 24,
-  "duration_seconds": 641,
+  "project_id": "f9f1fa2f-83b4-4796-a773-a8cdee3f0498",
+  "prompt_length": 1064,
+  "output_length": 880,
+  "file_count": 16,
+  "duration_seconds": 561,
   "status": "success",
-  "timestamp": "2026-05-22T13:01:13.892Z"
+  "timestamp": "2026-05-22T22:39:47.706Z"
 }

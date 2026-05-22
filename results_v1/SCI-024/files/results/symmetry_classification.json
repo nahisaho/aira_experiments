@@ -1,0 +1,210 @@
+{
+  "Bi2Se3": {
+    "material": "Bi2Se3",
+    "formula": "Bi2Se3",
+    "space_group": "166 (R-3m)",
+    "has_inversion": true,
+    "crystal_system": "trigonal",
+    "z2_indicators": {
+      "nu0": 1,
+      "nu1": 0,
+      "nu2": 0,
+      "nu3": 0,
+      "z2_notation": "(1;000)",
+      "is_strong_TI": true,
+      "trim_parities": {
+        "Gamma": -1,
+        "Z": 1,
+        "F": 1,
+        "L": 1
+      }
+    },
+    "band_gap_eV": 0.3,
+    "experimental_TI": true
+  },
+  "Bi2Te3": {
+    "material": "Bi2Te3",
+    "formula": "Bi2Te3",
+    "space_group": "166 (R-3m)",
+    "has_inversion": true,
+    "crystal_system": "trigonal",
+    "z2_indicators": {
+      "nu0": 1,
+      "nu1": 0,
+      "nu2": 0,
+      "nu3": 0,
+      "z2_notation": "(1;000)",
+      "is_strong_TI": true,
+      "trim_parities": {
+        "Gamma": -1,
+        "Z": 1,
+        "F": 1,
+        "L": 1
+      }
+    },
+    "band_gap_eV": 0.15,
+    "experimental_TI": true
+  },
+  "Sb2Te3": {
+    "material": "Sb2Te3",
+    "formula": "Sb2Te3",
+    "space_group": "166 (R-3m)",
+    "has_inversion": true,
+    "crystal_system": "trigonal",
+    "z2_indicators": {
+      "nu0": 1,
+      "nu1": 0,
+      "nu2": 0,
+      "nu3": 0,
+      "z2_notation": "(1;000)",
+      "is_strong_TI": true,
+      "trim_parities": {
+        "Gamma": -1,
+        "Z": 1,
+        "F": 1,
+        "L": 1
+      }
+    },
+    "band_gap_eV": 0.21,
+    "experimental_TI": true
+  },
+  "Bi2S3": {
+    "material": "Bi2S3",
+    "formula": "Bi2S3",
+    "space_group": "62 (?)",
+    "has_inversion": false,
+    "crystal_system": "unknown",
+    "z2_indicators": {
+      "error": "Fu-Kane requires inversion symmetry"
+    },
+    "band_gap_eV": 1.3,
+    "experimental_TI": false
+  },
+  "TlBiSe2": {
+    "material": "TlBiSe2",
+    "formula": "TlBiSe2",
+    "space_group": "166 (R-3m)",
+    "has_inversion": true,
+    "crystal_system": "trigonal",
+    "z2_indicators": {
+      "nu0": 1,
+      "nu1": 0,
+      "nu2": 0,
+      "nu3": 0,
+      "z2_notation": "(1;000)",
+      "is_strong_TI": true,
+      "trim_parities": {
+        "Gamma": -1,
+        "Z": 1,
+        "F": 1,
+        "L": 1
+      }
+    },
+    "band_gap_eV": 0.35,
+    "experimental_TI": true
+  },
+  "TlBiTe2": {
+    "material": "TlBiTe2",
+    "formula": "TlBiTe2",
+    "space_group": "166 (R-3m)",
+    "has_inversion": true,
+    "crystal_system": "trigonal",
+    "z2_indicators": {
+      "nu0": 1,
+      "nu1": 0,
+      "nu2": 0,
+      "nu3": 0,
+      "z2_notation": "(1;000)",
+      "is_strong_TI": true,
+      "trim_parities": {
+        "Gamma": -1,
+        "Z": 1,
+        "F": 1,
+        "L": 1
+      }
+    },
+    "band_gap_eV": 0.2,
+    "experimental_TI": true
+  },
+  "GeBi2Te4": {
+    "material": "GeBi2Te4",
+    "formula": "GeBi2Te4",
+    "space_group": "166 (R-3m)",
+    "has_inversion": true,
+    "crystal_system": "trigonal",
+    "z2_indicators": {
+      "nu0": 1,
+      "nu1": 0,
+      "nu2": 0,
+      "nu3": 0,
+      "z2_notation": "(1;000)",
+      "is_strong_TI": true,
+      "trim_parities": {
+        "Gamma": -1,
+        "Z": 1,
+        "F": 1,
+        "L": 1
+      }
+    },
+    "band_gap_eV": 0.18,
+    "experimental_TI": true
+  },
+  "MnBi2Te4": {
+    "material": "MnBi2Te4",
+    "formula": "MnBi2Te4",
+    "space_group": "166 (R-3m)",
+    "has_inversion": true,
+    "crystal_system": "trigonal",
+    "z2_indicators": {
+      "nu0": 1,
+      "nu1": 0,
+      "nu2": 0,
+      "nu3": 0,
+      "z2_notation": "(1;000)",
+      "is_strong_TI": true,
+      "trim_parities": {
+        "Gamma": -1,
+        "Z": 1,
+        "F": 1,
+        "L": 1
+      }
+    },
+    "band_gap_eV": 0.2,
+    "experimental_TI": true
+  },
+  "Bi4Br4": {
+    "material": "Bi4Br4",
+    "formula": "Bi4Br4",
+    "space_group": "12 (?)",
+    "has_inversion": false,
+    "crystal_system": "unknown",
+    "z2_indicators": {
+      "error": "Fu-Kane requires inversion symmetry"
+    },
+    "band_gap_eV": 0.18,
+    "experimental_TI": true
+  },
+  "PbBi2Te4": {
+    "material": "PbBi2Te4",
+    "formula": "PbBi2Te4",
+    "space_group": "166 (R-3m)",
+    "has_inversion": true,
+    "crystal_system": "trigonal",
+    "z2_indicators": {
+      "nu0": 1,
+      "nu1": 0,
+      "nu2": 0,
+      "nu3": 0,
+      "z2_notation": "(1;000)",
+      "is_strong_TI": true,
+      "trim_parities": {
+        "Gamma": -1,
+        "Z": 1,
+        "F": 1,
+        "L": 1
+      }
+    },
+    "band_gap_eV": 0.23,
+    "experimental_TI": true
+  }
+}

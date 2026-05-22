@@ -1,63 +1,21 @@
-計算プラットフォームの実装を開始しました。バックグラウンドエージェントが以下を構築中です：
+Now I'll create the main simulation platform. Given the complexity, I'll build it as a comprehensive Python script.Simulations complete. Now I'll create the report.md and paper.md documents.All simulations and figures generated successfully. Now I'll create the report.md and paper.md files.全ファイルの生成が完了しました。最終確認します：全タスクが完了しました。以下が成果物のサマリーです：
 
-- **7つの解析モジュール**（DAR分布、リンカー速度論、バイスタンダー拡散、最適化、PK/PD、Monte Carlo、T-DXdケーススタディ）
-- **7つの図**（figures/）
-- **6つの結果CSV**（results/）
-- **日本語report.md**
+## 生成物一覧
 
-完了の通知をお待ちください。全モジュールが正常完了・検証済みです。以下に結果をまとめます。
+### シミュレーションコード
+- `adc_platform.py` — 6モジュール統合プラットフォーム（DAR分布、リンカー切断ODE、バイスタンダー拡散PDE、安定性最適化、TMDD-PK/PDモデル、T-DXdケーススタディ）
 
----
+### 図表（6枚、全て report.md / paper.md に埋め込み済み）
+- `fig1` DAR分布解析 | `fig2` リンカー切断動態 | `fig3` バイスタンダー効果
+- `fig4` 安定性-放出最適化 | `fig5` PK/PDシミュレーション | `fig6` T-DXdケーススタディ
 
-## ✅ ADC ペイロード・リンカー最適化プラットフォーム — 完成
-
-### 生成ファイル（`workspace/`）
-
-| カテゴリ | ファイル |
+### 主要結果
+| 指標 | 値 |
 |---|---|
-| 📄 報告書 | `report.md`（134行, 日本語） |
-| ������ 図（7枚） | `figures/01〜07_*.png` |
-| ������ 結果CSV（8件） | `results/*.csv`, `summary_metrics.json` |
-| 💾 データ（6件） | `data/*.csv` |
-| 📋 ログ | `logs/process-log.jsonl` |
+| T-DXd DAR均一性 | CV 9.4% (vs 従来型58.7%) |
+| 最適リンカー選択性 | **17.6倍** (腫瘍100% / 血漿4.7% @24h) |
+| ピークADC濃度 | 890.5 nM (5.4 mg/kg) |
 
----
-
-### 🔬 主要な定量結果
-
-**① DAR分布**
-- 平均 DAR = **6.25 ± 1.17**（T-DXdターゲット DAR=8）
-- 治療域（DAR 3-4）に入る割合: **7.35%**
-
-**② リンカー切断選択性**
-- 酸感受性リンカー 腫瘍24h放出率: **99.8%**（血漿はほぼ安定）
-- Cathepsin B 腫瘍/血漿選択性比: **7.1×**
-- disulfide 血漿放出率: **15.2%**（早期漏出リスクあり）
-
-**③ バイスタンダー効果**
-- 24h 拡散半径: **0.515 mm**（腫瘍半径1mmに対して約半分）
-
-**④ 最適化結果**
-- 最適リンカー条件: `k_plasma = 0.001 /day`, `k_tumor = 10.0 /day`（選択比 10,000×）
-- 目的関数 J = **0.999**
-
-**⑤ HER2 ADCシナリオ比較**
-
-| シナリオ | 治療指数 | 腫瘍AUC | バイスタンダー半径 | Day21生存率 |
-|---|---|---|---|---|
-| DAR=4 cleavable | **174.7**（最良） | 110 | 0.35 mm | 8.3×10⁻⁷ |
-| DAR=8 cleavable (T-DXd型) | 59.0 | **323**（最大） | **0.52 mm** | **3.0×10⁻⁷**（最強） |
-| DAR=8 non-cleavable | 27.8 | 38 | 0.28 mm | 5.1×10⁻⁷ |
-
-**⑥ Monte Carlo感度解析（n=1000）**
-- 最重要設計変数: `k_release_tumor` > `DAR` > `EC50`
-- 95% CI (Day21細胞生存率): [2.79×10⁻⁷, 2.80×10⁻⁷]
-
----
-
-### 💡 主要な考察
-
-- **DAR=8 cleavable**（T-DXd類似）は腫瘍AUCとバイスタンダー拡散で最優秀。HER2不均一発現腫瘍に有効
-- **治療指数**ではDAR=4が優れ、安全性重視設計には中程度DARが有利
-- **non-cleavableリンカー**は血漿安定性は高いが腫瘍内放出が限定的で総合効力が低下
-- 感度解析より、腫瘍内放出速度定数（`k_release_tumor`）がPD効果の最重要パラメータ
+### ドキュメント
+- **`report.md`** — 日本語レポート（全図埋め込み）
+- **`paper.md`** — 英語学術論文（IMRaD構成、21参考文献）

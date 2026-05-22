@@ -1,0 +1,9 @@
+{
+  "pti_mapk_peak": 0.7193082487832011,
+  "pti_mapk_peak_time": 50.3351675837919,
+  "eti_mapk_peak": 0.9660625046879386,
+  "eti_mapk_peak_time": 10.86543271635818,
+  "hill_coefficient": 6.844539537843941,
+  "ec50_signal": 0.18181818181818182,
+  "amplification_ratio": 1.343043829015103
+}

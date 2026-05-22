@@ -1,6 +1,0 @@
-{
-  "module": "rnn_basecaller",
-  "sequence_length": 570,
-  "quality_score": -214.9558915785284,
-  "chunks": 6
-}

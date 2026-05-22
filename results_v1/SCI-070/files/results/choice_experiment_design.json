@@ -1,0 +1,91 @@
+{
+  "study_title": "里山生態系サービスの経済的価値評価：選択実験デザイン",
+  "methodology": "Discrete Choice Experiment (DCE)",
+  "theoretical_basis": "Lancaster's characteristics theory + Random Utility Model",
+  "attributes": [
+    {
+      "name": "biodiversity_level",
+      "description": "生物多様性レベル（里山の生物種数の変化）",
+      "levels": ["現状維持", "20%増加", "40%増加"],
+      "coding": [0, 1, 2],
+      "type": "categorical_ordinal"
+    },
+    {
+      "name": "water_quality",
+      "description": "水質浄化サービスレベル",
+      "levels": ["環境基準未達成", "環境基準達成", "親水利用可能"],
+      "coding": [0, 1, 2],
+      "type": "categorical_ordinal"
+    },
+    {
+      "name": "landscape_maintenance",
+      "description": "里山景観の維持管理レベル",
+      "levels": ["管理放棄（荒廃）", "部分管理", "伝統的管理（棚田・雑木林）"],
+      "coding": [0, 1, 2],
+      "type": "categorical_ordinal"
+    },
+    {
+      "name": "carbon_sequestration",
+      "description": "炭素吸収量の変化",
+      "levels": ["減少（-20%）", "現状維持", "増加（+30%）"],
+      "coding": [-1, 0, 1],
+      "type": "categorical_ordinal"
+    },
+    {
+      "name": "annual_payment",
+      "description": "年間追加負担額（税金・基金）",
+      "levels": [0, 1000, 3000, 5000, 10000],
+      "unit": "JPY/household/year",
+      "type": "cost_attribute"
+    }
+  ],
+  "experimental_design": {
+    "design_type": "D-efficient design",
+    "software": "Ngene / pyDCE",
+    "full_factorial_size": "3 × 3 × 3 × 3 × 5 = 405 profiles",
+    "fractional_design": {
+      "n_choice_sets": 12,
+      "n_alternatives_per_set": 3,
+      "note": "2 designed alternatives + 1 status-quo (opt-out)"
+    },
+    "blocking": {
+      "n_blocks": 3,
+      "sets_per_block": 4,
+      "reason": "認知負荷軽減のため1回答者あたり4セットに制限"
+    }
+  },
+  "estimation_model": {
+    "primary": "Mixed Logit (Random Parameters Logit)",
+    "secondary": "Latent Class Model",
+    "software": "Python biogeme / R mlogit / Apollo",
+    "utility_specification": {
+      "formula": "V_j = ASC_j + β_bio × biodiversity + β_water × water_quality + β_landscape × landscape + β_carbon × carbon_seq + β_cost × payment",
+      "random_parameters": ["β_bio", "β_water", "β_landscape", "β_carbon"],
+      "fixed_parameters": ["β_cost"],
+      "distributions": "Normal for preference parameters; Cost coefficient fixed (for WTP calculation)"
+    },
+    "wtp_calculation": {
+      "formula": "WTP_attribute = -β_attribute / β_cost",
+      "confidence_interval": "Krinsky-Robb parametric bootstrap (10,000 draws)"
+    }
+  },
+  "sample_design": {
+    "target_population": "里山周辺地域住民（市区町村単位）",
+    "sampling_method": "層化二段抽出法",
+    "strata": ["距離帯（5km以内/5-15km/15km以上）", "年齢層（20代/30-40代/50-60代/70代以上）"],
+    "target_sample_size": 600,
+    "minimum_per_block": 200,
+    "justification": "Johnson & Orme (2003) rule: N ≥ 500/(J×T) × max_levels, where J=3, T=4",
+    "survey_mode": "Web調査 + 郵送調査（高齢層カバー）",
+    "pre_test": {
+      "n": 50,
+      "purpose": "属性・水準の理解度確認、認知負荷テスト"
+    }
+  },
+  "validity_checks": [
+    "支配性テスト（dominant alternative check）",
+    "内的整合性テスト（scope test）",
+    "抗議回答の識別と処理",
+    "仮想バイアスの補正（cheap talk / consequentiality script）"
+  ]
+}

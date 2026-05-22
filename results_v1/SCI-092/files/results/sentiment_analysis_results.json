@@ -1,0 +1,208 @@
+{
+  "gene_editing": {
+    "n_posts": 1141,
+    "sentiment_distribution": {
+      "negative": 0.376,
+      "neutral": 0.3506,
+      "positive": 0.2734
+    },
+    "hybrid_score_stats": {
+      "mean": -0.0791,
+      "std": 0.6344,
+      "median": -0.0534
+    },
+    "engagement_weighted_sentiment": -0.1817,
+    "platform_sentiment": {
+      "Blog": -0.0633,
+      "News_Comments": -0.0977,
+      "Reddit": -0.0681,
+      "Twitter/X": -0.0815
+    },
+    "temporal_trend": [
+      {
+        "year": 2020,
+        "mean": -0.1285,
+        "std": 0.6299,
+        "count": 49
+      },
+      {
+        "year": 2021,
+        "mean": -0.1538,
+        "std": 0.611,
+        "count": 111
+      },
+      {
+        "year": 2022,
+        "mean": -0.0133,
+        "std": 0.6423,
+        "count": 129
+      },
+      {
+        "year": 2023,
+        "mean": -0.1057,
+        "std": 0.6313,
+        "count": 169
+      },
+      {
+        "year": 2024,
+        "mean": -0.0478,
+        "std": 0.6414,
+        "count": 253
+      },
+      {
+        "year": 2025,
+        "mean": -0.0837,
+        "std": 0.6299,
+        "count": 247
+      },
+      {
+        "year": 2026,
+        "mean": -0.0793,
+        "std": 0.6461,
+        "count": 183
+      }
+    ]
+  },
+  "AI": {
+    "n_posts": 884,
+    "sentiment_distribution": {
+      "positive": 0.414,
+      "negative": 0.2998,
+      "neutral": 0.2862
+    },
+    "hybrid_score_stats": {
+      "mean": 0.0976,
+      "std": 0.6647,
+      "median": 0.0741
+    },
+    "engagement_weighted_sentiment": 0.0887,
+    "platform_sentiment": {
+      "Blog": 0.0205,
+      "News_Comments": 0.0867,
+      "Reddit": 0.1188,
+      "Twitter/X": 0.1071
+    },
+    "temporal_trend": [
+      {
+        "year": 2020,
+        "mean": 0.1447,
+        "std": 0.6765,
+        "count": 33
+      },
+      {
+        "year": 2021,
+        "mean": 0.1114,
+        "std": 0.6234,
+        "count": 72
+      },
+      {
+        "year": 2022,
+        "mean": 0.0404,
+        "std": 0.6722,
+        "count": 98
+      },
+      {
+        "year": 2023,
+        "mean": 0.0983,
+        "std": 0.6492,
+        "count": 138
+      },
+      {
+        "year": 2024,
+        "mean": 0.1651,
+        "std": 0.6912,
+        "count": 172
+      },
+      {
+        "year": 2025,
+        "mean": 0.0979,
+        "std": 0.6626,
+        "count": 203
+      },
+      {
+        "year": 2026,
+        "mean": 0.0458,
+        "std": 0.6673,
+        "count": 168
+      }
+    ]
+  },
+  "nuclear_fusion": {
+    "n_posts": 1162,
+    "sentiment_distribution": {
+      "positive": 0.4475,
+      "neutral": 0.3485,
+      "negative": 0.204
+    },
+    "hybrid_score_stats": {
+      "mean": 0.1863,
+      "std": 0.6156,
+      "median": 0.1127
+    },
+    "engagement_weighted_sentiment": 0.1419,
+    "platform_sentiment": {
+      "Blog": 0.0778,
+      "News_Comments": 0.1834,
+      "Reddit": 0.2062,
+      "Twitter/X": 0.2022
+    },
+    "temporal_trend": [
+      {
+        "year": 2020,
+        "mean": 0.16,
+        "std": 0.6683,
+        "count": 67
+      },
+      {
+        "year": 2021,
+        "mean": 0.3462,
+        "std": 0.5839,
+        "count": 78
+      },
+      {
+        "year": 2022,
+        "mean": 0.1865,
+        "std": 0.5876,
+        "count": 125
+      },
+      {
+        "year": 2023,
+        "mean": 0.1634,
+        "std": 0.6194,
+        "count": 181
+      },
+      {
+        "year": 2024,
+        "mean": 0.1302,
+        "std": 0.627,
+        "count": 229
+      },
+      {
+        "year": 2025,
+        "mean": 0.1922,
+        "std": 0.5988,
+        "count": 263
+      },
+      {
+        "year": 2026,
+        "mean": 0.2077,
+        "std": 0.6277,
+        "count": 219
+      }
+    ]
+  },
+  "technology_ranking": [
+    {
+      "technology": "nuclear_fusion",
+      "mean_sentiment": 0.1863
+    },
+    {
+      "technology": "AI",
+      "mean_sentiment": 0.0976
+    },
+    {
+      "technology": "gene_editing",
+      "mean_sentiment": -0.0791
+    }
+  ]
+}

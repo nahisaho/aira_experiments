@@ -1,0 +1,169 @@
+{
+  "timestamp": "2026-05-23T04:56:52.035922+09:00",
+  "dimensions": {
+    "fairness": {
+      "score": 0.9063626153532743,
+      "details": {
+        "statistical_parity": {
+          "group_positive_rates": {
+            "Young (<50)": 0.3975609756097561,
+            "Old (\u226550)": 0.4306122448979592
+          },
+          "spd": 0.03305126928820307
+        },
+        "equalized_odds": {
+          "label_0": {
+            "group_rates": {
+              "Young (<50)": 0.07450980392156863,
+              "Old (\u226550)": 0.1016949152542373
+            },
+            "difference": 0.02718511133266867
+          },
+          "label_1": {
+            "group_rates": {
+              "Young (<50)": 0.9290322580645162,
+              "Old (\u226550)": 0.7362204724409449
+            },
+            "difference": 0.19281178562357126
+          },
+          "equalized_odds_difference": 0.19281178562357126
+        },
+        "calibration": {
+          "group_calibration_errors": {
+            "Young (<50)": 0.1351972523278903,
+            "Old (\u226550)": 0.08346624447511243
+          },
+          "max_calibration_gap": 0.05173100785277786
+        },
+        "integrated": {
+          "spd": 0.03305126928820307,
+          "eod": 0.19281178562357126,
+          "calibration_gap": 0.05173100785277786,
+          "integrated_fairness_score": 0.9063626153532743
+        }
+      }
+    },
+    "explainability": {
+      "score": 0.6023183377953952,
+      "details": {
+        "shap_consistency": {
+          "mean_rank_correlation": 0.20736842105263156,
+          "std_rank_correlation": 0.2737696718588287,
+          "n_runs": 5
+        },
+        "explanation_stability": {
+          "mean_stability": 0.9972682545381588,
+          "std_stability": 0.0008897188755530938,
+          "noise_scale": 0.01
+        },
+        "integrated_explainability_score": 0.6023183377953952
+      }
+    },
+    "privacy": {
+      "score": 0.7212080000000001,
+      "details": {
+        "membership_inference": {
+          "attack_accuracy": 0.637,
+          "attack_auc": 0.639396,
+          "best_threshold": 0.9175163518264509,
+          "membership_inference_resistance": 0.7212080000000001,
+          "risk_level": "LOW"
+        },
+        "overfitting_gap": {
+          "train_accuracy": 0.9976190476190476,
+          "test_accuracy": 0.8655555555555555,
+          "gap": 0.1320634920634921
+        },
+        "privacy_risk_score": 0.7212080000000001
+      }
+    },
+    "robustness": {
+      "score": 0.9912962962962963,
+      "details": {
+        "adversarial": {
+          "base_accuracy": 0.8655555555555555,
+          "perturbation_results": [
+            {
+              "epsilon": 0.01,
+              "perturbed_accuracy": 0.8677777777777778,
+              "accuracy_drop": -0.0022222222222222365
+            },
+            {
+              "epsilon": 0.05,
+              "perturbed_accuracy": 0.8611111111111112,
+              "accuracy_drop": 0.004444444444444362
+            },
+            {
+              "epsilon": 0.1,
+              "perturbed_accuracy": 0.8666666666666667,
+              "accuracy_drop": -0.0011111111111111738
+            },
+            {
+              "epsilon": 0.2,
+              "perturbed_accuracy": 0.8677777777777778,
+              "accuracy_drop": -0.0022222222222222365
+            },
+            {
+              "epsilon": 0.5,
+              "perturbed_accuracy": 0.85,
+              "accuracy_drop": 0.015555555555555545
+            }
+          ]
+        },
+        "distribution_shift": {
+          "base_accuracy": 0.8655555555555555,
+          "shift_results": [
+            {
+              "shift_magnitude": 0.0,
+              "shifted_accuracy": 0.8655555555555555,
+              "accuracy_drop": 0.0
+            },
+            {
+              "shift_magnitude": 0.5,
+              "shifted_accuracy": 0.8566666666666667,
+              "accuracy_drop": 0.008888888888888835
+            },
+            {
+              "shift_magnitude": 1.0,
+              "shifted_accuracy": 0.8233333333333334,
+              "accuracy_drop": 0.04222222222222216
+            },
+            {
+              "shift_magnitude": 2.0,
+              "shifted_accuracy": 0.6677777777777778,
+              "accuracy_drop": 0.19777777777777772
+            },
+            {
+              "shift_magnitude": 3.0,
+              "shifted_accuracy": 0.5166666666666667,
+              "accuracy_drop": 0.3488888888888888
+            }
+          ]
+        },
+        "integrated_robustness_score": 0.9912962962962963
+      }
+    },
+    "environment": {
+      "score": 0.9998941195225544,
+      "details": {
+        "total_co2_grams": 0.021177216635810004,
+        "total_co2_kg": 2.1177216635810003e-05,
+        "environmental_score": 0.9998941195225544,
+        "measurements": [
+          {
+            "training_time_seconds": 2.932229995727539,
+            "hardware": "cpu",
+            "power_draw_watts": 65,
+            "energy_kwh": 5.2943041589525014e-05,
+            "co2_grams": 0.021177216635810004,
+            "co2_kg": 2.1177216635810003e-05,
+            "carbon_intensity_gco2_kwh": 400,
+            "params_per_gco2": 226658.68147579656
+          }
+        ]
+      }
+    }
+  },
+  "overall_ethics_score": 0.8395392985850402,
+  "grade": "B"
+}

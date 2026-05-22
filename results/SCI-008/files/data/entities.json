@@ -1,0 +1,522 @@
+{
+  "DB00945": {
+    "type": "Drug",
+    "name": "Aspirin"
+  },
+  "DB00563": {
+    "type": "Drug",
+    "name": "Methotrexate"
+  },
+  "DB01050": {
+    "type": "Drug",
+    "name": "Ibuprofen"
+  },
+  "DB00503": {
+    "type": "Drug",
+    "name": "Ritonavir"
+  },
+  "DB00608": {
+    "type": "Drug",
+    "name": "Chloroquine"
+  },
+  "DB01611": {
+    "type": "Drug",
+    "name": "Hydroxychloroquine"
+  },
+  "DB00641": {
+    "type": "Drug",
+    "name": "Simvastatin"
+  },
+  "DB01076": {
+    "type": "Drug",
+    "name": "Atorvastatin"
+  },
+  "DB00959": {
+    "type": "Drug",
+    "name": "Methylprednisolone"
+  },
+  "DB00635": {
+    "type": "Drug",
+    "name": "Prednisone"
+  },
+  "DB09065": {
+    "type": "Drug",
+    "name": "Baricitinib"
+  },
+  "DB11817": {
+    "type": "Drug",
+    "name": "Remdesivir"
+  },
+  "DB14761": {
+    "type": "Drug",
+    "name": "Molnupiravir"
+  },
+  "DB16691": {
+    "type": "Drug",
+    "name": "Nirmatrelvir"
+  },
+  "DB00631": {
+    "type": "Drug",
+    "name": "Clopidogrel"
+  },
+  "DB01136": {
+    "type": "Drug",
+    "name": "Carvedilol"
+  },
+  "DB00177": {
+    "type": "Drug",
+    "name": "Valsartan"
+  },
+  "DB00966": {
+    "type": "Drug",
+    "name": "Telmisartan"
+  },
+  "DB01197": {
+    "type": "Drug",
+    "name": "Captopril"
+  },
+  "DB00691": {
+    "type": "Drug",
+    "name": "Finasteride"
+  },
+  "DB00619": {
+    "type": "Drug",
+    "name": "Imatinib"
+  },
+  "DB00530": {
+    "type": "Drug",
+    "name": "Erlotinib"
+  },
+  "DB08901": {
+    "type": "Drug",
+    "name": "Ponatinib"
+  },
+  "DB06290": {
+    "type": "Drug",
+    "name": "Simeprevir"
+  },
+  "DB00696": {
+    "type": "Drug",
+    "name": "Ergotamine"
+  },
+  "DB01048": {
+    "type": "Drug",
+    "name": "Abacavir"
+  },
+  "DB00224": {
+    "type": "Drug",
+    "name": "Indinavir"
+  },
+  "DB01601": {
+    "type": "Drug",
+    "name": "Lopinavir"
+  },
+  "DB00932": {
+    "type": "Drug",
+    "name": "Tipranavir"
+  },
+  "DB01264": {
+    "type": "Drug",
+    "name": "Darunavir"
+  },
+  "DB00198": {
+    "type": "Drug",
+    "name": "Oseltamivir"
+  },
+  "DB00558": {
+    "type": "Drug",
+    "name": "Zanamivir"
+  },
+  "DB06817": {
+    "type": "Drug",
+    "name": "Ruxolitinib"
+  },
+  "DB11979": {
+    "type": "Drug",
+    "name": "Eculizumab"
+  },
+  "DB06273": {
+    "type": "Drug",
+    "name": "Tocilizumab"
+  },
+  "DB00051": {
+    "type": "Drug",
+    "name": "Adalimumab"
+  },
+  "DB01041": {
+    "type": "Drug",
+    "name": "Thalidomide"
+  },
+  "DB00674": {
+    "type": "Drug",
+    "name": "Galantamine"
+  },
+  "DB01065": {
+    "type": "Drug",
+    "name": "Melatonin"
+  },
+  "DB00252": {
+    "type": "Drug",
+    "name": "Phenytoin"
+  },
+  "ACE2": {
+    "type": "Gene",
+    "name": "Angiotensin Converting Enzyme 2"
+  },
+  "TMPRSS2": {
+    "type": "Gene",
+    "name": "Transmembrane Serine Protease 2"
+  },
+  "IL6": {
+    "type": "Gene",
+    "name": "Interleukin 6"
+  },
+  "TNF": {
+    "type": "Gene",
+    "name": "Tumor Necrosis Factor"
+  },
+  "IFNG": {
+    "type": "Gene",
+    "name": "Interferon Gamma"
+  },
+  "JAK1": {
+    "type": "Gene",
+    "name": "Janus Kinase 1"
+  },
+  "JAK2": {
+    "type": "Gene",
+    "name": "Janus Kinase 2"
+  },
+  "STAT3": {
+    "type": "Gene",
+    "name": "Signal Transducer 3"
+  },
+  "NFKB1": {
+    "type": "Gene",
+    "name": "Nuclear Factor Kappa B Subunit 1"
+  },
+  "TP53": {
+    "type": "Gene",
+    "name": "Tumor Protein P53"
+  },
+  "EGFR": {
+    "type": "Gene",
+    "name": "Epidermal Growth Factor Receptor"
+  },
+  "VEGFA": {
+    "type": "Gene",
+    "name": "Vascular Endothelial GF A"
+  },
+  "MAPK1": {
+    "type": "Gene",
+    "name": "Mitogen-Activated Protein Kinase 1"
+  },
+  "AKT1": {
+    "type": "Gene",
+    "name": "AKT Serine/Threonine Kinase 1"
+  },
+  "MTOR": {
+    "type": "Gene",
+    "name": "Mechanistic Target Of Rapamycin"
+  },
+  "CASP3": {
+    "type": "Gene",
+    "name": "Caspase 3"
+  },
+  "BCL2": {
+    "type": "Gene",
+    "name": "B-Cell Lymphoma 2"
+  },
+  "IL1B": {
+    "type": "Gene",
+    "name": "Interleukin 1 Beta"
+  },
+  "CXCL8": {
+    "type": "Gene",
+    "name": "C-X-C Motif Chemokine Ligand 8"
+  },
+  "CCL2": {
+    "type": "Gene",
+    "name": "C-C Motif Chemokine Ligand 2"
+  },
+  "TLR4": {
+    "type": "Gene",
+    "name": "Toll Like Receptor 4"
+  },
+  "NLRP3": {
+    "type": "Gene",
+    "name": "NLR Family Pyrin Domain 3"
+  },
+  "HMGCR": {
+    "type": "Gene",
+    "name": "HMG-CoA Reductase"
+  },
+  "PTGS2": {
+    "type": "Gene",
+    "name": "Prostaglandin-Endoperoxide Synthase 2"
+  },
+  "ADRB1": {
+    "type": "Gene",
+    "name": "Adrenoceptor Beta 1"
+  },
+  "AGTR1": {
+    "type": "Gene",
+    "name": "Angiotensin II Receptor Type 1"
+  },
+  "REN": {
+    "type": "Gene",
+    "name": "Renin"
+  },
+  "AGT": {
+    "type": "Gene",
+    "name": "Angiotensinogen"
+  },
+  "F2": {
+    "type": "Gene",
+    "name": "Coagulation Factor II"
+  },
+  "SERPINE1": {
+    "type": "Gene",
+    "name": "Serpin Family E Member 1"
+  },
+  "CTSL": {
+    "type": "Gene",
+    "name": "Cathepsin L"
+  },
+  "BSG": {
+    "type": "Gene",
+    "name": "Basigin (CD147)"
+  },
+  "DPP4": {
+    "type": "Gene",
+    "name": "Dipeptidyl Peptidase 4"
+  },
+  "FURIN": {
+    "type": "Gene",
+    "name": "Furin"
+  },
+  "CD4": {
+    "type": "Gene",
+    "name": "CD4 Molecule"
+  },
+  "DOID:0080600": {
+    "type": "Disease",
+    "name": "COVID-19"
+  },
+  "DOID:2841": {
+    "type": "Disease",
+    "name": "Asthma"
+  },
+  "DOID:3393": {
+    "type": "Disease",
+    "name": "Coronary Artery Disease"
+  },
+  "DOID:9352": {
+    "type": "Disease",
+    "name": "Type 2 Diabetes"
+  },
+  "DOID:10763": {
+    "type": "Disease",
+    "name": "Hypertension"
+  },
+  "DOID:2377": {
+    "type": "Disease",
+    "name": "Multiple Sclerosis"
+  },
+  "DOID:10283": {
+    "type": "Disease",
+    "name": "Prostate Cancer"
+  },
+  "DOID:3571": {
+    "type": "Disease",
+    "name": "Liver Cancer"
+  },
+  "DOID:1612": {
+    "type": "Disease",
+    "name": "Breast Cancer"
+  },
+  "DOID:219": {
+    "type": "Disease",
+    "name": "Colon Cancer"
+  },
+  "DOID:332": {
+    "type": "Disease",
+    "name": "Parkinson Disease"
+  },
+  "DOID:14330": {
+    "type": "Disease",
+    "name": "Alzheimer Disease"
+  },
+  "DOID:9074": {
+    "type": "Disease",
+    "name": "Systemic Lupus Erythematosus"
+  },
+  "DOID:7148": {
+    "type": "Disease",
+    "name": "Rheumatoid Arthritis"
+  },
+  "DOID:0050117": {
+    "type": "Disease",
+    "name": "Acute Respiratory Distress"
+  },
+  "DOID:0050741": {
+    "type": "Disease",
+    "name": "Pulmonary Fibrosis"
+  },
+  "DOID:4": {
+    "type": "Disease",
+    "name": "Cardiovascular Disease"
+  },
+  "DOID:0060903": {
+    "type": "Disease",
+    "name": "Thrombotic Disorder"
+  },
+  "DOID:0080599": {
+    "type": "Disease",
+    "name": "Cytokine Storm"
+  },
+  "DOID:552": {
+    "type": "Disease",
+    "name": "Pneumonia"
+  },
+  "R-HSA-168256": {
+    "type": "Pathway",
+    "name": "Immune System"
+  },
+  "R-HSA-449147": {
+    "type": "Pathway",
+    "name": "Signaling by Interleukins"
+  },
+  "R-HSA-168164": {
+    "type": "Pathway",
+    "name": "Toll-Like Receptor Cascades"
+  },
+  "R-HSA-1280215": {
+    "type": "Pathway",
+    "name": "Cytokine Signaling"
+  },
+  "R-HSA-109582": {
+    "type": "Pathway",
+    "name": "Hemostasis"
+  },
+  "R-HSA-2262752": {
+    "type": "Pathway",
+    "name": "Cellular Responses to Stress"
+  },
+  "R-HSA-5653656": {
+    "type": "Pathway",
+    "name": "Vesicle-mediated Transport"
+  },
+  "R-HSA-1643685": {
+    "type": "Pathway",
+    "name": "Disease"
+  },
+  "R-HSA-162582": {
+    "type": "Pathway",
+    "name": "Signal Transduction"
+  },
+  "R-HSA-556833": {
+    "type": "Pathway",
+    "name": "Metabolism of Lipids"
+  },
+  "R-HSA-1474244": {
+    "type": "Pathway",
+    "name": "Extracellular Matrix Organization"
+  },
+  "R-HSA-74160": {
+    "type": "Pathway",
+    "name": "Gene Expression"
+  },
+  "R-HSA-1280218": {
+    "type": "Pathway",
+    "name": "Adaptive Immune System"
+  },
+  "R-HSA-168249": {
+    "type": "Pathway",
+    "name": "Innate Immune System"
+  },
+  "R-HSA-9006925": {
+    "type": "Pathway",
+    "name": "Intracellular Signaling by Second Messengers"
+  },
+  "hsa04668": {
+    "type": "Pathway",
+    "name": "TNF Signaling Pathway"
+  },
+  "hsa04630": {
+    "type": "Pathway",
+    "name": "JAK-STAT Signaling Pathway"
+  },
+  "hsa04151": {
+    "type": "Pathway",
+    "name": "PI3K-Akt Signaling Pathway"
+  },
+  "hsa04064": {
+    "type": "Pathway",
+    "name": "NF-kappa B Signaling Pathway"
+  },
+  "hsa04620": {
+    "type": "Pathway",
+    "name": "Toll-like Receptor Signaling Pathway"
+  },
+  "HP:0001945": {
+    "type": "Phenotype",
+    "name": "Fever"
+  },
+  "HP:0012735": {
+    "type": "Phenotype",
+    "name": "Cough"
+  },
+  "HP:0002014": {
+    "type": "Phenotype",
+    "name": "Diarrhea"
+  },
+  "HP:0002094": {
+    "type": "Phenotype",
+    "name": "Dyspnea"
+  },
+  "HP:0001907": {
+    "type": "Phenotype",
+    "name": "Thromboembolism"
+  },
+  "HP:0001919": {
+    "type": "Phenotype",
+    "name": "Acute Kidney Injury"
+  },
+  "HP:0002321": {
+    "type": "Phenotype",
+    "name": "Vertigo"
+  },
+  "HP:0100806": {
+    "type": "Phenotype",
+    "name": "Sepsis"
+  },
+  "HP:0003326": {
+    "type": "Phenotype",
+    "name": "Myalgia"
+  },
+  "HP:0002315": {
+    "type": "Phenotype",
+    "name": "Headache"
+  },
+  "HP:0012115": {
+    "type": "Phenotype",
+    "name": "Hepatitis"
+  },
+  "HP:0001250": {
+    "type": "Phenotype",
+    "name": "Seizures"
+  },
+  "HP:0001649": {
+    "type": "Phenotype",
+    "name": "Tachycardia"
+  },
+  "HP:0002090": {
+    "type": "Phenotype",
+    "name": "Pneumonia"
+  },
+  "HP:0003493": {
+    "type": "Phenotype",
+    "name": "Antinuclear Antibody Positive"
+  }
+}

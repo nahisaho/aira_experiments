@@ -1,914 +1,1311 @@
-from __future__ import annotations
+#!/usr/bin/env python3
+"""
+ADC Payload-Linker Optimization Computational Platform
+=====================================================
+Implements ODE-based PK/PD models and Monte Carlo simulations for
+Antibody-Drug Conjugate optimization, with HER2-targeted T-DXd analog case study.
+"""
 
-import json
-import math
-import random
-import traceback
-import warnings
-from copy import deepcopy
-from datetime import datetime, timezone
-from pathlib import Path
-
-import matplotlib.pyplot as plt
 import numpy as np
-import pandas as pd
+from scipy.integrate import solve_ivp
+from scipy.optimize import minimize, differential_evolution
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
 import seaborn as sns
-from scipy.integrate import solve_ivp, trapezoid
-from scipy.optimize import minimize
-from scipy.stats import binom, poisson, qmc, spearmanr
+import pandas as pd
+from dataclasses import dataclass, field
+from typing import Dict, List, Tuple, Optional
+import json
+import os
+from datetime import datetime
 
-SEED = 42
-np.random.seed(SEED)
-random.seed(SEED)
-warnings.filterwarnings("ignore")
-sns.set_theme(style="whitegrid")
-plt.rcParams["figure.dpi"] = 150
-plt.rcParams["savefig.dpi"] = 150
-plt.rcParams["axes.prop_cycle"] = plt.cycler(color=sns.color_palette("viridis", 8))
+sns.set_theme(style="whitegrid", font_scale=1.1)
+plt.rcParams['figure.dpi'] = 300
+plt.rcParams['savefig.dpi'] = 300
+plt.rcParams['font.family'] = 'DejaVu Sans'
 
-BASE_DIR = Path(__file__).resolve().parent
-FIG_DIR = BASE_DIR / "figures"
-RESULTS_DIR = BASE_DIR / "results"
-DATA_DIR = BASE_DIR / "data"
-LOG_DIR = BASE_DIR / "logs"
-LOG_PATH = LOG_DIR / "process-log.jsonl"
-SUMMARY_PATH = RESULTS_DIR / "summary_metrics.json"
+FIGURES_DIR = "figures"
+RESULTS_DIR = "results"
+DATA_DIR = "data"
+LOGS_DIR = "logs"
 
-for directory in [FIG_DIR, RESULTS_DIR, DATA_DIR, LOG_DIR]:
-    directory.mkdir(parents=True, exist_ok=True)
+# ============================================================================
+# 1. DAR Distribution Model
+# ============================================================================
+
+@dataclass
+class DARParameters:
+    """Parameters for DAR distribution modeling."""
+    mean_dar: float = 4.0          # Target average DAR
+    max_dar: int = 8               # Maximum possible DAR (IgG1 has 8 interchain cysteines)
+    conjugation_efficiency: float = 0.85
+    batch_variability: float = 0.15
 
 
-class ProcessLogger:
-    def __init__(self, path: Path):
-        self.path = path
+class DARDistributionModel:
+    """Models DAR distribution using binomial/Poisson mixture and relates to therapeutic window."""
 
-    def log(
-        self,
-        phase: str,
-        event_type: str,
-        skill_or_tool: str,
-        handoff_in: dict | None = None,
-        handoff_out: dict | None = None,
-        files_written: list[str] | None = None,
-        status: str = "ok",
-        message: str | None = None,
-    ) -> None:
-        payload = {
-            "timestamp": datetime.now(timezone.utc).isoformat(),
-            "phase": phase,
-            "event_type": event_type,
-            "actor": "co-scientist",
-            "skill_or_tool": skill_or_tool,
-            "handoff_in": handoff_in or {},
-            "handoff_out": handoff_out or {},
-            "files_written": files_written or [],
-            "status": status,
+    def __init__(self, params: DARParameters = None):
+        self.params = params or DARParameters()
+
+    def binomial_dar_distribution(self, p_conjugation: float, n_sites: int = 8) -> np.ndarray:
+        """Binomial DAR distribution based on conjugation probability per site."""
+        from scipy.stats import binom
+        dar_values = np.arange(0, n_sites + 1)
+        probs = binom.pmf(dar_values, n_sites, p_conjugation)
+        return dar_values, probs
+
+    def poisson_dar_distribution(self, mean_dar: float, max_dar: int = 8) -> np.ndarray:
+        """Poisson-approximated DAR distribution (for stochastic conjugation)."""
+        from scipy.stats import poisson
+        dar_values = np.arange(0, max_dar + 1)
+        probs = poisson.pmf(dar_values, mean_dar)
+        probs = probs / probs.sum()  # Normalize for truncation
+        return dar_values, probs
+
+    def monte_carlo_dar_sampling(self, n_molecules: int = 10000,
+                                  n_batches: int = 50) -> Dict:
+        """Monte Carlo simulation of DAR distribution across batches."""
+        np.random.seed(42)
+        all_dar = []
+        batch_means = []
+        batch_stds = []
+
+        for batch in range(n_batches):
+            # Vary conjugation efficiency per batch
+            eff = np.clip(
+                np.random.normal(self.params.conjugation_efficiency,
+                                 self.params.batch_variability),
+                0.1, 1.0
+            )
+            p_site = eff * self.params.mean_dar / self.params.max_dar
+            p_site = np.clip(p_site, 0, 1)
+            dar_batch = np.random.binomial(self.params.max_dar, p_site, n_molecules)
+            all_dar.extend(dar_batch)
+            batch_means.append(np.mean(dar_batch))
+            batch_stds.append(np.std(dar_batch))
+
+        return {
+            'all_dar': np.array(all_dar),
+            'batch_means': np.array(batch_means),
+            'batch_stds': np.array(batch_stds),
+            'overall_mean': np.mean(all_dar),
+            'overall_std': np.std(all_dar),
         }
-        if message:
-            payload["message"] = message
-        with self.path.open("a", encoding="utf-8") as fh:
-            fh.write(json.dumps(payload, ensure_ascii=False) + "\n")
 
+    def therapeutic_window_model(self, dar_values: np.ndarray) -> Dict:
+        """Model relationship between DAR and efficacy/toxicity."""
+        # Efficacy: sigmoidal increase with DAR
+        ec50_dar = 3.5
+        emax = 1.0
+        hill_eff = 2.5
+        efficacy = emax * dar_values**hill_eff / (ec50_dar**hill_eff + dar_values**hill_eff)
 
-LOGGER = ProcessLogger(LOG_PATH)
-LOGGER.log(
-    phase="PLAN",
-    event_type="run_started",
-    skill_or_tool="adc_platform.py",
-    handoff_in={"seed": SEED, "cwd": str(BASE_DIR)},
-    handoff_out={"required_outputs": ["figures", "results", "data", "logs/process-log.jsonl"]},
-)
-LOGGER.log(
-    phase="PLAN",
-    event_type="prompt_received",
-    skill_or_tool="adc_platform.py",
-    handoff_in={
-        "objective": "ADC payload-linker optimization platform",
-        "modules": [
-            "DAR distribution",
-            "linker cleavage",
-            "bystander diffusion",
-            "optimization",
-            "PKPD",
-            "Monte Carlo sensitivity",
-            "HER2 case study",
-        ],
-    },
-)
-LOGGER.log(
-    phase="PLAN",
-    event_type="skill_selected",
-    skill_or_tool="co-scientist-data-analysis",
-    handoff_out={"route": "simulation, optimization, visualization"},
-)
+        # Toxicity: exponential increase at high DAR
+        tox_threshold = 4.0
+        tox_slope = 0.8
+        toxicity = 1.0 / (1.0 + np.exp(-tox_slope * (dar_values - tox_threshold - 2)))
 
+        # Aggregation propensity increases with DAR
+        aggregation = 0.01 * np.exp(0.4 * dar_values)
 
-def save_csv(df: pd.DataFrame, path: Path) -> None:
-    df.to_csv(path, index=False)
-    LOGGER.log(
-        phase="EXECUTE",
-        event_type="file_written",
-        skill_or_tool="pandas.to_csv",
-        files_written=[str(path.relative_to(BASE_DIR))],
-        handoff_out={"rows": int(len(df)), "columns": list(df.columns)},
-    )
+        # Clearance rate increases with DAR (hydrophobicity)
+        clearance_factor = 1.0 + 0.15 * (dar_values - 2)**2 * (dar_values > 2)
 
+        # Therapeutic index
+        ti = efficacy / (toxicity + 0.01)
 
-
-def save_text(path: Path, text: str) -> None:
-    path.write_text(text, encoding="utf-8")
-    LOGGER.log(
-        phase="EXECUTE",
-        event_type="file_written",
-        skill_or_tool="write_text",
-        files_written=[str(path.relative_to(BASE_DIR))],
-    )
-
-
-
-def save_figure(fig: plt.Figure, path: Path) -> None:
-    fig.tight_layout()
-    fig.savefig(path, bbox_inches="tight")
-    plt.close(fig)
-    LOGGER.log(
-        phase="EXECUTE",
-        event_type="file_written",
-        skill_or_tool="matplotlib.savefig",
-        files_written=[str(path.relative_to(BASE_DIR))],
-    )
-
-
-
-def bootstrap_ci(values: np.ndarray, n_boot: int = 1000) -> tuple[float, float]:
-    rng = np.random.default_rng(SEED)
-    values = np.asarray(values, dtype=float)
-    if values.size == 0:
-        return (float("nan"), float("nan"))
-    boot = []
-    for _ in range(n_boot):
-        sample = rng.choice(values, size=values.size, replace=True)
-        boot.append(float(np.mean(sample)))
-    return tuple(np.percentile(boot, [2.5, 97.5]))
-
-
-
-def safe_ratio(num: float, den: float) -> float:
-    return float(num / den) if abs(den) > 1e-12 else float("nan")
-
-
-summary_metrics: dict[str, dict] = {}
-section_failures: list[str] = []
-
-
-
-def run_section(name: str, func):
-    print(f"[INFO] Running section: {name}")
-    LOGGER.log(phase="EXECUTE", event_type="handoff_started", skill_or_tool=name)
-    try:
-        result = func()
-        LOGGER.log(
-            phase="VERIFY",
-            event_type="handoff_completed",
-            skill_or_tool=name,
-            handoff_out={"status": "completed"},
-        )
-        print(f"[INFO] Completed section: {name}")
-        return result
-    except Exception as exc:  # noqa: BLE001
-        section_failures.append(f"{name}: {exc}")
-        LOGGER.log(
-            phase="VERIFY",
-            event_type="handoff_completed",
-            skill_or_tool=name,
-            status="error",
-            message=str(exc),
-            handoff_out={"traceback": traceback.format_exc()[-4000:]},
-        )
-        print(f"[ERROR] Section failed but execution continues: {name} -> {exc}")
-        return None
-
-
-
-def therapeutic_index_profile(dar_values: np.ndarray) -> np.ndarray:
-    dar_values = np.asarray(dar_values, dtype=float)
-    return 1.0 + 2.6 * np.exp(-0.5 * ((dar_values - 3.5) / 1.0) ** 2) - 0.12 * np.maximum(dar_values - 6.0, 0)
-
-
-
-def section_dar_distribution() -> dict:
-    species = np.arange(0, 9)
-    n_sites = 8
-    p_eff = 0.78
-    rng = np.random.default_rng(SEED)
-    binom_probs = binom.pmf(species, n_sites, p_eff)
-    poisson_raw = poisson.pmf(species, mu=n_sites * p_eff)
-    poisson_probs = poisson_raw / poisson_raw.sum()
-    samples = rng.binomial(n_sites, p_eff, size=10_000)
-    counts = np.bincount(samples, minlength=9)[:9]
-
-    clearance_rate = 0.15 + 0.035 * species + 0.010 * np.maximum(species - 4, 0) ** 2
-    hydrophobicity_penalty = 0.04 * species + 0.035 * np.maximum(species - 4, 0) ** 2
-    therapeutic_index = therapeutic_index_profile(species)
-
-    dar_df = pd.DataFrame(
-        {
-            "DAR": species,
-            "binomial_probability": binom_probs,
-            "poisson_probability": poisson_probs,
-            "monte_carlo_count": counts,
-            "monte_carlo_fraction": counts / counts.sum(),
-            "clearance_rate_per_day": clearance_rate,
-            "therapeutic_index_score": therapeutic_index,
-            "hydrophobicity_penalty": hydrophobicity_penalty,
+        return {
+            'efficacy': efficacy,
+            'toxicity': toxicity,
+            'aggregation': aggregation,
+            'clearance_factor': clearance_factor,
+            'therapeutic_index': ti,
         }
-    )
-    save_csv(dar_df, RESULTS_DIR / "dar_analysis.csv")
 
-    sample_df = pd.DataFrame({"sample_id": np.arange(1, len(samples) + 1), "DAR": samples})
-    save_csv(sample_df, DATA_DIR / "dar_monte_carlo_samples.csv")
+    def plot_dar_analysis(self, mc_results: Dict):
+        """Generate comprehensive DAR analysis plots."""
+        fig, axes = plt.subplots(2, 2, figsize=(14, 11))
 
-    fig, axes = plt.subplots(2, 1, figsize=(10, 9), sharex=True)
-    width = 0.36
-    axes[0].bar(species - width / 2, binom_probs, width=width, label="Binomial model", color=sns.color_palette("viridis", 5)[2])
-    axes[0].bar(species + width / 2, poisson_probs, width=width, label="Poisson approximation", color=sns.color_palette("viridis", 5)[4], alpha=0.8)
-    axes[0].set_ylabel("Probability")
-    axes[0].set_title("DAR species distribution models")
-    axes[0].legend()
+        # (a) DAR distribution histogram
+        ax = axes[0, 0]
+        dar_counts = np.bincount(mc_results['all_dar'], minlength=9)
+        dar_fracs = dar_counts / dar_counts.sum()
+        colors = plt.cm.viridis(np.linspace(0.2, 0.9, 9))
+        ax.bar(range(9), dar_fracs, color=colors, edgecolor='black', linewidth=0.5)
+        ax.set_xlabel('DAR Value')
+        ax.set_ylabel('Fraction')
+        ax.set_title(f'(a) DAR Distribution (Mean={mc_results["overall_mean"]:.2f}±{mc_results["overall_std"]:.2f})')
+        ax.set_xticks(range(9))
 
-    axes[1].hist(samples, bins=np.arange(-0.5, 9.5, 1), color=sns.color_palette("viridis", 6)[3], edgecolor="black", alpha=0.9)
-    axes[1].axvspan(2.5, 4.5, color="orange", alpha=0.2, label="Therapeutic window (DAR 3-4)")
-    axes[1].set_xlabel("Drug-to-antibody ratio (DAR)")
-    axes[1].set_ylabel("Count")
-    axes[1].set_title("Monte Carlo DAR distribution (n=10000)")
-    ax2 = axes[1].twinx()
-    ax2.plot(species, therapeutic_index, color="crimson", marker="o", label="Therapeutic index")
-    ax2.set_ylabel("Therapeutic index score")
-    axes[1].legend(loc="upper left")
-    ax2.legend(loc="upper right")
-    save_figure(fig, FIG_DIR / "01_dar_distribution.png")
+        # (b) Batch-to-batch variability
+        ax = axes[0, 1]
+        ax.errorbar(range(len(mc_results['batch_means'])),
+                     mc_results['batch_means'],
+                     yerr=mc_results['batch_stds'],
+                     fmt='o', markersize=4, capsize=3, color='#2196F3',
+                     ecolor='#90CAF9')
+        ax.axhline(y=self.params.mean_dar, color='red', linestyle='--',
+                    label=f'Target DAR={self.params.mean_dar}')
+        ax.fill_between(range(len(mc_results['batch_means'])),
+                         self.params.mean_dar - 0.5, self.params.mean_dar + 0.5,
+                         alpha=0.15, color='red', label='±0.5 spec')
+        ax.set_xlabel('Batch Number')
+        ax.set_ylabel('Mean DAR')
+        ax.set_title('(b) Batch-to-Batch DAR Variability')
+        ax.legend(fontsize=9)
 
-    optimal_fraction = float(((samples >= 3) & (samples <= 4)).mean())
-    mean_dar = float(np.mean(samples))
-    summary_metrics["dar"] = {
-        "mean_dar": mean_dar,
-        "std_dar": float(np.std(samples, ddof=1)),
-        "fraction_in_therapeutic_window": optimal_fraction,
-        "target_dar": 8,
-    }
-    return summary_metrics["dar"]
+        # (c) Therapeutic window
+        ax = axes[1, 0]
+        dar_cont = np.linspace(0, 8, 200)
+        tw = self.therapeutic_window_model(dar_cont)
+        ax.plot(dar_cont, tw['efficacy'], 'g-', linewidth=2, label='Efficacy')
+        ax.plot(dar_cont, tw['toxicity'], 'r-', linewidth=2, label='Toxicity')
+        ax.fill_between(dar_cont, 0, 1, where=(tw['efficacy'] > 0.5) & (tw['toxicity'] < 0.3),
+                         alpha=0.2, color='green', label='Therapeutic Window')
+        ax.set_xlabel('DAR')
+        ax.set_ylabel('Normalized Response')
+        ax.set_title('(c) DAR–Efficacy/Toxicity Relationship')
+        ax.legend(fontsize=9)
 
+        # (d) Therapeutic index
+        ax = axes[1, 1]
+        ax.plot(dar_cont, tw['therapeutic_index'], 'b-', linewidth=2)
+        optimal_dar = dar_cont[np.argmax(tw['therapeutic_index'])]
+        max_ti = np.max(tw['therapeutic_index'])
+        ax.axvline(x=optimal_dar, color='red', linestyle='--',
+                    label=f'Optimal DAR={optimal_dar:.1f}')
+        ax.annotate(f'TI_max={max_ti:.1f}', xy=(optimal_dar, max_ti),
+                     xytext=(optimal_dar + 1.5, max_ti * 0.9),
+                     arrowprops=dict(arrowstyle='->', color='red'),
+                     fontsize=10, color='red')
+        ax.set_xlabel('DAR')
+        ax.set_ylabel('Therapeutic Index')
+        ax.set_title('(d) Therapeutic Index vs DAR')
+        ax.legend(fontsize=9)
 
-
-def simulate_first_order_release(k_hr: float, t_hours: np.ndarray) -> np.ndarray:
-    y0 = [1.0]
-
-    def rhs(_, y):
-        return [-k_hr * max(y[0], 0.0)]
-
-    sol = solve_ivp(rhs, (float(t_hours[0]), float(t_hours[-1])), y0, t_eval=t_hours, method="RK45")
-    return 1.0 - np.clip(sol.y[0], 0.0, 1.0)
-
-
-
-def simulate_mm_release(vmax_uM_per_min: float, km_uM: float, scale: float, t_hours: np.ndarray) -> np.ndarray:
-    s0 = 100.0
-    y0 = [s0]
-    vmax_hr = vmax_uM_per_min * 60.0 * scale
-
-    def rhs(_, y):
-        substrate = max(y[0], 0.0)
-        rate = vmax_hr * substrate / (km_uM + substrate + 1e-12)
-        return [-rate]
-
-    sol = solve_ivp(rhs, (float(t_hours[0]), float(t_hours[-1])), y0, t_eval=t_hours, method="RK45", max_step=0.2)
-    remaining = np.clip(sol.y[0], 0.0, s0)
-    return 1.0 - remaining / s0
-
-
-
-def section_linker_cleavage() -> dict:
-    t_hours = np.linspace(0, 24, 241)
-    records: list[dict] = []
-
-    acid_params = {"k_max": 0.30, "pKa": 6.0, "sigma": 0.25, "plasma_pH": 7.4, "tumor_pH": 5.5}
-    for compartment, pH in [("Plasma", acid_params["plasma_pH"]), ("Tumor/Lysosome", acid_params["tumor_pH"])]:
-        k_hr = acid_params["k_max"] / (1.0 + math.exp(-(acid_params["pKa"] - pH) / acid_params["sigma"]))
-        released = simulate_first_order_release(k_hr, t_hours)
-        for t, rel in zip(t_hours, released, strict=False):
-            records.append(
-                {
-                    "time_h": t,
-                    "mechanism": "Acid-sensitive",
-                    "compartment": compartment,
-                    "released_fraction": rel,
-                    "effective_rate_per_h": k_hr,
-                }
-            )
-
-    enzyme_params = {"Vmax": 0.5, "Km": 50.0, "plasma_scale": 0.03, "tumor_scale": 1.0}
-    for compartment, scale in [("Plasma", enzyme_params["plasma_scale"]), ("Tumor/Lysosome", enzyme_params["tumor_scale"])]:
-        released = simulate_mm_release(enzyme_params["Vmax"], enzyme_params["Km"], scale, t_hours)
-        effective_rate = enzyme_params["Vmax"] * scale / enzyme_params["Km"]
-        for t, rel in zip(t_hours, released, strict=False):
-            records.append(
-                {
-                    "time_h": t,
-                    "mechanism": "Cathepsin B",
-                    "compartment": compartment,
-                    "released_fraction": rel,
-                    "effective_rate_per_h": effective_rate,
-                }
-            )
-
-    red_params = {"k_base": 0.35, "K_GSH": 0.5, "plasma_GSH_mM": 0.01, "tumor_GSH_mM": 5.0}
-    for compartment, gsh in [("Plasma", red_params["plasma_GSH_mM"]), ("Tumor/Lysosome", red_params["tumor_GSH_mM"])]:
-        k_hr = red_params["k_base"] * gsh / (red_params["K_GSH"] + gsh)
-        released = simulate_first_order_release(k_hr, t_hours)
-        for t, rel in zip(t_hours, released, strict=False):
-            records.append(
-                {
-                    "time_h": t,
-                    "mechanism": "Reductive disulfide",
-                    "compartment": compartment,
-                    "released_fraction": rel,
-                    "effective_rate_per_h": k_hr,
-                }
-            )
-
-    kinetics_df = pd.DataFrame(records)
-    save_csv(kinetics_df, RESULTS_DIR / "linker_kinetics.csv")
-
-    fig, axes = plt.subplots(1, 3, figsize=(15, 5), sharey=True)
-    mechanisms = ["Acid-sensitive", "Cathepsin B", "Reductive disulfide"]
-    for ax, mechanism in zip(axes, mechanisms, strict=False):
-        subset = kinetics_df[kinetics_df["mechanism"] == mechanism]
-        sns.lineplot(data=subset, x="time_h", y="released_fraction", hue="compartment", ax=ax, palette="viridis", linewidth=2)
-        ax.set_title(mechanism)
-        ax.set_xlabel("Time (h)")
-        ax.set_ylabel("Released fraction")
-        ax.set_ylim(0, 1.02)
-        if ax is not axes[0]:
-            ax.get_legend().remove()
-    axes[0].legend(title="Compartment")
-    fig.suptitle("Linker cleavage kinetics across compartments", y=1.02)
-    save_figure(fig, FIG_DIR / "02_linker_cleavage_kinetics.png")
-
-    end_release = (
-        kinetics_df[kinetics_df["time_h"] == kinetics_df["time_h"].max()]
-        .pivot(index="mechanism", columns="compartment", values="released_fraction")
-        .reset_index()
-    )
-    save_csv(end_release, DATA_DIR / "linker_terminal_release_summary.csv")
-
-    summary_metrics["linker"] = {
-        "acid_tumor_release_24h": float(end_release.loc[end_release["mechanism"] == "Acid-sensitive", "Tumor/Lysosome"].iloc[0]),
-        "enzyme_selectivity_ratio": float(
-            end_release.loc[end_release["mechanism"] == "Cathepsin B", "Tumor/Lysosome"].iloc[0]
-            / max(end_release.loc[end_release["mechanism"] == "Cathepsin B", "Plasma"].iloc[0], 1e-9)
-        ),
-        "reductive_plasma_release_24h": float(end_release.loc[end_release["mechanism"] == "Reductive disulfide", "Plasma"].iloc[0]),
-    }
-    return summary_metrics["linker"]
+        plt.tight_layout()
+        path = os.path.join(FIGURES_DIR, 'fig1_dar_analysis.png')
+        plt.savefig(path, bbox_inches='tight')
+        plt.close()
+        print(f"Saved: {path}")
+        return path
 
 
+# ============================================================================
+# 2. Linker Cleavage Mechanism Simulation
+# ============================================================================
 
-def simulate_diffusion_profile(source_scale: float = 1.0, diffusion_scale: float = 1.0, exposure_threshold: float = 5e-4) -> tuple[np.ndarray, dict[float, np.ndarray], float]:
-    radius_cm = 0.1
-    n_points = 100
-    x = np.linspace(0.0, radius_cm, n_points)
-    dx = x[1] - x[0]
-    D = 1e-7 * diffusion_scale
-    k_loss = (0.01 + 0.005) / 60.0
-    dt = min(4.0, 0.45 * dx**2 / D)
-    total_time_s = 24 * 3600
-    n_steps = int(total_time_s / dt)
-    concentration = np.zeros_like(x)
-    snapshots: dict[float, np.ndarray] = {0.0: concentration.copy()}
-    snapshot_hours = [1.0, 4.0, 12.0, 24.0]
-    snapshot_seconds = {int(h * 3600): h for h in snapshot_hours}
-    source_strength = 0.0025 * source_scale
+@dataclass
+class LinkerParameters:
+    """Parameters for different linker types."""
+    # Acid-sensitive (hydrazone)
+    acid_k_tumor: float = 0.15     # h^-1, tumor pH ~6.5
+    acid_k_plasma: float = 0.005   # h^-1, plasma pH 7.4
+    acid_k_lysosome: float = 0.8   # h^-1, lysosome pH ~5.0
 
-    for step in range(1, n_steps + 1):
-        t_s = int(step * dt)
-        lap = np.zeros_like(concentration)
-        lap[1:-1] = (concentration[2:] - 2 * concentration[1:-1] + concentration[:-2]) / dx**2
-        lap[0] = 2 * (concentration[1] - concentration[0]) / dx**2
-        lap[-1] = 2 * (concentration[-2] - concentration[-1]) / dx**2
-        source = np.zeros_like(concentration)
-        source[0] = source_strength * math.exp(-t_s / (6 * 3600))
-        concentration = concentration + dt * (D * lap - k_loss * concentration + source)
-        concentration = np.clip(concentration, 0.0, None)
-        if t_s in snapshot_seconds:
-            snapshots[snapshot_seconds[t_s]] = concentration.copy()
+    # Enzyme-cleavable (Val-Cit, GGFG)
+    enzyme_vmax: float = 0.5       # h^-1
+    enzyme_km: float = 5.0         # μM
+    cathepsin_conc_tumor: float = 10.0   # μM
+    cathepsin_conc_plasma: float = 0.1   # μM
 
-    final_profile = snapshots.get(24.0, concentration.copy())
-    threshold = exposure_threshold
-    bystander_radius_mm = 0.0
-    above = np.where(final_profile >= threshold)[0]
-    if len(above):
-        bystander_radius_mm = float(x[above[-1]] * 10.0)
-    return x, snapshots, bystander_radius_mm
+    # Disulfide (reducible)
+    disulfide_k_intracellular: float = 0.3  # h^-1 (GSH ~10 mM)
+    disulfide_k_plasma: float = 0.01        # h^-1 (GSH ~2 μM)
 
 
+class LinkerCleavageSimulator:
+    """Simulates linker cleavage kinetics for different mechanisms."""
 
-def section_bystander_diffusion() -> dict:
-    x, snapshots, bystander_radius_mm = simulate_diffusion_profile(source_scale=1.0, diffusion_scale=1.0)
-    records = []
-    for hour, profile in snapshots.items():
-        for position, conc in zip(x, profile, strict=False):
-            records.append(
-                {
-                    "time_h": hour,
-                    "position_mm": position * 10.0,
-                    "free_drug_concentration_au": conc,
-                }
-            )
-    diffusion_df = pd.DataFrame(records)
-    save_csv(diffusion_df, DATA_DIR / "bystander_diffusion_profiles.csv")
+    def __init__(self, params: LinkerParameters = None):
+        self.params = params or LinkerParameters()
 
-    fig, ax = plt.subplots(figsize=(10, 7))
-    for hour in [0.0, 1.0, 4.0, 12.0, 24.0]:
-        profile = snapshots.get(hour)
-        if profile is not None:
-            ax.plot(x * 10.0, profile, linewidth=2, label=f"t={hour:.0f} h")
-    ax.set_xlabel("Tumor radial position (mm)")
-    ax.set_ylabel("Free drug concentration (a.u.)")
-    ax.set_title("Bystander diffusion profiles in tumor tissue")
-    ax.legend()
-    save_figure(fig, FIG_DIR / "03_bystander_diffusion.png")
+    def acid_cleavage_ode(self, t, y, pH):
+        """ODE for acid-sensitive linker cleavage."""
+        intact, released = y
+        # pH-dependent rate: k = k0 * 10^(7.4 - pH)
+        k_base = self.params.acid_k_plasma
+        k = k_base * 10**(7.4 - pH)
+        d_intact = -k * intact
+        d_released = k * intact
+        return [d_intact, d_released]
 
-    summary_metrics["bystander"] = {
-        "radius_mm_at_24h": bystander_radius_mm,
-        "center_concentration_24h": float(snapshots[24.0][0]),
-        "edge_concentration_24h": float(snapshots[24.0][-1]),
-    }
-    return summary_metrics["bystander"]
+    def enzyme_cleavage_ode(self, t, y, cathepsin_conc):
+        """ODE for enzyme-cleavable linker (Michaelis-Menten)."""
+        intact, released = y
+        v = self.params.enzyme_vmax * cathepsin_conc / (self.params.enzyme_km + cathepsin_conc)
+        d_intact = -v * intact
+        d_released = v * intact
+        return [d_intact, d_released]
 
+    def disulfide_cleavage_ode(self, t, y, gsh_conc):
+        """ODE for disulfide linker cleavage."""
+        intact, released = y
+        # Rate proportional to GSH concentration
+        k = self.params.disulfide_k_intracellular * (gsh_conc / 10.0)
+        d_intact = -k * intact
+        d_released = k * intact
+        return [d_intact, d_released]
 
+    def simulate_all_linkers(self, t_span=(0, 72), n_points=500):
+        """Simulate cleavage for all linker types in different environments."""
+        t_eval = np.linspace(t_span[0], t_span[1], n_points)
+        y0 = [1.0, 0.0]
+        results = {}
 
-def section_optimization() -> dict:
-    k_plasma_vals = np.logspace(-3, -1, 55)
-    k_tumor_vals = np.logspace(-1, 1, 80)
-    horizon_days = 1.0
-    landscape = []
-    for k_p in k_plasma_vals:
-        for k_t in k_tumor_vals:
-            efficacy = 1.0 - math.exp(-k_t * horizon_days)
-            toxicity = 1.0 - math.exp(-k_p * horizon_days)
-            ratio_ok = (k_t / k_p) >= 50.0
-            objective = efficacy - toxicity if ratio_ok else np.nan
-            landscape.append(
-                {
-                    "k_cleavage_plasma_per_day": k_p,
-                    "k_cleavage_tumor_per_day": k_t,
-                    "efficacy_score": efficacy,
-                    "toxicity_score": toxicity,
-                    "objective": objective,
-                    "selectivity_ratio": k_t / k_p,
-                    "is_feasible": ratio_ok,
-                }
-            )
-    landscape_df = pd.DataFrame(landscape)
-    save_csv(landscape_df, DATA_DIR / "optimization_landscape.csv")
-
-    feasible_df = landscape_df[landscape_df["is_feasible"]].copy()
-    feasible_df = feasible_df.sort_values(["toxicity_score", "efficacy_score"], ascending=[True, False])
-    pareto_rows = []
-    best_efficacy = -np.inf
-    for row in feasible_df.itertuples(index=False):
-        if row.efficacy_score > best_efficacy:
-            pareto_rows.append(row)
-            best_efficacy = row.efficacy_score
-    pareto_df = pd.DataFrame(pareto_rows)
-    save_csv(pareto_df, RESULTS_DIR / "optimization_results.csv")
-
-    best_row = feasible_df.loc[feasible_df["objective"].idxmax()]
-
-    bounds = [(k_plasma_vals.min(), k_plasma_vals.max()), (max(50 * k_plasma_vals.min(), k_tumor_vals.min()), k_tumor_vals.max())]
-
-    def objective_to_minimize(x):
-        k_p, k_t = x
-        efficacy = 1.0 - math.exp(-k_t * horizon_days)
-        toxicity = 1.0 - math.exp(-k_p * horizon_days)
-        penalty = max(0.0, 50.0 - (k_t / max(k_p, 1e-9))) * 10.0
-        return -(efficacy - toxicity) + penalty
-
-    opt = minimize(objective_to_minimize, x0=[best_row["k_cleavage_plasma_per_day"], best_row["k_cleavage_tumor_per_day"]], bounds=bounds, method="L-BFGS-B")
-
-    grid = landscape_df.pivot(index="k_cleavage_tumor_per_day", columns="k_cleavage_plasma_per_day", values="objective")
-    fig, axes = plt.subplots(1, 2, figsize=(14, 6))
-    sns.heatmap(grid, cmap="viridis", ax=axes[0], cbar_kws={"label": "Objective J"})
-    axes[0].set_title("Plasma stability vs tumor release landscape")
-    axes[0].set_xlabel("k_cleavage_plasma (grid index, log-scaled values)")
-    axes[0].set_ylabel("k_cleavage_tumor (grid index, log-scaled values)")
-
-    axes[1].scatter(feasible_df["toxicity_score"], feasible_df["efficacy_score"], s=18, alpha=0.3, color=sns.color_palette("viridis", 6)[2], label="Feasible grid")
-    axes[1].plot(pareto_df["toxicity_score"], pareto_df["efficacy_score"], color="crimson", linewidth=2, label="Pareto front")
-    axes[1].scatter(best_row["toxicity_score"], best_row["efficacy_score"], color="black", s=60, label="Best grid point")
-    axes[1].set_xlabel("Toxicity score")
-    axes[1].set_ylabel("Efficacy score")
-    axes[1].set_title("Pareto front")
-    axes[1].legend()
-    save_figure(fig, FIG_DIR / "04_optimization_landscape.png")
-
-    summary_metrics["optimization"] = {
-        "best_grid_k_plasma": float(best_row["k_cleavage_plasma_per_day"]),
-        "best_grid_k_tumor": float(best_row["k_cleavage_tumor_per_day"]),
-        "best_objective": float(best_row["objective"]),
-        "minimize_solution_fun": float(-opt.fun),
-    }
-    return summary_metrics["optimization"]
-
-
-BASE_PKPD_PARAMS = {
-    "CL": 0.5,
-    "Vc": 3.0,
-    "Vp": 6.0,
-    "Q": 1.0,
-    "Q_drug": 1.8,
-    "CL_drug": 6.0,
-    "CL_drug_p": 0.4,
-    "k_release_plasma": 0.02,
-    "k_release_tumor": 0.5,
-    "k_internalization": 0.03,
-    "k_internalization_tumor": 0.25,
-    "k_distribution": 0.08,
-    "k_dist_p": 0.05,
-    "k_clearance_tumor": 0.18,
-    "kon": 1.0,
-    "koff": 0.1,
-    "ksyn": 0.15,
-    "kdeg": 0.05,
-    "kdeg_complex": 0.20,
-    "Emax": 0.8,
-    "EC50": 0.1,
-    "hill": 2.0,
-    "kg": 0.1,
-    "Kmax": 1.5,
-    "dose_mg_per_kg": 6.4,
-    "body_weight_kg": 70.0,
-    "DAR": 8.0,
-}
-
-
-
-def initial_state_from_params(params: dict) -> np.ndarray:
-    dose_mg = params["dose_mg_per_kg"] * params["body_weight_kg"]
-    adc0 = dose_mg / params["Vc"]
-    return np.array([adc0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0], dtype=float)
-
-
-
-def enrich_params(params: dict) -> dict:
-    p = deepcopy(params)
-    dar_factor = p.get("DAR", 8.0) / 8.0
-    p["k_release_plasma_eff"] = p["k_release_plasma"] * dar_factor
-    p["k_release_tumor_eff"] = p["k_release_tumor"] * dar_factor
-    return p
-
-
-
-def pkpd_rhs(t: float, y: np.ndarray, params: dict) -> np.ndarray:
-    adc_c, drug_c, adc_p, drug_p, adc_t, drug_t, target, drug_target, cell = y
-    p = params
-    drug_t_nonneg = max(drug_t, 0.0)
-    target_nonneg = max(target, 0.0)
-    cell_nonneg = max(cell, 0.0)
-
-    d_adc_c = -(p["CL"] / p["Vc"]) * adc_c - (p["Q"] / p["Vc"]) * (adc_c - adc_p) - p["k_internalization"] * adc_c
-    d_drug_c = p["k_release_plasma_eff"] * adc_c - (p["CL_drug"] / p["Vc"]) * drug_c - (p["Q_drug"] / p["Vc"]) * (drug_c - drug_p)
-    d_adc_p = (p["Q"] / p["Vp"]) * (adc_c - adc_p) - p["k_dist_p"] * adc_p
-    d_drug_p = (p["Q_drug"] / p["Vp"]) * (drug_c - drug_p) - p["CL_drug_p"] * drug_p
-    d_adc_t = p["k_distribution"] * adc_c - p["k_internalization_tumor"] * adc_t
-    d_drug_t = (
-        p["k_release_tumor_eff"] * adc_t
-        - p["k_clearance_tumor"] * drug_t
-        - p["kon"] * drug_t_nonneg * target_nonneg
-        + p["koff"] * drug_target
-    )
-    d_target = p["ksyn"] - p["kdeg"] * target_nonneg - p["kon"] * drug_t_nonneg * target_nonneg + p["koff"] * drug_target
-    d_drug_target = p["kon"] * drug_t_nonneg * target_nonneg - p["koff"] * drug_target - p["kdeg_complex"] * drug_target
-    effect = p["Emax"] * (drug_t_nonneg ** p["hill"]) / (p["EC50"] ** p["hill"] + drug_t_nonneg ** p["hill"] + 1e-12)
-    d_cell = p["kg"] * cell_nonneg * (1.0 - cell_nonneg / p["Kmax"]) - effect * cell_nonneg
-    return np.array([d_adc_c, d_drug_c, d_adc_p, d_drug_p, d_adc_t, d_drug_t, d_target, d_drug_target, d_cell], dtype=float)
-
-
-
-def simulate_pkpd(params: dict, t_end: float = 21.0, n_points: int = 421) -> pd.DataFrame:
-    p = enrich_params(params)
-    y0 = initial_state_from_params(p)
-    t_eval = np.linspace(0.0, t_end, n_points)
-    try:
-        sol = solve_ivp(lambda t, y: pkpd_rhs(t, y, p), (0.0, t_end), y0, t_eval=t_eval, method="LSODA")
-    except Exception:
-        sol = solve_ivp(lambda t, y: pkpd_rhs(t, y, p), (0.0, t_end), y0, t_eval=t_eval, method="RK45")
-    if not sol.success:
-        raise RuntimeError(sol.message)
-    data = pd.DataFrame(
-        {
-            "time_day": sol.t,
-            "ADC_central": sol.y[0],
-            "Drug_central": sol.y[1],
-            "ADC_peripheral": sol.y[2],
-            "Drug_peripheral": sol.y[3],
-            "ADC_tumor": sol.y[4],
-            "Drug_tumor": sol.y[5],
-            "Target": sol.y[6],
-            "Drug_Target": sol.y[7],
-            "Cell_viable": sol.y[8],
+        environments = {
+            'Plasma (pH 7.4)': {'pH': 7.4, 'cathepsin': 0.1, 'gsh': 0.002},
+            'Tumor ECM (pH 6.5)': {'pH': 6.5, 'cathepsin': 2.0, 'gsh': 0.5},
+            'Endosome (pH 5.5)': {'pH': 5.5, 'cathepsin': 5.0, 'gsh': 1.0},
+            'Lysosome (pH 4.5)': {'pH': 4.5, 'cathepsin': 10.0, 'gsh': 10.0},
         }
-    )
-    return data.clip(lower=0.0)
+
+        for env_name, env_params in environments.items():
+            results[env_name] = {}
+
+            # Acid-sensitive
+            sol = solve_ivp(self.acid_cleavage_ode, t_span, y0,
+                           args=(env_params['pH'],), t_eval=t_eval, method='RK45')
+            results[env_name]['acid'] = {'t': sol.t, 'released': sol.y[1]}
+
+            # Enzyme-cleavable
+            sol = solve_ivp(self.enzyme_cleavage_ode, t_span, y0,
+                           args=(env_params['cathepsin'],), t_eval=t_eval, method='RK45')
+            results[env_name]['enzyme'] = {'t': sol.t, 'released': sol.y[1]}
+
+            # Disulfide
+            sol = solve_ivp(self.disulfide_cleavage_ode, t_span, y0,
+                           args=(env_params['gsh'],), t_eval=t_eval, method='RK45')
+            results[env_name]['disulfide'] = {'t': sol.t, 'released': sol.y[1]}
+
+        return results
+
+    def plot_linker_cleavage(self, results: Dict):
+        """Plot linker cleavage kinetics."""
+        fig, axes = plt.subplots(2, 2, figsize=(14, 11))
+        linker_types = ['acid', 'enzyme', 'disulfide']
+        linker_labels = ['Acid-Sensitive (Hydrazone)', 'Enzyme-Cleavable (Val-Cit)',
+                         'Disulfide (Reducible)']
+        colors = ['#E53935', '#1E88E5', '#43A047']
+        linestyles = ['-', '--', '-.', ':']
+        env_names = list(results.keys())
+
+        # Panel per linker type
+        for i, (lt, ll) in enumerate(zip(linker_types, linker_labels)):
+            ax = axes[i // 2, i % 2]
+            for j, env in enumerate(env_names):
+                data = results[env][lt]
+                ax.plot(data['t'], data['released'] * 100,
+                        color=colors[i], linestyle=linestyles[j],
+                        linewidth=2, label=env, alpha=0.7 + 0.1 * j)
+            ax.set_xlabel('Time (h)')
+            ax.set_ylabel('Payload Released (%)')
+            ax.set_title(f'({chr(97+i)}) {ll}')
+            ax.legend(fontsize=8)
+            ax.set_ylim(0, 105)
+
+        # Panel (d): Selectivity ratio
+        ax = axes[1, 1]
+        t_points = [6, 12, 24, 48, 72]
+        bar_width = 0.25
+        x = np.arange(len(t_points))
+
+        for i, (lt, ll, c) in enumerate(zip(linker_types, ['Acid', 'Enzyme', 'Disulfide'], colors)):
+            selectivity = []
+            for tp in t_points:
+                lyso_data = results['Lysosome (pH 4.5)'][lt]
+                plasma_data = results['Plasma (pH 7.4)'][lt]
+                idx = np.argmin(np.abs(lyso_data['t'] - tp))
+                lyso_rel = lyso_data['released'][idx]
+                plasma_rel = plasma_data['released'][idx]
+                ratio = lyso_rel / (plasma_rel + 1e-6)
+                selectivity.append(min(ratio, 200))
+            ax.bar(x + i * bar_width, selectivity, bar_width, label=ll, color=c, alpha=0.8)
+
+        ax.set_xlabel('Time (h)')
+        ax.set_ylabel('Selectivity Ratio (Lysosome/Plasma)')
+        ax.set_title('(d) Cleavage Selectivity')
+        ax.set_xticks(x + bar_width)
+        ax.set_xticklabels([f'{t}h' for t in t_points])
+        ax.legend(fontsize=9)
+        ax.set_yscale('log')
+
+        plt.tight_layout()
+        path = os.path.join(FIGURES_DIR, 'fig2_linker_cleavage.png')
+        plt.savefig(path, bbox_inches='tight')
+        plt.close()
+        print(f"Saved: {path}")
+        return path
 
 
+# ============================================================================
+# 3. Bystander Effect Model (Tumor Diffusion)
+# ============================================================================
 
-def simulate_pkpd_euler(params: dict, t_end: float = 21.0, dt: float = 0.1) -> pd.DataFrame:
-    p = enrich_params(params)
-    times = np.arange(0.0, t_end + dt, dt)
-    y = initial_state_from_params(p)
-    records = []
-    for t in times:
-        records.append([t, *y.tolist()])
-        y = y + dt * pkpd_rhs(t, y, p)
-        y = np.clip(y, 0.0, None)
-    cols = [
-        "time_day",
-        "ADC_central",
-        "Drug_central",
-        "ADC_peripheral",
-        "Drug_peripheral",
-        "ADC_tumor",
-        "Drug_tumor",
-        "Target",
-        "Drug_Target",
-        "Cell_viable",
-    ]
-    return pd.DataFrame(records, columns=cols)
+@dataclass
+class BustanderParameters:
+    """Parameters for bystander effect diffusion model."""
+    D_payload: float = 1e-7        # cm²/s, diffusion coefficient
+    k_uptake: float = 0.05         # s^-1, cellular uptake rate
+    k_efflux: float = 0.005        # s^-1, efflux rate
+    k_kill: float = 0.01           # s^-1, cell killing rate
+    tumor_radius: float = 0.05     # cm (500 μm)
+    cell_spacing: float = 0.001    # cm (10 μm)
+    antigen_pos_fraction: float = 0.7  # fraction of Ag+ cells
+    membrane_permeability: float = 1e-5  # cm/s
 
 
+class BustanderEffectModel:
+    """2D reaction-diffusion model for bystander killing effect."""
 
-def summarize_pkpd(df: pd.DataFrame) -> dict:
-    return {
-        "plasma_adc_auc": float(trapezoid(df["ADC_central"], df["time_day"])),
-        "plasma_drug_auc": float(trapezoid(df["Drug_central"], df["time_day"])),
-        "tumor_drug_auc": float(trapezoid(df["Drug_tumor"], df["time_day"])),
-        "day21_cell_fraction": float(df["Cell_viable"].iloc[-1]),
-    }
+    def __init__(self, params: BustanderParameters = None):
+        self.params = params or BustanderParameters()
 
+    def solve_1d_diffusion(self, t_max: float = 3600, nx: int = 100, nt: int = 500):
+        """Solve 1D reaction-diffusion PDE for payload spread."""
+        L = self.params.tumor_radius * 2
+        dx = L / nx
+        dt = t_max / nt
+        x = np.linspace(0, L, nx)
 
+        # CFL condition check
+        D = self.params.D_payload
+        cfl = D * dt / dx**2
+        if cfl > 0.5:
+            dt = 0.4 * dx**2 / D
+            nt = int(t_max / dt) + 1
 
-def section_pkpd() -> dict:
-    timecourse = simulate_pkpd(BASE_PKPD_PARAMS)
-    save_csv(timecourse, RESULTS_DIR / "pkpd_timecourse.csv")
+        # Initialize: payload released at center (Ag+ cell that internalized ADC)
+        c_extra = np.zeros(nx)   # Extracellular payload
+        c_intra = np.zeros(nx)   # Intracellular payload
+        viability = np.ones(nx)  # Cell viability
 
-    fig, axes = plt.subplots(2, 2, figsize=(12, 8))
-    axes = axes.ravel()
-    axes[0].plot(timecourse["time_day"], timecourse["ADC_central"], linewidth=2)
-    axes[0].set_title("ADC plasma PK")
-    axes[0].set_xlabel("Time (day)")
-    axes[0].set_ylabel("ADC concentration (ug/mL)")
+        # Ag+ cells: clustered near center with some random positions
+        np.random.seed(42)
+        ag_positive = np.zeros(nx, dtype=bool)
+        center = nx // 2
+        ag_range = int(nx * self.params.antigen_pos_fraction * 0.6)
+        ag_positive[center - ag_range:center + ag_range] = True
+        # Add some scattered Ag+ cells
+        random_pos = np.random.choice(nx, size=int(nx * 0.1), replace=False)
+        ag_positive[random_pos] = True
 
-    axes[1].plot(timecourse["time_day"], timecourse["Drug_central"], linewidth=2)
-    axes[1].set_title("Free drug in plasma")
-    axes[1].set_xlabel("Time (day)")
-    axes[1].set_ylabel("Drug concentration (ug/mL)")
+        # Source: Ag+ cells release payload after ADC internalization
+        source_rate = np.zeros(nx)
+        source_rate[ag_positive] = 0.001  # Continuous release from internalized ADC
 
-    axes[2].plot(timecourse["time_day"], timecourse["Drug_tumor"], linewidth=2)
-    axes[2].set_title("Tumor free drug exposure")
-    axes[2].set_xlabel("Time (day)")
-    axes[2].set_ylabel("Drug concentration (ug/mL)")
+        snapshots = {'time': [], 'x': x * 1e4, 'c_extra': [], 'c_intra': [],
+                     'viability': [], 'ag_positive': ag_positive}
+        save_times = [0, t_max * 0.1, t_max * 0.25, t_max * 0.5, t_max]
 
-    axes[3].plot(timecourse["time_day"], timecourse["Cell_viable"], linewidth=2)
-    axes[3].set_title("Viable tumor cell fraction")
-    axes[3].set_xlabel("Time (day)")
-    axes[3].set_ylabel("Cell fraction")
-    save_figure(fig, FIG_DIR / "05_pkpd_simulation.png")
+        t = 0
+        for step in range(nt):
+            # Diffusion (explicit finite difference)
+            c_new = c_extra.copy()
+            c_new[1:-1] += D * dt / dx**2 * (c_extra[2:] - 2 * c_extra[1:-1] + c_extra[:-2])
 
-    summary_metrics["pkpd"] = summarize_pkpd(timecourse)
-    return summary_metrics["pkpd"]
+            # Source from Ag+ cells
+            c_new += source_rate * dt
 
+            # Cellular uptake and efflux
+            uptake = self.params.k_uptake * c_new * dt
+            efflux = self.params.k_efflux * c_intra * dt
+            c_extra_new = c_new - uptake + efflux
+            c_intra += uptake - efflux
 
+            # Cell killing (depends on intracellular concentration)
+            kill_prob = self.params.k_kill * c_intra * dt
+            viability *= (1 - np.clip(kill_prob, 0, 0.99))
 
-def section_monte_carlo() -> dict:
-    sampler = qmc.LatinHypercube(d=5, seed=SEED)
-    unit_samples = sampler.random(1000)
-    ranges = {
-        "CL": (BASE_PKPD_PARAMS["CL"] * 0.7, BASE_PKPD_PARAMS["CL"] * 1.3),
-        "Vc": (BASE_PKPD_PARAMS["Vc"] * 0.7, BASE_PKPD_PARAMS["Vc"] * 1.3),
-        "k_release_tumor": (BASE_PKPD_PARAMS["k_release_tumor"] * 0.7, BASE_PKPD_PARAMS["k_release_tumor"] * 1.3),
-        "EC50": (BASE_PKPD_PARAMS["EC50"] * 0.7, BASE_PKPD_PARAMS["EC50"] * 1.3),
-        "DAR": (BASE_PKPD_PARAMS["DAR"] * 0.7, BASE_PKPD_PARAMS["DAR"] * 1.3),
-    }
-    params_names = list(ranges.keys())
-    lower = np.array([ranges[k][0] for k in params_names])
-    upper = np.array([ranges[k][1] for k in params_names])
-    scaled = qmc.scale(unit_samples, lower, upper)
+            c_extra = np.clip(c_extra_new, 0, None)
+            t += dt
 
-    outputs = []
-    for idx, values in enumerate(scaled, start=1):
-        if idx % 100 == 0:
-            print(f"[INFO] Monte Carlo progress: {idx}/1000")
-        sample_params = deepcopy(BASE_PKPD_PARAMS)
-        for name, value in zip(params_names, values, strict=False):
-            sample_params[name] = float(value)
-        try:
-            df = simulate_pkpd_euler(sample_params, t_end=21.0, dt=0.1)
-            tumor_auc = float(trapezoid(df["Drug_tumor"], df["time_day"]))
-            cell_fraction = float(df["Cell_viable"].iloc[-1])
-            cell_kill = float(max(0.0, 1.0 - cell_fraction))
-            outputs.append(
-                {
-                    **{name: float(value) for name, value in zip(params_names, values, strict=False)},
-                    "tumor_auc": tumor_auc,
-                    "cell_fraction_day21": cell_fraction,
-                    "cell_kill_day21": cell_kill,
-                }
-            )
-        except Exception as exc:  # noqa: BLE001
-            outputs.append(
-                {
-                    **{name: float(value) for name, value in zip(params_names, values, strict=False)},
-                    "tumor_auc": np.nan,
-                    "cell_fraction_day21": np.nan,
-                    "cell_kill_day21": np.nan,
-                    "error": str(exc),
-                }
-            )
+            if any(abs(t - st) < dt * 1.5 for st in save_times):
+                snapshots['time'].append(t)
+                snapshots['c_extra'].append(c_extra.copy())
+                snapshots['c_intra'].append(c_intra.copy())
+                snapshots['viability'].append(viability.copy())
 
-    mc_df = pd.DataFrame(outputs)
-    save_csv(mc_df, RESULTS_DIR / "monte_carlo_results.csv")
+        return snapshots
 
-    clean_df = mc_df.dropna(subset=["tumor_auc", "cell_fraction_day21", "cell_kill_day21"]).copy()
-    sensitivity_rows = []
-    for pname in params_names:
-        rho_auc, _ = spearmanr(clean_df[pname], clean_df["tumor_auc"])
-        rho_kill, _ = spearmanr(clean_df[pname], clean_df["cell_kill_day21"])
-        sensitivity_rows.append({"parameter": pname, "rho_tumor_auc": rho_auc, "rho_cell_kill": rho_kill})
-    sensitivity_df = pd.DataFrame(sensitivity_rows).sort_values("rho_cell_kill", key=np.abs, ascending=True)
-    save_csv(sensitivity_df, DATA_DIR / "monte_carlo_sensitivity_coefficients.csv")
+    def simulate_permeability_comparison(self):
+        """Compare bystander effect for different payload membrane permeabilities."""
+        permeabilities = [1e-6, 5e-6, 1e-5, 5e-5, 1e-4]
+        results = {}
 
-    fig, axes = plt.subplots(1, 2, figsize=(14, 6))
-    y_pos = np.arange(len(sensitivity_df))
-    axes[0].barh(y_pos - 0.18, sensitivity_df["rho_tumor_auc"], height=0.35, color=sns.color_palette("viridis", 6)[2], label="Tumor AUC")
-    axes[0].barh(y_pos + 0.18, sensitivity_df["rho_cell_kill"], height=0.35, color=sns.color_palette("viridis", 6)[4], label="Cell kill day 21")
-    axes[0].set_yticks(y_pos)
-    axes[0].set_yticklabels(sensitivity_df["parameter"])
-    axes[0].set_xlabel("Spearman correlation coefficient")
-    axes[0].set_title("Monte Carlo sensitivity tornado chart")
-    axes[0].legend()
-
-    axes[1].hist(clean_df["cell_fraction_day21"], bins=30, color=sns.color_palette("viridis", 6)[3], edgecolor="black")
-    axes[1].set_xlabel("Tumor viable cell fraction at day 21")
-    axes[1].set_ylabel("Count")
-    axes[1].set_title("Distribution of Monte Carlo outcomes")
-    save_figure(fig, FIG_DIR / "06_monte_carlo_sensitivity.png")
-
-    ci_low, ci_high = bootstrap_ci(clean_df["cell_fraction_day21"].to_numpy())
-    summary_metrics["monte_carlo"] = {
-        "n_success": int(len(clean_df)),
-        "mean_tumor_auc": float(clean_df["tumor_auc"].mean()),
-        "mean_cell_fraction_day21": float(clean_df["cell_fraction_day21"].mean()),
-        "cell_fraction_day21_ci95": [float(ci_low), float(ci_high)],
-    }
-
-    stats_md = f"""# Statistical Summary\n\n- Random seed: {SEED}\n- Monte Carlo successful runs: {len(clean_df)} / 1000\n- Mean tumor AUC: {clean_df['tumor_auc'].mean():.3f}\n- Mean viable cell fraction at day 21: {clean_df['cell_fraction_day21'].mean():.3f}\n- 95% bootstrap CI for mean viable cell fraction: [{ci_low:.3f}, {ci_high:.3f}]\n\n## Sensitivity (Spearman correlation)\n\n{sensitivity_df.to_markdown(index=False)}\n"""
-    save_text(RESULTS_DIR / "statistical-summary.md", stats_md)
-    return summary_metrics["monte_carlo"]
-
-
-
-def scenario_params(dar: float, cleavable: bool) -> dict:
-    params = deepcopy(BASE_PKPD_PARAMS)
-    params["DAR"] = dar
-    if cleavable:
-        params["k_release_tumor"] = 0.25 + 0.25 * (dar / 8.0)
-        params["k_release_plasma"] = 0.02
-    else:
-        params["k_release_tumor"] = 0.08
-        params["k_release_plasma"] = 0.005
-    kd_nM = 0.1
-    params["kon"] = 1.0
-    params["koff"] = kd_nM * params["kon"]
-    return params
-
-
-
-def section_case_study() -> dict:
-    scenarios = {
-        "DAR4_cleavable": {"dar": 4.0, "cleavable": True, "label": "DAR=4 cleavable"},
-        "DAR8_cleavable": {"dar": 8.0, "cleavable": True, "label": "DAR=8 cleavable"},
-        "DAR8_noncleavable": {"dar": 8.0, "cleavable": False, "label": "DAR=8 non-cleavable"},
-    }
-    rows = []
-    for key, config in scenarios.items():
-        params = scenario_params(config["dar"], config["cleavable"])
-        df = simulate_pkpd(params)
-        pk_summary = summarize_pkpd(df)
-        source_scale = (config["dar"] / 8.0) * (1.0 if config["cleavable"] else 0.35)
-        _, _, bystander_radius = simulate_diffusion_profile(source_scale=source_scale, diffusion_scale=1.0)
-        dar_ti = float(therapeutic_index_profile(np.array([config["dar"]]))[0])
-        therapeutic_index = dar_ti * safe_ratio(pk_summary["tumor_drug_auc"], pk_summary["plasma_drug_auc"] + 1e-9)
-        rows.append(
-            {
-                "scenario": config["label"],
-                "DAR": config["dar"],
-                "cleavable_linker": config["cleavable"],
-                "therapeutic_index": therapeutic_index,
-                "tumor_auc": pk_summary["tumor_drug_auc"],
-                "plasma_drug_exposure": pk_summary["plasma_drug_auc"],
-                "bystander_radius_mm": bystander_radius,
-                "day21_viable_cell_fraction": pk_summary["day21_cell_fraction"],
+        for perm in permeabilities:
+            self.params.membrane_permeability = perm
+            self.params.k_uptake = perm * 100
+            snap = self.solve_1d_diffusion()
+            final_viability = snap['viability'][-1] if snap['viability'] else np.ones(100)
+            results[f'{perm:.0e}'] = {
+                'viability': final_viability,
+                'x': snap['x'],
+                'mean_kill': 1 - np.mean(final_viability),
+                'bystander_kill': 1 - np.mean(final_viability[~snap['ag_positive']]),
             }
+        return results
+
+    def plot_bystander_effect(self, snapshots: Dict, perm_results: Dict):
+        """Plot bystander effect analysis."""
+        fig, axes = plt.subplots(2, 2, figsize=(14, 11))
+
+        # (a) Extracellular payload diffusion over time
+        ax = axes[0, 0]
+        colors_time = plt.cm.plasma(np.linspace(0.1, 0.9, len(snapshots['time'])))
+        for i, (t, c) in enumerate(zip(snapshots['time'], snapshots['c_extra'])):
+            ax.plot(snapshots['x'], c, color=colors_time[i],
+                    linewidth=2, label=f't={t/60:.0f} min')
+        # Mark Ag+ region
+        ag_mask = snapshots['ag_positive']
+        ax.fill_between(snapshots['x'], 0, ax.get_ylim()[1] if ax.get_ylim()[1] > 0 else 0.01,
+                         where=ag_mask, alpha=0.1, color='green', label='Ag+ cells')
+        ax.set_xlabel('Position (μm)')
+        ax.set_ylabel('Extracellular [Payload] (a.u.)')
+        ax.set_title('(a) Payload Diffusion Profile')
+        ax.legend(fontsize=8)
+
+        # (b) Cell viability over time
+        ax = axes[0, 1]
+        for i, (t, v) in enumerate(zip(snapshots['time'], snapshots['viability'])):
+            ax.plot(snapshots['x'], v * 100, color=colors_time[i],
+                    linewidth=2, label=f't={t/60:.0f} min')
+        ax.fill_between(snapshots['x'], 0, 100,
+                         where=ag_mask, alpha=0.1, color='green')
+        ax.set_xlabel('Position (μm)')
+        ax.set_ylabel('Cell Viability (%)')
+        ax.set_title('(b) Spatial Viability Profile')
+        ax.legend(fontsize=8)
+        ax.set_ylim(0, 105)
+
+        # (c) Bystander vs target cell killing
+        ax = axes[1, 0]
+        if len(snapshots['viability']) > 0:
+            final_v = snapshots['viability'][-1]
+            target_kill = (1 - np.mean(final_v[ag_mask])) * 100
+            bystander_kill = (1 - np.mean(final_v[~ag_mask])) * 100
+
+            categories = ['Target (Ag+)\nCells', 'Bystander (Ag-)\nCells', 'Overall']
+            kills = [target_kill, bystander_kill,
+                     (1 - np.mean(final_v)) * 100]
+            bars = ax.bar(categories, kills,
+                          color=['#2196F3', '#FF9800', '#4CAF50'],
+                          edgecolor='black', linewidth=0.5)
+            for bar, val in zip(bars, kills):
+                ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 1,
+                        f'{val:.1f}%', ha='center', fontsize=10)
+        ax.set_ylabel('Cell Killing (%)')
+        ax.set_title('(c) Target vs Bystander Killing')
+        ax.set_ylim(0, 100)
+
+        # (d) Permeability effect on bystander killing
+        ax = axes[1, 1]
+        perms = list(perm_results.keys())
+        bystander_kills = [perm_results[p]['bystander_kill'] * 100 for p in perms]
+        total_kills = [perm_results[p]['mean_kill'] * 100 for p in perms]
+        x_pos = np.arange(len(perms))
+        ax.bar(x_pos - 0.15, total_kills, 0.3, label='Total Kill', color='#2196F3', alpha=0.8)
+        ax.bar(x_pos + 0.15, bystander_kills, 0.3, label='Bystander Kill', color='#FF9800', alpha=0.8)
+        ax.set_xlabel('Membrane Permeability (cm/s)')
+        ax.set_ylabel('Cell Killing (%)')
+        ax.set_title('(d) Effect of Payload Permeability')
+        ax.set_xticks(x_pos)
+        ax.set_xticklabels(perms, rotation=45, fontsize=8)
+        ax.legend(fontsize=9)
+
+        plt.tight_layout()
+        path = os.path.join(FIGURES_DIR, 'fig3_bystander_effect.png')
+        plt.savefig(path, bbox_inches='tight')
+        plt.close()
+        print(f"Saved: {path}")
+        return path
+
+
+# ============================================================================
+# 4. Plasma Stability vs Tumor Release Optimization
+# ============================================================================
+
+class StabilityReleaseOptimizer:
+    """Optimizes balance between plasma stability and intratumoral release."""
+
+    def __init__(self):
+        self.optimization_history = []
+
+    def objective_function(self, params, verbose=False):
+        """
+        Multi-objective: maximize tumor release, minimize plasma release.
+        params: [k_cleavage_base, pH_sensitivity, enzyme_sensitivity, hydrophobicity]
+        """
+        k_base, pH_sens, enz_sens, hydrophob = params
+
+        # Plasma stability (want high = low release)
+        k_plasma = k_base * 10**(pH_sens * (7.4 - 7.4))  # pH 7.4
+        k_plasma += enz_sens * 0.1  # Low cathepsin in plasma
+        plasma_release_24h = 1 - np.exp(-k_plasma * 24)
+
+        # Tumor release (want high)
+        k_tumor = k_base * 10**(pH_sens * (7.4 - 6.0))  # pH ~6.0 lysosome-like
+        k_tumor += enz_sens * 10.0  # High cathepsin in tumor
+        tumor_release_24h = 1 - np.exp(-k_tumor * 24)
+
+        # Clearance penalty (hydrophobicity increases clearance)
+        clearance_penalty = 0.3 * hydrophob**2
+
+        # Aggregation penalty
+        agg_penalty = 0.2 * max(0, hydrophob - 0.5)**2
+
+        # Objective: maximize selectivity while maintaining efficacy
+        selectivity = tumor_release_24h / (plasma_release_24h + 0.01)
+        score = -(selectivity * tumor_release_24h - clearance_penalty - agg_penalty)
+
+        if verbose:
+            return {
+                'score': -score,
+                'plasma_release': plasma_release_24h * 100,
+                'tumor_release': tumor_release_24h * 100,
+                'selectivity': selectivity,
+                'clearance_penalty': clearance_penalty,
+            }
+        return score
+
+    def optimize(self, n_iterations: int = 200):
+        """Run differential evolution optimization."""
+        bounds = [(0.001, 0.5), (0.1, 3.0), (0.01, 1.0), (0.1, 1.0)]
+        result = differential_evolution(
+            self.objective_function, bounds,
+            maxiter=n_iterations, seed=42, tol=1e-8,
+            popsize=30
         )
-    case_df = pd.DataFrame(rows)
-    save_csv(case_df, RESULTS_DIR / "case_study_summary.csv")
 
-    metrics = ["therapeutic_index", "tumor_auc", "plasma_drug_exposure", "bystander_radius_mm"]
-    normalized = case_df.copy()
-    for metric in metrics:
-        max_val = normalized[metric].max()
-        normalized[metric] = 100.0 * normalized[metric] / max_val if max_val > 0 else 0.0
+        optimal_result = self.objective_function(result.x, verbose=True)
+        return {
+            'optimal_params': {
+                'k_cleavage_base': result.x[0],
+                'pH_sensitivity': result.x[1],
+                'enzyme_sensitivity': result.x[2],
+                'hydrophobicity': result.x[3],
+            },
+            'optimal_metrics': optimal_result,
+            'convergence': result.fun,
+        }
 
-    fig = plt.figure(figsize=(14, 6))
-    gs = fig.add_gridspec(1, 2, width_ratios=[1.15, 1.0])
-    ax_bar = fig.add_subplot(gs[0, 0])
-    plot_df = normalized.melt(id_vars="scenario", value_vars=metrics, var_name="metric", value_name="normalized_value")
-    sns.barplot(data=plot_df, x="metric", y="normalized_value", hue="scenario", palette="viridis", ax=ax_bar)
-    ax_bar.set_ylabel("Normalized performance (%)")
-    ax_bar.set_xlabel("Metric")
-    ax_bar.set_title("HER2 ADC scenario comparison")
-    ax_bar.tick_params(axis="x", rotation=20)
+    def parameter_sensitivity_analysis(self, n_samples: int = 5000):
+        """Monte Carlo sensitivity analysis of linker parameters."""
+        np.random.seed(42)
+        param_names = ['k_base', 'pH_sens', 'enz_sens', 'hydrophob']
+        bounds = [(0.001, 0.5), (0.1, 3.0), (0.01, 1.0), (0.1, 1.0)]
 
-    ax_radar = fig.add_subplot(gs[0, 1], polar=True)
-    radar_metrics = metrics
-    angles = np.linspace(0, 2 * np.pi, len(radar_metrics), endpoint=False).tolist()
-    angles += angles[:1]
-    for _, row in normalized.iterrows():
-        values = [row[m] for m in radar_metrics]
-        values += values[:1]
-        ax_radar.plot(angles, values, linewidth=2, label=row["scenario"])
-        ax_radar.fill(angles, values, alpha=0.10)
-    ax_radar.set_xticks(angles[:-1])
-    ax_radar.set_xticklabels(radar_metrics)
-    ax_radar.set_yticklabels([])
-    ax_radar.set_title("Multi-parameter radar profile")
-    ax_radar.legend(loc="upper right", bbox_to_anchor=(1.25, 1.15))
-    save_figure(fig, FIG_DIR / "07_case_study_comparison.png")
+        samples = np.column_stack([
+            np.random.uniform(low, high, n_samples)
+            for low, high in bounds
+        ])
 
-    best_scenario = case_df.loc[case_df["therapeutic_index"].idxmax(), "scenario"]
-    summary_metrics["case_study"] = {
-        "best_scenario_by_ti": str(best_scenario),
-        "max_therapeutic_index": float(case_df["therapeutic_index"].max()),
-        "max_bystander_radius_mm": float(case_df["bystander_radius_mm"].max()),
+        scores = []
+        plasma_releases = []
+        tumor_releases = []
+
+        for s in samples:
+            result = self.objective_function(s, verbose=True)
+            scores.append(result['score'])
+            plasma_releases.append(result['plasma_release'])
+            tumor_releases.append(result['tumor_release'])
+
+        return {
+            'samples': samples,
+            'param_names': param_names,
+            'scores': np.array(scores),
+            'plasma_releases': np.array(plasma_releases),
+            'tumor_releases': np.array(tumor_releases),
+        }
+
+    def plot_optimization(self, opt_result: Dict, sensitivity: Dict):
+        """Plot optimization results."""
+        fig, axes = plt.subplots(2, 2, figsize=(14, 11))
+
+        # (a) Pareto front: plasma stability vs tumor release
+        ax = axes[0, 0]
+        sc = ax.scatter(sensitivity['plasma_releases'],
+                        sensitivity['tumor_releases'],
+                        c=sensitivity['scores'], cmap='viridis',
+                        alpha=0.4, s=10, edgecolors='none')
+        plt.colorbar(sc, ax=ax, label='Objective Score')
+        # Mark optimal
+        opt_metrics = opt_result['optimal_metrics']
+        ax.scatter([opt_metrics['plasma_release']], [opt_metrics['tumor_release']],
+                   c='red', s=200, marker='*', zorder=5, label='Optimal')
+        ax.set_xlabel('Plasma Release at 24h (%)')
+        ax.set_ylabel('Tumor Release at 24h (%)')
+        ax.set_title('(a) Stability-Release Pareto Space')
+        ax.legend(fontsize=9)
+
+        # (b) Sensitivity tornado chart
+        ax = axes[0, 1]
+        from scipy.stats import spearmanr
+        correlations = []
+        for i, name in enumerate(sensitivity['param_names']):
+            r, _ = spearmanr(sensitivity['samples'][:, i], sensitivity['scores'])
+            correlations.append(r)
+        sorted_idx = np.argsort(np.abs(correlations))
+        names_sorted = [sensitivity['param_names'][i] for i in sorted_idx]
+        corr_sorted = [correlations[i] for i in sorted_idx]
+        colors = ['#E53935' if c < 0 else '#1E88E5' for c in corr_sorted]
+        ax.barh(names_sorted, corr_sorted, color=colors, edgecolor='black', linewidth=0.5)
+        ax.set_xlabel('Spearman Correlation with Score')
+        ax.set_title('(b) Parameter Sensitivity (Tornado)')
+        ax.axvline(x=0, color='black', linewidth=0.5)
+
+        # (c) Release kinetics for optimal linker
+        ax = axes[1, 0]
+        opt_p = opt_result['optimal_params']
+        t_array = np.linspace(0, 72, 200)
+
+        k_plasma = opt_p['k_cleavage_base']
+        k_plasma += opt_p['enzyme_sensitivity'] * 0.1
+        plasma_curve = (1 - np.exp(-k_plasma * t_array)) * 100
+
+        k_tumor = opt_p['k_cleavage_base'] * 10**(opt_p['pH_sensitivity'] * 1.4)
+        k_tumor += opt_p['enzyme_sensitivity'] * 10.0
+        tumor_curve = (1 - np.exp(-k_tumor * t_array)) * 100
+
+        ax.plot(t_array, tumor_curve, 'g-', linewidth=2, label='Tumor (pH 6.0)')
+        ax.plot(t_array, plasma_curve, 'r--', linewidth=2, label='Plasma (pH 7.4)')
+        ax.fill_between(t_array, plasma_curve, tumor_curve, alpha=0.15, color='green')
+        ax.set_xlabel('Time (h)')
+        ax.set_ylabel('Payload Released (%)')
+        ax.set_title('(c) Optimized Release Kinetics')
+        ax.legend(fontsize=9)
+
+        # (d) Optimal parameters radar chart
+        ax = axes[1, 1]
+        params = opt_result['optimal_params']
+        param_labels = ['k_base\n(Cleavage)', 'pH\nSensitivity', 'Enzyme\nSensitivity', 'Hydro-\nphobicity']
+        param_values = list(params.values())
+        # Normalize to [0, 1]
+        bounds_arr = np.array([(0.001, 0.5), (0.1, 3.0), (0.01, 1.0), (0.1, 1.0)])
+        norm_values = [(v - b[0]) / (b[1] - b[0]) for v, b in zip(param_values, bounds_arr)]
+        norm_values.append(norm_values[0])
+
+        angles = np.linspace(0, 2 * np.pi, len(param_labels), endpoint=False).tolist()
+        angles.append(angles[0])
+
+        ax.set_xlim(-1.5, 1.5)
+        ax.set_ylim(-1.5, 1.5)
+        ax.set_aspect('equal')
+
+        # Draw radar manually
+        for i, (angle, label) in enumerate(zip(angles[:-1], param_labels)):
+            ax.plot([0, np.cos(angle)], [0, np.sin(angle)], 'gray', linewidth=0.5)
+            ax.text(1.2 * np.cos(angle), 1.2 * np.sin(angle), label,
+                    ha='center', va='center', fontsize=9)
+
+        # Plot values
+        radar_x = [v * np.cos(a) for v, a in zip(norm_values, angles)]
+        radar_y = [v * np.sin(a) for v, a in zip(norm_values, angles)]
+        ax.fill(radar_x, radar_y, alpha=0.25, color='#2196F3')
+        ax.plot(radar_x, radar_y, 'o-', color='#2196F3', linewidth=2, markersize=6)
+        ax.set_title('(d) Optimal Parameter Profile')
+        ax.axis('off')
+
+        plt.tight_layout()
+        path = os.path.join(FIGURES_DIR, 'fig4_optimization.png')
+        plt.savefig(path, bbox_inches='tight')
+        plt.close()
+        print(f"Saved: {path}")
+        return path
+
+
+# ============================================================================
+# 5. PK Model Integration
+# ============================================================================
+
+@dataclass
+class PKParameters:
+    """Two-compartment PK model parameters for ADC."""
+    # Central compartment
+    V1: float = 3.0            # L, central volume
+    CL: float = 0.01           # L/h, clearance
+    # Peripheral compartment
+    V2: float = 4.0            # L, peripheral volume
+    Q: float = 0.02            # L/h, intercompartmental clearance
+    # ADC-specific
+    k_deconj: float = 0.005    # h^-1, deconjugation rate
+    k_internalization: float = 0.05  # h^-1
+    # Payload
+    CL_payload: float = 0.5    # L/h
+    V_payload: float = 50.0    # L
+    # Tumor
+    k_tumor_uptake: float = 0.002   # h^-1
+    k_tumor_release: float = 0.01   # h^-1 (payload release in tumor)
+    tumor_volume: float = 0.01      # L
+    # Target-mediated disposition
+    k_on: float = 1.0          # nM^-1 h^-1
+    k_off: float = 0.01        # h^-1
+    R0: float = 10.0           # nM, receptor concentration
+    k_int: float = 0.1         # h^-1, internalization of complex
+
+
+class PKModel:
+    """Two-compartment PK model with target-mediated drug disposition (TMDD)."""
+
+    def __init__(self, params: PKParameters = None):
+        self.params = params or PKParameters()
+
+    def pk_ode_system(self, t, y, dose_times=None, dose_amount=0):
+        """
+        Full PK/PD ODE system.
+        States:
+        y[0] = ADC in central (nM)
+        y[1] = ADC in peripheral (nM)
+        y[2] = Free payload in plasma (nM)
+        y[3] = ADC in tumor (nM)
+        y[4] = Payload in tumor (nM)
+        y[5] = Free receptor (nM)
+        y[6] = ADC-receptor complex (nM)
+        y[7] = Tumor cell fraction
+        """
+        p = self.params
+        adc_c, adc_p, payload_p, adc_t, payload_t, R, AR, tumor = y
+
+        # Target-mediated disposition
+        binding = p.k_on * adc_c * R
+        unbinding = p.k_off * AR
+        internalization = p.k_int * AR
+
+        # ADC in central compartment
+        d_adc_c = (-p.CL / p.V1 * adc_c           # Clearance
+                   - p.Q / p.V1 * (adc_c - adc_p)  # Distribution
+                   - p.k_deconj * adc_c             # Deconjugation
+                   - binding + unbinding             # TMDD
+                   - p.k_tumor_uptake * adc_c)       # Tumor uptake
+
+        # ADC in peripheral
+        d_adc_p = p.Q / p.V2 * (adc_c - adc_p) - p.CL / p.V2 * 0.3 * adc_p
+
+        # Free payload in plasma (from deconjugation)
+        d_payload_p = (p.k_deconj * adc_c * 4.0     # DAR=4 average
+                       - p.CL_payload / p.V_payload * payload_p)
+
+        # ADC in tumor
+        d_adc_t = (p.k_tumor_uptake * adc_c * (p.V1 / p.tumor_volume)
+                   - p.k_internalization * adc_t
+                   - p.k_tumor_release * adc_t)
+
+        # Payload in tumor
+        d_payload_t = (p.k_internalization * adc_t * 4.0  # DAR=4
+                       + p.k_tumor_release * adc_t * 2.0
+                       - 0.05 * payload_t)   # Payload clearance from tumor
+
+        # Receptor dynamics
+        k_syn = p.k_int * p.R0  # Synthesis rate (steady state)
+        d_R = k_syn - p.k_int * R - binding + unbinding
+        d_AR = binding - unbinding - internalization
+
+        # Tumor dynamics (logistic growth + drug killing)
+        k_growth = 0.003  # h^-1
+        k_kill = 0.0005   # h^-1 nM^-1
+        d_tumor = k_growth * tumor * (1 - tumor) - k_kill * payload_t * tumor
+
+        return [d_adc_c, d_adc_p, d_payload_p, d_adc_t, d_payload_t, d_R, d_AR, d_tumor]
+
+    def simulate_dosing_regimen(self, dose_mg_kg: float = 5.4,
+                                 interval_h: float = 504,  # 3 weeks
+                                 n_doses: int = 6,
+                                 body_weight: float = 70):
+        """Simulate multiple-dose PK with typical T-DXd regimen."""
+        mw_adc = 150000  # Da
+        dose_mg = dose_mg_kg * body_weight
+        dose_nmol = dose_mg * 1e6 / mw_adc
+        dose_nM = dose_nmol / self.params.V1  # nM in central compartment
+
+        t_total = interval_h * n_doses + interval_h
+        t_eval = np.linspace(0, t_total, 5000)
+
+        # Initial conditions
+        y0 = [0, 0, 0, 0, 0, self.params.R0, 0, 1.0]
+
+        # Simulate with event-driven dosing
+        all_t = []
+        all_y = []
+        current_y = np.array(y0)
+
+        for dose_n in range(n_doses):
+            t_start = dose_n * interval_h
+            t_end = (dose_n + 1) * interval_h if dose_n < n_doses - 1 else t_total
+
+            # Add dose
+            current_y[0] += dose_nM
+
+            t_span = (t_start, t_end)
+            t_eval_segment = np.linspace(t_start, t_end, 1000)
+
+            sol = solve_ivp(self.pk_ode_system, t_span, current_y,
+                           t_eval=t_eval_segment, method='LSODA',
+                           rtol=1e-8, atol=1e-10)
+
+            all_t.extend(sol.t)
+            all_y.append(sol.y)
+            current_y = sol.y[:, -1].copy()
+
+        t_array = np.array(all_t)
+        y_array = np.hstack(all_y)
+
+        return {
+            't': t_array,
+            'adc_central': y_array[0],
+            'adc_peripheral': y_array[1],
+            'payload_plasma': y_array[2],
+            'adc_tumor': y_array[3],
+            'payload_tumor': y_array[4],
+            'free_receptor': y_array[5],
+            'adc_receptor': y_array[6],
+            'tumor_fraction': y_array[7],
+            'dose_times': [i * interval_h for i in range(n_doses)],
+            'dose_nM': dose_nM,
+        }
+
+    def dose_response_simulation(self, doses_mg_kg: List[float] = None):
+        """Simulate dose-response for different dose levels."""
+        if doses_mg_kg is None:
+            doses_mg_kg = [1.6, 3.2, 5.4, 6.4, 8.0]
+
+        results = {}
+        for dose in doses_mg_kg:
+            sim = self.simulate_dosing_regimen(dose_mg_kg=dose, n_doses=4)
+            final_tumor = sim['tumor_fraction'][-1]
+            max_payload_plasma = np.max(sim['payload_plasma'])
+            auc_payload_tumor = np.trapz(sim['payload_tumor'], sim['t'])
+
+            results[dose] = {
+                'final_tumor': final_tumor,
+                'max_payload_plasma': max_payload_plasma,
+                'auc_payload_tumor': auc_payload_tumor,
+                'tumor_response': (1 - final_tumor) * 100,
+            }
+        return results
+
+    def plot_pk_simulation(self, sim_result: Dict, dose_response: Dict):
+        """Plot PK simulation results."""
+        fig, axes = plt.subplots(2, 3, figsize=(18, 11))
+
+        t_days = sim_result['t'] / 24
+
+        # (a) ADC concentration in plasma
+        ax = axes[0, 0]
+        ax.semilogy(t_days, sim_result['adc_central'], 'b-', linewidth=2, label='Central')
+        ax.semilogy(t_days, sim_result['adc_peripheral'], 'b--', linewidth=1.5, label='Peripheral')
+        for dt in sim_result['dose_times']:
+            ax.axvline(x=dt/24, color='red', linestyle=':', alpha=0.5)
+        ax.set_xlabel('Time (days)')
+        ax.set_ylabel('ADC Concentration (nM)')
+        ax.set_title('(a) ADC Pharmacokinetics')
+        ax.legend(fontsize=9)
+
+        # (b) Payload in plasma vs tumor
+        ax = axes[0, 1]
+        ax.plot(t_days, sim_result['payload_plasma'], 'r-', linewidth=2, label='Plasma')
+        ax.plot(t_days, sim_result['payload_tumor'], 'g-', linewidth=2, label='Tumor')
+        ax.set_xlabel('Time (days)')
+        ax.set_ylabel('Payload Concentration (nM)')
+        ax.set_title('(b) Payload Distribution')
+        ax.legend(fontsize=9)
+
+        # (c) Receptor occupancy
+        ax = axes[0, 2]
+        total_receptor = sim_result['free_receptor'] + sim_result['adc_receptor']
+        occupancy = sim_result['adc_receptor'] / (total_receptor + 1e-10) * 100
+        ax.plot(t_days, occupancy, 'purple', linewidth=2)
+        ax.set_xlabel('Time (days)')
+        ax.set_ylabel('HER2 Receptor Occupancy (%)')
+        ax.set_title('(c) Target Engagement')
+        ax.set_ylim(0, 105)
+
+        # (d) Tumor growth inhibition
+        ax = axes[1, 0]
+        ax.plot(t_days, sim_result['tumor_fraction'] * 100, 'k-', linewidth=2)
+        ax.axhline(y=100, color='gray', linestyle='--', alpha=0.5, label='Baseline')
+        ax.axhline(y=30, color='green', linestyle='--', alpha=0.5, label='PR threshold')
+        ax.set_xlabel('Time (days)')
+        ax.set_ylabel('Tumor Size (% baseline)')
+        ax.set_title('(d) Tumor Growth Inhibition')
+        ax.legend(fontsize=9)
+
+        # (e) Dose-response
+        ax = axes[1, 1]
+        doses = sorted(dose_response.keys())
+        responses = [dose_response[d]['tumor_response'] for d in doses]
+        max_payloads = [dose_response[d]['max_payload_plasma'] for d in doses]
+
+        ax.bar(range(len(doses)), responses, color='#4CAF50', edgecolor='black',
+               linewidth=0.5, alpha=0.8)
+        ax.set_xlabel('Dose (mg/kg)')
+        ax.set_ylabel('Tumor Response (%)')
+        ax.set_title('(e) Dose-Response Relationship')
+        ax.set_xticks(range(len(doses)))
+        ax.set_xticklabels([f'{d}' for d in doses])
+
+        ax2 = ax.twinx()
+        ax2.plot(range(len(doses)), max_payloads, 'ro-', linewidth=2, label='Max Plasma Payload')
+        ax2.set_ylabel('Max Plasma Payload (nM)', color='red')
+        ax2.tick_params(axis='y', labelcolor='red')
+
+        # (f) Therapeutic index by dose
+        ax = axes[1, 2]
+        ti_values = []
+        for d in doses:
+            efficacy = dose_response[d]['tumor_response'] / 100
+            toxicity_proxy = dose_response[d]['max_payload_plasma'] / max(max_payloads)
+            ti = efficacy / (toxicity_proxy + 0.01)
+            ti_values.append(ti)
+
+        colors = ['#4CAF50' if ti > np.median(ti_values) else '#FF9800' for ti in ti_values]
+        ax.bar(range(len(doses)), ti_values, color=colors, edgecolor='black', linewidth=0.5)
+        optimal_dose = doses[np.argmax(ti_values)]
+        ax.set_xlabel('Dose (mg/kg)')
+        ax.set_ylabel('Therapeutic Index (a.u.)')
+        ax.set_title(f'(f) Therapeutic Index (Optimal: {optimal_dose} mg/kg)')
+        ax.set_xticks(range(len(doses)))
+        ax.set_xticklabels([f'{d}' for d in doses])
+
+        plt.tight_layout()
+        path = os.path.join(FIGURES_DIR, 'fig5_pk_simulation.png')
+        plt.savefig(path, bbox_inches='tight')
+        plt.close()
+        print(f"Saved: {path}")
+        return path
+
+
+# ============================================================================
+# 6. HER2-Targeted ADC Case Study (T-DXd Analog)
+# ============================================================================
+
+class TDXdCaseStudy:
+    """Integrated case study for HER2-targeted ADC (T-DXd-like)."""
+
+    def __init__(self):
+        # T-DXd specific parameters
+        self.dar_params = DARParameters(mean_dar=8.0, max_dar=8,
+                                         conjugation_efficiency=0.95,
+                                         batch_variability=0.05)
+        self.linker_params = LinkerParameters(
+            enzyme_vmax=0.6,       # GGFG tetrapeptide linker
+            enzyme_km=3.0,
+            cathepsin_conc_tumor=12.0,
+        )
+        self.pk_params = PKParameters(
+            V1=2.83, CL=0.0088, V2=3.5, Q=0.015,
+            k_deconj=0.003,        # Low deconjugation (stable linker)
+            k_internalization=0.06,
+            k_tumor_release=0.015,  # DXd release rate
+        )
+
+    def run_comprehensive_analysis(self):
+        """Run full analysis pipeline."""
+        results = {}
+
+        # 1. DAR analysis (T-DXd has DAR ~8)
+        print("=" * 60)
+        print("1. DAR Distribution Analysis (T-DXd: DAR≈8)")
+        print("=" * 60)
+        dar_model = DARDistributionModel(self.dar_params)
+        mc_dar = dar_model.monte_carlo_dar_sampling(n_molecules=20000, n_batches=100)
+        results['dar'] = mc_dar
+        print(f"  Mean DAR: {mc_dar['overall_mean']:.2f} ± {mc_dar['overall_std']:.2f}")
+
+        # Compare with conventional ADC (DAR 2-4)
+        conventional_params = DARParameters(mean_dar=3.5, max_dar=8,
+                                             conjugation_efficiency=0.7,
+                                             batch_variability=0.2)
+        dar_conv = DARDistributionModel(conventional_params)
+        mc_conv = dar_conv.monte_carlo_dar_sampling(n_molecules=20000, n_batches=100)
+        results['dar_conventional'] = mc_conv
+        print(f"  Conventional Mean DAR: {mc_conv['overall_mean']:.2f} ± {mc_conv['overall_std']:.2f}")
+
+        # 2. Linker analysis (GGFG peptide)
+        print("\n" + "=" * 60)
+        print("2. Linker Cleavage Analysis (GGFG peptide)")
+        print("=" * 60)
+        linker_sim = LinkerCleavageSimulator(self.linker_params)
+        linker_results = linker_sim.simulate_all_linkers()
+        results['linker'] = linker_results
+
+        # 3. PK simulation
+        print("\n" + "=" * 60)
+        print("3. PK/PD Simulation (T-DXd 5.4 mg/kg Q3W)")
+        print("=" * 60)
+        pk_model = PKModel(self.pk_params)
+        pk_sim = pk_model.simulate_dosing_regimen(dose_mg_kg=5.4, n_doses=6)
+        results['pk'] = pk_sim
+        print(f"  Peak ADC conc: {np.max(pk_sim['adc_central']):.1f} nM")
+        print(f"  Final tumor: {pk_sim['tumor_fraction'][-1]*100:.1f}% of baseline")
+
+        # 4. Dose comparison
+        dose_response = pk_model.dose_response_simulation([1.6, 3.2, 5.4, 6.4, 8.0])
+        results['dose_response'] = dose_response
+
+        return results
+
+    def plot_case_study(self, results: Dict):
+        """Generate comprehensive case study figure."""
+        fig, axes = plt.subplots(2, 3, figsize=(18, 11))
+
+        # (a) DAR comparison: T-DXd vs conventional
+        ax = axes[0, 0]
+        dar_tdxd = np.bincount(results['dar']['all_dar'], minlength=9)
+        dar_conv = np.bincount(results['dar_conventional']['all_dar'], minlength=9)
+        x = np.arange(9)
+        ax.bar(x - 0.2, dar_tdxd / dar_tdxd.sum(), 0.4,
+               label=f'T-DXd (DAR≈{results["dar"]["overall_mean"]:.1f})',
+               color='#2196F3', alpha=0.8)
+        ax.bar(x + 0.2, dar_conv / dar_conv.sum(), 0.4,
+               label=f'Conventional (DAR≈{results["dar_conventional"]["overall_mean"]:.1f})',
+               color='#FF9800', alpha=0.8)
+        ax.set_xlabel('DAR')
+        ax.set_ylabel('Fraction')
+        ax.set_title('(a) DAR Distribution Comparison')
+        ax.legend(fontsize=9)
+
+        # (b) T-DXd therapeutic window
+        ax = axes[0, 1]
+        dar_model = DARDistributionModel(self.dar_params)
+        dar_cont = np.linspace(0, 8, 200)
+        tw = dar_model.therapeutic_window_model(dar_cont)
+        ax.plot(dar_cont, tw['efficacy'], 'g-', linewidth=2, label='Efficacy')
+        ax.plot(dar_cont, tw['toxicity'], 'r-', linewidth=2, label='Toxicity')
+        ax.plot(dar_cont, tw['aggregation'], 'b--', linewidth=1.5, label='Aggregation')
+        ax.axvline(x=results['dar']['overall_mean'], color='purple',
+                   linestyle=':', linewidth=2, label=f'T-DXd DAR={results["dar"]["overall_mean"]:.1f}')
+        ax.set_xlabel('DAR')
+        ax.set_ylabel('Normalized Score')
+        ax.set_title('(b) T-DXd Therapeutic Window')
+        ax.legend(fontsize=8)
+
+        # (c) DXd release kinetics
+        ax = axes[0, 2]
+        pk_t = results['pk']['t'] / 24
+        ax.plot(pk_t, results['pk']['payload_tumor'], 'g-', linewidth=2, label='Tumor DXd')
+        ax.plot(pk_t, results['pk']['payload_plasma'], 'r--', linewidth=1.5, label='Plasma DXd')
+        ax.set_xlabel('Time (days)')
+        ax.set_ylabel('DXd Concentration (nM)')
+        ax.set_title('(c) DXd Release Profile')
+        ax.legend(fontsize=9)
+
+        # (d) ADC PK profile
+        ax = axes[1, 0]
+        ax.semilogy(pk_t, results['pk']['adc_central'], 'b-', linewidth=2, label='Intact ADC')
+        for dt in results['pk']['dose_times']:
+            ax.axvline(x=dt/24, color='red', linestyle=':', alpha=0.4)
+        ax.set_xlabel('Time (days)')
+        ax.set_ylabel('ADC Concentration (nM)')
+        ax.set_title('(d) T-DXd Plasma PK (5.4 mg/kg Q3W)')
+        ax.legend(fontsize=9)
+
+        # (e) Tumor growth inhibition
+        ax = axes[1, 1]
+        tumor = np.clip(results['pk']['tumor_fraction'] * 100, 0, 200)
+        ax.plot(pk_t, tumor, 'k-', linewidth=2)
+        # Add RECIST criteria lines
+        ax.axhline(y=100, color='gray', linestyle='--', alpha=0.5)
+        ax.axhline(y=70, color='orange', linestyle='--', alpha=0.5, label='SD boundary')
+        ax.axhline(y=30, color='green', linestyle='--', alpha=0.5, label='PR boundary')
+        ax.fill_between(pk_t, 0, 30, alpha=0.1, color='green')
+        ax.set_xlabel('Time (days)')
+        ax.set_ylabel('Tumor Size (% baseline)')
+        ax.set_title('(e) Tumor Growth Inhibition')
+        ax.legend(fontsize=9)
+
+        # (f) Dose-response with therapeutic index
+        ax = axes[1, 2]
+        doses = sorted(results['dose_response'].keys())
+        responses = [results['dose_response'][d]['tumor_response'] for d in doses]
+        ax.bar(range(len(doses)), responses, color='#4CAF50', edgecolor='black',
+               linewidth=0.5, alpha=0.8)
+        ax.axhline(y=70, color='green', linestyle='--', alpha=0.5, label='PR threshold')
+        ax.set_xlabel('Dose (mg/kg)')
+        ax.set_ylabel('Tumor Response (%)')
+        ax.set_title('(f) T-DXd Dose-Response')
+        ax.set_xticks(range(len(doses)))
+        ax.set_xticklabels([f'{d}' for d in doses])
+        ax.legend(fontsize=9)
+
+        plt.suptitle('HER2-Targeted ADC (T-DXd Analog) — Integrated Analysis',
+                     fontsize=14, fontweight='bold', y=1.01)
+        plt.tight_layout()
+        path = os.path.join(FIGURES_DIR, 'fig6_tdxd_case_study.png')
+        plt.savefig(path, bbox_inches='tight')
+        plt.close()
+        print(f"Saved: {path}")
+        return path
+
+    def generate_summary_table(self, results: Dict) -> pd.DataFrame:
+        """Generate summary metrics table."""
+        metrics = {
+            'Parameter': [
+                'Mean DAR (T-DXd)', 'Mean DAR (Conventional)',
+                'DAR CV% (T-DXd)', 'DAR CV% (Conventional)',
+                'Peak ADC Conc (nM)', 'Final Tumor Size (%)',
+                'Tumor Response 1.6 mg/kg (%)', 'Tumor Response 3.2 mg/kg (%)',
+                'Tumor Response 5.4 mg/kg (%)', 'Tumor Response 6.4 mg/kg (%)',
+                'Tumor Response 8.0 mg/kg (%)',
+            ],
+            'Value': [
+                f"{results['dar']['overall_mean']:.2f}",
+                f"{results['dar_conventional']['overall_mean']:.2f}",
+                f"{results['dar']['overall_std']/results['dar']['overall_mean']*100:.1f}",
+                f"{results['dar_conventional']['overall_std']/results['dar_conventional']['overall_mean']*100:.1f}",
+                f"{np.max(results['pk']['adc_central']):.1f}",
+                f"{results['pk']['tumor_fraction'][-1]*100:.1f}",
+            ] + [f"{results['dose_response'][d]['tumor_response']:.1f}"
+                 for d in sorted(results['dose_response'].keys())],
+        }
+        df = pd.DataFrame(metrics)
+        return df
+
+
+# ============================================================================
+# Main Execution
+# ============================================================================
+
+def main():
+    """Execute full ADC optimization platform analysis."""
+    timestamp = datetime.now().isoformat()
+    log_entries = []
+
+    def log_event(phase, event_type, **kwargs):
+        entry = {
+            'timestamp': datetime.now().isoformat(),
+            'phase': phase,
+            'event_type': event_type,
+            'actor': 'co-scientist',
+            'skill_or_tool': 'adc-platform',
+            **kwargs
+        }
+        log_entries.append(entry)
+
+    log_event('init', 'run_started')
+    print("=" * 70)
+    print("ADC Payload-Linker Optimization Computational Platform")
+    print("=" * 70)
+    print(f"Timestamp: {timestamp}\n")
+
+    # ---- Module 1: DAR Distribution ----
+    print("\n>>> MODULE 1: DAR Distribution Analysis")
+    dar_model = DARDistributionModel()
+    mc_results = dar_model.monte_carlo_dar_sampling(n_molecules=20000, n_batches=100)
+    fig1_path = dar_model.plot_dar_analysis(mc_results)
+    log_event('module1', 'file_written', files_written=[fig1_path])
+
+    # Save DAR data
+    dar_df = pd.DataFrame({
+        'batch': range(len(mc_results['batch_means'])),
+        'mean_dar': mc_results['batch_means'],
+        'std_dar': mc_results['batch_stds'],
+    })
+    dar_df.to_csv(os.path.join(DATA_DIR, 'dar_batch_statistics.csv'), index=False)
+
+    # ---- Module 2: Linker Cleavage ----
+    print("\n>>> MODULE 2: Linker Cleavage Simulation")
+    linker_sim = LinkerCleavageSimulator()
+    linker_results = linker_sim.simulate_all_linkers()
+    fig2_path = linker_sim.plot_linker_cleavage(linker_results)
+    log_event('module2', 'file_written', files_written=[fig2_path])
+
+    # ---- Module 3: Bystander Effect ----
+    print("\n>>> MODULE 3: Bystander Effect Model")
+    bystander = BustanderEffectModel()
+    snapshots = bystander.solve_1d_diffusion(t_max=3600, nx=100, nt=2000)
+    perm_results = bystander.simulate_permeability_comparison()
+    fig3_path = bystander.plot_bystander_effect(snapshots, perm_results)
+    log_event('module3', 'file_written', files_written=[fig3_path])
+
+    # Save bystander metrics
+    perm_df = pd.DataFrame([
+        {'permeability': k, 'mean_kill_pct': v['mean_kill']*100,
+         'bystander_kill_pct': v['bystander_kill']*100}
+        for k, v in perm_results.items()
+    ])
+    perm_df.to_csv(os.path.join(RESULTS_DIR, 'bystander_permeability.csv'), index=False)
+
+    # ---- Module 4: Stability-Release Optimization ----
+    print("\n>>> MODULE 4: Stability-Release Optimization")
+    optimizer = StabilityReleaseOptimizer()
+    opt_result = optimizer.optimize()
+    sensitivity = optimizer.parameter_sensitivity_analysis(n_samples=5000)
+    fig4_path = optimizer.plot_optimization(opt_result, sensitivity)
+    log_event('module4', 'file_written', files_written=[fig4_path])
+
+    # Save optimization results
+    opt_df = pd.DataFrame([opt_result['optimal_params']])
+    opt_df.to_csv(os.path.join(RESULTS_DIR, 'optimal_linker_params.csv'), index=False)
+
+    print(f"\n  Optimal parameters: {opt_result['optimal_params']}")
+    print(f"  Plasma release (24h): {opt_result['optimal_metrics']['plasma_release']:.1f}%")
+    print(f"  Tumor release (24h): {opt_result['optimal_metrics']['tumor_release']:.1f}%")
+    print(f"  Selectivity: {opt_result['optimal_metrics']['selectivity']:.1f}x")
+
+    # ---- Module 5: PK Model ----
+    print("\n>>> MODULE 5: PK/PD Simulation")
+    pk_model = PKModel()
+    pk_sim = pk_model.simulate_dosing_regimen(dose_mg_kg=5.4, n_doses=6)
+    dose_response = pk_model.dose_response_simulation()
+    fig5_path = pk_model.plot_pk_simulation(pk_sim, dose_response)
+    log_event('module5', 'file_written', files_written=[fig5_path])
+
+    # Save PK data
+    pk_df = pd.DataFrame({
+        'time_h': pk_sim['t'],
+        'adc_central_nM': pk_sim['adc_central'],
+        'payload_plasma_nM': pk_sim['payload_plasma'],
+        'payload_tumor_nM': pk_sim['payload_tumor'],
+        'tumor_fraction': pk_sim['tumor_fraction'],
+    })
+    pk_df.to_csv(os.path.join(DATA_DIR, 'pk_simulation_data.csv'), index=False)
+
+    # ---- Module 6: T-DXd Case Study ----
+    print("\n>>> MODULE 6: T-DXd Case Study")
+    case_study = TDXdCaseStudy()
+    cs_results = case_study.run_comprehensive_analysis()
+    fig6_path = case_study.plot_case_study(cs_results)
+    summary_table = case_study.generate_summary_table(cs_results)
+    log_event('module6', 'file_written', files_written=[fig6_path])
+
+    # Save summary
+    summary_table.to_csv(os.path.join(RESULTS_DIR, 'tdxd_summary_metrics.csv'), index=False)
+    print("\n  Summary Metrics:")
+    print(summary_table.to_string(index=False))
+
+    # ---- Save process log ----
+    log_event('final', 'run_completed', status='ok')
+    log_path = os.path.join(LOGS_DIR, 'process-log.jsonl')
+    with open(log_path, 'w') as f:
+        for entry in log_entries:
+            f.write(json.dumps(entry, ensure_ascii=False) + '\n')
+    print(f"\nProcess log saved: {log_path}")
+
+    # ---- Collect all results for report generation ----
+    all_results = {
+        'mc_dar': mc_results,
+        'opt_result': opt_result,
+        'pk_sim_summary': {
+            'peak_adc': float(np.max(pk_sim['adc_central'])),
+            'final_tumor_pct': float(pk_sim['tumor_fraction'][-1] * 100),
+        },
+        'dose_response': {str(k): v for k, v in dose_response.items()},
+        'bystander_metrics': {k: {'mean_kill': v['mean_kill'], 'bystander_kill': v['bystander_kill']}
+                              for k, v in perm_results.items()},
+        'summary_table': summary_table.to_dict(),
     }
-    return summary_metrics["case_study"]
+
+    with open(os.path.join(RESULTS_DIR, 'all_results.json'), 'w') as f:
+        json.dump(all_results, f, indent=2, default=str)
+
+    print("\n" + "=" * 70)
+    print("Analysis Complete! All figures and data saved.")
+    print("=" * 70)
+
+    return all_results
 
 
-
-def write_preprocessing_log() -> None:
-    text = f"""# Preprocessing Log\n\n- Random seed fixed at {SEED} for numpy and random.\n- All outputs were generated from deterministic simulation settings unless Monte Carlo sampling was explicitly requested.\n- DAR sampling used binomial and Poisson models with support truncated to DAR 0-8.\n- Linker kinetics were normalized to released fraction for cross-mechanism comparison.\n- Reaction-diffusion PDE used a 1D finite-difference explicit solver with no-flux boundaries.\n- Optimization landscape stored complete grid in `data/optimization_landscape.csv`; Pareto front stored in `results/optimization_results.csv`.\n- PK/PD nominal dose assumed 6.4 mg/kg IV for a 70 kg patient.\n- Monte Carlo sensitivity used Latin Hypercube Sampling over ±30% parameter ranges.\n- Case study metrics were normalized only for visualization; raw values remain in `results/case_study_summary.csv`.\n"""
-    save_text(DATA_DIR / "preprocessing-log.md", text)
-
-
-results = {
-    "dar": run_section("DAR distribution", section_dar_distribution),
-    "linker": run_section("Linker cleavage", section_linker_cleavage),
-    "bystander": run_section("Bystander diffusion", section_bystander_diffusion),
-    "optimization": run_section("Optimization", section_optimization),
-    "pkpd": run_section("PK/PD", section_pkpd),
-    "monte_carlo": run_section("Monte Carlo sensitivity", section_monte_carlo),
-    "case_study": run_section("Case study", section_case_study),
-}
-
-write_preprocessing_log()
-
-summary_metrics["failures"] = {"messages": section_failures}
-SUMMARY_PATH.write_text(json.dumps(summary_metrics, indent=2, ensure_ascii=False), encoding="utf-8")
-LOGGER.log(
-    phase="REPORT",
-    event_type="file_written",
-    skill_or_tool="json.dump",
-    files_written=[str(SUMMARY_PATH.relative_to(BASE_DIR))],
-    handoff_out={"sections": list(summary_metrics.keys())},
-)
-
-LOGGER.log(
-    phase="REPORT",
-    event_type="report_finalized",
-    skill_or_tool="adc_platform.py",
-    handoff_out={"summary_file": str(SUMMARY_PATH.relative_to(BASE_DIR)), "failures": section_failures},
-    status="ok" if not section_failures else "warning",
-)
-LOGGER.log(
-    phase="LOG",
-    event_type="run_completed",
-    skill_or_tool="adc_platform.py",
-    handoff_out={"completed_sections": [k for k, v in results.items() if v is not None], "failed_sections": section_failures},
-    status="ok" if not section_failures else "warning",
-)
-
-print("[INFO] ADC platform execution finished.")
-if section_failures:
-    print("[WARN] Some sections encountered issues:")
-    for msg in section_failures:
-        print(f" - {msg}")
+if __name__ == '__main__':
+    results = main()

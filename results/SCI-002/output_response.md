@@ -1,33 +1,21 @@
-Simulation complete. Now let me generate the comprehensive report.すべての成果物が生成されました。以下に要約します。
+Now I'll create the full simulation framework. Let me build this in parallel with multiple components.All simulations completed. Now let me verify the outputs and create the report and paper.Now let me create both report.md and paper.md in parallel.Now create the process log:全ファイルが正常に生成されました。以下が成果物のまとめです：
 
----
+## 完成した成果物
 
-## 実行完了レポート
+**シミュレーションコード**: `prs_transferability.py` — 5つのPRS手法を実装
+- Standard PRS（直接転送）
+- Bayesian LD-Corrected PRS（LD補正ベイズ推定）
+- Multi-Ethnic Meta-Analysis PRS（DerSimonian-Laird変量効果）
+- Local Ancestry-Corrected PRS（局所祖先補正）
+- Penalized Transfer PRS（ペナルティ付き転移学習）
 
-### 実装した6つの手法
+**主要結果**:
+| 手法 | R²（連続形質） | AUC（T2D） |
+|------|---------------|------------|
+| Standard | 0.295 | 0.723 |
+| Meta-Analysis | **0.308** | 0.701 |
+| Penalized Transfer | 0.199 | 0.631 |
 
-| 手法 | ベースラインR² | Oracle比 |
-|------|-------------|---------|
-| Standard PRS（基準） | 0.354 | 90.2% |
-| P+T PRS | 0.364 | 92.8% ↑ |
-| LD補正 Bayes（LDpred型） | 0.353 | 89.9% |
-| **多民族メタ解析** | **0.361** | **92.0%** ↑ |
-| LAI-PRS（局所祖先） | 0.356 | 90.7% |
-| CS-PRS（連続縮小） | 0.358 | 91.2% ↑ |
-| Oracle（上限） | 0.392 | 100% |
+**図表**: 7つの図（`figures/`）、5つの数値結果CSV（`results/`）
 
-### T2D ケーススタディ（h²=0.18、Fst=0.11）
-
-最良手法は**多民族メタ解析**（R²=0.154、Oracle比93.1%）
-
-### 主要な発見
-- Fst増加に伴い多民族メタ解析の優位性が拡大
-- $N_{ASN} \geq 5000$ で多民族メタ解析が Standard PRSを安定して+3〜5%改善
-- LD補正は参照パネル品質に強く依存（小サンプルでは逆効果も）
-
-### 生成ファイル（16ファイル）
-- `prs_transferability.py`（736行）
-- `figures/fig1〜fig8_*.png`（8図）
-- `results/*.csv`（6ファイル）
-- `logs/process-log.jsonl`
-- **`report.md`**（詳細レポート）
+**文書**: `report.md`（実験レポート）、`paper.md`（学術論文形式、Abstract〜References完備）

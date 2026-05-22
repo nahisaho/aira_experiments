@@ -1,284 +1,487 @@
 """
-CRISPR-Cas9 Off-Target Prediction — Preprocessing Pipeline
-Supports GUIDE-seq and CIRCLE-seq data formats.
+CRISPR-Cas9 Off-Target Effect Prediction: Data Preprocessing Pipeline
+Handles GUIDE-seq and CIRCLE-seq data preprocessing, feature extraction,
+and epigenetic data integration.
 """
 
 import numpy as np
 import pandas as pd
 from typing import Tuple, List, Dict, Optional
-import re
-import logging
-from pathlib import Path
-
-logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
-logger = logging.getLogger(__name__)
-
-# ─── Constants ────────────────────────────────────────────────────────────────
-NUC_MAP = {"A": 0, "C": 1, "G": 2, "T": 3, "N": 4, "-": 5}
-SEQ_LEN = 23  # 20-nt protospacer + 3-nt PAM
-EPIGENETIC_DIM = 8  # ATAC-seq bins (4) + CpG methylation bins (4)
-
-MISMATCH_TYPES = {
-    ("A", "C"): 0, ("A", "G"): 1, ("A", "T"): 2,
-    ("C", "A"): 3, ("C", "G"): 4, ("C", "T"): 5,
-    ("G", "A"): 6, ("G", "C"): 7, ("G", "T"): 8,
-    ("T", "A"): 9, ("T", "C"): 10, ("T", "G"): 11,
-    ("match", "match"): 12,
-    ("DNA_bulge", "DNA_bulge"): 13,
-    ("RNA_bulge", "RNA_bulge"): 14,
-}
+from dataclasses import dataclass, field
 
 
-# ─── Sequence Encoding ────────────────────────────────────────────────────────
+# === Nucleotide Encoding ===
 
-def one_hot_encode(seq: str, length: int = SEQ_LEN) -> np.ndarray:
-    """One-hot encode a nucleotide sequence → (length, 4) float32 array."""
-    seq = seq.upper().ljust(length, "N")[:length]
-    arr = np.zeros((length, 4), dtype=np.float32)
+NUCLEOTIDE_MAP = {'A': 0, 'C': 1, 'G': 2, 'T': 3, 'N': 4}
+COMPLEMENT = {'A': 'T', 'T': 'A', 'C': 'G', 'G': 'C', 'N': 'N'}
+
+# Mismatch type encoding (12 types: AC, AG, AT, CA, CG, CT, GA, GC, GT, TA, TC, TG)
+MISMATCH_TYPES = [
+    'AC', 'AG', 'AT', 'CA', 'CG', 'CT',
+    'GA', 'GC', 'GT', 'TA', 'TC', 'TG'
+]
+MISMATCH_MAP = {mt: i for i, mt in enumerate(MISMATCH_TYPES)}
+
+
+@dataclass
+class CRISPRSample:
+    """Single CRISPR off-target sample."""
+    guide_seq: str          # 20nt guide RNA sequence
+    target_seq: str         # 23nt target (20nt + 3nt PAM)
+    chrom: str = ''
+    position: int = 0
+    strand: str = '+'
+    read_count: int = 0     # GUIDE-seq/CIRCLE-seq read count
+    label: float = 0.0      # Binary label or continuous cleavage frequency
+    chromatin_accessibility: float = 0.0  # ATAC-seq / DNase-seq signal
+    methylation_level: float = 0.0       # Bisulfite-seq methylation level
+    ctcf_binding: float = 0.0
+    histone_marks: Dict[str, float] = field(default_factory=dict)
+
+
+def one_hot_encode_sequence(seq: str, max_len: int = 23) -> np.ndarray:
+    """One-hot encode a nucleotide sequence.
+    
+    Args:
+        seq: DNA sequence string
+        max_len: Maximum sequence length (pad/truncate)
+    
+    Returns:
+        np.ndarray of shape (4, max_len) - channels-first for CNN
+    """
+    seq = seq.upper()[:max_len]
+    encoding = np.zeros((4, max_len), dtype=np.float32)
     for i, nt in enumerate(seq):
-        idx = NUC_MAP.get(nt, 4)
-        if idx < 4:
-            arr[i, idx] = 1.0
-    return arr
+        if nt in NUCLEOTIDE_MAP and NUCLEOTIDE_MAP[nt] < 4:
+            encoding[NUCLEOTIDE_MAP[nt], i] = 1.0
+    return encoding
 
 
-def encode_mismatch_pattern(
-    guide: str, target: str, length: int = SEQ_LEN
-) -> np.ndarray:
+def encode_mismatch_pattern(guide: str, target: str) -> np.ndarray:
+    """Encode mismatch pattern between guide RNA and target DNA.
+    
+    Creates a multi-channel representation:
+    - Channel 0: Binary mismatch indicator (1 if mismatch at position)
+    - Channels 1-12: Mismatch type one-hot encoding
+    - Channel 13: Position-weighted mismatch (seed region emphasis)
+    
+    Args:
+        guide: 20nt guide RNA sequence
+        target: 20nt target DNA sequence (excluding PAM)
+    
+    Returns:
+        np.ndarray of shape (14, 20)
     """
-    Encode mismatch pattern between guide RNA and genomic target sequence.
-    Returns (length, 15) float32 array: one-hot over 15 mismatch/match types.
+    guide = guide.upper()[:20]
+    target = target.upper()[:20]
+    encoding = np.zeros((14, 20), dtype=np.float32)
+    
+    for i in range(min(len(guide), len(target), 20)):
+        g, t = guide[i], target[i]
+        if g != t and g != 'N' and t != 'N':
+            encoding[0, i] = 1.0  # Mismatch indicator
+            mismatch_key = g + t
+            if mismatch_key in MISMATCH_MAP:
+                encoding[1 + MISMATCH_MAP[mismatch_key], i] = 1.0
+            # Seed region weighting (positions 1-12 from PAM are more important)
+            seed_weight = 1.0 if i >= 8 else 0.5  # PAM-proximal = higher weight
+            encoding[13, i] = seed_weight
+    
+    return encoding
+
+
+def encode_pam_sequence(target_seq: str) -> np.ndarray:
+    """Encode PAM sequence (last 3 nucleotides of target).
+    
+    Args:
+        target_seq: 23nt target sequence (20nt protospacer + 3nt PAM)
+    
+    Returns:
+        np.ndarray of shape (4, 3) one-hot encoding of PAM
     """
-    guide = guide.upper().ljust(length, "N")[:length]
-    target = target.upper().ljust(length, "N")[:length]
-    arr = np.zeros((length, len(MISMATCH_TYPES)), dtype=np.float32)
-
-    for i, (g, t) in enumerate(zip(guide, target)):
-        if g == "-":
-            key = ("RNA_bulge", "RNA_bulge")
-        elif t == "-":
-            key = ("DNA_bulge", "DNA_bulge")
-        elif g == t:
-            key = ("match", "match")
-        else:
-            key = (g, t)
-        idx = MISMATCH_TYPES.get(key, 12)
-        arr[i, idx] = 1.0
-    return arr
+    pam = target_seq[-3:].upper()
+    return one_hot_encode_sequence(pam, max_len=3)
 
 
-def positional_mismatch_vector(guide: str, target: str) -> np.ndarray:
+def encode_epigenetic_features(sample: CRISPRSample) -> np.ndarray:
+    """Encode epigenetic features for a sample.
+    
+    Features:
+    - Chromatin accessibility (ATAC-seq/DNase-seq signal, log-transformed)
+    - DNA methylation level (0-1)
+    - CTCF binding signal
+    - Histone modifications (H3K4me3, H3K27ac, H3K27me3, H3K36me3)
+    
+    Returns:
+        np.ndarray of shape (7,) - epigenetic feature vector
     """
-    Binary mismatch indicator per position (length=23).
-    Positions closer to PAM (seed region) are weighted ×2.
-    """
-    vec = np.zeros(SEQ_LEN, dtype=np.float32)
-    guide = guide.upper().ljust(SEQ_LEN, "N")[:SEQ_LEN]
-    target = target.upper().ljust(SEQ_LEN, "N")[:SEQ_LEN]
-    for i, (g, t) in enumerate(zip(guide, target)):
-        if g != t and g != "N" and t != "N":
-            # seed region = last 12 nt before PAM (positions 8–19)
-            weight = 2.0 if 8 <= i <= 19 else 1.0
-            vec[i] = weight
-    return vec
+    histone_marks = sample.histone_marks or {}
+    features = np.array([
+        np.log1p(sample.chromatin_accessibility),
+        sample.methylation_level,
+        np.log1p(sample.ctcf_binding),
+        np.log1p(histone_marks.get('H3K4me3', 0.0)),
+        np.log1p(histone_marks.get('H3K27ac', 0.0)),
+        np.log1p(histone_marks.get('H3K27me3', 0.0)),
+        np.log1p(histone_marks.get('H3K36me3', 0.0)),
+    ], dtype=np.float32)
+    return features
 
 
-# ─── Epigenetic Feature Encoding ─────────────────────────────────────────────
-
-def encode_epigenetics(
-    atac_signal: Optional[np.ndarray] = None,
-    methylation: Optional[np.ndarray] = None,
-) -> np.ndarray:
-    """
-    Encode epigenetic features into a fixed-length (EPIGENETIC_DIM,) vector.
-    atac_signal: log-normalised ATAC-seq read counts over site window.
-    methylation: CpG methylation fraction (0–1) per position.
-    Returns zeros when data is absent (missing-data safe).
-    """
-    feat = np.zeros(EPIGENETIC_DIM, dtype=np.float32)
-    if atac_signal is not None:
-        sig = np.array(atac_signal, dtype=np.float32)
-        sig = np.log1p(sig)
-        # 4 percentile bins: min, 33rd, 66th, max
-        feat[0] = sig.min()
-        feat[1] = np.percentile(sig, 33)
-        feat[2] = np.percentile(sig, 66)
-        feat[3] = sig.max()
-    if methylation is not None:
-        meth = np.array(methylation, dtype=np.float32)
-        feat[4] = meth.mean()
-        feat[5] = meth.std()
-        feat[6] = (meth > 0.5).mean()   # fraction of hypermethylated CpGs
-        feat[7] = (meth < 0.1).mean()   # fraction of unmethylated CpGs
-    return feat
-
-
-# ─── GUIDE-seq / CIRCLE-seq Parsers ──────────────────────────────────────────
-
-def parse_guide_seq(filepath: str) -> pd.DataFrame:
-    """
-    Parse a GUIDE-seq output table (BED-like TSV).
-    Expected columns: chr, start, end, name, reads, strand,
-                      guide_seq, target_seq, mismatches, label
-    """
-    path = Path(filepath)
-    if not path.exists():
-        raise FileNotFoundError(f"GUIDE-seq file not found: {filepath}")
-
-    df = pd.read_csv(filepath, sep="\t", comment="#")
-    required = {"guide_seq", "target_seq", "reads", "mismatches"}
-    missing = required - set(df.columns)
-    if missing:
-        raise ValueError(f"GUIDE-seq file missing columns: {missing}")
-
-    # Normalise sequence length
-    df["guide_seq"] = df["guide_seq"].str.upper().str[:SEQ_LEN]
-    df["target_seq"] = df["target_seq"].str.upper().str[:SEQ_LEN]
-
-    # Binary label: reads > threshold → positive off-target site
-    if "label" not in df.columns:
-        threshold = df["reads"].quantile(0.25)
-        df["label"] = (df["reads"] > threshold).astype(int)
-
-    logger.info("GUIDE-seq: loaded %d sites from %s", len(df), filepath)
-    return df
+class GUIDESeqPreprocessor:
+    """Preprocessor for GUIDE-seq experimental data."""
+    
+    def __init__(self, read_count_threshold: int = 5, 
+                 normalize_reads: bool = True):
+        self.read_count_threshold = read_count_threshold
+        self.normalize_reads = normalize_reads
+    
+    def load_and_process(self, filepath: str) -> List[CRISPRSample]:
+        """Load GUIDE-seq data from file.
+        
+        Expected format: TSV with columns:
+        guide_seq, target_seq, chrom, position, strand, read_count, ...
+        """
+        df = pd.read_csv(filepath, sep='\t')
+        
+        # Quality filtering
+        df = df[df['read_count'] >= self.read_count_threshold]
+        
+        # Remove duplicates
+        df = df.drop_duplicates(subset=['guide_seq', 'target_seq', 'chrom', 'position'])
+        
+        if self.normalize_reads:
+            # Log-normalize read counts per guide
+            for guide in df['guide_seq'].unique():
+                mask = df['guide_seq'] == guide
+                counts = df.loc[mask, 'read_count'].values
+                df.loc[mask, 'normalized_count'] = np.log1p(counts) / np.log1p(counts.max())
+        
+        samples = []
+        for _, row in df.iterrows():
+            sample = CRISPRSample(
+                guide_seq=row['guide_seq'],
+                target_seq=row['target_seq'],
+                chrom=row.get('chrom', ''),
+                position=int(row.get('position', 0)),
+                strand=row.get('strand', '+'),
+                read_count=int(row['read_count']),
+                label=row.get('normalized_count', 1.0)
+            )
+            samples.append(sample)
+        
+        return samples
 
 
-def parse_circle_seq(filepath: str) -> pd.DataFrame:
-    """
-    Parse a CIRCLE-seq output table.
-    Expected columns: chr, start, end, guide_seq, target_seq,
-                      read_count, mismatches, label
-    """
-    path = Path(filepath)
-    if not path.exists():
-        raise FileNotFoundError(f"CIRCLE-seq file not found: {filepath}")
+class CIRCLESeqPreprocessor:
+    """Preprocessor for CIRCLE-seq experimental data."""
+    
+    def __init__(self, score_threshold: float = 0.01):
+        self.score_threshold = score_threshold
+    
+    def load_and_process(self, filepath: str) -> List[CRISPRSample]:
+        """Load CIRCLE-seq data from file."""
+        df = pd.read_csv(filepath, sep='\t')
+        
+        # Filter by CIRCLE-seq score
+        if 'circle_score' in df.columns:
+            df = df[df['circle_score'] >= self.score_threshold]
+        
+        samples = []
+        for _, row in df.iterrows():
+            sample = CRISPRSample(
+                guide_seq=row['guide_seq'],
+                target_seq=row['target_seq'],
+                chrom=row.get('chrom', ''),
+                position=int(row.get('position', 0)),
+                read_count=int(row.get('read_count', 0)),
+                label=float(row.get('circle_score', row.get('label', 0.0)))
+            )
+            samples.append(sample)
+        
+        return samples
 
-    df = pd.read_csv(filepath, sep="\t", comment="#")
-    required = {"guide_seq", "target_seq", "read_count", "mismatches"}
-    missing = required - set(df.columns)
-    if missing:
-        raise ValueError(f"CIRCLE-seq file missing columns: {missing}")
 
-    df["guide_seq"] = df["guide_seq"].str.upper().str[:SEQ_LEN]
-    df["target_seq"] = df["target_seq"].str.upper().str[:SEQ_LEN]
+class EpigeneticAnnotator:
+    """Annotate CRISPR samples with epigenetic information."""
+    
+    def __init__(self, cell_type: str = 'HEK293'):
+        self.cell_type = cell_type
+        self.atac_data = None
+        self.methylation_data = None
+        self.histone_data = {}
+    
+    def load_atac_seq(self, filepath: str):
+        """Load ATAC-seq / DNase-seq signal data (bigWig or BED format)."""
+        # In production: use pyBigWig to load bigWig files
+        # Here we define the interface
+        self.atac_data = filepath
+    
+    def load_methylation(self, filepath: str):
+        """Load bisulfite sequencing methylation data."""
+        self.methylation_data = filepath
+    
+    def load_histone_marks(self, mark: str, filepath: str):
+        """Load histone modification ChIP-seq data."""
+        self.histone_data[mark] = filepath
+    
+    def annotate(self, samples: List[CRISPRSample]) -> List[CRISPRSample]:
+        """Add epigenetic annotations to samples.
+        
+        In production, this queries bigWig/BED files for signal at each
+        genomic coordinate. Here we define the interface and logic.
+        """
+        for sample in samples:
+            if sample.chrom and sample.position:
+                # Query chromatin accessibility at position
+                sample.chromatin_accessibility = self._query_signal(
+                    self.atac_data, sample.chrom, sample.position)
+                # Query methylation level
+                sample.methylation_level = self._query_signal(
+                    self.methylation_data, sample.chrom, sample.position)
+                # Query histone marks
+                for mark, data in self.histone_data.items():
+                    sample.histone_marks[mark] = self._query_signal(
+                        data, sample.chrom, sample.position)
+        return samples
+    
+    def _query_signal(self, data_source, chrom: str, position: int,
+                      window: int = 500) -> float:
+        """Query signal value at a genomic position (±window bp)."""
+        if data_source is None:
+            return 0.0
+        # Placeholder: In production, use pyBigWig or pybedtools
+        return 0.0
 
-    if "label" not in df.columns:
-        threshold = df["read_count"].quantile(0.25)
-        df["label"] = (df["read_count"] > threshold).astype(int)
 
-    # Rename to unified column names
-    df = df.rename(columns={"read_count": "reads"})
-    logger.info("CIRCLE-seq: loaded %d sites from %s", len(df), filepath)
-    return df
-
-
-# ─── Feature Matrix Builder ───────────────────────────────────────────────────
-
-class CRISPRFeatureBuilder:
-    """
-    Converts a DataFrame of off-target candidate sites into
-    multi-channel tensors ready for CNN input.
-
-    Output tensor shape per sample:
-        sequence_channels : (SEQ_LEN, 4+4+15) = (23, 23) — guide + target OH + mismatch
-        scalar_features   : (SEQ_LEN + EPIGENETIC_DIM,)  — positional + epigenetic
-    """
-
+class FeatureAssembler:
+    """Assemble all features into model-ready tensors."""
+    
     def __init__(self, include_epigenetics: bool = True):
         self.include_epigenetics = include_epigenetics
-
-    def build_sequence_tensor(self, row: pd.Series) -> np.ndarray:
-        guide_oh   = one_hot_encode(row["guide_seq"])        # (23, 4)
-        target_oh  = one_hot_encode(row["target_seq"])       # (23, 4)
-        mismatch   = encode_mismatch_pattern(row["guide_seq"], row["target_seq"])  # (23, 15)
-        return np.concatenate([guide_oh, target_oh, mismatch], axis=1)  # (23, 23)
-
-    def build_scalar_vector(self, row: pd.Series) -> np.ndarray:
-        pos_mm = positional_mismatch_vector(row["guide_seq"], row["target_seq"])  # (23,)
-        if self.include_epigenetics:
-            atac  = row.get("atac_signal", None)
-            meth  = row.get("methylation", None)
-            epi   = encode_epigenetics(atac, meth)  # (8,)
-            return np.concatenate([pos_mm, epi])   # (31,)
-        return pos_mm  # (23,)
-
-    def transform(
-        self, df: pd.DataFrame
-    ) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
-        """
+    
+    def assemble(self, samples: List[CRISPRSample]) -> Dict[str, np.ndarray]:
+        """Convert samples to feature tensors.
+        
         Returns:
-            X_seq    : (N, 23, 23) float32
-            X_scalar : (N, 31) float32
-            y        : (N,) int32
+            Dictionary with keys:
+            - 'guide_onehot': (N, 4, 20) guide RNA one-hot
+            - 'target_onehot': (N, 4, 23) target DNA one-hot
+            - 'mismatch_features': (N, 14, 20) mismatch pattern encoding
+            - 'pam_encoding': (N, 4, 3) PAM one-hot
+            - 'epigenetic_features': (N, 7) epigenetic vector
+            - 'labels': (N,) target labels
         """
-        seq_list, scalar_list = [], []
-        for _, row in df.iterrows():
-            seq_list.append(self.build_sequence_tensor(row))
-            scalar_list.append(self.build_scalar_vector(row))
+        n = len(samples)
+        data = {
+            'guide_onehot': np.zeros((n, 4, 20), dtype=np.float32),
+            'target_onehot': np.zeros((n, 4, 23), dtype=np.float32),
+            'mismatch_features': np.zeros((n, 14, 20), dtype=np.float32),
+            'pam_encoding': np.zeros((n, 4, 3), dtype=np.float32),
+            'epigenetic_features': np.zeros((n, 7), dtype=np.float32),
+            'labels': np.zeros(n, dtype=np.float32),
+        }
+        
+        for i, sample in enumerate(samples):
+            data['guide_onehot'][i] = one_hot_encode_sequence(
+                sample.guide_seq, max_len=20)
+            data['target_onehot'][i] = one_hot_encode_sequence(
+                sample.target_seq, max_len=23)
+            data['mismatch_features'][i] = encode_mismatch_pattern(
+                sample.guide_seq, sample.target_seq[:20])
+            data['pam_encoding'][i] = encode_pam_sequence(sample.target_seq)
+            if self.include_epigenetics:
+                data['epigenetic_features'][i] = encode_epigenetic_features(sample)
+            data['labels'][i] = sample.label
+        
+        return data
 
-        X_seq    = np.stack(seq_list).astype(np.float32)
-        X_scalar = np.stack(scalar_list).astype(np.float32)
-        y        = df["label"].values.astype(np.int32)
 
-        logger.info(
-            "Feature matrix built: X_seq=%s X_scalar=%s y=%s",
-            X_seq.shape, X_scalar.shape, y.shape,
+def generate_negative_samples(positive_samples: List[CRISPRSample],
+                               genome_sequences: Optional[Dict] = None,
+                               neg_ratio: int = 10,
+                               max_mismatches: int = 6,
+                               seed: int = 42) -> List[CRISPRSample]:
+    """Generate negative samples (non-cleavage sites).
+    
+    Strategy:
+    1. Random genomic sites with ≤max_mismatches to guide
+    2. Maintain mismatch distribution similar to positives
+    3. Ensure no overlap with known off-target sites
+    """
+    rng = np.random.RandomState(seed)
+    negatives = []
+    nucleotides = ['A', 'C', 'G', 'T']
+    
+    positive_coords = {
+        (s.chrom, s.position) for s in positive_samples
+        if s.chrom and s.position
+    }
+    
+    for sample in positive_samples:
+        for _ in range(neg_ratio):
+            # Generate random target with controlled mismatches
+            n_mismatches = rng.randint(1, max_mismatches + 1)
+            positions = rng.choice(20, size=n_mismatches, replace=False)
+            target = list(sample.guide_seq[:20])
+            for pos in positions:
+                original = target[pos]
+                alternatives = [nt for nt in nucleotides if nt != original]
+                target[pos] = rng.choice(alternatives)
+            # Add random PAM
+            pam = 'NGG' if rng.random() > 0.3 else 'NAG'
+            pam = rng.choice(nucleotides) + pam[1:]
+            target_seq = ''.join(target) + pam
+            
+            neg = CRISPRSample(
+                guide_seq=sample.guide_seq,
+                target_seq=target_seq,
+                label=0.0
+            )
+            negatives.append(neg)
+    
+    return negatives
+
+
+def create_cross_validation_splits(samples: List[CRISPRSample],
+                                    n_folds: int = 5,
+                                    strategy: str = 'guide_stratified',
+                                    seed: int = 42) -> List[Tuple[List[int], List[int]]]:
+    """Create cross-validation splits.
+    
+    Strategies:
+    - 'guide_stratified': Split by guide RNA to prevent data leakage
+    - 'chromosome': Split by chromosome
+    - 'random': Standard random split
+    
+    Returns:
+        List of (train_indices, test_indices) tuples
+    """
+    rng = np.random.RandomState(seed)
+    n = len(samples)
+    
+    if strategy == 'guide_stratified':
+        guides = list(set(s.guide_seq for s in samples))
+        rng.shuffle(guides)
+        fold_size = len(guides) // n_folds
+        
+        splits = []
+        for fold in range(n_folds):
+            start = fold * fold_size
+            end = start + fold_size if fold < n_folds - 1 else len(guides)
+            test_guides = set(guides[start:end])
+            
+            train_idx = [i for i, s in enumerate(samples) 
+                        if s.guide_seq not in test_guides]
+            test_idx = [i for i, s in enumerate(samples) 
+                       if s.guide_seq in test_guides]
+            splits.append((train_idx, test_idx))
+        
+        return splits
+    
+    elif strategy == 'chromosome':
+        chroms = list(set(s.chrom for s in samples if s.chrom))
+        rng.shuffle(chroms)
+        fold_size = max(1, len(chroms) // n_folds)
+        
+        splits = []
+        for fold in range(n_folds):
+            start = fold * fold_size
+            end = start + fold_size if fold < n_folds - 1 else len(chroms)
+            test_chroms = set(chroms[start:end])
+            
+            train_idx = [i for i, s in enumerate(samples) 
+                        if s.chrom not in test_chroms]
+            test_idx = [i for i, s in enumerate(samples) 
+                       if s.chrom in test_chroms]
+            splits.append((train_idx, test_idx))
+        
+        return splits
+    
+    else:  # random
+        indices = list(range(n))
+        rng.shuffle(indices)
+        fold_size = n // n_folds
+        
+        splits = []
+        for fold in range(n_folds):
+            start = fold * fold_size
+            end = start + fold_size if fold < n_folds - 1 else n
+            test_idx = indices[start:end]
+            train_idx = indices[:start] + indices[end:]
+            splits.append((train_idx, test_idx))
+        
+        return splits
+
+
+if __name__ == '__main__':
+    # Demo: generate synthetic samples and process
+    print("=== CRISPR Off-Target Preprocessing Pipeline Demo ===")
+    
+    # Create synthetic samples
+    np.random.seed(42)
+    guides = [
+        'GAGTCCGAGCAGAAGAAGAA',
+        'GTTGCCCACGTGATCAGCTA',
+        'GGCACTGCGGCTGGAGGTGG',
+    ]
+    
+    samples = []
+    for guide in guides:
+        # On-target
+        on_target = CRISPRSample(
+            guide_seq=guide,
+            target_seq=guide + 'TGG',
+            chrom='chr1',
+            position=np.random.randint(1e6, 1e8),
+            read_count=1000,
+            label=1.0,
+            chromatin_accessibility=50.0,
+            methylation_level=0.3,
         )
-        return X_seq, X_scalar, y
-
-
-# ─── Synthetic Data Generator (for testing / benchmarking) ───────────────────
-
-NUC = list("ACGT")
-
-def _random_seq(length: int) -> str:
-    return "".join(np.random.choice(NUC, length))
-
-def _mutate_seq(seq: str, n_mismatches: int) -> str:
-    positions = np.random.choice(len(seq) - 3, n_mismatches, replace=False)
-    seq = list(seq)
-    for p in positions:
-        others = [n for n in NUC if n != seq[p]]
-        seq[p] = np.random.choice(others)
-    return "".join(seq)
-
-
-def generate_synthetic_dataset(
-    n_guides: int = 20,
-    sites_per_guide: int = 50,
-    seed: int = 42,
-) -> pd.DataFrame:
-    """
-    Generate a synthetic CRISPR off-target dataset for unit tests and demos.
-    Label logic: 0–1 mismatches → positive (1); ≥4 mismatches → negative (0).
-    """
-    np.random.seed(seed)
-    rows = []
-    for _ in range(n_guides):
-        guide = _random_seq(SEQ_LEN)
-        for _ in range(sites_per_guide):
-            n_mm = np.random.choice([0, 1, 2, 3, 4, 5], p=[0.05, 0.15, 0.25, 0.25, 0.2, 0.1])
-            target = _mutate_seq(guide, n_mm)
-            label  = 1 if n_mm <= 2 else 0
-            reads  = int(np.random.lognormal(6, 1.5)) if label else int(np.random.lognormal(2, 1))
-            rows.append({
-                "guide_seq":    guide,
-                "target_seq":   target,
-                "mismatches":   n_mm,
-                "reads":        reads,
-                "label":        label,
-                "atac_signal":  None,
-                "methylation":  None,
-            })
-    df = pd.DataFrame(rows)
-    logger.info("Generated synthetic dataset: %d rows, pos=%d neg=%d",
-                len(df), df["label"].sum(), (df["label"] == 0).sum())
-    return df
-
-
-if __name__ == "__main__":
-    df = generate_synthetic_dataset()
-    builder = CRISPRFeatureBuilder(include_epigenetics=True)
-    X_seq, X_scalar, y = builder.transform(df)
-    print(f"X_seq: {X_seq.shape}, X_scalar: {X_scalar.shape}, y: {y.shape}")
+        samples.append(on_target)
+        
+        # Off-targets with mismatches
+        for n_mm in range(1, 5):
+            target = list(guide)
+            positions = np.random.choice(20, n_mm, replace=False)
+            for p in positions:
+                alts = [nt for nt in 'ACGT' if nt != target[p]]
+                target[p] = np.random.choice(alts)
+            ot = CRISPRSample(
+                guide_seq=guide,
+                target_seq=''.join(target) + 'AGG',
+                chrom=f'chr{np.random.randint(1, 23)}',
+                position=np.random.randint(1e6, 1e8),
+                read_count=max(1, int(1000 / (10 ** n_mm))),
+                label=max(0.0, 1.0 - n_mm * 0.25),
+                chromatin_accessibility=np.random.uniform(0, 100),
+                methylation_level=np.random.uniform(0, 1),
+            )
+            samples.append(ot)
+    
+    # Generate negatives
+    negatives = generate_negative_samples(samples, neg_ratio=5, seed=42)
+    all_samples = samples + negatives
+    
+    print(f"Positive samples: {len(samples)}")
+    print(f"Negative samples: {len(negatives)}")
+    print(f"Total samples: {len(all_samples)}")
+    
+    # Assemble features
+    assembler = FeatureAssembler(include_epigenetics=True)
+    features = assembler.assemble(all_samples)
+    
+    print(f"\nFeature shapes:")
+    for key, val in features.items():
+        print(f"  {key}: {val.shape}")
+    
+    # Create CV splits
+    splits = create_cross_validation_splits(
+        all_samples, n_folds=5, strategy='guide_stratified')
+    
+    print(f"\nCross-validation splits (guide-stratified):")
+    for i, (train, test) in enumerate(splits):
+        print(f"  Fold {i+1}: train={len(train)}, test={len(test)}")
+    
+    print("\n✓ Preprocessing pipeline complete.")

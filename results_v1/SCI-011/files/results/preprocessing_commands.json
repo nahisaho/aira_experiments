@@ -1,0 +1,42 @@
+{
+  "fmri_commands": {
+    "1_motion_correction": [
+      "mcflirt -in /data/sub-01/func/bold.nii.gz -out /data/sub-01/func/bold_mc -cost normcorr -smooth 1.0 -meanvol -plots -refvol middle",
+      "fsl_motion_outliers -i /data/sub-01/func/bold_mc.nii.gz -o /data/sub-01/func/confounds_motionoutliers.txt --dvars --nomoco"
+    ],
+    "2_brain_extraction": [
+      "bet /data/sub-01/anat/T1w.nii.gz /data/sub-01/anat/T1w_brain.nii.gz -f 0.3 -R"
+    ],
+    "3_distortion_correction": [
+      "topup --imain=/data/sub-01/fmap/AP_PA.nii.gz --datain=/data/sub-01/fmap/acqparams.txt --config=b02b0.cnf --out=/data/sub-01/fmap/topup_results --fout=/data/sub-01/fmap/field_hz --iout=/data/sub-01/fmap/unwarped",
+      "applytopup --imain=/data/sub-01/func/bold_mc.nii.gz --inindex=1 --datain=/data/sub-01/fmap/acqparams.txt --topup=/data/sub-01/fmap/topup_results --out=/data/sub-01/func/bold_mc_dc.nii.gz"
+    ],
+    "4_registration_MNI": [
+      "flirt -in /data/sub-01/anat/T1w_brain.nii.gz -ref $FSLDIR/data/standard/MNI152_T1_2mm_brain.nii.gz -omat /data/sub-01/reg/T1_to_MNI_affine.mat -cost corratio -dof 12",
+      "fnirt --in=/data/sub-01/anat/T1w.nii.gz --ref=$FSLDIR/data/standard/MNI152_T1_2mm.nii.gz --aff=/data/sub-01/reg/T1_to_MNI_affine.mat --cout=/data/sub-01/reg/T1_to_MNI_warp --config=T1_2_MNI152_2mm --warpres=10,10,10",
+      "flirt -in /data/sub-01/func/bold_mc_dc.nii.gz -ref /data/sub-01/anat/T1w_brain.nii.gz -omat /data/sub-01/reg/BOLD_to_T1.mat -cost bbr -dof 6 -wmseg /data/sub-01/anat/wmseg.nii.gz",
+      "applywarp --in=/data/sub-01/func/bold_mc_dc.nii.gz --ref=$FSLDIR/data/standard/MNI152_T1_2mm.nii.gz --premat=/data/sub-01/reg/BOLD_to_T1.mat --warp=/data/sub-01/reg/T1_to_MNI_warp.nii.gz --out=/data/sub-01/func/bold_MNI.nii.gz --interp=spline"
+    ],
+    "5_nuisance_regression": [
+      "fsl_regfilt -i /data/sub-01/func/bold_MNI.nii.gz -d /data/sub-01/func/confounds.txt -o /data/sub-01/func/bold_cleaned.nii.gz -f '1,2,3,4,5,6,7,8,9'"
+    ],
+    "6_temporal_filtering": [
+      "fslmaths /data/sub-01/func/bold_cleaned.nii.gz -bptf 2 25 /data/sub-01/func/bold_final.nii.gz"
+    ]
+  },
+  "dmri_commands": {
+    "1_denoising_gibbs": [
+      "dwidenoise /data/sub-01/dwi/dwi.nii.gz /data/sub-01/dwi/dwi_denoised.nii.gz -noise /data/sub-01/dwi/noise_map.nii.gz",
+      "mrdegibbs /data/sub-01/dwi/dwi_denoised.nii.gz /data/sub-01/dwi/dwi_degibbs.nii.gz"
+    ],
+    "2_eddy_correction": [
+      "eddy_openmp --imain=/data/sub-01/dwi/dwi_degibbs.nii.gz --mask=/data/sub-01/dwi/nodif_brain_mask.nii.gz --index=/data/sub-01/dwi/index.txt --acqp=/data/sub-01/dwi/acqparams.txt --bvecs=/data/sub-01/dwi/dwi.bvec --bvals=/data/sub-01/dwi/dwi.bval --topup=/data/sub-01/fmap/topup_results --repol --cnr_maps --out=/data/sub-01/dwi/dwi_eddy"
+    ],
+    "3_bias_correction": [
+      "dwibiascorrect ants /data/sub-01/dwi/dwi_eddy.nii.gz /data/sub-01/dwi/dwi_biascorr.nii.gz -fslgrad /data/sub-01/dwi/dwi_eddy.bvec /data/sub-01/dwi/dwi.bval"
+    ],
+    "4_registration_MNI": [
+      "flirt -in /data/sub-01/dwi/nodif_brain.nii.gz -ref /data/sub-01/anat/T1w_brain.nii.gz -omat /data/sub-01/reg/DWI_to_T1.mat -cost mutualinfo -dof 6"
+    ]
+  }
+}

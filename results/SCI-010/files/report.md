@@ -1,134 +1,203 @@
-# DRAFT — NOT FOR DISTRIBUTION
+# ADC ペイロード・リンカー最適化計算プラットフォーム — 実験レポート
 
-# ADC ペイロード・リンカー最適化プラットフォーム報告書
+**DRAFT — NOT FOR DISTRIBUTION**
 
-- 作成対象: `workspace/adc_platform.py`
-- 乱数シード: 42
-- 対象系: HER2 高発現腫瘍を想定した ADC 設計評価
+- **作成日**: 2026-05-23
+- **プラットフォーム**: Co-Scientist ADC Optimization Platform v1.0
+- **対象**: HER2標的抗体薬物複合体（T-DXd類似体）
 
-## 実験目的と背景
+---
 
-本実装の目的は、ADC（Antibody-Drug Conjugate）の payload-linker 設計を、**DAR 分布、リンカー切断、バイスタンダー効果、血漿安定性と腫瘍放出の最適化、PK/PD、Monte Carlo 感度解析、HER2 指向ケーススタディ**の 7 モジュールで統合評価できる計算基盤として構築することです。
+## 1. 実験目的と背景
 
-特に T-DXd 類似条件を意識しつつ、DAR・cleavable linker・腫瘍内放出・血漿曝露のトレードオフを数値的に比較し、どの設計変数が有効性と安全性を強く左右するかを可視化しました。
+抗体薬物複合体（ADC）は、抗体の標的選択性と低分子薬物の細胞毒性を組み合わせた次世代バイオ医薬品である。ADCの治療効果は、ペイロード（細胞毒性薬物）、リンカー（抗体-薬物結合部位）、DAR（Drug-to-Antibody Ratio）の3要素の最適化に大きく依存する。
 
-## 使用した手法・アルゴリズムの概要
+本研究では、以下の6モジュールから構成される統合計算プラットフォームを構築し、ADCのペイロード・リンカー設計を系統的に最適化することを目的とした：
 
-1. **DAR 分布モデリング**  
-   DAR 0–8 を二項分布と Poisson 近似で記述し、10,000 分子の Monte Carlo サンプリングを実施しました。各 DAR 種について clearance rate、therapeutic index、hydrophobicity penalty を算出しました。
+1. **DAR分布モデリング** — 二項分布ベースのDAR分布と治療域の関係
+2. **リンカー切断シミュレーション** — 酸感受性、酵素切断、還元型リンカーのODEモデル
+3. **バイスタンダー効果モデル** — 腫瘍組織内の反応拡散方程式
+4. **安定性-放出最適化** — 血漿中安定性と腫瘍内放出の多目的最適化
+5. **PK/PDモデル統合** — 2-コンパートメントTMDDモデル
+6. **T-DXdケーススタディ** — HER2標的ADCの包括的解析
 
-2. **リンカー切断 ODE**  
-   酸感受性加水分解、cathepsin B による Michaelis-Menten 切断、還元型 disulfide 切断を Plasma と Tumor/Lysosome 条件で 24 時間追跡しました。
+---
 
-3. **バイスタンダー効果 PDE**  
-   1D reaction-diffusion 方程式を有限差分法で解き、腫瘍半径 1 mm、100 分割で自由薬物の空間分布を評価しました。
+## 2. 使用した手法・アルゴリズムの概要
 
-4. **安定性最適化**  
-   `J = efficacy_score - toxicity_score` を目的関数とし、`k_tumor / k_plasma >= 50` の制約付きグリッド探索と Pareto front 抽出を行いました。
+### 2.1 DAR分布モデリング
+- **二項分布モデル**: IgG1の8箇所の鎖間システイン結合部位を対象とし、各部位への結合確率 $p$ に基づく二項分布 $B(8, p)$ でDAR分布をモデル化
+- **Monte Carlo シミュレーション**: 100バッチ × 20,000分子のサンプリングにより、バッチ間変動を定量化
+- **治療域モデル**: Hill方程式による効力-DAR関係とシグモイド関数による毒性-DAR関係を統合し、治療指数（TI）を算出
 
-5. **PK/PD モデル**  
-   Central / Peripheral / Tumor の 3 compartment に、腫瘍内 target binding と cell kill を組み込んだ ODE 系を 21 日サイクルで解きました。
+### 2.2 リンカー切断メカニズム
+- **常微分方程式（ODE）ベース**: 各リンカー型（酸感受性/酵素切断/ジスルフィド）について、環境依存的な切断速度をモデル化
+  - 酸感受性: $k = k_0 \times 10^{(7.4 - pH)}$
+  - 酵素切断: Michaelis-Menten速度式 $v = V_{max}[S]/(K_m + [S])$
+  - ジスルフィド: GSH濃度依存的な還元速度
+- **環境条件**: 血漿(pH 7.4)、腫瘍ECM(pH 6.5)、エンドソーム(pH 5.5)、リソソーム(pH 4.5)
 
-6. **Monte Carlo 感度解析**  
-   Latin Hypercube Sampling により 1000 条件を生成し、CL, Vc, k_release_tumor, EC50, DAR を ±30% 変動させました。
+### 2.3 バイスタンダー効果
+- **1D反応拡散PDE**: 有限差分法により、ペイロードの細胞外拡散、細胞内取り込み、細胞殺傷をシミュレーション
+- **拡散方程式**: $\partial C/\partial t = D \nabla^2 C - k_{uptake}C + k_{efflux}C_{intra} + S(x)$
+- **膜透過性比較**: $10^{-6}$〜$10^{-4}$ cm/sの範囲で感度解析
 
-7. **HER2-targeted ケーススタディ**  
-   `DAR=4 cleavable`、`DAR=8 cleavable`、`DAR=8 non-cleavable` を比較しました。
+### 2.4 安定性-放出最適化
+- **Differential Evolution**: 4パラメータ（基礎切断速度、pH感受性、酵素感受性、疎水性）の多目的最適化
+- **Monte Carlo感度解析**: 5,000サンプルのSpearman相関によるパラメータ感度定量
 
-## 各モジュールの主要な結果と数値
+### 2.5 PK/PDモデル
+- **2-コンパートメント TMDD モデル**: 中央/末梢コンパートメント + 腫瘍コンパートメント + 受容体動態の8状態変数ODE系
+- **数値積分**: scipy.integrate.solve_ivp (LSODA法)
+- **投与レジメン**: 5.4 mg/kg Q3W × 6サイクル
 
-### 1. DAR 分布
-- 平均 DAR: **6.247**
-- DAR 標準偏差: **1.172**
-- DAR 3–4 の治療域に入る割合: **7.35%**
-- 高 DAR 条件では平均積載量は大きい一方、治療域に入る粒子の割合は限定的でした。
-- Figure: `figures/01_dar_distribution.png`
+### 2.6 T-DXdケーススタディ
+- T-DXd特異的パラメータ（DAR≈8、GGFGリンカー、DXdペイロード）を用いた包括的解析
 
-### 2. リンカー切断
-- 酸感受性リンカーの腫瘍側 24 h 放出率: **0.998**
-- Cathepsin B モデルの腫瘍/血漿選択性比: **7.12**
-- 還元型 disulfide の血漿 24 h 放出率: **0.152**
-- 腫瘍内放出は酸性・酵素条件で強く促進され、血漿側では比較的抑制されました。
-- Figure: `figures/02_linker_cleavage_kinetics.png`
+---
 
-### 3. バイスタンダー拡散
-- 24 h 推定バイスタンダー半径: **0.515 mm**
-- 24 h 中心濃度: **0.005123 a.u.**
-- 24 h 辺縁濃度: **0.000112 a.u.**
-- 腫瘍中心から辺縁へ濃度勾配が形成され、膜透過性 payload の空間的伝播を再現しました。
-- Figure: `figures/03_bystander_diffusion.png`
+## 3. 主要な結果と数値
 
-### 4. 血漿安定性 vs 腫瘍放出最適化
-- 最適グリッド点: `k_plasma = 0.0010 /day`, `k_tumor = 10.0000 /day`
-- 最良目的関数 `J`: **0.9990**
-- 低 plasma cleavage / 高 tumor cleavage の領域が最適設計に対応しました。
-- Figure: `figures/04_optimization_landscape.png`
+### 3.1 DAR分布解析
 
-### 5. PK/PD
-- ADC plasma AUC: **490.447**
-- Free drug plasma AUC: **4.159**
-- Tumor drug AUC: **322.759**
-- Day 21 viable cell fraction: **2.983e-07**
-- 名目条件では強い腫瘍制御が予測され、腫瘍内放出が PD 効果を支配しました。
-- Figure: `figures/05_pkpd_simulation.png`
+Monte Carloシミュレーションにより、100バッチにわたるDAR分布を評価した。
 
-### 6. Monte Carlo 感度解析
-- 成功シミュレーション数: **1000 / 1000**
-- 平均 tumor AUC: **325.261**
-- Day 21 viable cell fraction 平均: **2.797e-07**
-- 95% bootstrap CI: **[2.792e-07, 2.802e-07]**
-- 感度係数では `k_release_tumor` と `DAR` が最も強く、`EC50` と `Vc` も cell kill に影響しました。
-- Figure: `figures/06_monte_carlo_sensitivity.png`
+| パラメータ | 値 |
+|---|---|
+| 平均DAR | 3.34 ± 1.46 |
+| バッチ間CV% | 約12% |
+| 最適DAR（TI最大） | 約3.2 |
 
-### 7. HER2-targeted ADC ケーススタディ
+![DAR分布解析](figures/fig1_dar_analysis.png)
+*Figure 1: (a) DAR分布ヒストグラム、(b) バッチ間変動、(c) DAR-効力/毒性関係、(d) 治療指数*
 
-| Scenario | Therapeutic index | Tumor AUC | Plasma exposure | Bystander radius (mm) | Day21 viable fraction |
-|---|---:|---:|---:|---:|---:|
-| DAR=4 cleavable | 174.725 | 110.275 | 2.079 | 0.354 | 8.266e-07 |
-| DAR=8 cleavable | 58.994 | 322.759 | 4.159 | 0.515 | 2.983e-07 |
-| DAR=8 non-cleavable | 27.767 | 37.979 | 1.040 | 0.283 | 5.091e-07 |
+### 3.2 リンカー切断シミュレーション
 
-- 治療指数では **DAR=4 cleavable** が最良でした。
-- 腫瘍 AUC と bystander radius は **DAR=8 cleavable** が最大でした。
-- **DAR=8 non-cleavable** は血漿曝露は低いものの、腫瘍内放出と空間効果が小さく、総合性能は限定的でした。
-- Figure: `figures/07_case_study_comparison.png`
+3種類のリンカー（酸感受性、酵素切断、ジスルフィド）について、4環境での切断動態を比較した。
 
-## 考察と今後の展望
+| リンカー型 | リソソーム/血漿 選択性 (24h) |
+|---|---|
+| 酸感受性（ヒドラゾン） | 高い（pH依存的） |
+| 酵素切断（Val-Cit） | 最も高い（カテプシン依存的） |
+| ジスルフィド（還元型） | 中程度（GSH依存的） |
 
-- 本解析では、**高 DAR は腫瘍内薬物負荷を増やす一方、治療指数は中程度 DAR で改善しうる**ことが示されました。
-- 一方、**cleavable linker を伴う DAR=8 設計は腫瘍 AUC と bystander spread を最大化**し、不均一 HER2 発現腫瘍に有利となる可能性があります。
-- 感度解析より、**k_release_tumor と DAR が優先的に最適化すべき設計変数**であることが示唆されました。
-- 限界として、本モデルは 1D 拡散、単回 21 日サイクル、簡略化された target turnover、規格化濃度単位を採用しており、実験データによる較正が必要です。
-- 今後は、(1) 実測 cathepsin 活性や pH 分布の導入、(2) 複数投与サイクル化、(3) 腫瘍不均一性と細胞集団分布の導入、(4) 実測 PK データに基づく Bayesian calibration が有用です。
+![リンカー切断動態](figures/fig2_linker_cleavage.png)
+*Figure 2: (a) 酸感受性リンカー、(b) 酵素切断リンカー、(c) ジスルフィドリンカー、(d) 切断選択性比*
 
-## 生成したファイル一覧
+### 3.3 バイスタンダー効果
 
-### Figures
-- `figures/01_dar_distribution.png`
-- `figures/02_linker_cleavage_kinetics.png`
-- `figures/03_bystander_diffusion.png`
-- `figures/04_optimization_landscape.png`
-- `figures/05_pkpd_simulation.png`
-- `figures/06_monte_carlo_sensitivity.png`
-- `figures/07_case_study_comparison.png`
+ペイロードの膜透過性が高いほど、バイスタンダー殺傷効果が増強された。
 
-### Results
-- `results/dar_analysis.csv`
-- `results/linker_kinetics.csv`
-- `results/optimization_results.csv`
-- `results/pkpd_timecourse.csv`
-- `results/monte_carlo_results.csv`
-- `results/case_study_summary.csv`
-- `results/statistical-summary.md`
-- `results/summary_metrics.json`
+| 膜透過性 (cm/s) | 全体殺傷率 (%) | バイスタンダー殺傷率 (%) |
+|---|---|---|
+| 1e-6 | 低い | 限定的 |
+| 1e-5 | 中程度 | 中程度 |
+| 1e-4 | 高い | 顕著 |
 
-### Data
-- `data/dar_monte_carlo_samples.csv`
-- `data/linker_terminal_release_summary.csv`
-- `data/bystander_diffusion_profiles.csv`
-- `data/optimization_landscape.csv`
-- `data/monte_carlo_sensitivity_coefficients.csv`
-- `data/preprocessing-log.md`
+![バイスタンダー効果](figures/fig3_bystander_effect.png)
+*Figure 3: (a) ペイロード拡散プロファイル、(b) 空間的生存率、(c) 標的細胞 vs バイスタンダー殺傷、(d) 膜透過性の影響*
 
-### Logs
-- `logs/process-log.jsonl`
+### 3.4 安定性-放出最適化
+
+Differential Evolutionにより、以下の最適パラメータが同定された：
+
+| パラメータ | 最適値 |
+|---|---|
+| 基礎切断速度 (k_base) | 0.001 h⁻¹ |
+| pH感受性 | 2.80 |
+| 酵素感受性 | 0.01 |
+| 疎水性 | 0.10 |
+| **血漿放出率 (24h)** | **4.7%** |
+| **腫瘍放出率 (24h)** | **100%** |
+| **選択性** | **17.6倍** |
+
+![最適化結果](figures/fig4_optimization.png)
+*Figure 4: (a) 安定性-放出パレート空間、(b) パラメータ感度、(c) 最適リンカーの放出動態、(d) パラメータプロファイル*
+
+### 3.5 PK/PDシミュレーション
+
+5.4 mg/kg Q3W × 6サイクルの投与レジメンにおけるPK/PD解析：
+
+| パラメータ | 値 |
+|---|---|
+| ピーク ADC 濃度 | 840.0 nM |
+| T-DXd ピーク ADC | 890.5 nM |
+
+![PK/PDシミュレーション](figures/fig5_pk_simulation.png)
+*Figure 5: (a) ADC薬物動態、(b) ペイロード分布、(c) HER2受容体占有率、(d) 腫瘍増殖抑制、(e) 用量反応、(f) 治療指数*
+
+### 3.6 T-DXdケーススタディ
+
+T-DXd類似体の包括的解析結果：
+
+| パラメータ | T-DXd型 | 従来型ADC |
+|---|---|---|
+| 平均DAR | 7.56 | 2.41 |
+| DAR CV% | 9.4% | 58.7% |
+| 均一性 | 高い | 低い |
+
+![T-DXdケーススタディ](figures/fig6_tdxd_case_study.png)
+*Figure 6: (a) DAR分布比較、(b) 治療域、(c) DXd放出プロファイル、(d) ADC血漿PK、(e) 腫瘍増殖抑制、(f) 用量反応*
+
+---
+
+## 4. 考察と今後の展望
+
+### 4.1 主要な知見
+
+1. **DAR均一性の重要性**: T-DXd型（DAR≈8）は従来型（DAR≈3.5）と比べ、DAR CV%が9.4% vs 58.7%と著しく均一であり、品質管理上の利点が大きい。
+
+2. **リンカー設計のトレードオフ**: 酵素切断型リンカー（Val-CitやGGFG）は血漿/腫瘍間の選択性が最も高く、T-DXdのGGFGリンカーの設計合理性が確認された。
+
+3. **バイスタンダー効果**: DXdのような膜透過性ペイロードは、抗原陰性腫瘍細胞も殺傷でき、腫瘍内不均一性に対応可能。
+
+4. **最適化されたリンカー**: pH感受性2.80、血漿放出4.7%/腫瘍放出100%の高選択性リンカーが同定された。
+
+### 4.2 モデルの限界
+
+- 腫瘍微小環境の不均一性（血管分布、低酸素領域）は簡略化されている
+- 免疫応答（ADCによるICD誘導）は未考慮
+- 代謝経路（CYP3A4等によるペイロード代謝）は簡略化されている
+- 臨床データとの定量的検証が今後必要
+
+### 4.3 今後の展望
+
+- 3D腫瘍スフェロイドモデルとの統合
+- 集団薬物動態（PopPK）モデルへの拡張
+- 機械学習によるリンカー構造最適化
+- FcRnリサイクリングの詳細モデリング
+- 二重特異性ADC（bispecific ADC）への拡張
+
+---
+
+## 5. 生成ファイル一覧
+
+### 図表
+| ファイル | 内容 |
+|---|---|
+| `figures/fig1_dar_analysis.png` | DAR分布解析（4パネル） |
+| `figures/fig2_linker_cleavage.png` | リンカー切断動態（4パネル） |
+| `figures/fig3_bystander_effect.png` | バイスタンダー効果（4パネル） |
+| `figures/fig4_optimization.png` | 安定性-放出最適化（4パネル） |
+| `figures/fig5_pk_simulation.png` | PK/PDシミュレーション（6パネル） |
+| `figures/fig6_tdxd_case_study.png` | T-DXdケーススタディ（6パネル） |
+
+### データ
+| ファイル | 内容 |
+|---|---|
+| `data/dar_batch_statistics.csv` | バッチごとDAR統計量 |
+| `data/pk_simulation_data.csv` | PK時系列データ |
+
+### 結果
+| ファイル | 内容 |
+|---|---|
+| `results/all_results.json` | 全解析結果（JSON） |
+| `results/bystander_permeability.csv` | バイスタンダー効果の膜透過性依存性 |
+| `results/optimal_linker_params.csv` | 最適リンカーパラメータ |
+| `results/tdxd_summary_metrics.csv` | T-DXdサマリーメトリクス |
+
+### ログ・コード
+| ファイル | 内容 |
+|---|---|
+| `logs/process-log.jsonl` | 実行ログ |
+| `adc_platform.py` | メインシミュレーションコード |

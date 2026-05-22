@@ -1,0 +1,23 @@
+{
+  "syn3_stats": {
+    "genome_size_bp": 531490,
+    "total_genes": 473,
+    "protein_coding": 438,
+    "rna_genes": 35,
+    "gc_content": 0.269,
+    "coding_density": 0.9,
+    "essential_known": 256,
+    "quasi_essential": 129,
+    "nonessential": 53,
+    "unknown_function": 149,
+    "doubling_time_min": 180
+  },
+  "extension_summary": {
+    "total_genes_added": 14,
+    "total_bp_added": 17750,
+    "extended_genome_size": 549240,
+    "size_increase_pct": 3.339667726579992
+  },
+  "n_unknown": 149,
+  "n_compared": 7
+}

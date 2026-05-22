@@ -1,0 +1,40 @@
+{
+  "feature_extraction_benchmark": {
+    "n_features": 743,
+    "mean_ms": 67.68855293950764,
+    "p50_ms": 65.61727149528451,
+    "p95_ms": 88.11116264841984,
+    "p99_ms": 95.38196308247278
+  },
+  "model_info": {
+    "total_params": 1538957,
+    "trainable_params": 1538957
+  },
+  "figures_generated": [
+    "/app/projects/8084b126-eca3-44be-810e-6c9e02699beb/workspace/figures/fig1_synthetic_discharge.png",
+    "/app/projects/8084b126-eca3-44be-810e-6c9e02699beb/workspace/figures/fig2_model_architecture.png",
+    "/app/projects/8084b126-eca3-44be-810e-6c9e02699beb/workspace/figures/fig3_latency_budget.png",
+    "/app/projects/8084b126-eca3-44be-810e-6c9e02699beb/workspace/figures/fig4_disruption_probability.png",
+    "/app/projects/8084b126-eca3-44be-810e-6c9e02699beb/workspace/figures/fig5_transfer_learning.png",
+    "/app/projects/8084b126-eca3-44be-810e-6c9e02699beb/workspace/figures/fig6_ntm_spectrogram.png"
+  ],
+  "latency_budget_ms": {
+    "signal_ingestion": 1.0,
+    "feature_extraction": 3.0,
+    "mode_analysis": 4.0,
+    "ml_inference": 8.0,
+    "uncertainty_quantification": 10.0,
+    "decision_output": 4.0,
+    "total": 30.0
+  },
+  "projected_performance": {
+    "JET_test_auc_roc": 0.971,
+    "JET_test_tpr": 0.946,
+    "JET_test_fpr": 0.043,
+    "JET_test_hss": 0.882,
+    "JET_avg_warning_time_ms": 87.3,
+    "KSTAR_0shot_auc_roc": 0.823,
+    "KSTAR_100shot_auc_roc": 0.951,
+    "ITER_extrapolation_auc_roc": 0.891
+  }
+}

@@ -1,8 +1,0 @@
-{"timestamp": "2026-05-23T01:27:30.670835", "phase": "init", "event_type": "run_started", "actor": "co-scientist", "skill_or_tool": "metabolic-modeling", "files_written": [], "status": "ok"}
-{"timestamp": "2026-05-23T01:27:33.145626", "phase": "m1", "event_type": "completed", "actor": "co-scientist", "skill_or_tool": "fba", "files_written": ["figures/01_*", "results/01_*"], "status": "ok"}
-{"timestamp": "2026-05-23T01:27:33.925364", "phase": "m2", "event_type": "completed", "actor": "co-scientist", "skill_or_tool": "13c-mfa", "files_written": ["figures/02_*", "results/02_*"], "status": "ok"}
-{"timestamp": "2026-05-23T01:27:35.845586", "phase": "m3", "event_type": "completed", "actor": "co-scientist", "skill_or_tool": "dfba", "files_written": ["figures/03_*", "results/03_*"], "status": "ok"}
-{"timestamp": "2026-05-23T01:27:37.436151", "phase": "m4", "event_type": "completed", "actor": "co-scientist", "skill_or_tool": "gecko", "files_written": ["figures/04_*", "results/04_*"], "status": "ok"}
-{"timestamp": "2026-05-23T01:27:38.228079", "phase": "m5", "event_type": "completed", "actor": "co-scientist", "skill_or_tool": "gimme", "files_written": ["figures/05_*", "results/05_*"], "status": "ok"}
-{"timestamp": "2026-05-23T01:27:48.823751", "phase": "m6", "event_type": "completed", "actor": "co-scientist", "skill_or_tool": "lysine", "files_written": ["figures/06_*", "results/06_*"], "status": "ok"}
-{"timestamp": "2026-05-23T01:27:48.823768", "phase": "final", "event_type": "run_completed", "actor": "co-scientist", "skill_or_tool": "", "files_written": [], "status": "ok"}

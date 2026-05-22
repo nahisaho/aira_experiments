@@ -175,16 +175,15 @@ async function runExperiment(page, experiment, index, total) {
         const fileName = file.file_path || file.filename || file.id;
         const filePath = path.join(filesDir, fileName);
         fs.mkdirSync(path.dirname(filePath), { recursive: true });
-        
-        const fileResponse = await page.evaluate(async ({ projectId, fileId }) => {
-          const res = await fetch(`/api/projects/${projectId}/files/${fileId}/view`);
+        // Use /download endpoint for raw binary (preserves PNG, images, etc.)
+        const fileBuffer = await page.evaluate(async ({ projectId, fileId }) => {
+          const res = await fetch(`/api/projects/${projectId}/files/${fileId}/download`);
           if (!res.ok) return null;
-          return res.json();
+          const buf = await res.arrayBuffer();
+          return Array.from(new Uint8Array(buf));
         }, { projectId, fileId: file.id });
-        
-        if (fileResponse !== null) {
-          const content = fileResponse.content || '';
-          fs.writeFileSync(filePath, content, 'utf-8');
+        if (fileBuffer !== null) {
+          fs.writeFileSync(filePath, Buffer.from(fileBuffer));
         }
       } catch (e) {
         console.log(`  ⚠ Could not download file: ${file.filename || file.id} (${e.message})`);

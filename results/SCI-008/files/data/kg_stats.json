@@ -1,27 +1,22 @@
 {
-  "total_triples": 121,
-  "total_nodes": 82,
-  "total_edges": 121,
-  "node_types": {
-    "drug": 27,
-    "disease": 18,
-    "gene": 20,
-    "pathway": 10,
-    "phenotype": 7
+  "total_entities": 130,
+  "total_triples": 329,
+  "entity_types": {
+    "Drug": 40,
+    "Gene": 35,
+    "Disease": 20,
+    "Pathway": 20,
+    "Phenotype": 15
   },
-  "relation_counts": {
-    "associated_with": 23,
-    "treats": 20,
-    "inhibits": 19,
-    "participates_in": 17,
-    "interacts_with": 11,
-    "has_phenotype": 11,
-    "modulates": 8,
-    "investigated_for": 6,
-    "downregulates": 3,
-    "targets": 2,
-    "regulates": 1
+  "relation_types": {
+    "interacts_with": 84,
+    "associated_with": 76,
+    "targets": 69,
+    "participates_in": 43,
+    "has_phenotype": 29,
+    "treats": 28
   },
-  "density": 0.018217404396266186,
-  "unique_relations": 11
+  "graph_density": 0.02303921568627451,
+  "avg_degree": 5.483333333333333,
+  "connected_components": 1
 }

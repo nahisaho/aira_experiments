@@ -1,11 +1,11 @@
 {
   "experiment_id": "SCI-008",
   "title": "ドラッグリポジショニング知識グラフ",
-  "project_id": "ee398ea8-f4c5-4a43-9427-fff7112ee0a3",
-  "prompt_length": 403,
-  "output_length": 933,
-  "file_count": 43,
-  "duration_seconds": 677,
+  "project_id": "81efebdc-8aed-4fc5-8b9d-161cf9f0acc9",
+  "prompt_length": 1039,
+  "output_length": 1197,
+  "file_count": 46,
+  "duration_seconds": 717,
   "status": "success",
-  "timestamp": "2026-05-22T13:00:23.472Z"
+  "timestamp": "2026-05-22T22:42:24.030Z"
 }

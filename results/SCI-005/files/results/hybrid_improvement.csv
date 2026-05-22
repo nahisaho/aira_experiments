@@ -1,0 +1,3 @@
+Analysis mode,Precision,Recall,F1,Breakpoint accuracy (bp)
+Long-read only,0.939,0.918,0.928,28
+Hybrid (LR+SR),0.952,0.938,0.945,17

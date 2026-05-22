@@ -1,0 +1,19 @@
+{
+  "coauthorship": {
+    "n_nodes": 200,
+    "n_edges": 947,
+    "density": 0.04758793969849246,
+    "avg_degree": 9.47,
+    "clustering_coefficient": 0.06584231618055147,
+    "n_communities": 5,
+    "modularity": 0.3688773194738233,
+    "betweenness_gini": 0.3305156203948459
+  },
+  "citation": {
+    "n_nodes": 200,
+    "n_edges": 581,
+    "density": 0.014597989949748744,
+    "avg_in_degree": 2.905,
+    "pagerank_gini": 0.477247694825177
+  }
+}

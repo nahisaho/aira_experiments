@@ -1,0 +1,176 @@
+2026-05-23 04:29:10,185 [INFO] src.digital_twin_pipeline: ============================================================
+2026-05-23 04:29:10,185 [INFO] src.digital_twin_pipeline: Cardiac Digital Twin Pipeline - Patient DT_DEMO_001
+2026-05-23 04:29:10,185 [INFO] src.digital_twin_pipeline: ============================================================
+2026-05-23 04:29:10,185 [INFO] src.digital_twin_pipeline: 
+[Module 1] Image Processing & Mesh Generation
+2026-05-23 04:29:10,185 [INFO] src.digital_twin_pipeline: --------------------------------------------------
+2026-05-23 04:29:10,211 [INFO] src.preprocessing.cardiac_mri_segmentation: Starting segmentation for patient DT_DEMO_001
+2026-05-23 04:29:10,233 [INFO] src.preprocessing.cardiac_mri_segmentation: Preprocessed volume: shape=(128, 128, 64), range=[-2.60, 2.61]
+2026-05-23 04:29:10,255 [INFO] src.preprocessing.cardiac_mri_segmentation: ROI shape: (128, 128, 64)
+2026-05-23 04:29:10,263 [INFO] src.preprocessing.cardiac_mri_segmentation: Computed volumes (mL): {'LV_BLOOD': np.float64(25.15625), 'LV_MYO': np.float64(143.3046875), 'RV_BLOOD': np.float64(64.12890625), 'RV_MYO': np.float64(0.0), 'LA': np.float64(86.2265625), 'RA': np.float64(75.19140625), 'AORTA': np.float64(0.0), 'PULMONARY': np.float64(0.0)}
+2026-05-23 04:29:19,695 [INFO] src.digital_twin_pipeline: ============================================================
+2026-05-23 04:29:19,696 [INFO] src.digital_twin_pipeline: Cardiac Digital Twin Pipeline - Patient DT_DEMO_001
+2026-05-23 04:29:19,696 [INFO] src.digital_twin_pipeline: ============================================================
+2026-05-23 04:29:19,696 [INFO] src.digital_twin_pipeline: 
+[Module 1] Image Processing & Mesh Generation
+2026-05-23 04:29:19,696 [INFO] src.digital_twin_pipeline: --------------------------------------------------
+2026-05-23 04:29:19,736 [INFO] src.preprocessing.cardiac_mri_segmentation: Starting segmentation for patient DT_DEMO_001
+2026-05-23 04:29:19,772 [INFO] src.preprocessing.cardiac_mri_segmentation: Preprocessed volume: shape=(128, 128, 64), range=[-2.60, 2.61]
+2026-05-23 04:29:19,811 [INFO] src.preprocessing.cardiac_mri_segmentation: ROI shape: (128, 128, 64)
+2026-05-23 04:29:19,826 [INFO] src.preprocessing.cardiac_mri_segmentation: Computed volumes (mL): {'LV_BLOOD': np.float64(25.15625), 'LV_MYO': np.float64(143.3046875), 'RV_BLOOD': np.float64(64.12890625), 'RV_MYO': np.float64(0.0), 'LA': np.float64(86.2265625), 'RA': np.float64(75.19140625), 'AORTA': np.float64(0.0), 'PULMONARY': np.float64(0.0)}
+2026-05-23 04:29:19,844 [INFO] src.preprocessing.cardiac_mri_segmentation: Surface mesh: 5000 vertices, 10000 faces, mean quality=0.850
+2026-05-23 04:29:19,845 [INFO] src.preprocessing.cardiac_mri_segmentation: Volume mesh: 6666 vertices, 19998 tetrahedra, min_dihedral=18.5°
+2026-05-23 04:29:19,848 [INFO] src.preprocessing.cardiac_mri_segmentation: Assigned fiber orientations: 19998 elements, angle range [-60°, 60°]
+2026-05-23 04:29:19,851 [INFO] src.preprocessing.cardiac_mri_segmentation: Exported OpenCARP files to data/opencarp
+2026-05-23 04:29:19,852 [INFO] src.preprocessing.cardiac_mri_segmentation: Exported FEBio file: data/febio/heart.feb
+2026-05-23 04:29:19,852 [INFO] src.digital_twin_pipeline:   Segmented volumes (mL): {'LV_BLOOD': np.float64(25.15625), 'LV_MYO': np.float64(143.3046875), 'RV_BLOOD': np.float64(64.12890625), 'RV_MYO': np.float64(0.0), 'LA': np.float64(86.2265625), 'RA': np.float64(75.19140625), 'AORTA': np.float64(0.0), 'PULMONARY': np.float64(0.0)}
+2026-05-23 04:29:19,852 [INFO] src.digital_twin_pipeline:   Volume mesh: 19998 tetrahedra
+2026-05-23 04:29:19,852 [INFO] src.digital_twin_pipeline: 
+[Module 2] Electrophysiology Simulation
+2026-05-23 04:29:19,852 [INFO] src.digital_twin_pipeline: --------------------------------------------------
+2026-05-23 04:29:19,853 [INFO] src.digital_twin_pipeline:   Running Aliev-Panfilov model (1D cable)...
+2026-05-23 04:29:19,853 [INFO] src.electrophysiology.electrophysiology_models: 1D cable: 100 cells, dx=0.2 mm, D=0.0001 mm²/ms
+2026-05-23 04:29:19,853 [INFO] src.electrophysiology.electrophysiology_models: Running monodomain: 20000 steps, dt=0.01 ms, duration=200.0 ms
+2026-05-23 04:29:24,786 [INFO] src.electrophysiology.electrophysiology_models: Conduction velocity: 0.00 m/s
+2026-05-23 04:29:24,787 [INFO] src.digital_twin_pipeline:   Running ten Tusscher 2006 model (single cell)...
+2026-05-23 04:29:24,787 [INFO] src.electrophysiology.electrophysiology_models: 1D cable: 1 cells, dx=0.1 mm, D=0.0001 mm²/ms
+2026-05-23 04:29:24,787 [INFO] src.electrophysiology.electrophysiology_models: Running monodomain: 25000 steps, dt=0.02 ms, duration=500.0 ms
+2026-05-23 04:29:25,167 [INFO] src.electrophysiology.electrophysiology_models: Conduction velocity: 0.00 m/s
+2026-05-23 04:29:25,168 [INFO] src.electrophysiology.electrophysiology_models: Generated OpenCARP config: configs/opencarp_ep.par
+2026-05-23 04:29:25,168 [INFO] src.digital_twin_pipeline:   AP CV: 0.000 m/s
+2026-05-23 04:29:25,168 [INFO] src.digital_twin_pipeline:   TT V_peak: nan mV
+2026-05-23 04:29:25,168 [INFO] src.digital_twin_pipeline: 
+[Module 3] Cardiac Mechanics & EM Coupling
+2026-05-23 04:29:25,168 [INFO] src.digital_twin_pipeline: --------------------------------------------------
+2026-05-23 04:29:25,297 [INFO] src.mechanics.cardiac_mechanics: Cardiac cycle: EDV=-694.6 mL, ESV=-inf mL, EF=0.0%, Peak P=0.0 kPa
+2026-05-23 04:29:25,298 [INFO] src.mechanics.cardiac_mechanics: Generated FEBio mechanics config: configs/febio_mechanics.feb
+2026-05-23 04:29:25,298 [INFO] src.digital_twin_pipeline:   EDV=-694.6 mL, ESV=-inf mL, EF=0.0%
+2026-05-23 04:29:25,298 [INFO] src.digital_twin_pipeline: 
+[Module 4] Inverse Parameter Estimation
+2026-05-23 04:29:25,299 [INFO] src.digital_twin_pipeline: --------------------------------------------------
+2026-05-23 04:29:25,300 [INFO] src.inverse.inverse_estimation: EKI iteration 0: cost=96339280.874752
+2026-05-23 04:29:25,301 [INFO] src.inverse.inverse_estimation: EKI iteration 5: cost=90862624.000000
+2026-05-23 04:29:25,302 [INFO] src.inverse.inverse_estimation: EKI iteration 10: cost=90862624.000000
+2026-05-23 04:29:25,302 [INFO] src.inverse.inverse_estimation: EKI iteration 15: cost=90862624.000000
+2026-05-23 04:29:25,303 [INFO] src.inverse.inverse_estimation: EKI iteration 20: cost=90862624.000000
+2026-05-23 04:29:25,304 [INFO] src.inverse.inverse_estimation: EKI iteration 25: cost=90862624.000000
+2026-05-23 04:29:25,305 [INFO] src.inverse.inverse_estimation: ECG inverse: estimated params={'cv_long': np.float64(0.30000000000000004), 'cv_trans': np.float64(0.05000000000000002), 'apd_base': np.float64(400.0), 'apd_dispersion': np.float64(80.0)}
+2026-05-23 04:29:25,306 [INFO] src.inverse.inverse_estimation: EKI iteration 0: cost=47.091481
+2026-05-23 04:29:25,307 [INFO] src.inverse.inverse_estimation: EKI iteration 5: cost=6.567616
+2026-05-23 04:29:25,308 [INFO] src.inverse.inverse_estimation: EKI iteration 10: cost=6.483391
+2026-05-23 04:29:25,309 [INFO] src.inverse.inverse_estimation: EKI iteration 15: cost=6.425627
+2026-05-23 04:29:25,310 [INFO] src.inverse.inverse_estimation: EKI iteration 20: cost=6.394591
+2026-05-23 04:29:25,311 [INFO] src.inverse.inverse_estimation: Mechanics inverse: T_ref=90.5 kPa, EF error=6.382
+2026-05-23 04:29:25,311 [INFO] src.digital_twin_pipeline:   ECG inverse converged: False
+2026-05-23 04:29:25,311 [INFO] src.digital_twin_pipeline:   Mechanics inverse converged: False
+2026-05-23 04:29:25,311 [INFO] src.digital_twin_pipeline: 
+[Module 5] Arrhythmia Risk Assessment
+2026-05-23 04:29:25,311 [INFO] src.digital_twin_pipeline: --------------------------------------------------
+2026-05-23 04:29:25,315 [INFO] src.digital_twin_pipeline:   Risk score: 0.460 (moderate)
+2026-05-23 04:29:25,315 [INFO] src.digital_twin_pipeline:   Re-entry inducible: False
+2026-05-23 04:29:25,315 [INFO] src.digital_twin_pipeline: 
+[Module 6] AF Ablation Case Study
+2026-05-23 04:29:25,315 [INFO] src.digital_twin_pipeline: --------------------------------------------------
+2026-05-23 04:29:25,316 [INFO] src.ablation.ablation_prediction: Starting AF ablation case study for patient DT_DEMO_001
+2026-05-23 04:29:25,316 [INFO] src.ablation.ablation_prediction: Testing strategy: pulmonary_vein_isolation
+2026-05-23 04:29:25,318 [INFO] src.ablation.ablation_prediction: Applied 48 lesions, 84 elements ablated (4.2%)
+2026-05-23 04:29:25,318 [INFO] src.ablation.ablation_prediction:   pulmonary_vein_isolation: terminated=False, gaps=4, recurrence=0.33
+2026-05-23 04:29:25,318 [INFO] src.ablation.ablation_prediction: Testing strategy: pvi_plus_roof_line
+2026-05-23 04:29:25,320 [INFO] src.ablation.ablation_prediction: Applied 56 lesions, 85 elements ablated (4.2%)
+2026-05-23 04:29:25,320 [INFO] src.ablation.ablation_prediction:   pvi_plus_roof_line: terminated=False, gaps=4, recurrence=0.28
+2026-05-23 04:29:25,321 [INFO] src.ablation.ablation_prediction: Testing strategy: pvi_plus_posterior_wall
+2026-05-23 04:29:25,323 [INFO] src.ablation.ablation_prediction: Applied 58 lesions, 150 elements ablated (7.5%)
+2026-05-23 04:29:25,323 [INFO] src.ablation.ablation_prediction:   pvi_plus_posterior_wall: terminated=False, gaps=4, recurrence=0.25
+2026-05-23 04:29:25,323 [INFO] src.ablation.ablation_prediction: Testing strategy: hybrid_pvi_substrate
+2026-05-23 04:29:25,325 [INFO] src.ablation.ablation_prediction: Applied 56 lesions, 85 elements ablated (4.2%)
+2026-05-23 04:29:25,325 [INFO] src.ablation.ablation_prediction:   hybrid_pvi_substrate: terminated=False, gaps=4, recurrence=0.24
+2026-05-23 04:29:25,325 [INFO] src.digital_twin_pipeline:   Optimal strategy: hybrid_pvi_substrate
+2026-05-23 04:29:25,326 [INFO] src.digital_twin_pipeline:   Optimal 1-yr recurrence: 23.9%
+2026-05-23 04:29:25,326 [INFO] src.digital_twin_pipeline: 
+Results saved to results/pipeline_results.json
+2026-05-23 04:29:25,758 [INFO] cardiac_dt:   Saved fig1_architecture.png
+2026-05-23 04:29:26,012 [INFO] cardiac_dt:   Saved fig2_hemodynamics.png
+2026-05-23 04:30:13,667 [INFO] src.digital_twin_pipeline: ============================================================
+2026-05-23 04:30:13,667 [INFO] src.digital_twin_pipeline: Cardiac Digital Twin Pipeline - Patient DT_DEMO_001
+2026-05-23 04:30:13,667 [INFO] src.digital_twin_pipeline: ============================================================
+2026-05-23 04:30:13,667 [INFO] src.digital_twin_pipeline: 
+[Module 1] Image Processing & Mesh Generation
+2026-05-23 04:30:13,667 [INFO] src.digital_twin_pipeline: --------------------------------------------------
+2026-05-23 04:30:13,709 [INFO] src.preprocessing.cardiac_mri_segmentation: Starting segmentation for patient DT_DEMO_001
+2026-05-23 04:30:13,746 [INFO] src.preprocessing.cardiac_mri_segmentation: Preprocessed volume: shape=(128, 128, 64), range=[-2.60, 2.61]
+2026-05-23 04:30:13,789 [INFO] src.preprocessing.cardiac_mri_segmentation: ROI shape: (128, 128, 64)
+2026-05-23 04:30:13,803 [INFO] src.preprocessing.cardiac_mri_segmentation: Computed volumes (mL): {'LV_BLOOD': np.float64(25.15625), 'LV_MYO': np.float64(143.3046875), 'RV_BLOOD': np.float64(64.12890625), 'RV_MYO': np.float64(0.0), 'LA': np.float64(86.2265625), 'RA': np.float64(75.19140625), 'AORTA': np.float64(0.0), 'PULMONARY': np.float64(0.0)}
+2026-05-23 04:30:13,820 [INFO] src.preprocessing.cardiac_mri_segmentation: Surface mesh: 5000 vertices, 10000 faces, mean quality=0.850
+2026-05-23 04:30:13,821 [INFO] src.preprocessing.cardiac_mri_segmentation: Volume mesh: 6666 vertices, 19998 tetrahedra, min_dihedral=18.5°
+2026-05-23 04:30:13,824 [INFO] src.preprocessing.cardiac_mri_segmentation: Assigned fiber orientations: 19998 elements, angle range [-60°, 60°]
+2026-05-23 04:30:13,828 [INFO] src.preprocessing.cardiac_mri_segmentation: Exported OpenCARP files to data/opencarp
+2026-05-23 04:30:13,829 [INFO] src.preprocessing.cardiac_mri_segmentation: Exported FEBio file: data/febio/heart.feb
+2026-05-23 04:30:13,829 [INFO] src.digital_twin_pipeline:   Segmented volumes (mL): {'LV_BLOOD': np.float64(25.15625), 'LV_MYO': np.float64(143.3046875), 'RV_BLOOD': np.float64(64.12890625), 'RV_MYO': np.float64(0.0), 'LA': np.float64(86.2265625), 'RA': np.float64(75.19140625), 'AORTA': np.float64(0.0), 'PULMONARY': np.float64(0.0)}
+2026-05-23 04:30:13,830 [INFO] src.digital_twin_pipeline:   Volume mesh: 19998 tetrahedra
+2026-05-23 04:30:13,830 [INFO] src.digital_twin_pipeline: 
+[Module 2] Electrophysiology Simulation
+2026-05-23 04:30:13,831 [INFO] src.digital_twin_pipeline: --------------------------------------------------
+2026-05-23 04:30:13,831 [INFO] src.digital_twin_pipeline:   Running Aliev-Panfilov model (1D cable)...
+2026-05-23 04:30:13,831 [INFO] src.electrophysiology.electrophysiology_models: 1D cable: 100 cells, dx=0.2 mm, D=0.0001 mm²/ms
+2026-05-23 04:30:13,832 [INFO] src.electrophysiology.electrophysiology_models: Running monodomain: 20000 steps, dt=0.01 ms, duration=200.0 ms
+2026-05-23 04:30:22,982 [INFO] src.electrophysiology.electrophysiology_models: Conduction velocity: 0.00 m/s
+2026-05-23 04:30:22,982 [INFO] src.digital_twin_pipeline:   Running ten Tusscher 2006 model (single cell)...
+2026-05-23 04:30:22,982 [INFO] src.electrophysiology.electrophysiology_models: 1D cable: 1 cells, dx=0.1 mm, D=0.0001 mm²/ms
+2026-05-23 04:30:22,982 [INFO] src.electrophysiology.electrophysiology_models: Running monodomain: 25000 steps, dt=0.02 ms, duration=500.0 ms
+2026-05-23 04:30:23,481 [INFO] src.electrophysiology.electrophysiology_models: Conduction velocity: 0.00 m/s
+2026-05-23 04:30:23,482 [INFO] src.electrophysiology.electrophysiology_models: Generated OpenCARP config: configs/opencarp_ep.par
+2026-05-23 04:30:23,482 [INFO] src.digital_twin_pipeline:   AP CV: 0.000 m/s
+2026-05-23 04:30:23,482 [INFO] src.digital_twin_pipeline:   TT V_peak: nan mV
+2026-05-23 04:30:23,482 [INFO] src.digital_twin_pipeline: 
+[Module 3] Cardiac Mechanics & EM Coupling
+2026-05-23 04:30:23,482 [INFO] src.digital_twin_pipeline: --------------------------------------------------
+2026-05-23 04:30:23,619 [INFO] src.mechanics.cardiac_mechanics: Cardiac cycle: EDV=219.0 mL, ESV=120.0 mL, EF=45.2%, Peak P=0.0 kPa
+2026-05-23 04:30:23,620 [INFO] src.mechanics.cardiac_mechanics: Generated FEBio mechanics config: configs/febio_mechanics.feb
+2026-05-23 04:30:23,621 [INFO] src.digital_twin_pipeline:   EDV=219.0 mL, ESV=120.0 mL, EF=45.2%
+2026-05-23 04:30:23,621 [INFO] src.digital_twin_pipeline: 
+[Module 4] Inverse Parameter Estimation
+2026-05-23 04:30:23,621 [INFO] src.digital_twin_pipeline: --------------------------------------------------
+2026-05-23 04:30:23,622 [INFO] src.inverse.inverse_estimation: EKI iteration 0: cost=96339280.874752
+2026-05-23 04:30:23,623 [INFO] src.inverse.inverse_estimation: EKI iteration 5: cost=90862624.000000
+2026-05-23 04:30:23,623 [INFO] src.inverse.inverse_estimation: EKI iteration 10: cost=90862624.000000
+2026-05-23 04:30:23,624 [INFO] src.inverse.inverse_estimation: EKI iteration 15: cost=90862624.000000
+2026-05-23 04:30:23,625 [INFO] src.inverse.inverse_estimation: EKI iteration 20: cost=90862624.000000
+2026-05-23 04:30:23,626 [INFO] src.inverse.inverse_estimation: EKI iteration 25: cost=90862624.000000
+2026-05-23 04:30:23,627 [INFO] src.inverse.inverse_estimation: ECG inverse: estimated params={'cv_long': np.float64(0.30000000000000004), 'cv_trans': np.float64(0.05000000000000002), 'apd_base': np.float64(400.0), 'apd_dispersion': np.float64(80.0)}
+2026-05-23 04:30:23,627 [INFO] src.inverse.inverse_estimation: EKI iteration 0: cost=47.091481
+2026-05-23 04:30:23,628 [INFO] src.inverse.inverse_estimation: EKI iteration 5: cost=6.567616
+2026-05-23 04:30:23,629 [INFO] src.inverse.inverse_estimation: EKI iteration 10: cost=6.483391
+2026-05-23 04:30:23,630 [INFO] src.inverse.inverse_estimation: EKI iteration 15: cost=6.425627
+2026-05-23 04:30:23,632 [INFO] src.inverse.inverse_estimation: EKI iteration 20: cost=6.394591
+2026-05-23 04:30:23,633 [INFO] src.inverse.inverse_estimation: Mechanics inverse: T_ref=90.5 kPa, EF error=6.382
+2026-05-23 04:30:23,633 [INFO] src.digital_twin_pipeline:   ECG inverse converged: False
+2026-05-23 04:30:23,633 [INFO] src.digital_twin_pipeline:   Mechanics inverse converged: False
+2026-05-23 04:30:23,633 [INFO] src.digital_twin_pipeline: 
+[Module 5] Arrhythmia Risk Assessment
+2026-05-23 04:30:23,633 [INFO] src.digital_twin_pipeline: --------------------------------------------------
+2026-05-23 04:30:23,637 [INFO] src.digital_twin_pipeline:   Risk score: 0.460 (moderate)
+2026-05-23 04:30:23,637 [INFO] src.digital_twin_pipeline:   Re-entry inducible: False
+2026-05-23 04:30:23,637 [INFO] src.digital_twin_pipeline: 
+[Module 6] AF Ablation Case Study
+2026-05-23 04:30:23,637 [INFO] src.digital_twin_pipeline: --------------------------------------------------
+2026-05-23 04:30:23,638 [INFO] src.ablation.ablation_prediction: Starting AF ablation case study for patient DT_DEMO_001
+2026-05-23 04:30:23,638 [INFO] src.ablation.ablation_prediction: Testing strategy: pulmonary_vein_isolation
+2026-05-23 04:30:23,640 [INFO] src.ablation.ablation_prediction: Applied 48 lesions, 84 elements ablated (4.2%)
+2026-05-23 04:30:23,640 [INFO] src.ablation.ablation_prediction:   pulmonary_vein_isolation: terminated=False, gaps=4, recurrence=0.33
+2026-05-23 04:30:23,640 [INFO] src.ablation.ablation_prediction: Testing strategy: pvi_plus_roof_line
+2026-05-23 04:30:23,643 [INFO] src.ablation.ablation_prediction: Applied 56 lesions, 85 elements ablated (4.2%)
+2026-05-23 04:30:23,643 [INFO] src.ablation.ablation_prediction:   pvi_plus_roof_line: terminated=False, gaps=4, recurrence=0.28
+2026-05-23 04:30:23,643 [INFO] src.ablation.ablation_prediction: Testing strategy: pvi_plus_posterior_wall
+2026-05-23 04:30:23,645 [INFO] src.ablation.ablation_prediction: Applied 58 lesions, 150 elements ablated (7.5%)
+2026-05-23 04:30:23,645 [INFO] src.ablation.ablation_prediction:   pvi_plus_posterior_wall: terminated=False, gaps=4, recurrence=0.25
+2026-05-23 04:30:23,645 [INFO] src.ablation.ablation_prediction: Testing strategy: hybrid_pvi_substrate
+2026-05-23 04:30:23,648 [INFO] src.ablation.ablation_prediction: Applied 56 lesions, 85 elements ablated (4.2%)
+2026-05-23 04:30:23,648 [INFO] src.ablation.ablation_prediction:   hybrid_pvi_substrate: terminated=False, gaps=4, recurrence=0.24
+2026-05-23 04:30:23,649 [INFO] src.digital_twin_pipeline:   Optimal strategy: hybrid_pvi_substrate
+2026-05-23 04:30:23,649 [INFO] src.digital_twin_pipeline:   Optimal 1-yr recurrence: 23.9%
+2026-05-23 04:30:23,650 [INFO] src.digital_twin_pipeline: 
+Results saved to results/pipeline_results.json
+2026-05-23 04:30:24,109 [INFO] cardiac_dt:   Saved fig1_architecture.png
+2026-05-23 04:30:24,380 [INFO] cardiac_dt:   Saved fig2_hemodynamics.png
+2026-05-23 04:30:24,808 [INFO] cardiac_dt:   Saved fig3_arrhythmia_risk.png
+2026-05-23 04:30:25,119 [INFO] cardiac_dt:   Saved fig4_ablation_comparison.png

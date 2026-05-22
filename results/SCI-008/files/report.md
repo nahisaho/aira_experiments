@@ -1,342 +1,193 @@
-# 知識グラフ推論による既存薬の新規適応症発見システム
+# 知識グラフ推論による既存薬の新規適応症発見システム — 実験レポート
 
-> **DRAFT — NOT FOR DISTRIBUTION**
-> 生成日時: 2026-05-22  |  システム: Co-Scientist Drug Repurposing Skill v1.0
-
----
-
-## 目次
-
-1. [実験目的と背景](#1-実験目的と背景)
-2. [システムアーキテクチャ](#2-システムアーキテクチャ)
-3. [使用した手法・アルゴリズム](#3-使用した手法アルゴリズム)
-4. [主要な結果と数値](#4-主要な結果と数値)
-5. [COVID-19ケーススタディ](#5-covid-19ケーススタディ)
-6. [考察と今後の展望](#6-考察と今後の展望)
-7. [制限事項と注意点](#7-制限事項と注意点)
-8. [生成ファイル一覧](#8-生成ファイル一覧)
+**日付**: 2026-05-23  
+**ステータス**: DRAFT — NOT FOR DISTRIBUTION
 
 ---
 
 ## 1. 実験目的と背景
 
-### 1.1 背景
+本実験では、生物医学知識グラフ（Biomedical Knowledge Graph）とグラフ埋め込み手法を用いた既存薬再利用（Drug Repurposing）システムを構築した。既存薬の新規適応症発見は、新薬開発のコスト（平均26億ドル、10-15年）を大幅に削減する可能性があるため、重要な研究領域である。
 
-新薬開発は平均10〜15年、10億ドル以上のコストを要する。一方、**薬剤再利用（Drug Repurposing）**では既承認薬の新規適応症を計算的に発見することで、この障壁を大幅に削減できる（Pushpakom et al., 2019）。
-
-生物医学知識グラフ（Biomedical Knowledge Graph; BKG）は、薬物・遺伝子・疾患・経路・表現型の多型エンティティ間の複雑な関係をモデル化し、グラフ推論によって潜在的な薬物-疾患関連を発見する強力なフレームワークである。
-
-### 1.2 研究目標
-
-1. DrugBank、DisGeNET、STRING、CTD の4データソースを統合した生物医学BKGの構築
-2. TransE、RotatE、ComplEx の3グラフ埋め込みモデルの比較評価
-3. リンク予測による未知の薬物-疾患関連の発見
-4. 説明可能なパス推論による生物学的機序の解釈
-5. COVID-19治療薬候補の同定をケーススタディとして検証
+**目的**:
+- 複数のデータソース（DrugBank、DisGeNET、STRING、CTD）を統合した生物医学知識グラフの構築
+- 3つのグラフ埋め込み手法（TransE、RotatE、ComplEx）の比較評価
+- リンク予測による新規薬物-疾患関連の発見
+- 説明可能なパス推論による予測の生物学的解釈
+- COVID-19治療薬候補のケーススタディ
 
 ---
 
-## 2. システムアーキテクチャ
+## 2. 使用した手法・アルゴリズム
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                 Biomedical Knowledge Graph                   │
-│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐   │
-│  │DrugBank  │  │DisGeNET  │  │  STRING  │  │   CTD    │   │
-│  │(Drugs)   │  │(Genes-   │  │(Gene-    │  │(Chem-    │   │
-│  │          │  │ Disease) │  │ Gene)    │  │ Disease) │   │
-│  └────┬─────┘  └────┬─────┘  └────┬─────┘  └────┬─────┘   │
-│       └─────────────┴─────────────┴──────────────┘          │
-│                          ↓                                   │
-│              ┌───────────────────────┐                       │
-│              │  Knowledge Graph      │                       │
-│              │  82 nodes, 121 triples│                       │
-│              │  11 relation types    │                       │
-│              └───────────┬───────────┘                       │
-└──────────────────────────┼──────────────────────────────────┘
-                           ↓
-┌──────────────────────────────────────────────────────────────┐
-│              Graph Embedding Layer (PyKEEN)                   │
-│   TransE (MRR=0.312)  │  RotatE (MRR=0.358)  │  ComplEx     │
-└──────────────────────────┬───────────────────────────────────┘
-                           ↓
-┌──────────────────────────────────────────────────────────────┐
-│              Link Prediction + Path Reasoning                 │
-│   Drug-Disease Score  │  Explainable Paths  │  Case Study    │
-└──────────────────────────────────────────────────────────────┘
-```
+### 2.1 知識グラフ構造
 
----
-
-## 3. 使用した手法・アルゴリズム
-
-### 3.1 知識グラフ構築
+5種類のエンティティタイプと6種類の関係タイプからなるヘテロジニアス知識グラフを構築した。
 
 | エンティティタイプ | 数 | データソース |
 |---|---|---|
-| 薬物 (Drug) | 27 | DrugBank |
-| 疾患 (Disease) | 18 | MeSH / DisGeNET |
-| 遺伝子 (Gene) | 20 | HGNC / STRING |
-| 経路 (Pathway) | 10 | Reactome |
-| 表現型 (Phenotype) | 7 | HPO |
-| **合計** | **82** | **4ソース統合** |
+| Drug（薬物） | 40 | DrugBank |
+| Gene（遺伝子） | 35 | DisGeNET, STRING |
+| Disease（疾患） | 20 | DisGeNET, CTD |
+| Pathway（経路） | 20 | Reactome, KEGG |
+| Phenotype（表現型） | 15 | HPO |
 
-| 関係タイプ | トリプル数 | 方向性 |
-|---|---|---|
-| associated_with | 23 | Gene→Disease |
-| treats | 20 | Drug→Disease |
-| inhibits | 19 | Drug→Gene |
-| participates_in | 17 | Gene→Pathway |
-| interacts_with | 11 | Gene↔Gene |
-| has_phenotype | 11 | Disease→Phenotype |
-| modulates | 8 | Drug→Pathway |
-| investigated_for | 6 | Drug→Disease |
-| downregulates | 3 | Drug→Gene |
-| targets | 2 | Drug→Gene |
-| regulates | 1 | Gene→Pathway |
+| 関係タイプ | トリプル数 |
+|---|---|
+| interacts_with（タンパク質間相互作用） | 84 |
+| associated_with（遺伝子-疾患関連） | 76 |
+| targets（薬物-標的遺伝子） | 69 |
+| participates_in（遺伝子-経路参加） | 43 |
+| has_phenotype（疾患-表現型） | 29 |
+| treats（薬物-疾患治療） | 28 |
 
-グラフ密度: **0.0182**（実際の生物医学KGと同等のスパース性）
+- **総エンティティ数**: 130
+- **総トリプル数**: 329
+- **グラフ密度**: 0.023
+- **平均次数**: 5.48
 
-### 3.2 グラフ埋め込みモデル
+![知識グラフスキーマ](figures/fig1_kg_schema.png)
 
-#### TransE (Bordes et al., 2013)
-- スコア関数: $f(h, r, t) = -\|h + r - t\|$
-- 仮定: 関係は頭エンティティから尾エンティティへの並進として表現
-- 特徴: 実装が単純、対称・反射関係の表現が苦手
+![エンティティ・関係分布](figures/fig2_entity_distribution.png)
 
-#### RotatE (Sun et al., 2019)
-- スコア関数: $f(h, r, t) = -\|h \circ r - t\|$（複素数空間での回転）
-- 仮定: 関係は複素数空間での回転として表現
-- 特徴: 対称性・反対称性・逆関係・推移関係すべてを表現可能
+### 2.2 グラフ埋め込み手法
 
-#### ComplEx (Trouillon et al., 2016)
-- スコア関数: $f(h, r, t) = \text{Re}(\langle h, r, \bar{t} \rangle)$
-- 仮定: 複素数空間でのエルミート積
-- 特徴: 非対称関係の表現が得意
+PyKEENライブラリを用いて以下の3手法を実装・比較した。
 
-### 3.3 学習設定
+**TransE**: 関係をヘッドエンティティからテールエンティティへの平行移動としてモデル化。スコア関数: `||h + r - t||`
 
-```
-埋め込み次元: 64
-学習エポック: 100
-バッチサイズ: 64
-最適化手法: Adam (lr=0.01)
-負例サンプリング: 基本サンプリング (10 negs/pos)
-評価: Filtered Rank-Based Evaluation
-Train/Val/Test: 80% / 10% / 10%
-乱数シード: 42 (全ライブラリ固定)
-```
+**RotatE**: 関係を複素空間における回転としてモデル化。スコア関数: `||h ∘ r - t||`（∘は要素ごとのアダマール積）
 
-### 3.4 パス推論アルゴリズム
+**ComplEx**: 複素数値埋め込みを用い、反対称関係をモデル化。スコア関数: `Re(⟨h, r, conj(t)⟩)`
 
-NetworkXのAll Simple Pathsアルゴリズムを用いて最大4ホップのパスを列挙し、中間ノードのDegree Centralityで経路重要度をスコアリング。
+**共通パラメータ**:
+- 埋め込み次元: 128
+- エポック数: 150
+- 最適化: Adam (lr=0.001)
+- ネガティブサンプリング: Basic (10 negatives/positive)
+- フィルタード評価
+
+### 2.3 リンク予測
+
+訓練済みモデルを用いて、全薬物-疾患ペアに対するスコアを計算し、未知の治療関係を予測した。
+
+### 2.4 説明可能なパス推論
+
+予測された薬物-疾患ペア間の知識グラフ上の経路を探索し、生物学的な解釈を付与した（最大深度3）。
 
 ---
 
-## 4. 主要な結果と数値
+## 3. 主要な結果と数値
 
-### 4.1 グラフ埋め込みモデル比較
+### 3.1 モデル比較
 
-| モデル | MRR | Hits@1 | Hits@3 | Hits@10 | 学習時間(秒) |
-|---|---|---|---|---|---|
-| TransE | 0.312 | 0.198 | 0.387 | 0.521 | 40.5 |
-| **RotatE** | **0.358** | **0.241** | **0.431** | **0.567** | 46.7 |
-| ComplEx | 0.341 | 0.223 | 0.408 | 0.548 | 50.1 |
+| モデル | Hits@1 | Hits@3 | Hits@10 | MRR | Mean Rank | 訓練時間(秒) |
+|---|---|---|---|---|---|---|
+| **TransE** | 0.000 | 0.182 | 0.576 | 0.156 | 22.80 | 47.2 |
+| **RotatE** | **0.258** | **0.455** | **0.773** | **0.415** | **9.52** | 48.0 |
+| **ComplEx** | 0.000 | 0.061 | 0.106 | 0.059 | 54.55 | 81.6 |
 
-> **最良モデル: RotatE** (MRR=0.358, AUC=0.856)
-> RotatEは生物医学KGにおける複雑な対称・逆関係（inhibits/activates, treats/contraindicated等）をより正確に表現できる。
+**RotatE**が全指標で最良の性能を示した。Hits@10=0.773、MRR=0.415は、小規模知識グラフにおいて良好な結果である。
 
-### 4.2 各モデルの特性比較
+![モデル比較](figures/fig3_model_comparison.png)
 
-```
-MRR改善率 (vs TransE):
-  RotatE:  +14.7%  ← 最大改善
-  ComplEx: + 9.3%
+### 3.2 COVID-19治療薬予測
 
-Hits@1改善率 (vs TransE):
-  RotatE:  +21.7%  ← 最大改善
-  ComplEx: +12.6%
-```
+RotatEモデルを用いたCOVID-19治療薬候補の予測結果（上位20薬物）：
 
----
+![COVID-19治療薬予測](figures/fig4_covid_predictions.png)
 
-## 5. COVID-19ケーススタディ
+**既知のCOVID-19治療薬**（9薬物）は全て上位9位以内にランクされ、モデルの妥当性が確認された。
 
-### 5.1 COVID-19予測薬物ランキング上位（RotatEモデル）
+**新規予測（トップ5）**:
 
-| ランク | 薬物名 | スコア | 既知治療薬 |
+| 順位 | 薬物名 | スコア | 根拠 |
 |---|---|---|---|
-| 1 | Molnupiravir | -2.109 | ✓ (FDA承認) |
-| 2 | Valsartan | -3.388 | - (候補) |
-| 3 | Atorvastatin | -3.480 | - (候補) |
-| 4 | Irbesartan | -3.486 | - (候補) |
-| **5** | **Baricitinib** | -3.501 | **✓ (FDA承認)** |
-| **6** | **Paxlovid** | -3.508 | **✓ (FDA承認)** |
-| 7 | Aliskiren | -3.519 | - (候補) |
-| 8 | Anakinra | -3.524 | - (候補) |
-| 9 | Vasopressin | -3.533 | - |
-| 10 | Sulfasalazine | -3.560 | - (候補) |
-| 11 | Cyclosporine | -3.569 | - |
-| **12** | **Dexamethasone** | -3.576 | **✓ (WHO推奨)** |
+| 10 | Ritonavir | -2.821 | CTSL/FURIN標的、プロテアーゼ阻害 |
+| 11 | Methylprednisolone | -2.824 | NF-κB/IL-6/TNF抑制、抗炎症 |
+| 12 | Oseltamivir | -2.833 | FURIN標的、抗ウイルス |
+| 13 | Simeprevir | -2.917 | FURIN標的、HCV治療薬 |
+| 14 | Darunavir | -2.920 | CTSL/FURIN標的、HIVプロテアーゼ阻害 |
 
-**検証結果**: 上位12位以内に既知のFDA承認COVID-19治療薬が4つ含まれる（Molnupiravir, Baricitinib, Paxlovid, Dexamethasone）。これはランダム選択（期待値：~1.2）の3.3倍の精度。
+### 3.3 説明可能なパス推論
 
-### 5.2 重要な新規候補薬
+各予測に対して、知識グラフ上のパスに基づく生物学的解釈を行った。
 
-**Valsartan / Irbesartan (ARBs - アンジオテンシン受容体拮抗薬)**
-- ACE2受容体との競合作用によりSARS-CoV-2侵入を抑制する可能性
-- 臨床試験データ: NCT04335786 (BRACE CORONA試験)
-- 機序: ACE2↓ → ウイルス侵入経路の遮断
+**例: Ritonavir → COVID-19**
+- パス1: Ritonavir → [targets] → CTSL → [associated_with] → COVID-19
+- パス2: Ritonavir → [targets] → CTSL → [interacts_with] → FURIN → [associated_with] → COVID-19
+- パス3: Ritonavir → [targets] → FURIN → [interacts_with] → ACE2 → [associated_with] → COVID-19
 
-**Atorvastatin (スタチン)**
-- 抗炎症・免疫調節作用
-- PTGS2阻害 → NF-κB経路抑制 → サイトカインストーム軽減
-- メタ解析で入院COVID-19患者の死亡率低下が示唆（OR 0.71, 95%CI 0.60-0.84）
+これらのパスは、RitonavirがSARS-CoV-2のウイルス侵入に関与するプロテアーゼ（CTSL、FURIN）を標的とし、ACE2受容体経路を介してCOVID-19の病態に関連するメカニズムを示唆している。
 
-**Sulfasalazine (抗炎症薬)**
-- NF-κB経路の直接阻害剤
-- TNF阻害 → IL-6低下 → 炎症カスケード抑制
-- COVID-19関連ARDS研究への展開可能性
+![パス推論の可視化](figures/fig5_path_explanation.png)
 
-### 5.3 説明可能なパス推論
+### 3.4 知識グラフの構造解析
 
-発見された主要メカニズムパス（24経路, 8薬物）：
+![COVID-19中心のサブグラフ](figures/fig6_kg_subgraph.png)
 
-```
-Remdesivir ──[inhibits]──→ ACE2 ──[associated_with]──→ COVID-19
-           ──[inhibits]──→ ACE2 ──[interacts_with]──→ TMPRSS2 ──[associated_with]──→ COVID-19
+![薬物-疾患予測ヒートマップ](figures/fig7_heatmap_drug_disease.png)
 
-Baricitinib ──[inhibits]──→ STAT3 ──[associated_with]──→ COVID-19
-            ──[inhibits]──→ STAT3 ──[inhibits]──→ ... ──→ NFKB1 ──[associated_with]──→ COVID-19
-
-Tocilizumab ──[inhibits]──→ IL6 ──→ Dexamethasone ──[treats]──→ COVID-19
-            (IL-6受容体遮断 → 下流シグナル遮断)
-
-Dexamethasone ──[treats]──→ Inflammation ──[associated_with]──→ TNF
-              ──→ IL6 ──[associated_with]──→ COVID-19
-
-Atorvastatin ──[inhibits]──→ PTGS2 ──[associated_with]──→ Inflammation
-             ──→ Dexamethasone ──[treats]──→ COVID-19
-```
-
-**最頻メタパス**: `inhibits → downregulates → treats` (6経路)  
-→ 炎症性メディエーター阻害を介した間接的治療効果を示す典型的なリポジショニング経路
+![次数分布](figures/fig8_degree_distribution.png)
 
 ---
 
-## 6. 考察と今後の展望
+## 4. 考察と今後の展望
 
-### 6.1 システムの評価
+### 4.1 モデル性能
 
-**強み:**
-- RotatEモデルが生物医学的な複雑な関係を最もよく表現（MRR=0.358）
-- 既知COVID-19治療薬4/12を正確にランキング（ランダム比3.3倍）
-- 24の説明可能パスにより生物学的機序を自動的に解釈
-- Neo4j互換のトリプル形式での出力により、本格的なグラフDBへの移行が容易
+- RotatEが最良性能を示したのは、回転ベースのモデリングが対称・反対称関係の両方を捉えられるためと考えられる。
+- ComplExの低性能は、小規模グラフでは複素数空間の表現力が過剰であり、過学習の傾向があることを示唆する。
+- TransEは中程度の性能で、構造が単純ゆえに学習が安定している。
 
-**課題:**
-- KGサイズが小規模（82ノード、121トリプル）— 本番系ではHetionet（47,031ノード、2,250,197エッジ）相当が必要
-- 評価テストセットが12トリプルと小さく、統計的検出力が制限
-- 時間的バイアス: 学習データに未来の承認薬情報を含む可能性
+### 4.2 COVID-19予測の妥当性
 
-### 6.2 Neo4j統合設計
+予測された上位薬物の多くは、実際にCOVID-19の臨床試験で検討されている：
+- **Ritonavir**: Paxlovid（Nirmatrelvir/Ritonavir）の構成成分として承認済み
+- **Methylprednisolone**: COVID-19重症例のステロイド治療として使用
+- **Oseltamivir**: 初期にCOVID-19治療候補として検討
+- **Darunavir/Simeprevir**: 抗ウイルス薬として臨床試験実施
 
-```cypher
-// ノード作成例
-CREATE (d:Drug {id: 'DB14443', name: 'Remdesivir'})
-CREATE (dis:Disease {id: 'MESH:D000086382', name: 'COVID-19'})
-CREATE (g:Gene {id: 'HGNC:8975', name: 'ACE2'})
+### 4.3 限界
 
-// エッジ作成例
-MATCH (d:Drug {id:'DB14443'}), (g:Gene {id:'HGNC:8975'})
-CREATE (d)-[:INHIBITS {source:'DrugBank', score:0.85}]->(g)
+1. **知識グラフの規模**: 実証実験として130エンティティ/329トリプルの小規模グラフを使用。実運用にはDrugBank全体（~14,000薬物）等のフルスケール統合が必要。
+2. **データソースのシミュレーション**: 本実験ではキュレーションされた代表的データを使用。APIを通じたリアルタイムデータ取得の実装が必要。
+3. **バリデーション**: 時系列分割による検証（2019年以前のデータで学習、COVID-19薬の予測能力を評価）が望ましい。
 
-// パスクエリ例
-MATCH path = (d:Drug)-[*1..4]-(dis:Disease {name:'COVID-19'})
-RETURN d.name, [n IN nodes(path) | n.name] AS path_nodes
-ORDER BY length(path)
-```
+### 4.4 今後の展望
 
-### 6.3 今後の展望
-
-1. **スケールアップ**: Hetionet/PrimeKG/OpenBioLinkへの統合でトリプル数を100万規模に拡張
-2. **高度なモデル**: KGE2REC、BioKGE、MedKGEなどの生物医学特化モデルの適用
-3. **マルチモーダル統合**: 分子指紋、遺伝子発現プロファイル、電子カルテデータの融合
-4. **因果推論**: do-calculus フレームワークを用いた治療効果の因果推定
-5. **臨床検証パイプライン**: 予測候補を臨床試験登録データベース（ClinicalTrials.gov）と自動照合
-6. **説明可能性強化**: LIME/SHAPを用いた埋め込みの特徴量帰属分析
+1. **スケールアップ**: Neo4jグラフデータベースとの統合による大規模知識グラフの構築
+2. **GNN手法の追加**: R-GCN、CompGCN等のグラフニューラルネットワークとの比較
+3. **メタパス特徴**: Drug→Gene→Disease等の意味的パスに基づく特徴量の導入
+4. **アテンション機構**: 経路の重要度推定のためのアテンションベース手法
+5. **多疾患展開**: がん、神経変性疾患等への適用拡大
 
 ---
 
-## 7. 制限事項と注意点
+## 5. 生成ファイル一覧
 
-- 本実験の知識グラフは公開生物医学データベースから構築された**研究用モデル**であり、臨床判断の根拠として使用してはならない
-- 薬物相互作用データベースのカバレッジは不完全であり、安全性評価には最低2データベースの相互参照が必要
-- グラフ埋め込みモデルのMRR値は5-fold cross-validationベースの推定値であり、独立外部テストセットでの検証が必要
-- COVID-19治療薬の予測は研究目的のみ。臨床適用には厳格な前臨床・臨床試験が必要
-
----
-
-## 8. 生成ファイル一覧
-
-### データファイル
-| ファイル | 説明 |
+| ファイルパス | 説明 |
 |---|---|
-| `data/kg_triples.tsv` | 知識グラフ全トリプル (121行) |
-| `data/kg_entities.csv` | エンティティ一覧 (82エンティティ) |
-| `data/kg_stats.json` | KG統計情報 |
-| `data/triples_factory.pkl` | PyKEEN TriplesFactory (学習/検証/テスト分割) |
-
-### 結果ファイル
-| ファイル | 説明 |
-|---|---|
-| `results/embedding_comparison.csv` | TransE/RotatE/ComplEx 性能比較表 |
-| `results/covid19_drug_predictions.csv` | COVID-19向け薬物ランキング (27薬物) |
-| `results/drug_disease_paths.csv` | 薬物-疾患間の全推論パス (24パス) |
-| `results/path_narratives.csv` | パスの生物学的説明文 |
-| `results/meta_paths.csv` | メタパス統計 |
-| `results/model_transe/` | 学習済みTransEモデル |
-| `results/model_rotate/` | 学習済みRotatEモデル |
-| `results/model_complex/` | 学習済みComplExモデル |
-
-### 図表
-| ファイル | 説明 |
-|---|---|
-| `figures/fig1_kg_statistics.png` | KG統計概要 (エンティティ分布・関係分布・サマリ) |
-| `figures/fig2_covid_subgraph.png` | COVID-19近傍サブグラフ可視化 |
-| `figures/fig3_model_comparison.png` | 3モデルの性能比較バーチャート + 効率vs精度散布図 |
-| `figures/fig4_covid_drug_ranking.png` | COVID-19治療薬予測ランキング |
-| `figures/fig5_path_reasoning.png` | 説明可能パス推論ダイアグラム (4薬物) |
-| `figures/fig6_validation.png` | ROC曲線 + 性能ヒートマップ |
-
-### ソースコード
-| ファイル | 説明 |
-|---|---|
-| `src/01_build_knowledge_graph.py` | BKG構築・エンティティ定義・トリプル生成 |
-| `src/02_train_embeddings.py` | PyKEENによる3モデル学習・評価 |
-| `src/03_link_prediction.py` | リンク予測・COVID-19薬物スコアリング |
-| `src/04_path_reasoning.py` | 説明可能パス探索・メタパス分析 |
-| `src/05_visualize.py` | 全6図の生成 |
-
-### ログ
-| ファイル | 説明 |
-|---|---|
-| `logs/process-log.jsonl` | 実行トレース (run_started → run_completed) |
-
----
-
-## 参考文献
-
-1. Pushpakom S, et al. (2019). Drug repurposing: progress, challenges and recommendations. *Nature Reviews Drug Discovery*, 18(1), 41-58.
-2. Bordes A, et al. (2013). Translating embeddings for modeling multi-relational data. *NeurIPS*, 26.
-3. Sun Z, et al. (2019). RotatE: Knowledge graph embedding by relational rotation in complex space. *ICLR 2019*.
-4. Trouillon T, et al. (2016). Complex embeddings for simple link prediction. *ICML 2016*.
-5. Ali M, et al. (2021). PyKEEN 1.0: A Python Library for Training and Evaluating Knowledge Graph Embeddings. *JMLR*, 22(82), 1-6.
-6. Zitnik M, et al. (2018). Modeling polypharmacy side effects with graph convolutional networks. *Bioinformatics*, 34(13), i457-i466.
-7. Himmelstein DS, et al. (2017). Systematic integration of biomedical knowledge prioritizes drugs for repurposing. *eLife*, 6, e26726.
-8. Wang Y, et al. (2021). COVID-19 drug repurposing: a network-based approach. *npj Digital Medicine*, 4(1), 27.
-
----
-
-*このレポートはCo-Scientist Drug Repurposing Skillにより自動生成されました。*  
-*実験環境: Python 3.11 | PyKEEN 1.10 | NetworkX 3.x | PyTorch 2.x | CPU*
+| `data/entities.json` | エンティティ定義（ID、名前、タイプ） |
+| `data/triples.tsv` | 知識グラフトリプル（329件） |
+| `data/kg_stats.json` | 知識グラフ統計情報 |
+| `results/model_comparison.csv` | 3モデルの比較結果 |
+| `results/full_metrics.json` | 全評価メトリクスの詳細 |
+| `results/split_info.json` | 訓練/検証/テスト分割情報 |
+| `results/all_drug_disease_predictions.csv` | 全薬物-疾患予測スコア |
+| `results/covid19_predictions.csv` | COVID-19治療薬予測ランキング |
+| `results/covid19_novel_predictions.csv` | 新規COVID-19治療薬候補 |
+| `results/covid19_path_explanations.json` | パス推論の説明 |
+| `figures/fig1_kg_schema.png` | 知識グラフスキーマ図 |
+| `figures/fig2_entity_distribution.png` | エンティティ・関係分布 |
+| `figures/fig3_model_comparison.png` | モデル比較図 |
+| `figures/fig4_covid_predictions.png` | COVID-19予測ランキング |
+| `figures/fig5_path_explanation.png` | パス推論可視化 |
+| `figures/fig6_kg_subgraph.png` | COVID-19中心サブグラフ |
+| `figures/fig7_heatmap_drug_disease.png` | 薬物-疾患ヒートマップ |
+| `figures/fig8_degree_distribution.png` | 次数分布 |
+| `scripts/01_build_knowledge_graph.py` | KG構築スクリプト |
+| `scripts/02_train_embeddings.py` | 埋め込み学習スクリプト |
+| `scripts/03_link_prediction.py` | リンク予測スクリプト |
+| `scripts/04_generate_figures.py` | 図表生成スクリプト |
+| `logs/process-log.jsonl` | 実行ログ |
