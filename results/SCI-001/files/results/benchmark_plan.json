@@ -1,0 +1,49 @@
+{
+  "description": "Performance benchmark plan for CRISPR off-target prediction",
+  "datasets": [
+    {
+      "name": "GUIDE-seq (Tsai 2015)",
+      "n_sites": 702,
+      "n_guides": 13,
+      "assay": "in-vivo"
+    },
+    {
+      "name": "CIRCLE-seq (Tsai 2017)",
+      "n_sites": 1574,
+      "n_guides": 10,
+      "assay": "in-vitro"
+    },
+    {
+      "name": "SITE-seq (Cameron 2017)",
+      "n_sites": 840,
+      "n_guides": 8,
+      "assay": "in-vitro"
+    },
+    {
+      "name": "CHANGE-seq (Lazzarotto 2020)",
+      "n_sites": 9340,
+      "n_guides": 110,
+      "assay": "in-vitro"
+    }
+  ],
+  "baselines": [
+    "Cas-OFFinder",
+    "CRISPOR",
+    "DeepCRISPR",
+    "CRISPR-ML"
+  ],
+  "metrics": [
+    "AUROC",
+    "AUPRC",
+    "Recall@10%FPR",
+    "Precision@50%Recall",
+    "F1"
+  ],
+  "cross_validation": "Leave-one-guide-out (LOGO) + 5-fold stratified",
+  "statistical_test": "DeLong test for AUROC comparison",
+  "hardware": "NVIDIA A100 (40GB) or CPU fallback",
+  "estimated_runtime_minutes": {
+    "train_5fold": 30,
+    "shap_100samples": 15
+  }
+}

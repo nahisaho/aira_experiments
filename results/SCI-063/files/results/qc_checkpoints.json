@@ -1,0 +1,32 @@
+[
+  {
+    "stage": "Post-synthesis",
+    "method": "Sanger sequencing",
+    "acceptance": "100% identity"
+  },
+  {
+    "stage": "Post-Level1",
+    "method": "Restriction digest + gel",
+    "acceptance": "Correct size"
+  },
+  {
+    "stage": "Post-Level1-Seq",
+    "method": "Nanopore sequencing",
+    "acceptance": "<1 err/10kb"
+  },
+  {
+    "stage": "Post-Level2",
+    "method": "PFGE + Southern blot",
+    "acceptance": "Correct size/pattern"
+  },
+  {
+    "stage": "Post-Transplant",
+    "method": "WGS (Illumina+Nanopore)",
+    "acceptance": "<5 SNVs"
+  },
+  {
+    "stage": "Viability",
+    "method": "Growth curve + omics",
+    "acceptance": "Doubling <120 min"
+  }
+]

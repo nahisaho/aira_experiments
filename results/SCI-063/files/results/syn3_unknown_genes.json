@@ -1,0 +1,44 @@
+{
+  "total_unknown": 149,
+  "predicted_categories": {
+    "Likely membrane-associated": 38,
+    "Likely regulatory": 22,
+    "Predicted enzyme (unknown substrate)": 31,
+    "Conserved hypothetical": 28,
+    "Unique to lineage": 15,
+    "Mobile element remnant": 8,
+    "Predicted structural": 7
+  },
+  "characterization_approaches": [
+    {
+      "method": "CRISPRi knockdown titration",
+      "target": "All 149",
+      "time_weeks": 12,
+      "priority": "High"
+    },
+    {
+      "method": "Proteomics (AP-MS)",
+      "target": "Top 50 by conservation",
+      "time_weeks": 16,
+      "priority": "High"
+    },
+    {
+      "method": "AlphaFold2 structure prediction",
+      "target": "All 149",
+      "time_weeks": 2,
+      "priority": "Medium"
+    },
+    {
+      "method": "Metabolomics profiling",
+      "target": "31 predicted enzymes",
+      "time_weeks": 8,
+      "priority": "Medium"
+    },
+    {
+      "method": "Tn-seq conditional",
+      "target": "Genome-wide",
+      "time_weeks": 6,
+      "priority": "High"
+    }
+  ]
+}

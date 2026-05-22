@@ -1,0 +1,132 @@
+{
+  "exact_value": 0.8319418804810998,
+  "results": [
+    {
+      "noise_level": 0.001,
+      "exact": 0.8319418804810998,
+      "noisy": 0.830832624640558,
+      "zne": 0.8319418804811965,
+      "pec": 0.8408677246417687,
+      "cdr": 0.8319418804810995,
+      "error_noisy": 0.0011092558405418895,
+      "error_zne": 9.670042544485113e-14,
+      "error_pec": 0.008925844160668883,
+      "error_cdr": 3.3306690738754696e-16,
+      "pec_overhead_factor": 1.024302617648759,
+      "cdr_regression_slope": 1.0067114093958556
+    },
+    {
+      "noise_level": 0.005,
+      "exact": 0.8319418804810998,
+      "noisy": 0.826395601277991,
+      "zne": 0.8319418804811965,
+      "pec": 0.8337476699260532,
+      "cdr": 0.8319418804810995,
+      "error_noisy": 0.005546279203108795,
+      "error_zne": 9.670042544485113e-14,
+      "error_pec": 0.001805789444953354,
+      "error_cdr": 3.3306690738754696e-16,
+      "pec_overhead_factor": 1.1278362834593694,
+      "cdr_regression_slope": 1.0067114093958565
+    },
+    {
+      "noise_level": 0.01,
+      "exact": 0.8319418804810998,
+      "noisy": 0.8208493220747838,
+      "zne": 0.8319418804811965,
+      "pec": 0.8519790899033458,
+      "cdr": 0.8319418804810995,
+      "error_noisy": 0.011092558406316066,
+      "error_zne": 9.670042544485113e-14,
+      "error_pec": 0.02003720942224596,
+      "error_cdr": 3.3306690738754696e-16,
+      "pec_overhead_factor": 1.2727858241958783,
+      "cdr_regression_slope": 1.006711409395852
+    },
+    {
+      "noise_level": 0.02,
+      "exact": 0.8319418804810998,
+      "noisy": 0.8097567636683674,
+      "zne": 0.8319418804811965,
+      "pec": 0.7945704343563387,
+      "cdr": 0.8319418804810996,
+      "error_noisy": 0.022185116812732497,
+      "error_zne": 9.670042544485113e-14,
+      "error_pec": 0.037371446124761176,
+      "error_cdr": 2.220446049250313e-16,
+      "pec_overhead_factor": 1.6239557204263824,
+      "cdr_regression_slope": 1.0067114093958542
+    }
+  ],
+  "summary": {
+    "noisy": {
+      "mean_error": 0.009983302565674812,
+      "max_error": 0.022185116812732497,
+      "min_error": 0.0011092558405418895
+    },
+    "zne": {
+      "mean_error": 9.670042544485113e-14,
+      "max_error": 9.670042544485113e-14,
+      "min_error": 9.670042544485113e-14
+    },
+    "pec": {
+      "mean_error": 0.017035072288157344,
+      "max_error": 0.037371446124761176,
+      "min_error": 0.001805789444953354
+    },
+    "cdr": {
+      "mean_error": 3.0531133177191805e-16,
+      "max_error": 3.3306690738754696e-16,
+      "min_error": 2.220446049250313e-16
+    }
+  },
+  "method_properties": {
+    "ZNE": {
+      "type": "noise_scaling",
+      "overhead_type": "circuit_runs",
+      "overhead_factor": "O(k) where k=n_scale_factors",
+      "classical_post_processing": "polynomial/exponential fit",
+      "assumptions": "noise monotonically increasing with circuit depth",
+      "pros": [
+        "simple to implement",
+        "hardware-agnostic",
+        "no full noise model needed"
+      ],
+      "cons": [
+        "requires multiple circuit executions",
+        "assumes smoothly scaling noise"
+      ]
+    },
+    "PEC": {
+      "type": "quasi_probability",
+      "overhead_type": "sampling",
+      "overhead_factor": "O(gamma^2) exponential in n_gates",
+      "classical_post_processing": "weighted averaging",
+      "assumptions": "full noise model characterization required",
+      "pros": [
+        "unbiased estimator",
+        "handles arbitrary noise"
+      ],
+      "cons": [
+        "exponential sampling overhead",
+        "requires noise tomography"
+      ]
+    },
+    "CDR": {
+      "type": "learning_based",
+      "overhead_type": "training_circuits",
+      "overhead_factor": "O(n_training) near-Clifford circuits",
+      "classical_post_processing": "linear regression",
+      "assumptions": "linear noise-to-signal relationship near target circuit",
+      "pros": [
+        "data-driven",
+        "adapts to hardware noise",
+        "moderate overhead"
+      ],
+      "cons": [
+        "requires Clifford simulator",
+        "regression may fail far from Clifford"
+      ]
+    }
+  }
+}

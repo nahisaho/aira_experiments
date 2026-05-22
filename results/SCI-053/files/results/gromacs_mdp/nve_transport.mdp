@@ -1,0 +1,36 @@
+; GROMACS MDP: NVE Production for Transport (50 ns)
+; 1 fs timestep, frequent velocity saves for Green-Kubo
+
+integrator      = md
+dt              = 0.001
+nsteps          = 50000000
+nstvout         = 100
+nstxout-compressed = 100
+nstenergy       = 100
+nstlog          = 1000
+
+nstlist         = 20
+cutoff-scheme   = Verlet
+rlist           = 1.2
+
+coulombtype     = PME
+rcoulomb        = 1.2
+pme_order       = 6
+fourierspacing  = 0.10
+
+vdwtype         = Cut-off
+rvdw            = 1.2
+DispCorr        = EnerPres
+
+tcoupl          = no
+pcoupl          = no
+
+constraints     = h-bonds
+constraint_algorithm = LINCS
+lincs_iter      = 2
+lincs_order     = 6
+
+gen_vel         = no
+continuation    = yes
+pbc             = xyz
+nstcalcenergy   = 10

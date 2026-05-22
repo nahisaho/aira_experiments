@@ -1,0 +1,1 @@
+{"timestamp":"2026-05-22T00:00:09Z","skill":"co-scientist-reproducibility","learning":"VINS-Fusion/ OpenCV 形式の設定ファイルは `%YAML:1.0` ヘッダのため、そのまま `yaml.safe_load` すると検証系が壊れる","action":"Gotchas追記","severity":"medium"}

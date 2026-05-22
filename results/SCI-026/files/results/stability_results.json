@@ -1,0 +1,110 @@
+{
+  "decomposition_reactions": [
+    {
+      "reaction": "LPS electrolyte oxidation (vs LiCoO2)",
+      "dG_eV": -1.82,
+      "thermodynamically_stable": false,
+      "T_onset_K": 450
+    },
+    {
+      "reaction": "LPS oxidative decomposition (vs Li)",
+      "dG_eV": -2.1,
+      "thermodynamically_stable": false,
+      "T_onset_K": 350
+    },
+    {
+      "reaction": "LCO reduction at low \u03bc_Li",
+      "dG_eV": 0.45,
+      "thermodynamically_stable": true,
+      "T_onset_K": null
+    },
+    {
+      "reaction": "Li3PO4 coating vs LPS (stability check)",
+      "dG_eV": -0.12,
+      "thermodynamically_stable": false,
+      "T_onset_K": 700
+    },
+    {
+      "reaction": "Li3PO4 coating vs LCO (stability check)",
+      "dG_eV": 0.68,
+      "thermodynamically_stable": true,
+      "T_onset_K": null
+    }
+  ],
+  "electrochemical_windows": [
+    {
+      "electrolyte": "Li6PS5Cl",
+      "window_V": [
+        1.7,
+        2.1
+      ],
+      "electrode_potential_V": 3.9,
+      "stable": false,
+      "margin_low_V": 2.2,
+      "margin_high_V": -1.8
+    },
+    {
+      "electrolyte": "LiCoO2",
+      "window_V": [
+        0.5,
+        4.6
+      ],
+      "electrode_potential_V": 3.9,
+      "stable": true,
+      "margin_low_V": 3.4,
+      "margin_high_V": 0.7
+    },
+    {
+      "electrolyte": "Li3PO4",
+      "window_V": [
+        0.0,
+        5.3
+      ],
+      "electrode_potential_V": 3.9,
+      "stable": true,
+      "margin_low_V": 3.9,
+      "margin_high_V": 1.4
+    },
+    {
+      "electrolyte": "LiPON",
+      "window_V": [
+        0.0,
+        5.5
+      ],
+      "electrode_potential_V": 3.9,
+      "stable": true,
+      "margin_low_V": 3.9,
+      "margin_high_V": 1.6
+    },
+    {
+      "electrolyte": "Li2SiO3",
+      "window_V": [
+        0.0,
+        4.5
+      ],
+      "electrode_potential_V": 3.9,
+      "stable": true,
+      "margin_low_V": 3.9,
+      "margin_high_V": 0.6
+    },
+    {
+      "electrolyte": "Al2O3",
+      "window_V": [
+        0.0,
+        5.5
+      ],
+      "electrode_potential_V": 3.9,
+      "stable": true,
+      "margin_low_V": 3.9,
+      "margin_high_V": 1.6
+    }
+  ],
+  "lammps_md_temperatures_K": [
+    600,
+    700,
+    800,
+    900,
+    1000
+  ],
+  "key_finding": "Bare Li6PS5Cl/LiCoO2 interface is thermodynamically unstable (\u0394G = -1.82 eV). Li3PO4 coating is stable vs LiCoO2 (\u0394G = +0.68 eV) and kinetically stable vs Li6PS5Cl (onset T > 700 K)."
+}

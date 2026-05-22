@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" font-family="Arial, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#555"/>
+    </marker>
+    <linearGradient id="headerGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2196F3"/>
+      <stop offset="100%" stop-color="#1976D2"/>
+    </linearGradient>
+    <linearGradient id="sensorGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4CAF50"/>
+      <stop offset="100%" stop-color="#388E3C"/>
+    </linearGradient>
+    <linearGradient id="perceptionGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FF9800"/>
+      <stop offset="100%" stop-color="#F57C00"/>
+    </linearGradient>
+    <linearGradient id="planningGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9C27B0"/>
+      <stop offset="100%" stop-color="#7B1FA2"/>
+    </linearGradient>
+    <linearGradient id="controlGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F44336"/>
+      <stop offset="100%" stop-color="#D32F2F"/>
+    </linearGradient>
+    <linearGradient id="safetyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#607D8B"/>
+      <stop offset="100%" stop-color="#455A64"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Title -->
+  <rect x="0" y="0" width="1200" height="50" fill="url(#headerGrad)"/>
+  <text x="600" y="33" text-anchor="middle" fill="white" font-size="20" font-weight="bold">
+    VSLAM + Obstacle Avoidance Autonomous Flight System Architecture
+  </text>
+
+  <!-- Sensor Layer -->
+  <rect x="30" y="70" width="250" height="250" rx="8" fill="#E8F5E9" stroke="#4CAF50" stroke-width="2"/>
+  <rect x="30" y="70" width="250" height="30" rx="8" fill="url(#sensorGrad)"/>
+  <text x="155" y="90" text-anchor="middle" fill="white" font-size="14" font-weight="bold">Sensor Suite</text>
+
+  <rect x="45" y="110" width="220" height="35" rx="4" fill="white" stroke="#81C784"/>
+  <text x="155" y="132" text-anchor="middle" font-size="11">RealSense D455 (Stereo+Depth)</text>
+
+  <rect x="45" y="155" width="220" height="35" rx="4" fill="white" stroke="#81C784"/>
+  <text x="155" y="177" text-anchor="middle" font-size="11">BMI088 IMU (200Hz)</text>
+
+  <rect x="45" y="200" width="220" height="35" rx="4" fill="white" stroke="#81C784"/>
+  <text x="155" y="222" text-anchor="middle" font-size="11">1D LiDAR Altimeter</text>
+
+  <rect x="45" y="245" width="220" height="35" rx="4" fill="white" stroke="#81C784"/>
+  <text x="155" y="267" text-anchor="middle" font-size="11">Downward Camera (Landing)</text>
+
+  <!-- Perception Layer -->
+  <rect x="310" y="70" width="560" height="250" rx="8" fill="#FFF3E0" stroke="#FF9800" stroke-width="2"/>
+  <rect x="310" y="70" width="560" height="30" rx="8" fill="url(#perceptionGrad)"/>
+  <text x="590" y="90" text-anchor="middle" fill="white" font-size="14" font-weight="bold">Perception Layer (Jetson Orin NX)</text>
+
+  <rect x="325" y="110" width="160" height="55" rx="4" fill="white" stroke="#FFB74D"/>
+  <text x="405" y="133" text-anchor="middle" font-size="11" font-weight="bold">vio_node</text>
+  <text x="405" y="153" text-anchor="middle" font-size="9" fill="#666">VINS-Fusion | 30Hz</text>
+
+  <rect x="505" y="110" width="160" height="55" rx="4" fill="white" stroke="#FFB74D"/>
+  <text x="585" y="133" text-anchor="middle" font-size="11" font-weight="bold">mapping_node</text>
+  <text x="585" y="153" text-anchor="middle" font-size="9" fill="#666">VDBFusion | 20Hz</text>
+
+  <rect x="685" y="110" width="170" height="55" rx="4" fill="white" stroke="#FFB74D"/>
+  <text x="770" y="133" text-anchor="middle" font-size="11" font-weight="bold">detection_node</text>
+  <text x="770" y="153" text-anchor="middle" font-size="9" fill="#666">YOLOv8n TensorRT | 30Hz</text>
+
+  <rect x="325" y="185" width="160" height="55" rx="4" fill="white" stroke="#FFB74D"/>
+  <text x="405" y="208" text-anchor="middle" font-size="11" font-weight="bold">tracking_node</text>
+  <text x="405" y="228" text-anchor="middle" font-size="9" fill="#666">ByteTrack | 30Hz</text>
+
+  <rect x="505" y="185" width="160" height="55" rx="4" fill="white" stroke="#FFB74D"/>
+  <text x="585" y="208" text-anchor="middle" font-size="11" font-weight="bold">prediction_node</text>
+  <text x="585" y="228" text-anchor="middle" font-size="9" fill="#666">SFM + LSTM | 10Hz</text>
+
+  <rect x="685" y="185" width="170" height="55" rx="4" fill="white" stroke="#FFB74D"/>
+  <text x="770" y="208" text-anchor="middle" font-size="11" font-weight="bold">inventory_scanner</text>
+  <text x="770" y="228" text-anchor="middle" font-size="9" fill="#666">ZBar + QR | On-demand</text>
+
+  <rect x="325" y="260" width="530" height="40" rx="4" fill="#FFF8E1" stroke="#FFE082"/>
+  <text x="590" y="285" text-anchor="middle" font-size="10" fill="#F57C00">ESDF Generation (GPU) | Local 3D Map → Signed Distance Field</text>
+
+  <!-- Planning Layer -->
+  <rect x="310" y="340" width="560" height="130" rx="8" fill="#F3E5F5" stroke="#9C27B0" stroke-width="2"/>
+  <rect x="310" y="340" width="560" height="30" rx="8" fill="url(#planningGrad)"/>
+  <text x="590" y="360" text-anchor="middle" fill="white" font-size="14" font-weight="bold">Planning Layer</text>
+
+  <rect x="325" y="380" width="170" height="55" rx="4" fill="white" stroke="#CE93D8"/>
+  <text x="410" y="403" text-anchor="middle" font-size="11" font-weight="bold">global_planner_node</text>
+  <text x="410" y="423" text-anchor="middle" font-size="9" fill="#666">Coverage + TSP | Mission</text>
+
+  <rect x="515" y="380" width="170" height="55" rx="4" fill="white" stroke="#CE93D8"/>
+  <text x="600" y="403" text-anchor="middle" font-size="11" font-weight="bold">local_planner_node</text>
+  <text x="600" y="423" text-anchor="middle" font-size="9" fill="#666">EGO-Planner v2 | 10Hz</text>
+
+  <rect x="705" y="380" width="150" height="55" rx="4" fill="white" stroke="#CE93D8"/>
+  <text x="780" y="403" text-anchor="middle" font-size="11" font-weight="bold">trajectory_tracker</text>
+  <text x="780" y="423" text-anchor="middle" font-size="9" fill="#666">SE(3) Controller | 100Hz</text>
+
+  <!-- Control Layer -->
+  <rect x="310" y="490" width="560" height="100" rx="8" fill="#FFEBEE" stroke="#F44336" stroke-width="2"/>
+  <rect x="310" y="490" width="560" height="30" rx="8" fill="url(#controlGrad)"/>
+  <text x="590" y="510" text-anchor="middle" fill="white" font-size="14" font-weight="bold">Control & Flight Layer</text>
+
+  <rect x="325" y="530" width="200" height="45" rx="4" fill="white" stroke="#EF9A9A"/>
+  <text x="425" y="548" text-anchor="middle" font-size="11" font-weight="bold">MAVROS2 Bridge</text>
+  <text x="425" y="565" text-anchor="middle" font-size="9" fill="#666">ROS2 ↔ PX4 uXRCE-DDS</text>
+
+  <rect x="560" y="530" width="300" height="45" rx="4" fill="white" stroke="#EF9A9A"/>
+  <text x="710" y="548" text-anchor="middle" font-size="11" font-weight="bold">Pixhawk 6X (PX4 v1.15)</text>
+  <text x="710" y="565" text-anchor="middle" font-size="9" fill="#666">Attitude Control | Motor Mixing | EKF2 Fusion</text>
+
+  <!-- Safety Layer -->
+  <rect x="900" y="70" width="270" height="520" rx="8" fill="#ECEFF1" stroke="#607D8B" stroke-width="2"/>
+  <rect x="900" y="70" width="270" height="30" rx="8" fill="url(#safetyGrad)"/>
+  <text x="1035" y="90" text-anchor="middle" fill="white" font-size="14" font-weight="bold">Safety & Monitor</text>
+
+  <rect x="915" y="110" width="240" height="50" rx="4" fill="white" stroke="#90A4AE"/>
+  <text x="1035" y="133" text-anchor="middle" font-size="11" font-weight="bold">safety_monitor_node</text>
+  <text x="1035" y="150" text-anchor="middle" font-size="9" fill="#666">Watchdog | Health | Failsafe</text>
+
+  <rect x="915" y="175" width="240" height="50" rx="4" fill="white" stroke="#90A4AE"/>
+  <text x="1035" y="198" text-anchor="middle" font-size="11" font-weight="bold">State Machine</text>
+  <text x="1035" y="215" text-anchor="middle" font-size="9" fill="#666">IDLE→ARM→FLY→RTH→LAND</text>
+
+  <rect x="915" y="240" width="240" height="50" rx="4" fill="white" stroke="#90A4AE"/>
+  <text x="1035" y="263" text-anchor="middle" font-size="11" font-weight="bold">Geofence Engine</text>
+  <text x="1035" y="280" text-anchor="middle" font-size="9" fill="#666">3D boundary enforcement</text>
+
+  <rect x="915" y="305" width="240" height="50" rx="4" fill="white" stroke="#90A4AE"/>
+  <text x="1035" y="328" text-anchor="middle" font-size="11" font-weight="bold">Battery Manager</text>
+  <text x="1035" y="345" text-anchor="middle" font-size="9" fill="#666">SOC monitor | RTH trigger</text>
+
+  <rect x="915" y="370" width="240" height="50" rx="4" fill="white" stroke="#90A4AE"/>
+  <text x="1035" y="393" text-anchor="middle" font-size="11" font-weight="bold">Emergency Handler</text>
+  <text x="1035" y="410" text-anchor="middle" font-size="9" fill="#666">Collision imminent response</text>
+
+  <rect x="915" y="435" width="240" height="65" rx="4" fill="#FFCDD2" stroke="#EF9A9A"/>
+  <text x="1035" y="458" text-anchor="middle" font-size="11" font-weight="bold" fill="#C62828">Safety Zones</text>
+  <text x="1035" y="475" text-anchor="middle" font-size="9" fill="#C62828">Emergency: 0-1.5m</text>
+  <text x="1035" y="490" text-anchor="middle" font-size="9" fill="#C62828">Avoidance: 1.5-5m | Monitor: 5-15m</text>
+
+  <!-- GCS -->
+  <rect x="30" y="340" width="250" height="130" rx="8" fill="#E3F2FD" stroke="#2196F3" stroke-width="2"/>
+  <rect x="30" y="340" width="250" height="30" rx="8" fill="url(#headerGrad)"/>
+  <text x="155" y="360" text-anchor="middle" fill="white" font-size="14" font-weight="bold">Ground Control</text>
+
+  <rect x="45" y="380" width="220" height="35" rx="4" fill="white" stroke="#90CAF9"/>
+  <text x="155" y="402" text-anchor="middle" font-size="11">QGroundControl + WMS</text>
+
+  <rect x="45" y="425" width="220" height="35" rx="4" fill="white" stroke="#90CAF9"/>
+  <text x="155" y="447" text-anchor="middle" font-size="11">WiFi 6E + 900MHz Telemetry</text>
+
+  <!-- Compute Budget Box -->
+  <rect x="30" y="490" width="250" height="100" rx="8" fill="#E8EAF6" stroke="#3F51B5" stroke-width="2"/>
+  <text x="155" y="515" text-anchor="middle" font-size="12" font-weight="bold" fill="#283593">Compute Budget</text>
+  <text x="155" y="535" text-anchor="middle" font-size="10" fill="#3F51B5">CPU: 12.2ms | GPU: 23.4ms</text>
+  <text x="155" y="553" text-anchor="middle" font-size="10" fill="#3F51B5">DLA: 15.7ms | Latency: &lt;50ms</text>
+  <text x="155" y="571" text-anchor="middle" font-size="10" fill="#3F51B5">Memory: 9.3GB / 16GB | 15-20W</text>
+
+  <!-- Arrows -->
+  <line x1="280" y1="170" x2="320" y2="140" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="280" y1="200" x2="320" y2="210" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="485" y1="140" x2="500" y2="140" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="770" y1="165" x2="500" y2="200" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="485" y1="215" x2="500" y2="215" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="590" y1="300" x2="590" y2="335" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="590" y1="470" x2="590" y2="485" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="590" y1="590" x2="590" y2="610" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Key metrics -->
+  <rect x="30" y="620" width="1140" height="270" rx="8" fill="#FAFAFA" stroke="#E0E0E0" stroke-width="1"/>
+  <text x="600" y="645" text-anchor="middle" font-size="16" font-weight="bold" fill="#333">System Performance Summary</text>
+
+  <text x="60" y="675" font-size="12" font-weight="bold" fill="#1976D2">VIO Performance</text>
+  <text x="60" y="695" font-size="11" fill="#333">• ATE: &lt;0.5% trajectory length</text>
+  <text x="60" y="712" font-size="11" fill="#333">• RPE: &lt;0.01m/m traveled</text>
+  <text x="60" y="729" font-size="11" fill="#333">• Processing: &lt;30ms/frame</text>
+  <text x="60" y="746" font-size="11" fill="#333">• Loop closure: DBoW3 + geometric</text>
+
+  <text x="330" y="675" font-size="12" font-weight="bold" fill="#F57C00">3D Mapping</text>
+  <text x="330" y="695" font-size="11" fill="#333">• VDBFusion: 5cm nav / 1cm inspect</text>
+  <text x="330" y="712" font-size="11" fill="#333">• Update rate: 20Hz GPU-accelerated</text>
+  <text x="330" y="729" font-size="11" fill="#333">• ESDF: incremental, 12×12×4m window</text>
+  <text x="330" y="746" font-size="11" fill="#333">• Memory: ~1GB for local map</text>
+
+  <text x="600" y="675" font-size="12" font-weight="bold" fill="#D32F2F">Obstacle System</text>
+  <text x="600" y="695" font-size="11" fill="#333">• Detection: YOLOv8n 30Hz (DLA)</text>
+  <text x="600" y="712" font-size="11" fill="#333">• Tracking: MOTA &gt;70%, ByteTrack</text>
+  <text x="600" y="729" font-size="11" fill="#333">• Prediction: SFM+LSTM, 0-10s horizon</text>
+  <text x="600" y="746" font-size="11" fill="#333">• Safety zones: 3-tier (1.5/5/15m)</text>
+
+  <text x="890" y="675" font-size="12" font-weight="bold" fill="#7B1FA2">Path Planning</text>
+  <text x="890" y="695" font-size="11" fill="#333">• EGO-Planner v2: B-spline 10Hz</text>
+  <text x="890" y="712" font-size="11" fill="#333">• Horizon: 5-8 seconds ahead</text>
+  <text x="890" y="729" font-size="11" fill="#333">• Dynamic obstacle integration</text>
+  <text x="890" y="746" font-size="11" fill="#333">• SE(3) geometric controller 100Hz</text>
+
+  <text x="60" y="780" font-size="12" font-weight="bold" fill="#388E3C">Warehouse Case Study</text>
+  <text x="60" y="800" font-size="11" fill="#333">• Scan rate: ~200 items/min | Full warehouse: ~25 min</text>
+  <text x="60" y="817" font-size="11" fill="#333">• Position accuracy: ±10cm | Barcode success: &gt;98%</text>
+  <text x="60" y="834" font-size="11" fill="#333">• Battery: 15-min segments, auto-return at 30% SOC</text>
+  <text x="60" y="851" font-size="11" fill="#333">• Coverage: boustrophedon multi-tier, TSP-optimized shelf order</text>
+
+  <text x="600" y="780" font-size="12" font-weight="bold" fill="#455A64">Hardware Platform</text>
+  <text x="600" y="800" font-size="11" fill="#333">• Compute: Jetson Orin NX 16GB (8-core A78AE + 1024-core Ampere + 2× DLA)</text>
+  <text x="600" y="817" font-size="11" fill="#333">• Sensors: RealSense D455 + BMI088 IMU + 1D LiDAR alt + downward cam</text>
+  <text x="600" y="834" font-size="11" fill="#333">• Flight: Pixhawk 6X (PX4 v1.15) | 450mm quad | ~2.2kg AUW</text>
+  <text x="600" y="851" font-size="11" fill="#333">• Comms: WiFi 6E (video/telem) + 900MHz (backup) | Power: 15-20W companion</text>
+</svg>

@@ -1,0 +1,6 @@
+parameter,value,final_resistance_mean
+selection_pressure,0.08,0.5611577431083554
+selection_pressure,0.14,0.6154904709387002
+selection_pressure,0.2,0.6681519987581425
+selection_pressure,0.26,0.7192350121856202
+selection_pressure,0.32,0.7688247923797786

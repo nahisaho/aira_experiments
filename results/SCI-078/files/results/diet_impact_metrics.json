@@ -1,0 +1,38 @@
+{
+  "western": {
+    "diet_name": "Western Diet",
+    "shannon_diversity": 1.513823874493244,
+    "simpson_diversity": 0.7375051912580122,
+    "dominant_species": "Escherichia_coli",
+    "butyrate_producers_fraction": 0.01054004902949201,
+    "pathobiont_fraction": 0.3369803040287196,
+    "firmicutes_bacteroidetes_ratio": 0.30112567891817577
+  },
+  "mediterranean": {
+    "diet_name": "Mediterranean Diet",
+    "shannon_diversity": 1.5880856153877854,
+    "simpson_diversity": 0.7699523291800704,
+    "dominant_species": "Bacteroides_thetaiotaomicron",
+    "butyrate_producers_fraction": 0.12656402408885342,
+    "pathobiont_fraction": 0.1401932488789878,
+    "firmicutes_bacteroidetes_ratio": 0.2307705465480168
+  },
+  "plant_based": {
+    "diet_name": "Plant-based Diet",
+    "shannon_diversity": 1.6062771529735922,
+    "simpson_diversity": 0.774215172741557,
+    "dominant_species": "Bacteroides_thetaiotaomicron",
+    "butyrate_producers_fraction": 0.19485045147312147,
+    "pathobiont_fraction": 0.04569871357111694,
+    "firmicutes_bacteroidetes_ratio": 0.33704949896372266
+  },
+  "high_protein": {
+    "diet_name": "High-protein Diet",
+    "shannon_diversity": 0.5527649051854263,
+    "simpson_diversity": 0.3465265774208894,
+    "dominant_species": "Escherichia_coli",
+    "butyrate_producers_fraction": 0.00042662950198122724,
+    "pathobiont_fraction": 0.7787837277269395,
+    "firmicutes_bacteroidetes_ratio": 0.0019893340431044976
+  }
+}

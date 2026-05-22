@@ -1,0 +1,11 @@
+{
+  "experiment_id": "SCI-073",
+  "title": "触覚センシングによる物体認識",
+  "project_id": "bd813740-1729-405b-ac1f-905c0cb4cc5e",
+  "prompt_length": 350,
+  "output_length": 831,
+  "file_count": 30,
+  "duration_seconds": 611,
+  "status": "success",
+  "timestamp": "2026-05-22T18:34:45.959Z"
+}

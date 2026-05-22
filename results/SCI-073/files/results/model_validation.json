@@ -1,0 +1,68 @@
+{
+  "ContactNet": {
+    "parameters": 16819732,
+    "output_keys": [
+      "depth",
+      "normals",
+      "wrench",
+      "ps_depth",
+      "ps_normals"
+    ]
+  },
+  "TextureCNN": {
+    "parameters": 6180192,
+    "output_keys": [
+      "logits",
+      "probabilities",
+      "features"
+    ]
+  },
+  "CrossModalTransformer": {
+    "parameters": 41828551,
+    "output_keys": [
+      "object_logits",
+      "material_logits",
+      "grasp_quality",
+      "tactile_features",
+      "visual_features",
+      "fused_features"
+    ]
+  },
+  "GraspStabilityNet": {
+    "parameters": 1011068,
+    "output_keys": [
+      "stability_score",
+      "stability_class",
+      "time_to_failure",
+      "corrective_action"
+    ]
+  },
+  "SlipDetector": {
+    "parameters": 1715760,
+    "output_keys": [
+      "slip_class",
+      "slip_magnitude",
+      "slip_direction",
+      "flow_sequence",
+      "force_command",
+      "pid_component",
+      "residual_component",
+      "slip_gain"
+    ]
+  },
+  "ExploratoryGrasping": {
+    "parameters": 953235,
+    "output_keys": [
+      "best_grasp",
+      "best_idx",
+      "all_candidates",
+      "gp_mean",
+      "gp_variance",
+      "acquisition_values",
+      "safety_scores",
+      "combined_scores",
+      "prior_quality",
+      "refined_grasp"
+    ]
+  }
+}

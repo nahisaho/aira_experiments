@@ -1,0 +1,9 @@
+{
+  "leading_strand_bias": 0.7394736842105263,
+  "essential_leading_bias": 0.7801418439716312,
+  "operon_integrity": 1.0,
+  "intact_operons": 151,
+  "total_operons": 151,
+  "coding_density": 0.7446377358490566,
+  "n_genes": 380
+}

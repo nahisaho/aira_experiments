@@ -1,0 +1,42 @@
+{
+  "Early Earth": {
+    "feasibility_score": 91.0,
+    "temperature_K": 353,
+    "solvent": "H2O",
+    "mc_mean": 86.18958347425253,
+    "mc_std": 14.50468889993373,
+    "arrhenius_rate": 0.014510878146277651
+  },
+  "Enceladus Ocean": {
+    "feasibility_score": 55.67763563687035,
+    "temperature_K": 275,
+    "solvent": "H2O",
+    "mc_mean": 56.09180981961804,
+    "mc_std": 2.4895024873553786,
+    "arrhenius_rate": 6.366775600628495e-06
+  },
+  "Enceladus Vent": {
+    "feasibility_score": 100,
+    "temperature_K": 363,
+    "solvent": "H2O",
+    "mc_mean": 83.80844776879239,
+    "mc_std": 18.968295869104573,
+    "arrhenius_rate": 0.0307480682092694
+  },
+  "Titan Surface": {
+    "feasibility_score": 29.0,
+    "temperature_K": 94,
+    "solvent": "CH4/C2H6",
+    "mc_mean": 29.0,
+    "mc_std": 0.0,
+    "arrhenius_rate": 3.494472624021176e-35
+  },
+  "Titan Subsurface": {
+    "feasibility_score": 56.66737187333321,
+    "temperature_K": 255,
+    "solvent": "H2O/NH3",
+    "mc_mean": 56.52776689522133,
+    "mc_std": 0.8694555089014477,
+    "arrhenius_rate": 4.0932672024660204e-07
+  }
+}

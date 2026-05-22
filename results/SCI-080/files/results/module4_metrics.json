@@ -1,0 +1,208 @@
+{
+  "seed": 42,
+  "generated_at": "2026-05-22T19:08:54Z",
+  "artifacts": {
+    "data": "data/haccp_monitoring.csv",
+    "figures": [
+      "figures/fig4_risk_scores.png",
+      "figures/fig4b_spc_charts.png",
+      "figures/fig4c_rpn_distribution.png",
+      "figures/fig4d_bayesian_update.png"
+    ],
+    "report": "report.md",
+    "preprocessing_log": "data/preprocessing-log.md",
+    "statistical_summary": "results/statistical-summary.md"
+  },
+  "ccp_summary": {
+    "CCP1": {
+      "ccp_name": "Receiving",
+      "hazard": "Pathogen growth during receiving",
+      "records": 1460,
+      "near_misses": 54,
+      "deviations": 24,
+      "deviation_rate": 0.0164,
+      "posterior_deviation_probability": 0.0172,
+      "posterior_95pct_interval": [
+        0.0113,
+        0.0241
+      ],
+      "final_dynamic_likelihood": 3.109,
+      "mean_rpn": 68.608,
+      "final_bayesian_rpn": 70.49,
+      "trend": "stable",
+      "trend_slope": 0.0137,
+      "spc_signals": 22,
+      "ewma_signals": 24,
+      "cusum_signals": 12,
+      "cohens_d_second_vs_first_half": 0.433,
+      "mean_change_ci": [
+        3.069,
+        5.17
+      ]
+    },
+    "CCP2": {
+      "ccp_name": "Cold storage",
+      "hazard": "Pathogen growth during chilled storage",
+      "records": 2920,
+      "near_misses": 134,
+      "deviations": 53,
+      "deviation_rate": 0.0182,
+      "posterior_deviation_probability": 0.0185,
+      "posterior_95pct_interval": [
+        0.014,
+        0.0236
+      ],
+      "final_dynamic_likelihood": 4.413,
+      "mean_rpn": 110.767,
+      "final_bayesian_rpn": 111.0,
+      "trend": "stable",
+      "trend_slope": 0.0294,
+      "spc_signals": 34,
+      "ewma_signals": 55,
+      "cusum_signals": 32,
+      "cohens_d_second_vs_first_half": 0.243,
+      "mean_change_ci": [
+        1.309,
+        2.418
+      ]
+    },
+    "CCP3": {
+      "ccp_name": "Cooking/thermal processing",
+      "hazard": "Survival of Salmonella and Campylobacter",
+      "records": 2190,
+      "near_misses": 75,
+      "deviations": 26,
+      "deviation_rate": 0.0119,
+      "posterior_deviation_probability": 0.0125,
+      "posterior_95pct_interval": [
+        0.0083,
+        0.0176
+      ],
+      "final_dynamic_likelihood": 2.87,
+      "mean_rpn": 72.276,
+      "final_bayesian_rpn": 72.188,
+      "trend": "stable",
+      "trend_slope": -0.0071,
+      "spc_signals": 27,
+      "ewma_signals": 19,
+      "cusum_signals": 9,
+      "cohens_d_second_vs_first_half": -1.578,
+      "mean_change_ci": [
+        -16.285,
+        -14.471
+      ]
+    },
+    "CCP4": {
+      "ccp_name": "Cooling",
+      "hazard": "Clostridium perfringens growth during cooling",
+      "records": 1460,
+      "near_misses": 99,
+      "deviations": 28,
+      "deviation_rate": 0.0192,
+      "posterior_deviation_probability": 0.0199,
+      "posterior_95pct_interval": [
+        0.0135,
+        0.0272
+      ],
+      "final_dynamic_likelihood": 5.718,
+      "mean_rpn": 142.164,
+      "final_bayesian_rpn": 145.579,
+      "trend": "increasing",
+      "trend_slope": 0.122,
+      "spc_signals": 21,
+      "ewma_signals": 21,
+      "cusum_signals": 16,
+      "cohens_d_second_vs_first_half": -2.446,
+      "mean_change_ci": [
+        -28.214,
+        -26.099
+      ]
+    },
+    "CCP5": {
+      "ccp_name": "Metal detection",
+      "hazard": "Physical contamination from ferrous/non-ferrous metal",
+      "records": 1095,
+      "near_misses": 32,
+      "deviations": 9,
+      "deviation_rate": 0.0082,
+      "posterior_deviation_probability": 0.0096,
+      "posterior_95pct_interval": [
+        0.0048,
+        0.0161
+      ],
+      "final_dynamic_likelihood": 2.724,
+      "mean_rpn": 40.625,
+      "final_bayesian_rpn": 37.454,
+      "trend": "stable",
+      "trend_slope": 0.0211,
+      "spc_signals": 41,
+      "ewma_signals": 13,
+      "cusum_signals": 7,
+      "cohens_d_second_vs_first_half": -1.911,
+      "mean_change_ci": [
+        -16.538,
+        -15.115
+      ]
+    },
+    "CCP6": {
+      "ccp_name": "Packaging integrity",
+      "hazard": "Post-lethality contamination from package failure",
+      "records": 1825,
+      "near_misses": 87,
+      "deviations": 45,
+      "deviation_rate": 0.0247,
+      "posterior_deviation_probability": 0.0251,
+      "posterior_95pct_interval": [
+        0.0185,
+        0.0323
+      ],
+      "final_dynamic_likelihood": 2.269,
+      "mean_rpn": 160.02,
+      "final_bayesian_rpn": 160.44,
+      "trend": "decreasing",
+      "trend_slope": -0.0652,
+      "spc_signals": 39,
+      "ewma_signals": 10,
+      "cusum_signals": 5,
+      "cohens_d_second_vs_first_half": 1.448,
+      "mean_change_ci": [
+        24.43,
+        28.145
+      ]
+    },
+    "CCP7": {
+      "ccp_name": "Shipping/distribution",
+      "hazard": "Cold chain failure during distribution",
+      "records": 1460,
+      "near_misses": 62,
+      "deviations": 21,
+      "deviation_rate": 0.0144,
+      "posterior_deviation_probability": 0.0152,
+      "posterior_95pct_interval": [
+        0.0097,
+        0.0221
+      ],
+      "final_dynamic_likelihood": 1.771,
+      "mean_rpn": 111.828,
+      "final_bayesian_rpn": 108.543,
+      "trend": "decreasing",
+      "trend_slope": -0.0472,
+      "spc_signals": 9,
+      "ewma_signals": 22,
+      "cusum_signals": 14,
+      "cohens_d_second_vs_first_half": -0.575,
+      "mean_change_ci": [
+        -15.172,
+        -10.407
+      ]
+    }
+  },
+  "overall": {
+    "records": 12410,
+    "ccp_count": 7,
+    "overall_deviation_rate": 0.0166,
+    "overall_mean_bayesian_rpn": 107.781,
+    "months_observed": 12,
+    "highest_final_risk_ccp": "CCP6"
+  }
+}

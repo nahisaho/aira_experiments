@@ -1,0 +1,1176 @@
+{
+  "projection_timelines": {
+    "Northern GBR": {
+      "RCP2.6": [
+        {
+          "year": 2020,
+          "T_C": 27.5,
+          "pH": 8.05,
+          "coral_cover": 0.2665,
+          "performance": 0.9518,
+          "Omega_aragonite": 3.842,
+          "calcification_ratio": 1.0,
+          "p_bleach": 0.0,
+          "growth_potential": 0.9518,
+          "mhw_event": false
+        },
+        {
+          "year": 2030,
+          "T_C": 27.59,
+          "pH": 8.041,
+          "coral_cover": 0.2711,
+          "performance": 0.9409,
+          "Omega_aragonite": 3.782,
+          "calcification_ratio": 1.0,
+          "p_bleach": 0.0,
+          "growth_potential": 0.9468,
+          "mhw_event": false
+        },
+        {
+          "year": 2040,
+          "T_C": 27.68,
+          "pH": 8.033,
+          "coral_cover": 0.274,
+          "performance": 0.9302,
+          "Omega_aragonite": 3.731,
+          "calcification_ratio": 1.0,
+          "p_bleach": 0.0,
+          "growth_potential": 0.9418,
+          "mhw_event": false
+        },
+        {
+          "year": 2050,
+          "T_C": 27.74,
+          "pH": 8.026,
+          "coral_cover": 0.2752,
+          "performance": 0.9202,
+          "Omega_aragonite": 3.688,
+          "calcification_ratio": 1.0,
+          "p_bleach": 0.0,
+          "growth_potential": 0.9374,
+          "mhw_event": false
+        },
+        {
+          "year": 2060,
+          "T_C": 27.8,
+          "pH": 8.02,
+          "coral_cover": 0.2753,
+          "performance": 0.9113,
+          "Omega_aragonite": 3.653,
+          "calcification_ratio": 1.0,
+          "p_bleach": 0.0,
+          "growth_potential": 0.9341,
+          "mhw_event": false
+        },
+        {
+          "year": 2070,
+          "T_C": 27.84,
+          "pH": 8.016,
+          "coral_cover": 0.2748,
+          "performance": 0.9041,
+          "Omega_aragonite": 3.626,
+          "calcification_ratio": 1.0,
+          "p_bleach": 0.0,
+          "growth_potential": 0.9323,
+          "mhw_event": false
+        },
+        {
+          "year": 2080,
+          "T_C": 27.88,
+          "pH": 8.013,
+          "coral_cover": 0.2742,
+          "performance": 0.8987,
+          "Omega_aragonite": 3.607,
+          "calcification_ratio": 1.0,
+          "p_bleach": 0.0,
+          "growth_potential": 0.9324,
+          "mhw_event": false
+        },
+        {
+          "year": 2090,
+          "T_C": 27.89,
+          "pH": 8.011,
+          "coral_cover": 0.2741,
+          "performance": 0.8953,
+          "Omega_aragonite": 3.596,
+          "calcification_ratio": 1.0,
+          "p_bleach": 0.0,
+          "growth_potential": 0.9345,
+          "mhw_event": false
+        },
+        {
+          "year": 2100,
+          "T_C": 27.9,
+          "pH": 8.01,
+          "coral_cover": 0.2753,
+          "performance": 0.8942,
+          "Omega_aragonite": 3.592,
+          "calcification_ratio": 1.0,
+          "p_bleach": 0.0,
+          "growth_potential": 0.9389,
+          "mhw_event": false
+        }
+      ],
+      "RCP4.5": [
+        {
+          "year": 2020,
+          "T_C": 27.5,
+          "pH": 8.05,
+          "coral_cover": 0.2665,
+          "performance": 0.9518,
+          "Omega_aragonite": 3.842,
+          "calcification_ratio": 1.0,
+          "p_bleach": 0.0,
+          "growth_potential": 0.9518,
+          "mhw_event": false
+        },
+        {
+          "year": 2030,
+          "T_C": 27.73,
+          "pH": 8.025,
+          "coral_cover": 0.2627,
+          "performance": 0.9223,
+          "Omega_aragonite": 3.681,
+          "calcification_ratio": 1.0,
+          "p_bleach": 0.0,
+          "growth_potential": 0.9166,
+          "mhw_event": false
+        },
+        {
+          "year": 2040,
+          "T_C": 27.95,
+          "pH": 8.0,
+          "coral_cover": 0.2468,
+          "performance": 0.8833,
+          "Omega_aragonite": 3.525,
+          "calcification_ratio": 1.0,
+          "p_bleach": 0.0,
+          "growth_potential": 0.8722,
+          "mhw_event": false
+        },
+        {
+          "year": 2050,
+          "T_C": 28.18,
+          "pH": 7.975,
+          "coral_cover": 0.2188,
+          "performance": 0.8346,
+          "Omega_aragonite": 3.376,
+          "calcification_ratio": 1.0,
+          "p_bleach": 0.0001,
+          "growth_potential": 0.819,
+          "mhw_event": false
+        },
+        {
+          "year": 2060,
+          "T_C": 28.4,
+          "pH": 7.95,
+          "coral_cover": 0.1668,
+          "performance": 0.7764,
+          "Omega_aragonite": 3.231,
+          "calcification_ratio": 0.9132,
+          "p_bleach": 0.0001,
+          "growth_potential": 0.6913,
+          "mhw_event": false
+        },
+        {
+          "year": 2070,
+          "T_C": 28.62,
+          "pH": 7.925,
+          "coral_cover": 0.1079,
+          "performance": 0.7087,
+          "Omega_aragonite": 3.093,
+          "calcification_ratio": 0.8188,
+          "p_bleach": 0.0002,
+          "growth_potential": 0.5622,
+          "mhw_event": false
+        },
+        {
+          "year": 2080,
+          "T_C": 28.85,
+          "pH": 7.9,
+          "coral_cover": 0.0607,
+          "performance": 0.6314,
+          "Omega_aragonite": 2.959,
+          "calcification_ratio": 0.7321,
+          "p_bleach": 0.0004,
+          "growth_potential": 0.4449,
+          "mhw_event": false
+        },
+        {
+          "year": 2090,
+          "T_C": 29.07,
+          "pH": 7.875,
+          "coral_cover": 0.0315,
+          "performance": 0.5445,
+          "Omega_aragonite": 2.831,
+          "calcification_ratio": 0.6525,
+          "p_bleach": 0.0007,
+          "growth_potential": 0.3397,
+          "mhw_event": false
+        },
+        {
+          "year": 2100,
+          "T_C": 29.3,
+          "pH": 7.85,
+          "coral_cover": 0.019,
+          "performance": 0.4475,
+          "Omega_aragonite": 2.708,
+          "calcification_ratio": 0.5795,
+          "p_bleach": 0.0012,
+          "growth_potential": 0.2464,
+          "mhw_event": false
+        }
+      ],
+      "RCP8.5": [
+        {
+          "year": 2020,
+          "T_C": 27.5,
+          "pH": 8.05,
+          "coral_cover": 0.2665,
+          "performance": 0.9518,
+          "Omega_aragonite": 3.842,
+          "calcification_ratio": 1.0,
+          "p_bleach": 0.0,
+          "growth_potential": 0.9518,
+          "mhw_event": false
+        },
+        {
+          "year": 2030,
+          "T_C": 27.93,
+          "pH": 8.009,
+          "coral_cover": 0.2487,
+          "performance": 0.8886,
+          "Omega_aragonite": 3.589,
+          "calcification_ratio": 1.0,
+          "p_bleach": 0.0,
+          "growth_potential": 0.8664,
+          "mhw_event": false
+        },
+        {
+          "year": 2040,
+          "T_C": 28.39,
+          "pH": 7.966,
+          "coral_cover": 0.1998,
+          "performance": 0.7869,
+          "Omega_aragonite": 3.34,
+          "calcification_ratio": 0.99,
+          "p_bleach": 0.0001,
+          "growth_potential": 0.7401,
+          "mhw_event": false
+        },
+        {
+          "year": 2050,
+          "T_C": 28.87,
+          "pH": 7.921,
+          "coral_cover": 0.1106,
+          "performance": 0.6448,
+          "Omega_aragonite": 3.095,
+          "calcification_ratio": 0.8204,
+          "p_bleach": 0.0004,
+          "growth_potential": 0.4893,
+          "mhw_event": false
+        },
+        {
+          "year": 2060,
+          "T_C": 29.36,
+          "pH": 7.874,
+          "coral_cover": 0.0304,
+          "performance": 0.4607,
+          "Omega_aragonite": 2.856,
+          "calcification_ratio": 0.6678,
+          "p_bleach": 0.0014,
+          "growth_potential": 0.2769,
+          "mhw_event": true,
+          "mhw_loss_pct": 30.8
+        },
+        {
+          "year": 2070,
+          "T_C": 29.88,
+          "pH": 7.825,
+          "coral_cover": 0.0111,
+          "performance": 0.2325,
+          "Omega_aragonite": 2.625,
+          "calcification_ratio": 0.5325,
+          "p_bleach": 0.0049,
+          "growth_potential": 0.1083,
+          "mhw_event": true,
+          "mhw_loss_pct": 35.5
+        },
+        {
+          "year": 2080,
+          "T_C": 30.41,
+          "pH": 7.774,
+          "coral_cover": 0.01,
+          "performance": 0.0,
+          "Omega_aragonite": 2.402,
+          "calcification_ratio": 0.4143,
+          "p_bleach": 0.0184,
+          "growth_potential": 0.0,
+          "mhw_event": false
+        },
+        {
+          "year": 2090,
+          "T_C": 30.96,
+          "pH": 7.721,
+          "coral_cover": 0.01,
+          "performance": 0.0,
+          "Omega_aragonite": 2.188,
+          "calcification_ratio": 0.3128,
+          "p_bleach": 0.0699,
+          "growth_potential": 0.0,
+          "mhw_event": true,
+          "mhw_loss_pct": 21.3
+        },
+        {
+          "year": 2100,
+          "T_C": 31.54,
+          "pH": 7.666,
+          "coral_cover": 0.01,
+          "performance": 0.0,
+          "Omega_aragonite": 1.985,
+          "calcification_ratio": 0.2274,
+          "p_bleach": 0.2405,
+          "growth_potential": 0.0,
+          "mhw_event": false
+        }
+      ]
+    },
+    "Central GBR": {
+      "RCP2.6": [
+        {
+          "year": 2020,
+          "T_C": 26.5,
+          "pH": 8.08,
+          "coral_cover": 0.3196,
+          "performance": 0.9684,
+          "Omega_aragonite": 3.935,
+          "calcification_ratio": 1.0,
+          "p_bleach": 0.0,
+          "growth_potential": 0.9684,
+          "mhw_event": false
+        },
+        {
+          "year": 2030,
+          "T_C": 26.59,
+          "pH": 8.071,
+          "coral_cover": 0.33,
+          "performance": 0.9703,
+          "Omega_aragonite": 3.874,
+          "calcification_ratio": 1.0,
+          "p_bleach": 0.0,
+          "growth_potential": 0.9764,
+          "mhw_event": false
+        },
+        {
+          "year": 2040,
+          "T_C": 26.68,
+          "pH": 8.062,
+          "coral_cover": 0.33,
+          "performance": 0.9713,
+          "Omega_aragonite": 3.822,
+          "calcification_ratio": 1.0,
+          "p_bleach": 0.0,
+          "growth_potential": 0.9835,
+          "mhw_event": false
+        },
+        {
+          "year": 2050,
+          "T_C": 26.74,
+          "pH": 8.056,
+          "coral_cover": 0.33,
+          "performance": 0.9717,
+          "Omega_aragonite": 3.778,
+          "calcification_ratio": 1.0,
+          "p_bleach": 0.0,
+          "growth_potential": 0.9899,
+          "mhw_event": false
+        },
+        {
+          "year": 2060,
+          "T_C": 26.8,
+          "pH": 8.05,
+          "coral_cover": 0.33,
+          "performance": 0.9717,
+          "Omega_aragonite": 3.743,
+          "calcification_ratio": 1.0,
+          "p_bleach": 0.0,
+          "growth_potential": 0.9959,
+          "mhw_event": false
+        },
+        {
+          "year": 2070,
+          "T_C": 26.84,
+          "pH": 8.046,
+          "coral_cover": 0.33,
+          "performance": 0.9714,
+          "Omega_aragonite": 3.715,
+          "calcification_ratio": 1.0,
+          "p_bleach": 0.0,
+          "growth_potential": 1.0018,
+          "mhw_event": false
+        },
+        {
+          "year": 2080,
+          "T_C": 26.88,
+          "pH": 8.043,
+          "coral_cover": 0.2934,
+          "performance": 0.9711,
+          "Omega_aragonite": 3.696,
+          "calcification_ratio": 1.0,
+          "p_bleach": 0.0,
+          "growth_potential": 1.0075,
+          "mhw_event": true,
+          "mhw_loss_pct": 17.6
+        },
+        {
+          "year": 2090,
+          "T_C": 26.89,
+          "pH": 8.041,
+          "coral_cover": 0.3168,
+          "performance": 0.9709,
+          "Omega_aragonite": 3.684,
+          "calcification_ratio": 1.0,
+          "p_bleach": 0.0,
+          "growth_potential": 1.0133,
+          "mhw_event": false
+        },
+        {
+          "year": 2100,
+          "T_C": 26.9,
+          "pH": 8.04,
+          "coral_cover": 0.33,
+          "performance": 0.9708,
+          "Omega_aragonite": 3.68,
+          "calcification_ratio": 1.0,
+          "p_bleach": 0.0,
+          "growth_potential": 1.0193,
+          "mhw_event": false
+        }
+      ],
+      "RCP4.5": [
+        {
+          "year": 2020,
+          "T_C": 26.5,
+          "pH": 8.08,
+          "coral_cover": 0.3196,
+          "performance": 0.9684,
+          "Omega_aragonite": 3.935,
+          "calcification_ratio": 1.0,
+          "p_bleach": 0.0,
+          "growth_potential": 0.9684,
+          "mhw_event": false
+        },
+        {
+          "year": 2030,
+          "T_C": 26.73,
+          "pH": 8.055,
+          "coral_cover": 0.3278,
+          "performance": 0.9712,
+          "Omega_aragonite": 3.771,
+          "calcification_ratio": 1.0,
+          "p_bleach": 0.0,
+          "growth_potential": 0.9651,
+          "mhw_event": false
+        },
+        {
+          "year": 2040,
+          "T_C": 26.95,
+          "pH": 8.03,
+          "coral_cover": 0.33,
+          "performance": 0.9688,
+          "Omega_aragonite": 3.612,
+          "calcification_ratio": 1.0,
+          "p_bleach": 0.0,
+          "growth_potential": 0.9567,
+          "mhw_event": false
+        },
+        {
+          "year": 2050,
+          "T_C": 27.18,
+          "pH": 8.005,
+          "coral_cover": 0.3299,
+          "performance": 0.9596,
+          "Omega_aragonite": 3.459,
+          "calcification_ratio": 1.0,
+          "p_bleach": 0.0,
+          "growth_potential": 0.9416,
+          "mhw_event": false
+        },
+        {
+          "year": 2060,
+          "T_C": 27.4,
+          "pH": 7.98,
+          "coral_cover": 0.3121,
+          "performance": 0.94,
+          "Omega_aragonite": 3.312,
+          "calcification_ratio": 0.9701,
+          "p_bleach": 0.0,
+          "growth_potential": 0.889,
+          "mhw_event": false
+        },
+        {
+          "year": 2070,
+          "T_C": 27.62,
+          "pH": 7.955,
+          "coral_cover": 0.2578,
+          "performance": 0.9096,
+          "Omega_aragonite": 3.17,
+          "calcification_ratio": 0.8712,
+          "p_bleach": 0.0,
+          "growth_potential": 0.7676,
+          "mhw_event": false
+        },
+        {
+          "year": 2080,
+          "T_C": 27.85,
+          "pH": 7.93,
+          "coral_cover": 0.1558,
+          "performance": 0.8679,
+          "Omega_aragonite": 3.034,
+          "calcification_ratio": 0.7802,
+          "p_bleach": 0.0,
+          "growth_potential": 0.6518,
+          "mhw_event": true,
+          "mhw_loss_pct": 17.6
+        },
+        {
+          "year": 2090,
+          "T_C": 28.07,
+          "pH": 7.905,
+          "coral_cover": 0.1009,
+          "performance": 0.8148,
+          "Omega_aragonite": 2.903,
+          "calcification_ratio": 0.6967,
+          "p_bleach": 0.0001,
+          "growth_potential": 0.5428,
+          "mhw_event": false
+        },
+        {
+          "year": 2100,
+          "T_C": 28.3,
+          "pH": 7.88,
+          "coral_cover": 0.0595,
+          "performance": 0.7497,
+          "Omega_aragonite": 2.777,
+          "calcification_ratio": 0.62,
+          "p_bleach": 0.0001,
+          "growth_potential": 0.4416,
+          "mhw_event": false
+        }
+      ],
+      "RCP8.5": [
+        {
+          "year": 2020,
+          "T_C": 26.5,
+          "pH": 8.08,
+          "coral_cover": 0.3196,
+          "performance": 0.9684,
+          "Omega_aragonite": 3.935,
+          "calcification_ratio": 1.0,
+          "p_bleach": 0.0,
+          "growth_potential": 0.9684,
+          "mhw_event": false
+        },
+        {
+          "year": 2030,
+          "T_C": 26.93,
+          "pH": 8.039,
+          "coral_cover": 0.3219,
+          "performance": 0.9708,
+          "Omega_aragonite": 3.678,
+          "calcification_ratio": 1.0,
+          "p_bleach": 0.0,
+          "growth_potential": 0.9465,
+          "mhw_event": false
+        },
+        {
+          "year": 2040,
+          "T_C": 27.39,
+          "pH": 7.996,
+          "coral_cover": 0.3082,
+          "performance": 0.9461,
+          "Omega_aragonite": 3.423,
+          "calcification_ratio": 1.0,
+          "p_bleach": 0.0,
+          "growth_potential": 0.8988,
+          "mhw_event": false
+        },
+        {
+          "year": 2050,
+          "T_C": 27.87,
+          "pH": 7.951,
+          "coral_cover": 0.2356,
+          "performance": 0.8765,
+          "Omega_aragonite": 3.173,
+          "calcification_ratio": 0.8728,
+          "p_bleach": 0.0,
+          "growth_potential": 0.7076,
+          "mhw_event": false
+        },
+        {
+          "year": 2060,
+          "T_C": 28.36,
+          "pH": 7.904,
+          "coral_cover": 0.1293,
+          "performance": 0.7556,
+          "Omega_aragonite": 2.929,
+          "calcification_ratio": 0.7128,
+          "p_bleach": 0.0001,
+          "growth_potential": 0.4847,
+          "mhw_event": false
+        },
+        {
+          "year": 2070,
+          "T_C": 28.88,
+          "pH": 7.855,
+          "coral_cover": 0.0489,
+          "performance": 0.5783,
+          "Omega_aragonite": 2.692,
+          "calcification_ratio": 0.5705,
+          "p_bleach": 0.0004,
+          "growth_potential": 0.2887,
+          "mhw_event": false
+        },
+        {
+          "year": 2080,
+          "T_C": 29.41,
+          "pH": 7.804,
+          "coral_cover": 0.015,
+          "performance": 0.3395,
+          "Omega_aragonite": 2.464,
+          "calcification_ratio": 0.446,
+          "p_bleach": 0.0015,
+          "growth_potential": 0.1287,
+          "mhw_event": true,
+          "mhw_loss_pct": 17.6
+        },
+        {
+          "year": 2090,
+          "T_C": 29.96,
+          "pH": 7.751,
+          "coral_cover": 0.0107,
+          "performance": 0.0356,
+          "Omega_aragonite": 2.245,
+          "calcification_ratio": 0.3389,
+          "p_bleach": 0.0061,
+          "growth_potential": 0.0099,
+          "mhw_event": false
+        },
+        {
+          "year": 2100,
+          "T_C": 30.54,
+          "pH": 7.696,
+          "coral_cover": 0.01,
+          "performance": 0.0,
+          "Omega_aragonite": 2.037,
+          "calcification_ratio": 0.2484,
+          "p_bleach": 0.0253,
+          "growth_potential": 0.0,
+          "mhw_event": true,
+          "mhw_loss_pct": 26.9
+        }
+      ]
+    },
+    "Southern GBR": {
+      "RCP2.6": [
+        {
+          "year": 2020,
+          "T_C": 25.0,
+          "pH": 8.1,
+          "coral_cover": 0.2977,
+          "performance": 0.752,
+          "Omega_aragonite": 3.877,
+          "calcification_ratio": 1.0997,
+          "p_bleach": 0.0,
+          "growth_potential": 0.827,
+          "mhw_event": false
+        },
+        {
+          "year": 2030,
+          "T_C": 25.09,
+          "pH": 8.091,
+          "coral_cover": 0.2683,
+          "performance": 0.7652,
+          "Omega_aragonite": 3.817,
+          "calcification_ratio": 1.0997,
+          "p_bleach": 0.0,
+          "growth_potential": 0.85,
+          "mhw_event": false
+        },
+        {
+          "year": 2040,
+          "T_C": 25.18,
+          "pH": 8.082,
+          "coral_cover": 0.2492,
+          "performance": 0.7764,
+          "Omega_aragonite": 3.766,
+          "calcification_ratio": 1.0997,
+          "p_bleach": 0.0,
+          "growth_potential": 0.871,
+          "mhw_event": false
+        },
+        {
+          "year": 2050,
+          "T_C": 25.24,
+          "pH": 8.076,
+          "coral_cover": 0.2375,
+          "performance": 0.7857,
+          "Omega_aragonite": 3.722,
+          "calcification_ratio": 1.0997,
+          "p_bleach": 0.0,
+          "growth_potential": 0.89,
+          "mhw_event": false
+        },
+        {
+          "year": 2060,
+          "T_C": 25.3,
+          "pH": 8.07,
+          "coral_cover": 0.2296,
+          "performance": 0.7931,
+          "Omega_aragonite": 3.687,
+          "calcification_ratio": 1.0911,
+          "p_bleach": 0.0,
+          "growth_potential": 0.8999,
+          "mhw_event": false
+        },
+        {
+          "year": 2070,
+          "T_C": 25.34,
+          "pH": 8.066,
+          "coral_cover": 0.2235,
+          "performance": 0.7987,
+          "Omega_aragonite": 3.66,
+          "calcification_ratio": 1.0779,
+          "p_bleach": 0.0,
+          "growth_potential": 0.9039,
+          "mhw_event": false
+        },
+        {
+          "year": 2080,
+          "T_C": 25.38,
+          "pH": 8.062,
+          "coral_cover": 0.1392,
+          "performance": 0.8026,
+          "Omega_aragonite": 3.641,
+          "calcification_ratio": 1.0685,
+          "p_bleach": 0.0,
+          "growth_potential": 0.909,
+          "mhw_event": true,
+          "mhw_loss_pct": 39.4
+        },
+        {
+          "year": 2090,
+          "T_C": 25.39,
+          "pH": 8.061,
+          "coral_cover": 0.1435,
+          "performance": 0.805,
+          "Omega_aragonite": 3.63,
+          "calcification_ratio": 1.0628,
+          "p_bleach": 0.0,
+          "growth_potential": 0.9155,
+          "mhw_event": false
+        },
+        {
+          "year": 2100,
+          "T_C": 25.4,
+          "pH": 8.06,
+          "coral_cover": 0.1487,
+          "performance": 0.8058,
+          "Omega_aragonite": 3.626,
+          "calcification_ratio": 1.061,
+          "p_bleach": 0.0,
+          "growth_potential": 0.9233,
+          "mhw_event": false
+        }
+      ],
+      "RCP4.5": [
+        {
+          "year": 2020,
+          "T_C": 25.0,
+          "pH": 8.1,
+          "coral_cover": 0.2977,
+          "performance": 0.752,
+          "Omega_aragonite": 3.877,
+          "calcification_ratio": 1.0997,
+          "p_bleach": 0.0,
+          "growth_potential": 0.827,
+          "mhw_event": false
+        },
+        {
+          "year": 2030,
+          "T_C": 25.23,
+          "pH": 8.075,
+          "coral_cover": 0.2725,
+          "performance": 0.7827,
+          "Omega_aragonite": 3.715,
+          "calcification_ratio": 1.0997,
+          "p_bleach": 0.0,
+          "growth_potential": 0.8629,
+          "mhw_event": false
+        },
+        {
+          "year": 2040,
+          "T_C": 25.45,
+          "pH": 8.05,
+          "coral_cover": 0.2445,
+          "performance": 0.8107,
+          "Omega_aragonite": 3.558,
+          "calcification_ratio": 1.0282,
+          "p_bleach": 0.0,
+          "growth_potential": 0.8378,
+          "mhw_event": false
+        },
+        {
+          "year": 2050,
+          "T_C": 25.68,
+          "pH": 8.025,
+          "coral_cover": 0.2135,
+          "performance": 0.8356,
+          "Omega_aragonite": 3.408,
+          "calcification_ratio": 0.9558,
+          "p_bleach": 0.0,
+          "growth_potential": 0.8047,
+          "mhw_event": false
+        },
+        {
+          "year": 2060,
+          "T_C": 25.9,
+          "pH": 8.0,
+          "coral_cover": 0.1811,
+          "performance": 0.8569,
+          "Omega_aragonite": 3.263,
+          "calcification_ratio": 0.8872,
+          "p_bleach": 0.0,
+          "growth_potential": 0.7679,
+          "mhw_event": false
+        },
+        {
+          "year": 2070,
+          "T_C": 26.12,
+          "pH": 7.975,
+          "coral_cover": 0.1493,
+          "performance": 0.874,
+          "Omega_aragonite": 3.123,
+          "calcification_ratio": 0.8223,
+          "p_bleach": 0.0,
+          "growth_potential": 0.7277,
+          "mhw_event": false
+        },
+        {
+          "year": 2080,
+          "T_C": 26.35,
+          "pH": 7.95,
+          "coral_cover": 0.0797,
+          "performance": 0.8865,
+          "Omega_aragonite": 2.988,
+          "calcification_ratio": 0.761,
+          "p_bleach": 0.0,
+          "growth_potential": 0.6847,
+          "mhw_event": true,
+          "mhw_loss_pct": 39.4
+        },
+        {
+          "year": 2090,
+          "T_C": 26.57,
+          "pH": 7.925,
+          "coral_cover": 0.0688,
+          "performance": 0.8937,
+          "Omega_aragonite": 2.859,
+          "calcification_ratio": 0.7031,
+          "p_bleach": 0.0,
+          "growth_potential": 0.6393,
+          "mhw_event": false
+        },
+        {
+          "year": 2100,
+          "T_C": 26.8,
+          "pH": 7.9,
+          "coral_cover": 0.0586,
+          "performance": 0.895,
+          "Omega_aragonite": 2.735,
+          "calcification_ratio": 0.6484,
+          "p_bleach": 0.0,
+          "growth_potential": 0.592,
+          "mhw_event": false
+        }
+      ],
+      "RCP8.5": [
+        {
+          "year": 2020,
+          "T_C": 25.0,
+          "pH": 8.1,
+          "coral_cover": 0.2977,
+          "performance": 0.752,
+          "Omega_aragonite": 3.877,
+          "calcification_ratio": 1.0997,
+          "p_bleach": 0.0,
+          "growth_potential": 0.827,
+          "mhw_event": false
+        },
+        {
+          "year": 2030,
+          "T_C": 25.43,
+          "pH": 8.059,
+          "coral_cover": 0.2688,
+          "performance": 0.8107,
+          "Omega_aragonite": 3.623,
+          "calcification_ratio": 1.0597,
+          "p_bleach": 0.0,
+          "growth_potential": 0.8483,
+          "mhw_event": false
+        },
+        {
+          "year": 2040,
+          "T_C": 25.89,
+          "pH": 8.016,
+          "coral_cover": 0.229,
+          "performance": 0.8608,
+          "Omega_aragonite": 3.372,
+          "calcification_ratio": 0.9387,
+          "p_bleach": 0.0,
+          "growth_potential": 0.7878,
+          "mhw_event": false
+        },
+        {
+          "year": 2050,
+          "T_C": 26.37,
+          "pH": 7.971,
+          "coral_cover": 0.1807,
+          "performance": 0.8968,
+          "Omega_aragonite": 3.125,
+          "calcification_ratio": 0.8234,
+          "p_bleach": 0.0,
+          "growth_potential": 0.7108,
+          "mhw_event": false
+        },
+        {
+          "year": 2060,
+          "T_C": 26.86,
+          "pH": 7.924,
+          "coral_cover": 0.1301,
+          "performance": 0.9123,
+          "Omega_aragonite": 2.884,
+          "calcification_ratio": 0.7143,
+          "p_bleach": 0.0,
+          "growth_potential": 0.6191,
+          "mhw_event": false
+        },
+        {
+          "year": 2070,
+          "T_C": 27.38,
+          "pH": 7.875,
+          "coral_cover": 0.0852,
+          "performance": 0.8995,
+          "Omega_aragonite": 2.651,
+          "calcification_ratio": 0.6122,
+          "p_bleach": 0.0,
+          "growth_potential": 0.5162,
+          "mhw_event": false
+        },
+        {
+          "year": 2080,
+          "T_C": 27.91,
+          "pH": 7.824,
+          "coral_cover": 0.0376,
+          "performance": 0.8409,
+          "Omega_aragonite": 2.426,
+          "calcification_ratio": 0.5173,
+          "p_bleach": 0.0,
+          "growth_potential": 0.4024,
+          "mhw_event": true,
+          "mhw_loss_pct": 39.4
+        },
+        {
+          "year": 2090,
+          "T_C": 28.46,
+          "pH": 7.771,
+          "coral_cover": 0.0222,
+          "performance": 0.7042,
+          "Omega_aragonite": 2.211,
+          "calcification_ratio": 0.4301,
+          "p_bleach": 0.0,
+          "growth_potential": 0.2764,
+          "mhw_event": true,
+          "mhw_loss_pct": 22.1
+        },
+        {
+          "year": 2100,
+          "T_C": 29.04,
+          "pH": 7.716,
+          "coral_cover": 0.0195,
+          "performance": 0.4764,
+          "Omega_aragonite": 2.006,
+          "calcification_ratio": 0.3507,
+          "p_bleach": 0.0002,
+          "growth_potential": 0.1504,
+          "mhw_event": false
+        }
+      ]
+    }
+  },
+  "summary_2100": {
+    "Northern GBR": {
+      "RCP2.6": {
+        "cover_2020": 0.2665,
+        "cover_2100": 0.2753,
+        "cover_change_pct": 3.3,
+        "T_2100": 27.9,
+        "pH_2100": 8.01,
+        "Omega_2100": 3.592,
+        "n_mhw_events": 0
+      },
+      "RCP4.5": {
+        "cover_2020": 0.2665,
+        "cover_2100": 0.019,
+        "cover_change_pct": -92.9,
+        "T_2100": 29.3,
+        "pH_2100": 7.85,
+        "Omega_2100": 2.708,
+        "n_mhw_events": 0
+      },
+      "RCP8.5": {
+        "cover_2020": 0.2665,
+        "cover_2100": 0.01,
+        "cover_change_pct": -96.2,
+        "T_2100": 31.54,
+        "pH_2100": 7.666,
+        "Omega_2100": 1.985,
+        "n_mhw_events": 3
+      }
+    },
+    "Central GBR": {
+      "RCP2.6": {
+        "cover_2020": 0.3196,
+        "cover_2100": 0.33,
+        "cover_change_pct": 3.3,
+        "T_2100": 26.9,
+        "pH_2100": 8.04,
+        "Omega_2100": 3.68,
+        "n_mhw_events": 1
+      },
+      "RCP4.5": {
+        "cover_2020": 0.3196,
+        "cover_2100": 0.0595,
+        "cover_change_pct": -81.4,
+        "T_2100": 28.3,
+        "pH_2100": 7.88,
+        "Omega_2100": 2.777,
+        "n_mhw_events": 1
+      },
+      "RCP8.5": {
+        "cover_2020": 0.3196,
+        "cover_2100": 0.01,
+        "cover_change_pct": -96.9,
+        "T_2100": 30.54,
+        "pH_2100": 7.696,
+        "Omega_2100": 2.037,
+        "n_mhw_events": 2
+      }
+    },
+    "Southern GBR": {
+      "RCP2.6": {
+        "cover_2020": 0.2977,
+        "cover_2100": 0.1487,
+        "cover_change_pct": -50.1,
+        "T_2100": 25.4,
+        "pH_2100": 8.06,
+        "Omega_2100": 3.626,
+        "n_mhw_events": 1
+      },
+      "RCP4.5": {
+        "cover_2020": 0.2977,
+        "cover_2100": 0.0586,
+        "cover_change_pct": -80.3,
+        "T_2100": 26.8,
+        "pH_2100": 7.9,
+        "Omega_2100": 2.735,
+        "n_mhw_events": 1
+      },
+      "RCP8.5": {
+        "cover_2020": 0.2977,
+        "cover_2100": 0.0195,
+        "cover_change_pct": -93.4,
+        "T_2100": 29.04,
+        "pH_2100": 7.716,
+        "Omega_2100": 2.006,
+        "n_mhw_events": 2
+      }
+    }
+  },
+  "tipping_points": {
+    "Northern GBR": {
+      "RCP2.6": {
+        "below_10pct_year": null,
+        "functional_collapse": false
+      },
+      "RCP4.5": {
+        "below_10pct_year": 2080,
+        "functional_collapse": true
+      },
+      "RCP8.5": {
+        "below_10pct_year": 2060,
+        "functional_collapse": true
+      }
+    },
+    "Central GBR": {
+      "RCP2.6": {
+        "below_10pct_year": null,
+        "functional_collapse": false
+      },
+      "RCP4.5": {
+        "below_10pct_year": 2100,
+        "functional_collapse": true
+      },
+      "RCP8.5": {
+        "below_10pct_year": 2070,
+        "functional_collapse": true
+      }
+    },
+    "Southern GBR": {
+      "RCP2.6": {
+        "below_10pct_year": null,
+        "functional_collapse": false
+      },
+      "RCP4.5": {
+        "below_10pct_year": 2080,
+        "functional_collapse": true
+      },
+      "RCP8.5": {
+        "below_10pct_year": 2070,
+        "functional_collapse": true
+      }
+    }
+  },
+  "gbr_regions": {
+    "Northern GBR": {
+      "lat_range": [
+        -10,
+        -16
+      ],
+      "T_baseline": 27.5,
+      "pH_baseline": 8.05,
+      "coral_cover_2020": 0.28,
+      "dominant_species": "Acropora"
+    },
+    "Central GBR": {
+      "lat_range": [
+        -16,
+        -20
+      ],
+      "T_baseline": 26.5,
+      "pH_baseline": 8.08,
+      "coral_cover_2020": 0.33,
+      "dominant_species": "Acropora"
+    },
+    "Southern GBR": {
+      "lat_range": [
+        -20,
+        -24
+      ],
+      "T_baseline": 25.0,
+      "pH_baseline": 8.1,
+      "coral_cover_2020": 0.36,
+      "dominant_species": "Porites"
+    }
+  }
+}

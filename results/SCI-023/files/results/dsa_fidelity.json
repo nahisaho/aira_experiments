@@ -1,0 +1,56 @@
+[
+  {
+    "n_mult": 1,
+    "L_guide_nm": 25.0,
+    "LWR_3sigma_nm": 1.5,
+    "LER_3sigma_nm": 1.0499999999999998,
+    "placement_error_nm": 0.5,
+    "defect_density_per100nm2": 0.0016487212707001282,
+    "suitable_for_7nm": true
+  },
+  {
+    "n_mult": 2,
+    "L_guide_nm": 50.0,
+    "LWR_3sigma_nm": 2.121320343559643,
+    "LER_3sigma_nm": 1.48492424049175,
+    "placement_error_nm": 1.0,
+    "defect_density_per100nm2": 0.002718281828459045,
+    "suitable_for_7nm": false
+  },
+  {
+    "n_mult": 3,
+    "L_guide_nm": 75.0,
+    "LWR_3sigma_nm": 2.598076211353316,
+    "LER_3sigma_nm": 1.818653347947321,
+    "placement_error_nm": 1.5,
+    "defect_density_per100nm2": 0.004481689070338065,
+    "suitable_for_7nm": false
+  },
+  {
+    "n_mult": 4,
+    "L_guide_nm": 100.0,
+    "LWR_3sigma_nm": 3.0,
+    "LER_3sigma_nm": 2.0999999999999996,
+    "placement_error_nm": 2.0,
+    "defect_density_per100nm2": 0.007389056098930651,
+    "suitable_for_7nm": false
+  },
+  {
+    "n_mult": 5,
+    "L_guide_nm": 125.0,
+    "LWR_3sigma_nm": 3.3541019662496847,
+    "LER_3sigma_nm": 2.347871376374779,
+    "placement_error_nm": 2.5,
+    "defect_density_per100nm2": 0.012182493960703474,
+    "suitable_for_7nm": false
+  },
+  {
+    "n_mult": 6,
+    "L_guide_nm": 150.0,
+    "LWR_3sigma_nm": 3.674234614174767,
+    "LER_3sigma_nm": 2.5719642299223366,
+    "placement_error_nm": 3.0,
+    "defect_density_per100nm2": 0.02008553692318767,
+    "suitable_for_7nm": false
+  }
+]

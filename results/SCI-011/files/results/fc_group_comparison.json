@@ -1,0 +1,18 @@
+{
+  "HC_vs_SCZ": {
+    "group_comparison": "HC_vs_SCZ",
+    "n_edges_tested": 4005,
+    "n_significant_fdr05": 229,
+    "pct_significant": 5.72,
+    "mean_t_stat": 1.465,
+    "cohen_d_mean": 0.34
+  },
+  "HC_vs_AD": {
+    "group_comparison": "HC_vs_AD",
+    "n_edges_tested": 4005,
+    "n_significant_fdr05": 226,
+    "pct_significant": 5.64,
+    "mean_t_stat": 1.68,
+    "cohen_d_mean": 0.412
+  }
+}

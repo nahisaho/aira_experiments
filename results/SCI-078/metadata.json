@@ -1,0 +1,11 @@
+{
+  "experiment_id": "SCI-078",
+  "title": "マイクロバイオーム-食品相互作用",
+  "project_id": "d2761782-97e5-45d3-9bb7-b6bbc7bfbc58",
+  "prompt_length": 382,
+  "output_length": 1536,
+  "file_count": 39,
+  "duration_seconds": 840,
+  "status": "success",
+  "timestamp": "2026-05-22T19:04:26.386Z"
+}

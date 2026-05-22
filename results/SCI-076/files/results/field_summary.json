@@ -1,0 +1,11 @@
+{
+  "n_fields": 20,
+  "total_area_ha": 53.64,
+  "mean_yield": 5.58,
+  "varieties": {
+    "Koshihikari": 14,
+    "Hitomebore": 4,
+    "Akitakomachi": 2
+  },
+  "mean_n_rate": 94.2
+}

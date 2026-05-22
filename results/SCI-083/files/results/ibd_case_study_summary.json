@@ -1,0 +1,51 @@
+{
+  "cohort": {
+    "total_samples": 150,
+    "groups": {
+      "Control": 50,
+      "UC": 50,
+      "CD": 50
+    },
+    "mean_age": 43.6,
+    "sex_ratio": {
+      "F": 82,
+      "M": 68
+    }
+  },
+  "differential_analysis": {
+    "Control_vs_UC": {
+      "n_significant": 6,
+      "n_tested": 50
+    },
+    "Control_vs_CD": {
+      "n_significant": 4,
+      "n_tested": 50
+    },
+    "UC_vs_CD": {
+      "n_significant": 0,
+      "n_tested": 50
+    }
+  },
+  "activity_score_stats": {
+    "mean": {
+      "CD": 0.097,
+      "Control": -0.253,
+      "UC": 0.156
+    },
+    "std": {
+      "CD": 0.265,
+      "Control": 0.656,
+      "UC": 0.491
+    },
+    "median": {
+      "CD": 0.08,
+      "Control": -0.08,
+      "UC": 0.075
+    }
+  },
+  "risk_distribution": {
+    "Moderate": 131,
+    "Low": 11,
+    "High": 8
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "experiment_id": "SCI-004",
+  "title": "ファーマコゲノミクス薬物応答予測",
+  "project_id": "fc776f29-54af-4cdf-a794-8bdabd570a60",
+  "prompt_length": 410,
+  "output_length": 932,
+  "file_count": 31,
+  "duration_seconds": 577,
+  "status": "success",
+  "timestamp": "2026-05-22T12:49:02.617Z"
+}

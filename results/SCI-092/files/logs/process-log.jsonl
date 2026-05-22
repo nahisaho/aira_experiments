@@ -1,0 +1,16 @@
+{"timestamp": "2026-05-23T04:52:05.959639", "phase": "pipeline", "event_type": "run_started", "actor": "co-scientist"}
+{"timestamp": "2026-05-23T04:52:05.959706", "phase": "meta_analysis", "event_type": "skill_selected", "actor": "co-scientist"}
+{"timestamp": "2026-05-23T04:52:05.969873", "phase": "meta_analysis", "event_type": "handoff_completed", "actor": "co-scientist", "files_written": ["data/meta_analysis_studies.csv", "results/meta_analysis_results.json"]}
+{"timestamp": "2026-05-23T04:52:05.969896", "phase": "sentiment", "event_type": "skill_selected", "actor": "co-scientist"}
+{"timestamp": "2026-05-23T04:52:06.053358", "phase": "sentiment", "event_type": "handoff_completed", "actor": "co-scientist", "files_written": ["data/social_media_sentiment.csv", "results/sentiment_analysis_results.json"]}
+{"timestamp": "2026-05-23T04:52:06.053433", "phase": "psychometric", "event_type": "skill_selected", "actor": "co-scientist"}
+{"timestamp": "2026-05-23T04:52:06.661280", "phase": "psychometric", "event_type": "handoff_completed", "actor": "co-scientist", "files_written": ["data/psychometric_risk_data.csv", "results/psychometric_results.json"]}
+{"timestamp": "2026-05-23T04:52:06.661320", "phase": "framing", "event_type": "skill_selected", "actor": "co-scientist"}
+{"timestamp": "2026-05-23T04:52:06.761730", "phase": "framing", "event_type": "handoff_completed", "actor": "co-scientist", "files_written": ["data/framing_experiment_data.csv", "results/framing_effects_results.json"]}
+{"timestamp": "2026-05-23T04:52:06.761796", "phase": "sem", "event_type": "skill_selected", "actor": "co-scientist"}
+{"timestamp": "2026-05-23T04:52:06.841823", "phase": "sem", "event_type": "handoff_completed", "actor": "co-scientist", "files_written": ["data/sem_data.csv", "results/sem_results.json"]}
+{"timestamp": "2026-05-23T04:52:06.841884", "phase": "japan_case", "event_type": "skill_selected", "actor": "co-scientist"}
+{"timestamp": "2026-05-23T04:52:06.923500", "phase": "japan_case", "event_type": "handoff_completed", "actor": "co-scientist", "files_written": ["data/japan_genome_food_data.csv", "results/japan_case_study_results.json"]}
+{"timestamp": "2026-05-23T04:52:06.923558", "phase": "visualization", "event_type": "skill_selected", "actor": "co-scientist"}
+{"timestamp": "2026-05-23T04:52:10.872695", "phase": "visualization", "event_type": "handoff_completed", "actor": "co-scientist", "files_written": ["figures/fig1_meta_analysis_forest.png", "figures/fig2_sentiment_trends.png", "figures/fig3_psychometric_space.png", "figures/fig4_framing_effects.png", "figures/fig5_sem_path_diagram.png", "figures/fig6_japan_case_study.png", "figures/fig7_correlation_heatmap.png"]}
+{"timestamp": "2026-05-23T04:52:10.872713", "phase": "pipeline", "event_type": "run_completed", "actor": "co-scientist", "status": "ok"}

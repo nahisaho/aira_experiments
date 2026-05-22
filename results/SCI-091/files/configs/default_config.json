@@ -1,0 +1,84 @@
+{
+  "system": {
+    "name": "Research Integrity Assessment System (RIAS)",
+    "version": "1.0.0",
+    "description": "NLP+CV統合型 研究公正性評価システム"
+  },
+  "modules": {
+    "image_forensics": {
+      "enabled": true,
+      "config": {
+        "ela_quality": 95,
+        "ela_threshold_factor": 3.0,
+        "hash_threshold": 10,
+        "block_size": 16,
+        "cnn_model": "mantranet_resnet50",
+        "cnn_input_size": [512, 512]
+      }
+    },
+    "statistical_checks": {
+      "enabled": true,
+      "config": {
+        "grim_tolerance": 1e-6,
+        "sprite_max_iterations": 10000,
+        "sprite_num_attempts": 100,
+        "default_scale_range": [1, 7]
+      }
+    },
+    "plagiarism": {
+      "enabled": true,
+      "config": {
+        "fingerprint_k": 5,
+        "winnowing_window": 4,
+        "min_match_length": 6,
+        "verbatim_threshold": 0.95,
+        "paraphrase_threshold": 0.70
+      }
+    },
+    "phacking": {
+      "enabled": true,
+      "config": {
+        "significance_level": 0.05,
+        "caliper_width": 0.005,
+        "min_p_values": 3
+      }
+    },
+    "reproducibility": {
+      "enabled": true,
+      "config": {
+        "reporting_guideline": "auto",
+        "min_methods_words": 500
+      }
+    },
+    "validation": {
+      "enabled": true,
+      "config": {
+        "pubpeer_api": "https://pubpeer.com/api/v1",
+        "retraction_watch_db": "local",
+        "validation_threshold": 0.5
+      }
+    }
+  },
+  "integration": {
+    "weights": {
+      "image_forensics": 0.20,
+      "statistical_checks": 0.20,
+      "plagiarism": 0.15,
+      "phacking": 0.20,
+      "reproducibility": 0.15,
+      "external_signals": 0.10
+    },
+    "risk_thresholds": {
+      "low": 0.2,
+      "medium": 0.4,
+      "high": 0.7,
+      "critical": 0.85
+    }
+  },
+  "output": {
+    "report_format": "json",
+    "save_intermediate": true,
+    "figures_format": "svg",
+    "figures_dpi": 300
+  }
+}

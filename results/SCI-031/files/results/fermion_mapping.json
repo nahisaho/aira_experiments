@@ -1,0 +1,121 @@
+{
+  "h2": {
+    "molecule": "H2",
+    "n_modes": 4,
+    "n_qubits_jw": 4,
+    "n_qubits_bk": 4,
+    "n_qubits_parity": 2,
+    "jw_avg_pauli_weight": 1.6666666666666667,
+    "bk_avg_pauli_weight": 3.3333333333333335,
+    "parity_avg_weight": 1.25,
+    "jw_max_pauli_weight": 3,
+    "bk_max_pauli_weight": 4
+  },
+  "lih": {
+    "molecule": "LiH",
+    "n_modes_full": 10,
+    "n_modes_active": 4,
+    "n_qubits_jw": 4,
+    "n_qubits_bk": 4,
+    "n_qubits_parity": 2,
+    "jw_avg_pauli_weight": 2.6666666666666665,
+    "bk_avg_pauli_weight": 3.8333333333333335,
+    "jw_estimated_cnot_count": 20,
+    "bk_estimated_cnot_count": 34,
+    "bk_cnot_reduction_pct": -70.0
+  },
+  "scaling_analysis": [
+    {
+      "n_modes": 2,
+      "jw_weight": 2,
+      "bk_weight": 3,
+      "parity_weight": 2
+    },
+    {
+      "n_modes": 4,
+      "jw_weight": 3,
+      "bk_weight": 4,
+      "parity_weight": 3
+    },
+    {
+      "n_modes": 6,
+      "jw_weight": 4,
+      "bk_weight": 4,
+      "parity_weight": 3
+    },
+    {
+      "n_modes": 8,
+      "jw_weight": 5,
+      "bk_weight": 5,
+      "parity_weight": 4
+    },
+    {
+      "n_modes": 10,
+      "jw_weight": 6,
+      "bk_weight": 5,
+      "parity_weight": 4
+    },
+    {
+      "n_modes": 12,
+      "jw_weight": 7,
+      "bk_weight": 5,
+      "parity_weight": 4
+    },
+    {
+      "n_modes": 16,
+      "jw_weight": 9,
+      "bk_weight": 6,
+      "parity_weight": 5
+    },
+    {
+      "n_modes": 20,
+      "jw_weight": 11,
+      "bk_weight": 6,
+      "parity_weight": 5
+    }
+  ],
+  "mapping_comparison": {
+    "jordan_wigner": {
+      "qubit_weight_scaling": "O(n)",
+      "locality": "non-local (Z string)",
+      "qubit_count": "N (no reduction)",
+      "pros": [
+        "simple and well-understood",
+        "direct orbital correspondence"
+      ],
+      "cons": [
+        "long Z strings",
+        "high CNOT count for long-range terms"
+      ],
+      "best_for": "1D nearest-neighbor systems"
+    },
+    "bravyi_kitaev": {
+      "qubit_weight_scaling": "O(log n)",
+      "locality": "semi-local",
+      "qubit_count": "N (no reduction)",
+      "pros": [
+        "logarithmic weight scaling",
+        "fewer CNOTs for large systems"
+      ],
+      "cons": [
+        "complex structure",
+        "harder to implement manually"
+      ],
+      "best_for": "general molecular Hamiltonians"
+    },
+    "parity": {
+      "qubit_weight_scaling": "O(log n)",
+      "locality": "local at boundaries",
+      "qubit_count": "N-2 (two-qubit reduction for particle-conserving Hamiltonians)",
+      "pros": [
+        "qubit count reduction",
+        "good for symmetry exploitation"
+      ],
+      "cons": [
+        "complex basis transformation",
+        "boundary non-locality"
+      ],
+      "best_for": "molecules with particle-number symmetry"
+    }
+  }
+}

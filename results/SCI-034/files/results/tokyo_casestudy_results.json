@@ -1,0 +1,166 @@
+{
+  "network": {
+    "nodes": 10,
+    "edges": 15,
+    "avg_degree": 3.0,
+    "total_fiber_km": 279.0
+  },
+  "performance": {
+    "mean_e2e_fidelity": 0.37270294435454876,
+    "std_e2e_fidelity": 0.20079840609423275,
+    "mean_bottleneck_rate_kbps": 0.026951617352317294,
+    "max_bottleneck_rate_kbps": 0.06076409481746287
+  },
+  "security": {
+    "links_vulnerable_to_IR": 0,
+    "links_where_eve_detectable": 15,
+    "detection_qber_threshold": 0.11
+  },
+  "netsquid_design": {
+    "simulation_framework": "NetSquid 1.1.6 (conceptual design)",
+    "protocol_stack": {
+      "physical_layer": {
+        "nodes": [
+          "NEC_Tamagawa",
+          "NICT_Koganei",
+          "Hakusan",
+          "Tokyo_Univ",
+          "NTT_Musashino",
+          "NTT_Otemachi",
+          "JAXA_Tsukuba",
+          "Hitachi_Kokubunji",
+          "Toshiba_Komukai",
+          "KDDI_Shinjuku"
+        ],
+        "connections": [
+          {
+            "src": "NEC_Tamagawa",
+            "dst": "NICT_Koganei",
+            "fiber_km": 45,
+            "loss_model": "FibreChannelModel",
+            "T2_memory_us": 10000
+          },
+          {
+            "src": "NEC_Tamagawa",
+            "dst": "Hakusan",
+            "fiber_km": 7,
+            "loss_model": "FibreChannelModel",
+            "T2_memory_us": 10000
+          },
+          {
+            "src": "NEC_Tamagawa",
+            "dst": "NTT_Musashino",
+            "fiber_km": 25,
+            "loss_model": "FibreChannelModel",
+            "T2_memory_us": 10000
+          },
+          {
+            "src": "NEC_Tamagawa",
+            "dst": "Toshiba_Komukai",
+            "fiber_km": 10,
+            "loss_model": "FibreChannelModel",
+            "T2_memory_us": 10000
+          },
+          {
+            "src": "NICT_Koganei",
+            "dst": "Hakusan",
+            "fiber_km": 40,
+            "loss_model": "FibreChannelModel",
+            "T2_memory_us": 10000
+          },
+          {
+            "src": "NICT_Koganei",
+            "dst": "NTT_Musashino",
+            "fiber_km": 15,
+            "loss_model": "FibreChannelModel",
+            "T2_memory_us": 10000
+          },
+          {
+            "src": "NICT_Koganei",
+            "dst": "Hitachi_Kokubunji",
+            "fiber_km": 12,
+            "loss_model": "FibreChannelModel",
+            "T2_memory_us": 10000
+          },
+          {
+            "src": "Hakusan",
+            "dst": "Tokyo_Univ",
+            "fiber_km": 3,
+            "loss_model": "FibreChannelModel",
+            "T2_memory_us": 10000
+          },
+          {
+            "src": "Hakusan",
+            "dst": "NTT_Otemachi",
+            "fiber_km": 15,
+            "loss_model": "FibreChannelModel",
+            "T2_memory_us": 10000
+          },
+          {
+            "src": "Hakusan",
+            "dst": "KDDI_Shinjuku",
+            "fiber_km": 5,
+            "loss_model": "FibreChannelModel",
+            "T2_memory_us": 10000
+          },
+          {
+            "src": "Tokyo_Univ",
+            "dst": "NTT_Otemachi",
+            "fiber_km": 5,
+            "loss_model": "FibreChannelModel",
+            "T2_memory_us": 10000
+          },
+          {
+            "src": "Tokyo_Univ",
+            "dst": "JAXA_Tsukuba",
+            "fiber_km": 55,
+            "loss_model": "FibreChannelModel",
+            "T2_memory_us": 10000
+          },
+          {
+            "src": "NTT_Musashino",
+            "dst": "NTT_Otemachi",
+            "fiber_km": 14,
+            "loss_model": "FibreChannelModel",
+            "T2_memory_us": 10000
+          },
+          {
+            "src": "NTT_Otemachi",
+            "dst": "KDDI_Shinjuku",
+            "fiber_km": 8,
+            "loss_model": "FibreChannelModel",
+            "T2_memory_us": 10000
+          },
+          {
+            "src": "NTT_Otemachi",
+            "dst": "Toshiba_Komukai",
+            "fiber_km": 20,
+            "loss_model": "FibreChannelModel",
+            "T2_memory_us": 10000
+          }
+        ],
+        "memory_model": "DepolarNoiseModel(depolar_rate=1e-3)",
+        "photon_source": "QSource(state=Qubit, freq=1e6)"
+      },
+      "link_layer": {
+        "protocol": "EntanglementGenProtocol",
+        "BSM": "BellStateMeasurement(success_prob=0.5)",
+        "correction": "ClassicalChannel(latency=link_latency)"
+      },
+      "network_layer": {
+        "entanglement_swapping": "SwappingProtocol",
+        "routing": "FidelityAwareRoutingAlgorithm",
+        "distillation": "DEJMPSDistillationProtocol"
+      },
+      "application_layer": {
+        "qkd": "BB84Protocol / E91Protocol",
+        "teleportation": "QuantumTeleportationProtocol"
+      }
+    },
+    "simulation_parameters": {
+      "sim_time_ns": 1000000000.0,
+      "num_runs": 100,
+      "random_seed": 42
+    }
+  }
+}

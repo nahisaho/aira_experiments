@@ -1,0 +1,1082 @@
+{
+  "seed": 42,
+  "sample_count": 320,
+  "date_range": {
+    "start": "2023-01-01",
+    "end": "2024-12-31"
+  },
+  "source_distribution": {
+    "FDA": 160,
+    "RASFF": 160
+  },
+  "category_distribution": {
+    "biological": 80,
+    "chemical": 80,
+    "physical": 80,
+    "allergen": 80
+  },
+  "severity_distribution": {
+    "Class I": 145,
+    "Class II": 128,
+    "Class III": 47
+  },
+  "severity_classification": {
+    "Logistic Regression": {
+      "accuracy": 0.575,
+      "macro_f1": 0.40858585858585855,
+      "accuracy_ci95": [
+        0.475,
+        0.6875
+      ],
+      "confusion_matrix": [
+        [
+          29,
+          7,
+          0
+        ],
+        [
+          15,
+          17,
+          0
+        ],
+        [
+          8,
+          4,
+          0
+        ]
+      ],
+      "classification_report": {
+        "Class I": {
+          "precision": 0.5576923076923077,
+          "recall": 0.8055555555555556,
+          "f1-score": 0.6590909090909091,
+          "support": 36.0
+        },
+        "Class II": {
+          "precision": 0.6071428571428571,
+          "recall": 0.53125,
+          "f1-score": 0.5666666666666667,
+          "support": 32.0
+        },
+        "Class III": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 12.0
+        },
+        "accuracy": 0.575,
+        "macro avg": {
+          "precision": 0.38827838827838823,
+          "recall": 0.44560185185185186,
+          "f1-score": 0.40858585858585855,
+          "support": 80.0
+        },
+        "weighted avg": {
+          "precision": 0.4938186813186813,
+          "recall": 0.575,
+          "f1-score": 0.5232575757575757,
+          "support": 80.0
+        }
+      }
+    },
+    "Linear SVM": {
+      "accuracy": 0.6125,
+      "macro_f1": 0.4398599649912478,
+      "accuracy_ci95": [
+        0.5,
+        0.7065624999999998
+      ],
+      "confusion_matrix": [
+        [
+          29,
+          7,
+          0
+        ],
+        [
+          12,
+          20,
+          0
+        ],
+        [
+          9,
+          3,
+          0
+        ]
+      ],
+      "classification_report": {
+        "Class I": {
+          "precision": 0.58,
+          "recall": 0.8055555555555556,
+          "f1-score": 0.6744186046511628,
+          "support": 36.0
+        },
+        "Class II": {
+          "precision": 0.6666666666666666,
+          "recall": 0.625,
+          "f1-score": 0.6451612903225806,
+          "support": 32.0
+        },
+        "Class III": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 12.0
+        },
+        "accuracy": 0.6125,
+        "macro avg": {
+          "precision": 0.4155555555555555,
+          "recall": 0.47685185185185186,
+          "f1-score": 0.4398599649912478,
+          "support": 80.0
+        },
+        "weighted avg": {
+          "precision": 0.5276666666666666,
+          "recall": 0.6125,
+          "f1-score": 0.5615528882220555,
+          "support": 80.0
+        }
+      }
+    },
+    "Random Forest": {
+      "accuracy": 0.6125,
+      "macro_f1": 0.45064102564102565,
+      "accuracy_ci95": [
+        0.5,
+        0.7125
+      ],
+      "confusion_matrix": [
+        [
+          27,
+          7,
+          2
+        ],
+        [
+          9,
+          22,
+          1
+        ],
+        [
+          8,
+          4,
+          0
+        ]
+      ],
+      "classification_report": {
+        "Class I": {
+          "precision": 0.6136363636363636,
+          "recall": 0.75,
+          "f1-score": 0.675,
+          "support": 36.0
+        },
+        "Class II": {
+          "precision": 0.6666666666666666,
+          "recall": 0.6875,
+          "f1-score": 0.676923076923077,
+          "support": 32.0
+        },
+        "Class III": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 12.0
+        },
+        "accuracy": 0.6125,
+        "macro avg": {
+          "precision": 0.42676767676767674,
+          "recall": 0.4791666666666667,
+          "f1-score": 0.45064102564102565,
+          "support": 80.0
+        },
+        "weighted avg": {
+          "precision": 0.5428030303030302,
+          "recall": 0.6125,
+          "f1-score": 0.5745192307692308,
+          "support": 80.0
+        }
+      }
+    }
+  },
+  "category_classification": {
+    "Logistic Regression": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "accuracy_ci95": [
+        1.0,
+        1.0
+      ],
+      "confusion_matrix": [
+        [
+          20,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          20,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          20,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          20
+        ]
+      ],
+      "classification_report": {
+        "biological": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 20.0
+        },
+        "chemical": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 20.0
+        },
+        "physical": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 20.0
+        },
+        "allergen": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 20.0
+        },
+        "accuracy": 1.0,
+        "macro avg": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 80.0
+        },
+        "weighted avg": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 80.0
+        }
+      }
+    },
+    "Linear SVM": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "accuracy_ci95": [
+        1.0,
+        1.0
+      ],
+      "confusion_matrix": [
+        [
+          20,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          20,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          20,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          20
+        ]
+      ],
+      "classification_report": {
+        "biological": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 20.0
+        },
+        "chemical": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 20.0
+        },
+        "physical": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 20.0
+        },
+        "allergen": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 20.0
+        },
+        "accuracy": 1.0,
+        "macro avg": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 80.0
+        },
+        "weighted avg": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 80.0
+        }
+      }
+    },
+    "Random Forest": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "accuracy_ci95": [
+        1.0,
+        1.0
+      ],
+      "confusion_matrix": [
+        [
+          20,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          20,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          20,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          20
+        ]
+      ],
+      "classification_report": {
+        "biological": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 20.0
+        },
+        "chemical": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 20.0
+        },
+        "physical": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 20.0
+        },
+        "allergen": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 20.0
+        },
+        "accuracy": 1.0,
+        "macro avg": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 80.0
+        },
+        "weighted avg": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1-score": 1.0,
+          "support": 80.0
+        }
+      }
+    }
+  },
+  "entity_summary": {
+    "pathogens": [],
+    "allergens": [],
+    "products": [],
+    "locations": []
+  },
+  "top_tfidf_features": {
+    "biological": [
+      {
+        "term": "contamination",
+        "mean_tfidf": 0.08787378190066111
+      },
+      {
+        "term": "consumer advisory",
+        "mean_tfidf": 0.08125033358497223
+      },
+      {
+        "term": "advisory",
+        "mean_tfidf": 0.08125033358497223
+      },
+      {
+        "term": "consumer",
+        "mean_tfidf": 0.08125033358497223
+      },
+      {
+        "term": "across",
+        "mean_tfidf": 0.08125033358497223
+      },
+      {
+        "term": "advisory possible",
+        "mean_tfidf": 0.08125033358497223
+      },
+      {
+        "term": "batches marketed",
+        "mean_tfidf": 0.08125033358497223
+      },
+      {
+        "term": "batches",
+        "mean_tfidf": 0.08125033358497223
+      },
+      {
+        "term": "marketed across",
+        "mean_tfidf": 0.08125033358497223
+      },
+      {
+        "term": "marketed",
+        "mean_tfidf": 0.08125033358497223
+      }
+    ],
+    "chemical": [
+      {
+        "term": "chemical",
+        "mean_tfidf": 0.08626148999890465
+      },
+      {
+        "term": "notification",
+        "mean_tfidf": 0.07671745441818438
+      },
+      {
+        "term": "hazard notification",
+        "mean_tfidf": 0.07671745441818438
+      },
+      {
+        "term": "chemical hazard",
+        "mean_tfidf": 0.07671745441818438
+      },
+      {
+        "term": "hazard",
+        "mean_tfidf": 0.07671745441818438
+      },
+      {
+        "term": "excessive",
+        "mean_tfidf": 0.06874071867464687
+      },
+      {
+        "term": "levels",
+        "mean_tfidf": 0.06874071867464687
+      },
+      {
+        "term": "originating",
+        "mean_tfidf": 0.06482737173539396
+      },
+      {
+        "term": "control",
+        "mean_tfidf": 0.06106449978220118
+      },
+      {
+        "term": "imported",
+        "mean_tfidf": 0.06106449978220118
+      }
+    ],
+    "physical": [
+      {
+        "term": "fragments",
+        "mean_tfidf": 0.10528223359488714
+      },
+      {
+        "term": "glass",
+        "mean_tfidf": 0.08769069296585832
+      },
+      {
+        "term": "complaint",
+        "mean_tfidf": 0.07716357766616733
+      },
+      {
+        "term": "complaint identified",
+        "mean_tfidf": 0.07716357766616733
+      },
+      {
+        "term": "customer",
+        "mean_tfidf": 0.07716357766616733
+      },
+      {
+        "term": "customer complaint",
+        "mean_tfidf": 0.07716357766616733
+      },
+      {
+        "term": "fda warning",
+        "mean_tfidf": 0.07716357766616733
+      },
+      {
+        "term": "warning",
+        "mean_tfidf": 0.07716357766616733
+      },
+      {
+        "term": "after customer",
+        "mean_tfidf": 0.07716357766616733
+      },
+      {
+        "term": "notice",
+        "mean_tfidf": 0.0744710200420916
+      }
+    ],
+    "allergen": [
+      {
+        "term": "incorrect labelling",
+        "mean_tfidf": 0.08349286617249871
+      },
+      {
+        "term": "incorrect",
+        "mean_tfidf": 0.08349286617249871
+      },
+      {
+        "term": "labelling",
+        "mean_tfidf": 0.08349286617249871
+      },
+      {
+        "term": "unlisted",
+        "mean_tfidf": 0.08349286617249871
+      },
+      {
+        "term": "pack",
+        "mean_tfidf": 0.08349286617249871
+      },
+      {
+        "term": "led unlisted",
+        "mean_tfidf": 0.08349286617249871
+      },
+      {
+        "term": "led",
+        "mean_tfidf": 0.08349286617249871
+      },
+      {
+        "term": "rejection issued",
+        "mean_tfidf": 0.06912209726681803
+      },
+      {
+        "term": "rejection",
+        "mean_tfidf": 0.06912209726681803
+      },
+      {
+        "term": "issued",
+        "mean_tfidf": 0.06912209726681803
+      }
+    ]
+  },
+  "monthly_category_counts": [
+    {
+      "month": "2023-01",
+      "biological": 4,
+      "chemical": 3,
+      "physical": 3,
+      "allergen": 3
+    },
+    {
+      "month": "2023-02",
+      "biological": 4,
+      "chemical": 3,
+      "physical": 3,
+      "allergen": 3
+    },
+    {
+      "month": "2023-03",
+      "biological": 3,
+      "chemical": 5,
+      "physical": 4,
+      "allergen": 4
+    },
+    {
+      "month": "2023-04",
+      "biological": 3,
+      "chemical": 3,
+      "physical": 3,
+      "allergen": 3
+    },
+    {
+      "month": "2023-05",
+      "biological": 4,
+      "chemical": 2,
+      "physical": 5,
+      "allergen": 3
+    },
+    {
+      "month": "2023-06",
+      "biological": 2,
+      "chemical": 3,
+      "physical": 3,
+      "allergen": 3
+    },
+    {
+      "month": "2023-07",
+      "biological": 3,
+      "chemical": 4,
+      "physical": 2,
+      "allergen": 3
+    },
+    {
+      "month": "2023-08",
+      "biological": 4,
+      "chemical": 3,
+      "physical": 4,
+      "allergen": 3
+    },
+    {
+      "month": "2023-09",
+      "biological": 3,
+      "chemical": 3,
+      "physical": 2,
+      "allergen": 4
+    },
+    {
+      "month": "2023-10",
+      "biological": 3,
+      "chemical": 5,
+      "physical": 5,
+      "allergen": 4
+    },
+    {
+      "month": "2023-11",
+      "biological": 2,
+      "chemical": 3,
+      "physical": 3,
+      "allergen": 4
+    },
+    {
+      "month": "2023-12",
+      "biological": 4,
+      "chemical": 2,
+      "physical": 2,
+      "allergen": 2
+    },
+    {
+      "month": "2024-01",
+      "biological": 4,
+      "chemical": 5,
+      "physical": 4,
+      "allergen": 2
+    },
+    {
+      "month": "2024-02",
+      "biological": 4,
+      "chemical": 3,
+      "physical": 4,
+      "allergen": 6
+    },
+    {
+      "month": "2024-03",
+      "biological": 4,
+      "chemical": 5,
+      "physical": 3,
+      "allergen": 3
+    },
+    {
+      "month": "2024-04",
+      "biological": 4,
+      "chemical": 2,
+      "physical": 4,
+      "allergen": 2
+    },
+    {
+      "month": "2024-05",
+      "biological": 2,
+      "chemical": 2,
+      "physical": 2,
+      "allergen": 5
+    },
+    {
+      "month": "2024-06",
+      "biological": 2,
+      "chemical": 4,
+      "physical": 4,
+      "allergen": 2
+    },
+    {
+      "month": "2024-07",
+      "biological": 5,
+      "chemical": 3,
+      "physical": 3,
+      "allergen": 5
+    },
+    {
+      "month": "2024-08",
+      "biological": 2,
+      "chemical": 4,
+      "physical": 3,
+      "allergen": 3
+    },
+    {
+      "month": "2024-09",
+      "biological": 5,
+      "chemical": 4,
+      "physical": 4,
+      "allergen": 4
+    },
+    {
+      "month": "2024-10",
+      "biological": 2,
+      "chemical": 3,
+      "physical": 3,
+      "allergen": 2
+    },
+    {
+      "month": "2024-11",
+      "biological": 5,
+      "chemical": 2,
+      "physical": 5,
+      "allergen": 3
+    },
+    {
+      "month": "2024-12",
+      "biological": 2,
+      "chemical": 4,
+      "physical": 2,
+      "allergen": 4
+    }
+  ],
+  "keyword_monthly_counts": [
+    {
+      "month": "2023-01",
+      "salmonella": 0,
+      "listeria": 2,
+      "e. coli": 1,
+      "milk": 2,
+      "sesame": 0,
+      "lead": 1,
+      "ethylene oxide": 0,
+      "glass": 1
+    },
+    {
+      "month": "2023-02",
+      "salmonella": 2,
+      "listeria": 1,
+      "e. coli": 1,
+      "milk": 0,
+      "sesame": 1,
+      "lead": 1,
+      "ethylene oxide": 0,
+      "glass": 1
+    },
+    {
+      "month": "2023-03",
+      "salmonella": 2,
+      "listeria": 0,
+      "e. coli": 0,
+      "milk": 1,
+      "sesame": 0,
+      "lead": 2,
+      "ethylene oxide": 1,
+      "glass": 0
+    },
+    {
+      "month": "2023-04",
+      "salmonella": 0,
+      "listeria": 0,
+      "e. coli": 1,
+      "milk": 0,
+      "sesame": 1,
+      "lead": 2,
+      "ethylene oxide": 0,
+      "glass": 3
+    },
+    {
+      "month": "2023-05",
+      "salmonella": 1,
+      "listeria": 0,
+      "e. coli": 1,
+      "milk": 1,
+      "sesame": 0,
+      "lead": 0,
+      "ethylene oxide": 1,
+      "glass": 3
+    },
+    {
+      "month": "2023-06",
+      "salmonella": 2,
+      "listeria": 0,
+      "e. coli": 0,
+      "milk": 1,
+      "sesame": 0,
+      "lead": 0,
+      "ethylene oxide": 1,
+      "glass": 2
+    },
+    {
+      "month": "2023-07",
+      "salmonella": 2,
+      "listeria": 1,
+      "e. coli": 0,
+      "milk": 2,
+      "sesame": 0,
+      "lead": 0,
+      "ethylene oxide": 0,
+      "glass": 0
+    },
+    {
+      "month": "2023-08",
+      "salmonella": 1,
+      "listeria": 0,
+      "e. coli": 0,
+      "milk": 3,
+      "sesame": 1,
+      "lead": 1,
+      "ethylene oxide": 1,
+      "glass": 0
+    },
+    {
+      "month": "2023-09",
+      "salmonella": 0,
+      "listeria": 2,
+      "e. coli": 1,
+      "milk": 1,
+      "sesame": 2,
+      "lead": 0,
+      "ethylene oxide": 0,
+      "glass": 1
+    },
+    {
+      "month": "2023-10",
+      "salmonella": 0,
+      "listeria": 0,
+      "e. coli": 0,
+      "milk": 2,
+      "sesame": 0,
+      "lead": 0,
+      "ethylene oxide": 1,
+      "glass": 2
+    },
+    {
+      "month": "2023-11",
+      "salmonella": 0,
+      "listeria": 0,
+      "e. coli": 0,
+      "milk": 1,
+      "sesame": 1,
+      "lead": 1,
+      "ethylene oxide": 1,
+      "glass": 0
+    },
+    {
+      "month": "2023-12",
+      "salmonella": 0,
+      "listeria": 1,
+      "e. coli": 0,
+      "milk": 0,
+      "sesame": 0,
+      "lead": 0,
+      "ethylene oxide": 0,
+      "glass": 1
+    },
+    {
+      "month": "2024-01",
+      "salmonella": 1,
+      "listeria": 1,
+      "e. coli": 1,
+      "milk": 1,
+      "sesame": 0,
+      "lead": 0,
+      "ethylene oxide": 1,
+      "glass": 2
+    },
+    {
+      "month": "2024-02",
+      "salmonella": 1,
+      "listeria": 2,
+      "e. coli": 0,
+      "milk": 4,
+      "sesame": 0,
+      "lead": 2,
+      "ethylene oxide": 0,
+      "glass": 2
+    },
+    {
+      "month": "2024-03",
+      "salmonella": 1,
+      "listeria": 0,
+      "e. coli": 0,
+      "milk": 0,
+      "sesame": 2,
+      "lead": 0,
+      "ethylene oxide": 3,
+      "glass": 1
+    },
+    {
+      "month": "2024-04",
+      "salmonella": 1,
+      "listeria": 2,
+      "e. coli": 0,
+      "milk": 1,
+      "sesame": 1,
+      "lead": 0,
+      "ethylene oxide": 0,
+      "glass": 0
+    },
+    {
+      "month": "2024-05",
+      "salmonella": 1,
+      "listeria": 1,
+      "e. coli": 0,
+      "milk": 3,
+      "sesame": 1,
+      "lead": 2,
+      "ethylene oxide": 0,
+      "glass": 2
+    },
+    {
+      "month": "2024-06",
+      "salmonella": 1,
+      "listeria": 0,
+      "e. coli": 0,
+      "milk": 1,
+      "sesame": 1,
+      "lead": 0,
+      "ethylene oxide": 2,
+      "glass": 2
+    },
+    {
+      "month": "2024-07",
+      "salmonella": 1,
+      "listeria": 0,
+      "e. coli": 2,
+      "milk": 2,
+      "sesame": 0,
+      "lead": 1,
+      "ethylene oxide": 0,
+      "glass": 1
+    },
+    {
+      "month": "2024-08",
+      "salmonella": 0,
+      "listeria": 0,
+      "e. coli": 1,
+      "milk": 0,
+      "sesame": 1,
+      "lead": 0,
+      "ethylene oxide": 0,
+      "glass": 0
+    },
+    {
+      "month": "2024-09",
+      "salmonella": 1,
+      "listeria": 0,
+      "e. coli": 1,
+      "milk": 0,
+      "sesame": 3,
+      "lead": 2,
+      "ethylene oxide": 0,
+      "glass": 0
+    },
+    {
+      "month": "2024-10",
+      "salmonella": 0,
+      "listeria": 0,
+      "e. coli": 2,
+      "milk": 0,
+      "sesame": 0,
+      "lead": 1,
+      "ethylene oxide": 2,
+      "glass": 1
+    },
+    {
+      "month": "2024-11",
+      "salmonella": 4,
+      "listeria": 1,
+      "e. coli": 0,
+      "milk": 3,
+      "sesame": 0,
+      "lead": 1,
+      "ethylene oxide": 0,
+      "glass": 4
+    },
+    {
+      "month": "2024-12",
+      "salmonella": 0,
+      "listeria": 0,
+      "e. coli": 2,
+      "milk": 0,
+      "sesame": 1,
+      "lead": 1,
+      "ethylene oxide": 1,
+      "glass": 1
+    }
+  ],
+  "emerging_keywords": [
+    {
+      "keyword": "glass",
+      "peak_month": "2024-11",
+      "max_zscore": 7.778174593052039,
+      "peak_count": 4
+    },
+    {
+      "keyword": "salmonella",
+      "peak_month": "2024-11",
+      "max_zscore": 7.778174593052005,
+      "peak_count": 4
+    },
+    {
+      "keyword": "milk",
+      "peak_month": "2024-02",
+      "max_zscore": 7.0710678118654755,
+      "peak_count": 4
+    },
+    {
+      "keyword": "ethylene oxide",
+      "peak_month": "2024-03",
+      "max_zscore": 5.656854249492377,
+      "peak_count": 3
+    },
+    {
+      "keyword": "sesame",
+      "peak_month": "2024-09",
+      "max_zscore": 4.9497474683058345,
+      "peak_count": 3
+    },
+    {
+      "keyword": "listeria",
+      "peak_month": "2023-09",
+      "max_zscore": 3.5355339059327378,
+      "peak_count": 2
+    },
+    {
+      "keyword": "lead",
+      "peak_month": "2024-02",
+      "max_zscore": 3.5355339059327355,
+      "peak_count": 2
+    },
+    {
+      "keyword": "e. coli",
+      "peak_month": "2024-10",
+      "max_zscore": 1.4142135623730951,
+      "peak_count": 2
+    }
+  ]
+}

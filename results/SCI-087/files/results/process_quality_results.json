@@ -1,0 +1,122 @@
+{
+  "training": {
+    "n_training_samples": 80,
+    "cv_scores": {
+      "warpage_mm": {
+        "r2_mean": 0.20835472638399408,
+        "r2_std": 0.19660585657373508
+      },
+      "sink_depth_mm": {
+        "r2_mean": 0.6849986947999896,
+        "r2_std": 0.17605491671548285
+      },
+      "weight_g": {
+        "r2_mean": 0.5334264006244835,
+        "r2_std": 0.03376547730623394
+      },
+      "shrinkage_pct": {
+        "r2_mean": 0.4240352683146192,
+        "r2_std": 0.19686455575955017
+      },
+      "residual_stress_MPa": {
+        "r2_mean": 0.7579160383262177,
+        "r2_std": 0.11972368933473208
+      }
+    }
+  },
+  "sensitivities": {
+    "warpage_mm": {
+      "injection_pressure_MPa": 3.126702080519761e-08,
+      "packing_pressure_MPa": 0.47622593356088794,
+      "cooling_time_s": 0.2116527271455611,
+      "melt_temp_C": 0.31212130707408703,
+      "mold_temp_C": 9.524431659789685e-10,
+      "injection_speed_mm_s": 0.0
+    },
+    "sink_depth_mm": {
+      "injection_pressure_MPa": 0.16427820277770697,
+      "packing_pressure_MPa": 0.6029747663187984,
+      "cooling_time_s": 0.22027247791003535,
+      "melt_temp_C": 0.0,
+      "mold_temp_C": 0.0,
+      "injection_speed_mm_s": 0.012474552993459193
+    },
+    "weight_g": {
+      "injection_pressure_MPa": 0.3333333333333333,
+      "packing_pressure_MPa": 0.0,
+      "cooling_time_s": 0.3333333333333333,
+      "melt_temp_C": 0.0,
+      "mold_temp_C": 0.0,
+      "injection_speed_mm_s": 0.3333333333333333
+    },
+    "shrinkage_pct": {
+      "injection_pressure_MPa": 0.0778072472242808,
+      "packing_pressure_MPa": 0.4593206425529275,
+      "cooling_time_s": 0.0,
+      "melt_temp_C": 0.0,
+      "mold_temp_C": 0.24220363035431425,
+      "injection_speed_mm_s": 0.22066847986847757
+    },
+    "residual_stress_MPa": {
+      "injection_pressure_MPa": 0.06393147245794542,
+      "packing_pressure_MPa": 0.1672991340064574,
+      "cooling_time_s": 0.2716517005885067,
+      "melt_temp_C": 0.0,
+      "mold_temp_C": 0.08595485309469349,
+      "injection_speed_mm_s": 0.4111628398523971
+    }
+  },
+  "optimization": {
+    "optimal_parameters": {
+      "injection_pressure_MPa": 104.43446263200003,
+      "packing_pressure_MPa": 77.34309190365381,
+      "cooling_time_s": 26.250699046160168,
+      "melt_temp_C": 266.3838176397725,
+      "mold_temp_C": 88.80893246500573,
+      "injection_speed_mm_s": 46.884217321302025
+    },
+    "predicted_quality": {
+      "warpage_mm": {
+        "mean": 0.010348538213953934,
+        "std": 0.0023629210210356446,
+        "ci_95": [
+          0.0057172130127240706,
+          0.014979863415183797
+        ]
+      },
+      "sink_depth_mm": {
+        "mean": 0.002680914099133967,
+        "std": 0.0007086381420945993,
+        "ci_95": [
+          0.0012919833406285525,
+          0.004069844857639382
+        ]
+      },
+      "weight_g": {
+        "mean": 44.692965292543235,
+        "std": 0.04136003910255709,
+        "ci_95": [
+          44.611899615902225,
+          44.774030969184246
+        ]
+      },
+      "shrinkage_pct": {
+        "mean": 0.30660172715289585,
+        "std": 0.04134559546117964,
+        "ci_95": [
+          0.22556436004898375,
+          0.387639094256808
+        ]
+      },
+      "residual_stress_MPa": {
+        "mean": 5.862132971050957,
+        "std": 0.3255339051689843,
+        "ci_95": [
+          5.224086516919748,
+          6.500179425182166
+        ]
+      }
+    },
+    "optimization_success": true
+  }
+}

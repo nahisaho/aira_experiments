@@ -1,0 +1,64 @@
+{
+  "title": "割引率と世代間公平性フレームワーク",
+  "approaches": {
+    "descriptive_approach": {
+      "description": "市場観察に基づく割引率（Nordhaus的アプローチ）",
+      "rate": 0.05,
+      "basis": "資本の限界生産性（市場金利ベース）",
+      "ramsey_decomposition": {
+        "formula": "r = δ + η × g",
+        "parameters": {
+          "delta": {"value": 0.03, "description": "純粋時間選好率"},
+          "eta": {"value": 1.5, "description": "限界効用の弾力性"},
+          "g": {"value": 0.013, "description": "一人当たりGDP成長率（日本）"}
+        },
+        "result": 0.05
+      }
+    },
+    "prescriptive_approach": {
+      "description": "倫理的考慮に基づく割引率（Stern的アプローチ）",
+      "rate": 0.014,
+      "basis": "世代間公平性の原則",
+      "ramsey_decomposition": {
+        "parameters": {
+          "delta": {"value": 0.001, "description": "純粋時間選好率（ほぼゼロ）"},
+          "eta": {"value": 1.0, "description": "限界効用の弾力性"},
+          "g": {"value": 0.013, "description": "一人当たりGDP成長率"}
+        },
+        "result": 0.014
+      }
+    },
+    "declining_discount_rate": {
+      "description": "逓減割引率（DDR）：不確実性を反映した時間変動割引率",
+      "basis": "Weitzman (2001) gamma discounting",
+      "schedule": {
+        "0-30_years": 0.035,
+        "31-75_years": 0.025,
+        "76-125_years": 0.02,
+        "126-200_years": 0.015,
+        "201-300_years": 0.01,
+        "300+_years": 0.005
+      },
+      "adopted_by": ["UK HM Treasury Green Book", "France Commissariat Général du Plan"]
+    },
+    "dual_discounting": {
+      "description": "二重割引率アプローチ：市場財と環境財で異なる割引率を適用",
+      "market_goods_rate": 0.05,
+      "environmental_goods_rate": 0.015,
+      "rationale": "自然資本の代替不可能性（強い持続可能性）を反映",
+      "reference": "Hoel & Sterner (2007), Traeger (2011)"
+    }
+  },
+  "recommended_approach": {
+    "primary": "declining_discount_rate",
+    "sensitivity_analysis": {
+      "rates": [0.01, 0.02, 0.035, 0.05, 0.07],
+      "note": "感度分析により割引率の選択が結果に与える影響を明示すること"
+    },
+    "intergenerational_equity_adjustments": [
+      "将来世代の選好を代理する仕組み（将来世代委員会等）の制度設計",
+      "Safe Minimum Standard (SMS) の適用：不可逆的損失の閾値設定",
+      "Sustainability constraint: 自然資本ストックの非減少条件"
+    ]
+  }
+}

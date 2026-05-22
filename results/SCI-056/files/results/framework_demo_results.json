@@ -1,0 +1,200 @@
+{
+  "requirements": {
+    "population_size": 250000,
+    "age_groups": true,
+    "n_age_groups": 3,
+    "spatial_patches": 3,
+    "network_effects": false,
+    "stochastic": false,
+    "real_time": true,
+    "intervention_types": [
+      "vaccination",
+      "testing",
+      "contact_reduction"
+    ],
+    "data_availability": "moderate",
+    "computational_budget": "medium",
+    "pathogen": "covid19",
+    "comparison_type": "nested"
+  },
+  "results": {
+    "selection": {
+      "model_type": "hybrid",
+      "estimation_method": "particle_filter",
+      "model_selection": "WAIC/LOO-CV",
+      "rationale": [
+        "Selected hybrid model because both age structure and multiple spatial patches are required.",
+        "Hybrid is implemented as a metapopulation SEIR with age stratification.",
+        "Selected particle filtering because online/real-time updating is required.",
+        "Selected WAIC/LOO-CV for comparing nested or near-nested Bayesian model variants.",
+        "Model comparison found SEIR to be a simpler competitive candidate, but the selected structure was retained because it better matches the stated requirements."
+      ],
+      "warnings": [],
+      "suggested_extensions": [
+        "Age-specific contact matrix estimation",
+        "Patch-specific mobility inference"
+      ],
+      "candidate_models": [
+        "hybrid",
+        "metapop-SEIR",
+        "age-SEIR",
+        "SEIR"
+      ]
+    },
+    "parameters": {
+      "r0": 3.341469908429035,
+      "latent_days": 3.5,
+      "infectious_days": 6.0,
+      "ifr": 0.006,
+      "beta": 0.5569116514048391,
+      "sigma": 0.2857142857142857,
+      "gamma": 0.16666666666666666,
+      "travel_rate": 0.03,
+      "waning_immunity_days": 240,
+      "initial_exposed": 25,
+      "initial_infectious": 15,
+      "initial_recovered": 0,
+      "simulation_days": 180,
+      "time_step_days": 1.0,
+      "seed": 42,
+      "hospitalization_ratio": 0.05
+    },
+    "baseline_summary": {
+      "peak_infectious": 41747.96891355902,
+      "peak_day": 72,
+      "total_infected": 238319.80789634847,
+      "final_reff": 0.1561160417560971
+    },
+    "model_comparison": {
+      "best_model": "SEIR",
+      "comparison_table": [
+        {
+          "model": "hybrid",
+          "score": -0.4338,
+          "rmse": 47.786,
+          "criterion": "fit proxy + complexity penalty"
+        },
+        {
+          "model": "metapop-SEIR",
+          "score": -0.3738,
+          "rmse": 47.786,
+          "criterion": "fit proxy + complexity penalty"
+        },
+        {
+          "model": "age-SEIR",
+          "score": -0.3496,
+          "rmse": 48.183,
+          "criterion": "fit proxy + complexity penalty"
+        },
+        {
+          "model": "SEIR",
+          "score": -0.0913,
+          "rmse": 34.719,
+          "criterion": "fit proxy + complexity penalty"
+        }
+      ]
+    },
+    "scenario_results": [
+      {
+        "scenario": "Baseline",
+        "peak_infectious": 41747.97,
+        "total_infected": 238319.81,
+        "peak_day": 72,
+        "Reff_final": 0.156
+      },
+      {
+        "scenario": "Moderate distancing",
+        "peak_infectious": 30836.59,
+        "total_infected": 224233.18,
+        "peak_day": 85,
+        "Reff_final": 0.276
+      },
+      {
+        "scenario": "Strong suppression",
+        "peak_infectious": 17425.29,
+        "total_infected": 188868.6,
+        "peak_day": 115,
+        "Reff_final": 0.49
+      },
+      {
+        "scenario": "Vaccination rollout",
+        "peak_infectious": 33707.38,
+        "total_infected": 228977.58,
+        "peak_day": 79,
+        "Reff_final": 0.239
+      },
+      {
+        "scenario": "Testing and isolation",
+        "peak_infectious": 25906.38,
+        "total_infected": 218553.67,
+        "peak_day": 85,
+        "Reff_final": 0.315
+      }
+    ]
+  },
+  "config_template": {
+    "pathogen": "covid19",
+    "pathogen_display_name": "COVID-19",
+    "description": "Typical literature-based ranges spanning ancestral to highly transmissible variants.",
+    "population_size": 100000,
+    "simulation_days": 180,
+    "time_step_days": 1.0,
+    "n_age_groups": 3,
+    "spatial_patches": 1,
+    "initial_state": {
+      "initial_exposed": 25,
+      "initial_infectious": 15,
+      "initial_recovered": 0
+    },
+    "model_defaults": {
+      "r0": 3.0,
+      "latent_days": 3.5,
+      "infectious_days": 6.0,
+      "ifr": 0.006,
+      "beta": 0.5,
+      "sigma": 0.2857142857142857,
+      "gamma": 0.16666666666666666,
+      "travel_rate": 0.03,
+      "waning_immunity_days": 240
+    },
+    "literature_parameter_ranges": {
+      "r0": [
+        2.0,
+        8.0
+      ],
+      "latent_days": [
+        2.0,
+        5.0
+      ],
+      "infectious_days": [
+        5.0,
+        10.0
+      ],
+      "ifr": [
+        0.002,
+        0.015
+      ],
+      "serial_interval_days": [
+        4.0,
+        6.5
+      ]
+    },
+    "default_requirements": {
+      "population_size": 100000,
+      "age_groups": true,
+      "spatial_patches": 1,
+      "network_effects": false,
+      "stochastic": false,
+      "real_time": false,
+      "intervention_types": [
+        "vaccination",
+        "testing",
+        "contact_reduction"
+      ],
+      "data_availability": "moderate",
+      "computational_budget": "medium",
+      "pathogen": "covid19",
+      "comparison_type": "nested"
+    }
+  }
+}

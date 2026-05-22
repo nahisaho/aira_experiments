@@ -1,0 +1,11 @@
+{
+  "experiment_id": "SCI-016",
+  "title": "T細胞受容体レパトア解析",
+  "project_id": "a71907a2-0183-4c20-84cc-9ace2e44aaf7",
+  "prompt_length": 457,
+  "output_length": 334,
+  "file_count": 33176,
+  "duration_seconds": 832,
+  "status": "success",
+  "timestamp": "2026-05-22T13:34:48.206Z"
+}

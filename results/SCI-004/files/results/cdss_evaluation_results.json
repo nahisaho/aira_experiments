@@ -1,0 +1,306 @@
+{
+  "test_cases": [
+    {
+      "patient_id": "PT001",
+      "evaluation_timestamp": "2026-05-22T12:46:08.997735",
+      "overall_risk": "HIGH",
+      "risk_score": 25,
+      "alerts": [
+        {
+          "type": "CONTRAINDICATION",
+          "drug": "Codeine",
+          "gene": "CYP2D6",
+          "phenotype": "Ultrarapid Metabolizer (UM)",
+          "message": "Excess morphine production; risk of opioid toxicity/death.",
+          "level": "STRONG",
+          "cpic_guideline": true
+        },
+        {
+          "type": "DOSE_ADJUSTMENT",
+          "drug": "Clopidogrel",
+          "gene": "CYP2C19",
+          "phenotype": "Poor Metabolizer (PM)",
+          "message": "Markedly reduced active metabolite. Use prasugrel or ticagrelor.",
+          "level": "STRONG",
+          "cpic_guideline": true
+        },
+        {
+          "type": "CONTRAINDICATION",
+          "drug": "Carbamazepine",
+          "gene": "HLA-B",
+          "phenotype": "HLA-B*15:02_positive",
+          "message": "High risk of SJS/TEN (OR=80). Use alternative AED.",
+          "level": "STRONG",
+          "cpic_guideline": true
+        }
+      ],
+      "recommendations": [
+        {
+          "drug": "Codeine",
+          "recommendation": "AVOID_USE",
+          "reason": "Excess morphine production; risk of opioid toxicity/death.",
+          "level": "STRONG"
+        },
+        {
+          "drug": "Clopidogrel",
+          "recommendation": "ALTERNATIVE_DRUG",
+          "reason": "Markedly reduced active metabolite. Use prasugrel or ticagrelor.",
+          "level": "STRONG"
+        },
+        {
+          "drug": "Carbamazepine",
+          "recommendation": "AVOID_USE",
+          "reason": "High risk of SJS/TEN (OR=80). Use alternative AED.",
+          "level": "STRONG"
+        }
+      ],
+      "summary": "3 alert(s) for 3 medication(s). Overall risk: HIGH."
+    },
+    {
+      "patient_id": "PT002",
+      "evaluation_timestamp": "2026-05-22T12:46:08.997826",
+      "overall_risk": "HIGH",
+      "risk_score": 24,
+      "alerts": [
+        {
+          "type": "CONTRAINDICATION",
+          "drug": "Abacavir",
+          "gene": "HLA-B",
+          "phenotype": "HLA-B*57:01_positive",
+          "message": "High risk of hypersensitivity reaction (OR=117). Absolute contraindication.",
+          "level": "STRONG",
+          "cpic_guideline": true
+        },
+        {
+          "type": "CONTRAINDICATION",
+          "drug": "Codeine",
+          "gene": "CYP2D6",
+          "phenotype": "Poor Metabolizer (PM)",
+          "message": "Poor conversion to morphine; inadequate analgesia. Use alternative analgesic.",
+          "level": "STRONG",
+          "cpic_guideline": true
+        },
+        {
+          "type": "DRUG_DRUG_INTERACTION",
+          "drugs": [
+            "Codeine",
+            "Fluoxetine"
+          ],
+          "message": "Fluoxetine inhibits CYP2D6, may increase codeine-related toxicity.",
+          "level": "MODERATE"
+        }
+      ],
+      "recommendations": [
+        {
+          "drug": "Abacavir",
+          "recommendation": "AVOID_USE",
+          "reason": "High risk of hypersensitivity reaction (OR=117). Absolute contraindication.",
+          "level": "STRONG"
+        },
+        {
+          "drug": "Codeine",
+          "recommendation": "AVOID_USE",
+          "reason": "Poor conversion to morphine; inadequate analgesia. Use alternative analgesic.",
+          "level": "STRONG"
+        }
+      ],
+      "summary": "3 alert(s) for 3 medication(s). Overall risk: HIGH."
+    },
+    {
+      "patient_id": "PT003",
+      "evaluation_timestamp": "2026-05-22T12:46:08.997839",
+      "overall_risk": "LOW",
+      "risk_score": 0,
+      "alerts": [],
+      "recommendations": [
+        {
+          "drug": "Clopidogrel",
+          "recommendation": "STANDARD_DOSE",
+          "reason": "Normal CYP2C19 activity.",
+          "level": "STANDARD"
+        }
+      ],
+      "summary": "0 alert(s) for 1 medication(s). Overall risk: LOW."
+    },
+    {
+      "patient_id": "PT004",
+      "evaluation_timestamp": "2026-05-22T12:46:08.997853",
+      "overall_risk": "HIGH",
+      "risk_score": 15,
+      "alerts": [
+        {
+          "type": "CONTRAINDICATION",
+          "drug": "Allopurinol",
+          "gene": "HLA-B",
+          "phenotype": "HLA-B*58:01_positive",
+          "message": "Extremely high SJS/TEN risk (OR=580). Use febuxostat.",
+          "level": "STRONG",
+          "cpic_guideline": true
+        },
+        {
+          "type": "DOSE_ADJUSTMENT",
+          "drug": "Warfarin",
+          "gene": "CYP2C9_VKORC1",
+          "phenotype": "Sensitive",
+          "message": "CYP2C9*2/*3 or VKORC1 -1639A: start with reduced dose, frequent INR monitoring.",
+          "level": "STRONG",
+          "cpic_guideline": true
+        }
+      ],
+      "recommendations": [
+        {
+          "drug": "Allopurinol",
+          "recommendation": "AVOID_USE",
+          "reason": "Extremely high SJS/TEN risk (OR=580). Use febuxostat.",
+          "level": "STRONG"
+        },
+        {
+          "drug": "Warfarin",
+          "recommendation": "REDUCE_DOSE",
+          "reason": "CYP2C9*2/*3 or VKORC1 -1639A: start with reduced dose, frequent INR monitoring.",
+          "level": "STRONG"
+        }
+      ],
+      "summary": "2 alert(s) for 2 medication(s). Overall risk: HIGH."
+    },
+    {
+      "patient_id": "PT005",
+      "evaluation_timestamp": "2026-05-22T12:46:08.997857",
+      "overall_risk": "LOW",
+      "risk_score": 0,
+      "alerts": [],
+      "recommendations": [
+        {
+          "drug": "Clopidogrel",
+          "recommendation": "STANDARD_DOSE",
+          "reason": "Normal or increased active metabolite. Standard dosing.",
+          "level": "STANDARD"
+        },
+        {
+          "drug": "Codeine",
+          "recommendation": "STANDARD_DOSE",
+          "reason": "Normal CYP2D6 activity. Standard dosing.",
+          "level": "STANDARD"
+        }
+      ],
+      "summary": "0 alert(s) for 2 medication(s). Overall risk: LOW."
+    }
+  ],
+  "cpic_rules": {
+    "Codeine": {
+      "gene": "CYP2D6",
+      "rules": {
+        "Poor Metabolizer (PM)": {
+          "recommendation": "AVOID_USE",
+          "reason": "Poor conversion to morphine; inadequate analgesia. Use alternative analgesic.",
+          "level": "STRONG"
+        },
+        "Ultrarapid Metabolizer (UM)": {
+          "recommendation": "AVOID_USE",
+          "reason": "Excess morphine production; risk of opioid toxicity/death.",
+          "level": "STRONG"
+        },
+        "Intermediate Metabolizer (IM)": {
+          "recommendation": "USE_WITH_CAUTION",
+          "reason": "Reduced but some CYP2D6 activity. Use lower dose or alternative.",
+          "level": "MODERATE"
+        },
+        "Normal Metabolizer (NM)": {
+          "recommendation": "STANDARD_DOSE",
+          "reason": "Normal CYP2D6 activity. Standard dosing.",
+          "level": "STANDARD"
+        }
+      }
+    },
+    "Clopidogrel": {
+      "gene": "CYP2C19",
+      "rules": {
+        "Poor Metabolizer (PM)": {
+          "recommendation": "ALTERNATIVE_DRUG",
+          "reason": "Markedly reduced active metabolite. Use prasugrel or ticagrelor.",
+          "level": "STRONG"
+        },
+        "Intermediate Metabolizer (IM)": {
+          "recommendation": "CONSIDER_ALTERNATIVE",
+          "reason": "Reduced active metabolite. Consider prasugrel/ticagrelor for ACS.",
+          "level": "MODERATE"
+        },
+        "Rapid/Ultrarapid Metabolizer (RM/UM)": {
+          "recommendation": "STANDARD_DOSE",
+          "reason": "Normal or increased active metabolite. Standard dosing.",
+          "level": "STANDARD"
+        },
+        "Normal Metabolizer (NM)": {
+          "recommendation": "STANDARD_DOSE",
+          "reason": "Normal CYP2C19 activity.",
+          "level": "STANDARD"
+        }
+      }
+    },
+    "Carbamazepine": {
+      "gene": "HLA-B",
+      "rules": {
+        "HLA-B*15:02_positive": {
+          "recommendation": "AVOID_USE",
+          "reason": "High risk of SJS/TEN (OR=80). Use alternative AED.",
+          "level": "STRONG"
+        },
+        "HLA-B*15:02_negative": {
+          "recommendation": "STANDARD_DOSE",
+          "reason": "Low HLA-mediated SJS/TEN risk. Standard monitoring.",
+          "level": "STANDARD"
+        }
+      }
+    },
+    "Warfarin": {
+      "gene": "CYP2C9_VKORC1",
+      "rules": {
+        "Sensitive": {
+          "recommendation": "REDUCE_DOSE",
+          "reason": "CYP2C9*2/*3 or VKORC1 -1639A: start with reduced dose, frequent INR monitoring.",
+          "level": "STRONG"
+        },
+        "Normal": {
+          "recommendation": "STANDARD_DOSE",
+          "reason": "Standard warfarin dosing with INR monitoring.",
+          "level": "STANDARD"
+        },
+        "Resistant": {
+          "recommendation": "INCREASE_DOSE",
+          "reason": "VKORC1 -1639G/G: may require higher doses.",
+          "level": "MODERATE"
+        }
+      }
+    },
+    "Abacavir": {
+      "gene": "HLA-B",
+      "rules": {
+        "HLA-B*57:01_positive": {
+          "recommendation": "AVOID_USE",
+          "reason": "High risk of hypersensitivity reaction (OR=117). Absolute contraindication.",
+          "level": "STRONG"
+        },
+        "HLA-B*57:01_negative": {
+          "recommendation": "STANDARD_DOSE",
+          "reason": "Low hypersensitivity risk. Standard monitoring.",
+          "level": "STANDARD"
+        }
+      }
+    },
+    "Allopurinol": {
+      "gene": "HLA-B",
+      "rules": {
+        "HLA-B*58:01_positive": {
+          "recommendation": "AVOID_USE",
+          "reason": "Extremely high SJS/TEN risk (OR=580). Use febuxostat.",
+          "level": "STRONG"
+        },
+        "HLA-B*58:01_negative": {
+          "recommendation": "STANDARD_DOSE",
+          "reason": "Low HLA-mediated risk.",
+          "level": "STANDARD"
+        }
+      }
+    }
+  }
+}

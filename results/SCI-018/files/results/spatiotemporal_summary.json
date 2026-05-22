@@ -1,0 +1,10 @@
+{
+  "final_resistance_by_patch": {
+    "community": 0.507,
+    "hospital": 0.8651,
+    "livestock": 0.6533
+  },
+  "mean_resistance": 0.6412,
+  "peak_resistance": 0.8689,
+  "sensitivity_max_final": 0.7688
+}

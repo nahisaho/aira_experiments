@@ -1,0 +1,81 @@
+seed: 1347
+device: cpu
+results_dir: results
+
+environment:
+  cloth_size: [0.6, 0.6]
+  resolution: [14, 14]
+  material:
+    density: 0.22
+    stretching_stiffness: 1.2
+    bending_stiffness: 0.08
+    damping: 0.02
+    friction: 0.55
+    thickness: 0.0025
+  backend: synthetic_numpy
+  supported_fold_types: [half_fold, diagonal_fold, double_fold]
+
+state_representation:
+  type: latent
+  latent_dim: 64
+  mesh_features: [vertices, normals, edges]
+  particle_features: [positions, velocities]
+  normalization: standardize
+
+dynamics_model:
+  architecture: mlp
+  hidden_dims: [512, 256, 256]
+  latent_dim: 64
+  learning_rate: 0.0003
+  epochs: 40
+  predict_delta: true
+  dropout: 0.05
+
+planner:
+  type: mpc
+  horizon: 10
+  num_samples: 256
+  optimization_steps: 70
+  learning_rate: 0.05
+  state_cost_weight: 1.0
+  terminal_cost_weight: 5.0
+  smoothness_cost_weight: 0.06
+  constraint_cost_weight: 8.0
+  candidate_methods: [MPC, CEM, MPPI, Graph, RL]
+
+sim2real:
+  domain_randomization: true
+  randomization_ranges:
+    rotation_deg: 14.0
+    translation_m: 0.025
+    height_noise_m: 0.008
+    observation_noise_m: 0.004
+    friction_scale: 0.18
+    stiffness_scale: 0.22
+    lighting_scale: 0.20
+
+reactive_control:
+  visual_feedback: icp_centroid_tracking
+  gain: 0.35
+  max_action_delta: 0.12
+  replan_frequency: 1
+  observation_downsample: 512
+
+training:
+  batch_size: 64
+  buffer_size: 5000
+  num_collection_episodes: 28
+  episode_horizon: 12
+  validation_fraction: 0.2
+  weight_decay: 0.00001
+  grad_clip_norm: 1.0
+  checkpoint_every: 5
+
+evaluation:
+  num_episodes: 12
+  fold_types: [half_fold, diagonal_fold, double_fold]
+  metrics: [Chamfer, EMD, IoU, success_rate]
+  success_thresholds:
+    chamfer: 0.06
+    emd: 0.08
+    iou: 0.50

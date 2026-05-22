@@ -1,0 +1,152 @@
+{
+  "Xe131": {
+    "baseline_total_rate": 1.2389180596751324,
+    "strategies": {
+      "baseline": {
+        "params": {
+          "shielding": 1e-06,
+          "cooling": 180,
+          "fiducial": 1.0
+        },
+        "total_rate": 1.238589430210688,
+        "reduction_factor": 1.0
+      },
+      "enhanced_shielding": {
+        "params": {
+          "shielding": 1e-08,
+          "cooling": 180,
+          "fiducial": 1.0
+        },
+        "total_rate": 1.2328333193969063,
+        "reduction_factor": 0.9953526885718681
+      },
+      "underground_cooling": {
+        "params": {
+          "shielding": 1e-06,
+          "cooling": 730,
+          "fiducial": 1.0
+        },
+        "total_rate": 0.7706546735185268,
+        "reduction_factor": 0.6222034959457357
+      },
+      "fiducial_cut": {
+        "params": {
+          "shielding": 1e-06,
+          "cooling": 180,
+          "fiducial": 0.5
+        },
+        "total_rate": 0.619294715105344,
+        "reduction_factor": 0.5
+      },
+      "optimal": {
+        "params": {
+          "shielding": 1e-08,
+          "cooling": 730,
+          "fiducial": 0.5
+        },
+        "total_rate": 0.38244928135237255,
+        "reduction_factor": 0.3087780922588018
+      }
+    }
+  },
+  "Ar40": {
+    "baseline_total_rate": 4282.8629924433235,
+    "strategies": {
+      "baseline": {
+        "params": {
+          "shielding": 1e-06,
+          "cooling": 180,
+          "fiducial": 1.0
+        },
+        "total_rate": 4282.862841245629,
+        "reduction_factor": 1.0
+      },
+      "enhanced_shielding": {
+        "params": {
+          "shielding": 1e-08,
+          "cooling": 180,
+          "fiducial": 1.0
+        },
+        "total_rate": 4282.857085134817,
+        "reduction_factor": 0.999998656013273
+      },
+      "underground_cooling": {
+        "params": {
+          "shielding": 1e-06,
+          "cooling": 730,
+          "fiducial": 1.0
+        },
+        "total_rate": 4276.805706405493,
+        "reduction_factor": 0.9985857275694651
+      },
+      "fiducial_cut": {
+        "params": {
+          "shielding": 1e-06,
+          "cooling": 180,
+          "fiducial": 0.5
+        },
+        "total_rate": 2141.4314206228146,
+        "reduction_factor": 0.5
+      },
+      "optimal": {
+        "params": {
+          "shielding": 1e-08,
+          "cooling": 730,
+          "fiducial": 0.5
+        },
+        "total_rate": 2138.39997514734,
+        "reduction_factor": 0.4992921917913689
+      }
+    }
+  },
+  "Ge76": {
+    "baseline_total_rate": 9.834467036071883,
+    "strategies": {
+      "baseline": {
+        "params": {
+          "shielding": 1e-06,
+          "cooling": 180,
+          "fiducial": 1.0
+        },
+        "total_rate": 9.834208267830222,
+        "reduction_factor": 1.0
+      },
+      "enhanced_shielding": {
+        "params": {
+          "shielding": 1e-08,
+          "cooling": 180,
+          "fiducial": 1.0
+        },
+        "total_rate": 9.828452157016443,
+        "reduction_factor": 0.999414684877825
+      },
+      "underground_cooling": {
+        "params": {
+          "shielding": 1e-06,
+          "cooling": 730,
+          "fiducial": 1.0
+        },
+        "total_rate": 5.217042530540926,
+        "reduction_factor": 0.5304994960913099
+      },
+      "fiducial_cut": {
+        "params": {
+          "shielding": 1e-06,
+          "cooling": 180,
+          "fiducial": 0.5
+        },
+        "total_rate": 4.917104133915111,
+        "reduction_factor": 0.5
+      },
+      "optimal": {
+        "params": {
+          "shielding": 1e-08,
+          "cooling": 730,
+          "fiducial": 0.5
+        },
+        "total_rate": 2.6056432098635725,
+        "reduction_factor": 0.26495709048456734
+      }
+    }
+  }
+}

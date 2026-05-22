@@ -1,0 +1,14 @@
+{
+  "promoter_activity": 0.985,
+  "rbs_efficiency": 1.0,
+  "terminator_efficiency": 0.875784,
+  "added_insulators": [],
+  "insulation_quality_score": 0.9639599999999999,
+  "context_score": 0.965,
+  "corrected_converged": true,
+  "adjusted_rates": {
+    "transcription_gfp": 0.985,
+    "translation_gfp": 0.8,
+    "readthrough": 0.0437892
+  }
+}

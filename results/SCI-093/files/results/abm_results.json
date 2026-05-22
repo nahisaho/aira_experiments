@@ -1,0 +1,29 @@
+{
+  "peer_review": {
+    "final_total_papers": 16,
+    "final_avg_hindex": 2.49,
+    "final_active": 191,
+    "final_attrition": 0.045,
+    "final_funding_gini": 0.706,
+    "final_gender_gap": -0.0103,
+    "cumulative_papers": 315
+  },
+  "lottery": {
+    "final_total_papers": 6,
+    "final_avg_hindex": 2.46,
+    "final_active": 190,
+    "final_attrition": 0.05,
+    "final_funding_gini": 0.474,
+    "final_gender_gap": -0.0093,
+    "cumulative_papers": 210
+  },
+  "automated": {
+    "final_total_papers": 15,
+    "final_avg_hindex": 2.42,
+    "final_active": 197,
+    "final_attrition": 0.015,
+    "final_funding_gini": 0.878,
+    "final_gender_gap": -0.0133,
+    "cumulative_papers": 320
+  }
+}

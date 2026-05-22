@@ -1,0 +1,11 @@
+{
+  "experiment_id": "SCI-062",
+  "title": "無細胞タンパク質合成系の最適化",
+  "project_id": "ac27b1ac-e408-450e-a901-8f91be05c2ec",
+  "prompt_length": 380,
+  "output_length": 861,
+  "file_count": 33,
+  "duration_seconds": 431,
+  "status": "success",
+  "timestamp": "2026-05-22T17:51:02.388Z"
+}

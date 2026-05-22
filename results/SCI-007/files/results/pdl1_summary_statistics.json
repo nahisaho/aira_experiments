@@ -1,0 +1,56 @@
+{
+  "generated": {
+    "n": 20,
+    "log_kd": {
+      "mean": -0.0135,
+      "std": 0.0001,
+      "min": -0.0137,
+      "max": -0.0132
+    },
+    "tm": {
+      "mean": 2.8585,
+      "std": 0.7742,
+      "min": 1.29,
+      "max": 3.92
+    },
+    "humanization": {
+      "mean": 0.4771,
+      "std": 0.0045,
+      "min": 0.4667,
+      "max": 0.4866
+    },
+    "immunogenicity": {
+      "mean": 0.5331,
+      "std": 0.0064,
+      "min": 0.5226,
+      "max": 0.5453
+    },
+    "developability": {
+      "mean": 0.5057,
+      "std": 0.0058,
+      "min": 0.493,
+      "max": 0.5137
+    },
+    "aggregation": {
+      "mean": 0.4162,
+      "std": 0.0322,
+      "min": 0.3389,
+      "max": 0.4637
+    }
+  },
+  "benchmark": {
+    "n": 4,
+    "log_kd": {
+      "mean": -0.0134,
+      "std": 0.0001,
+      "min": -0.0135,
+      "max": -0.0133
+    },
+    "developability": {
+      "mean": 0.5093,
+      "std": 0.0037,
+      "min": 0.504,
+      "max": 0.5142
+    }
+  }
+}

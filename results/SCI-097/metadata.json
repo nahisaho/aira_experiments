@@ -1,0 +1,11 @@
+{
+  "experiment_id": "SCI-097",
+  "title": "生命の起源の化学進化シミュレーション",
+  "project_id": "6de84efe-eabe-442b-b648-e0082730a7e0",
+  "prompt_length": 387,
+  "output_length": 1915,
+  "file_count": 29,
+  "duration_seconds": 1511,
+  "status": "success",
+  "timestamp": "2026-05-22T20:23:59.146Z"
+}

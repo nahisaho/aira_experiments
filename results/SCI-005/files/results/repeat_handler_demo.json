@@ -1,0 +1,26 @@
+{
+  "telomere_detection": {
+    "is_telomeric": true,
+    "fwd_copies": 8,
+    "rev_copies": 0,
+    "total_copies": 8,
+    "telomere_fraction": 0.375
+  },
+  "telomere_length_stats": {
+    "mean_bp": 117.0,
+    "median_bp": 117.0,
+    "std_bp": 34.597687784012386,
+    "n_reads": 20,
+    "min_bp": 60.0,
+    "max_bp": 174.0
+  },
+  "str_expansion": {
+    "expanded": true,
+    "motif": "CAG",
+    "reference_copies": 20,
+    "max_copies": 34,
+    "median_copies": 27.0,
+    "n_reads_expanded": 10,
+    "total_reads": 15
+  }
+}

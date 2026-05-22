@@ -1,0 +1,113 @@
+{
+  "LongSV_v1 (baseline)": {
+    "n_calls": 353,
+    "results_by_type": {
+      "DUP": {
+        "precision": 0.625,
+        "recall": 0.625,
+        "f1": 0.625,
+        "tp": 25,
+        "fp": 15,
+        "fn": 15
+      },
+      "INS": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 9,
+        "fn": 200
+      },
+      "DEL": {
+        "precision": 0.7402,
+        "recall": 0.6267,
+        "f1": 0.6787,
+        "tp": 94,
+        "fp": 33,
+        "fn": 56
+      },
+      "INV": {
+        "precision": 0.6875,
+        "recall": 0.7333,
+        "f1": 0.7097,
+        "tp": 22,
+        "fp": 10,
+        "fn": 8
+      }
+    }
+  },
+  "LongSV_v2 (hybrid)": {
+    "n_calls": 401,
+    "results_by_type": {
+      "DUP": {
+        "precision": 0.85,
+        "recall": 0.85,
+        "f1": 0.85,
+        "tp": 34,
+        "fp": 6,
+        "fn": 6
+      },
+      "INS": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 5,
+        "fn": 200
+      },
+      "DEL": {
+        "precision": 0.8521,
+        "recall": 0.8067,
+        "f1": 0.8288,
+        "tp": 121,
+        "fp": 21,
+        "fn": 29
+      },
+      "INV": {
+        "precision": 0.8485,
+        "recall": 0.9333,
+        "f1": 0.8889,
+        "tp": 28,
+        "fp": 5,
+        "fn": 2
+      }
+    }
+  },
+  "LongSV_v3 (complex)": {
+    "n_calls": 401,
+    "results_by_type": {
+      "DUP": {
+        "precision": 0.9268,
+        "recall": 0.95,
+        "f1": 0.9383,
+        "tp": 38,
+        "fp": 3,
+        "fn": 2
+      },
+      "INS": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tp": 0,
+        "fp": 6,
+        "fn": 200
+      },
+      "DEL": {
+        "precision": 0.8156,
+        "recall": 0.7667,
+        "f1": 0.7904,
+        "tp": 115,
+        "fp": 26,
+        "fn": 35
+      },
+      "INV": {
+        "precision": 0.9,
+        "recall": 0.9,
+        "f1": 0.9,
+        "tp": 27,
+        "fp": 3,
+        "fn": 3
+      }
+    }
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "timestamp": "2026-05-22T13:17:22Z",
+  "artifact_removal": {
+    "n_channels": 32,
+    "calibration_data_s": 30,
+    "asr_calibration_time_s": 0.063,
+    "ica_fit_time_s": 0.995,
+    "n_artifact_ics_detected": 0,
+    "streaming_chunks": 500,
+    "chunk_size_samples": 8,
+    "artifact_rate": 0.0147,
+    "mean_latency_ms": 2.25,
+    "p95_latency_ms": 3.57,
+    "max_latency_ms": 5.72
+  },
+  "csp_motor_imagery": {
+    "n_classes": 4,
+    "n_channels": 32,
+    "n_training_trials": 160,
+    "n_test_trials": 40,
+    "csp_fit_time_ms": 106.8,
+    "overall_accuracy": 1.0,
+    "per_class_accuracy": {
+      "left_hand": 1.0,
+      "right_hand": 1.0,
+      "feet": 1.0,
+      "rest": 1.0
+    },
+    "accuracy_after_online_adaptation": 1.0,
+    "eegnet_parameters": 2388
+  },
+  "p300_speller": {
+    "n_channels": 32,
+    "sfreq_hz": 256,
+    "epoch_duration_ms": 800,
+    "source_trials": 1200,
+    "target_labeled_trials": 180,
+    "target_test_trials": 300,
+    "source_only_accuracy": 0.743,
+    "transfer_learning_accuracy": 0.747,
+    "improvement_pp": 0.3,
+    "itr_bits_per_min": 18.325,
+    "bits_per_selection": 3.665,
+    "fit_time_ms": 776,
+    "n_xdawn_components": 4,
+    "alignment": "Euclidean Alignment (EA)",
+    "classifier": "Riemannian MDM"
+  },
+  "eeg_conformer": {
+    "n_channels": 32,
+    "n_times": 256,
+    "n_classes": 4,
+    "n_transformer_layers": 3,
+    "n_heads": 4,
+    "d_model": 40,
+    "seq_len_after_pooling": 11,
+    "total_parameters": 62124,
+    "forward_pass_ms_per_sample": 10.3,
+    "batch_forward_ms": 164.0,
+    "batch_size": 16
+  },
+  "online_learning": {
+    "total_samples": 2000,
+    "injected_drifts": [
+      800,
+      1500
+    ],
+    "overall_accuracy": 0.985,
+    "adwin_detections": 1,
+    "ddm_detections": 0,
+    "first_200_rolling_acc": 0.742,
+    "final_100_rolling_acc": 1.0,
+    "retrain_every_n": 50,
+    "forgetting_factor": 0.995
+  },
+  "lis_communication": {
+    "p300_chars_decoded": "HELP",
+    "p300_accuracy_per_char": 1.0,
+    "ssvep_target_hz": 10.0,
+    "ssvep_decoded_hz": 10.0,
+    "ssvep_confidence": 0.986,
+    "itr_high_performance_bits_per_min": 38.6,
+    "itr_moderate_bits_per_min": 17.1,
+    "itr_low_bits_per_min": 8.1,
+    "adaptive_mean_reps": 5.0,
+    "fixed_mean_reps": 15.0
+  }
+}

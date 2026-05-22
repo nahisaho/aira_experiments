@@ -1,0 +1,10 @@
+polymer,variant,strategy_note,final_weight_loss_pct,apparent_k_h
+PBS,Branched PBS,branching increases water uptake,1.766126770919783,4.881942157047893e-05
+PBS,Chain-extended PBS,chain extender,0.5798828737873549,1.5933444458029776e-05
+PBS,Standard,baseline,1.0947100110682726,3.0157426108744094e-05
+PHA,PHB,high Tm homopolymer,0.4772492796544725,1.310662329956664e-05
+PHA,PHBV 20% HV,HV lowers crystallinity,1.6045670337580589,4.431724918272146e-05
+PHA,PHBV blend,blend + compatibilizer,2.313639712909449,6.413217753762032e-05
+PLA,High-D stereodefect,higher D-unit content,2.7326075380385504,7.59078813246122e-05
+PLA,Nucleated high crystallinity,nucleating agent,0.7323093816266351,2.013709396687119e-05
+PLA,Standard,baseline,1.6826359348373785,4.6491865320303434e-05

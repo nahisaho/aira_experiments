@@ -1,0 +1,5 @@
+.github/
+.vscode/
+mcpserver/
+AGENTS.md
+node_modules/

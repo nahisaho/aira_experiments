@@ -1,0 +1,114 @@
+[
+  {
+    "pci": 0.23991197662957617,
+    "pci_std": 0.004613371793614622,
+    "lz_complexity": 0.2323356448605222,
+    "consciousness_level": 0.05,
+    "n_trials": 3
+  },
+  {
+    "pci": 0.2630910394884712,
+    "pci_std": 0.01741418243920005,
+    "lz_complexity": 0.25726436212023485,
+    "consciousness_level": 0.11333333333333333,
+    "n_trials": 3
+  },
+  {
+    "pci": 0.2800792160833654,
+    "pci_std": 0.014977201563615953,
+    "lz_complexity": 0.273218741166451,
+    "consciousness_level": 0.17666666666666664,
+    "n_trials": 3
+  },
+  {
+    "pci": 0.2956539362280813,
+    "pci_std": 0.013808717086013998,
+    "lz_complexity": 0.2941588636646097,
+    "consciousness_level": 0.24,
+    "n_trials": 3
+  },
+  {
+    "pci": 0.2257098914128678,
+    "pci_std": 0.0026542422741333478,
+    "lz_complexity": 0.22435845533741414,
+    "consciousness_level": 0.3033333333333333,
+    "n_trials": 3
+  },
+  {
+    "pci": 0.24872751575487725,
+    "pci_std": 0.004000284287372009,
+    "lz_complexity": 0.24529857783557277,
+    "consciousness_level": 0.36666666666666664,
+    "n_trials": 3
+  },
+  {
+    "pci": 0.30340977484547377,
+    "pci_std": 0.027102210787431986,
+    "lz_complexity": 0.29814745842616364,
+    "consciousness_level": 0.42999999999999994,
+    "n_trials": 3
+  },
+  {
+    "pci": 0.3162977432183601,
+    "pci_std": 0.01069583995290829,
+    "lz_complexity": 0.3071217966396602,
+    "consciousness_level": 0.49333333333333323,
+    "n_trials": 3
+  },
+  {
+    "pci": 0.33372086317618477,
+    "pci_std": 0.012753447598946354,
+    "lz_complexity": 0.3230761756858764,
+    "consciousness_level": 0.5566666666666666,
+    "n_trials": 3
+  },
+  {
+    "pci": 0.4102735922547606,
+    "pci_std": 0.023155692807118395,
+    "lz_complexity": 0.4008537735361799,
+    "consciousness_level": 0.62,
+    "n_trials": 3
+  },
+  {
+    "pci": 0.3978594750896765,
+    "pci_std": 0.03587304714694608,
+    "lz_complexity": 0.3858965431803523,
+    "consciousness_level": 0.6833333333333333,
+    "n_trials": 3
+  },
+  {
+    "pci": 0.42420192420398223,
+    "pci_std": 0.05858905794866689,
+    "lz_complexity": 0.412819557820842,
+    "consciousness_level": 0.7466666666666666,
+    "n_trials": 3
+  },
+  {
+    "pci": 0.5241402516750705,
+    "pci_std": 0.05647958511830198,
+    "lz_complexity": 0.5195144676924123,
+    "consciousness_level": 0.8099999999999999,
+    "n_trials": 3
+  },
+  {
+    "pci": 0.5060196288125415,
+    "pci_std": 0.03315411475194087,
+    "lz_complexity": 0.4975771965038651,
+    "consciousness_level": 0.8733333333333333,
+    "n_trials": 3
+  },
+  {
+    "pci": 0.5697968401156962,
+    "pci_std": 0.04465731998255647,
+    "lz_complexity": 0.5693719022118376,
+    "consciousness_level": 0.9366666666666665,
+    "n_trials": 3
+  },
+  {
+    "pci": 0.5766028958362871,
+    "pci_std": 0.040977302505470596,
+    "lz_complexity": 0.5693719022118376,
+    "consciousness_level": 1.0,
+    "n_trials": 3
+  }
+]

@@ -1,0 +1,50 @@
+{
+  "n_perturbations": 20,
+  "n_network_nodes": 20,
+  "n_network_edges": 0,
+  "n_communities": 1,
+  "n_essential_genes": 1,
+  "essential_genes": [
+    "gene_1_guide"
+  ],
+  "community_sizes": {
+    "0": 20
+  },
+  "pathway_enrichment": {
+    "DNA_replication": {
+      "overlap": [
+        "Gene_1"
+      ],
+      "n_overlap": 1,
+      "pathway_size": 5,
+      "fraction": 0.2
+    },
+    "transcription": {
+      "overlap": [],
+      "n_overlap": 0,
+      "pathway_size": 5,
+      "fraction": 0.0
+    },
+    "translation": {
+      "overlap": [],
+      "n_overlap": 0,
+      "pathway_size": 5,
+      "fraction": 0.0
+    },
+    "proteasome": {
+      "overlap": [],
+      "n_overlap": 0,
+      "pathway_size": 5,
+      "fraction": 0.0
+    },
+    "metabolism": {
+      "overlap": [],
+      "n_overlap": 0,
+      "pathway_size": 5,
+      "fraction": 0.0
+    }
+  },
+  "mean_fitness_ratio": -0.03699528073537468,
+  "network_density": 0.0,
+  "network_clustering_coeff": 0.0
+}

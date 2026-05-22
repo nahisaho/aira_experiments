@@ -1,0 +1,70 @@
+{
+  "title": "SEEA-EA（生態系勘定）との連携フレームワーク",
+  "standard": "UN SEEA Ecosystem Accounting (2021)",
+  "accounts": {
+    "extent_account": {
+      "description": "生態系範囲勘定：生態系タイプごとの面積変化を記録",
+      "ecosystem_types": [
+        {"code": "T4.2", "name": "落葉広葉樹林（里山雑木林）", "iucn_get": "T4.2 Mixed deciduous forests"},
+        {"code": "T7.1", "name": "水田農業生態系", "iucn_get": "T7.1 Annual croplands"},
+        {"code": "T7.4", "name": "都市・集落生態系", "iucn_get": "T7.4 Urban and industrial ecosystems"},
+        {"code": "F2.1", "name": "ため池・小河川", "iucn_get": "F2.1 Large permanent freshwater lakes"},
+        {"code": "T4.5", "name": "竹林", "iucn_get": "T4.5 Temperate subhumid grasslands"}
+      ],
+      "data_sources": ["国土数値情報", "JAXA ALOS土地被覆", "環境省自然環境保全基礎調査"],
+      "temporal_comparison": ["t0 (2000)", "t1 (2010)", "t2 (2020)", "t3 (projected 2030)"]
+    },
+    "condition_account": {
+      "description": "生態系状態勘定：生態系の質・状態指標を記録",
+      "condition_indicators": [
+        {"indicator": "種の豊富度指数", "source": "モニタリングサイト1000"},
+        {"indicator": "植生被度", "source": "NDVI時系列（Sentinel-2）"},
+        {"indicator": "土壌有機炭素", "source": "土壌環境基礎調査"},
+        {"indicator": "水質指標（BOD, T-N, T-P）", "source": "公共用水域水質測定"},
+        {"indicator": "景観連結性指数", "source": "InVEST Habitat Quality output"}
+      ],
+      "composite_index": {
+        "method": "Reference condition approach",
+        "scale": "0-1 (0=degraded, 1=reference condition)",
+        "aggregation": "重み付き幾何平均"
+      }
+    },
+    "service_flow_account": {
+      "description": "生態系サービスフロー勘定：年間サービス供給量を物理量で記録",
+      "mapping_to_indicators": {
+        "P01_food": "ton/year → SNA supply-use table sector linkage",
+        "P03_water": "m3/year → water supply account linkage",
+        "R01_carbon": "tC/year → emission account linkage",
+        "R02_erosion": "ton avoided/year → damage cost avoided",
+        "C01_recreation": "person-days/year → tourism satellite account linkage"
+      }
+    },
+    "monetary_asset_account": {
+      "description": "生態系資産の貨幣勘定：生態系資産の経済的価値をNPVで算定",
+      "valuation_methods": {
+        "provisioning": "市場価格法（exchange value）",
+        "regulating": "代替費用法 + 損害回避費用法",
+        "cultural": "選択実験によるWTP（simulated exchange value）"
+      },
+      "npv_calculation": {
+        "time_horizon": "25 years (renewable assets), 100 years (long-term carbon)",
+        "discount_rate": "DDR schedule (see discount_rate_framework.json)",
+        "formula": "Asset Value = Σ(t=0 to T) [Service_flow_t × Price_t / (1+r_t)^t]"
+      }
+    }
+  },
+  "satoyama_pilot_account": {
+    "study_area": "典型的里山景観（想定：能登半島 GIAHS 地域）",
+    "area_ha": 5000,
+    "land_cover_composition": {
+      "mixed_forest": {"area_ha": 1500, "pct": 30},
+      "paddy_field": {"area_ha": 1200, "pct": 24},
+      "upland_crop": {"area_ha": 500, "pct": 10},
+      "bamboo_grove": {"area_ha": 300, "pct": 6},
+      "irrigation_pond": {"area_ha": 200, "pct": 4},
+      "grassland_meadow": {"area_ha": 400, "pct": 8},
+      "settlement": {"area_ha": 600, "pct": 12},
+      "other": {"area_ha": 300, "pct": 6}
+    }
+  }
+}

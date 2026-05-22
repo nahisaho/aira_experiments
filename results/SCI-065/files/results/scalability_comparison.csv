@@ -1,0 +1,4 @@
+mode,configuration,organoid_yield_per_batch,medium_consumption_l_day,cost_per_organoid_usd,size_uniformity_cv_percent,viability_percent,scale_up_factor,reynolds_number,damkohler_number,peclet_number,power_per_volume_w_m3,limitation
+Batch,"50 mL static culture, 12-well format",109.200000,0.020000,6.443223,19.000000,83.000000,1.000000,18.000000,0.141025,56.410084,0.000000,Labor-intensive handling and limited oxygen transfer
+Perfusion,500 mL stirred tank with perfusion loop,2552.000000,0.240000,2.905251,11.500000,91.000000,23.369963,3000.000000,0.082346,1070.496982,0.001242,Perfusion fouling risk and tubing dead volume
+Continuous,5 L continuous perfusion with automated feeding,33120.000000,1.800000,1.559420,8.500000,94.000000,303.296703,22320.000000,0.046282,1203.339015,0.026872,Automation complexity and sterility assurance burden

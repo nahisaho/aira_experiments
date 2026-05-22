@@ -1,0 +1,21 @@
+{
+  "Time-series Data": {
+    "Period": "2013-01-01 to 2022-12-26",
+    "N_days": 3650,
+    "PM2.5 mean (SD)": "29.6 (12.8)",
+    "PM2.5 median [IQR]": "29.6 [20.4-38.7]",
+    "O3 mean (SD)": "42.4 (21.7)",
+    "O3 median [IQR]": "41.8 [23.7-59.6]",
+    "Daily deaths mean (SD)": "52.4 (7.2)",
+    "Temperature mean (SD)": "15.1 (7.7)",
+    "PM2.5-O3 correlation": "-0.611"
+  },
+  "Cohort Data": {
+    "N_subjects": 50000,
+    "Follow-up years mean (SD)": "13.9 (3.1)",
+    "Deaths N (%)": "6913 (13.8%)",
+    "PM2.5 annual mean (SD)": "9.4 (3.6)",
+    "O3 annual mean (SD)": "35.1 (7.8)",
+    "Age mean (SD)": "55.0 (12.0)"
+  }
+}

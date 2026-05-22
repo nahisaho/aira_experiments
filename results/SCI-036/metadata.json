@@ -1,0 +1,11 @@
+{
+  "experiment_id": "SCI-036",
+  "title": "小天体衝突リスク評価システム",
+  "project_id": "ce9e7e91-20bc-45ca-939e-6f6e69eddde7",
+  "prompt_length": 393,
+  "output_length": 1080,
+  "file_count": 27,
+  "duration_seconds": 1222,
+  "status": "success",
+  "timestamp": "2026-05-22T14:48:59.605Z"
+}

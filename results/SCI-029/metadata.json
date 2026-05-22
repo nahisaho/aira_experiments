@@ -1,0 +1,11 @@
+{
+  "experiment_id": "SCI-029",
+  "title": "大気化学反応ネットワーク解析",
+  "project_id": "cba5b312-30d0-4f37-b20f-fa3cf2326c4f",
+  "prompt_length": 385,
+  "output_length": 883,
+  "file_count": 32,
+  "duration_seconds": 825,
+  "status": "success",
+  "timestamp": "2026-05-22T14:23:17.964Z"
+}

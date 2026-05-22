@@ -1,0 +1,98 @@
+{
+  "standard_fba": {
+    "growth_rate": 0.873922
+  },
+  "budget_analysis": [
+    {
+      "fraction": 0.2,
+      "budget_mg": 0.0,
+      "growth": 0.294529,
+      "reduction_pct": 66.3
+    },
+    {
+      "fraction": 0.4,
+      "budget_mg": 0.0,
+      "growth": 0.662925,
+      "reduction_pct": 24.14
+    },
+    {
+      "fraction": 0.6,
+      "budget_mg": 0.1,
+      "growth": 0.759751,
+      "reduction_pct": 13.06
+    },
+    {
+      "fraction": 0.8,
+      "budget_mg": 0.1,
+      "growth": 0.817811,
+      "reduction_pct": 6.42
+    },
+    {
+      "fraction": 1.0,
+      "budget_mg": 0.1,
+      "growth": 0.873922,
+      "reduction_pct": 0.0
+    },
+    {
+      "fraction": 1.5,
+      "budget_mg": 0.1,
+      "growth": 0.873922,
+      "reduction_pct": 0.0
+    }
+  ],
+  "enzyme_allocation_1x": {
+    "growth_rate": 0.873922
+  },
+  "top_enzyme_consumers": [
+    {
+      "reaction": "FBA",
+      "flux": 7.4774,
+      "enzyme_mg": 19.06
+    },
+    {
+      "reaction": "ACONTa",
+      "flux": 6.0072,
+      "enzyme_mg": 17.5211
+    },
+    {
+      "reaction": "ACONTb",
+      "flux": 6.0072,
+      "enzyme_mg": 17.5211
+    },
+    {
+      "reaction": "AKGDH",
+      "flux": 5.0644,
+      "enzyme_mg": 11.7231
+    },
+    {
+      "reaction": "CS",
+      "flux": 6.0072,
+      "enzyme_mg": 4.929
+    },
+    {
+      "reaction": "ENO",
+      "flux": 14.7161,
+      "enzyme_mg": 4.3697
+    },
+    {
+      "reaction": "PPC",
+      "flux": 2.5043,
+      "enzyme_mg": 3.9924
+    },
+    {
+      "reaction": "ICDHyr",
+      "flux": 6.0072,
+      "enzyme_mg": 3.7962
+    },
+    {
+      "reaction": "GAPD",
+      "flux": 16.0235,
+      "enzyme_mg": 2.6343
+    },
+    {
+      "reaction": "PFK",
+      "flux": 7.4774,
+      "enzyme_mg": 2.6246
+    }
+  ]
+}

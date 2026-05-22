@@ -1,0 +1,47 @@
+[
+  {
+    "name": "velocity_ps",
+    "test": "Mann-Whitney U",
+    "assumptions": "nonparametric",
+    "pvalue": 1.1673426812833566e-19,
+    "effect_size_cohens_d": 0.10682660558723979,
+    "mean_inside": 0.0025022839525073635,
+    "mean_outside": 0.002305528688624862,
+    "difference": 0.00019675526388250163,
+    "ci95_low": 0.00011960571524178991,
+    "ci95_high": 0.00027390481252321337,
+    "n_inside": 657,
+    "n_outside": 4239,
+    "fdr_pvalue": 1.1673426812833566e-19
+  },
+  {
+    "name": "transient_map",
+    "test": "Mann-Whitney U",
+    "assumptions": "nonparametric",
+    "pvalue": 0.0,
+    "effect_size_cohens_d": 6.08047598993059,
+    "mean_inside": 0.003304122401336588,
+    "mean_outside": -0.006502076373177044,
+    "difference": 0.009806198774513632,
+    "ci95_low": 0.009561176812859413,
+    "ci95_high": 0.010051220736167852,
+    "n_inside": 657,
+    "n_outside": 9343,
+    "fdr_pvalue": 0.0
+  },
+  {
+    "name": "coupling_map",
+    "test": "Mann-Whitney U",
+    "assumptions": "nonparametric",
+    "pvalue": 5.466389821575987e-208,
+    "effect_size_cohens_d": -1.1570947719799511,
+    "mean_inside": 0.14089805880172074,
+    "mean_outside": 0.1564803961310773,
+    "difference": -0.015582337329356571,
+    "ci95_low": -0.01627794016529541,
+    "ci95_high": -0.014886734493417732,
+    "n_inside": 657,
+    "n_outside": 9343,
+    "fdr_pvalue": 8.19958473236398e-208
+  }
+]

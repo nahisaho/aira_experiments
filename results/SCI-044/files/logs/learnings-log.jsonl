@@ -1,0 +1,1 @@
+{"timestamp": "2026-05-22T16:23:45+00:00", "skill": "co-scientist-bioinformatics", "learning": "McCaskill-style RNA partition recursions need both compile checks and probability-matrix symmetry validation to catch silent DP inconsistencies.", "action": "Added actionable Gotcha entry to bioinformatics skill", "severity": "medium"}

@@ -1,0 +1,28 @@
+============================================================
+MICOM/gapseq Community Metabolic Analysis Report
+============================================================
+
+Number of species: 3
+Core metabolites: 22
+
+Species Models:
+  Bacteroides_thetaiotaomicron: 14 reactions
+  Faecalibacterium_prausnitzii: 12 reactions
+  Ruminococcus_bromii: 12 reactions
+
+Individual FBA Results:
+  Bacteroides_thetaiotaomicron: growth = 0.3500 h⁻¹ [optimal]
+  Faecalibacterium_prausnitzii: growth = 0.2500 h⁻¹ [optimal]
+  Ruminococcus_bromii: growth = 0.2200 h⁻¹ [optimal]
+
+Community Growth Rate: 0.2810 h⁻¹
+Cooperative Tradeoff: 0.7
+
+Cross-feeding Interactions:
+  b_theta → f_praus: acetate (flux: 0.1500)
+  r_bromii → f_praus: glucose (flux: 0.1000)
+
+Predicted SCFA Production (flux units):
+  Acetate:    10.0000
+  Butyrate:   -0.0000
+  Propionate: 0.0000

@@ -1,0 +1,11 @@
+{
+  "experiment_id": "SCI-044",
+  "title": "RNA二次構造予測の改良",
+  "project_id": "e4cd15a4-4a41-4c3d-8910-eee7fc7074aa",
+  "prompt_length": 391,
+  "output_length": 7376,
+  "file_count": 35,
+  "duration_seconds": 1058,
+  "status": "success",
+  "timestamp": "2026-05-22T16:33:22.495Z"
+}

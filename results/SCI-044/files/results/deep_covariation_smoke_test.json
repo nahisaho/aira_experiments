@@ -1,0 +1,72 @@
+{
+  "timestamp": "2026-05-22T16:23:34.062289+00:00",
+  "msa_shape": [
+    4,
+    8
+  ],
+  "neff": 0.9999999999999999,
+  "onehot_shape": [
+    4,
+    8,
+    5
+  ],
+  "mi_shape": [
+    8,
+    8
+  ],
+  "apc_shape": [
+    8,
+    8
+  ],
+  "di_shape": [
+    8,
+    8
+  ],
+  "attention_shape": [
+    8,
+    8,
+    4
+  ],
+  "feature_shape": [
+    8,
+    8,
+    30
+  ],
+  "probability_shape": [
+    8,
+    8
+  ],
+  "top_pairs": [
+    [
+      0,
+      7,
+      0.436039351654587
+    ],
+    [
+      1,
+      6,
+      0.43513567013174914
+    ],
+    [
+      1,
+      7,
+      0.42752250171152517
+    ],
+    [
+      0,
+      6,
+      0.4063731897157886
+    ]
+  ],
+  "folded_structure": "((....))",
+  "folded_energy": -5.871175021786335,
+  "synthetic_msa_preview": [
+    "ACUUACGU",
+    "ACUUACGU",
+    "ACGCACGU"
+  ],
+  "integrated_score_range": [
+    0.0,
+    0.29685641354325454
+  ]
+}

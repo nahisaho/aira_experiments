@@ -1,0 +1,9 @@
+{
+  "level0_count": 69,
+  "level1_count": 10,
+  "level2_count": 3,
+  "level0_avg_size": 7721,
+  "level1_avg_size": 53040,
+  "level2_avg_size": 176800,
+  "final_genome_size": 530400
+}

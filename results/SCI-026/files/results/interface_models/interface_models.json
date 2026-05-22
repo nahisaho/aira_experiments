@@ -1,0 +1,158 @@
+{
+  "total_candidates": 9,
+  "top_models": [
+    {
+      "name": "LCO001_LPS100_7x7_2x2",
+      "orientation_elec": "(0, 0, 1)",
+      "orientation_electrolyte": "(1, 0, 0)",
+      "supercell_elec": [
+        7,
+        7,
+        4
+      ],
+      "supercell_electrolyte": [
+        2,
+        2,
+        2
+      ],
+      "mismatch_a": 0.03,
+      "mismatch_b": 0.03,
+      "area_A2": 388.56,
+      "n_atoms": 600,
+      "vacuum_A": 15.0,
+      "interface_distance_A": 2.5
+    },
+    {
+      "name": "LCO100_LPS100_7x7_2x2",
+      "orientation_elec": "(1, 0, 0)",
+      "orientation_electrolyte": "(1, 0, 0)",
+      "supercell_elec": [
+        7,
+        7,
+        4
+      ],
+      "supercell_electrolyte": [
+        2,
+        2,
+        2
+      ],
+      "mismatch_a": 0.03,
+      "mismatch_b": 0.03,
+      "area_A2": 388.56,
+      "n_atoms": 600,
+      "vacuum_A": 15.0,
+      "interface_distance_A": 2.5
+    },
+    {
+      "name": "LCO104_LPS100_7x2_2x1",
+      "orientation_elec": "(1, 0, 4)",
+      "orientation_electrolyte": "(1, 0, 0)",
+      "supercell_elec": [
+        7,
+        2,
+        4
+      ],
+      "supercell_electrolyte": [
+        2,
+        1,
+        2
+      ],
+      "mismatch_a": 0.03,
+      "mismatch_b": 1.061,
+      "area_A2": 192.29,
+      "n_atoms": 216,
+      "vacuum_A": 15.0,
+      "interface_distance_A": 2.5
+    },
+    {
+      "name": "LCO001_LPS110_7x5_2x1",
+      "orientation_elec": "(0, 0, 1)",
+      "orientation_electrolyte": "(1, 1, 0)",
+      "supercell_elec": [
+        7,
+        5,
+        4
+      ],
+      "supercell_electrolyte": [
+        2,
+        1,
+        2
+      ],
+      "mismatch_a": 0.03,
+      "mismatch_b": 0.98,
+      "area_A2": 277.54,
+      "n_atoms": 384,
+      "vacuum_A": 15.0,
+      "interface_distance_A": 2.5
+    },
+    {
+      "name": "LCO100_LPS110_7x5_2x1",
+      "orientation_elec": "(1, 0, 0)",
+      "orientation_electrolyte": "(1, 1, 0)",
+      "supercell_elec": [
+        7,
+        5,
+        4
+      ],
+      "supercell_electrolyte": [
+        2,
+        1,
+        2
+      ],
+      "mismatch_a": 0.03,
+      "mismatch_b": 0.98,
+      "area_A2": 277.54,
+      "n_atoms": 384,
+      "vacuum_A": 15.0,
+      "interface_distance_A": 2.5
+    },
+    {
+      "name": "LCO104_LPS100_7x4_2x2",
+      "orientation_elec": "(1, 0, 4)",
+      "orientation_electrolyte": "(1, 0, 0)",
+      "supercell_elec": [
+        7,
+        4,
+        4
+      ],
+      "supercell_electrolyte": [
+        2,
+        2,
+        2
+      ],
+      "mismatch_a": 0.03,
+      "mismatch_b": 1.061,
+      "area_A2": 384.58,
+      "n_atoms": 432,
+      "vacuum_A": 15.0,
+      "interface_distance_A": 2.5
+    }
+  ],
+  "recommended_model": {
+    "name": "LCO001_LPS100_7x7_2x2",
+    "orientation_elec": "(0, 0, 1)",
+    "orientation_electrolyte": "(1, 0, 0)",
+    "supercell_elec": [
+      7,
+      7,
+      4
+    ],
+    "supercell_electrolyte": [
+      2,
+      2,
+      2
+    ],
+    "mismatch_a": 0.03,
+    "mismatch_b": 0.03,
+    "area_A2": 388.56,
+    "n_atoms": 600,
+    "vacuum_A": 15.0,
+    "interface_distance_A": 2.5
+  },
+  "lattice_parameters": {
+    "Li6PS5Cl_a_A": 9.859,
+    "LiCoO2_a_A": 2.816,
+    "LiCoO2_c_A": 14.054
+  },
+  "POSCAR_comment": "Interface: LCO001_LPS100_7x7_2x2 | Mismatch: 0.03%/0.03% | Area: 388.6 \u00c5\u00b2"
+}

@@ -1,0 +1,26 @@
+{
+  "Batch": {
+    "final_protein_nM": 30.619297248588932,
+    "peak_protein_nM": 62.22873663320508,
+    "time_to_50pct_peak_min": 7.207207207207206,
+    "volumetric_productivity_nM_per_hr": 5.18572805276709,
+    "NTP_final_mM": 8.684499325530401e-16,
+    "aa_final_mM": -3.865259583051125e-11
+  },
+  "Semi-Continuous": {
+    "final_protein_nM": 221.53812328510696,
+    "peak_protein_nM": 234.58649880033198,
+    "time_to_50pct_peak_min": 121.8018018018018,
+    "volumetric_productivity_nM_per_hr": 19.548874900027666,
+    "NTP_final_mM": 5.3985964388783785,
+    "aa_final_mM": 5.964484590689747e-10
+  },
+  "Continuous": {
+    "final_protein_nM": 52.21683385174083,
+    "peak_protein_nM": 62.20626104270605,
+    "time_to_50pct_peak_min": 7.207207207207206,
+    "volumetric_productivity_nM_per_hr": 5.183855086892171,
+    "NTP_final_mM": 2.4415011163938836,
+    "aa_final_mM": 0.0009931929312408886
+  }
+}

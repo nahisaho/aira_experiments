@@ -1,0 +1,51 @@
+{
+  "waves": {
+    "wave6": {
+      "models": {
+        "SIR": {
+          "rss": 108577757.328228,
+          "aic": 9568.813736,
+          "bic": 9582.904839,
+          "n_params": 3
+        },
+        "SEIR": {
+          "rss": 72442139.061817,
+          "aic": 9243.024222,
+          "bic": 9261.812359,
+          "n_params": 4
+        },
+        "Age-structured SEIR": {
+          "rss": 41193823.362327,
+          "aic": 8793.779356,
+          "bic": 8831.35563,
+          "n_params": 8
+        }
+      },
+      "best_model": "Age-structured SEIR"
+    },
+    "wave7": {
+      "models": {
+        "SIR": {
+          "rss": 75655806.340265,
+          "aic": 9463.988639,
+          "bic": 9478.145679,
+          "n_params": 3
+        },
+        "SEIR": {
+          "rss": 42129563.648306,
+          "aic": 8981.240617,
+          "bic": 9000.11667,
+          "n_params": 4
+        },
+        "Age-structured SEIR": {
+          "rss": 30544415.728103,
+          "aic": 8722.982445,
+          "bic": 8760.73455,
+          "n_params": 8
+        }
+      },
+      "best_model": "Age-structured SEIR"
+    }
+  },
+  "interpretation": "Age-structured SEIR provided the best AIC/BIC in both waves, especially for severity alignment."
+}

@@ -1,0 +1,25 @@
+{
+  "precursor_alert": {
+    "level": "RED",
+    "score": 6.80261152628532
+  },
+  "nankai_alert": {
+    "level": "ORANGE",
+    "score": 4.008638619370717,
+    "mean_coupling": 0.1554566365685386,
+    "max_coupling": 0.19848356415575985,
+    "sse_count": 1
+  },
+  "sse_events": [
+    {
+      "start": 26,
+      "end": 34,
+      "duration": 9,
+      "peak": 0.012697741998960642
+    }
+  ],
+  "clusters": {
+    "n_clusters": 0,
+    "cluster_sizes": []
+  }
+}

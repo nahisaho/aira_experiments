@@ -1,0 +1,52 @@
+{
+  "cross_validation": {
+    "rf_accuracy": 0.74,
+    "rf_accuracy_std": 0.08793937305515281,
+    "lda_accuracy": 0.7533333333333334,
+    "lda_accuracy_std": 0.10666666666666669,
+    "rf_scores": [
+      0.7666666666666667,
+      0.6666666666666666,
+      0.7,
+      0.9,
+      0.6666666666666666
+    ],
+    "lda_scores": [
+      0.8,
+      0.6666666666666666,
+      0.7333333333333333,
+      0.9333333333333333,
+      0.6333333333333333
+    ]
+  },
+  "feature_importances": {
+    "mean_correlation": 0.12138894407562423,
+    "mean_mi": 0.11376593829322108,
+    "alpha_delta_ratio": 0.110412523488146,
+    "power_alpha": 0.10943359886530975,
+    "ap_coherence": 0.10399316678577145,
+    "power_beta": 0.10128856934416663,
+    "spectral_entropy": 0.08275163841362283,
+    "power_gamma": 0.06915987042199885,
+    "power_delta": 0.0660584796436441,
+    "sef95": 0.06350552363775859,
+    "power_theta": 0.031238526144652442,
+    "long_short_range_ratio": 0.02700322088608426,
+    "burst_suppression_ratio": 0.0
+  },
+  "top_5_features": [
+    "mean_correlation",
+    "mean_mi",
+    "alpha_delta_ratio",
+    "power_alpha",
+    "ap_coherence"
+  ],
+  "n_classes": 5,
+  "class_names": {
+    "0": "CTRL",
+    "1": "MCS+",
+    "2": "MCS-",
+    "3": "VS",
+    "4": "LIS"
+  }
+}

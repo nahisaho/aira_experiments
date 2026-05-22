@@ -1,0 +1,131 @@
+{
+  "generated_at": "2026-05-22T19:09:03Z",
+  "random_seed": 42,
+  "total_lots": 100,
+  "contaminated_lots": 5,
+  "recalled_lots": 5,
+  "consumer_exposed_lots": 5,
+  "total_transactions": 500,
+  "transactions_per_lot": 5,
+  "total_blocks": 21,
+  "chain_valid": true,
+  "merkle_verification_pass_rate": 1.0,
+  "linked_block_rate": 1.0,
+  "hashed_block_rate": 1.0,
+  "alert_count": 170,
+  "hold_count": 34,
+  "reject_count": 10,
+  "traceback_summary": {
+    "blockchain_mean_seconds": 1.997940125875175e-05,
+    "blockchain_max_seconds": 6.140000186860561e-05,
+    "blockchain_min_seconds": 8.222006727010012e-06,
+    "traditional_mean_seconds": 89656.50916488715,
+    "traditional_max_seconds": 164354.51943793273,
+    "traditional_min_seconds": 50785.40865835284,
+    "speedup_factor_mean": 8495375998.652573,
+    "speedup_factor_95pct_interval": [
+      1413153500.3300796,
+      16530772226.531147
+    ]
+  },
+  "recall_scope": {
+    "retail_contaminated_lots": [
+      "LOT-009",
+      "LOT-044",
+      "LOT-065",
+      "LOT-076",
+      "LOT-100"
+    ],
+    "consumer_exposed_lots": [
+      "LOT-009",
+      "LOT-044",
+      "LOT-065",
+      "LOT-076",
+      "LOT-100"
+    ],
+    "affected_transactions": 14
+  },
+  "trace_results": [
+    {
+      "lot_id": "LOT-009",
+      "blockchain_seconds": 6.140000186860561e-05,
+      "traditional_seconds": 50785.40865835284,
+      "farm_origin": "Farm North",
+      "retail_location": "Retail 03",
+      "contamination_stage": "Distribution",
+      "path": [
+        "Farm",
+        "Processing",
+        "Distribution",
+        "Retail",
+        "Consumer"
+      ]
+    },
+    {
+      "lot_id": "LOT-044",
+      "blockchain_seconds": 1.1672003893181682e-05,
+      "traditional_seconds": 78055.59174071162,
+      "farm_origin": "Farm North",
+      "retail_location": "Retail 02",
+      "contamination_stage": "Distribution",
+      "path": [
+        "Farm",
+        "Processing",
+        "Distribution",
+        "Retail",
+        "Consumer"
+      ]
+    },
+    {
+      "lot_id": "LOT-065",
+      "blockchain_seconds": 9.576993761584163e-06,
+      "traditional_seconds": 164354.51943793273,
+      "farm_origin": "Farm North",
+      "retail_location": "Retail 04",
+      "contamination_stage": "Distribution",
+      "path": [
+        "Farm",
+        "Processing",
+        "Distribution",
+        "Retail",
+        "Consumer"
+      ]
+    },
+    {
+      "lot_id": "LOT-076",
+      "blockchain_seconds": 9.02600004337728e-06,
+      "traditional_seconds": 97979.1933026428,
+      "farm_origin": "Farm South",
+      "retail_location": "Retail 01",
+      "contamination_stage": "Retail",
+      "path": [
+        "Farm",
+        "Processing",
+        "Distribution",
+        "Retail",
+        "Consumer"
+      ]
+    },
+    {
+      "lot_id": "LOT-100",
+      "blockchain_seconds": 8.222006727010012e-06,
+      "traditional_seconds": 57107.832684795736,
+      "farm_origin": "Farm East",
+      "retail_location": "Retail 04",
+      "contamination_stage": "Distribution",
+      "path": [
+        "Farm",
+        "Processing",
+        "Distribution",
+        "Retail",
+        "Consumer"
+      ]
+    }
+  ],
+  "contamination_edge_counts": {
+    "Farm->Processing": 0,
+    "Processing->Distribution": 0,
+    "Distribution->Retail": 4,
+    "Retail->Consumer": 5
+  }
+}

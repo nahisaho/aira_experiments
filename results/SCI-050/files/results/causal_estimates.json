@@ -1,0 +1,82 @@
+{
+  "true_ate": -5.0,
+  "methods": {
+    "PSM": {
+      "ate": -6.089,
+      "se": 0.482,
+      "auc": 0.649,
+      "n_matched": 955
+    },
+    "IPW": {
+      "ate": -7.149
+    },
+    "IPW_trimmed": {
+      "ate": -7.149
+    },
+    "AIPW": {
+      "ate": -5.914,
+      "se": 0.186
+    },
+    "IV_2SLS": {
+      "ate": -5.774,
+      "se": 0.689,
+      "first_stage_F": 94.46,
+      "weak_instrument": "False",
+      "AR_CI": [
+        -6.96,
+        -4.648
+      ]
+    },
+    "DID": {
+      "ate": -4.981,
+      "se": 0.205,
+      "pre_trend_pvalue": 0.0,
+      "parallel_trends_supported": false
+    },
+    "LinearDML": {
+      "ate": -5.756,
+      "ci": [
+        -6.163,
+        -5.35
+      ]
+    },
+    "CausalForestDML": {
+      "ate": -5.888,
+      "ci": [
+        -8.059,
+        -3.717
+      ]
+    },
+    "CausalForest": {
+      "ate": -5.761,
+      "ci": [
+        -5.798,
+        -5.712
+      ],
+      "cate_range": [
+        -8.693,
+        -3.664
+      ],
+      "cate_ite_correlation": 0.669
+    },
+    "DoWhy": {
+      "DoWhy_LinearRegression": -6.086,
+      "DoWhy_PSM": -5.49,
+      "DoWhy_IV": -4.299
+    }
+  },
+  "refutation": {
+    "random_common_cause": {
+      "effect": -6.086,
+      "p_value": 1.0
+    },
+    "placebo_treatment": {
+      "effect": "N/A (incompatible estimator)",
+      "p_value": "N/A"
+    },
+    "data_subset": {
+      "effect": -6.098,
+      "p_value": 0.92
+    }
+  }
+}

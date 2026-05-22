@@ -1,0 +1,39 @@
+pipeline:
+  name: "PandemicEarlyWarningSystem"
+  version: "1.0.0"
+  update_interval_hours: 6
+
+genomics:
+  sources: ["GISAID", "GenBank"]
+  lookback_days: 30
+  min_sequences: 100
+  reference_id: "MN908947"
+
+epidemiology:
+  case_sources: ["WHO", "ECDC", "CDC"]
+  mobility_source: "Google"
+  wastewater_lag_days: 7
+  anomaly_contamination: 0.05
+
+rt_estimation:
+  serial_interval_mean: 4.7
+  serial_interval_sd: 2.9
+  window_size: 7
+  tau: 7
+
+nlp:
+  sources: ["ProMED", "WHO", "HealthMap"]
+  update_frequency_hours: 1
+  novelty_top_n: 20
+
+risk_scoring:
+  weights:
+    genomic: 0.30
+    epidemiology: 0.35
+    nlp: 0.20
+    rt: 0.15
+  alert_thresholds:
+    low: 25
+    medium: 50
+    high: 75
+    critical: 90

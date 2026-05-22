@@ -1,0 +1,11 @@
+{
+  "experiment_id": "SCI-089",
+  "title": "電力グリッドのリアルタイムシミュレーション",
+  "project_id": "b13104e2-8639-4c63-90a7-7da0fbe754aa",
+  "prompt_length": 393,
+  "output_length": 394,
+  "file_count": 38,
+  "duration_seconds": 701,
+  "status": "success",
+  "timestamp": "2026-05-22T19:44:31.302Z"
+}

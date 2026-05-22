@@ -1,0 +1,23 @@
+{
+  "Creatine Phosphate": {
+    "sustain_time_min": 55.25525525525526,
+    "total_ATP_integral": 900.9784391087584,
+    "peak_ATP_mM": 26.74360357581499,
+    "final_byproduct_mM": 17.999999999999993,
+    "cost_efficiency": 37.540768296198266
+  },
+  "PEP": {
+    "sustain_time_min": 36.996996996997,
+    "total_ATP_integral": 314.24822815177913,
+    "peak_ATP_mM": 12.428442972840305,
+    "final_byproduct_mM": 18.00000000000001,
+    "cost_efficiency": 8.729117448660531
+  },
+  "Maltose": {
+    "sustain_time_min": 102.34234234234233,
+    "total_ATP_integral": 1864.8236880336665,
+    "peak_ATP_mM": 27.341135895568325,
+    "final_byproduct_mM": 29.999999999999993,
+    "cost_efficiency": 124.32157920224444
+  }
+}

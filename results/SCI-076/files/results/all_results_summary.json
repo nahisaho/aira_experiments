@@ -1,0 +1,63 @@
+{
+  "vi_stats": {
+    "NDVI": {
+      "peak": 0.8398516966964913
+    },
+    "EVI": {
+      "peak": 0.8780428274335377
+    },
+    "SAVI": {
+      "peak": 0.6828558189500217
+    },
+    "NDRE": {
+      "peak": 0.29719845702861214
+    },
+    "GNDVI": {
+      "peak": 0.7280666159629224
+    },
+    "LAI": {
+      "peak": 4.053194668144521
+    }
+  },
+  "crop_model": {
+    "final_yield": 0.0,
+    "peak_lai": 6.0,
+    "stage_dates": {
+      "transplanting": "2025-06-04",
+      "tillering": "2025-06-25",
+      "panicle_init": "2025-08-05",
+      "heading": "2025-09-20"
+    }
+  },
+  "dl_metrics": {
+    "R2": -0.4041,
+    "MAE_tha": 1.0888,
+    "RMSE_tha": 1.2993,
+    "total_params": 267137,
+    "n_train": 320,
+    "n_val": 80,
+    "n_test": 100
+  },
+  "vra_results": {
+    "n_savings_pct": 77.5,
+    "yield_uniform": 6.69,
+    "yield_vra": 6.69,
+    "profit_gain": 74.4,
+    "n_rate_mean": 18.0,
+    "n_rate_range": [
+      14.9,
+      18.3
+    ]
+  },
+  "field_summary": {
+    "n_fields": 20,
+    "total_area_ha": 53.64,
+    "mean_yield": 5.58,
+    "varieties": {
+      "Koshihikari": 14,
+      "Hitomebore": 4,
+      "Akitakomachi": 2
+    },
+    "mean_n_rate": 94.2
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "greedy_allocation": {
+    "avg_quality": 0.2866,
+    "gender_dist": {
+      "M": 14,
+      "F": 4,
+      "Other": 2
+    },
+    "region_dist": {
+      "Europe": 8,
+      "NorthAmerica": 5,
+      "Asia": 4,
+      "LatinAmerica": 2,
+      "Africa": 1
+    },
+    "career_stage_dist": {
+      "senior": 14,
+      "mid": 5,
+      "early": 1
+    },
+    "field_dist": {
+      "Medicine": 7,
+      "Physics": 5,
+      "Chemistry": 4,
+      "CS": 2,
+      "Biology": 2
+    }
+  },
+  "pareto_analysis": {
+    "n_samples": 500,
+    "n_pareto_optimal": 191,
+    "quality_range": [
+      0.1219,
+      0.2905
+    ],
+    "diversity_range": [
+      0.42,
+      0.757
+    ],
+    "optimal_tradeoff_point": {
+      "avg_quality": 0.2875,
+      "composite_diversity": 0.518
+    }
+  },
+  "constraints": {
+    "n_applicants": 200,
+    "n_grants": 20,
+    "budget": 1000000,
+    "grant_size": 50000
+  }
+}

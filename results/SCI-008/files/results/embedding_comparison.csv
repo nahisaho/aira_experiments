@@ -1,0 +1,4 @@
+model,mrr,hits_at_1,hits_at_3,hits_at_10,training_time_sec,embedding_dim,epochs
+TransE,0.312,0.198,0.387,0.521,40.5,64,100
+RotatE,0.358,0.241,0.431,0.567,46.7,64,100
+ComplEx,0.341,0.223,0.408,0.548,50.1,64,100

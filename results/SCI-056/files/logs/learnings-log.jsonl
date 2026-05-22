@@ -1,0 +1,1 @@
+{"timestamp":"2026-05-22T17:28:06.662117+00:00","skill":"co-scientist-bayesian-statistics","learning":"Short demo MCMC runs for epidemic models produced inflated R-hat and low ESS, so they should not be interpreted as converged inference.","action":"Gotchas追記","severity":"medium"}

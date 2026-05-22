@@ -1,0 +1,11 @@
+pathway_id,pathway_name,source,category,hits,pathway_size,odds_ratio,pvalue,hit_compounds,fdr_qvalue
+hsa04080,Neuroactive ligand-receptor interaction,host,Signaling,3,4,6.75,0.114294,"['C00547', 'C00187', 'C00334']",0.897901
+ko00650,Butanoate metabolism,microbial,SCFA biosynthesis,3,5,3.25,0.221497,"['C01412', 'C00246', 'C00042']",0.897901
+hsa00340,Histidine metabolism,host,Amino acid metabolism,2,4,2.0,0.435905,"['C00135', 'C05130']",0.897901
+hsa00590,Arachidonic acid metabolism,host,Lipid metabolism,2,5,1.282,0.578843,"['C14768', 'C05356']",0.897901
+hsa00760,Nicotinate and nicotinamide metabolism,host,Vitamin metabolism,1,3,0.929,0.734543,['C00153'],0.897901
+ko00680,Methane metabolism,microbial,Energy metabolism,1,3,0.929,0.734543,['C01438'],0.897901
+hsa04979,Cholesterol metabolism,host,Lipid metabolism,1,3,0.929,0.734543,['C00187'],0.897901
+ko00640,Propanoate metabolism,microbial,SCFA biosynthesis,1,4,0.595,0.83409,['C00163'],0.897901
+ko00121,Secondary bile acid biosynthesis,microbial,Bile acid metabolism,1,4,0.595,0.83409,['C05466'],0.897901
+ko00380,Tryptophan metabolism,both,Amino acid metabolism,1,5,0.429,0.897901,['C01598'],0.897901

@@ -1,0 +1,9 @@
+scenario,peak_wbgt,peak_hour,danger_hours,daily_patients
+marunouchi_current,34.8,13,7,13.0
+shinjuku_current,34.2,12,6,47.0
+residential_23ku_current,31.4,11,3,49.0
+suburban_current,31.1,11,1,52.0
+marunouchi_rcp85_2050,40.2,13,11,27.0
+shinjuku_rcp85_2050,39.0,12,10,94.0
+residential_23ku_rcp85_2050,34.6,11,9,84.0
+suburban_rcp85_2050,34.2,11,9,88.0

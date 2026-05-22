@@ -1,0 +1,71 @@
+{
+  "icc2_1": {
+    "icc_type": "ICC2",
+    "mean_icc": 0.8939,
+    "median_icc": 0.9335,
+    "std_icc": 0.1081,
+    "pct_above_0_75": 88.14,
+    "pct_above_0_60": 96.33,
+    "pct_above_0_40": 99.75,
+    "icc_distribution": {
+      "poor_lt05": 50,
+      "moderate_05_075": 425,
+      "good_075_09": 410,
+      "excellent_gt09": 3120
+    }
+  },
+  "icc3_1": {
+    "icc_type": "ICC3",
+    "mean_icc": 0.894,
+    "median_icc": 0.9334,
+    "std_icc": 0.108,
+    "pct_above_0_75": 88.19,
+    "pct_above_0_60": 96.35,
+    "pct_above_0_40": 99.73,
+    "icc_distribution": {
+      "poor_lt05": 51,
+      "moderate_05_075": 422,
+      "good_075_09": 409,
+      "excellent_gt09": 3123
+    }
+  },
+  "fingerprinting": {
+    "identification_rate_pct": 100.0,
+    "mean_rank": 1.0,
+    "chance_level_pct": 3.33,
+    "network_fingerprint_accuracy": {
+      "DMN": 96.7,
+      "FPN": 100.0,
+      "SMN": 96.7,
+      "VIS": 93.3,
+      "DAN": 90.0,
+      "SN": 86.7,
+      "LIM": 100.0
+    }
+  },
+  "reproducibility_strategies": {
+    "baseline_no_gsr": {
+      "mean_icc": 0.8939,
+      "pct_above_0_75": 88.14
+    },
+    "with_gsr": {
+      "mean_icc": 0.9188,
+      "pct_above_0_75": 98.1
+    },
+    "fisher_z": {
+      "mean_icc": 0.8808,
+      "pct_above_0_75": 86.77
+    },
+    "normalized": {
+      "mean_icc": 0.8885,
+      "pct_above_0_75": 88.09
+    }
+  },
+  "sample_size_recommendation": {
+    "current_icc": 0.8939,
+    "target_icc": 0.75,
+    "recommended_n_subjects": 39,
+    "icc_95ci_lower": 0.791,
+    "icc_95ci_upper": 0.948
+  }
+}

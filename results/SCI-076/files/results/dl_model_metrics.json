@@ -1,0 +1,9 @@
+{
+  "R2": -0.4041,
+  "MAE_tha": 1.0888,
+  "RMSE_tha": 1.2993,
+  "total_params": 267137,
+  "n_train": 320,
+  "n_val": 80,
+  "n_test": 100
+}

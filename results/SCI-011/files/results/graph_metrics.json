@@ -1,0 +1,374 @@
+{
+  "HC": {
+    "small_world": {
+      "clustering_coeff": 0.8858,
+      "characteristic_path_length": 10.2676,
+      "clustering_coeff_rand": 0.2762,
+      "path_length_rand": 1.7366,
+      "gamma": 3.207,
+      "lambda": 5.913,
+      "sigma": 0.542,
+      "is_small_world": false
+    },
+    "modularity": {
+      "modularity_Q": 0.8311,
+      "n_communities": 7,
+      "community_sizes": [
+        15,
+        15,
+        14,
+        13,
+        13,
+        10,
+        10
+      ],
+      "mean_participation_coeff": 0.0245
+    },
+    "hub_structure": {
+      "n_hub_nodes": 12,
+      "global_efficiency": 0.2498,
+      "local_efficiency": 0.9581,
+      "mean_degree": 13.36
+    },
+    "top_hubs": [
+      {
+        "node_id": 89,
+        "label": "ROI_89",
+        "hub_score": 3.0483,
+        "degree_centrality": 0.2697,
+        "betweenness_centrality": 0.1297,
+        "eigenvector_centrality": 0.0
+      },
+      {
+        "node_id": 24,
+        "label": "ROI_24",
+        "hub_score": 2.3067,
+        "degree_centrality": 0.2135,
+        "betweenness_centrality": 0.118,
+        "eigenvector_centrality": 0.0
+      },
+      {
+        "node_id": 20,
+        "label": "ROI_20",
+        "hub_score": 1.915,
+        "degree_centrality": 0.2247,
+        "betweenness_centrality": 0.0845,
+        "eigenvector_centrality": 0.0
+      },
+      {
+        "node_id": 76,
+        "label": "ROI_76",
+        "hub_score": 1.4629,
+        "degree_centrality": 0.2472,
+        "betweenness_centrality": 0.0396,
+        "eigenvector_centrality": 0.0
+      },
+      {
+        "node_id": 25,
+        "label": "PCC_L",
+        "hub_score": 1.2922,
+        "degree_centrality": 0.236,
+        "betweenness_centrality": 0.0358,
+        "eigenvector_centrality": 0.0
+      }
+    ],
+    "density_sweep": [
+      {
+        "density": 0.05,
+        "n_edges": 29,
+        "clustering_coeff": 0.5106,
+        "path_length": 1.6813,
+        "global_efficiency": 0.6593,
+        "local_efficiency": 0.5538
+      },
+      {
+        "density": 0.1,
+        "n_edges": 68,
+        "clustering_coeff": 0.8204,
+        "path_length": 1.3524,
+        "global_efficiency": 0.8238,
+        "local_efficiency": 0.8721
+      },
+      {
+        "density": 0.15,
+        "n_edges": 354,
+        "clustering_coeff": 0.8858,
+        "path_length": 2.3725,
+        "global_efficiency": 0.5454,
+        "local_efficiency": 0.9404
+      },
+      {
+        "density": 0.2,
+        "n_edges": 802,
+        "clustering_coeff": 0.864,
+        "path_length": 3.0856,
+        "global_efficiency": 0.4547,
+        "local_efficiency": 0.9297
+      },
+      {
+        "density": 0.25,
+        "n_edges": 1002,
+        "clustering_coeff": 0.8249,
+        "path_length": 2.2564,
+        "global_efficiency": 0.5484,
+        "local_efficiency": 0.9114
+      },
+      {
+        "density": 0.3,
+        "n_edges": 1202,
+        "clustering_coeff": 0.8022,
+        "path_length": 1.9643,
+        "global_efficiency": 0.6077,
+        "local_efficiency": 0.8988
+      }
+    ]
+  },
+  "SCZ": {
+    "small_world": {
+      "clustering_coeff": 0.8561,
+      "characteristic_path_length": 4.7673,
+      "clustering_coeff_rand": 0.7015,
+      "path_length_rand": 1.3004,
+      "gamma": 1.22,
+      "lambda": 3.666,
+      "sigma": 0.333,
+      "is_small_world": false
+    },
+    "modularity": {
+      "modularity_Q": 0.8324,
+      "n_communities": 7,
+      "community_sizes": [
+        15,
+        15,
+        14,
+        13,
+        13,
+        10,
+        10
+      ],
+      "mean_participation_coeff": 0.0269
+    },
+    "hub_structure": {
+      "n_hub_nodes": 12,
+      "global_efficiency": 0.1594,
+      "local_efficiency": 0.9815,
+      "mean_degree": 13.36
+    },
+    "top_hubs": [
+      {
+        "node_id": 42,
+        "label": "ROI_42",
+        "hub_score": 2.1329,
+        "degree_centrality": 0.2247,
+        "betweenness_centrality": 0.0077,
+        "eigenvector_centrality": 0.0
+      },
+      {
+        "node_id": 45,
+        "label": "ROI_45",
+        "hub_score": 1.9224,
+        "degree_centrality": 0.2022,
+        "betweenness_centrality": 0.0079,
+        "eigenvector_centrality": 0.0
+      },
+      {
+        "node_id": 53,
+        "label": "ROI_53",
+        "hub_score": 1.4966,
+        "degree_centrality": 0.2135,
+        "betweenness_centrality": 0.0051,
+        "eigenvector_centrality": 0.0
+      },
+      {
+        "node_id": 70,
+        "label": "ROI_70",
+        "hub_score": 1.4672,
+        "degree_centrality": 0.2022,
+        "betweenness_centrality": 0.0056,
+        "eigenvector_centrality": 0.0
+      },
+      {
+        "node_id": 65,
+        "label": "ROI_65",
+        "hub_score": 1.3496,
+        "degree_centrality": 0.1573,
+        "betweenness_centrality": 0.0077,
+        "eigenvector_centrality": 0.0
+      }
+    ],
+    "density_sweep": [
+      {
+        "density": 0.05,
+        "n_edges": 74,
+        "clustering_coeff": 0.8153,
+        "path_length": 1.2952,
+        "global_efficiency": 0.8524,
+        "local_efficiency": 0.8696
+      },
+      {
+        "density": 0.1,
+        "n_edges": 105,
+        "clustering_coeff": 1.0,
+        "path_length": 1.0,
+        "global_efficiency": 1.0,
+        "local_efficiency": 1.0
+      },
+      {
+        "density": 0.15,
+        "n_edges": 177,
+        "clustering_coeff": 0.8561,
+        "path_length": 1.3162,
+        "global_efficiency": 0.8472,
+        "local_efficiency": 0.9277
+      },
+      {
+        "density": 0.2,
+        "n_edges": 802,
+        "clustering_coeff": 0.9116,
+        "path_length": 3.2552,
+        "global_efficiency": 0.4385,
+        "local_efficiency": 0.9499
+      },
+      {
+        "density": 0.25,
+        "n_edges": 1002,
+        "clustering_coeff": 0.8397,
+        "path_length": 2.3975,
+        "global_efficiency": 0.5344,
+        "local_efficiency": 0.9182
+      },
+      {
+        "density": 0.3,
+        "n_edges": 1202,
+        "clustering_coeff": 0.7808,
+        "path_length": 2.1046,
+        "global_efficiency": 0.5918,
+        "local_efficiency": 0.8889
+      }
+    ]
+  },
+  "AD": {
+    "small_world": {
+      "clustering_coeff": 0.9265,
+      "characteristic_path_length": 10.7729,
+      "clustering_coeff_rand": 0.2806,
+      "path_length_rand": 1.7297,
+      "gamma": 3.302,
+      "lambda": 6.228,
+      "sigma": 0.53,
+      "is_small_world": false
+    },
+    "modularity": {
+      "modularity_Q": 0.8318,
+      "n_communities": 7,
+      "community_sizes": [
+        15,
+        15,
+        14,
+        13,
+        13,
+        10,
+        10
+      ],
+      "mean_participation_coeff": 0.0257
+    },
+    "hub_structure": {
+      "n_hub_nodes": 12,
+      "global_efficiency": 0.2263,
+      "local_efficiency": 0.9758,
+      "mean_degree": 13.36
+    },
+    "top_hubs": [
+      {
+        "node_id": 33,
+        "label": "ROI_33",
+        "hub_score": 2.425,
+        "degree_centrality": 0.1685,
+        "betweenness_centrality": 0.2142,
+        "eigenvector_centrality": 0.0052
+      },
+      {
+        "node_id": 84,
+        "label": "ROI_84",
+        "hub_score": 2.3749,
+        "degree_centrality": 0.1685,
+        "betweenness_centrality": 0.1323,
+        "eigenvector_centrality": 0.2587
+      },
+      {
+        "node_id": 41,
+        "label": "ROI_41",
+        "hub_score": 1.6057,
+        "degree_centrality": 0.2584,
+        "betweenness_centrality": 0.0562,
+        "eigenvector_centrality": 0.003
+      },
+      {
+        "node_id": 50,
+        "label": "ROI_50",
+        "hub_score": 1.086,
+        "degree_centrality": 0.1461,
+        "betweenness_centrality": 0.1195,
+        "eigenvector_centrality": 0.0001
+      },
+      {
+        "node_id": 39,
+        "label": "ROI_39",
+        "hub_score": 0.9438,
+        "degree_centrality": 0.2472,
+        "betweenness_centrality": 0.0087,
+        "eigenvector_centrality": 0.003
+      }
+    ],
+    "density_sweep": [
+      {
+        "density": 0.05,
+        "n_edges": 87,
+        "clustering_coeff": 0.967,
+        "path_length": 1.044,
+        "global_efficiency": 0.978,
+        "local_efficiency": 0.9835
+      },
+      {
+        "density": 0.1,
+        "n_edges": 105,
+        "clustering_coeff": 1.0,
+        "path_length": 1.0,
+        "global_efficiency": 1.0,
+        "local_efficiency": 1.0
+      },
+      {
+        "density": 0.15,
+        "n_edges": 373,
+        "clustering_coeff": 0.9265,
+        "path_length": 2.6538,
+        "global_efficiency": 0.5117,
+        "local_efficiency": 0.958
+      },
+      {
+        "density": 0.2,
+        "n_edges": 697,
+        "clustering_coeff": 0.8348,
+        "path_length": 2.2973,
+        "global_efficiency": 0.5482,
+        "local_efficiency": 0.9147
+      },
+      {
+        "density": 0.25,
+        "n_edges": 1002,
+        "clustering_coeff": 0.7938,
+        "path_length": 2.3316,
+        "global_efficiency": 0.5434,
+        "local_efficiency": 0.8938
+      },
+      {
+        "density": 0.3,
+        "n_edges": 1202,
+        "clustering_coeff": 0.7529,
+        "path_length": 1.9765,
+        "global_efficiency": 0.6048,
+        "local_efficiency": 0.8741
+      }
+    ]
+  }
+}

@@ -1,0 +1,75 @@
+# ============================================================
+# Shotgun Metagenome Functional Profiling Pipeline — Config
+# ============================================================
+
+# --- Sample sheet (TSV: sample, fq1, fq2, group) ---
+samples: "config/samples.tsv"
+
+# --- Reference databases ---
+databases:
+  host_genome: "/db/human/GRCh38_noalt_decoy.fa"      # Host removal (Bowtie2)
+  kraken2_db: "/db/kraken2/k2_standard_20240112"       # Kraken2 standard DB
+  metaphlan_db: "/db/metaphlan4/mpa_vJun23_CHOCOPhlAnSGBdb" # MetaPhlAn 4
+  humann3_db:
+    nucleotide: "/db/humann3/chocophlan"               # HUMAnN 3 nucleotide DB
+    protein: "/db/humann3/uniref90_diamond"             # HUMAnN 3 protein DB
+  eggnog_db: "/db/eggnog/eggnog5"                      # eggNOG-mapper DB
+  gtdbtk_db: "/db/gtdbtk/release220"                   # GTDB-Tk r220
+  checkm2_db: "/db/checkm2/uniref100.KO.1.dmnd"       # CheckM2 DB
+
+# --- QC parameters ---
+qc:
+  adapter_file: "config/adapters.fa"
+  min_length: 50
+  min_quality: 20
+  complexity_threshold: 0.3       # BBDuk entropy filter
+  dedup_optical_dist: 2500        # Clumpify optical duplicate distance
+  host_map_quality: 20            # Bowtie2 MAPQ threshold for host read removal
+
+# --- Assembly ---
+assembly:
+  assembler: "megahit"            # megahit | metaspades
+  megahit:
+    min_contig_len: 1000
+    k_list: "21,29,39,59,79,99,119,141"
+  metaspades:
+    k_list: "21,33,55,77,99,127"
+    memory: 250                   # GB
+
+# --- Binning ---
+binning:
+  min_contig_length: 1500
+  metabat2:
+    min_bin_size: 200000
+  concoct:
+    chunk_size: 10000
+  maxbin2:
+    min_contig_length: 1500
+    prob_threshold: 0.9
+
+# --- MAG quality ---
+mag_quality:
+  completeness_threshold: 50     # CheckM2 completeness (%)
+  contamination_threshold: 10    # CheckM2 contamination (%)
+  high_quality_comp: 90
+  high_quality_cont: 5
+
+# --- Statistical analysis ---
+statistics:
+  alpha_diversity_metrics: ["shannon", "simpson", "observed_features", "chao1"]
+  beta_diversity_metrics: ["bray_curtis", "jaccard", "aitchison"]
+  differential_abundance:
+    methods: ["aldex2", "ancombc", "maaslin2"]
+    fdr_threshold: 0.05
+    effect_size_threshold: 1.0
+  min_prevalence: 0.1             # Features in ≥10% of samples
+  min_abundance: 0.001            # ≥0.1% relative abundance
+
+# --- Resources ---
+resources:
+  threads_qc: 8
+  threads_assembly: 16
+  threads_binning: 8
+  threads_annotation: 8
+  mem_mb_assembly: 256000
+  mem_mb_binning: 64000

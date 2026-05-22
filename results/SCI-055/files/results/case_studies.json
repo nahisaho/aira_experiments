@@ -1,0 +1,1118 @@
+{
+  "Imatinib (Gleevec)": {
+    "smiles": "CC1=C(C=C(C=C1)NC(=O)C2=CC=C(C=C2)CN3CCN(CC3)C)NC4=NC=CC(=N4)C5=CN=CC=C5",
+    "molecular_properties": {
+      "heavy_atoms": 37,
+      "molecular_weight": 493.26,
+      "num_rings": 5,
+      "num_stereocenters": 0,
+      "num_rotatable_bonds": 7,
+      "logP": 4.59
+    },
+    "sa_score": 4.076,
+    "sa_components": {
+      "fragment_score": 1.379,
+      "complexity_penalty": 0.5,
+      "reaction_feasibility": 0.2,
+      "starting_material_score": 0.55,
+      "size_penalty": 1.7,
+      "mw_penalty": 0,
+      "rotatable_bond_penalty": 0
+    },
+    "single_step_predictions": [
+      {
+        "template_name": "Amide bond formation",
+        "category": "amide",
+        "reactants": "CN1CCN(Cc2ccc(C(=O)O)cc2)CC1.Cc1ccc(N)cc1Nc1nccc(-c2cccnc2)n1",
+        "num_reactants": 2,
+        "confidence": 0.9465188475364921
+      },
+      {
+        "template_name": "Buchwald-Hartwig amination",
+        "category": "C-N coupling",
+        "reactants": "Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Br.Nc1nccc(-c2cccnc2)n1",
+        "num_reactants": 2,
+        "confidence": 0.9070805751747844
+      },
+      {
+        "template_name": "Buchwald-Hartwig amination",
+        "category": "C-N coupling",
+        "reactants": "Cc1ccc(Br)cc1Nc1nccc(-c2cccnc2)n1.CN1CCN(Cc2ccc(C(N)=O)cc2)CC1",
+        "num_reactants": 2,
+        "confidence": 0.8592690162139716
+      },
+      {
+        "template_name": "Buchwald-Hartwig amination",
+        "category": "C-N coupling",
+        "reactants": "Brc1nccc(-c2cccnc2)n1.Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1N",
+        "num_reactants": 2,
+        "confidence": 0.8439555093483437
+      },
+      {
+        "template_name": "Suzuki coupling",
+        "category": "C-C coupling",
+        "reactants": "OB(O)c1cccnc1.Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1Nc1nccc(Br)n1",
+        "num_reactants": 2,
+        "confidence": 0.7814153783273078
+      }
+    ],
+    "mcts_route": {
+      "num_steps": 2,
+      "score": 0.8777,
+      "steps": [
+        {
+          "product": "CC1=C(C=C(C=C1)NC(=O)C2=CC=C(C=C2)CN3CCN(CC3)C)NC4=NC=CC(=N4)C5=CN=CC=C5",
+          "reactants": "Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1N",
+          "reaction": "Buchwald-Hartwig amination",
+          "confidence": 0.8777
+        },
+        {
+          "product": "Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1N",
+          "reactants": "Cc1ccc(Br)cc1N",
+          "reaction": "Buchwald-Hartwig amination",
+          "confidence": 0.8777
+        }
+      ]
+    },
+    "astar_route": {
+      "num_steps": 0,
+      "cost": null,
+      "steps": []
+    },
+    "enriched_route": [
+      {
+        "product": "CC1=C(C=C(C=C1)NC(=O)C2=CC=C(C=C2)CN3CCN(CC3)C)NC4=NC=CC(=N4)C5=CN=CC=C5",
+        "reactants": "Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1N",
+        "reaction": "Buchwald-Hartwig amination",
+        "confidence": 0.8777,
+        "conditions": {
+          "reaction_name": "Buchwald-Hartwig amination",
+          "recommended_solvent": [
+            "Toluene",
+            0.35
+          ],
+          "all_solvents": [
+            [
+              "Toluene",
+              0.35
+            ],
+            [
+              "Dioxane",
+              0.3
+            ],
+            [
+              "THF",
+              0.2
+            ],
+            [
+              "DME",
+              0.15
+            ]
+          ],
+          "optimal_temperature_C": 102,
+          "temperature_range_C": [
+            80,
+            110
+          ],
+          "recommended_catalyst": [
+            "Pd2(dba)3/BINAP",
+            0.35
+          ],
+          "all_catalysts": [
+            [
+              "Pd2(dba)3/BINAP",
+              0.35
+            ],
+            [
+              "Pd(OAc)2/XPhos",
+              0.35
+            ],
+            [
+              "Pd(dppf)Cl2",
+              0.3
+            ]
+          ],
+          "estimated_time_hours": [
+            6,
+            24
+          ],
+          "estimated_yield_percent": [
+            60,
+            80
+          ],
+          "recommended_base": [
+            "NaOtBu",
+            0.4
+          ],
+          "all_bases": [
+            [
+              "NaOtBu",
+              0.4
+            ],
+            [
+              "Cs2CO3",
+              0.35
+            ],
+            [
+              "K3PO4",
+              0.25
+            ]
+          ]
+        }
+      },
+      {
+        "product": "Cc1ccc(NC(=O)c2ccc(CN3CCN(C)CC3)cc2)cc1N",
+        "reactants": "Cc1ccc(Br)cc1N",
+        "reaction": "Buchwald-Hartwig amination",
+        "confidence": 0.8777,
+        "conditions": {
+          "reaction_name": "Buchwald-Hartwig amination",
+          "recommended_solvent": [
+            "Toluene",
+            0.35
+          ],
+          "all_solvents": [
+            [
+              "Toluene",
+              0.35
+            ],
+            [
+              "Dioxane",
+              0.3
+            ],
+            [
+              "THF",
+              0.2
+            ],
+            [
+              "DME",
+              0.15
+            ]
+          ],
+          "optimal_temperature_C": 100,
+          "temperature_range_C": [
+            80,
+            110
+          ],
+          "recommended_catalyst": [
+            "Pd2(dba)3/BINAP",
+            0.35
+          ],
+          "all_catalysts": [
+            [
+              "Pd2(dba)3/BINAP",
+              0.35
+            ],
+            [
+              "Pd(OAc)2/XPhos",
+              0.35
+            ],
+            [
+              "Pd(dppf)Cl2",
+              0.3
+            ]
+          ],
+          "estimated_time_hours": [
+            6,
+            24
+          ],
+          "estimated_yield_percent": [
+            60,
+            90
+          ],
+          "recommended_base": [
+            "NaOtBu",
+            0.4
+          ],
+          "all_bases": [
+            [
+              "NaOtBu",
+              0.4
+            ],
+            [
+              "Cs2CO3",
+              0.35
+            ],
+            [
+              "K3PO4",
+              0.25
+            ]
+          ]
+        }
+      }
+    ]
+  },
+  "Osimertinib (Tagrisso)": {
+    "smiles": "COC1=CC2=C(C=C1NC(=O)C=C)N=CN=C2NC3=CC(=C(C=C3)F)Cl",
+    "molecular_properties": {
+      "heavy_atoms": 26,
+      "molecular_weight": 372.08,
+      "num_rings": 3,
+      "num_stereocenters": 0,
+      "num_rotatable_bonds": 5,
+      "logP": 4.3
+    },
+    "sa_score": 2.316,
+    "sa_components": {
+      "fragment_score": 1.218,
+      "complexity_penalty": 0.0,
+      "reaction_feasibility": 0.5,
+      "starting_material_score": 0.55,
+      "size_penalty": 0.6,
+      "mw_penalty": 0,
+      "rotatable_bond_penalty": 0
+    },
+    "single_step_predictions": [
+      {
+        "template_name": "Amide bond formation",
+        "category": "amide",
+        "reactants": "C=CC(=O)O.COc1cc2c(Nc3ccc(F)c(Cl)c3)ncnc2cc1N",
+        "num_reactants": 2,
+        "confidence": 0.9158935173378483
+      },
+      {
+        "template_name": "Buchwald-Hartwig amination",
+        "category": "C-N coupling",
+        "reactants": "C=CC(=O)Nc1cc2ncnc(Br)c2cc1OC.Nc1ccc(F)c(Cl)c1",
+        "num_reactants": 2,
+        "confidence": 0.9134331299736701
+      },
+      {
+        "template_name": "Wittig reaction",
+        "category": "alkene",
+        "reactants": "[CH]=O.[CH2]C(=O)Nc1cc2ncnc(Nc3ccc(F)c(Cl)c3)c2cc1OC",
+        "num_reactants": 2,
+        "confidence": 0.8892601131377096
+      },
+      {
+        "template_name": "Wittig reaction",
+        "category": "alkene",
+        "reactants": "COc1cc2c(Nc3ccc(F)c(Cl)c3)ncnc2cc1NC(=O)C=O.[CH2]",
+        "num_reactants": 2,
+        "confidence": 0.77683833035675
+      },
+      {
+        "template_name": "Buchwald-Hartwig amination",
+        "category": "C-N coupling",
+        "reactants": "Fc1ccc(Br)cc1Cl.C=CC(=O)Nc1cc2ncnc(N)c2cc1OC",
+        "num_reactants": 2,
+        "confidence": 0.7362205875569571
+      }
+    ],
+    "mcts_route": {
+      "num_steps": 1,
+      "score": 1.0,
+      "steps": [
+        {
+          "product": "COC1=CC2=C(C=C1NC(=O)C=C)N=CN=C2NC3=CC(=C(C=C3)F)Cl",
+          "reactants": "[CH2]",
+          "reaction": "Wittig reaction",
+          "confidence": 1.0
+        }
+      ]
+    },
+    "astar_route": {
+      "num_steps": 1,
+      "cost": 0.050098814349854415,
+      "steps": [
+        {
+          "product": "COC1=CC2=C(C=C1NC(=O)C=C)N=CN=C2NC3=CC(=C(C=C3)F)Cl",
+          "reactants": "[CH]=O",
+          "reaction": "Wittig reaction",
+          "confidence": 0.9499011856501456,
+          "step_cost": 0.050098814349854415
+        }
+      ]
+    },
+    "enriched_route": [
+      {
+        "product": "COC1=CC2=C(C=C1NC(=O)C=C)N=CN=C2NC3=CC(=C(C=C3)F)Cl",
+        "reactants": "[CH2]",
+        "reaction": "Wittig reaction",
+        "confidence": 1.0,
+        "conditions": {
+          "reaction_name": "Wittig reaction",
+          "recommended_solvent": [
+            "THF",
+            0.4
+          ],
+          "all_solvents": [
+            [
+              "THF",
+              0.4
+            ],
+            [
+              "DCM",
+              0.25
+            ],
+            [
+              "DMF",
+              0.2
+            ],
+            [
+              "Et2O",
+              0.15
+            ]
+          ],
+          "optimal_temperature_C": -11,
+          "temperature_range_C": [
+            -78,
+            25
+          ],
+          "recommended_catalyst": [
+            "n-BuLi",
+            0.4
+          ],
+          "all_catalysts": [
+            [
+              "n-BuLi",
+              0.4
+            ],
+            [
+              "NaHMDS",
+              0.35
+            ],
+            [
+              "KHMDS",
+              0.25
+            ]
+          ],
+          "estimated_time_hours": [
+            1,
+            8
+          ],
+          "estimated_yield_percent": [
+            55,
+            75
+          ]
+        }
+      }
+    ]
+  },
+  "Celecoxib (Celebrex)": {
+    "smiles": "CC1=CC=C(C=C1)C2=CC(=NN2C3=CC=C(C=C3)S(=O)(=O)N)C(F)(F)F",
+    "molecular_properties": {
+      "heavy_atoms": 26,
+      "molecular_weight": 381.08,
+      "num_rings": 3,
+      "num_stereocenters": 0,
+      "num_rotatable_bonds": 3,
+      "logP": 3.51
+    },
+    "sa_score": 2.193,
+    "sa_components": {
+      "fragment_score": 1.463,
+      "complexity_penalty": 0.0,
+      "reaction_feasibility": 0.5,
+      "starting_material_score": 0.55,
+      "size_penalty": 0.6,
+      "mw_penalty": 0,
+      "rotatable_bond_penalty": 0
+    },
+    "single_step_predictions": [
+      {
+        "template_name": "Suzuki coupling",
+        "category": "C-C coupling",
+        "reactants": "NS(=O)(=O)c1ccc(-n2nc(C(F)(F)F)cc2B(O)O)cc1.Cc1ccc(Br)cc1",
+        "num_reactants": 2,
+        "confidence": 0.7227056455823089
+      },
+      {
+        "template_name": "Suzuki coupling",
+        "category": "C-C coupling",
+        "reactants": "Cc1ccc(B(O)O)cc1.NS(=O)(=O)c1ccc(-n2nc(C(F)(F)F)cc2Br)cc1",
+        "num_reactants": 2,
+        "confidence": 0.6050906329837586
+      }
+    ],
+    "mcts_route": {
+      "num_steps": 1,
+      "score": 0.8813000000000007,
+      "steps": [
+        {
+          "product": "CC1=CC=C(C=C1)C2=CC(=NN2C3=CC=C(C=C3)S(=O)(=O)N)C(F)(F)F",
+          "reactants": "NS(=O)(=O)c1ccc(-n2nc(C(F)(F)F)cc2Br)cc1",
+          "reaction": "Suzuki coupling",
+          "confidence": 0.8813000000000007
+        }
+      ]
+    },
+    "astar_route": {
+      "num_steps": 0,
+      "cost": null,
+      "steps": []
+    },
+    "enriched_route": [
+      {
+        "product": "CC1=CC=C(C=C1)C2=CC(=NN2C3=CC=C(C=C3)S(=O)(=O)N)C(F)(F)F",
+        "reactants": "NS(=O)(=O)c1ccc(-n2nc(C(F)(F)F)cc2Br)cc1",
+        "reaction": "Suzuki coupling",
+        "confidence": 0.8813000000000007,
+        "conditions": {
+          "reaction_name": "Suzuki coupling",
+          "recommended_solvent": [
+            "DMF/H2O",
+            0.3
+          ],
+          "all_solvents": [
+            [
+              "DMF/H2O",
+              0.3
+            ],
+            [
+              "Dioxane/H2O",
+              0.3
+            ],
+            [
+              "THF/H2O",
+              0.25
+            ],
+            [
+              "Toluene",
+              0.15
+            ]
+          ],
+          "optimal_temperature_C": 106,
+          "temperature_range_C": [
+            80,
+            120
+          ],
+          "recommended_catalyst": [
+            "Pd(PPh3)4",
+            0.35
+          ],
+          "all_catalysts": [
+            [
+              "Pd(PPh3)4",
+              0.35
+            ],
+            [
+              "Pd(dppf)Cl2",
+              0.3
+            ],
+            [
+              "Pd(OAc)2/SPhos",
+              0.35
+            ]
+          ],
+          "estimated_time_hours": [
+            4,
+            18
+          ],
+          "estimated_yield_percent": [
+            60,
+            85
+          ],
+          "recommended_base": [
+            "K2CO3",
+            0.4
+          ],
+          "all_bases": [
+            [
+              "K2CO3",
+              0.4
+            ],
+            [
+              "Cs2CO3",
+              0.3
+            ],
+            [
+              "K3PO4",
+              0.3
+            ]
+          ]
+        }
+      }
+    ]
+  },
+  "Atorvastatin (Lipitor)": {
+    "smiles": "CC(C)C1=C(C(=C(N1CCC(CC(CC(=O)O)O)O)C2=CC=C(C=C2)F)C3=CC=CC=C3)C(=O)NC4=CC=CC=C4",
+    "molecular_properties": {
+      "heavy_atoms": 41,
+      "molecular_weight": 558.25,
+      "num_rings": 4,
+      "num_stereocenters": 2,
+      "num_rotatable_bonds": 12,
+      "logP": 6.31
+    },
+    "sa_score": 4.065,
+    "sa_components": {
+      "fragment_score": 1.583,
+      "complexity_penalty": 0.0,
+      "reaction_feasibility": 0.7,
+      "starting_material_score": 0.55,
+      "size_penalty": 2.1,
+      "mw_penalty": 0.291,
+      "rotatable_bond_penalty": 0.3
+    },
+    "single_step_predictions": [
+      {
+        "template_name": "Suzuki coupling",
+        "category": "C-C coupling",
+        "reactants": "OB(O)c1ccccc1.CC(C)c1c(C(=O)Nc2ccccc2)c(Br)c(-c2ccc(F)cc2)n1CCC(O)CC(O)CC(=O)O",
+        "num_reactants": 2,
+        "confidence": 0.9323322182801748
+      },
+      {
+        "template_name": "Aldol condensation",
+        "category": "C-C",
+        "reactants": "CC(C)c1c(C(=O)Nc2ccccc2)c(-c2ccccc2)c(-c2ccc(F)cc2)n1CCC(O)CC=O.CC(=O)O",
+        "num_reactants": 2,
+        "confidence": 0.924305668806523
+      },
+      {
+        "template_name": "Suzuki coupling",
+        "category": "C-C coupling",
+        "reactants": "OB(O)c1ccc(F)cc1.CC(C)c1c(C(=O)Nc2ccccc2)c(-c2ccccc2)c(Br)n1CCC(O)CC(O)CC(=O)O",
+        "num_reactants": 2,
+        "confidence": 0.9018272980613607
+      },
+      {
+        "template_name": "Amide bond formation",
+        "category": "amide",
+        "reactants": "CC(C)c1c(C(=O)O)c(-c2ccccc2)c(-c2ccc(F)cc2)n1CCC(O)CC(O)CC(=O)O.Nc1ccccc1",
+        "num_reactants": 2,
+        "confidence": 0.8742785544594001
+      },
+      {
+        "template_name": "Suzuki coupling",
+        "category": "C-C coupling",
+        "reactants": "CC(C)c1c(C(=O)Nc2ccccc2)c(-c2ccccc2)c(B(O)O)n1CCC(O)CC(O)CC(=O)O.Fc1ccc(Br)cc1",
+        "num_reactants": 2,
+        "confidence": 0.8177303450797557
+      }
+    ],
+    "mcts_route": {
+      "num_steps": 2,
+      "score": 1.0,
+      "steps": [
+        {
+          "product": "CC(C)C1=C(C(=C(N1CCC(CC(CC(=O)O)O)O)C2=CC=C(C=C2)F)C3=CC=CC=C3)C(=O)NC4=CC=CC=C4",
+          "reactants": "CC(C)c1c(C(=O)Nc2ccccc2)c(-c2ccccc2)c(Br)n1CCC(O)CC(O)CC(=O)O",
+          "reaction": "Suzuki coupling",
+          "confidence": 1.0
+        },
+        {
+          "product": "CC(C)c1c(C(=O)Nc2ccccc2)c(-c2ccccc2)c(Br)n1CCC(O)CC(O)CC(=O)O",
+          "reactants": "OB(O)c1ccccc1",
+          "reaction": "Suzuki coupling",
+          "confidence": 1.0
+        }
+      ]
+    },
+    "astar_route": {
+      "num_steps": 1,
+      "cost": 0.1133141888140301,
+      "steps": [
+        {
+          "product": "CC(C)C1=C(C(=C(N1CCC(CC(CC(=O)O)O)O)C2=CC=C(C=C2)F)C3=CC=CC=C3)C(=O)NC4=CC=CC=C4",
+          "reactants": "OB(O)c1ccccc1",
+          "reaction": "Suzuki coupling",
+          "confidence": 0.8866858111859699,
+          "step_cost": 0.1133141888140301
+        }
+      ]
+    },
+    "enriched_route": [
+      {
+        "product": "CC(C)C1=C(C(=C(N1CCC(CC(CC(=O)O)O)O)C2=CC=C(C=C2)F)C3=CC=CC=C3)C(=O)NC4=CC=CC=C4",
+        "reactants": "CC(C)c1c(C(=O)Nc2ccccc2)c(-c2ccccc2)c(Br)n1CCC(O)CC(O)CC(=O)O",
+        "reaction": "Suzuki coupling",
+        "confidence": 1.0,
+        "conditions": {
+          "reaction_name": "Suzuki coupling",
+          "recommended_solvent": [
+            "DMF/H2O",
+            0.36
+          ],
+          "all_solvents": [
+            [
+              "DMF/H2O",
+              0.36
+            ],
+            [
+              "Dioxane/H2O",
+              0.3
+            ],
+            [
+              "THF/H2O",
+              0.25
+            ],
+            [
+              "Toluene",
+              0.15
+            ]
+          ],
+          "optimal_temperature_C": 110,
+          "temperature_range_C": [
+            80,
+            120
+          ],
+          "recommended_catalyst": [
+            "Pd(PPh3)4",
+            0.35
+          ],
+          "all_catalysts": [
+            [
+              "Pd(PPh3)4",
+              0.35
+            ],
+            [
+              "Pd(dppf)Cl2",
+              0.3
+            ],
+            [
+              "Pd(OAc)2/SPhos",
+              0.35
+            ]
+          ],
+          "estimated_time_hours": [
+            4,
+            18
+          ],
+          "estimated_yield_percent": [
+            55,
+            75
+          ],
+          "recommended_base": [
+            "K2CO3",
+            0.4
+          ],
+          "all_bases": [
+            [
+              "K2CO3",
+              0.4
+            ],
+            [
+              "Cs2CO3",
+              0.3
+            ],
+            [
+              "K3PO4",
+              0.3
+            ]
+          ]
+        }
+      },
+      {
+        "product": "CC(C)c1c(C(=O)Nc2ccccc2)c(-c2ccccc2)c(Br)n1CCC(O)CC(O)CC(=O)O",
+        "reactants": "OB(O)c1ccccc1",
+        "reaction": "Suzuki coupling",
+        "confidence": 1.0,
+        "conditions": {
+          "reaction_name": "Suzuki coupling",
+          "recommended_solvent": [
+            "DMF/H2O",
+            0.36
+          ],
+          "all_solvents": [
+            [
+              "DMF/H2O",
+              0.36
+            ],
+            [
+              "Dioxane/H2O",
+              0.3
+            ],
+            [
+              "THF/H2O",
+              0.25
+            ],
+            [
+              "Toluene",
+              0.15
+            ]
+          ],
+          "optimal_temperature_C": 106,
+          "temperature_range_C": [
+            80,
+            120
+          ],
+          "recommended_catalyst": [
+            "Pd(PPh3)4",
+            0.35
+          ],
+          "all_catalysts": [
+            [
+              "Pd(PPh3)4",
+              0.35
+            ],
+            [
+              "Pd(dppf)Cl2",
+              0.3
+            ],
+            [
+              "Pd(OAc)2/SPhos",
+              0.35
+            ]
+          ],
+          "estimated_time_hours": [
+            4,
+            18
+          ],
+          "estimated_yield_percent": [
+            55,
+            75
+          ],
+          "recommended_base": [
+            "K2CO3",
+            0.4
+          ],
+          "all_bases": [
+            [
+              "K2CO3",
+              0.4
+            ],
+            [
+              "Cs2CO3",
+              0.3
+            ],
+            [
+              "K3PO4",
+              0.3
+            ]
+          ]
+        }
+      }
+    ]
+  },
+  "Erlotinib (Tarceva)": {
+    "smiles": "COCCOC1=CC2=C(C=C1OCCOC)C(=NC=N2)NC3=CC=CC(=C3)C#C",
+    "molecular_properties": {
+      "heavy_atoms": 29,
+      "molecular_weight": 393.17,
+      "num_rings": 3,
+      "num_stereocenters": 0,
+      "num_rotatable_bonds": 10,
+      "logP": 3.41
+    },
+    "sa_score": 2.652,
+    "sa_components": {
+      "fragment_score": 1.625,
+      "complexity_penalty": 0.0,
+      "reaction_feasibility": 0.2,
+      "starting_material_score": 0.55,
+      "size_penalty": 0.9,
+      "mw_penalty": 0,
+      "rotatable_bond_penalty": 0
+    },
+    "single_step_predictions": [
+      {
+        "template_name": "Buchwald-Hartwig amination",
+        "category": "C-N coupling",
+        "reactants": "C#Cc1cccc(Br)c1.COCCOc1cc2ncnc(N)c2cc1OCCOC",
+        "num_reactants": 2,
+        "confidence": 0.9407211392120889
+      },
+      {
+        "template_name": "Buchwald-Hartwig amination",
+        "category": "C-N coupling",
+        "reactants": "COCCOc1cc2ncnc(Br)c2cc1OCCOC.C#Cc1cccc(N)c1",
+        "num_reactants": 2,
+        "confidence": 0.9050378821533316
+      },
+      {
+        "template_name": "Williamson ether synthesis",
+        "category": "ether",
+        "reactants": "C#Cc1cccc(Nc2ncnc3cc(OCCOC)c(OCCO)cc23)c1.CBr",
+        "num_reactants": 2,
+        "confidence": 0.817320431218617
+      },
+      {
+        "template_name": "Williamson ether synthesis",
+        "category": "ether",
+        "reactants": "CO.C#Cc1cccc(Nc2ncnc3cc(OCCBr)c(OCCOC)cc23)c1",
+        "num_reactants": 2,
+        "confidence": 0.8037596610616956
+      },
+      {
+        "template_name": "Williamson ether synthesis",
+        "category": "ether",
+        "reactants": "C#Cc1cccc(Nc2ncnc3cc(OCCO)c(OCCOC)cc23)c1.CBr",
+        "num_reactants": 2,
+        "confidence": 0.7210590699335349
+      }
+    ],
+    "mcts_route": {
+      "num_steps": 1,
+      "score": 1.0,
+      "steps": [
+        {
+          "product": "COCCOC1=CC2=C(C=C1OCCOC)C(=NC=N2)NC3=CC=CC(=C3)C#C",
+          "reactants": "CO",
+          "reaction": "Williamson ether synthesis",
+          "confidence": 1.0
+        }
+      ]
+    },
+    "astar_route": {
+      "num_steps": 1,
+      "cost": 0.0961046231070668,
+      "steps": [
+        {
+          "product": "COCCOC1=CC2=C(C=C1OCCOC)C(=NC=N2)NC3=CC=CC(=C3)C#C",
+          "reactants": "CBr",
+          "reaction": "Williamson ether synthesis",
+          "confidence": 0.9038953768929332,
+          "step_cost": 0.0961046231070668
+        }
+      ]
+    },
+    "enriched_route": [
+      {
+        "product": "COCCOC1=CC2=C(C=C1OCCOC)C(=NC=N2)NC3=CC=CC(=C3)C#C",
+        "reactants": "CO",
+        "reaction": "Williamson ether synthesis",
+        "confidence": 1.0,
+        "conditions": {
+          "reaction_name": "Williamson ether synthesis",
+          "recommended_solvent": [
+            "DMF",
+            0.35
+          ],
+          "all_solvents": [
+            [
+              "DMF",
+              0.35
+            ],
+            [
+              "DMSO",
+              0.25
+            ],
+            [
+              "Acetone",
+              0.25
+            ],
+            [
+              "THF",
+              0.15
+            ]
+          ],
+          "optimal_temperature_C": 70,
+          "temperature_range_C": [
+            50,
+            80
+          ],
+          "recommended_catalyst": [
+            "K2CO3",
+            0.4
+          ],
+          "all_catalysts": [
+            [
+              "K2CO3",
+              0.4
+            ],
+            [
+              "NaH",
+              0.35
+            ],
+            [
+              "Cs2CO3",
+              0.25
+            ]
+          ],
+          "estimated_time_hours": [
+            4,
+            24
+          ],
+          "estimated_yield_percent": [
+            65,
+            80
+          ]
+        }
+      }
+    ]
+  },
+  "Aspirin": {
+    "smiles": "CC(=O)OC1=CC=CC=C1C(=O)O",
+    "molecular_properties": {
+      "heavy_atoms": 13,
+      "molecular_weight": 180.04,
+      "num_rings": 1,
+      "num_stereocenters": 0,
+      "num_rotatable_bonds": 2,
+      "logP": 1.31
+    },
+    "sa_score": 1.39,
+    "sa_components": {
+      "fragment_score": 1.4,
+      "complexity_penalty": 0.0,
+      "reaction_feasibility": 0.7,
+      "starting_material_score": 0.7,
+      "size_penalty": 0,
+      "mw_penalty": 0,
+      "rotatable_bond_penalty": 0
+    },
+    "single_step_predictions": [],
+    "mcts_route": {
+      "num_steps": 0,
+      "score": 0,
+      "steps": []
+    },
+    "astar_route": {
+      "num_steps": 0,
+      "cost": null,
+      "steps": []
+    },
+    "enriched_route": []
+  },
+  "Ibuprofen": {
+    "smiles": "CC(C)CC1=CC=C(C=C1)C(C)C(=O)O",
+    "molecular_properties": {
+      "heavy_atoms": 15,
+      "molecular_weight": 206.13,
+      "num_rings": 1,
+      "num_stereocenters": 1,
+      "num_rotatable_bonds": 4,
+      "logP": 3.07
+    },
+    "sa_score": 1.321,
+    "sa_components": {
+      "fragment_score": 1.538,
+      "complexity_penalty": 0.0,
+      "reaction_feasibility": 0.7,
+      "starting_material_score": 0.7,
+      "size_penalty": 0,
+      "mw_penalty": 0,
+      "rotatable_bond_penalty": 0
+    },
+    "single_step_predictions": [],
+    "mcts_route": {
+      "num_steps": 0,
+      "score": 0,
+      "steps": []
+    },
+    "astar_route": {
+      "num_steps": 0,
+      "cost": null,
+      "steps": []
+    },
+    "enriched_route": []
+  },
+  "Paracetamol": {
+    "smiles": "CC(=O)NC1=CC=C(C=C1)O",
+    "molecular_properties": {
+      "heavy_atoms": 11,
+      "molecular_weight": 151.06,
+      "num_rings": 1,
+      "num_stereocenters": 0,
+      "num_rotatable_bonds": 1,
+      "logP": 1.35
+    },
+    "sa_score": 1.541,
+    "sa_components": {
+      "fragment_score": 1.429,
+      "complexity_penalty": 0.0,
+      "reaction_feasibility": 0.4,
+      "starting_material_score": 0.85,
+      "size_penalty": 0,
+      "mw_penalty": 0,
+      "rotatable_bond_penalty": 0
+    },
+    "single_step_predictions": [
+      {
+        "template_name": "Buchwald-Hartwig amination",
+        "category": "C-N coupling",
+        "reactants": "Oc1ccc(Br)cc1.CC(N)=O",
+        "num_reactants": 2,
+        "confidence": 0.6594152667806392
+      },
+      {
+        "template_name": "Amide bond formation",
+        "category": "amide",
+        "reactants": "CC(=O)O.Nc1ccc(O)cc1",
+        "num_reactants": 2,
+        "confidence": 0.6257238615655044
+      }
+    ],
+    "mcts_route": {
+      "num_steps": 1,
+      "score": 1.0,
+      "steps": [
+        {
+          "product": "CC(=O)NC1=CC=C(C=C1)O",
+          "reactants": "CC(=O)O",
+          "reaction": "Amide bond formation",
+          "confidence": 1.0
+        }
+      ]
+    },
+    "astar_route": {
+      "num_steps": 1,
+      "cost": 0.18399925468858958,
+      "steps": [
+        {
+          "product": "CC(=O)NC1=CC=C(C=C1)O",
+          "reactants": "CC(N)=O",
+          "reaction": "Buchwald-Hartwig amination",
+          "confidence": 0.8160007453114104,
+          "step_cost": 0.18399925468858958
+        }
+      ]
+    },
+    "enriched_route": [
+      {
+        "product": "CC(=O)NC1=CC=C(C=C1)O",
+        "reactants": "CC(=O)O",
+        "reaction": "Amide bond formation",
+        "confidence": 1.0,
+        "conditions": {
+          "reaction_name": "Amide bond formation",
+          "recommended_solvent": [
+            "DMF",
+            0.35
+          ],
+          "all_solvents": [
+            [
+              "DMF",
+              0.35
+            ],
+            [
+              "DCM",
+              0.3
+            ],
+            [
+              "THF",
+              0.2
+            ],
+            [
+              "DMSO",
+              0.15
+            ]
+          ],
+          "optimal_temperature_C": 12,
+          "temperature_range_C": [
+            0,
+            25
+          ],
+          "recommended_catalyst": [
+            "EDC/HOBt",
+            0.4
+          ],
+          "all_catalysts": [
+            [
+              "EDC/HOBt",
+              0.4
+            ],
+            [
+              "HATU",
+              0.35
+            ],
+            [
+              "DCC",
+              0.25
+            ]
+          ],
+          "estimated_time_hours": [
+            2,
+            24
+          ],
+          "estimated_yield_percent": [
+            70,
+            90
+          ]
+        }
+      }
+    ]
+  }
+}

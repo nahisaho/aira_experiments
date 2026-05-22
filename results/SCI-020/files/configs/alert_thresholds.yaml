@@ -1,0 +1,13 @@
+thresholds:
+  rt_critical: 2.5
+  rt_high: 1.5
+  rt_medium: 1.2
+
+  growth_rate_critical: 0.20
+  growth_rate_high: 0.10
+
+  novel_lineage_frequency: 0.05
+  immune_escape_score: 0.7
+
+  alert_sensitivity_target: 0.95
+  alert_specificity_target: 0.80

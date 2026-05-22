@@ -1,0 +1,8 @@
+organism,genome_size_kb,genes,gc_pct,lifestyle,doubling_time_min
+JCVI-syn3.0,531,473,26.9,Synthetic,180
+M. genitalium,580,525,31.7,Obligate parasite,720
+M. mycoides,1212,985,24.0,Parasite,90
+Buchnera aphidicola,422,362,26.3,Endosymbiont,600
+Carsonella ruddii,160,182,16.6,Endosymbiont,
+Nasuia deltocephalinicola,112,137,17.1,Endosymbiont,
+Proposed syn3.0+,549,490,27.0,Synthetic enhanced,80

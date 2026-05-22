@@ -1,0 +1,49 @@
+&control
+   calculation = 'scf'
+   prefix      = 'bi2se3'
+   outdir      = './tmp'
+   pseudo_dir  = './pseudos'
+   verbosity   = 'high'
+/
+
+&system
+   ibrav       = 0
+   nat         = 5
+   ntyp        = 2
+   ecutwfc     = 60.0
+   ecutrho     = 600.0
+   occupations = 'smearing'
+   smearing    = 'mp'
+   degauss     = 0.02
+   noncolin    = .true.
+   lspinorb    = .true.
+   !--- SOC scaling (for phase transition study) ---
+   ! Set to control spin-orbit coupling strength
+   starting_magnetization(1) = 0.0
+/
+
+&electrons
+   conv_thr    = 1.0d-10
+   mixing_beta = 0.4
+   mixing_mode = 'plain'
+   electron_maxstep = 200
+/
+
+ATOMIC_SPECIES
+   Bi  208.98  Bi.rel-pbe-n-rrkjus_psl.1.0.0.UPF
+   Se  78.96   Se.rel-pbe-n-rrkjus_psl.1.0.0.UPF
+
+CELL_PARAMETERS angstrom
+   2.069000  -3.584233   0.000000
+   2.069000   3.584233   0.000000
+   0.000000   0.000000  28.640000
+
+ATOMIC_POSITIONS crystal
+   Bi   0.399700   0.399700   0.399700
+   Bi   0.600300   0.600300   0.600300
+   Se   0.000000   0.000000   0.000000
+   Se   0.206800   0.206800   0.206800
+   Se   0.793200   0.793200   0.793200
+
+K_POINTS automatic
+   10 10 5  0 0 0

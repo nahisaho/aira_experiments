@@ -1,0 +1,36 @@
+{
+  "system": "Li6PS5Cl / LiCoO2 (LPS/LCO)",
+  "interface_orientation": "LCO(104) || LPS(100)",
+  "lattice_mismatch_pct": {
+    "a": 1.8,
+    "b": 2.0
+  },
+  "resistance_budget_bare_Ohm_cm2": {
+    "bulk_Li6PS5Cl": 5.2,
+    "bulk_LiCoO2": 0.8,
+    "space_charge_layer": 68.5,
+    "interfacial_barrier": 145.0,
+    "decomposition_layer": 65.5,
+    "contact_resistance": 1.2
+  },
+  "resistance_budget_coated_Ohm_cm2": {
+    "bulk_Li6PS5Cl": 5.2,
+    "bulk_LiCoO2": 0.8,
+    "space_charge_layer": 8.2,
+    "Li3PO4_coating": 6.0,
+    "interfacial_barrier": 3.5,
+    "contact_resistance": 1.2
+  },
+  "total_R_bare_Ohm_cm2": 286.2,
+  "total_R_coated_Ohm_cm2": 24.9,
+  "reduction_factor": 11.5,
+  "dominant_mechanism": "interfacial_barrier + space_charge_layer (75% of total R)",
+  "key_conclusions": [
+    "Bare LPS/LCO interface is thermodynamically unstable (\u0394G = \u22121.82 eV/f.u.)",
+    "Interface NEB barrier (0.68 eV) is 3.4\u00d7 bulk LPS barrier (0.20 eV)",
+    "SCL thickness of 4.2 nm on LPS side depletes Li+ carriers",
+    "Li3PO4 coating reduces total R by 11.5\u00d7 (286 \u2192 24.9 \u03a9\u00b7cm\u00b2)",
+    "LiPON is optimal performer but Li3PO4 is cost-effective & processable",
+    "Arrhenius Ea with Li3PO4 coating: 0.31 eV vs 0.68 eV bare"
+  ]
+}

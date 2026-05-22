@@ -1,0 +1,7 @@
+sample	fq1	fq2	group
+S01_healthy	data/raw/S01_R1.fastq.gz	data/raw/S01_R2.fastq.gz	healthy
+S02_healthy	data/raw/S02_R1.fastq.gz	data/raw/S02_R2.fastq.gz	healthy
+S03_healthy	data/raw/S03_R1.fastq.gz	data/raw/S03_R2.fastq.gz	healthy
+S04_disease	data/raw/S04_R1.fastq.gz	data/raw/S04_R2.fastq.gz	disease
+S05_disease	data/raw/S05_R1.fastq.gz	data/raw/S05_R2.fastq.gz	disease
+S06_disease	data/raw/S06_R1.fastq.gz	data/raw/S06_R2.fastq.gz	disease

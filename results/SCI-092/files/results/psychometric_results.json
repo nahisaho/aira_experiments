@@ -1,0 +1,119 @@
+{
+  "gene_editing": {
+    "dread_factor_mean": 0.3111,
+    "unknown_factor_mean": 0.4311,
+    "risk_acceptance_correlation": -0.5989,
+    "risk_acceptance_p_value": 0.0,
+    "mean_risk_perception": 3.36,
+    "mean_acceptance": 4.11,
+    "demographic_effects": {
+      "age_group": {
+        "group_means": {
+          "18-29": 3.328,
+          "30-44": 3.35,
+          "45-59": 3.452,
+          "60+": 3.299
+        },
+        "F_statistic": 1.194,
+        "p_value": 0.3114
+      },
+      "education": {
+        "group_means": {
+          "bachelor": 3.346,
+          "doctorate": 3.38,
+          "high_school": 3.4,
+          "master": 3.325
+        },
+        "F_statistic": 0.326,
+        "p_value": 0.8067
+      },
+      "gender": {
+        "group_means": {
+          "female": 3.426,
+          "male": 3.296,
+          "other": 3.35
+        },
+        "F_statistic": 2.297,
+        "p_value": 0.1017
+      }
+    }
+  },
+  "AI": {
+    "dread_factor_mean": -0.6687,
+    "unknown_factor_mean": -0.0194,
+    "risk_acceptance_correlation": -0.6048,
+    "risk_acceptance_p_value": 0.0,
+    "mean_risk_perception": 2.84,
+    "mean_acceptance": 4.66,
+    "demographic_effects": {
+      "age_group": {
+        "group_means": {
+          "18-29": 2.912,
+          "30-44": 2.757,
+          "45-59": 2.87,
+          "60+": 2.831
+        },
+        "F_statistic": 1.51,
+        "p_value": 0.2111
+      },
+      "education": {
+        "group_means": {
+          "bachelor": 2.945,
+          "doctorate": 2.717,
+          "high_school": 2.818,
+          "master": 2.781
+        },
+        "F_statistic": 2.516,
+        "p_value": 0.0576
+      },
+      "gender": {
+        "group_means": {
+          "female": 2.849,
+          "male": 2.847,
+          "other": 2.692
+        },
+        "F_statistic": 0.72,
+        "p_value": 0.4871
+      }
+    }
+  },
+  "nuclear_fusion": {
+    "dread_factor_mean": 0.3577,
+    "unknown_factor_mean": -0.4117,
+    "risk_acceptance_correlation": -0.6189,
+    "risk_acceptance_p_value": 0.0,
+    "mean_risk_perception": 3.47,
+    "mean_acceptance": 4.006,
+    "demographic_effects": {
+      "age_group": {
+        "group_means": {
+          "18-29": 3.448,
+          "30-44": 3.431,
+          "45-59": 3.455,
+          "60+": 3.557
+        },
+        "F_statistic": 0.874,
+        "p_value": 0.4546
+      },
+      "education": {
+        "group_means": {
+          "bachelor": 3.479,
+          "doctorate": 3.417,
+          "high_school": 3.507,
+          "master": 3.432
+        },
+        "F_statistic": 0.388,
+        "p_value": 0.7614
+      },
+      "gender": {
+        "group_means": {
+          "female": 3.453,
+          "male": 3.492,
+          "other": 3.409
+        },
+        "F_statistic": 0.299,
+        "p_value": 0.7415
+      }
+    }
+  }
+}

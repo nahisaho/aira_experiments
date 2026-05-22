@@ -1,0 +1,19 @@
+{
+  "total_time": 14.11665153503418,
+  "phase_times": {
+    "approach": 0.2,
+    "insert": 0.2,
+    "pull_through": 0.2,
+    "knot_tying": 0.2
+  },
+  "max_forces": {
+    "approach": 1.3598397425449773,
+    "insert": 1.9065679396093367,
+    "pull_through": 1.1390598836441428,
+    "knot_tying": 1.5766218209594374
+  },
+  "tracking_errors": [],
+  "safety_violations": 3244,
+  "tissue_max_strain": 0.0,
+  "success": true
+}

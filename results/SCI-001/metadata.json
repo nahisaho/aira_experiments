@@ -1,0 +1,26 @@
+{
+  "experiment_id": "SCI-001",
+  "title": "CRISPR-Cas9オフターゲット予測モデル",
+  "project_id": "ecd5d87c-b04f-4769-8259-0dae6e693e06",
+  "prompt_length": 457,
+  "output_length": 1038,
+  "file_count": 35,
+  "duration_seconds": 930,
+  "status": "success",
+  "runs": [
+    {
+      "id": "12652992-b3d9-40eb-99f6-6c464aa8ce61",
+      "project_id": "ecd5d87c-b04f-4769-8259-0dae6e693e06",
+      "message_id": "40eedf0f-e741-479f-82f9-e4d5d83a3287",
+      "status": "completed",
+      "error_type": null,
+      "cancel_reason": null,
+      "started_at": null,
+      "finished_at": "2026-05-22 11:34:07",
+      "exit_code": 0,
+      "prompt": "CRISPR-Cas9のオフターゲット効果を予測する機械学習モデルを設計してください。以下の要件を満たすこと：\n1. ガイドRNA配列とゲノム配列のミスマッチパターンを特徴量として使用\n2. エピジェネティクス情報（クロマチンアクセシビリティ、メチル化）を統合\n3. Deep Learningアーキテクチャ（CNN+Attention機構）の詳細設計\n4. 訓練データセット（GUIDE-seq、CIRCLE-seq）の前処理パイプライン\n5. モデル評価指標（AUROC、精度-再現率曲線）と交差検証戦略\n6. 臨床応用に向けた解釈可能性（SHAP値）の実装方針\n\nPythonコードで実装し、データフロー図と性能ベンチマーク計画を含めてください。\n\n最後に、この実験の全結果・手法・考察をまとめた report.md を作成してください。report.md には以下を含めること：\n- 実験目的と背景\n- 使用した手法・アルゴリズムの概要\n- 主要な結果と数値\n- 考察と今後の展望\n- 生成したファイル一覧",
+      "created_at": "2026-05-22 11:18:47"
+    }
+  ],
+  "timestamp": "2026-05-22T11:34:17.871Z"
+}

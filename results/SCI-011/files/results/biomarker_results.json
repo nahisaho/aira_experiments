@@ -1,0 +1,466 @@
+{
+  "SCZ": {
+    "classification": {
+      "all_edges": {
+        "feature_set": "all_edges",
+        "n_samples": 55,
+        "n_features": 4005,
+        "classifiers": {
+          "SVM_RBF": {
+            "auc_mean": 1.0,
+            "auc_std": 0.0,
+            "bacc_mean": 1.0,
+            "bacc_std": 0.0,
+            "permutation_pvalue": 0.0099
+          },
+          "RandomForest": {
+            "auc_mean": 1.0,
+            "auc_std": 0.0,
+            "bacc_mean": 1.0,
+            "bacc_std": 0.0,
+            "permutation_pvalue": 0.0099
+          },
+          "LogisticRegression_L1": {
+            "auc_mean": 1.0,
+            "auc_std": 0.0,
+            "bacc_mean": 1.0,
+            "bacc_std": 0.0,
+            "permutation_pvalue": 0.0099
+          },
+          "GradientBoosting": {
+            "auc_mean": 1.0,
+            "auc_std": 0.0,
+            "bacc_mean": 1.0,
+            "bacc_std": 0.0,
+            "permutation_pvalue": 0.0099
+          }
+        },
+        "best_classifier": "SVM_RBF",
+        "best_auc": 1.0
+      },
+      "network_fc": {
+        "feature_set": "network_fc",
+        "n_samples": 55,
+        "n_features": 28,
+        "classifiers": {
+          "SVM_RBF": {
+            "auc_mean": 1.0,
+            "auc_std": 0.0,
+            "bacc_mean": 1.0,
+            "bacc_std": 0.0,
+            "permutation_pvalue": 0.0099
+          },
+          "RandomForest": {
+            "auc_mean": 1.0,
+            "auc_std": 0.0,
+            "bacc_mean": 1.0,
+            "bacc_std": 0.0,
+            "permutation_pvalue": 0.0099
+          },
+          "LogisticRegression_L1": {
+            "auc_mean": 1.0,
+            "auc_std": 0.0,
+            "bacc_mean": 1.0,
+            "bacc_std": 0.0,
+            "permutation_pvalue": 0.0099
+          },
+          "GradientBoosting": {
+            "auc_mean": 1.0,
+            "auc_std": 0.0,
+            "bacc_mean": 1.0,
+            "bacc_std": 0.0,
+            "permutation_pvalue": 0.0099
+          }
+        },
+        "best_classifier": "SVM_RBF",
+        "best_auc": 1.0
+      },
+      "graph_metrics": {
+        "feature_set": "graph_metrics",
+        "n_samples": 55,
+        "n_features": 180,
+        "classifiers": {
+          "SVM_RBF": {
+            "auc_mean": 0.8533,
+            "auc_std": 0.0957,
+            "bacc_mean": 0.74,
+            "bacc_std": 0.0712,
+            "permutation_pvalue": 0.0099
+          },
+          "RandomForest": {
+            "auc_mean": 0.8433,
+            "auc_std": 0.1093,
+            "bacc_mean": 0.7967,
+            "bacc_std": 0.1056,
+            "permutation_pvalue": 0.0099
+          },
+          "LogisticRegression_L1": {
+            "auc_mean": 0.7933,
+            "auc_std": 0.1083,
+            "bacc_mean": 0.6533,
+            "bacc_std": 0.1082,
+            "permutation_pvalue": 0.0099
+          },
+          "GradientBoosting": {
+            "auc_mean": 0.79,
+            "auc_std": 0.0987,
+            "bacc_mean": 0.7633,
+            "bacc_std": 0.0386,
+            "permutation_pvalue": 0.0297
+          }
+        },
+        "best_classifier": "SVM_RBF",
+        "best_auc": 0.8533
+      }
+    },
+    "network_importance_top5": [
+      {
+        "network_i": "DMN",
+        "network_j": "DMN",
+        "connection_type": "within",
+        "mean_FC_HC": 0.9197,
+        "mean_FC_dis": 0.829,
+        "cohen_d": 6.3666,
+        "p_value": 0.0,
+        "direction": "reduced"
+      },
+      {
+        "network_i": "FPN",
+        "network_j": "FPN",
+        "connection_type": "within",
+        "mean_FC_HC": 0.9216,
+        "mean_FC_dis": 0.8511,
+        "cohen_d": 5.0776,
+        "p_value": 0.0,
+        "direction": "reduced"
+      },
+      {
+        "network_i": "SN",
+        "network_j": "SN",
+        "connection_type": "within",
+        "mean_FC_HC": 0.9217,
+        "mean_FC_dis": 0.9575,
+        "cohen_d": -4.9414,
+        "p_value": 0.0,
+        "direction": "increased"
+      },
+      {
+        "network_i": "FPN",
+        "network_j": "DAN",
+        "connection_type": "between",
+        "mean_FC_HC": 0.1102,
+        "mean_FC_dis": 0.0842,
+        "cohen_d": 0.5898,
+        "p_value": 0.038486,
+        "direction": "reduced"
+      },
+      {
+        "network_i": "FPN",
+        "network_j": "SN",
+        "connection_type": "between",
+        "mean_FC_HC": 0.1192,
+        "mean_FC_dis": 0.0932,
+        "cohen_d": 0.554,
+        "p_value": 0.048825,
+        "direction": "reduced"
+      }
+    ],
+    "biomarker_edges": {
+      "top_biomarker_edges": [
+        {
+          "roi_i": 0,
+          "roi_j": 1,
+          "auc": 1.0,
+          "cohen_d": 3.8876
+        },
+        {
+          "roi_i": 1,
+          "roi_j": 9,
+          "auc": 1.0,
+          "cohen_d": 3.7279
+        },
+        {
+          "roi_i": 5,
+          "roi_j": 9,
+          "auc": 1.0,
+          "cohen_d": 3.5678
+        },
+        {
+          "roi_i": 5,
+          "roi_j": 11,
+          "auc": 1.0,
+          "cohen_d": 2.8977
+        },
+        {
+          "roi_i": 6,
+          "roi_j": 10,
+          "auc": 1.0,
+          "cohen_d": 2.7924
+        },
+        {
+          "roi_i": 9,
+          "roi_j": 10,
+          "auc": 1.0,
+          "cohen_d": 3.7791
+        },
+        {
+          "roi_i": 1,
+          "roi_j": 11,
+          "auc": 0.9987,
+          "cohen_d": 2.8275
+        },
+        {
+          "roi_i": 2,
+          "roi_j": 6,
+          "auc": 0.9987,
+          "cohen_d": 3.0917
+        },
+        {
+          "roi_i": 3,
+          "roi_j": 9,
+          "auc": 0.9987,
+          "cohen_d": 2.665
+        },
+        {
+          "roi_i": 67,
+          "roi_j": 74,
+          "auc": 0.9973,
+          "cohen_d": 2.776
+        }
+      ],
+      "n_edges_evaluated": 4005
+    }
+  },
+  "AD": {
+    "classification": {
+      "all_edges": {
+        "feature_set": "all_edges",
+        "n_samples": 52,
+        "n_features": 4005,
+        "classifiers": {
+          "SVM_RBF": {
+            "auc_mean": 1.0,
+            "auc_std": 0.0,
+            "bacc_mean": 1.0,
+            "bacc_std": 0.0,
+            "permutation_pvalue": 0.0099
+          },
+          "RandomForest": {
+            "auc_mean": 1.0,
+            "auc_std": 0.0,
+            "bacc_mean": 1.0,
+            "bacc_std": 0.0,
+            "permutation_pvalue": 0.0099
+          },
+          "LogisticRegression_L1": {
+            "auc_mean": 1.0,
+            "auc_std": 0.0,
+            "bacc_mean": 1.0,
+            "bacc_std": 0.0,
+            "permutation_pvalue": 0.0099
+          },
+          "GradientBoosting": {
+            "auc_mean": 1.0,
+            "auc_std": 0.0,
+            "bacc_mean": 1.0,
+            "bacc_std": 0.0,
+            "permutation_pvalue": 0.0099
+          }
+        },
+        "best_classifier": "SVM_RBF",
+        "best_auc": 1.0
+      },
+      "network_fc": {
+        "feature_set": "network_fc",
+        "n_samples": 52,
+        "n_features": 28,
+        "classifiers": {
+          "SVM_RBF": {
+            "auc_mean": 1.0,
+            "auc_std": 0.0,
+            "bacc_mean": 0.975,
+            "bacc_std": 0.05,
+            "permutation_pvalue": 0.0099
+          },
+          "RandomForest": {
+            "auc_mean": 1.0,
+            "auc_std": 0.0,
+            "bacc_mean": 1.0,
+            "bacc_std": 0.0,
+            "permutation_pvalue": 0.0099
+          },
+          "LogisticRegression_L1": {
+            "auc_mean": 1.0,
+            "auc_std": 0.0,
+            "bacc_mean": 1.0,
+            "bacc_std": 0.0,
+            "permutation_pvalue": 0.0099
+          },
+          "GradientBoosting": {
+            "auc_mean": 1.0,
+            "auc_std": 0.0,
+            "bacc_mean": 1.0,
+            "bacc_std": 0.0,
+            "permutation_pvalue": 0.0099
+          }
+        },
+        "best_classifier": "SVM_RBF",
+        "best_auc": 1.0
+      },
+      "graph_metrics": {
+        "feature_set": "graph_metrics",
+        "n_samples": 52,
+        "n_features": 180,
+        "classifiers": {
+          "SVM_RBF": {
+            "auc_mean": 0.98,
+            "auc_std": 0.04,
+            "bacc_mean": 0.955,
+            "bacc_std": 0.0557,
+            "permutation_pvalue": 0.0099
+          },
+          "RandomForest": {
+            "auc_mean": 1.0,
+            "auc_std": 0.0,
+            "bacc_mean": 0.9633,
+            "bacc_std": 0.0452,
+            "permutation_pvalue": 0.0099
+          },
+          "LogisticRegression_L1": {
+            "auc_mean": 1.0,
+            "auc_std": 0.0,
+            "bacc_mean": 0.9583,
+            "bacc_std": 0.0527,
+            "permutation_pvalue": 0.0099
+          },
+          "GradientBoosting": {
+            "auc_mean": 0.9967,
+            "auc_std": 0.0067,
+            "bacc_mean": 0.9833,
+            "bacc_std": 0.0333,
+            "permutation_pvalue": 0.0099
+          }
+        },
+        "best_classifier": "RandomForest",
+        "best_auc": 1.0
+      }
+    },
+    "network_importance_top5": [
+      {
+        "network_i": "DMN",
+        "network_j": "DMN",
+        "connection_type": "within",
+        "mean_FC_HC": 0.9197,
+        "mean_FC_dis": 0.6999,
+        "cohen_d": 15.8645,
+        "p_value": 0.0,
+        "direction": "reduced"
+      },
+      {
+        "network_i": "FPN",
+        "network_j": "FPN",
+        "connection_type": "within",
+        "mean_FC_HC": 0.9216,
+        "mean_FC_dis": 0.7998,
+        "cohen_d": 7.634,
+        "p_value": 0.0,
+        "direction": "reduced"
+      },
+      {
+        "network_i": "SN",
+        "network_j": "SN",
+        "connection_type": "within",
+        "mean_FC_HC": 0.9217,
+        "mean_FC_dis": 0.9008,
+        "cohen_d": 1.9107,
+        "p_value": 0.0,
+        "direction": "reduced"
+      },
+      {
+        "network_i": "DAN",
+        "network_j": "DAN",
+        "connection_type": "within",
+        "mean_FC_HC": 0.9208,
+        "mean_FC_dis": 0.9132,
+        "cohen_d": 0.9245,
+        "p_value": 0.002212,
+        "direction": "reduced"
+      },
+      {
+        "network_i": "DMN",
+        "network_j": "DAN",
+        "connection_type": "between",
+        "mean_FC_HC": 0.1178,
+        "mean_FC_dis": 0.0823,
+        "cohen_d": 0.7651,
+        "p_value": 0.011102,
+        "direction": "reduced"
+      }
+    ],
+    "biomarker_edges": {
+      "top_biomarker_edges": [
+        {
+          "roi_i": 0,
+          "roi_j": 1,
+          "auc": 1.0,
+          "cohen_d": 4.6723
+        },
+        {
+          "roi_i": 0,
+          "roi_j": 2,
+          "auc": 1.0,
+          "cohen_d": 4.2412
+        },
+        {
+          "roi_i": 0,
+          "roi_j": 3,
+          "auc": 1.0,
+          "cohen_d": 5.2441
+        },
+        {
+          "roi_i": 0,
+          "roi_j": 4,
+          "auc": 1.0,
+          "cohen_d": 4.3789
+        },
+        {
+          "roi_i": 0,
+          "roi_j": 5,
+          "auc": 1.0,
+          "cohen_d": 5.0075
+        },
+        {
+          "roi_i": 0,
+          "roi_j": 6,
+          "auc": 1.0,
+          "cohen_d": 4.807
+        },
+        {
+          "roi_i": 0,
+          "roi_j": 7,
+          "auc": 1.0,
+          "cohen_d": 5.5434
+        },
+        {
+          "roi_i": 0,
+          "roi_j": 8,
+          "auc": 1.0,
+          "cohen_d": 5.6856
+        },
+        {
+          "roi_i": 0,
+          "roi_j": 9,
+          "auc": 1.0,
+          "cohen_d": 4.5582
+        },
+        {
+          "roi_i": 0,
+          "roi_j": 10,
+          "auc": 1.0,
+          "cohen_d": 4.1749
+        }
+      ],
+      "n_edges_evaluated": 4005
+    }
+  }
+}

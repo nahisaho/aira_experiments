@@ -1,0 +1,87 @@
+{
+  "rates": {
+    "L23E": 14.364925854287558,
+    "L23I": 49.04925544100802,
+    "L4E": 17.17503805175038,
+    "L4I": 53.67521367521367,
+    "L5E": 14.46280991735537,
+    "L5I": 48.930817610062896,
+    "L6E": 12.865090403337968,
+    "L6I": 42.811791383219955
+  },
+  "meta": {
+    "scale": 0.05,
+    "total_neurons": 3854,
+    "total_synapses": 710749
+  },
+  "elapsed_s": 34.670040472992696,
+  "analysis": {
+    "L23E": {
+      "mean_rate_Hz": 14.36492585428756,
+      "peak_rate_Hz": 99.90328820116055,
+      "n_spikes": 4456,
+      "gamma_power": 1.9566927147046373,
+      "beta_power": 11.91695064589016,
+      "theta_power": 0.0
+    },
+    "L23I": {
+      "mean_rate_Hz": 49.04925544100802,
+      "peak_rate_Hz": 100.0,
+      "n_spikes": 4282,
+      "gamma_power": 0.28808749544631057,
+      "beta_power": 0.04168363307850599,
+      "theta_power": 0.0
+    },
+    "L4E": {
+      "mean_rate_Hz": 17.175038051750377,
+      "peak_rate_Hz": 99.99999999999999,
+      "n_spikes": 5642,
+      "gamma_power": 2.8377138483030273,
+      "beta_power": 25.909634099710203,
+      "theta_power": 0.0
+    },
+    "L4I": {
+      "mean_rate_Hz": 53.675213675213676,
+      "peak_rate_Hz": 100.0,
+      "n_spikes": 4396,
+      "gamma_power": 0.1712144332957964,
+      "beta_power": 0.017176533316110507,
+      "theta_power": 0.0
+    },
+    "L5E": {
+      "mean_rate_Hz": 14.462809917355372,
+      "peak_rate_Hz": 100.0,
+      "n_spikes": 1050,
+      "gamma_power": 0.15885625925627772,
+      "beta_power": 0.5949768375632661,
+      "theta_power": 0.0
+    },
+    "L5I": {
+      "mean_rate_Hz": 48.930817610062896,
+      "peak_rate_Hz": 100.0,
+      "n_spikes": 778,
+      "gamma_power": 0.06466174803892819,
+      "beta_power": 0.0020216154353077547,
+      "theta_power": 0.0
+    },
+    "L6E": {
+      "mean_rate_Hz": 12.86509040333797,
+      "peak_rate_Hz": 98.47009735744088,
+      "n_spikes": 2775,
+      "gamma_power": 0.46715412890815367,
+      "beta_power": 1.6679612734020894,
+      "theta_power": 0.0
+    },
+    "L6I": {
+      "mean_rate_Hz": 42.81179138321995,
+      "peak_rate_Hz": 94.5578231292517,
+      "n_spikes": 1888,
+      "gamma_power": 0.17504508762234905,
+      "beta_power": 0.011706300133466782,
+      "theta_power": 0.0
+    },
+    "cross": {
+      "L23E_L4E_PLV_gamma": 0.3317624054122768
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "axion": {
+    "g_ae=1e-11": {
+      "coupling": 1e-11,
+      "total_events": 10442436196.139206,
+      "peak_rate": 33.32917059425056
+    },
+    "g_ae=1e-12": {
+      "coupling": 1e-12,
+      "total_events": 1044243.619613921,
+      "peak_rate": 0.0033329170594250577
+    },
+    "g_ae=1e-13": {
+      "coupling": 1e-13,
+      "total_events": 104.42436196139212,
+      "peak_rate": 3.3329170594250566e-07
+    }
+  },
+  "dark_photon": {
+    "m_dp=0.5keV": {
+      "mass_kev": 0.5,
+      "kappa": 1e-15,
+      "rate_per_kg_day": 2.66505723691491e-19,
+      "total_events": 3.8909835658957686e-11
+    },
+    "m_dp=1.0keV": {
+      "mass_kev": 1.0,
+      "kappa": 1e-15,
+      "rate_per_kg_day": 1.17780002779551e-20,
+      "total_events": 1.7195880405814447e-12
+    },
+    "m_dp=5.0keV": {
+      "mass_kev": 5.0,
+      "kappa": 1e-15,
+      "rate_per_kg_day": 8.427650963366086e-24,
+      "total_events": 1.2304370406514485e-15
+    },
+    "m_dp=10.0keV": {
+      "mass_kev": 10.0,
+      "kappa": 1e-15,
+      "rate_per_kg_day": 3.724530716043437e-25,
+      "total_events": 5.4378148454234177e-17
+    }
+  },
+  "pbh": {
+    "m_pbh=1e+15g": {
+      "mass_g": 1000000000000000.0,
+      "hawking_temp_gev": 0.010573087202009186,
+      "total_recoils": 4.754518265284049e+34
+    },
+    "m_pbh=1e+16g": {
+      "mass_g": 1e+16,
+      "hawking_temp_gev": 0.0010573087202009185,
+      "total_recoils": 1.618397177179055e+26
+    },
+    "m_pbh=1e+17g": {
+      "mass_g": 1e+17,
+      "hawking_temp_gev": 0.00010573087202009184,
+      "total_recoils": 0.0
+    }
+  }
+}

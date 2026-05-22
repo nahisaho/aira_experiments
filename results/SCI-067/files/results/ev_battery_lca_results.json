@@ -1,0 +1,1007 @@
+{
+  "process_tree": {
+    "product_name": "NMC811 75kWh Battery Pack",
+    "functional_unit": "1 unit of NMC811 75kWh Battery Pack",
+    "root_process_id": "ASM_0001",
+    "processes": {
+      "CMP_0002": {
+        "id": "CMP_0002",
+        "name": "Cathode material production",
+        "location": "CN",
+        "inputs": [
+          {
+            "name": "nickel sulfate",
+            "amount": 72.0,
+            "unit": "kg",
+            "flow_type": "input",
+            "category": "",
+            "uncertainty_type": "lognormal",
+            "uncertainty_params": {
+              "loc": 0,
+              "scale": 0.1
+            }
+          }
+        ],
+        "outputs": [
+          {
+            "name": "NMC811 cathode active material",
+            "amount": 72.0,
+            "unit": "kg",
+            "flow_type": "output",
+            "category": "",
+            "uncertainty_type": "lognormal",
+            "uncertainty_params": {
+              "loc": 0,
+              "scale": 0.1
+            }
+          }
+        ],
+        "emissions": [],
+        "children": [],
+        "metadata": {}
+      },
+      "CMP_0003": {
+        "id": "CMP_0003",
+        "name": "Cathode material production",
+        "location": "CD",
+        "inputs": [
+          {
+            "name": "cobalt sulfate",
+            "amount": 9.0,
+            "unit": "kg",
+            "flow_type": "input",
+            "category": "",
+            "uncertainty_type": "lognormal",
+            "uncertainty_params": {
+              "loc": 0,
+              "scale": 0.1
+            }
+          }
+        ],
+        "outputs": [
+          {
+            "name": "NMC811 cathode active material",
+            "amount": 9.0,
+            "unit": "kg",
+            "flow_type": "output",
+            "category": "",
+            "uncertainty_type": "lognormal",
+            "uncertainty_params": {
+              "loc": 0,
+              "scale": 0.1
+            }
+          }
+        ],
+        "emissions": [],
+        "children": [],
+        "metadata": {}
+      },
+      "CMP_0004": {
+        "id": "CMP_0004",
+        "name": "Cathode material production",
+        "location": "CL",
+        "inputs": [
+          {
+            "name": "lithium carbonate",
+            "amount": 18.5,
+            "unit": "kg",
+            "flow_type": "input",
+            "category": "",
+            "uncertainty_type": "lognormal",
+            "uncertainty_params": {
+              "loc": 0,
+              "scale": 0.1
+            }
+          }
+        ],
+        "outputs": [
+          {
+            "name": "NMC811 cathode active material",
+            "amount": 18.5,
+            "unit": "kg",
+            "flow_type": "output",
+            "category": "",
+            "uncertainty_type": "lognormal",
+            "uncertainty_params": {
+              "loc": 0,
+              "scale": 0.1
+            }
+          }
+        ],
+        "emissions": [],
+        "children": [],
+        "metadata": {}
+      },
+      "CMP_0005": {
+        "id": "CMP_0005",
+        "name": "Cathode material production",
+        "location": "ZA",
+        "inputs": [
+          {
+            "name": "manganese sulfate",
+            "amount": 8.5,
+            "unit": "kg",
+            "flow_type": "input",
+            "category": "",
+            "uncertainty_type": "lognormal",
+            "uncertainty_params": {
+              "loc": 0,
+              "scale": 0.1
+            }
+          }
+        ],
+        "outputs": [
+          {
+            "name": "NMC811 cathode active material",
+            "amount": 8.5,
+            "unit": "kg",
+            "flow_type": "output",
+            "category": "",
+            "uncertainty_type": "lognormal",
+            "uncertainty_params": {
+              "loc": 0,
+              "scale": 0.1
+            }
+          }
+        ],
+        "emissions": [],
+        "children": [],
+        "metadata": {}
+      },
+      "CMP_0006": {
+        "id": "CMP_0006",
+        "name": "Aluminium foil production",
+        "location": "CN",
+        "inputs": [
+          {
+            "name": "aluminium",
+            "amount": 14.0,
+            "unit": "kg",
+            "flow_type": "input",
+            "category": "",
+            "uncertainty_type": "lognormal",
+            "uncertainty_params": {
+              "loc": 0,
+              "scale": 0.1
+            }
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Cathode foil",
+            "amount": 14.0,
+            "unit": "kg",
+            "flow_type": "output",
+            "category": "",
+            "uncertainty_type": "lognormal",
+            "uncertainty_params": {
+              "loc": 0,
+              "scale": 0.1
+            }
+          }
+        ],
+        "emissions": [],
+        "children": [],
+        "metadata": {}
+      },
+      "CMP_0007": {
+        "id": "CMP_0007",
+        "name": "Graphite anode production",
+        "location": "CN",
+        "inputs": [
+          {
+            "name": "natural graphite",
+            "amount": 52.0,
+            "unit": "kg",
+            "flow_type": "input",
+            "category": "",
+            "uncertainty_type": "lognormal",
+            "uncertainty_params": {
+              "loc": 0,
+              "scale": 0.1
+            }
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Anode active material",
+            "amount": 52.0,
+            "unit": "kg",
+            "flow_type": "output",
+            "category": "",
+            "uncertainty_type": "lognormal",
+            "uncertainty_params": {
+              "loc": 0,
+              "scale": 0.1
+            }
+          }
+        ],
+        "emissions": [],
+        "children": [],
+        "metadata": {}
+      },
+      "CMP_0008": {
+        "id": "CMP_0008",
+        "name": "Copper foil production",
+        "location": "CN",
+        "inputs": [
+          {
+            "name": "copper",
+            "amount": 18.0,
+            "unit": "kg",
+            "flow_type": "input",
+            "category": "",
+            "uncertainty_type": "lognormal",
+            "uncertainty_params": {
+              "loc": 0,
+              "scale": 0.1
+            }
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Anode foil",
+            "amount": 18.0,
+            "unit": "kg",
+            "flow_type": "output",
+            "category": "",
+            "uncertainty_type": "lognormal",
+            "uncertainty_params": {
+              "loc": 0,
+              "scale": 0.1
+            }
+          }
+        ],
+        "emissions": [],
+        "children": [],
+        "metadata": {}
+      },
+      "CMP_0009": {
+        "id": "CMP_0009",
+        "name": "Electrolyte production",
+        "location": "JP",
+        "inputs": [
+          {
+            "name": "electrolyte (LiPF6)",
+            "amount": 28.0,
+            "unit": "kg",
+            "flow_type": "input",
+            "category": "",
+            "uncertainty_type": "lognormal",
+            "uncertainty_params": {
+              "loc": 0,
+              "scale": 0.1
+            }
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Electrolyte",
+            "amount": 28.0,
+            "unit": "kg",
+            "flow_type": "output",
+            "category": "",
+            "uncertainty_type": "lognormal",
+            "uncertainty_params": {
+              "loc": 0,
+              "scale": 0.1
+            }
+          }
+        ],
+        "emissions": [],
+        "children": [],
+        "metadata": {}
+      },
+      "CMP_0010": {
+        "id": "CMP_0010",
+        "name": "Separator production",
+        "location": "KR",
+        "inputs": [
+          {
+            "name": "separator (PE/PP)",
+            "amount": 8.0,
+            "unit": "kg",
+            "flow_type": "input",
+            "category": "",
+            "uncertainty_type": "lognormal",
+            "uncertainty_params": {
+              "loc": 0,
+              "scale": 0.1
+            }
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Separator",
+            "amount": 8.0,
+            "unit": "kg",
+            "flow_type": "output",
+            "category": "",
+            "uncertainty_type": "lognormal",
+            "uncertainty_params": {
+              "loc": 0,
+              "scale": 0.1
+            }
+          }
+        ],
+        "emissions": [],
+        "children": [],
+        "metadata": {}
+      },
+      "CMP_0011": {
+        "id": "CMP_0011",
+        "name": "Cell housing manufacturing",
+        "location": "CN",
+        "inputs": [
+          {
+            "name": "aluminium",
+            "amount": 35.0,
+            "unit": "kg",
+            "flow_type": "input",
+            "category": "",
+            "uncertainty_type": "lognormal",
+            "uncertainty_params": {
+              "loc": 0,
+              "scale": 0.1
+            }
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Cell housing",
+            "amount": 35.0,
+            "unit": "kg",
+            "flow_type": "output",
+            "category": "",
+            "uncertainty_type": "lognormal",
+            "uncertainty_params": {
+              "loc": 0,
+              "scale": 0.1
+            }
+          }
+        ],
+        "emissions": [],
+        "children": [],
+        "metadata": {}
+      },
+      "CMP_0012": {
+        "id": "CMP_0012",
+        "name": "Module assembly",
+        "location": "DE",
+        "inputs": [
+          {
+            "name": "aluminium",
+            "amount": 25.0,
+            "unit": "kg",
+            "flow_type": "input",
+            "category": "",
+            "uncertainty_type": "lognormal",
+            "uncertainty_params": {
+              "loc": 0,
+              "scale": 0.1
+            }
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Module housing",
+            "amount": 25.0,
+            "unit": "kg",
+            "flow_type": "output",
+            "category": "",
+            "uncertainty_type": "lognormal",
+            "uncertainty_params": {
+              "loc": 0,
+              "scale": 0.1
+            }
+          }
+        ],
+        "emissions": [],
+        "children": [],
+        "metadata": {}
+      },
+      "CMP_0013": {
+        "id": "CMP_0013",
+        "name": "Pack enclosure manufacturing",
+        "location": "DE",
+        "inputs": [
+          {
+            "name": "steel",
+            "amount": 45.0,
+            "unit": "kg",
+            "flow_type": "input",
+            "category": "",
+            "uncertainty_type": "lognormal",
+            "uncertainty_params": {
+              "loc": 0,
+              "scale": 0.1
+            }
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Battery pack enclosure",
+            "amount": 45.0,
+            "unit": "kg",
+            "flow_type": "output",
+            "category": "",
+            "uncertainty_type": "lognormal",
+            "uncertainty_params": {
+              "loc": 0,
+              "scale": 0.1
+            }
+          }
+        ],
+        "emissions": [],
+        "children": [],
+        "metadata": {}
+      },
+      "CMP_0014": {
+        "id": "CMP_0014",
+        "name": "BMS production",
+        "location": "CN",
+        "inputs": [
+          {
+            "name": "copper",
+            "amount": 3.5,
+            "unit": "kg",
+            "flow_type": "input",
+            "category": "",
+            "uncertainty_type": "lognormal",
+            "uncertainty_params": {
+              "loc": 0,
+              "scale": 0.1
+            }
+          }
+        ],
+        "outputs": [
+          {
+            "name": "BMS electronics",
+            "amount": 3.5,
+            "unit": "kg",
+            "flow_type": "output",
+            "category": "",
+            "uncertainty_type": "lognormal",
+            "uncertainty_params": {
+              "loc": 0,
+              "scale": 0.1
+            }
+          }
+        ],
+        "emissions": [],
+        "children": [],
+        "metadata": {}
+      },
+      "CMP_0015": {
+        "id": "CMP_0015",
+        "name": "Cooling system manufacturing",
+        "location": "DE",
+        "inputs": [
+          {
+            "name": "aluminium",
+            "amount": 12.0,
+            "unit": "kg",
+            "flow_type": "input",
+            "category": "",
+            "uncertainty_type": "lognormal",
+            "uncertainty_params": {
+              "loc": 0,
+              "scale": 0.1
+            }
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Cooling system",
+            "amount": 12.0,
+            "unit": "kg",
+            "flow_type": "output",
+            "category": "",
+            "uncertainty_type": "lognormal",
+            "uncertainty_params": {
+              "loc": 0,
+              "scale": 0.1
+            }
+          }
+        ],
+        "emissions": [],
+        "children": [],
+        "metadata": {}
+      },
+      "CMP_0016": {
+        "id": "CMP_0016",
+        "name": "Wiring production",
+        "location": "CN",
+        "inputs": [
+          {
+            "name": "copper",
+            "amount": 5.0,
+            "unit": "kg",
+            "flow_type": "input",
+            "category": "",
+            "uncertainty_type": "lognormal",
+            "uncertainty_params": {
+              "loc": 0,
+              "scale": 0.1
+            }
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Wiring harness",
+            "amount": 5.0,
+            "unit": "kg",
+            "flow_type": "output",
+            "category": "",
+            "uncertainty_type": "lognormal",
+            "uncertainty_params": {
+              "loc": 0,
+              "scale": 0.1
+            }
+          }
+        ],
+        "emissions": [],
+        "children": [],
+        "metadata": {}
+      },
+      "CMP_0017": {
+        "id": "CMP_0017",
+        "name": "TIM application",
+        "location": "US",
+        "inputs": [
+          {
+            "name": "plastics (average)",
+            "amount": 4.0,
+            "unit": "kg",
+            "flow_type": "input",
+            "category": "",
+            "uncertainty_type": "lognormal",
+            "uncertainty_params": {
+              "loc": 0,
+              "scale": 0.1
+            }
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Thermal interface material",
+            "amount": 4.0,
+            "unit": "kg",
+            "flow_type": "output",
+            "category": "",
+            "uncertainty_type": "lognormal",
+            "uncertainty_params": {
+              "loc": 0,
+              "scale": 0.1
+            }
+          }
+        ],
+        "emissions": [],
+        "children": [],
+        "metadata": {}
+      },
+      "ASM_0001": {
+        "id": "ASM_0001",
+        "name": "NMC811 75kWh Battery Pack Assembly",
+        "location": "GLO",
+        "inputs": [],
+        "outputs": [],
+        "emissions": [],
+        "children": [
+          "CMP_0002",
+          "CMP_0003",
+          "CMP_0004",
+          "CMP_0005",
+          "CMP_0006",
+          "CMP_0007",
+          "CMP_0008",
+          "CMP_0009",
+          "CMP_0010",
+          "CMP_0011",
+          "CMP_0012",
+          "CMP_0013",
+          "CMP_0014",
+          "CMP_0015",
+          "CMP_0016",
+          "CMP_0017"
+        ],
+        "metadata": {}
+      }
+    }
+  },
+  "total_mass_kg": 357.5,
+  "process_impacts": {
+    "mat_000": {
+      "name": "NMC811 cathode active material (nickel sulfate)",
+      "gwp": 489.6,
+      "ap": 3.9168,
+      "ep": 0.9792,
+      "ced": 5875.2,
+      "unit": "kg CO2-eq",
+      "category": "material"
+    },
+    "mat_001": {
+      "name": "NMC811 cathode active material (cobalt sulfate)",
+      "gwp": 110.7,
+      "ap": 0.8856,
+      "ep": 0.2214,
+      "ced": 1328.4,
+      "unit": "kg CO2-eq",
+      "category": "material"
+    },
+    "mat_002": {
+      "name": "NMC811 cathode active material (lithium carbonate)",
+      "gwp": 138.75,
+      "ap": 1.11,
+      "ep": 0.2775,
+      "ced": 1665.0,
+      "unit": "kg CO2-eq",
+      "category": "material"
+    },
+    "mat_003": {
+      "name": "NMC811 cathode active material (manganese sulfate)",
+      "gwp": 25.5,
+      "ap": 0.204,
+      "ep": 0.051,
+      "ced": 306.0,
+      "unit": "kg CO2-eq",
+      "category": "material"
+    },
+    "mat_004": {
+      "name": "Cathode foil (aluminium)",
+      "gwp": 114.8,
+      "ap": 0.9184,
+      "ep": 0.2296,
+      "ced": 1377.6,
+      "unit": "kg CO2-eq",
+      "category": "material"
+    },
+    "mat_005": {
+      "name": "Anode active material (natural graphite)",
+      "gwp": 93.6,
+      "ap": 0.7488,
+      "ep": 0.1872,
+      "ced": 1123.2,
+      "unit": "kg CO2-eq",
+      "category": "material"
+    },
+    "mat_006": {
+      "name": "Anode foil (copper)",
+      "gwp": 63.0,
+      "ap": 0.504,
+      "ep": 0.126,
+      "ced": 756.0,
+      "unit": "kg CO2-eq",
+      "category": "material"
+    },
+    "mat_007": {
+      "name": "Electrolyte (electrolyte (LiPF6))",
+      "gwp": 285.6,
+      "ap": 2.2848,
+      "ep": 0.5712,
+      "ced": 3427.2,
+      "unit": "kg CO2-eq",
+      "category": "material"
+    },
+    "mat_008": {
+      "name": "Separator (separator (PE/PP))",
+      "gwp": 36.0,
+      "ap": 0.288,
+      "ep": 0.072,
+      "ced": 432.0,
+      "unit": "kg CO2-eq",
+      "category": "material"
+    },
+    "mat_009": {
+      "name": "Cell housing (aluminium)",
+      "gwp": 287.0,
+      "ap": 2.296,
+      "ep": 0.574,
+      "ced": 3444.0,
+      "unit": "kg CO2-eq",
+      "category": "material"
+    },
+    "mat_010": {
+      "name": "Module housing (aluminium)",
+      "gwp": 205.0,
+      "ap": 1.64,
+      "ep": 0.41,
+      "ced": 2460.0,
+      "unit": "kg CO2-eq",
+      "category": "material"
+    },
+    "mat_011": {
+      "name": "Battery pack enclosure (steel)",
+      "gwp": 94.5,
+      "ap": 0.756,
+      "ep": 0.189,
+      "ced": 1134.0,
+      "unit": "kg CO2-eq",
+      "category": "material"
+    },
+    "mat_012": {
+      "name": "BMS electronics (copper)",
+      "gwp": 12.25,
+      "ap": 0.098,
+      "ep": 0.0245,
+      "ced": 147.0,
+      "unit": "kg CO2-eq",
+      "category": "material"
+    },
+    "mat_013": {
+      "name": "Cooling system (aluminium)",
+      "gwp": 98.4,
+      "ap": 0.7872,
+      "ep": 0.1968,
+      "ced": 1180.8,
+      "unit": "kg CO2-eq",
+      "category": "material"
+    },
+    "mat_014": {
+      "name": "Wiring harness (copper)",
+      "gwp": 17.5,
+      "ap": 0.14,
+      "ep": 0.035,
+      "ced": 210.0,
+      "unit": "kg CO2-eq",
+      "category": "material"
+    },
+    "mat_015": {
+      "name": "Thermal interface material (plastics (average))",
+      "gwp": 12.4,
+      "ap": 0.0992,
+      "ep": 0.0248,
+      "ced": 148.8,
+      "unit": "kg CO2-eq",
+      "category": "material"
+    },
+    "energy_cell_manufacturing": {
+      "name": "Energy - Cell Manufacturing",
+      "gwp": 1932.0,
+      "ap": 11.592,
+      "ep": 1.932,
+      "ced": 13215.0,
+      "unit": "kg CO2-eq",
+      "category": "energy"
+    },
+    "energy_module_assembly": {
+      "name": "Energy - Module Assembly",
+      "gwp": 96.92,
+      "ap": 0.5815,
+      "ep": 0.0969,
+      "ced": 1035.0,
+      "unit": "kg CO2-eq",
+      "category": "energy"
+    },
+    "energy_pack_assembly": {
+      "name": "Energy - Pack Assembly",
+      "gwp": 139.65,
+      "ap": 0.8379,
+      "ep": 0.1396,
+      "ced": 1500.0,
+      "unit": "kg CO2-eq",
+      "category": "energy"
+    },
+    "energy_dry_room_operation": {
+      "name": "Energy - Dry Room Operation",
+      "gwp": 652.5,
+      "ap": 3.915,
+      "ep": 0.6525,
+      "ced": 4050.0,
+      "unit": "kg CO2-eq",
+      "category": "energy"
+    },
+    "transport_000": {
+      "name": "Transport - Raw materials \u2192 Cell plant",
+      "gwp": 16.0,
+      "ap": 0.16,
+      "ep": 0.048,
+      "ced": 240.0,
+      "unit": "kg CO2-eq",
+      "category": "transport"
+    },
+    "transport_001": {
+      "name": "Transport - Cell plant \u2192 Module plant",
+      "gwp": 10.85,
+      "ap": 0.1085,
+      "ep": 0.0326,
+      "ced": 162.75,
+      "unit": "kg CO2-eq",
+      "category": "transport"
+    },
+    "transport_002": {
+      "name": "Transport - Module plant \u2192 OEM",
+      "gwp": 5.21,
+      "ap": 0.0521,
+      "ep": 0.0156,
+      "ced": 78.12,
+      "unit": "kg CO2-eq",
+      "category": "transport"
+    },
+    "eol_recycling": {
+      "name": "End-of-Life Recycling Credits",
+      "gwp": -108.36,
+      "ap": -0.5418,
+      "ep": -0.1084,
+      "ced": -1083.6,
+      "unit": "kg CO2-eq",
+      "category": "end-of-life"
+    }
+  },
+  "total_gwp_kg_co2eq": 4829.37,
+  "gwp_per_kwh": 64.39,
+  "total_ced_mj": 44212.47,
+  "monte_carlo": {
+    "method": "monte_carlo",
+    "n_iterations": 10000,
+    "mean": 4900.772401,
+    "median": 4837.680221,
+    "std": 531.276993,
+    "cv": 0.1084,
+    "ci_95": [
+      4043.891933,
+      6103.218281
+    ],
+    "ci_99": [
+      3856.654554,
+      6662.225526
+    ],
+    "percentiles": {
+      "p5": 4150.59332,
+      "p10": 4280.956926,
+      "p25": 4523.058165,
+      "p50": 4837.680221,
+      "p75": 5204.146608,
+      "p90": 5612.64279,
+      "p95": 5869.98663
+    },
+    "sensitivity_indices": {
+      "nickel_mass": 8.1e-05,
+      "cobalt_mass": 5.8e-05,
+      "lithium_mass": 3.4e-05,
+      "graphite_mass": 0.000219,
+      "electricity_intensity": 0.000154,
+      "grid_carbon_intensity": 5e-06,
+      "nickel_ef": 4.8e-05,
+      "cobalt_ef": 2e-06,
+      "recycling_rate": 2.6e-05,
+      "transport_distance": 0.000133
+    }
+  },
+  "taylor_expansion": {
+    "method": "taylor_expansion",
+    "n_iterations": 1,
+    "mean": 4813.663,
+    "median": 4813.663,
+    "std": 521.718133,
+    "cv": 0.1084,
+    "ci_95": [
+      3791.09546,
+      5836.23054
+    ],
+    "ci_99": [
+      3469.71709,
+      6157.60891
+    ],
+    "percentiles": {},
+    "sensitivity_indices": {
+      "nickel_mass": 0.020496,
+      "cobalt_mass": 0.001912,
+      "lithium_mass": 0.001646,
+      "graphite_mass": 0.000298,
+      "electricity_intensity": 0.84192,
+      "grid_carbon_intensity": 0.091136,
+      "nickel_ef": 0.037407,
+      "cobalt_ef": 0.004639,
+      "recycling_rate": 0.000486,
+      "transport_distance": 6e-05
+    }
+  },
+  "hotspots": [
+    {
+      "process": "Energy - Cell Manufacturing",
+      "contribution_pct": 40.0,
+      "absolute_gwp": 1932.0,
+      "improvement": "High \u2014 primary target for reduction",
+      "alternatives": [
+        "Conduct detailed sub-process analysis",
+        "Explore material substitution"
+      ]
+    },
+    {
+      "process": "Energy - Dry Room Operation",
+      "contribution_pct": 13.5,
+      "absolute_gwp": 652.5,
+      "improvement": "Moderate \u2014 incremental improvement possible",
+      "alternatives": [
+        "Conduct detailed sub-process analysis",
+        "Explore material substitution"
+      ]
+    },
+    {
+      "process": "NMC811 cathode active material (nickel sulfate)",
+      "contribution_pct": 10.1,
+      "absolute_gwp": 489.6,
+      "improvement": "Moderate \u2014 incremental improvement possible",
+      "alternatives": [
+        "Transition NMC811 \u2192 LFP chemistry",
+        "Increase recycled content",
+        "Optimize synthesis process efficiency"
+      ]
+    }
+  ],
+  "scenario_comparison": {
+    "baseline_gwp": 4829.37,
+    "scenarios": [
+      {
+        "name": "Baseline",
+        "gwp": 4829.37
+      },
+      {
+        "name": "Renewable Energy Manufacturing",
+        "gwp": 2431.4605
+      },
+      {
+        "name": "LFP Chemistry Switch",
+        "gwp": 4667.01
+      },
+      {
+        "name": "Closed-Loop Recycling",
+        "gwp": 4742.682
+      },
+      {
+        "name": "Localized Supply Chain",
+        "gwp": 3678.5
+      },
+      {
+        "name": "Best Case 2030",
+        "gwp": 2440.109
+      }
+    ],
+    "relative_changes": {
+      "Renewable Energy Manufacturing": {
+        "GWP": -49.652635851053034,
+        "AP": -43.09927505841472,
+        "EP": -34.363714531384346,
+        "CED": -38.066183590285725
+      },
+      "LFP Chemistry Switch": {
+        "GWP": -3.361929195733598,
+        "AP": -3.891019112096328,
+        "EP": -4.653195758096876,
+        "CED": -4.406720547393076
+      },
+      "Closed-Loop Recycling": {
+        "GWP": -1.7950167413140865,
+        "AP": -1.2983044754658166,
+        "EP": -1.2424763542562274,
+        "CED": -1.9607137986183643
+      },
+      "Localized Supply Chain": {
+        "GWP": -23.83064457682886,
+        "AP": -20.95440656641303,
+        "EP": -17.13528231584981,
+        "CED": -18.674844449993408
+      },
+      "Best Case 2030": {
+        "GWP": -49.47355452160427,
+        "AP": -42.907554969744176,
+        "EP": -34.928346231011744,
+        "CED": -39.09360865837172
+      }
+    }
+  },
+  "scope3": {
+    "company": "EV Battery Manufacturer (NMC811)",
+    "year": 2024,
+    "total_scope3_kg_co2eq": 4659.41,
+    "total_scope3_t_co2eq": 4.66,
+    "by_category": {
+      "Purchased goods and services": 2059.1,
+      "Fuel- and energy-related activities": 2783.18,
+      "Upstream transportation and distribution": 32.06,
+      "Waste generated in operations": 13.3,
+      "End-of-life treatment of sold products": -228.23
+    }
+  }
+}

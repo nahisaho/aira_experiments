@@ -1,0 +1,5 @@
+model,MAE,RMSE,R2,Pearson_r,Pearson_p,Median_AE,n_samples
+Horvath-Style,5.958,7.386,0.8715,0.955,2.57e-85,5.145,160
+GrimAge-Style,6.628,8.476,0.8308,0.9447,2.18e-78,5.426,160
+Improved-ElasticNet,3.947,4.896,0.9435,0.9728,3.2e-102,3.611,160
+Deep-Clock,5.686,7.272,0.8755,0.9394,2.44e-75,4.655,160

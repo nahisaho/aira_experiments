@@ -1,0 +1,291 @@
+{
+  "pelt": {
+    "detected_changepoints": [
+      500,
+      900,
+      1200,
+      1600
+    ],
+    "true_changepoints": [
+      500,
+      900,
+      1200,
+      1600
+    ],
+    "n_detected": 4,
+    "n_true": 4
+  },
+  "bocpd": {
+    "detected_changepoints": [],
+    "n_detected": 0
+  },
+  "isolation_forest": {
+    "n_anomalies": 250,
+    "anomaly_rate": 0.05,
+    "precision": 0.672,
+    "recall": 0.672,
+    "f1": 0.672,
+    "feature_importance": {
+      "energy": 0.1144640728322874,
+      "transverse_momentum": 0.1333102631877183,
+      "pseudorapidity": 0.14909848580481314,
+      "azimuthal_angle": 0.1258460940459166,
+      "invariant_mass": 0.1192370382054521,
+      "missing_ET": 0.11210652925301104,
+      "jet_multiplicity": 0.11918741969576714,
+      "track_isolation": 0.12675009697503425
+    },
+    "score_stats": {
+      "mean": 0.08667128903566651,
+      "std": 0.04768434566081315,
+      "min": -0.2075467078514941,
+      "max": 0.15656971239859818,
+      "threshold": -3.1106437954966926e-17
+    }
+  },
+  "deep_svdd": {
+    "n_anomalies": 390,
+    "precision": 0.4154,
+    "recall": 0.648,
+    "f1": 0.5062,
+    "radius": 0.55697359073705
+  },
+  "physics_constrained": {
+    "constraint_details": [
+      {
+        "name": "energy_positive",
+        "description": "Energy > 0",
+        "n_violations": 0,
+        "violation_rate": 0.0,
+        "max_violation": 0.0,
+        "mean_violation": 0.0
+      },
+      {
+        "name": "pT_range",
+        "description": "pT < 500 GeV",
+        "n_violations": 1,
+        "violation_rate": 0.0002,
+        "max_violation": 118.41920065331249,
+        "mean_violation": 118.41920065331249
+      },
+      {
+        "name": "mass_positive",
+        "description": "Invariant mass > 0",
+        "n_violations": 0,
+        "violation_rate": 0.0,
+        "max_violation": 0.0,
+        "mean_violation": 0.0
+      },
+      {
+        "name": "eta_range",
+        "description": "|\u03b7| < 5",
+        "n_violations": 63,
+        "violation_rate": 0.0126,
+        "max_violation": 2.8448005032366845,
+        "mean_violation": 0.7347203557721504
+      }
+    ],
+    "total_violations": 64,
+    "score_correlation": 0.06704915722192048
+  },
+  "drift_detection": {
+    "adwin_drifts": 136,
+    "page_hinkley_drifts": 3,
+    "retrain_events": [
+      {
+        "step": 1250,
+        "reason": "Performance below threshold: drop=0.0993",
+        "type": "degradation",
+        "severity": 0.1046
+      },
+      {
+        "step": 1350,
+        "reason": "Sudden performance drop: 0.1090",
+        "type": "sudden",
+        "severity": 0.1147
+      },
+      {
+        "step": 1450,
+        "reason": "Sudden performance drop: 0.1165",
+        "type": "sudden",
+        "severity": 0.1226
+      },
+      {
+        "step": 1550,
+        "reason": "Sudden performance drop: 0.1199",
+        "type": "sudden",
+        "severity": 0.1262
+      },
+      {
+        "step": 1650,
+        "reason": "Sudden performance drop: 0.1185",
+        "type": "sudden",
+        "severity": 0.1247
+      },
+      {
+        "step": 1750,
+        "reason": "Sudden performance drop: 0.1125",
+        "type": "sudden",
+        "severity": 0.1184
+      },
+      {
+        "step": 1850,
+        "reason": "Sudden performance drop: 0.1035",
+        "type": "sudden",
+        "severity": 0.1089
+      },
+      {
+        "step": 1950,
+        "reason": "Performance below threshold: drop=0.0936",
+        "type": "degradation",
+        "severity": 0.0985
+      }
+    ],
+    "n_retrain_triggers": 8
+  },
+  "explainable": {
+    "n_anomalies": 250,
+    "global_feature_importance": {
+      "pseudorapidity": 0.1481,
+      "transverse_momentum": 0.132,
+      "azimuthal_angle": 0.1273,
+      "track_isolation": 0.1267,
+      "invariant_mass": 0.1192,
+      "jet_multiplicity": 0.1184,
+      "energy": 0.115,
+      "missing_ET": 0.1134
+    },
+    "n_rules": 9,
+    "top_rules": [
+      {
+        "conditions": [
+          "transverse_momentum <= 2.3078",
+          "track_isolation <= 3.0304",
+          "energy <= 3.586",
+          "missing_ET > 3.2085"
+        ],
+        "prediction": "anomaly",
+        "support": 0,
+        "confidence": 0.6153846153846154
+      },
+      {
+        "conditions": [
+          "transverse_momentum <= 2.3078",
+          "track_isolation <= 3.0304",
+          "energy > 3.586",
+          "pseudorapidity <= 0.5505"
+        ],
+        "prediction": "anomaly",
+        "support": 1,
+        "confidence": 1.0
+      },
+      {
+        "conditions": [
+          "transverse_momentum <= 2.3078",
+          "track_isolation > 3.0304",
+          "invariant_mass <= 0.0514",
+          "transverse_momentum > 0.0835"
+        ],
+        "prediction": "anomaly",
+        "support": 1,
+        "confidence": 1.0
+      }
+    ],
+    "root_causes": [
+      {
+        "feature": "transverse_momentum",
+        "count": 58,
+        "fraction": 0.232,
+        "mean_z_score": 8.740786929800167,
+        "direction": "high"
+      },
+      {
+        "feature": "track_isolation",
+        "count": 53,
+        "fraction": 0.212,
+        "mean_z_score": 7.888850485114411,
+        "direction": "high"
+      },
+      {
+        "feature": "missing_ET",
+        "count": 53,
+        "fraction": 0.212,
+        "mean_z_score": 10.380716152706285,
+        "direction": "high"
+      },
+      {
+        "feature": "energy",
+        "count": 44,
+        "fraction": 0.176,
+        "mean_z_score": 8.299448612889368,
+        "direction": "high"
+      },
+      {
+        "feature": "invariant_mass",
+        "count": 27,
+        "fraction": 0.108,
+        "mean_z_score": 4.610841091150465,
+        "direction": "high"
+      }
+    ],
+    "n_local_explanations": 50
+  },
+  "streaming": {
+    "events_processed": 2000,
+    "anomalies_detected": 117,
+    "anomaly_rate": 0.0585,
+    "mean_score": 0.4422,
+    "throughput_per_sec": 43690.7,
+    "alert_summary": {
+      "critical": 37,
+      "warning": 20,
+      "info": 60
+    },
+    "architecture": {
+      "name": "Large-Scale Experiment Anomaly Detection Architecture",
+      "tiers": {
+        "L0_hardware_trigger": {
+          "description": "Hardware-level trigger (FPGA/ASIC)",
+          "latency": "<1\u03bcs",
+          "data_rate": "40MHz \u2192 ~100kHz",
+          "function": "Basic threshold and pattern matching",
+          "reduction_factor": "400x"
+        },
+        "L1_online_filter": {
+          "description": "Software trigger with simple ML models",
+          "latency": "<10ms",
+          "data_rate": "100kHz \u2192 ~1kHz",
+          "function": "Online anomaly scoring (z-score, EWMA)",
+          "reduction_factor": "100x",
+          "implementation": "StreamingAnomalyPipeline with zscore_detector"
+        },
+        "L2_nearline_analysis": {
+          "description": "Near-real-time batch analysis",
+          "latency": "<1s",
+          "data_rate": "1kHz \u2192 ~10Hz",
+          "function": "Isolation Forest, changepoint detection",
+          "reduction_factor": "100x",
+          "implementation": "IsolationForestDetector + PELTDetector"
+        },
+        "L3_offline_deep": {
+          "description": "Full offline analysis with deep models",
+          "latency": "minutes-hours",
+          "data_rate": "Stored events",
+          "function": "Deep SVDD, SHAP explanations, physics constraints",
+          "implementation": "DeepSVDDDetector + PhysicsConstrainedScorer + ExplainableAnomalyDetector"
+        }
+      },
+      "data_flow": [
+        "Raw Detector \u2192 L0 (FPGA) \u2192 L1 (Online) \u2192 L2 (Nearline) \u2192 L3 (Offline)",
+        "Each tier reduces data volume by ~100x",
+        "Total reduction: O(10^6) from raw to stored"
+      ],
+      "fault_tolerance": {
+        "redundancy": "N+1 detector nodes per tier",
+        "checkpointing": "Model state saved every 60s",
+        "dead_letter_queue": "Failed events routed to separate analysis",
+        "monitoring": "Prometheus metrics + Grafana dashboards"
+      }
+    }
+  }
+}

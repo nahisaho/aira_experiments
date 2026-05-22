@@ -1,0 +1,84 @@
+# Epitranscriptome Analysis Pipeline Configuration
+# RNA Modification Mapping: m6A / m5C / Pseudouridine
+
+reference:
+  genome: "hg38"
+  annotation: "gencode.v44"
+  transcriptome: "GRCh38"
+
+samples:
+  merip_seq:
+    input:
+      - "data/input_rep1.bam"
+      - "data/input_rep2.bam"
+    ip:
+      - "data/ip_rep1.bam"
+      - "data/ip_rep2.bam"
+  dart_seq:
+    control:
+      - "data/dart_ctrl_rep1.bam"
+    treated:
+      - "data/dart_apobec_rep1.bam"
+  nanopore:
+    direct_rna:
+      - "data/nanopore_rep1.fast5"
+      - "data/nanopore_rep2.fast5"
+
+peak_calling:
+  merip:
+    tool: "exomePeak2"
+    window_size: 50
+    step_size: 25
+    fdr_threshold: 0.05
+    fold_enrichment_min: 2.0
+  dart:
+    mutation_rate_threshold: 0.1
+    min_coverage: 10
+    fdr_threshold: 0.05
+  nanopore:
+    model: "m6Anet"
+    probability_threshold: 0.9
+    min_reads: 20
+
+differential_modification:
+  method: "betabinomial"
+  min_sites: 5
+  fdr_threshold: 0.05
+  delta_mod_threshold: 0.1
+
+annotation:
+  regions:
+    - "5UTR"
+    - "CDS"
+    - "3UTR"
+    - "start_codon"
+    - "stop_codon"
+  motifs:
+    m6A: "DRACH"
+    m5C: "CG"
+    pseudouridine: "TGT"
+
+functional:
+  stability:
+    method: "actinomycin_D_halflife"
+  translation:
+    method: "ribosome_profiling_TE"
+
+writer_reader_eraser:
+  m6A:
+    writers: ["METTL3", "METTL14", "WTAP", "KIAA1429", "RBM15"]
+    readers: ["YTHDF1", "YTHDF2", "YTHDF3", "YTHDC1", "YTHDC2", "IGF2BP1", "IGF2BP2", "IGF2BP3"]
+    erasers: ["FTO", "ALKBH5"]
+  m5C:
+    writers: ["NSUN2", "NSUN3", "NSUN5", "NSUN6", "DNMT2"]
+    readers: ["ALYREF", "YBX1"]
+    erasers: ["TET2"]
+  pseudouridine:
+    writers: ["PUS1", "PUS7", "TRUB1", "DKC1"]
+    readers: []
+    erasers: []
+
+cancer_case_study:
+  cancer_type: "AML"
+  comparison: "tumor_vs_normal"
+  key_genes: ["MYC", "BCL2", "CEBPA", "FLT3", "NPM1"]

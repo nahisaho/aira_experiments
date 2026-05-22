@@ -1,0 +1,184 @@
+# =============================================================================
+# Urban Traffic Microsimulation Configuration
+# Target: Tokyo Downtown 3km x 3km (Marunouchi-Nihonbashi area)
+# =============================================================================
+
+simulation:
+  name: "tokyo_downtown_3km"
+  area:
+    center_lat: 35.6812
+    center_lon: 139.7671
+    size_km: 3.0
+  time:
+    start: 0          # seconds
+    end: 7200         # 2-hour simulation
+    step_length: 0.1  # 100ms timestep
+    warmup: 600       # 10-min warmup
+  seed: 42
+
+# --- Vehicle Behavior Model (IDM + MOBIL) ---
+idm_parameters:
+  car:
+    v0: 13.89          # desired speed (m/s) = 50 km/h
+    T: 1.5             # safe time headway (s)
+    a: 1.4             # max acceleration (m/s^2)
+    b: 2.0             # comfortable deceleration (m/s^2)
+    delta: 4           # acceleration exponent
+    s0: 2.0            # minimum gap (m)
+    s1: 0.0            # jam distance parameter (m)
+    length: 4.5        # vehicle length (m)
+  bus:
+    v0: 11.11          # 40 km/h
+    T: 2.0
+    a: 1.0
+    b: 1.5
+    delta: 4
+    s0: 3.0
+    s1: 0.0
+    length: 12.0
+  bicycle:
+    v0: 4.17           # 15 km/h
+    T: 1.0
+    a: 1.2
+    b: 2.5
+    delta: 4
+    s0: 1.0
+    s1: 0.0
+    length: 1.8
+  pedestrian:
+    v0: 1.39           # 5 km/h (Social Force Model used instead)
+    tau: 0.5           # relaxation time
+    A: 2000            # repulsive force constant (N)
+    B: 0.08            # repulsive range (m)
+
+# --- Lane Change Model (MOBIL) ---
+mobil_parameters:
+  politeness: 0.3
+  threshold: 0.2       # m/s^2 - lane change threshold
+  max_safe_decel: 4.0  # m/s^2
+
+# --- Traffic Signal Control ---
+signal_control:
+  type: "MARL"
+  algorithm: "MAPPO"
+  num_intersections: 48
+  phase_duration:
+    min_green: 8       # seconds
+    max_green: 60
+    yellow: 3
+    all_red: 2
+  cycle_length:
+    min: 60
+    max: 120
+
+# --- Multi-Agent RL Configuration ---
+marl:
+  algorithm: "MAPPO"   # Multi-Agent PPO
+  framework: "rllib"
+  network:
+    actor:
+      hidden_layers: [256, 256, 128]
+      activation: "relu"
+    critic:
+      hidden_layers: [256, 256, 128]
+      activation: "relu"
+  training:
+    lr: 3.0e-4
+    gamma: 0.99
+    lambda_gae: 0.95
+    clip_param: 0.2
+    entropy_coeff: 0.01
+    vf_loss_coeff: 0.5
+    num_sgd_iter: 10
+    sgd_minibatch_size: 256
+    train_batch_size: 4096
+    num_workers: 8
+    num_envs_per_worker: 2
+    episodes_total: 5000
+  observation:
+    type: "local_neighborhood"
+    radius: 2                    # hops
+    features:
+      - queue_length
+      - waiting_time
+      - current_phase
+      - phase_duration
+      - neighbor_queue
+      - time_of_day
+      - demand_estimate
+    dim: 52                      # observation dimension per agent
+  action:
+    type: "discrete"
+    choices: "next_phase"        # select next phase
+    num_phases: 4                # typical 4-phase intersection
+  reward:
+    type: "composite"
+    components:
+      waiting_time: -0.4
+      queue_length: -0.3
+      throughput: 0.2
+      transit_priority: 0.1
+
+# --- Traffic Demand Estimation ---
+demand_estimation:
+  method: "kalman_filter"
+  probe_penetration_rate: 0.15  # 15% probe vehicles
+  update_interval: 300          # 5 minutes
+  od_zones: 25                  # 5x5 grid zones
+  historical_data: true
+  fusion:
+    sources:
+      - probe_vehicles
+      - loop_detectors
+      - bluetooth_sensors
+
+# --- Dynamic Rerouting ---
+rerouting:
+  enabled: true
+  algorithm: "A_star_with_travel_time"
+  update_interval: 60           # seconds
+  compliance_rate: 0.7          # 70% drivers follow rerouting
+  incident_detection:
+    method: "speed_anomaly"
+    threshold_speed_ratio: 0.3  # below 30% of free-flow
+    confirmation_time: 120      # seconds before confirmed
+
+# --- Multimodal Integration ---
+multimodal:
+  modes:
+    car:
+      share: 0.45
+      vot: 40        # value of time (JPY/min)
+    bus:
+      share: 0.25
+      routes: 12
+      headway: 300   # seconds
+      stops_per_route: 8
+      dwell_time:
+        mean: 20
+        std: 5
+      priority:
+        tsp_enabled: true
+        green_extension: 10  # seconds
+        early_green: 5
+    bicycle:
+      share: 0.15
+      dedicated_lanes: true
+    pedestrian:
+      share: 0.15
+      crossing_time_buffer: 5  # extra seconds for pedestrian phases
+
+# --- Performance Metrics ---
+metrics:
+  collection_interval: 60  # seconds
+  kpis:
+    - average_travel_time
+    - average_delay
+    - average_speed
+    - queue_length
+    - throughput
+    - fuel_consumption
+    - co2_emission
+    - transit_reliability
+    - pedestrian_wait_time
+    - level_of_service

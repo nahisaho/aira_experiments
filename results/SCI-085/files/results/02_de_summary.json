@@ -1,0 +1,22 @@
+{
+  "total_tests": 40000,
+  "significant_genes": 4,
+  "perturbations_tested": 20,
+  "de_genes_per_perturbation": {
+    "gene_10_guide": 1,
+    "gene_12_guide": 1,
+    "gene_15_guide": 1,
+    "gene_9_guide": 1
+  },
+  "n_modules": 8,
+  "module_sizes": {
+    "Module_0": 63,
+    "Module_1": 63,
+    "Module_2": 63,
+    "Module_3": 63,
+    "Module_4": 63,
+    "Module_5": 63,
+    "Module_6": 63,
+    "Module_7": 63
+  }
+}

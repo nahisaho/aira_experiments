@@ -1,0 +1,224 @@
+{
+  "single_reactor_baseline": {
+    "hydraulic_diameter_um": 285.7,
+    "throughput_g_h": 2.5,
+    "reactor_cost_usd": 5000,
+    "heat_transfer_W_m2K": 5000,
+    "mixing_time_ms": 50,
+    "pressure_drop_kPa": 15.0,
+    "reynolds_number": 4.76
+  },
+  "numbering_up": [
+    {
+      "n_parallel": 1,
+      "throughput_g_h": 2.49,
+      "flow_uniformity": 0.995,
+      "total_cost_usd": 7700.0,
+      "cost_per_g_h": 3095.48,
+      "heat_transfer_W_m2K": 5000,
+      "mixing_time_ms": 50,
+      "pressure_drop_kPa": 15.0
+    },
+    {
+      "n_parallel": 2,
+      "throughput_g_h": 4.95,
+      "flow_uniformity": 0.99,
+      "total_cost_usd": 12607.0,
+      "cost_per_g_h": 2546.89,
+      "heat_transfer_W_m2K": 5000,
+      "mixing_time_ms": 50,
+      "pressure_drop_kPa": 15.0
+    },
+    {
+      "n_parallel": 5,
+      "throughput_g_h": 12.19,
+      "flow_uniformity": 0.975,
+      "total_cost_usd": 26216.0,
+      "cost_per_g_h": 2151.03,
+      "heat_transfer_W_m2K": 5000,
+      "mixing_time_ms": 50,
+      "pressure_drop_kPa": 15.0
+    },
+    {
+      "n_parallel": 10,
+      "throughput_g_h": 23.75,
+      "flow_uniformity": 0.95,
+      "total_cost_usd": 47276.0,
+      "cost_per_g_h": 1990.58,
+      "heat_transfer_W_m2K": 5000,
+      "mixing_time_ms": 50,
+      "pressure_drop_kPa": 15.0
+    },
+    {
+      "n_parallel": 20,
+      "throughput_g_h": 45.0,
+      "flow_uniformity": 0.9,
+      "total_cost_usd": 86626.0,
+      "cost_per_g_h": 1925.03,
+      "heat_transfer_W_m2K": 5000,
+      "mixing_time_ms": 50,
+      "pressure_drop_kPa": 15.0
+    },
+    {
+      "n_parallel": 50,
+      "throughput_g_h": 106.25,
+      "flow_uniformity": 0.85,
+      "total_cost_usd": 194987.0,
+      "cost_per_g_h": 1835.17,
+      "heat_transfer_W_m2K": 5000,
+      "mixing_time_ms": 50,
+      "pressure_drop_kPa": 15.0
+    }
+  ],
+  "scaling_up": [
+    {
+      "scale_factor": 1,
+      "hydraulic_diameter_um": 286.0,
+      "throughput_g_h": 2.5,
+      "heat_transfer_W_m2K": 5000.0,
+      "mixing_time_ms": 50,
+      "reynolds_number": 4.8,
+      "pressure_drop_kPa": 15.0,
+      "total_cost_usd": 7000.0,
+      "cost_per_g_h": 2800.0
+    },
+    {
+      "scale_factor": 2,
+      "hydraulic_diameter_um": 571.0,
+      "throughput_g_h": 10.0,
+      "heat_transfer_W_m2K": 2500.0,
+      "mixing_time_ms": 200,
+      "reynolds_number": 9.5,
+      "pressure_drop_kPa": 7.5,
+      "total_cost_usd": 16142.0,
+      "cost_per_g_h": 1614.21
+    },
+    {
+      "scale_factor": 3,
+      "hydraulic_diameter_um": 857.0,
+      "throughput_g_h": 22.5,
+      "heat_transfer_W_m2K": 1667.0,
+      "mixing_time_ms": 450,
+      "reynolds_number": 14.3,
+      "pressure_drop_kPa": 5.0,
+      "total_cost_usd": 27981.0,
+      "cost_per_g_h": 1243.59
+    },
+    {
+      "scale_factor": 5,
+      "hydraulic_diameter_um": 1428.0,
+      "throughput_g_h": 62.5,
+      "heat_transfer_W_m2K": 1000.0,
+      "mixing_time_ms": 1250,
+      "reynolds_number": 23.8,
+      "pressure_drop_kPa": 3.0,
+      "total_cost_usd": 57902.0,
+      "cost_per_g_h": 926.43
+    },
+    {
+      "scale_factor": 10,
+      "hydraulic_diameter_um": 2857.0,
+      "throughput_g_h": 250.0,
+      "heat_transfer_W_m2K": 500.0,
+      "mixing_time_ms": 5000,
+      "reynolds_number": 47.6,
+      "pressure_drop_kPa": 1.5,
+      "total_cost_usd": 160114.0,
+      "cost_per_g_h": 640.46
+    }
+  ],
+  "production_targets": [
+    {
+      "production_target_kg_day": 0.1,
+      "target_throughput_g_h": 4.2,
+      "numbering_up": {
+        "n_reactors": 2,
+        "total_cost_usd": 12607.0,
+        "heat_transfer_preserved": true,
+        "mixing_preserved": true
+      },
+      "scaling_up": {
+        "scale_factor": 1.29,
+        "total_cost_usd": 9334.0,
+        "heat_transfer_W_m2K": 3873.0,
+        "mixing_time_ms": 83.3
+      },
+      "hybrid": {
+        "scale_factor": 1.14,
+        "n_reactors": 2,
+        "total_cost_usd": 12607.0,
+        "heat_transfer_factor": 0.88
+      },
+      "recommendation": "numbering_up"
+    },
+    {
+      "production_target_kg_day": 1.0,
+      "target_throughput_g_h": 41.7,
+      "numbering_up": {
+        "n_reactors": 17,
+        "total_cost_usd": 75090.0,
+        "heat_transfer_preserved": true,
+        "mixing_preserved": true
+      },
+      "scaling_up": {
+        "scale_factor": 4.08,
+        "total_cost_usd": 43244.0,
+        "heat_transfer_W_m2K": 1225.0,
+        "mixing_time_ms": 833.3
+      },
+      "hybrid": {
+        "scale_factor": 2.02,
+        "n_reactors": 5,
+        "total_cost_usd": 26216.0,
+        "heat_transfer_factor": 0.495
+      },
+      "recommendation": "numbering_up"
+    },
+    {
+      "production_target_kg_day": 10.0,
+      "target_throughput_g_h": 416.7,
+      "numbering_up": {
+        "n_reactors": 167,
+        "total_cost_usd": 568592.0,
+        "heat_transfer_preserved": true,
+        "mixing_preserved": true
+      },
+      "scaling_up": {
+        "scale_factor": 12.91,
+        "total_cost_usd": 233930.0,
+        "heat_transfer_W_m2K": 387.0,
+        "mixing_time_ms": 8333.3
+      },
+      "hybrid": {
+        "scale_factor": 3.0,
+        "n_reactors": 19,
+        "total_cost_usd": 82802.0,
+        "heat_transfer_factor": 0.333
+      },
+      "recommendation": "hybrid"
+    },
+    {
+      "production_target_kg_day": 100.0,
+      "target_throughput_g_h": 4166.7,
+      "numbering_up": {
+        "n_reactors": 1667,
+        "total_cost_usd": 4230323.0,
+        "heat_transfer_preserved": true,
+        "mixing_preserved": true
+      },
+      "scaling_up": {
+        "scale_factor": 40.82,
+        "total_cost_usd": 1306237.0,
+        "heat_transfer_W_m2K": 122.0,
+        "mixing_time_ms": 83333.3
+      },
+      "hybrid": {
+        "scale_factor": 3.0,
+        "n_reactors": 186,
+        "total_cost_usd": 625448.0,
+        "heat_transfer_factor": 0.333
+      },
+      "recommendation": "hybrid"
+    }
+  ]
+}

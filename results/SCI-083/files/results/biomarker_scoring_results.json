@@ -1,0 +1,155 @@
+{
+  "feature_selection": {
+    "taxa_significant": 4,
+    "met_significant": 0
+  },
+  "diablo_integration": {
+    "microbiome": {
+      "n_features": 30,
+      "n_selected": 18,
+      "selected_features": [
+        "taxa_0",
+        "taxa_1",
+        "taxa_2",
+        "taxa_3",
+        "taxa_4",
+        "taxa_5",
+        "taxa_6",
+        "taxa_8",
+        "taxa_10",
+        "taxa_11",
+        "taxa_14",
+        "taxa_17",
+        "taxa_19",
+        "taxa_20",
+        "taxa_23",
+        "taxa_24",
+        "taxa_25",
+        "taxa_28"
+      ],
+      "variance_explained": [
+        6.31,
+        5.79
+      ]
+    },
+    "metabolome": {
+      "n_features": 50,
+      "n_selected": 28,
+      "selected_features": [
+        "met_0",
+        "met_1",
+        "met_4",
+        "met_5",
+        "met_6",
+        "met_7",
+        "met_8",
+        "met_9",
+        "met_10",
+        "met_11",
+        "met_12",
+        "met_14",
+        "met_20",
+        "met_21",
+        "met_23",
+        "met_25",
+        "met_26",
+        "met_28",
+        "met_30",
+        "met_32"
+      ],
+      "variance_explained": [
+        4.4,
+        4.13
+      ]
+    },
+    "integration_quality": {
+      "cross_block_correlations": {
+        "microbiome \u2194 metabolome": {
+          "correlation": 0.0661,
+          "pvalue": 0.421553
+        }
+      }
+    }
+  },
+  "biomarker_panel": [
+    {
+      "feature": "taxa_0",
+      "omic": "microbiome",
+      "importance": 0.106,
+      "direction": "\u2193"
+    },
+    {
+      "feature": "taxa_1",
+      "omic": "microbiome",
+      "importance": 0.255,
+      "direction": "\u2193"
+    },
+    {
+      "feature": "taxa_5",
+      "omic": "microbiome",
+      "importance": 0.734,
+      "direction": "\u2191"
+    },
+    {
+      "feature": "taxa_6",
+      "omic": "microbiome",
+      "importance": 0.693,
+      "direction": "\u2191"
+    },
+    {
+      "feature": "taxa_3",
+      "omic": "microbiome",
+      "importance": 0.381,
+      "direction": "\u2193"
+    },
+    {
+      "feature": "met_2",
+      "omic": "metabolome",
+      "importance": 0.35,
+      "direction": "\u2193"
+    },
+    {
+      "feature": "met_0",
+      "omic": "metabolome",
+      "importance": 0.36,
+      "direction": "\u2193"
+    },
+    {
+      "feature": "met_11",
+      "omic": "metabolome",
+      "importance": 0.396,
+      "direction": "\u2193"
+    },
+    {
+      "feature": "met_4",
+      "omic": "metabolome",
+      "importance": 0.604,
+      "direction": "\u2191"
+    },
+    {
+      "feature": "met_5",
+      "omic": "metabolome",
+      "importance": 0.6,
+      "direction": "\u2191"
+    }
+  ],
+  "full_model_auc": {
+    "auc": 0.709,
+    "ci_lower": 0.5831,
+    "ci_upper": 0.8349,
+    "n_positive": 100,
+    "n_negative": 50
+  },
+  "cross_validation": {
+    "mean_auc": 0.6665,
+    "std_auc": 0.0432,
+    "fold_aucs": [
+      0.745,
+      0.6335,
+      0.6389,
+      0.6818,
+      0.6335
+    ],
+    "n_folds": 5
+  }
+}

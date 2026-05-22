@@ -1,0 +1,19 @@
+{
+  "seq2seq_transformer": {
+    "vocab_size": 21,
+    "d_model": 256,
+    "nhead": 8,
+    "encoder_layers": 6,
+    "decoder_layers": 6,
+    "dim_feedforward": 1024,
+    "total_params": 11070997,
+    "trainable_params": 11070997
+  },
+  "graph2smiles_encoder": {
+    "node_feat_dim": 64,
+    "edge_feat_dim": 16,
+    "d_model": 256,
+    "gnn_layers": 4,
+    "total_params": 1862144
+  }
+}

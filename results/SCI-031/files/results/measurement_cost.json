@@ -1,0 +1,96 @@
+{
+  "grouping": {
+    "n_total_terms": 17,
+    "n_groups_qwc": 7,
+    "group_sizes": [
+      7,
+      3,
+      3,
+      1,
+      1,
+      1,
+      1
+    ],
+    "measurement_reduction_ratio": 0.5882352941176471,
+    "speedup_factor": 2.4285714285714284
+  },
+  "classical_shadow": {
+    "exact_energy": 0.229124806732098,
+    "shadow_estimates": [
+      {
+        "n_shadows": 100,
+        "estimated_energy": -0.09960317940648378,
+        "std_error": 0.04339100184489748,
+        "abs_error": 0.3287279861385818
+      },
+      {
+        "n_shadows": 300,
+        "estimated_energy": 0.002145545353310666,
+        "std_error": 0.028783110618652383,
+        "abs_error": 0.22697926137878735
+      },
+      {
+        "n_shadows": 500,
+        "estimated_energy": -0.020171851041805286,
+        "std_error": 0.02244837327990115,
+        "abs_error": 0.2492966577739033
+      },
+      {
+        "n_shadows": 1000,
+        "estimated_energy": -0.057669886349368184,
+        "std_error": 0.01672457466993236,
+        "abs_error": 0.2867946930814662
+      }
+    ]
+  },
+  "shot_scaling": [
+    {
+      "n_terms": 10,
+      "naive_shots": 100000,
+      "grouped_shots": 30000,
+      "shadow_shots": 71936,
+      "grouping_speedup": 3.3333333333333335,
+      "shadow_speedup": 1.3901245551601424
+    },
+    {
+      "n_terms": 20,
+      "naive_shots": 200000,
+      "grouped_shots": 40000,
+      "shadow_shots": 91335,
+      "grouping_speedup": 5.0,
+      "shadow_speedup": 2.189741063119286
+    },
+    {
+      "n_terms": 50,
+      "naive_shots": 500000,
+      "grouped_shots": 70000,
+      "shadow_shots": 117954,
+      "grouping_speedup": 7.142857142857143,
+      "shadow_speedup": 4.238940603964258
+    },
+    {
+      "n_terms": 100,
+      "naive_shots": 1000000,
+      "grouped_shots": 100000,
+      "shadow_shots": 138453,
+      "grouping_speedup": 10.0,
+      "shadow_speedup": 7.222667620058792
+    },
+    {
+      "n_terms": 200,
+      "naive_shots": 2000000,
+      "grouped_shots": 140000,
+      "shadow_shots": 159099,
+      "grouping_speedup": 14.285714285714286,
+      "shadow_speedup": 12.5707892570035
+    },
+    {
+      "n_terms": 500,
+      "naive_shots": 5000000,
+      "grouped_shots": 220000,
+      "shadow_shots": 186498,
+      "grouping_speedup": 22.727272727272727,
+      "shadow_speedup": 26.80993898057888
+    }
+  ]
+}

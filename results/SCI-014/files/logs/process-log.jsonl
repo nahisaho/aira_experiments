@@ -1,0 +1,3 @@
+{"timestamp": "2026-05-22T13:19:15.644215Z", "phase": "plan", "event_type": "run_started", "actor": "co-scientist", "skill_or_tool": "co-scientist-data-analysis", "files_written": [], "status": "ok"}
+{"timestamp": "2026-05-22T13:19:15.644255Z", "phase": "plan", "event_type": "prompt_received", "actor": "co-scientist", "skill_or_tool": "user_request", "files_written": [], "status": "ok"}
+{"timestamp": "2026-05-22T13:19:15.644257Z", "phase": "plan", "event_type": "skill_selected", "actor": "co-scientist", "skill_or_tool": "co-scientist-data-analysis", "files_written": [], "status": "ok"}

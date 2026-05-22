@@ -1,0 +1,48 @@
+{
+  "model": "plant_immunity_model.sbml",
+  "tasks": [
+    {
+      "type": "Time Course",
+      "method": "Deterministic (LSODA)",
+      "duration": 120,
+      "intervals": 1000,
+      "output": [
+        "flg22",
+        "FLS2_BAK1_flg22",
+        "MPK3_PP",
+        "SA",
+        "NPR1_monomer",
+        "PR1",
+        "ROS"
+      ]
+    },
+    {
+      "type": "Parameter Scan",
+      "scan_items": [
+        {
+          "parameter": "kon_flg22_FLS2",
+          "min": 0.001,
+          "max": 0.1,
+          "intervals": 20
+        },
+        {
+          "parameter": "k_SA_inhibits_JA",
+          "min": 0,
+          "max": 5,
+          "intervals": 20
+        }
+      ]
+    },
+    {
+      "type": "Steady State",
+      "method": "Newton",
+      "resolution": 1e-09
+    },
+    {
+      "type": "Sensitivity Analysis",
+      "target": "PR1",
+      "parameters": "all kinetic parameters"
+    }
+  ],
+  "notes": "Import SBML into COPASI 4.x or CellDesigner 4.4+. Configure tasks as specified."
+}

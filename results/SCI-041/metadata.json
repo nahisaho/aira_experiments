@@ -1,0 +1,11 @@
+{
+  "experiment_id": "SCI-041",
+  "title": "タンパク質言語モデルのファインチューニング",
+  "project_id": "0e225085-e7cc-4b84-a64e-59e858ff6757",
+  "prompt_length": 437,
+  "output_length": 870,
+  "file_count": 25,
+  "duration_seconds": 567,
+  "status": "success",
+  "timestamp": "2026-05-22T16:08:42.591Z"
+}

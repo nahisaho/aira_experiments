@@ -1,0 +1,16 @@
+{
+  "dataset_samples": 220,
+  "hydrolysis_test_r2": 0.9366239920398196,
+  "hydrolysis_test_rmse": 1.5309144123284218e-05,
+  "pareto_points": 1,
+  "marine_final_weight_loss_pct": {
+    "PBS": 4.113123952115302,
+    "PHA": 8.14658158951633,
+    "PLA": 5.030399963650126
+  },
+  "best_ml_model": "GradientBoosting",
+  "best_ml_r2": 0.9458608314961665,
+  "best_copolymer_score": 0.8499999999999999,
+  "best_copolymer_system": "LA-GA-ε-CL",
+  "most_degradable_case_variant": "PHBV blend"
+}

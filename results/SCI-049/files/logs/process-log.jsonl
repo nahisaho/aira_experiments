@@ -1,0 +1,18 @@
+{"timestamp": "2026-05-23T01:42:12", "phase": "data", "event_type": "generating_data", "actor": "co-scientist"}
+{"timestamp": "2026-05-23T01:42:12", "phase": "data", "event_type": "data_saved", "actor": "co-scientist", "files": ["data/synthetic_events.csv", "data/timeseries.csv"]}
+{"timestamp": "2026-05-23T01:42:12", "phase": "changepoint", "event_type": "pelt_start", "actor": "co-scientist"}
+{"timestamp": "2026-05-23T01:42:15", "phase": "changepoint", "event_type": "pelt_complete", "actor": "co-scientist"}
+{"timestamp": "2026-05-23T01:42:15", "phase": "changepoint", "event_type": "bocpd_start", "actor": "co-scientist"}
+{"timestamp": "2026-05-23T01:42:15", "phase": "changepoint", "event_type": "bocpd_complete", "actor": "co-scientist"}
+{"timestamp": "2026-05-23T01:42:15", "phase": "outlier", "event_type": "iforest_start", "actor": "co-scientist"}
+{"timestamp": "2026-05-23T01:42:17", "phase": "outlier", "event_type": "iforest_complete", "actor": "co-scientist"}
+{"timestamp": "2026-05-23T01:42:17", "phase": "outlier", "event_type": "deep_svdd_start", "actor": "co-scientist"}
+{"timestamp": "2026-05-23T01:42:17", "phase": "outlier", "event_type": "deep_svdd_complete", "actor": "co-scientist"}
+{"timestamp": "2026-05-23T01:42:17", "phase": "physics", "event_type": "scoring_start", "actor": "co-scientist"}
+{"timestamp": "2026-05-23T01:42:17", "phase": "physics", "event_type": "scoring_complete", "actor": "co-scientist"}
+{"timestamp": "2026-05-23T01:42:17", "phase": "drift", "event_type": "detection_start", "actor": "co-scientist"}
+{"timestamp": "2026-05-23T01:42:17", "phase": "drift", "event_type": "detection_complete", "actor": "co-scientist"}
+{"timestamp": "2026-05-23T01:42:17", "phase": "explain", "event_type": "analysis_start", "actor": "co-scientist"}
+{"timestamp": "2026-05-23T01:42:19", "phase": "explain", "event_type": "analysis_complete", "actor": "co-scientist"}
+{"timestamp": "2026-05-23T01:42:19", "phase": "streaming", "event_type": "pipeline_start", "actor": "co-scientist"}
+{"timestamp": "2026-05-23T01:42:19", "phase": "streaming", "event_type": "pipeline_complete", "actor": "co-scientist"}

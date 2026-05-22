@@ -1,0 +1,10 @@
+{
+  "ternary_best_linker": "PipeAm",
+  "linker_opt_best": "Amide4",
+  "e3_roc_auc": 1.0,
+  "brd4_best_DC50_nM": 1.0,
+  "brd4_best_Dmax_pct": 98.0,
+  "n_activity_cliffs": 0,
+  "sar_pDC50_R2": 0.4759,
+  "sar_Dmax_R2": 0.489
+}

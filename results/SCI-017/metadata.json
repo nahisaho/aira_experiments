@@ -1,0 +1,11 @@
+{
+  "experiment_id": "SCI-017",
+  "title": "次世代mRNAワクチン設計最適化",
+  "project_id": "6d11e47d-106e-42a8-8441-067ad8984112",
+  "prompt_length": 407,
+  "output_length": 1109,
+  "file_count": 16,
+  "duration_seconds": 595,
+  "status": "success",
+  "timestamp": "2026-05-22T13:32:28.764Z"
+}

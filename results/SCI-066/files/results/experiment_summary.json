@@ -1,0 +1,52 @@
+{
+  "experiment_date": "2026-05-23T03:07:10.959934",
+  "device": "cpu",
+  "model": {
+    "architecture": "U-Net + ConvLSTM Hybrid",
+    "total_params": 2060823,
+    "physics_constraints": [
+      "energy_conservation",
+      "mass_conservation",
+      "spatial_smoothness"
+    ]
+  },
+  "data": {
+    "n_samples": 180,
+    "spatial_resolution": "32\u00d764",
+    "variables": [
+      "temperature",
+      "precipitation",
+      "sea_level"
+    ],
+    "scenarios": [
+      "ssp126",
+      "ssp245",
+      "ssp370",
+      "ssp585"
+    ],
+    "seq_length": 5
+  },
+  "training": {
+    "epochs_trained": 10,
+    "best_val_loss": 2.022375,
+    "training_time_s": 34.2,
+    "ensemble_members": 3
+  },
+  "evaluation": {
+    "temperature": {
+      "mean_rmse_across_scenarios": 261.8435,
+      "mean_pattern_corr": 0.9953,
+      "mean_spatial_skill_score": 0.0
+    },
+    "precipitation": {
+      "mean_rmse_across_scenarios": 1.0467,
+      "mean_pattern_corr": 0.9562,
+      "mean_spatial_skill_score": 0.0382
+    },
+    "sea_level": {
+      "mean_rmse_across_scenarios": 0.7998,
+      "mean_pattern_corr": 0.5238,
+      "mean_spatial_skill_score": 0.0
+    }
+  }
+}

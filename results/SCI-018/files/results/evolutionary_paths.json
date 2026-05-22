@@ -1,0 +1,30 @@
+{
+  "accessibility": {
+    "start": "00000000",
+    "end": "11111111",
+    "accessible_path_count": 46,
+    "total_direct_paths": 40320,
+    "accessibility_ratio": 0.001141
+  },
+  "greedy_walk": {
+    "endpoint": "01101000",
+    "path_length": 3,
+    "final_fitness": 0.751
+  },
+  "monte_carlo": {
+    "n_walks": 300,
+    "mean_length": 4.2,
+    "std_length": 1.9305,
+    "endpoint_counts": {
+      "11011011": 174,
+      "11001001": 79,
+      "01101000": 47
+    },
+    "convergence": 0.58
+  },
+  "trajectory": {
+    "dominant_genotype": "11011001",
+    "dominant_frequency": 0.302,
+    "final_diversity": 4.344
+  }
+}

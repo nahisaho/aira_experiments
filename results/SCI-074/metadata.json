@@ -1,0 +1,11 @@
+{
+  "experiment_id": "SCI-074",
+  "title": "自律飛行ドローンの環境認識",
+  "project_id": "249caded-72f5-4bf0-9d4f-ccf6955ef781",
+  "prompt_length": 388,
+  "output_length": 4302,
+  "file_count": 30,
+  "duration_seconds": 931,
+  "status": "success",
+  "timestamp": "2026-05-22T18:50:23.274Z"
+}

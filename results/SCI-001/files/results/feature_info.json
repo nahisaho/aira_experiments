@@ -1,0 +1,17 @@
+{
+  "X_seq_shape": [
+    5000,
+    23,
+    23
+  ],
+  "X_scalar_shape": [
+    5000,
+    31
+  ],
+  "y_shape": [
+    5000
+  ],
+  "pos_rate": 0.453,
+  "seq_channels": "guide_OH(4) + target_OH(4) + mismatch_type(15) = 23",
+  "scalar_channels": "positional_mismatch(23) + epigenetic(8) = 31"
+}

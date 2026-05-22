@@ -1,0 +1,46 @@
+{
+  "wild_type": {
+    "growth_rate": 0.873922
+  },
+  "max_theoretical_lysine": 7.994197,
+  "growth_coupled_lysine": 7.209026,
+  "carbon_yield": 0.7994,
+  "optknock_strategies": 0,
+  "top_strategies": [],
+  "overexpression_targets": [
+    {
+      "reaction": "LYS_SYNTH",
+      "production": 7.209,
+      "increase": 0.0
+    },
+    {
+      "reaction": "CS",
+      "production": 7.209,
+      "increase": 0.0
+    },
+    {
+      "reaction": "PPC",
+      "production": 7.209,
+      "increase": 0.0
+    },
+    {
+      "reaction": "AKGDH",
+      "production": 7.209,
+      "increase": 0.0
+    },
+    {
+      "reaction": "G6PDH2r",
+      "production": 7.209,
+      "increase": 0.0
+    },
+    {
+      "reaction": "GND",
+      "production": 7.209,
+      "increase": 0.0
+    }
+  ],
+  "production_envelope": {
+    "max_at_zero_growth": 7.994197,
+    "max_at_50pct_growth": 3.866232
+  }
+}

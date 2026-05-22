@@ -1,0 +1,313 @@
+{
+  "metadata": {
+    "created_at": "2026-05-22T17:37:56.662491+00:00",
+    "seed": 20250314,
+    "n_areas": 196,
+    "n_months": 24,
+    "model_description": "Poisson BYM-inspired disease mapping with ICAR structured effects, Gaussian unstructured effects, and Laplace approximation over the latent posterior."
+  },
+  "covariate_correlation": {
+    "temperature_mean": {
+      "temperature_mean": 1.0,
+      "precipitation_mean": -0.6779,
+      "elevation": -0.954,
+      "population_density": 0.4644,
+      "urbanization_index": 0.5375,
+      "malaria_rate_per_100k": -0.0562,
+      "dengue_rate_per_100k": 0.4814
+    },
+    "precipitation_mean": {
+      "temperature_mean": -0.6779,
+      "precipitation_mean": 1.0,
+      "elevation": 0.6903,
+      "population_density": -0.3462,
+      "urbanization_index": -0.4354,
+      "malaria_rate_per_100k": 0.2879,
+      "dengue_rate_per_100k": -0.2548
+    },
+    "elevation": {
+      "temperature_mean": -0.954,
+      "precipitation_mean": 0.6903,
+      "elevation": 1.0,
+      "population_density": -0.3829,
+      "urbanization_index": -0.4671,
+      "malaria_rate_per_100k": 0.0063,
+      "dengue_rate_per_100k": -0.4905
+    },
+    "population_density": {
+      "temperature_mean": 0.4644,
+      "precipitation_mean": -0.3462,
+      "elevation": -0.3829,
+      "population_density": 1.0,
+      "urbanization_index": 0.9388,
+      "malaria_rate_per_100k": -0.1928,
+      "dengue_rate_per_100k": 0.5708
+    },
+    "urbanization_index": {
+      "temperature_mean": 0.5375,
+      "precipitation_mean": -0.4354,
+      "elevation": -0.4671,
+      "population_density": 0.9388,
+      "urbanization_index": 1.0,
+      "malaria_rate_per_100k": -0.2033,
+      "dengue_rate_per_100k": 0.5683
+    },
+    "malaria_rate_per_100k": {
+      "temperature_mean": -0.0562,
+      "precipitation_mean": 0.2879,
+      "elevation": 0.0063,
+      "population_density": -0.1928,
+      "urbanization_index": -0.2033,
+      "malaria_rate_per_100k": 1.0,
+      "dengue_rate_per_100k": 0.101
+    },
+    "dengue_rate_per_100k": {
+      "temperature_mean": 0.4814,
+      "precipitation_mean": -0.2548,
+      "elevation": -0.4905,
+      "population_density": 0.5708,
+      "urbanization_index": 0.5683,
+      "malaria_rate_per_100k": 0.101,
+      "dengue_rate_per_100k": 1.0
+    }
+  },
+  "diseases": {
+    "malaria": {
+      "total_cases": 21683,
+      "overall_rate_per_100k_year": 647.7359562611688,
+      "smr_summary": {
+        "mean": 1.0394953291831222,
+        "median": 0.8378197342861033,
+        "min": 0.23763903301129394,
+        "max": 4.596044033446607
+      },
+      "rr_summary": {
+        "mean": 1.0443163905602142,
+        "median": 0.8378428929580999,
+        "min": 0.25945001147823593,
+        "max": 4.576066080886118
+      },
+      "exceedance_summary": {
+        "mean": 0.3857901674238595,
+        "areas_above_0_8": 67,
+        "areas_above_0_95": 61
+      },
+      "model_parameters": {
+        "tau_structured": 3.6,
+        "tau_unstructured": 3.6,
+        "laplace_score": 1163.672281227106,
+        "objective": 434.30979075441326,
+        "gradient_norm": 0.00019436061710852102
+      },
+      "covariate_effects": {
+        "Intercept": {
+          "name": "Intercept",
+          "posterior_mean": -0.13488454887773974,
+          "lower_95": -0.210479991691719,
+          "upper_95": -0.05928910606376046,
+          "rr_multiplier": 0.8738167889936624,
+          "rr_lower_95": 0.8101952656278175,
+          "rr_upper_95": 0.9424342663067996
+        },
+        "temperature_mean": {
+          "name": "temperature_mean",
+          "posterior_mean": -0.17313391983882576,
+          "lower_95": -0.699637459574896,
+          "upper_95": 0.35336961989724447,
+          "rr_multiplier": 0.8410249773731773,
+          "rr_lower_95": 0.4967653686769743,
+          "rr_upper_95": 1.423857332183508
+        },
+        "precipitation_mean": {
+          "name": "precipitation_mean",
+          "posterior_mean": 0.31483825561000767,
+          "lower_95": 0.11228109464153846,
+          "upper_95": 0.5173954165784769,
+          "rr_multiplier": 1.3700376971234949,
+          "rr_lower_95": 1.1188273128100032,
+          "rr_upper_95": 1.6776523687335094
+        },
+        "elevation": {
+          "name": "elevation",
+          "posterior_mean": -0.3808592988961445,
+          "lower_95": -0.8557833110254986,
+          "upper_95": 0.09406471323320958,
+          "rr_multiplier": 0.6832740202657843,
+          "rr_lower_95": 0.42495019250749433,
+          "rr_upper_95": 1.0986308395705313
+        },
+        "population_density": {
+          "name": "population_density",
+          "posterior_mean": -0.028529348488167256,
+          "lower_95": -0.3566778347242035,
+          "upper_95": 0.299619137747869,
+          "rr_multiplier": 0.9718737707017191,
+          "rr_lower_95": 0.699997976453095,
+          "rr_upper_95": 1.3493447952006596
+        },
+        "urbanization_index": {
+          "name": "urbanization_index",
+          "posterior_mean": -0.029737024190138534,
+          "lower_95": -0.2993613608629666,
+          "upper_95": 0.23988731248268955,
+          "rr_multiplier": 0.9707007708077611,
+          "rr_lower_95": 0.7412914872980788,
+          "rr_upper_95": 1.2711059044819326
+        }
+      },
+      "top_hotspots": [
+        {
+          "area_id": 181,
+          "malaria_rr_mean": 4.5761,
+          "malaria_exceedance_prob": 1.0,
+          "malaria_cases": 298
+        },
+        {
+          "area_id": 183,
+          "malaria_rr_mean": 3.4917,
+          "malaria_exceedance_prob": 1.0,
+          "malaria_cases": 269
+        },
+        {
+          "area_id": 27,
+          "malaria_rr_mean": 3.4349,
+          "malaria_exceedance_prob": 1.0,
+          "malaria_cases": 366
+        },
+        {
+          "area_id": 195,
+          "malaria_rr_mean": 3.4007,
+          "malaria_exceedance_prob": 1.0,
+          "malaria_cases": 233
+        },
+        {
+          "area_id": 105,
+          "malaria_rr_mean": 2.9988,
+          "malaria_exceedance_prob": 1.0,
+          "malaria_cases": 335
+        }
+      ]
+    },
+    "dengue": {
+      "total_cases": 24376,
+      "overall_rate_per_100k_year": 728.1839076614053,
+      "smr_summary": {
+        "mean": 0.8487061860701233,
+        "median": 0.5652535958453895,
+        "min": 0.0515172985570278,
+        "max": 5.48484876252864
+      },
+      "rr_summary": {
+        "mean": 0.8528579259472091,
+        "median": 0.5620916759650656,
+        "min": 0.08399703576883757,
+        "max": 5.479454864620337
+      },
+      "exceedance_summary": {
+        "mean": 0.2651391434143099,
+        "areas_above_0_8": 44,
+        "areas_above_0_95": 40
+      },
+      "model_parameters": {
+        "tau_structured": 3.6,
+        "tau_unstructured": 3.6,
+        "laplace_score": 1120.232755511696,
+        "objective": 416.07470194467464,
+        "gradient_norm": 0.0012882828144218867
+      },
+      "covariate_effects": {
+        "Intercept": {
+          "name": "Intercept",
+          "posterior_mean": -0.5328768712699385,
+          "lower_95": -0.6097366709661491,
+          "upper_95": -0.45601707157372795,
+          "rr_multiplier": 0.5869140623792759,
+          "rr_lower_95": 0.5434939679741158,
+          "rr_upper_95": 0.6338030169912576
+        },
+        "temperature_mean": {
+          "name": "temperature_mean",
+          "posterior_mean": -0.15538651927736613,
+          "lower_95": -0.6854109189279505,
+          "upper_95": 0.3746378803732182,
+          "rr_multiplier": 0.8560842204728398,
+          "rr_lower_95": 0.5038831319111874,
+          "rr_upper_95": 1.4544646290556211
+        },
+        "precipitation_mean": {
+          "name": "precipitation_mean",
+          "posterior_mean": 0.00959028705053508,
+          "lower_95": -0.1940561118637336,
+          "upper_95": 0.21323668596480375,
+          "rr_multiplier": 1.0096364212154123,
+          "rr_lower_95": 0.8236116885851256,
+          "rr_upper_95": 1.2376775574856445
+        },
+        "elevation": {
+          "name": "elevation",
+          "posterior_mean": -0.28101093128399973,
+          "lower_95": -0.7595681883468319,
+          "upper_95": 0.19754632577883252,
+          "rr_multiplier": 0.7550200820961551,
+          "rr_lower_95": 0.4678684144300099,
+          "rr_upper_95": 1.2184095074316275
+        },
+        "population_density": {
+          "name": "population_density",
+          "posterior_mean": 0.12813835476973925,
+          "lower_95": -0.20428803854832464,
+          "upper_95": 0.4605647480878031,
+          "rr_multiplier": 1.1367102611045194,
+          "rr_lower_95": 0.8152275204143441,
+          "rr_upper_95": 1.5849688404086042
+        },
+        "urbanization_index": {
+          "name": "urbanization_index",
+          "posterior_mean": 0.37971906621359724,
+          "lower_95": 0.10570719343144841,
+          "upper_95": 0.6537309389957461,
+          "rr_multiplier": 1.4618738419868358,
+          "rr_lower_95": 1.1114963754147849,
+          "rr_upper_95": 1.9227009436606077
+        }
+      },
+      "top_hotspots": [
+        {
+          "area_id": 52,
+          "dengue_rr_mean": 5.4795,
+          "dengue_exceedance_prob": 1.0,
+          "dengue_cases": 1247
+        },
+        {
+          "area_id": 81,
+          "dengue_rr_mean": 4.9176,
+          "dengue_exceedance_prob": 1.0,
+          "dengue_cases": 774
+        },
+        {
+          "area_id": 11,
+          "dengue_rr_mean": 3.9868,
+          "dengue_exceedance_prob": 1.0,
+          "dengue_cases": 536
+        },
+        {
+          "area_id": 97,
+          "dengue_rr_mean": 3.2224,
+          "dengue_exceedance_prob": 1.0,
+          "dengue_cases": 311
+        },
+        {
+          "area_id": 66,
+          "dengue_rr_mean": 3.1878,
+          "dengue_exceedance_prob": 1.0,
+          "dengue_cases": 716
+        }
+      ]
+    }
+  },
+  "comparative_metrics": {
+    "rr_correlation": 0.09825764201878404,
+    "smr_correlation": 0.10098842665638076,
+    "high_risk_overlap_0_8": 13
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "framework": "DMDDSF v1.0",
+  "run_date": "2026-05-23T05:39:36.627701",
+  "modules": [
+    "sensitivity",
+    "non_wimp",
+    "directional",
+    "neutrino_floor",
+    "backgrounds",
+    "multi_target",
+    "annual_modulation"
+  ],
+  "total_results_files": 7
+}

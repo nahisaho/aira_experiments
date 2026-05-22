@@ -1,0 +1,11 @@
+{
+  "experiment_id": "SCI-051",
+  "title": "連続フロー合成の自動最適化",
+  "project_id": "64b2475d-b3f2-4953-bb89-6c7882d5a899",
+  "prompt_length": 368,
+  "output_length": 562,
+  "file_count": 28,
+  "duration_seconds": 522,
+  "status": "success",
+  "timestamp": "2026-05-22T17:01:41.367Z"
+}

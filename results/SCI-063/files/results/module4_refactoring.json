@@ -1,0 +1,45 @@
+{
+  "total_compressions": 450,
+  "total_bp_saved": 96082,
+  "original_genome_estimate_bp": 580000,
+  "refactored_genome_estimate_bp": 483918,
+  "compression_pct": 16.56586206896552,
+  "redundancy_groups_found": 30,
+  "mergeable_groups": 13,
+  "by_compression_type": {
+    "gene_overlap": {
+      "count": 57,
+      "sum": 791,
+      "mean": 13.87719298245614
+    },
+    "intergenic_reduction": {
+      "count": 342,
+      "sum": 78425,
+      "mean": 229.31286549707602
+    },
+    "promoter_consolidation": {
+      "count": 38,
+      "sum": 4340,
+      "mean": 114.21052631578948
+    },
+    "redundant_gene_removal": {
+      "count": 13,
+      "sum": 12526,
+      "mean": 963.5384615384615
+    }
+  },
+  "by_risk_level": {
+    "high": {
+      "count": 13,
+      "sum": 12526
+    },
+    "low": {
+      "count": 122,
+      "sum": 4038
+    },
+    "medium": {
+      "count": 315,
+      "sum": 79518
+    }
+  }
+}

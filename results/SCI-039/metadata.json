@@ -1,0 +1,11 @@
+{
+  "experiment_id": "SCI-039",
+  "title": "深層学習気象予測モデル",
+  "project_id": "57e9e857-da1a-45b5-b1b0-acc7e9d0d2a2",
+  "prompt_length": 421,
+  "output_length": 905,
+  "file_count": 31,
+  "duration_seconds": 1660,
+  "status": "success",
+  "timestamp": "2026-05-22T16:26:56.066Z"
+}

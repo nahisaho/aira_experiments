@@ -1,0 +1,8 @@
+{
+  "final_max_length": 18,
+  "final_functional_count": 0,
+  "final_mean_length": 6.317119393556538,
+  "p_specific_20mer": 9.536743164062511e-27,
+  "p_at_least_one_20mer_in_10k": 0.0,
+  "total_monomers_remaining": 1
+}

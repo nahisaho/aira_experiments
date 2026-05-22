@@ -1,0 +1,263 @@
+warehouse:
+  name: sample_warehouse_a
+  frame_id: map
+  dimensions_m:
+    length_x: 50.0
+    width_y: 30.0
+    height_z: 8.0
+  usable_height_m: 6.0
+  coordinate_origin: southwest_floor_corner
+  notes:
+    - x increases eastward along aisle length
+    - y increases northward across aisles
+    - z increases upward from floor level
+
+flight_bounds:
+  min:
+    x: 0.5
+    y: 0.5
+    z: 0.4
+  max:
+    x: 49.5
+    y: 29.5
+    z: 6.5
+
+cross_aisles:
+  front_cross_aisle:
+    x_range: [0.0, 4.0]
+    y_range: [0.0, 30.0]
+  rear_cross_aisle:
+    x_range: [46.0, 50.0]
+    y_range: [0.0, 30.0]
+
+aisles:
+  - id: A1
+    centerline_y: 4.0
+    width_m: 2.2
+    x_start: 4.0
+    x_end: 46.0
+    scan_direction_primary: eastbound
+    hold_waypoints: [A1_ENTRY_HOLD, A1_EXIT_HOLD]
+  - id: A2
+    centerline_y: 9.0
+    width_m: 2.2
+    x_start: 4.0
+    x_end: 46.0
+    scan_direction_primary: westbound
+    hold_waypoints: [A2_ENTRY_HOLD, A2_EXIT_HOLD]
+  - id: A3
+    centerline_y: 14.0
+    width_m: 2.2
+    x_start: 4.0
+    x_end: 46.0
+    scan_direction_primary: eastbound
+    hold_waypoints: [A3_ENTRY_HOLD, A3_EXIT_HOLD]
+  - id: A4
+    centerline_y: 19.0
+    width_m: 2.2
+    x_start: 4.0
+    x_end: 46.0
+    scan_direction_primary: westbound
+    hold_waypoints: [A4_ENTRY_HOLD, A4_EXIT_HOLD]
+  - id: A5
+    centerline_y: 24.0
+    width_m: 2.2
+    x_start: 4.0
+    x_end: 46.0
+    scan_direction_primary: eastbound
+    hold_waypoints: [A5_ENTRY_HOLD, A5_EXIT_HOLD]
+
+shelf_rows:
+  - id: S1_SOUTH
+    aisle_id: A1
+    side: south
+    x_range: [4.0, 46.0]
+    y_range: [1.4, 2.6]
+    depth_m: 1.2
+    tiers_z_m: [1.5, 3.0, 4.5, 6.0]
+    scan_offset_m: 0.55
+  - id: S1_NORTH
+    aisle_id: A1
+    side: north
+    x_range: [4.0, 46.0]
+    y_range: [5.4, 6.6]
+    depth_m: 1.2
+    tiers_z_m: [1.5, 3.0, 4.5, 6.0]
+    scan_offset_m: 0.55
+  - id: S2_SOUTH
+    aisle_id: A2
+    side: south
+    x_range: [4.0, 46.0]
+    y_range: [6.4, 7.6]
+    depth_m: 1.2
+    tiers_z_m: [1.5, 3.0, 4.5, 6.0]
+    scan_offset_m: 0.55
+  - id: S2_NORTH
+    aisle_id: A2
+    side: north
+    x_range: [4.0, 46.0]
+    y_range: [10.4, 11.6]
+    depth_m: 1.2
+    tiers_z_m: [1.5, 3.0, 4.5, 6.0]
+    scan_offset_m: 0.55
+  - id: S3_SOUTH
+    aisle_id: A3
+    side: south
+    x_range: [4.0, 46.0]
+    y_range: [11.4, 12.6]
+    depth_m: 1.2
+    tiers_z_m: [1.5, 3.0, 4.5, 6.0]
+    scan_offset_m: 0.55
+  - id: S3_NORTH
+    aisle_id: A3
+    side: north
+    x_range: [4.0, 46.0]
+    y_range: [15.4, 16.6]
+    depth_m: 1.2
+    tiers_z_m: [1.5, 3.0, 4.5, 6.0]
+    scan_offset_m: 0.55
+  - id: S4_SOUTH
+    aisle_id: A4
+    side: south
+    x_range: [4.0, 46.0]
+    y_range: [16.4, 17.6]
+    depth_m: 1.2
+    tiers_z_m: [1.5, 3.0, 4.5, 6.0]
+    scan_offset_m: 0.55
+  - id: S4_NORTH
+    aisle_id: A4
+    side: north
+    x_range: [4.0, 46.0]
+    y_range: [20.4, 21.6]
+    depth_m: 1.2
+    tiers_z_m: [1.5, 3.0, 4.5, 6.0]
+    scan_offset_m: 0.55
+  - id: S5_SOUTH
+    aisle_id: A5
+    side: south
+    x_range: [4.0, 46.0]
+    y_range: [21.4, 22.6]
+    depth_m: 1.2
+    tiers_z_m: [1.5, 3.0, 4.5, 6.0]
+    scan_offset_m: 0.55
+  - id: S5_NORTH
+    aisle_id: A5
+    side: north
+    x_range: [4.0, 46.0]
+    y_range: [25.4, 26.6]
+    depth_m: 1.2
+    tiers_z_m: [1.5, 3.0, 4.5, 6.0]
+    scan_offset_m: 0.55
+
+landing_pads:
+  - id: PAD_SW
+    pose:
+      x: 2.0
+      y: 1.8
+      z: 0.0
+      yaw_deg: 0.0
+    size_m: [1.5, 1.5]
+    type: charging_pad
+  - id: PAD_SE
+    pose:
+      x: 48.0
+      y: 1.8
+      z: 0.0
+      yaw_deg: 180.0
+    size_m: [1.5, 1.5]
+    type: backup_pad
+
+no_fly_zones:
+  - id: PACKING_STATIONS
+    type: hard_keep_out
+    polygon_xy:
+      - [0.0, 26.5]
+      - [8.0, 26.5]
+      - [8.0, 30.0]
+      - [0.0, 30.0]
+    z_range: [0.0, 8.0]
+  - id: INBOUND_DOCKS
+    type: hard_keep_out
+    polygon_xy:
+      - [46.0, 10.0]
+      - [50.0, 10.0]
+      - [50.0, 20.0]
+      - [46.0, 20.0]
+    z_range: [0.0, 8.0]
+  - id: HUMAN_WORKCELL
+    type: soft_keep_out
+    polygon_xy:
+      - [0.0, 8.0]
+      - [6.0, 8.0]
+      - [6.0, 14.0]
+      - [0.0, 14.0]
+    z_range: [0.0, 3.0]
+  - id: FIRE_EXIT_CLEARANCE
+    type: hard_keep_out
+    polygon_xy:
+      - [22.5, 29.0]
+      - [27.5, 29.0]
+      - [27.5, 30.0]
+      - [22.5, 30.0]
+    z_range: [0.0, 8.0]
+
+precision_landing_markers:
+  - id: MARKER_PAD_SW
+    pad_id: PAD_SW
+    pose: {x: 2.0, y: 1.8, z: 0.0}
+    marker_family: april_tag_36h11
+    marker_size_m: 0.20
+  - id: MARKER_PAD_SE
+    pad_id: PAD_SE
+    pose: {x: 48.0, y: 1.8, z: 0.0}
+    marker_family: april_tag_36h11
+    marker_size_m: 0.20
+
+waypoints:
+  - {id: TAKEOFF_SW, x: 2.0, y: 1.8, z: 1.8, yaw_deg: 0.0, type: takeoff}
+  - {id: STAGING_FRONT, x: 3.2, y: 15.0, z: 1.8, yaw_deg: 0.0, type: staging}
+  - {id: A1_ENTRY_HOLD, x: 4.0, y: 4.0, z: 1.8, yaw_deg: 0.0, type: hold}
+  - {id: A1_EXIT_HOLD, x: 46.0, y: 4.0, z: 1.8, yaw_deg: 180.0, type: hold}
+  - {id: A2_ENTRY_HOLD, x: 46.0, y: 9.0, z: 1.8, yaw_deg: 180.0, type: hold}
+  - {id: A2_EXIT_HOLD, x: 4.0, y: 9.0, z: 1.8, yaw_deg: 0.0, type: hold}
+  - {id: A3_ENTRY_HOLD, x: 4.0, y: 14.0, z: 1.8, yaw_deg: 0.0, type: hold}
+  - {id: A3_EXIT_HOLD, x: 46.0, y: 14.0, z: 1.8, yaw_deg: 180.0, type: hold}
+  - {id: A4_ENTRY_HOLD, x: 46.0, y: 19.0, z: 1.8, yaw_deg: 180.0, type: hold}
+  - {id: A4_EXIT_HOLD, x: 4.0, y: 19.0, z: 1.8, yaw_deg: 0.0, type: hold}
+  - {id: A5_ENTRY_HOLD, x: 4.0, y: 24.0, z: 1.8, yaw_deg: 0.0, type: hold}
+  - {id: A5_EXIT_HOLD, x: 46.0, y: 24.0, z: 1.8, yaw_deg: 180.0, type: hold}
+  - {id: RETURN_STAGING, x: 3.2, y: 15.0, z: 1.8, yaw_deg: 180.0, type: staging}
+  - {id: LAND_SW, x: 2.0, y: 1.8, z: 0.3, yaw_deg: 0.0, type: landing}
+
+scan_waypoint_templates:
+  bay_pitch_m: 2.4
+  dwell_s: 1.2
+  tiers:
+    - {name: T1, z_m: 1.5}
+    - {name: T2, z_m: 3.0}
+    - {name: T3, z_m: 4.5}
+    - {name: T4, z_m: 6.0}
+  pass_rules:
+    - aisle_id: A1
+      rows: [S1_SOUTH, S1_NORTH]
+      order: [T1, T2, T3, T4]
+    - aisle_id: A2
+      rows: [S2_SOUTH, S2_NORTH]
+      order: [T1, T2, T3, T4]
+    - aisle_id: A3
+      rows: [S3_SOUTH, S3_NORTH]
+      order: [T1, T2, T3, T4]
+    - aisle_id: A4
+      rows: [S4_SOUTH, S4_NORTH]
+      order: [T1, T2, T3, T4]
+    - aisle_id: A5
+      rows: [S5_SOUTH, S5_NORTH]
+      order: [T1, T2, T3, T4]
+
+emergency_hovers:
+  - {id: EH_A1_FRONT, x: 4.5, y: 4.0, z: 2.5}
+  - {id: EH_A1_REAR, x: 45.5, y: 4.0, z: 2.5}
+  - {id: EH_A3_FRONT, x: 4.5, y: 14.0, z: 2.5}
+  - {id: EH_A3_REAR, x: 45.5, y: 14.0, z: 2.5}
+  - {id: EH_A5_FRONT, x: 4.5, y: 24.0, z: 2.5}
+  - {id: EH_A5_REAR, x: 45.5, y: 24.0, z: 2.5}

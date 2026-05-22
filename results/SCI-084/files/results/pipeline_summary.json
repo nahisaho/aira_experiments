@@ -1,0 +1,19 @@
+{
+  "total_genes": 5000,
+  "total_modification_sites": 3000,
+  "m6A_sites": 1776,
+  "m5C_sites": 760,
+  "psi_sites": 464,
+  "merip_significant_peaks": 1552,
+  "dart_significant_peaks": 611,
+  "nanopore_significant_sites": 200,
+  "differentially_modified_sites": 0,
+  "hyper_modified": 0,
+  "hypo_modified": 0,
+  "destabilized_mrnas": 193,
+  "stabilized_mrnas": 201,
+  "te_enhanced": 126,
+  "te_reduced": 141,
+  "wre_significant_correlations": 0,
+  "aml_significant_genes": 7
+}

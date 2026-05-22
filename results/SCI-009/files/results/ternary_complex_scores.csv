@@ -1,0 +1,8 @@
+linker_smiles,n_atoms_linker,rg_poi_A,rg_e3_A,e2e_linker_A,optimal_dist_A,geometry_score,flexibility_score,alpha_cooperativity,bsa_proxy_A2,composite_score,linker_name
+N1CCN(CC1)CC,8,3.63,5.27,7.23,8.01,0.9812,0.8696,2.633,260.0,-15.381,PipeAm
+CCCCCC,6,3.63,5.27,8.1,8.01,0.9998,0.6897,2.224,260.0,-14.115,Alkyl4
+OCCOCCO,7,3.63,5.27,6.96,8.01,0.9662,0.5263,1.771,260.0,-12.553,PEG2
+CCCCCCCC,8,3.62,5.27,9.96,8.0,0.887,0.5714,1.767,260.0,-12.284,Alkyl6
+OCCNCCNCO,9,3.62,5.27,8.79,8.0,0.9808,0.4545,1.615,260.0,-12.097,Hybrid3
+OCCOCCOCCO,10,3.63,5.27,11.0,8.01,0.7566,0.4255,1.305,260.0,-10.27,PEG3
+OCCOCCOCCOCCO,13,3.63,5.27,14.1,8.01,0.3136,0.3571,0.78,260.0,-6.8,PEG4

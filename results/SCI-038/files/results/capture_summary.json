@@ -1,0 +1,6 @@
+{
+  "workspace_radius_max_m": 4.498424941773245,
+  "robotic_arm_threshold_deg_s": 30.0,
+  "net_threshold_deg_s": 10.25,
+  "harpoon_threshold_deg_s": 8.5
+}

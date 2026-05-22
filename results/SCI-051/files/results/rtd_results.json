@@ -1,0 +1,27 @@
+{
+  "design_parameters": {
+    "design_tau_s": 30.0,
+    "true_peclet": 50.0
+  },
+  "experimental_moments": {
+    "mean_residence_time_s": 31.829,
+    "variance_s2": 74.744,
+    "dimensionless_variance": 0.07378
+  },
+  "model_fitting": {
+    "tanks_in_series_N": 13.6,
+    "tanks_in_series_N_int": 14,
+    "estimated_peclet": 26.1
+  },
+  "model_comparison": {
+    "CSTR": {
+      "R_squared": -0.0828
+    },
+    "Tanks_in_Series": {
+      "R_squared": 0.9099
+    },
+    "Axial_Dispersion": {
+      "R_squared": 0.8686
+    }
+  }
+}

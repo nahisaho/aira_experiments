@@ -1,0 +1,57 @@
+# ============================================================
+# Shotgun Metagenome Functional Profiling Pipeline
+# Snakemake ≥ 8.0
+# ============================================================
+
+import pandas as pd
+from pathlib import Path
+
+configfile: "config/config.yaml"
+
+samples_df = pd.read_csv(config["samples"], sep="\t")
+SAMPLES = samples_df["sample"].tolist()
+GROUPS  = samples_df.set_index("sample")["group"].to_dict()
+
+# ---- top-level targets ----
+rule all:
+    input:
+        # QC reports
+        "results/qc/multiqc_report.html",
+        # Taxonomy
+        expand("results/taxonomy/kraken2/{sample}.kreport", sample=SAMPLES),
+        expand("results/taxonomy/metaphlan4/{sample}_profile.tsv", sample=SAMPLES),
+        "results/taxonomy/merged_metaphlan4.tsv",
+        # Functional
+        expand("results/functional/humann3/{sample}_genefamilies.tsv", sample=SAMPLES),
+        expand("results/functional/humann3/{sample}_pathabundance.tsv", sample=SAMPLES),
+        "results/functional/humann3/merged_genefamilies_cpm.tsv",
+        "results/functional/humann3/merged_pathabundance_cpm.tsv",
+        expand("results/functional/eggnog/{sample}.emapper.annotations", sample=SAMPLES),
+        # Binning & MAGs
+        "results/binning/dastool/all_bins",
+        "results/mag_quality/checkm2_report.tsv",
+        "results/mag_quality/gtdbtk_output",
+        # Statistics
+        "results/statistics/alpha_diversity.tsv",
+        "results/statistics/beta_diversity_pcoa.tsv",
+        "results/statistics/differential_abundance.tsv",
+        "results/statistics/maaslin2_results",
+        "figures/alpha_diversity_boxplot.svg",
+        "figures/beta_diversity_pcoa.svg",
+        "figures/taxonomic_barplot.svg",
+        "figures/functional_heatmap.svg",
+        "figures/mag_quality_scatter.svg",
+        "figures/pipeline_dag.svg",
+
+include: "rules/qc.smk"
+include: "rules/taxonomy.smk"
+include: "rules/functional.smk"
+include: "rules/assembly_binning.smk"
+include: "rules/mag_quality.smk"
+include: "rules/statistics.smk"
+
+# Pipeline DAG visualization
+rule dag:
+    output: "figures/pipeline_dag.svg"
+    shell:
+        "snakemake --dag | dot -Tsvg > {output}"

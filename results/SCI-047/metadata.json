@@ -1,0 +1,11 @@
+{
+  "experiment_id": "SCI-047",
+  "title": "実験計画法のベイズ最適化",
+  "project_id": "d27eaf48-b4e6-46e6-bfc5-7ddacbd61dc0",
+  "prompt_length": 400,
+  "output_length": 1420,
+  "file_count": 28,
+  "duration_seconds": 1177,
+  "status": "success",
+  "timestamp": "2026-05-22T16:53:05.547Z"
+}

@@ -1,0 +1,46 @@
+{
+  "frozen": {
+    "trainable_params": 41217,
+    "total_params": 7553018,
+    "param_ratio": 0.0054570239340088955,
+    "final_r2": 0.02605645404009893,
+    "final_spearman": 0.25253283302063795,
+    "final_train_loss": 0.054929822124540804,
+    "final_val_loss": 0.04408439174294472
+  },
+  "lora": {
+    "trainable_params": 102657,
+    "total_params": 7614458,
+    "param_ratio": 0.013481852549452633,
+    "final_r2": 0.029787999930259268,
+    "final_spearman": 0.1632270168855535,
+    "final_train_loss": 0.04967762143351138,
+    "final_val_loss": 0.043915487825870514
+  },
+  "last2layers": {
+    "trainable_params": 2507137,
+    "total_params": 7553018,
+    "param_ratio": 0.33193843838317344,
+    "final_r2": 0.19032232603925237,
+    "final_spearman": 0.4317073170731708,
+    "final_train_loss": 0.036519831977784634,
+    "final_val_loss": 0.036649093963205814
+  },
+  "full_ft": {
+    "trainable_params": 7553018,
+    "total_params": 7553018,
+    "param_ratio": 1.0,
+    "final_r2": 0.1726401106610601,
+    "final_spearman": 0.476547842401501,
+    "final_train_loss": 0.021181150595657526,
+    "final_val_loss": 0.03744945861399174
+  },
+  "metadata": {
+    "model": "facebook/esm2_t6_8M_UR50D",
+    "n_samples": 200,
+    "n_epochs": 5,
+    "batch_size": 8,
+    "seed": 42,
+    "elapsed_seconds": 43.53
+  }
+}

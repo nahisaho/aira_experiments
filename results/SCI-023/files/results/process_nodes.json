@@ -1,0 +1,74 @@
+[
+  {
+    "node": "28nm node",
+    "half_pitch_nm": 28.0,
+    "BCP_N": 80,
+    "chi": 0.03,
+    "L0_nm": 28.0,
+    "DSA_n": 1,
+    "guide_pitch_nm": 28.0,
+    "LWR_spec_nm": 6.0,
+    "defect_density_cm2": 0.001,
+    "note": "PS-b-PMMA conventional"
+  },
+  {
+    "node": "14nm node",
+    "half_pitch_nm": 14.0,
+    "BCP_N": 200,
+    "chi": 0.045,
+    "L0_nm": 14.0,
+    "DSA_n": 2,
+    "guide_pitch_nm": 28.0,
+    "LWR_spec_nm": 3.5,
+    "defect_density_cm2": 0.0001,
+    "note": "PS-b-PMMA 2\u00d7 DSA"
+  },
+  {
+    "node": "10nm node",
+    "half_pitch_nm": 10.0,
+    "BCP_N": 350,
+    "chi": 0.06,
+    "L0_nm": 10.0,
+    "DSA_n": 3,
+    "guide_pitch_nm": 30.0,
+    "LWR_spec_nm": 2.5,
+    "defect_density_cm2": 1e-05,
+    "note": "High-\u03c7 BCP 3\u00d7 DSA"
+  },
+  {
+    "node": "7nm node",
+    "half_pitch_nm": 7.0,
+    "BCP_N": 500,
+    "chi": 0.09,
+    "L0_nm": 7.0,
+    "DSA_n": 4,
+    "guide_pitch_nm": 28.0,
+    "LWR_spec_nm": 2.0,
+    "defect_density_cm2": 1e-06,
+    "note": "High-\u03c7 BCP 4\u00d7 DSA"
+  },
+  {
+    "node": "5nm node",
+    "half_pitch_nm": 5.0,
+    "BCP_N": 800,
+    "chi": 0.12,
+    "L0_nm": 5.0,
+    "DSA_n": 5,
+    "guide_pitch_nm": 25.0,
+    "LWR_spec_nm": 1.5,
+    "defect_density_cm2": 1e-07,
+    "note": "High-\u03c7 BCP 5\u00d7 DSA"
+  },
+  {
+    "node": "3nm node",
+    "half_pitch_nm": 3.0,
+    "BCP_N": 1200,
+    "chi": 0.18,
+    "L0_nm": 3.0,
+    "DSA_n": 8,
+    "guide_pitch_nm": 24.0,
+    "LWR_spec_nm": 1.2,
+    "defect_density_cm2": 1e-08,
+    "note": "Ultra-high-\u03c7 BCP 8\u00d7 DSA"
+  }
+]

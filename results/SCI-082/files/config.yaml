@@ -1,0 +1,145 @@
+# =============================================================================
+# Spatial Transcriptomics Pipeline Configuration
+# =============================================================================
+
+project:
+  name: "spatial_transcriptomics_pipeline"
+  version: "1.0.0"
+  description: "Advanced spatial transcriptomics analysis (Visium/MERFISH)"
+  random_seed: 42
+
+# ---------------------------------------------------------------------------
+# 1. Data loading & QC
+# ---------------------------------------------------------------------------
+data:
+  platform: "visium"            # visium | merfish | slideseq
+  input_dir: "data/raw/"
+  output_dir: "data/processed/"
+  # QC thresholds (dataset-specific — adjust per experiment)
+  qc:
+    min_counts: 500
+    max_counts: 50000
+    min_genes: 200
+    max_genes: 8000
+    max_pct_mito: 20.0
+    min_cells_per_gene: 10
+
+# ---------------------------------------------------------------------------
+# 2. Spot deconvolution (cell2location)
+# ---------------------------------------------------------------------------
+deconvolution:
+  method: "cell2location"
+  reference:
+    source: "scRNA-seq"         # path or AnnData key
+    cell_type_key: "cell_type"
+    batch_key: "sample"
+    # NB regression hyper-parameters
+    n_epochs_ref: 250
+    lr_ref: 0.002
+  spatial:
+    n_epochs_spatial: 30000
+    n_cells_per_location: 8     # expected avg cells per Visium spot
+    detection_alpha: 20
+  output:
+    abundances_file: "results/cell_type_abundances.csv"
+    figure: "figures/deconvolution_map.png"
+
+# ---------------------------------------------------------------------------
+# 3. Spatially variable gene detection (SpatialDE / Squidpy)
+# ---------------------------------------------------------------------------
+spatial_patterns:
+  methods:
+    - "squidpy_moran"           # Moran's I autocorrelation
+    - "spatialDE"               # Gaussian-process-based SVG
+    - "squidpy_sepal"           # diffusion-based score (optional)
+  squidpy_moran:
+    n_perms: 1000
+    n_jobs: 4
+  spatialDE:
+    kernel: "SE"                # squared-exponential
+  significance:
+    alpha: 0.05
+    correction: "fdr_bh"       # Benjamini–Hochberg
+  output:
+    svg_table: "results/spatially_variable_genes.csv"
+    figure: "figures/svg_expression_maps.png"
+
+# ---------------------------------------------------------------------------
+# 4. Cell–cell communication (LIANA + Squidpy)
+# ---------------------------------------------------------------------------
+communication:
+  method: "liana"
+  lr_database: "consensus"      # consensus | cellphonedb | cellchat
+  spatial_proximity:
+    coord_type: "generic"
+    n_neighs: 6
+    radius: null
+  filtering:
+    min_expr_prop: 0.1
+    aggregate_method: "magnitude_rank"
+  output:
+    lr_results: "results/ligand_receptor_results.csv"
+    figure: "figures/communication_network.png"
+
+# ---------------------------------------------------------------------------
+# 5. Tissue niche identification
+# ---------------------------------------------------------------------------
+niche:
+  method: "squidpy_neighborhood"
+  n_clusters: 5                 # number of niches (or auto via silhouette)
+  n_neighs: 15
+  features:
+    - "cell_type_composition"
+    - "gene_expression"
+  clustering:
+    algorithm: "leiden"
+    resolution: 0.8
+  output:
+    niche_labels: "results/niche_assignments.csv"
+    figure: "figures/niche_map.png"
+
+# ---------------------------------------------------------------------------
+# 6. 3D spatial reconstruction
+# ---------------------------------------------------------------------------
+reconstruction_3d:
+  enabled: true
+  serial_sections:
+    section_ids: ["S1", "S2", "S3", "S4", "S5"]
+    z_spacing_um: 10.0
+  alignment:
+    method: "icp"               # Iterative Closest Point
+    max_iterations: 200
+    tolerance: 1.0e-6
+  output:
+    coordinates_3d: "results/coordinates_3d.csv"
+    figure: "figures/3d_reconstruction.png"
+
+# ---------------------------------------------------------------------------
+# 7. Tumor–immune micro-environment case study
+# ---------------------------------------------------------------------------
+tumor_immune:
+  enabled: true
+  tumor_markers: ["EPCAM", "KRT19", "MKI67"]
+  immune_markers:
+    t_cell: ["CD3D", "CD3E", "CD8A", "CD4"]
+    macrophage: ["CD68", "CD163", "CSF1R"]
+    b_cell: ["CD19", "MS4A1", "CD79A"]
+    nk_cell: ["NCAM1", "NKG7", "GNLY"]
+    treg: ["FOXP3", "IL2RA", "CTLA4"]
+  exhaustion_markers: ["PDCD1", "LAG3", "HAVCR2", "TIGIT", "TOX"]
+  checkpoint_ligands: ["CD274", "PDCD1LG2", "LGALS9"]
+  spatial_analysis:
+    boundary_distance_um: 200   # tumour boundary band width
+    infiltration_bins: [0, 50, 100, 200, 500]
+  output:
+    time_report: "results/tumor_immune_report.csv"
+    figure: "figures/tumor_immune_landscape.png"
+
+# ---------------------------------------------------------------------------
+# Visualization defaults
+# ---------------------------------------------------------------------------
+visualization:
+  dpi: 300
+  figsize: [12, 8]
+  palette: "viridis"
+  save_format: "png"            # png | svg | pdf

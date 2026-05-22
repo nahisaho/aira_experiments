@@ -1,0 +1,11 @@
+{
+  "experiment_id": "SCI-081",
+  "title": "プロテオゲノミクス統合解析",
+  "project_id": "e1f8170c-3f03-4621-b31f-4b3c0fb04243",
+  "prompt_length": 386,
+  "output_length": 973,
+  "file_count": 11,
+  "duration_seconds": 511,
+  "status": "success",
+  "timestamp": "2026-05-22T19:13:03.776Z"
+}

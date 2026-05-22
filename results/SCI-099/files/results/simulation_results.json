@@ -1,0 +1,38 @@
+{
+  "baseline_median_lifespan": 80.72072072072072,
+  "intervention_medians": {
+    "No Treatment": 80.72072072072072,
+    "CR 30%": 85.04504504504504,
+    "Rapamycin": 82.16216216216216,
+    "NAD+ Precursor": 81.68168168168168,
+    "Senolytic": 83.84384384384384,
+    "CR+Rapa+NAD+": 85.52552552552552,
+    "All Combined": 91.05105105105105
+  },
+  "senolytic_timing_medians": {
+    "No Treatment": 80.72072072072072,
+    "Start@30": 83.20641282565131,
+    "Start@40": 82.48496993987976,
+    "Start@50": 81.84368737474949,
+    "Start@60": 81.28256513026052,
+    "Start@70": 80.82164328657315
+  },
+  "species_lifespans": {
+    "Mouse": 3.3033033033033035,
+    "Rat": 6.906906906906907,
+    "Dog": 38.13813813813814,
+    "Human": 80.78078078078079,
+    "Elephant": 165.46546546546546,
+    "Bowhead Whale": 172.97297297297297,
+    "Naked Mole Rat": 14.714714714714715,
+    "Greenland Shark": 171.17117117117118
+  },
+  "best_combination": {
+    "cr": 1.0,
+    "rapa": 1.0,
+    "nad": 1.0,
+    "senolytic": 1.0,
+    "median_lifespan": 94.53453453453453
+  },
+  "timestamp": "2026-05-23T05:14:47.719422"
+}

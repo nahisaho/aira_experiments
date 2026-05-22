@@ -1,0 +1,54 @@
+{
+  "method": "MSD analysis with Yeh-Hummer correction",
+  "temperature_K": 298.15,
+  "box_length_nm": 4.5,
+  "viscosity_Pa_s": 0.0008,
+  "diffusion_coefficients": {
+    "Li+": {
+      "D_PBC_cm2_s": 1.0001e-05,
+      "D_corrected_cm2_s": 1.1722e-05,
+      "YH_correction_cm2_s": 1.7212e-06,
+      "R_squared": 0.9998,
+      "fit_range_frac": [
+        0.2,
+        0.8
+      ]
+    },
+    "PF6-": {
+      "D_PBC_cm2_s": 5.9989e-06,
+      "D_corrected_cm2_s": 7.72e-06,
+      "YH_correction_cm2_s": 1.7212e-06,
+      "R_squared": 0.9998,
+      "fit_range_frac": [
+        0.2,
+        0.8
+      ]
+    },
+    "EC": {
+      "D_PBC_cm2_s": 2.4999e-05,
+      "D_corrected_cm2_s": 2.672e-05,
+      "YH_correction_cm2_s": 1.7212e-06,
+      "R_squared": 0.9998,
+      "fit_range_frac": [
+        0.2,
+        0.8
+      ]
+    },
+    "DMC": {
+      "D_PBC_cm2_s": 2.999e-05,
+      "D_corrected_cm2_s": 3.1712e-05,
+      "YH_correction_cm2_s": 1.7212e-06,
+      "R_squared": 0.9998,
+      "fit_range_frac": [
+        0.2,
+        0.8
+      ]
+    },
+    "conductivity": {
+      "Nernst_Einstein_conductivity_S_m": 7.3012,
+      "Haven_ratio": 0.45,
+      "estimated_actual_conductivity_S_m": 3.2855,
+      "note": "Haven ratio < 1 indicates correlated ion motion"
+    }
+  }
+}

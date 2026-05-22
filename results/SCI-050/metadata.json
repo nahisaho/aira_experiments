@@ -1,0 +1,11 @@
+{
+  "experiment_id": "SCI-050",
+  "title": "因果推論の観察研究への適用",
+  "project_id": "d41c28d1-28b5-4d59-9c23-29e4dffd0f05",
+  "prompt_length": 397,
+  "output_length": 1336,
+  "file_count": 21,
+  "duration_seconds": 519,
+  "status": "success",
+  "timestamp": "2026-05-22T16:52:53.122Z"
+}

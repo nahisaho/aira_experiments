@@ -1,0 +1,38 @@
+; GROMACS MDP: NVT Equilibration (500 ps)
+
+integrator      = md
+dt              = 0.002
+nsteps          = 250000
+nstxout-compressed = 1000
+nstenergy       = 500
+nstlog          = 500
+
+nstlist         = 20
+cutoff-scheme   = Verlet
+rlist           = 1.2
+
+coulombtype     = PME
+rcoulomb        = 1.2
+pme_order       = 6
+fourierspacing  = 0.10
+
+vdwtype         = Cut-off
+rvdw            = 1.2
+DispCorr        = EnerPres
+
+tcoupl          = V-rescale
+tc-grps         = System
+tau_t           = 0.5
+ref_t           = 298.15
+
+pcoupl          = no
+
+constraints     = h-bonds
+constraint_algorithm = LINCS
+lincs_iter      = 1
+lincs_order     = 4
+
+gen_vel         = yes
+gen_temp        = 298.15
+gen_seed        = -1
+pbc             = xyz

@@ -1,0 +1,41 @@
+# INCAR: CI-NEB Li-ion migration
+SYSTEM  = NEB_Li_migration
+
+ISTART  = 0
+ICHARG  = 2
+ENCUT   = 520
+PREC    = Accurate
+EDIFF   = 1E-5
+NELM    = 100
+ALGO    = Fast
+
+ISPIN   = 2
+LDAU    = .TRUE.
+LDATYPE = 2
+LDAUL   = -1 -1 3 -1
+LDAUU   = 0  0  0  0 3.3
+LDAUJ   = 0  0  0  0 0.0
+
+# NEB settings
+ICHAIN  = 0          # NEB (0) or string (1)
+IMAGES  = 7
+SPRING  = -5.0       # eV/Å² spring constant
+LCLIMB  = .TRUE.     # Climbing-image NEB
+LTANGENTOLD = .FALSE.
+LNEBCELL    = .FALSE.
+
+IBRION  = 3
+POTIM   = 0.0        # FIRE optimizer
+IOPT    = 1          # FIRE algorithm
+NSW     = 500
+EDIFFG  = -0.05      # eV/Å  force threshold
+
+ISMEAR  = 0
+SIGMA   = 0.05
+IVDW    = 11
+
+LWAVE   = .FALSE.
+LCHARG  = .FALSE.
+
+NCORE   = 8
+KPAR    = 2

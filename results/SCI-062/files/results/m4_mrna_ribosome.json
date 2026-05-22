@@ -1,0 +1,38 @@
+{
+  "GFP": {
+    "halflife_min": 37.299670181460215,
+    "k_init_per_sec": 0.26775,
+    "k_elong_codons_per_sec": 9.75,
+    "ribosomes_per_mRNA": 6.590769230769231,
+    "max_ribosomes": 24.0,
+    "transit_time_sec": 24.615384615384617,
+    "protein_rate_per_sec_per_mRNA": 0.26775000000000004
+  },
+  "Luciferase": {
+    "halflife_min": 21.273199935218226,
+    "k_init_per_sec": 0.26249999999999996,
+    "k_elong_codons_per_sec": 9.399999999999999,
+    "ribosomes_per_mRNA": 15.386968085106382,
+    "max_ribosomes": 55.1,
+    "transit_time_sec": 58.61702127659575,
+    "protein_rate_per_sec_per_mRNA": 0.26249999999999996
+  },
+  "MP_GPCR": {
+    "halflife_min": 22.971173168376858,
+    "k_init_per_sec": 0.195,
+    "k_elong_codons_per_sec": 9.1,
+    "ribosomes_per_mRNA": 7.500000000000001,
+    "max_ribosomes": 35.0,
+    "transit_time_sec": 38.46153846153847,
+    "protein_rate_per_sec_per_mRNA": 0.195
+  },
+  "scFv": {
+    "halflife_min": 35.86143520305628,
+    "k_init_per_sec": 0.238,
+    "k_elong_codons_per_sec": 9.6,
+    "ribosomes_per_mRNA": 6.197916666666667,
+    "max_ribosomes": 25.0,
+    "transit_time_sec": 26.041666666666668,
+    "protein_rate_per_sec_per_mRNA": 0.238
+  }
+}

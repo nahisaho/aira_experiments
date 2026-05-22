@@ -1,0 +1,44 @@
+{
+  "ND_0_uM": {
+    "final_inserted_uM": 0.0,
+    "final_misfolded_uM": 1.6245558852398105e-06,
+    "insertion_efficiency_pct": 0.0,
+    "nanodisc_used_uM": 0.0,
+    "yield_per_nanodisc": 0.0
+  },
+  "ND_10_uM": {
+    "final_inserted_uM": 9.999996858033771,
+    "final_misfolded_uM": 1.3817443841258137e-06,
+    "insertion_efficiency_pct": 113.3327773385383,
+    "nanodisc_used_uM": 9.99999685803378,
+    "yield_per_nanodisc": 0.9999999999999991
+  },
+  "ND_25_uM": {
+    "final_inserted_uM": 24.997844816938727,
+    "final_misfolded_uM": 9.320213957623763e-07,
+    "insertion_efficiency_pct": 103.02686614591781,
+    "nanodisc_used_uM": 24.997844816938727,
+    "yield_per_nanodisc": 1.0
+  },
+  "ND_50_uM": {
+    "final_inserted_uM": 44.23113711153422,
+    "final_misfolded_uM": 1.9243211062306027e-07,
+    "insertion_efficiency_pct": 100.38558592526712,
+    "nanodisc_used_uM": 44.23113711153421,
+    "yield_per_nanodisc": 1.0000000000000002
+  },
+  "ND_100_uM": {
+    "final_inserted_uM": 48.23299651784455,
+    "final_misfolded_uM": 5.250920623771874e-08,
+    "insertion_efficiency_pct": 100.09056744412274,
+    "nanodisc_used_uM": 48.23299651784457,
+    "yield_per_nanodisc": 0.9999999999999996
+  },
+  "ND_200_uM": {
+    "final_inserted_uM": 49.23864166828806,
+    "final_misfolded_uM": 2.1908630361304143e-08,
+    "insertion_efficiency_pct": 100.03218917434953,
+    "nanodisc_used_uM": 49.23864166828818,
+    "yield_per_nanodisc": 0.9999999999999976
+  }
+}

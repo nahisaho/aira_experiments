@@ -1,0 +1,31 @@
+{
+  "control_config": {
+    "target_yield_pct": 85.0,
+    "pid_temperature": {
+      "Kp": 2.0,
+      "Ki": 0.1,
+      "Kd": 0.5
+    },
+    "pid_flow_rate": {
+      "Kp": 0.05,
+      "Ki": 0.005,
+      "Kd": 0.01
+    },
+    "hplc_interval_s": 60,
+    "ir_interval_s": 5,
+    "simulation_duration_s": 3600
+  },
+  "performance_metrics": {
+    "mean_conversion_pct": 84.33,
+    "std_conversion_pct": 3.98,
+    "max_deviation_pct": 12.23,
+    "settling_time_s": 3590,
+    "overshoot_pct": 6.52,
+    "ise": 39108.0
+  },
+  "pat_summary": {
+    "n_ir_measurements": 720,
+    "n_hplc_measurements": 59,
+    "ir_calibration_r2": 0.98
+  }
+}

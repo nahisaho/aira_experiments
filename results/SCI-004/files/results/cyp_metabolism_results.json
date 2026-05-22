@@ -1,0 +1,41 @@
+{
+  "module": "CYP Metabolism Modeling",
+  "n_patients": 1000,
+  "CYP2D6_phenotype_distribution": {
+    "Normal Metabolizer (NM)": 604,
+    "Intermediate Metabolizer (IM)": 267,
+    "Poor Metabolizer (PM)": 73,
+    "Ultrarapid Metabolizer (UM)": 56
+  },
+  "CYP2C19_phenotype_distribution": {
+    "Rapid/Ultrarapid Metabolizer (RM/UM)": 661,
+    "Intermediate Metabolizer (IM)": 207,
+    "Normal Metabolizer (NM)": 89,
+    "Poor Metabolizer (PM)": 43
+  },
+  "codeine_toxicity_rate_by_phenotype": {
+    "Intermediate Metabolizer (IM)": 0.07116104868913857,
+    "Normal Metabolizer (NM)": 0.08774834437086093,
+    "Poor Metabolizer (PM)": 0.0821917808219178,
+    "Ultrarapid Metabolizer (UM)": 0.4642857142857143
+  },
+  "clopidogrel_efficacy_rate_by_phenotype": {
+    "Intermediate Metabolizer (IM)": 0.4251207729468599,
+    "Normal Metabolizer (NM)": 0.797752808988764,
+    "Poor Metabolizer (PM)": 0.0,
+    "Rapid/Ultrarapid Metabolizer (RM/UM)": 1.0
+  },
+  "rf_toxicity_prediction": {
+    "cv_roc_auc_mean": 0.5726362064378824,
+    "cv_roc_auc_std": 0.08211229369562621,
+    "cv_accuracy_mean": 0.8880000000000001,
+    "feature_importances": {
+      "weight_kg": 0.4817925759250541,
+      "age": 0.33795393428575726,
+      "CYP2D6_activity_score": 0.09845351606186187,
+      "allele2_enc": 0.03575620525976504,
+      "sex_enc": 0.031440184192865976,
+      "allele1_enc": 0.01460358427469581
+    }
+  }
+}

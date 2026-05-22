@@ -1,0 +1,172 @@
+mission:
+  mission_id: warehouse_inventory_scan_v1
+  mission_type: autonomous_inventory_scan
+  localization_mode: gps_denied_vio_map_relative
+  home_pad: PAD_SW
+  resume_from_last_checkpoint: true
+  max_flight_segment_min: 15
+  preferred_operation_window: night_or_low_traffic
+
+vehicle:
+  airframe: quadrotor_indoor_inventory_platform
+  autopilot: px4
+  companion_computer: jetson_orin_nx_16gb
+  prop_guards_required: true
+  max_payload_kg: 0.8
+
+flight:
+  takeoff_height_m: 1.8
+  transit_speed_mps: 1.2
+  aisle_entry_speed_mps: 0.8
+  scan_speed_mps: 0.7
+  slow_scan_speed_mps: 0.45
+  ascent_rate_mps: 0.8
+  descent_rate_mps: 0.6
+  max_yaw_rate_deg_s: 35.0
+  max_tilt_deg: 12.0
+  hover_position_tolerance_m: 0.08
+  hover_yaw_tolerance_deg: 5.0
+  stand_off_distance_m:
+    nominal: 0.55
+    min: 0.35
+    max: 0.90
+  altitude_limits_m:
+    min_agl: 1.5
+    max_agl: 6.2
+
+coverage:
+  pattern: boustrophedon
+  scan_order: aisle_then_tier
+  aisle_sequence: [A1, A2, A3, A4, A5]
+  tier_sequence: [1.5, 3.0, 4.5, 6.0]
+  bay_pitch_m: 2.4
+  hover_and_scan:
+    enabled: true
+    dwell_time_s: 1.2
+    dwell_time_shadowed_s: 1.6
+    dwell_time_damaged_label_s: 2.0
+  revisit_policy:
+    revisit_failed_decodes: true
+    max_retries_per_location: 2
+    revisit_after_aisle_complete: true
+
+perception:
+  camera:
+    model: realsense_d455
+    rgb_resolution: [1280, 800]
+    depth_resolution: [1280, 720]
+    rgb_fps: 30
+    depth_fps: 30
+    auto_exposure: true
+    exposure_profiles:
+      normal_lux: warehouse_led
+      low_light: shadowed_shelf
+  barcode_pipeline:
+    primary_decoder: zbar
+    region_proposal_model: lightweight_custom_detector
+    qr_decoder: opencv_qr
+    ocr_fallback: paddleocr
+    frame_queue_depth: 8
+    non_blocking: true
+    min_confirm_frames: 2
+    max_processing_latency_ms: 80
+  localization:
+    vio_rate_hz: 30
+    map_update_rate_hz: 20
+    planner_rate_hz: 20
+    control_rate_hz: 100
+    loop_closure_enabled: true
+    fiducial_relocalization_enabled: true
+    max_position_error_m: 0.10
+
+avoidance:
+  human_stop_distance_m: 2.0
+  forklift_stop_distance_m: 3.0
+  lateral_clearance_m: 0.8
+  emergency_brake_distance_m: 1.0
+  preferred_behavior: yield_and_hold
+  dynamic_replan_timeout_s: 10.0
+  obstacle_tracking:
+    detector: yolov8_nano
+    tracker: bytetrack
+    predictor: tensorrt_trajectory_predictor
+
+compute:
+  jetson_power_modes:
+    preflight: 10W
+    transit: 15W
+    scan: 25W
+    return_home: 15W
+    landing: 10W
+  thermal_policy:
+    warning_temp_c: 80
+    derate_temp_c: 85
+    return_temp_c: 90
+    hard_shutdown_guard_c: 100
+  acceleration:
+    detector_target: dla0
+    feature_extractor_target: dla1_preferred_gpu_fallback
+    depth_target: gpu
+    mapping_target: gpu
+    planner_target: cpu
+  adaptive_load_shedding:
+    gpu_util_high_watermark_pct: 85
+    detector_rate_reduced_hz: 20
+    reduced_detection_resolution: [512, 512]
+    reduced_map_rate_hz: 15
+
+battery:
+  chemistry: li_ion_6s
+  nominal_capacity_mah: 10000
+  low_battery_warning_pct: 40
+  return_to_home_pct: 30
+  commit_to_landing_pct: 20
+  reserve_for_go_around_pct: 10
+  charger_pad_alignment_required: true
+
+safety:
+  geofence_source: warehouse_layout_yaml
+  indoor_only: true
+  rc_override_enabled: true
+  remote_kill_switch_required: true
+  preflight_checks_required:
+    - imu_ok
+    - vio_ok
+    - camera_ok
+    - battery_ok
+    - prop_guard_ok
+    - link_ok
+    - thermal_margin_ok
+  failsafes:
+    on_vio_loss: hold_then_backtrack
+    on_scan_pipeline_overload: drop_scan_rate_keep_control
+    on_critical_battery: immediate_return_and_land
+    on_worker_intrusion: stop_and_hover
+    on_forklift_intrusion: retreat_to_hold_waypoint
+
+wms:
+  integration_mode: incremental_upload
+  protocol: rest_or_message_bus
+  payload_fields:
+    - timestamp_utc
+    - location_id
+    - sku_id
+    - code_type
+    - decode_confidence
+    - pose_map_frame
+    - image_reference
+    - reconciliation_status
+  duplicate_read_suppression_s: 5.0
+  unreadable_label_queue: true
+
+logging:
+  rosbag_enabled: true
+  rosbag_topics:
+    - /camera/color/image_raw
+    - /camera/depth/image_rect_raw
+    - /vio/pose
+    - /detector/tracks
+    - /scan/results
+    - /mission/state
+  mission_event_log: logs/process-log.jsonl
+  store_failed_decode_crops: true

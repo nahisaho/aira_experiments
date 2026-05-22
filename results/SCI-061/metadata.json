@@ -1,0 +1,11 @@
+{
+  "experiment_id": "SCI-061",
+  "title": "遺伝子回路の自動設計",
+  "project_id": "e494433f-7b14-4cba-a216-85da7dc19f57",
+  "prompt_length": 378,
+  "output_length": 865,
+  "file_count": 23,
+  "duration_seconds": 830,
+  "status": "success",
+  "timestamp": "2026-05-22T17:54:17.766Z"
+}

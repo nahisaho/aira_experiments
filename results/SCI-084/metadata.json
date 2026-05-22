@@ -1,0 +1,11 @@
+{
+  "experiment_id": "SCI-084",
+  "title": "エピトランスクリプトーム解析",
+  "project_id": "ed947430-e299-43b2-85e1-353f964d8e6c",
+  "prompt_length": 408,
+  "output_length": 780,
+  "file_count": 29,
+  "duration_seconds": 374,
+  "status": "success",
+  "timestamp": "2026-05-22T19:19:24.058Z"
+}

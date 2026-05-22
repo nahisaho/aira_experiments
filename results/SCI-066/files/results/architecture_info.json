@@ -1,0 +1,54 @@
+{
+  "total_params": 2060823,
+  "trainable_params": 2060823,
+  "config": {
+    "n_climate_vars": 3,
+    "spatial_size": [
+      32,
+      64
+    ],
+    "n_scenarios": 4,
+    "forcing_dim": 8,
+    "convlstm_hidden_dims": [
+      16,
+      16,
+      16
+    ],
+    "convlstm_n_layers": 3,
+    "unet_base_features": 16,
+    "dropout": 0.1,
+    "seq_length": 5,
+    "physics_weight_energy": 0.1,
+    "physics_weight_mass": 0.05,
+    "physics_weight_smooth": 0.01,
+    "n_ensemble_members": 5,
+    "epochs": 10,
+    "batch_size": 4,
+    "lr": 0.0005,
+    "weight_decay": 1e-05,
+    "grad_clip": 1.0,
+    "scheduler_t0": 5,
+    "val_split": 0.2,
+    "patience": 8,
+    "min_delta": 0.0001
+  },
+  "components": {
+    "convlstm": {
+      "layers": 3,
+      "hidden_dims": [
+        16,
+        16,
+        16
+      ]
+    },
+    "unet": {
+      "base_features": 16,
+      "depth": 4
+    },
+    "physics_constraints": [
+      "energy_conservation",
+      "mass_conservation",
+      "spatial_smoothness"
+    ]
+  }
+}

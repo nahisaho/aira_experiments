@@ -1,0 +1,5 @@
+district,lcz,hw_ratio,svf,building_height,building_fraction
+marunouchi,LCZ-1 (Compact High-rise),4.8,0.103,120.0,0.55
+shinjuku,LCZ-1 (Compact High-rise),4.0,0.123,80.0,0.5
+residential_23ku,LCZ-6 (Open Low-rise),1.33,0.333,8.0,0.4
+suburban,LCZ-6 (Open Low-rise),0.75,0.5,6.0,0.25

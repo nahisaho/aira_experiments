@@ -1,0 +1,24 @@
+[
+  {
+    "molecule": "Paracetamol",
+    "step": 1,
+    "reaction": "Buchwald-Hartwig amination",
+    "reactants": "Oc1ccc(Br)cc1.CC(N)=O",
+    "solvent": "Toluene",
+    "temperature_C": 95,
+    "catalyst": "Pd2(dba)3/BINAP",
+    "yield_low": 60,
+    "yield_high": 90
+  },
+  {
+    "molecule": "Paracetamol",
+    "step": 2,
+    "reaction": "Amide bond formation",
+    "reactants": "CC(=O)O.Nc1ccc(O)cc1",
+    "solvent": "DMF",
+    "temperature_C": 12,
+    "catalyst": "EDC/HOBt",
+    "yield_low": 70,
+    "yield_high": 90
+  }
+]

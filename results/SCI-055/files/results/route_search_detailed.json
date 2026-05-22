@@ -1,0 +1,134 @@
+[
+  {
+    "molecule": "Aspirin",
+    "smiles": "CC(=O)OC1=CC=CC=C1C(=O)O",
+    "mcts_steps": 0,
+    "mcts_score": 0.0,
+    "mcts_time_s": 0.17,
+    "mcts_iterations": 150,
+    "astar_steps": 0,
+    "astar_cost": "inf",
+    "astar_time_s": 0.001,
+    "astar_explored": 1,
+    "mcts_route": null,
+    "astar_route": null
+  },
+  {
+    "molecule": "Ibuprofen",
+    "smiles": "CC(C)CC1=CC=C(C=C1)C(C)C(=O)O",
+    "mcts_steps": 0,
+    "mcts_score": 0.0,
+    "mcts_time_s": 0.186,
+    "mcts_iterations": 150,
+    "astar_steps": 0,
+    "astar_cost": "inf",
+    "astar_time_s": 0.001,
+    "astar_explored": 1,
+    "mcts_route": null,
+    "astar_route": null
+  },
+  {
+    "molecule": "Paracetamol",
+    "smiles": "CC(=O)NC1=CC=C(C=C1)O",
+    "mcts_steps": 1,
+    "mcts_score": 1.0,
+    "mcts_time_s": 0.071,
+    "mcts_iterations": 150,
+    "astar_steps": 1,
+    "astar_cost": 0.331,
+    "astar_time_s": 0.004,
+    "astar_explored": 5,
+    "mcts_route": {
+      "steps": [
+        {
+          "product": "CC(=O)NC1=CC=C(C=C1)O",
+          "reactants": "CC(=O)O",
+          "reaction": "Amide bond formation",
+          "confidence": 1.0
+        }
+      ],
+      "num_steps": 1,
+      "score": 1.0,
+      "all_building_blocks": true
+    },
+    "astar_route": {
+      "steps": [
+        {
+          "product": "CC(=O)NC1=CC=C(C=C1)O",
+          "reactants": "CC(=O)O",
+          "reaction": "Amide bond formation",
+          "confidence": 0.6685940018467008,
+          "step_cost": 0.3314059981532992
+        }
+      ],
+      "num_steps": 1,
+      "total_cost": 0.3314059981532992,
+      "all_building_blocks": true
+    }
+  },
+  {
+    "molecule": "Celecoxib (Celebrex)",
+    "smiles": "CC1=CC=C(C=C1)C2=CC(=NN2C3=CC=C(C=C3)S(=O)(=O)N)C(F)(F)F",
+    "mcts_steps": 1,
+    "mcts_score": 0.881,
+    "mcts_time_s": 0.223,
+    "mcts_iterations": 150,
+    "astar_steps": 0,
+    "astar_cost": "inf",
+    "astar_time_s": 0.007,
+    "astar_explored": 5,
+    "mcts_route": {
+      "steps": [
+        {
+          "product": "CC1=CC=C(C=C1)C2=CC(=NN2C3=CC=C(C=C3)S(=O)(=O)N)C(F)(F)F",
+          "reactants": "NS(=O)(=O)c1ccc(-n2nc(C(F)(F)F)cc2Br)cc1",
+          "reaction": "Suzuki coupling",
+          "confidence": 0.8813
+        }
+      ],
+      "num_steps": 1,
+      "score": 0.8813,
+      "all_building_blocks": false
+    },
+    "astar_route": null
+  },
+  {
+    "molecule": "Erlotinib (Tarceva)",
+    "smiles": "COCCOC1=CC2=C(C=C1OCCOC)C(=NC=N2)NC3=CC=CC(=C3)C#C",
+    "mcts_steps": 1,
+    "mcts_score": 1.0,
+    "mcts_time_s": 0.14,
+    "mcts_iterations": 150,
+    "astar_steps": 1,
+    "astar_cost": 0.158,
+    "astar_time_s": 0.072,
+    "astar_explored": 30,
+    "mcts_route": {
+      "steps": [
+        {
+          "product": "COCCOC1=CC2=C(C=C1OCCOC)C(=NC=N2)NC3=CC=CC(=C3)C#C",
+          "reactants": "CBr",
+          "reaction": "Williamson ether synthesis",
+          "confidence": 1.0
+        }
+      ],
+      "num_steps": 1,
+      "score": 1.0,
+      "all_building_blocks": true
+    },
+    "astar_route": {
+      "steps": [
+        {
+          "product": "COCCOC1=CC2=C(C=C1OCCOC)C(=NC=N2)NC3=CC=CC(=C3)C#C",
+          "reactants": "CBr",
+          "reaction": "Williamson ether synthesis",
+          "confidence": 0.8421633191924426,
+          "step_cost": 0.15783668080755742
+        }
+      ],
+      "num_steps": 1,
+      "total_cost": 0.15783668080755742,
+      "all_building_blocks": true
+    }
+  }
+]

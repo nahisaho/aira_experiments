@@ -1,0 +1,19 @@
+{
+  "catalog_size": 50,
+  "top_target": "DEBRIS-049",
+  "top_target_score": 0.5669313527193495,
+  "mean_decay_lifetime_days": 9182.111327270028,
+  "max_pairwise_delta_v_m_s": 8854.425925004825,
+  "mean_pairwise_delta_v_m_s": 3865.3715130115734,
+  "best_rendezvous_delta_v_m_s": 0.5577004009143073,
+  "estimated_rotation_period_s": 30.01250521050438,
+  "selected_mission_delta_v_m_s": 1533.7797168805932,
+  "selected_mission_time_days": 177.52080056488347,
+  "selected_mission_targets_serviced": 3,
+  "selected_mission_feasible": true,
+  "selected_route": [
+    "DEBRIS-001",
+    "DEBRIS-049",
+    "DEBRIS-012"
+  ]
+}

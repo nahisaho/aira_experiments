@@ -1,0 +1,34 @@
+{
+  "summary": {
+    "max_biomass": 1.0781,
+    "glucose_depletion_time": 6.2,
+    "max_acetate": 9.2808,
+    "final_biomass": 1.0781
+  },
+  "phases": [
+    {
+      "phase": "Exponential Growth",
+      "end_time": 6.2
+    },
+    {
+      "phase": "Diauxic Shift",
+      "start_time": 6.2
+    }
+  ],
+  "glucose_5mM": {
+    "max_biomass": 0.2977,
+    "depletion_time": "N/A"
+  },
+  "glucose_10mM": {
+    "max_biomass": 0.5593,
+    "depletion_time": 5.15
+  },
+  "glucose_20mM": {
+    "max_biomass": 1.0781,
+    "depletion_time": 6.2
+  },
+  "glucose_40mM": {
+    "max_biomass": 2.093,
+    "depletion_time": 7.4
+  }
+}

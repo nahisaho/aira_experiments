@@ -1,0 +1,13 @@
+pathway_id,pathway_name,source,enrichment_score,normalized_es,pvalue,n_hits
+hsa04080,Neuroactive ligand-receptor interaction,host,0.6731,1.5787,0.033,4
+ko00650,Butanoate metabolism,microbial,0.4947,1.2742,0.152,5
+ko00380,Tryptophan metabolism,both,-0.4842,-1.2376,0.174,5
+ko00910,Nitrogen metabolism,microbial,-0.5128,-1.1856,0.21,4
+ko00680,Methane metabolism,microbial,0.575,1.1885,0.214,3
+ko00121,Secondary bile acid biosynthesis,microbial,-0.4423,-1.0356,0.328,4
+hsa00760,Nicotinate and nicotinamide metabolism,host,0.475,0.9789,0.438,3
+ko00640,Propanoate metabolism,microbial,-0.3718,-0.8655,0.547,4
+ko00120,Primary bile acid biosynthesis,both,0.359,0.8299,0.629,4
+hsa00340,Histidine metabolism,host,-0.2692,-0.6197,0.876,4
+hsa00590,Arachidonic acid metabolism,host,0.2421,0.6042,0.897,5
+hsa04979,Cholesterol metabolism,host,0.2667,0.5441,0.965,3

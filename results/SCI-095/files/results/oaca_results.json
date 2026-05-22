@@ -1,0 +1,146 @@
+{
+  "metadata": {
+    "seed": 42,
+    "n_papers": 2000,
+    "bootstrap_samples": 200,
+    "oa_multiplier": 1.3,
+    "caliper": 0.08,
+    "output_files": {
+      "data": "/home/nahisaho/GitHub/aira/projects/d9103429-3a3f-4358-9765-b84197a2769e/workspace/data/oaca_simulated_bibliometric_data.csv",
+      "propensity_plot": "/home/nahisaho/GitHub/aira/projects/d9103429-3a3f-4358-9765-b84197a2769e/workspace/figures/oaca_propensity_distribution.png",
+      "forest_plot": "/home/nahisaho/GitHub/aira/projects/d9103429-3a3f-4358-9765-b84197a2769e/workspace/figures/oaca_causal_estimates.png",
+      "sensitivity_plot": "/home/nahisaho/GitHub/aira/projects/d9103429-3a3f-4358-9765-b84197a2769e/workspace/figures/oaca_sensitivity_analysis.png"
+    },
+    "package_versions": {
+      "numpy": "2.3.5",
+      "pandas": "2.3.3",
+      "scipy": "1.15.3",
+      "scikit_learn": "1.6.1",
+      "matplotlib": "3.10.8"
+    }
+  },
+  "data_summary": {
+    "n_papers": 2000,
+    "oa_share": 0.577,
+    "mean_citations_oa": 29.288561525129982,
+    "mean_citations_non_oa": 19.81205673758865,
+    "mean_jif_oa": 3.889793760831889,
+    "mean_jif_non_oa": 3.627737588652482,
+    "mean_hindex_oa": 24.796360485268632,
+    "mean_hindex_non_oa": 21.490543735224588,
+    "switch_journal_share": 0.2505,
+    "years": {
+      "2015": 200,
+      "2016": 203,
+      "2017": 209,
+      "2018": 207,
+      "2019": 187,
+      "2020": 213,
+      "2021": 191,
+      "2022": 201,
+      "2023": 201,
+      "2024": 188
+    },
+    "fields": {
+      "Biomedicine": 472,
+      "Computer Science": 380,
+      "Economics": 222,
+      "Environmental Science": 363,
+      "Physics": 302,
+      "Psychology": 261
+    }
+  },
+  "ground_truth": {
+    "embedded_oa_multiplier": 1.3,
+    "true_average_treatment_effect": 6.6127006348527475
+  },
+  "methods": {
+    "Naive comparison": {
+      "ate": 9.47650478754133,
+      "ci_95": [
+        7.723812420759429,
+        11.032658282961034
+      ],
+      "effect_size_d": 0.48844464340766897
+    },
+    "Propensity score matching": {
+      "ate": 5.5265,
+      "ci_95": [
+        4.0346125,
+        8.480127552552554
+      ],
+      "effect_size_d": 0.2848739969388186
+    },
+    "Inverse probability weighting": {
+      "ate": 6.298251110492313,
+      "ci_95": [
+        4.52689389083268,
+        7.886895454195129
+      ],
+      "effect_size_d": 0.3284275238059914
+    },
+    "Doubly robust": {
+      "ate": 6.3713394829220595,
+      "ci_95": [
+        4.767355594332397,
+        7.947260904299794
+      ],
+      "effect_size_d": 0.554063969002362
+    },
+    "Difference-in-differences": {
+      "ate": 2.1539180320347104,
+      "ci_95": [
+        -0.8206543859948268,
+        5.3718813032099115
+      ],
+      "effect_size_d": 0.1478920401415705
+    }
+  },
+  "matching_diagnostics": {
+    "psm_matched_fraction": 1.0,
+    "mean_propensity_score_oa": 0.6378957954951344,
+    "mean_propensity_score_non_oa": 0.49392931776056465
+  },
+  "sensitivity_analysis": {
+    "method": "Rosenbaum sign-test bounds on matched pairs",
+    "gamma_values": [
+      1.0,
+      1.2,
+      1.4,
+      1.6,
+      1.8,
+      2.0,
+      2.2,
+      2.4,
+      2.6,
+      2.8,
+      3.0
+    ],
+    "lower_p_values": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "upper_p_values": [
+      0.0,
+      0.001865,
+      0.366541,
+      0.968427,
+      0.999922,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ]
+  }
+}

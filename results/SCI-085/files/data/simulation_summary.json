@@ -1,0 +1,12 @@
+{
+  "n_cells": 5000,
+  "n_genes": 2000,
+  "n_guides": 20,
+  "n_programs": 5,
+  "combo_fraction": 0.1,
+  "nt_fraction": 0.15,
+  "n_control_cells": 743,
+  "n_single_perturb": 3813,
+  "n_combo_perturb": 444,
+  "timestamp": "2026-05-23T04:23:26.379480"
+}

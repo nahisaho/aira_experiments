@@ -1,0 +1,271 @@
+{
+  "overall": {
+    "n": 600,
+    "acceptance_mean": 3.139,
+    "acceptance_std": 0.923,
+    "acceptance_median": 3.135,
+    "pct_accepting": 17.0,
+    "pct_rejecting": 44.0,
+    "purchase_intention_mean": 2.842,
+    "labeling_preference_mean": 5.717
+  },
+  "by_age_group": {
+    "18-29": {
+      "acceptance_mean": 3.133,
+      "acceptance_std": 0.947,
+      "perceived_risk_mean": 4.421,
+      "perceived_benefit_mean": 4.033,
+      "trust_composite_mean": 3.487
+    },
+    "30-44": {
+      "acceptance_mean": 3.113,
+      "acceptance_std": 0.95,
+      "perceived_risk_mean": 4.452,
+      "perceived_benefit_mean": 4.026,
+      "trust_composite_mean": 3.568
+    },
+    "45-59": {
+      "acceptance_mean": 3.191,
+      "acceptance_std": 0.929,
+      "perceived_risk_mean": 4.419,
+      "perceived_benefit_mean": 4.085,
+      "trust_composite_mean": 3.547
+    },
+    "60+": {
+      "acceptance_mean": 3.063,
+      "acceptance_std": 0.828,
+      "perceived_risk_mean": 4.38,
+      "perceived_benefit_mean": 3.818,
+      "trust_composite_mean": 3.62
+    }
+  },
+  "age_group_anova": {
+    "F": 0.502,
+    "p": 0.6812
+  },
+  "by_gender": {
+    "female": {
+      "acceptance_mean": 3.148,
+      "acceptance_std": 0.933,
+      "perceived_risk_mean": 4.364,
+      "perceived_benefit_mean": 4.025,
+      "trust_composite_mean": 3.514
+    },
+    "male": {
+      "acceptance_mean": 3.131,
+      "acceptance_std": 0.914,
+      "perceived_risk_mean": 4.485,
+      "perceived_benefit_mean": 4.014,
+      "trust_composite_mean": 3.599
+    }
+  },
+  "gender_anova": {
+    "F": 0.052,
+    "p": 0.82
+  },
+  "by_education": {
+    "bachelor": {
+      "acceptance_mean": 3.158,
+      "acceptance_std": 0.891,
+      "perceived_risk_mean": 4.429,
+      "perceived_benefit_mean": 4.002,
+      "trust_composite_mean": 3.587
+    },
+    "high_school": {
+      "acceptance_mean": 3.088,
+      "acceptance_std": 0.966,
+      "perceived_risk_mean": 4.451,
+      "perceived_benefit_mean": 4.109,
+      "trust_composite_mean": 3.528
+    },
+    "master_doctorate": {
+      "acceptance_mean": 3.152,
+      "acceptance_std": 0.96,
+      "perceived_risk_mean": 4.371,
+      "perceived_benefit_mean": 4.046,
+      "trust_composite_mean": 3.529
+    },
+    "vocational": {
+      "acceptance_mean": 3.162,
+      "acceptance_std": 0.876,
+      "perceived_risk_mean": 4.455,
+      "perceived_benefit_mean": 3.812,
+      "trust_composite_mean": 3.56
+    }
+  },
+  "education_anova": {
+    "F": 0.214,
+    "p": 0.8869
+  },
+  "by_region": {
+    "chubu": {
+      "acceptance_mean": 3.113,
+      "acceptance_std": 0.917,
+      "perceived_risk_mean": 4.396,
+      "perceived_benefit_mean": 4.208,
+      "trust_composite_mean": 3.67
+    },
+    "chugoku_shikoku": {
+      "acceptance_mean": 3.271,
+      "acceptance_std": 1.021,
+      "perceived_risk_mean": 4.349,
+      "perceived_benefit_mean": 4.217,
+      "trust_composite_mean": 3.46
+    },
+    "kansai": {
+      "acceptance_mean": 3.148,
+      "acceptance_std": 0.915,
+      "perceived_risk_mean": 4.417,
+      "perceived_benefit_mean": 4.059,
+      "trust_composite_mean": 3.564
+    },
+    "kanto": {
+      "acceptance_mean": 3.119,
+      "acceptance_std": 0.902,
+      "perceived_risk_mean": 4.492,
+      "perceived_benefit_mean": 3.904,
+      "trust_composite_mean": 3.491
+    },
+    "kyushu_okinawa": {
+      "acceptance_mean": 3.147,
+      "acceptance_std": 0.963,
+      "perceived_risk_mean": 4.336,
+      "perceived_benefit_mean": 3.908,
+      "trust_composite_mean": 3.553
+    },
+    "tohoku_hokkaido": {
+      "acceptance_mean": 3.132,
+      "acceptance_std": 0.929,
+      "perceived_risk_mean": 4.423,
+      "perceived_benefit_mean": 4.094,
+      "trust_composite_mean": 3.648
+    }
+  },
+  "region_anova": {
+    "F": 0.181,
+    "p": 0.9698
+  },
+  "correlation_matrix": {
+    "scientific_literacy": {
+      "scientific_literacy": 1.0,
+      "media_exposure": 0.005,
+      "trust_composite": -0.011,
+      "knowledge_genome_editing": 0.507,
+      "perceived_risk": -0.098,
+      "perceived_benefit": 0.162,
+      "naturalness_concern": -0.013,
+      "acceptance": 0.068,
+      "purchase_intention": 0.085
+    },
+    "media_exposure": {
+      "scientific_literacy": 0.005,
+      "media_exposure": 1.0,
+      "trust_composite": -0.051,
+      "knowledge_genome_editing": -0.044,
+      "perceived_risk": 0.124,
+      "perceived_benefit": -0.021,
+      "naturalness_concern": -0.022,
+      "acceptance": -0.079,
+      "purchase_intention": -0.095
+    },
+    "trust_composite": {
+      "scientific_literacy": -0.011,
+      "media_exposure": -0.051,
+      "trust_composite": 1.0,
+      "knowledge_genome_editing": -0.048,
+      "perceived_risk": -0.165,
+      "perceived_benefit": 0.176,
+      "naturalness_concern": -0.031,
+      "acceptance": 0.226,
+      "purchase_intention": 0.213
+    },
+    "knowledge_genome_editing": {
+      "scientific_literacy": 0.507,
+      "media_exposure": -0.044,
+      "trust_composite": -0.048,
+      "knowledge_genome_editing": 1.0,
+      "perceived_risk": -0.203,
+      "perceived_benefit": 0.2,
+      "naturalness_concern": 0.009,
+      "acceptance": 0.168,
+      "purchase_intention": 0.154
+    },
+    "perceived_risk": {
+      "scientific_literacy": -0.098,
+      "media_exposure": 0.124,
+      "trust_composite": -0.165,
+      "knowledge_genome_editing": -0.203,
+      "perceived_risk": 1.0,
+      "perceived_benefit": -0.094,
+      "naturalness_concern": -0.025,
+      "acceptance": -0.3,
+      "purchase_intention": -0.212
+    },
+    "perceived_benefit": {
+      "scientific_literacy": 0.162,
+      "media_exposure": -0.021,
+      "trust_composite": 0.176,
+      "knowledge_genome_editing": 0.2,
+      "perceived_risk": -0.094,
+      "perceived_benefit": 1.0,
+      "naturalness_concern": 0.021,
+      "acceptance": 0.412,
+      "purchase_intention": 0.472
+    },
+    "naturalness_concern": {
+      "scientific_literacy": -0.013,
+      "media_exposure": -0.022,
+      "trust_composite": -0.031,
+      "knowledge_genome_editing": 0.009,
+      "perceived_risk": -0.025,
+      "perceived_benefit": 0.021,
+      "naturalness_concern": 1.0,
+      "acceptance": -0.175,
+      "purchase_intention": -0.119
+    },
+    "acceptance": {
+      "scientific_literacy": 0.068,
+      "media_exposure": -0.079,
+      "trust_composite": 0.226,
+      "knowledge_genome_editing": 0.168,
+      "perceived_risk": -0.3,
+      "perceived_benefit": 0.412,
+      "naturalness_concern": -0.175,
+      "acceptance": 1.0,
+      "purchase_intention": 0.743
+    },
+    "purchase_intention": {
+      "scientific_literacy": 0.085,
+      "media_exposure": -0.095,
+      "trust_composite": 0.213,
+      "knowledge_genome_editing": 0.154,
+      "perceived_risk": -0.212,
+      "perceived_benefit": 0.472,
+      "naturalness_concern": -0.119,
+      "acceptance": 0.743,
+      "purchase_intention": 1.0
+    }
+  },
+  "regression": {
+    "r_squared": 0.3426,
+    "coefficients": {
+      "trust_composite": 0.1641,
+      "perceived_risk": -0.2052,
+      "perceived_benefit": 0.3194,
+      "naturalness_concern": -0.1413,
+      "knowledge_genome_editing": 0.0441,
+      "scientific_literacy": -0.0475,
+      "media_exposure": -0.0233,
+      "gmo_distinction": 0.14
+    },
+    "intercept": 2.6297
+  },
+  "japan_specific": {
+    "naturalness_concern_mean": 4.994,
+    "naturalness_acceptance_corr": -0.175,
+    "labeling_pref_mean": 5.717,
+    "gmo_distinction_mean": 3.278,
+    "trust_scientists_vs_gov_gap": 1.305,
+    "trust_scientists_vs_corp_gap": 1.486
+  }
+}

@@ -1,0 +1,11 @@
+<additional>
+  <vType id="car" length="4.5" maxSpeed="13.89" accel="1.4" decel="2.0" sigma="0.5" minGap="2.0" tau="1.5" carFollowModel="IDM" lcModel="LC2013">
+    <param key="delta" value="4"/>
+  </vType>
+  <vType id="bus" length="12.0" maxSpeed="11.11" accel="1.0" decel="1.5" sigma="0.5" minGap="3.0" tau="2.0" carFollowModel="IDM" lcModel="LC2013">
+    <param key="delta" value="4"/>
+  </vType>
+  <vType id="bicycle" length="1.8" maxSpeed="4.17" accel="1.2" decel="2.5" sigma="0.5" minGap="1.0" tau="1.0" carFollowModel="IDM" lcModel="LC2013">
+    <param key="delta" value="4"/>
+  </vType>
+</additional>

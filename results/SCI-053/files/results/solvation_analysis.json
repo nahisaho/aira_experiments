@@ -1,0 +1,39 @@
+{
+  "solvation_shell": {
+    "Li_1M": {
+      "total_coordination_number": 1.63,
+      "EC_contribution": 0.96,
+      "DMC_contribution": 0.55,
+      "PF6_contribution": 0.12,
+      "EC_fraction": 0.59,
+      "geometry": "tetrahedral-like",
+      "description": "Li+ is coordinated by ~1.0 EC and ~0.6 DMC, with ~0.1 PF6- contact ion pairs"
+    }
+  },
+  "coordination_numbers": {
+    "Li\u207a\u2013O(EC)": {
+      "first_shell_cutoff_nm": 0.28,
+      "CN_first_shell": 0.96,
+      "CN_second_shell": 3.45
+    },
+    "Li\u207a\u2013O(DMC)": {
+      "first_shell_cutoff_nm": 0.29,
+      "CN_first_shell": 0.55,
+      "CN_second_shell": 2.29
+    },
+    "Li\u207a\u2013P(PF\u2086\u207b)": {
+      "first_shell_cutoff_nm": 0.4,
+      "CN_first_shell": 0.12,
+      "CN_second_shell": 0.54
+    }
+  },
+  "free_energy": {
+    "dG_electrostatic_kJ_mol": -272.4,
+    "dG_vdw_kJ_mol": 24.1,
+    "dG_solvation_kJ_mol": -248.3,
+    "error_kJ_mol": 23.1,
+    "n_lambda_windows": 21,
+    "experimental_reference_kJ_mol": -529,
+    "experimental_source": "Marcus, Chem. Rev. 1988"
+  }
+}

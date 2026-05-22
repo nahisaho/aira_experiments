@@ -1,0 +1,582 @@
+{
+  "seed": 42,
+  "record_count": 1500,
+  "summary": {
+    "year_range": [
+      2015,
+      2024
+    ],
+    "field_distribution": {
+      "genomics": 331,
+      "proteomics": 212,
+      "clinical": 254,
+      "ecology": 191,
+      "astronomy": 240,
+      "social_science": 272
+    },
+    "repository_distribution": {
+      "zenodo": 325,
+      "figshare": 251,
+      "dryad": 222,
+      "dataverse": 325,
+      "domain_specific": 377
+    },
+    "mean_downloads": 122.129,
+    "mean_reuse": 9.197,
+    "mean_citations": 8.411,
+    "mean_fair_score": 0.754
+  },
+  "repository_usage_trends": [
+    {
+      "year": 2015,
+      "repository": "zenodo",
+      "count": 15,
+      "share": 0.1471
+    },
+    {
+      "year": 2015,
+      "repository": "figshare",
+      "count": 21,
+      "share": 0.2059
+    },
+    {
+      "year": 2015,
+      "repository": "dryad",
+      "count": 21,
+      "share": 0.2059
+    },
+    {
+      "year": 2015,
+      "repository": "dataverse",
+      "count": 17,
+      "share": 0.1667
+    },
+    {
+      "year": 2015,
+      "repository": "domain_specific",
+      "count": 28,
+      "share": 0.2745
+    },
+    {
+      "year": 2016,
+      "repository": "zenodo",
+      "count": 25,
+      "share": 0.1894
+    },
+    {
+      "year": 2016,
+      "repository": "figshare",
+      "count": 27,
+      "share": 0.2045
+    },
+    {
+      "year": 2016,
+      "repository": "dryad",
+      "count": 27,
+      "share": 0.2045
+    },
+    {
+      "year": 2016,
+      "repository": "dataverse",
+      "count": 13,
+      "share": 0.0985
+    },
+    {
+      "year": 2016,
+      "repository": "domain_specific",
+      "count": 40,
+      "share": 0.303
+    },
+    {
+      "year": 2017,
+      "repository": "zenodo",
+      "count": 30,
+      "share": 0.2143
+    },
+    {
+      "year": 2017,
+      "repository": "figshare",
+      "count": 26,
+      "share": 0.1857
+    },
+    {
+      "year": 2017,
+      "repository": "dryad",
+      "count": 21,
+      "share": 0.15
+    },
+    {
+      "year": 2017,
+      "repository": "dataverse",
+      "count": 18,
+      "share": 0.1286
+    },
+    {
+      "year": 2017,
+      "repository": "domain_specific",
+      "count": 45,
+      "share": 0.3214
+    },
+    {
+      "year": 2018,
+      "repository": "zenodo",
+      "count": 28,
+      "share": 0.1944
+    },
+    {
+      "year": 2018,
+      "repository": "figshare",
+      "count": 26,
+      "share": 0.1806
+    },
+    {
+      "year": 2018,
+      "repository": "dryad",
+      "count": 15,
+      "share": 0.1042
+    },
+    {
+      "year": 2018,
+      "repository": "dataverse",
+      "count": 36,
+      "share": 0.25
+    },
+    {
+      "year": 2018,
+      "repository": "domain_specific",
+      "count": 39,
+      "share": 0.2708
+    },
+    {
+      "year": 2019,
+      "repository": "zenodo",
+      "count": 32,
+      "share": 0.2353
+    },
+    {
+      "year": 2019,
+      "repository": "figshare",
+      "count": 15,
+      "share": 0.1103
+    },
+    {
+      "year": 2019,
+      "repository": "dryad",
+      "count": 24,
+      "share": 0.1765
+    },
+    {
+      "year": 2019,
+      "repository": "dataverse",
+      "count": 34,
+      "share": 0.25
+    },
+    {
+      "year": 2019,
+      "repository": "domain_specific",
+      "count": 31,
+      "share": 0.2279
+    },
+    {
+      "year": 2020,
+      "repository": "zenodo",
+      "count": 26,
+      "share": 0.1625
+    },
+    {
+      "year": 2020,
+      "repository": "figshare",
+      "count": 27,
+      "share": 0.1688
+    },
+    {
+      "year": 2020,
+      "repository": "dryad",
+      "count": 26,
+      "share": 0.1625
+    },
+    {
+      "year": 2020,
+      "repository": "dataverse",
+      "count": 36,
+      "share": 0.225
+    },
+    {
+      "year": 2020,
+      "repository": "domain_specific",
+      "count": 45,
+      "share": 0.2812
+    },
+    {
+      "year": 2021,
+      "repository": "zenodo",
+      "count": 41,
+      "share": 0.2579
+    },
+    {
+      "year": 2021,
+      "repository": "figshare",
+      "count": 23,
+      "share": 0.1447
+    },
+    {
+      "year": 2021,
+      "repository": "dryad",
+      "count": 18,
+      "share": 0.1132
+    },
+    {
+      "year": 2021,
+      "repository": "dataverse",
+      "count": 32,
+      "share": 0.2013
+    },
+    {
+      "year": 2021,
+      "repository": "domain_specific",
+      "count": 45,
+      "share": 0.283
+    },
+    {
+      "year": 2022,
+      "repository": "zenodo",
+      "count": 37,
+      "share": 0.227
+    },
+    {
+      "year": 2022,
+      "repository": "figshare",
+      "count": 36,
+      "share": 0.2209
+    },
+    {
+      "year": 2022,
+      "repository": "dryad",
+      "count": 15,
+      "share": 0.092
+    },
+    {
+      "year": 2022,
+      "repository": "dataverse",
+      "count": 44,
+      "share": 0.2699
+    },
+    {
+      "year": 2022,
+      "repository": "domain_specific",
+      "count": 31,
+      "share": 0.1902
+    },
+    {
+      "year": 2023,
+      "repository": "zenodo",
+      "count": 42,
+      "share": 0.236
+    },
+    {
+      "year": 2023,
+      "repository": "figshare",
+      "count": 29,
+      "share": 0.1629
+    },
+    {
+      "year": 2023,
+      "repository": "dryad",
+      "count": 25,
+      "share": 0.1404
+    },
+    {
+      "year": 2023,
+      "repository": "dataverse",
+      "count": 42,
+      "share": 0.236
+    },
+    {
+      "year": 2023,
+      "repository": "domain_specific",
+      "count": 40,
+      "share": 0.2247
+    },
+    {
+      "year": 2024,
+      "repository": "zenodo",
+      "count": 49,
+      "share": 0.2634
+    },
+    {
+      "year": 2024,
+      "repository": "figshare",
+      "count": 21,
+      "share": 0.1129
+    },
+    {
+      "year": 2024,
+      "repository": "dryad",
+      "count": 30,
+      "share": 0.1613
+    },
+    {
+      "year": 2024,
+      "repository": "dataverse",
+      "count": 53,
+      "share": 0.2849
+    },
+    {
+      "year": 2024,
+      "repository": "domain_specific",
+      "count": 33,
+      "share": 0.1774
+    }
+  ],
+  "license_analysis": {
+    "distribution": {
+      "CC-BY": 0.3967,
+      "CC0": 0.1827,
+      "restricted": 0.1767,
+      "custom": 0.244
+    },
+    "impact": {
+      "CC-BY": {
+        "download_count": 130.661,
+        "reuse_count": 9.442,
+        "citation_count": 8.546,
+        "fair_score": 0.795
+      },
+      "CC0": {
+        "download_count": 131.31,
+        "reuse_count": 10.036,
+        "citation_count": 9.245,
+        "fair_score": 0.819
+      },
+      "restricted": {
+        "download_count": 103.449,
+        "reuse_count": 8.238,
+        "citation_count": 7.347,
+        "fair_score": 0.66
+      },
+      "custom": {
+        "download_count": 114.913,
+        "reuse_count": 8.863,
+        "citation_count": 8.336,
+        "fair_score": 0.707
+      }
+    }
+  },
+  "documentation_analysis": {
+    "pearson_r": 0.3225,
+    "pearson_p": 1.208188680730102e-37,
+    "spearman_r": 0.3177,
+    "spearman_p": 1.5841485779981306e-36,
+    "spearman_ci_95": [
+      0.2715,
+      0.3625
+    ],
+    "mean_reuse_by_level": {
+      "none": 4.979,
+      "minimal": 6.894,
+      "good": 8.858,
+      "excellent": 10.608
+    },
+    "mean_downloads_by_level": {
+      "none": 114.542,
+      "minimal": 126.698,
+      "good": 121.749,
+      "excellent": 121.718
+    }
+  },
+  "field_specific_patterns": [
+    {
+      "field": "genomics",
+      "datasets": 331,
+      "doi_rate": 0.94,
+      "open_license_rate": 0.598,
+      "mean_fair_score": 0.755,
+      "mean_downloads": 131.489,
+      "mean_reuse": 9.852,
+      "mean_citations": 9.604,
+      "documentation_score": 2.218
+    },
+    {
+      "field": "proteomics",
+      "datasets": 212,
+      "doi_rate": 0.934,
+      "open_license_rate": 0.542,
+      "mean_fair_score": 0.736,
+      "mean_downloads": 120.0,
+      "mean_reuse": 8.693,
+      "mean_citations": 8.108,
+      "documentation_score": 2.104
+    },
+    {
+      "field": "clinical",
+      "datasets": 254,
+      "doi_rate": 0.953,
+      "open_license_rate": 0.465,
+      "mean_fair_score": 0.704,
+      "mean_downloads": 119.654,
+      "mean_reuse": 8.575,
+      "mean_citations": 8.303,
+      "documentation_score": 2.035
+    },
+    {
+      "field": "ecology",
+      "datasets": 191,
+      "doi_rate": 0.937,
+      "open_license_rate": 0.749,
+      "mean_fair_score": 0.817,
+      "mean_downloads": 125.817,
+      "mean_reuse": 9.665,
+      "mean_citations": 8.162,
+      "documentation_score": 2.403
+    },
+    {
+      "field": "astronomy",
+      "datasets": 240,
+      "doi_rate": 0.904,
+      "open_license_rate": 0.667,
+      "mean_fair_score": 0.771,
+      "mean_downloads": 116.062,
+      "mean_reuse": 9.3,
+      "mean_citations": 7.979,
+      "documentation_score": 2.312
+    },
+    {
+      "field": "social_science",
+      "datasets": 272,
+      "doi_rate": 0.938,
+      "open_license_rate": 0.496,
+      "mean_fair_score": 0.755,
+      "mean_downloads": 117.474,
+      "mean_reuse": 8.952,
+      "mean_citations": 7.849,
+      "documentation_score": 2.254
+    }
+  ],
+  "survival_analysis": {
+    "CC-BY": {
+      "n": 595,
+      "event_rate": 1.0,
+      "median_time_to_first_reuse_months": 8.0
+    },
+    "CC0": {
+      "n": 274,
+      "event_rate": 1.0,
+      "median_time_to_first_reuse_months": 7.0
+    },
+    "restricted": {
+      "n": 265,
+      "event_rate": 0.9887,
+      "median_time_to_first_reuse_months": 10.0
+    },
+    "custom": {
+      "n": 366,
+      "event_rate": 0.9973,
+      "median_time_to_first_reuse_months": 9.0
+    }
+  },
+  "network_analysis": {
+    "edge_count": 3436,
+    "node_count": 1500,
+    "density": 0.001528,
+    "largest_component_size": 1431,
+    "average_in_degree": 2.291,
+    "average_out_degree": 2.291,
+    "longest_citation_chain": 2,
+    "top_cited_datasets": [
+      {
+        "dataset_id": "DS-0372",
+        "field": "proteomics",
+        "year": 2015,
+        "in_degree": 18
+      },
+      {
+        "dataset_id": "DS-0550",
+        "field": "astronomy",
+        "year": 2015,
+        "in_degree": 15
+      },
+      {
+        "dataset_id": "DS-0117",
+        "field": "clinical",
+        "year": 2015,
+        "in_degree": 15
+      },
+      {
+        "dataset_id": "DS-1054",
+        "field": "ecology",
+        "year": 2015,
+        "in_degree": 14
+      },
+      {
+        "dataset_id": "DS-0157",
+        "field": "proteomics",
+        "year": 2015,
+        "in_degree": 14
+      }
+    ]
+  },
+  "statistical_tests": {
+    "assumption_checks": {
+      "reuse_count_skewness": 0.8132,
+      "log_reuse_shapiro_p": 1e-06,
+      "recommended_test_family": "nonparametric",
+      "rationale": "Reuse counts are right-skewed count data, so rank-based inference is preferred."
+    },
+    "license_reuse_kw_test": {
+      "h_statistic": 23.2991,
+      "p_value": 3.498105565370824e-05,
+      "epsilon_squared": 0.0136
+    },
+    "pairwise_license_vs_restricted": [
+      {
+        "comparison": "CC-BY vs restricted",
+        "n_group": 595,
+        "n_reference": 265,
+        "u_statistic": 90563.5,
+        "p_value": 0.0004729424374489059,
+        "rank_biserial_correlation": 0.1487,
+        "mean_reuse_difference": 1.204,
+        "mean_reuse_difference_ci_95": [
+          0.634,
+          1.796
+        ],
+        "fdr_adjusted_p": 0.000709
+      },
+      {
+        "comparison": "CC0 vs restricted",
+        "n_group": 274,
+        "n_reference": 265,
+        "u_statistic": 44273.5,
+        "p_value": 9.844382531032037e-06,
+        "rank_biserial_correlation": 0.2195,
+        "mean_reuse_difference": 1.799,
+        "mean_reuse_difference_ci_95": [
+          1.072,
+          2.532
+        ],
+        "fdr_adjusted_p": 3e-05
+      },
+      {
+        "comparison": "custom vs restricted",
+        "n_group": 366,
+        "n_reference": 265,
+        "u_statistic": 52053.0,
+        "p_value": 0.11450599990611655,
+        "rank_biserial_correlation": 0.0734,
+        "mean_reuse_difference": 0.626,
+        "mean_reuse_difference_ci_95": [
+          -0.059,
+          1.279
+        ],
+        "fdr_adjusted_p": 0.114506
+      }
+    ]
+  },
+  "data_file": "/home/nahisaho/GitHub/aira/projects/d9103429-3a3f-4358-9765-b84197a2769e/workspace/data/simulated_data_sharing_metadata.csv",
+  "generated_figures": [
+    "/home/nahisaho/GitHub/aira/projects/d9103429-3a3f-4358-9765-b84197a2769e/workspace/figures/data_sharing_trends.png",
+    "/home/nahisaho/GitHub/aira/projects/d9103429-3a3f-4358-9765-b84197a2769e/workspace/figures/data_reuse_factors.png",
+    "/home/nahisaho/GitHub/aira/projects/d9103429-3a3f-4358-9765-b84197a2769e/workspace/figures/data_survival_curve.png",
+    "/home/nahisaho/GitHub/aira/projects/d9103429-3a3f-4358-9765-b84197a2769e/workspace/figures/data_field_comparison.png"
+  ]
+}

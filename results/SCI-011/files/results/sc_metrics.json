@@ -1,0 +1,20 @@
+{
+  "HC": {
+    "mean_connectivity_strength": 0.8122864541150038,
+    "density": 0.1250936329588015,
+    "n_rois": 90,
+    "coefficient_of_variation": 0.034639386739173494
+  },
+  "SCZ": {
+    "mean_connectivity_strength": 0.7885891110129116,
+    "density": 0.1250936329588015,
+    "n_rois": 90,
+    "coefficient_of_variation": 0.03452940762672195
+  },
+  "AD": {
+    "mean_connectivity_strength": 0.7905398403761511,
+    "density": 0.1250936329588015,
+    "n_rois": 90,
+    "coefficient_of_variation": 0.03441503802573805
+  }
+}

@@ -1,0 +1,201 @@
+{
+  "model": "MARTINI3_adapted_BCP",
+  "system": "PS-b-PMMA",
+  "temperature_K": 500,
+  "chi_PS_PMMA": 0.049800000000000004,
+  "beads": {
+    "TC5_PS_ring": {
+      "name": "TC5",
+      "mass": 69.33333333333333,
+      "sigma": 0.43,
+      "epsilon": 3.1,
+      "charge": 0.0,
+      "description": "PS aromatic ring (MARTINI3 TC5)"
+    },
+    "SC3_PS_bb": {
+      "name": "SC3",
+      "mass": 26.0,
+      "sigma": 0.43,
+      "epsilon": 2.7,
+      "charge": 0.0,
+      "description": "PS backbone (MARTINI3 SC3)"
+    },
+    "SC2_PMMA_ester": {
+      "name": "SC2",
+      "mass": 50.0,
+      "sigma": 0.43,
+      "epsilon": 2.5,
+      "charge": 0.0,
+      "description": "PMMA ester group (MARTINI3 SC2)"
+    },
+    "SC1_PMMA_bb": {
+      "name": "SC1",
+      "mass": 28.0,
+      "sigma": 0.43,
+      "epsilon": 2.7,
+      "charge": 0.0,
+      "description": "PMMA backbone (MARTINI3 SC1)"
+    },
+    "N0_junction": {
+      "name": "N0",
+      "mass": 56.0,
+      "sigma": 0.47,
+      "epsilon": 2.0,
+      "charge": 0.0,
+      "description": "PS-PMMA diblock junction"
+    }
+  },
+  "sdk_beads": {
+    "CMn_PS": {
+      "name": "CMn",
+      "mass": 52.08,
+      "sigma": 0.465,
+      "epsilon": 3.5,
+      "charge": 0.0,
+      "description": "SDK: PS monomer (CMn)"
+    },
+    "CM_PMMA": {
+      "name": "CM",
+      "mass": 50.04,
+      "sigma": 0.46,
+      "epsilon": 3.2,
+      "charge": 0.0,
+      "description": "SDK: PMMA monomer (CM)"
+    },
+    "W3_water": {
+      "name": "W3",
+      "mass": 54.045,
+      "sigma": 0.461,
+      "epsilon": 4.35,
+      "charge": 0.0,
+      "description": "SDK: 3-water bead (W3)"
+    }
+  },
+  "bonds": [
+    {
+      "bead1": "SC3_PS_bb",
+      "bead2": "SC3_PS_bb",
+      "r0": 0.47,
+      "kb": 3800.0,
+      "style": "harmonic"
+    },
+    {
+      "bead1": "SC3_PS_bb",
+      "bead2": "TC5_PS_ring",
+      "r0": 0.29,
+      "kb": 5000.0,
+      "style": "harmonic"
+    },
+    {
+      "bead1": "SC1_PMMA_bb",
+      "bead2": "SC1_PMMA_bb",
+      "r0": 0.47,
+      "kb": 3800.0,
+      "style": "harmonic"
+    },
+    {
+      "bead1": "SC1_PMMA_bb",
+      "bead2": "SC2_PMMA_ester",
+      "r0": 0.31,
+      "kb": 4500.0,
+      "style": "harmonic"
+    },
+    {
+      "bead1": "SC3_PS_bb",
+      "bead2": "N0_junction",
+      "r0": 0.47,
+      "kb": 3500.0,
+      "style": "harmonic"
+    },
+    {
+      "bead1": "N0_junction",
+      "bead2": "SC1_PMMA_bb",
+      "r0": 0.47,
+      "kb": 3500.0,
+      "style": "harmonic"
+    }
+  ],
+  "angles": [
+    {
+      "bead1": "SC3_PS_bb",
+      "bead2": "SC3_PS_bb",
+      "bead3": "SC3_PS_bb",
+      "theta0": 180.0,
+      "ktheta": 25.0,
+      "style": "harmonic"
+    },
+    {
+      "bead1": "SC3_PS_bb",
+      "bead2": "SC3_PS_bb",
+      "bead3": "TC5_PS_ring",
+      "theta0": 150.0,
+      "ktheta": 25.0,
+      "style": "harmonic"
+    },
+    {
+      "bead1": "SC1_PMMA_bb",
+      "bead2": "SC1_PMMA_bb",
+      "bead3": "SC1_PMMA_bb",
+      "theta0": 180.0,
+      "ktheta": 20.0,
+      "style": "harmonic"
+    },
+    {
+      "bead1": "SC1_PMMA_bb",
+      "bead2": "SC1_PMMA_bb",
+      "bead3": "SC2_PMMA_ester",
+      "theta0": 120.0,
+      "ktheta": 25.0,
+      "style": "harmonic"
+    }
+  ],
+  "dihedrals": [
+    {
+      "bead1": "SC3_PS_bb",
+      "bead2": "SC3_PS_bb",
+      "bead3": "SC3_PS_bb",
+      "bead4": "SC3_PS_bb",
+      "k": 0.5,
+      "n": 1,
+      "delta": 0.0
+    },
+    {
+      "bead1": "SC1_PMMA_bb",
+      "bead2": "SC1_PMMA_bb",
+      "bead3": "SC1_PMMA_bb",
+      "bead4": "SC1_PMMA_bb",
+      "k": 0.3,
+      "n": 1,
+      "delta": 0.0
+    }
+  ],
+  "sdk_nonbonded_cross": {
+    "CMn_PS-CM_PMMA": {
+      "epsilon": 2.1,
+      "sigma": 0.462,
+      "chi_eff": 0.058,
+      "note": "PS-PMMA repulsive -> microphase separation"
+    },
+    "CMn_PS-W3_water": {
+      "epsilon": 1.6,
+      "sigma": 0.463,
+      "note": "PS hydrophobic"
+    },
+    "CM_PMMA-W3_water": {
+      "epsilon": 3.8,
+      "sigma": 0.461,
+      "note": "PMMA slightly hydrophilic"
+    }
+  },
+  "ibi_strategy": {
+    "method": "Iterative Boltzmann Inversion",
+    "reference": "Atomistic NPT simulation at 500K 1bar",
+    "convergence_criterion": "RMSE(g_CG, g_AA) < 0.02",
+    "max_iterations": 100,
+    "update_alpha": 0.5
+  },
+  "mapping_atoms_per_bead": {
+    "PS": 2,
+    "PMMA": 2
+  }
+}

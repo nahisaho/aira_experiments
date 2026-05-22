@@ -1,0 +1,214 @@
+# VINS-Fusion style configuration for Intel RealSense D455 stereo cameras + BMI088 IMU.
+# NOTE: Intrinsics/extrinsics below are representative nominal values and must be replaced
+# with per-airframe calibration results before flight. Parameter names are chosen to remain
+# close to VINS-Fusion conventions while adding comments for ROS2/PX4 deployment.
+
+%YAML:1.0
+
+# Output path for estimator debug products, pose graph, and logs.
+output_path: "results/vio_runtime"
+
+# Topic bindings
+imu_topic: "/imu/data_raw"
+image0_topic: "/camera/infra1/image_rect_raw"
+image1_topic: "/camera/infra2/image_rect_raw"
+pose_graph_save_path: "results/pose_graph"
+map_cache_path: "results/persistent_vio_map"
+
+# Sensor rates
+imu_rate_hz: 400.0               # BMI088 is commonly run at 200-1000 Hz; 400 Hz is a good operating point.
+camera_rate_hz: 30.0             # D455 stereo stream target.
+
+# Camera model
+model_type: PINHOLE
+camera_name: D455_stereo
+image_width: 848
+image_height: 480
+distortion_model: radtan
+
+# Left camera intrinsics (representative; replace with calibration output)
+projection_parameters:
+  fx: 430.200
+  fy: 430.200
+  cx: 425.500
+  cy: 239.500
+distortion_parameters:
+  k1: -0.0150
+  k2: 0.0210
+  p1: 0.0002
+  p2: -0.0001
+
+# Right camera intrinsics (representative)
+projection_parameters_right:
+  fx: 430.100
+  fy: 430.100
+  cx: 424.900
+  cy: 239.700
+distortion_parameters_right:
+  k1: -0.0148
+  k2: 0.0206
+  p1: 0.0001
+  p2: -0.0002
+
+# Stereo baseline in meters (D455 nominal baseline ~95 mm).
+stereo_baseline_m: 0.095
+
+# Extrinsic calibration handling
+estimate_extrinsic: 1            # 0 = fixed trusted extrinsic, 1 = optimize around prior, 2 = initialize from scratch.
+estimate_td: 1                   # Enable online camera-IMU time offset estimation.
+td: 0.0000                       # Initial camera time offset relative to IMU [s].
+
+# Body-to-camera extrinsics for left camera, T_BC.
+# These are example values for a forward-facing camera with slight downward tilt.
+extrinsicRotation:
+  rows: 3
+  cols: 3
+  dt: d
+  data: [0.9998, 0.0012, 0.0188,
+         -0.0014, 0.9999, 0.0095,
+         -0.0188, -0.0095, 0.9998]
+extrinsicTranslation:
+  rows: 3
+  cols: 1
+  dt: d
+  data: [0.045, 0.000, 0.020]
+
+# Left-to-right camera transform, T_C0C1.
+stereo_rotation:
+  rows: 3
+  cols: 3
+  dt: d
+  data: [1.0000, 0.0000, 0.0002,
+         0.0000, 1.0000, -0.0001,
+         -0.0002, 0.0001, 1.0000]
+stereo_translation:
+  rows: 3
+  cols: 1
+  dt: d
+  data: [0.095, 0.000, 0.000]
+
+# IMU noise parameters.
+# Replace using Allan variance identification for the specific BMI088 mounting and filtering chain.
+acc_n: 0.030                     # Accelerometer white noise density [m/s^2 / sqrt(Hz)]
+gyr_n: 0.0020                    # Gyroscope white noise density [rad/s / sqrt(Hz)]
+acc_w: 0.00030                   # Accelerometer bias random walk [m/s^3 / sqrt(Hz)]
+gyr_w: 0.00003                   # Gyroscope bias random walk [rad/s^2 / sqrt(Hz)]
+g_norm: 9.80665                  # Gravity magnitude [m/s^2]
+
+# Time offset estimation bounds
+time_offset_min_s: -0.020
+time_offset_max_s: 0.020
+time_offset_freeze_variance_ms2: 0.1
+
+# Front-end feature configuration
+feature_tracker:
+  detector_mode: "superpoint"   # superpoint | orb
+  fallback_detector_mode: "orb"
+  use_klt_tracking: true
+  klt_pyramid_levels: 4
+  klt_window_size: 21
+  klt_forward_backward_thresh_px: 0.8
+  equalize_histogram: false
+  publish_track_image: true
+  min_feature_distance_px: 18
+  max_feature_count: 260
+  min_feature_count: 120
+  peripheral_feature_fraction: 0.30
+  ransac_reproj_thresh_px: 1.2
+  outlier_reject_use_fundamental: true
+  stereo_epipolar_thresh_px: 1.5
+  adaptive_feature_management:
+    enabled: true
+    low_texture_entropy_threshold: 0.28
+    high_texture_entropy_threshold: 0.60
+    blur_threshold: 65.0
+    min_features_low_texture: 240
+    max_features_high_texture: 180
+    feature_boost_step: 20
+    redetect_interval_frames: 3
+
+# Initialization strategy
+initialization:
+  vision_only_bootstrap: true
+  min_bootstrap_features: 120
+  min_bootstrap_parallax_px: 18.0
+  min_initialization_duration_s: 1.5
+  max_initialization_duration_s: 8.0
+  gravity_refinement_iterations: 5
+  gyro_bias_refinement_iterations: 5
+  switch_to_vi_cov_trace_threshold: 0.25
+
+# Sliding window optimizer
+estimator:
+  solver_type: "ceres"
+  max_solver_time_ms: 24.0
+  max_num_iterations: 10
+  sliding_window_size: 10
+  keyframe_parallax_px: 10.0
+  marginalization_strategy: "schur"
+  huber_delta: 1.0
+  cauchy_scale_loop: 1.5
+  imu_factor_weight: 1.0
+  reprojection_factor_weight: 1.0
+  loop_factor_weight: 0.6
+  lidar_factor_weight: 0.4
+  enable_online_extrinsic_refine: true
+  enable_temporal_calibration: true
+  pure_rotation_imu_weight_multiplier: 1.5
+  low_parallax_reprojection_weight_scale: 0.7
+  degeneration_condition_number_threshold: 100000.0
+  degeneration_min_parallax_px: 1.5
+  degeneration_pure_rotation_ratio: 5.0
+  reset_on_divergence: true
+
+# Loop closure and map reuse
+loop_closure:
+  enable: true
+  dbow3_vocabulary_path: "data/orb_vocab/dbow3_vocab.yml.gz"
+  min_loop_keyframe_interval: 25
+  score_margin_ratio: 1.15
+  min_inliers: 40
+  max_reprojection_rmse_px: 1.5
+  pnp_ransac_thresh_px: 2.0
+  max_yaw_difference_deg: 20.0
+  pose_graph_optimization_rate_hz: 1.0
+  persistent_map_reuse: true
+  calibration_hash_required: true
+  relocalization_min_inlier_ratio: 0.35
+  relocalization_max_cov_trace: 0.50
+
+# Optional LiDAR fusion hooks
+lidar_fusion:
+  enabled: false
+  odometry_topic: "/lidar/odometry"
+  extrinsic_rotation_rpy_deg: [0.0, 0.0, 0.0]
+  extrinsic_translation_m: [0.0, 0.0, 0.0]
+  factor_weight: 0.4
+  max_translation_residual_m: 0.5
+  max_rotation_residual_deg: 10.0
+
+# Rolling shutter settings (D455 global shutter infrared imagers -> disabled)
+rolling_shutter: 0
+rolling_shutter_tr: 0.0
+
+# Operational limits and watchdogs
+runtime:
+  max_processing_time_ms: 30.0
+  max_output_latency_ms: 50.0
+  lost_tracking_timeout_s: 0.5
+  stale_measurement_timeout_s: 0.08
+  publish_debug_topics: true
+  save_keyframes: true
+  save_landmarks: true
+
+# ROS2/PX4 bridge
+px4_bridge:
+  enabled: true
+  publish_ros_odom_topic: "/vio/odometry"
+  publish_px4_topic: "/fmu/in/vehicle_visual_odometry"
+  input_frame: "map"
+  body_frame: "base_link"
+  px4_frame: "NED"
+  publish_covariance: true
+  reject_if_cov_trace_gt: 0.8
+  reject_if_age_gt_ms: 80.0

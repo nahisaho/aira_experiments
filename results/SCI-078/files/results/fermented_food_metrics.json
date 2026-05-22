@@ -1,0 +1,47 @@
+{
+  "yogurt": {
+    "food": "Yogurt",
+    "baseline_shannon": 1.883816779884956,
+    "intervention_shannon": 1.8520909018192622,
+    "washout_shannon": 1.7961287673006585,
+    "diversity_change_pct": -1.6841275863151923,
+    "resilience_index": 2.7639270505134097,
+    "bray_curtis_dissimilarity": 0.11375551700746792
+  },
+  "kimchi": {
+    "food": "Kimchi",
+    "baseline_shannon": 1.883816779884956,
+    "intervention_shannon": 1.8433454040029866,
+    "washout_shannon": 1.7924630688689895,
+    "diversity_change_pct": -2.148371132166025,
+    "resilience_index": 2.2572425332078487,
+    "bray_curtis_dissimilarity": 0.07647396386831576
+  },
+  "kefir": {
+    "food": "Kefir",
+    "baseline_shannon": 1.883816779884956,
+    "intervention_shannon": 1.858408976694754,
+    "washout_shannon": 1.7995793183848288,
+    "diversity_change_pct": -1.348740676985595,
+    "resilience_index": 3.3154169556826125,
+    "bray_curtis_dissimilarity": 0.08897665519062553
+  },
+  "natto": {
+    "food": "Natto",
+    "baseline_shannon": 1.883816779884956,
+    "intervention_shannon": 1.740489153365468,
+    "washout_shannon": 1.7500921767028323,
+    "diversity_change_pct": -7.608363406135756,
+    "resilience_index": 0.9329994951453021,
+    "bray_curtis_dissimilarity": 0.08215656022370535
+  },
+  "mixed_fermented": {
+    "food": "Mixed Fermented Foods (6+ servings/day)",
+    "baseline_shannon": 1.883816779884956,
+    "intervention_shannon": 1.8550298414353288,
+    "washout_shannon": 1.7972291225673467,
+    "diversity_change_pct": -1.528117742499886,
+    "resilience_index": 3.00788003115136,
+    "bray_curtis_dissimilarity": 0.10997718051697788
+  }
+}

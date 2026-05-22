@@ -1,0 +1,193 @@
+{
+  "optimal_formulation": {
+    "ionizable_pct": 50.0,
+    "cholesterol_pct": 35.0,
+    "helper_lipid_pct": 13.5,
+    "peg_lipid_pct": 1.5,
+    "np_ratio": 6.0,
+    "size_nm": 98.9,
+    "pdi": 0.09,
+    "encapsulation_pct": 98,
+    "zeta_mv": -16.6,
+    "transfection_score": 0.705
+  },
+  "standard_reference": {
+    "ionizable_pct": 50.0,
+    "cholesterol_pct": 38.5,
+    "helper_lipid_pct": 9.0,
+    "peg_lipid_pct": 2.5,
+    "np_ratio": 6.0,
+    "size_nm": 104.2,
+    "pdi": 0.11,
+    "encapsulation_pct": 93.5,
+    "zeta_mv": -5.2,
+    "transfection_score": 0.78
+  },
+  "top10_formulations": [
+    {
+      "ionizable_pct": 50.0,
+      "cholesterol_pct": 35.0,
+      "helper_lipid_pct": 13.5,
+      "peg_lipid_pct": 1.5,
+      "np_ratio": 6.0,
+      "size_nm": 98.9,
+      "pdi": 0.09,
+      "encapsulation_pct": 98,
+      "zeta_mv": -16.6,
+      "transfection_score": 0.705
+    },
+    {
+      "ionizable_pct": 50.0,
+      "cholesterol_pct": 35.0,
+      "helper_lipid_pct": 13.0,
+      "peg_lipid_pct": 2.0,
+      "np_ratio": 5.0,
+      "size_nm": 103.5,
+      "pdi": 0.091,
+      "encapsulation_pct": 98,
+      "zeta_mv": -16.5,
+      "transfection_score": 0.6911
+    },
+    {
+      "ionizable_pct": 50.0,
+      "cholesterol_pct": 40.0,
+      "helper_lipid_pct": 8.5,
+      "peg_lipid_pct": 1.5,
+      "np_ratio": 6.0,
+      "size_nm": 101.6,
+      "pdi": 0.095,
+      "encapsulation_pct": 98,
+      "zeta_mv": -16.4,
+      "transfection_score": 0.6901
+    },
+    {
+      "ionizable_pct": 50.0,
+      "cholesterol_pct": 35.0,
+      "helper_lipid_pct": 13.0,
+      "peg_lipid_pct": 2.0,
+      "np_ratio": 4.0,
+      "size_nm": 100.1,
+      "pdi": 0.097,
+      "encapsulation_pct": 97.2,
+      "zeta_mv": -16.6,
+      "transfection_score": 0.6884
+    },
+    {
+      "ionizable_pct": 55.0,
+      "cholesterol_pct": 35.0,
+      "helper_lipid_pct": 8.5,
+      "peg_lipid_pct": 1.5,
+      "np_ratio": 6.0,
+      "size_nm": 101.7,
+      "pdi": 0.099,
+      "encapsulation_pct": 98,
+      "zeta_mv": -16.5,
+      "transfection_score": 0.6856
+    },
+    {
+      "ionizable_pct": 50.0,
+      "cholesterol_pct": 35.0,
+      "helper_lipid_pct": 13.0,
+      "peg_lipid_pct": 2.0,
+      "np_ratio": 6.0,
+      "size_nm": 103.9,
+      "pdi": 0.102,
+      "encapsulation_pct": 98,
+      "zeta_mv": -17.1,
+      "transfection_score": 0.6841
+    },
+    {
+      "ionizable_pct": 45.0,
+      "cholesterol_pct": 35.0,
+      "helper_lipid_pct": 18.0,
+      "peg_lipid_pct": 2.0,
+      "np_ratio": 6.0,
+      "size_nm": 101.7,
+      "pdi": 0.111,
+      "encapsulation_pct": 98,
+      "zeta_mv": -17.3,
+      "transfection_score": 0.6832
+    },
+    {
+      "ionizable_pct": 50.0,
+      "cholesterol_pct": 40.0,
+      "helper_lipid_pct": 8.0,
+      "peg_lipid_pct": 2.0,
+      "np_ratio": 6.0,
+      "size_nm": 101.2,
+      "pdi": 0.105,
+      "encapsulation_pct": 98,
+      "zeta_mv": -16.6,
+      "transfection_score": 0.6791
+    },
+    {
+      "ionizable_pct": 50.0,
+      "cholesterol_pct": 25.0,
+      "helper_lipid_pct": 23.5,
+      "peg_lipid_pct": 1.5,
+      "np_ratio": 6.0,
+      "size_nm": 101.9,
+      "pdi": 0.107,
+      "encapsulation_pct": 98,
+      "zeta_mv": -16.8,
+      "transfection_score": 0.6786
+    },
+    {
+      "ionizable_pct": 50.0,
+      "cholesterol_pct": 35.0,
+      "helper_lipid_pct": 13.5,
+      "peg_lipid_pct": 1.5,
+      "np_ratio": 4.0,
+      "size_nm": 97.5,
+      "pdi": 0.082,
+      "encapsulation_pct": 95.9,
+      "zeta_mv": -15.8,
+      "transfection_score": 0.6767
+    }
+  ],
+  "heatmap_ionizable_x_chol": {
+    "30": {
+      "25": 0.3524,
+      "30": 0.4695,
+      "35": 0.4753,
+      "40": 0.4428,
+      "45": 0.3691
+    },
+    "35": {
+      "25": 0.5157,
+      "30": 0.5537,
+      "35": 0.5869,
+      "40": 0.5422,
+      "45": 0.4937
+    },
+    "40": {
+      "25": 0.5816,
+      "30": 0.619,
+      "35": 0.6317,
+      "40": 0.6191,
+      "45": 0.5843
+    },
+    "45": {
+      "25": 0.6503,
+      "30": 0.6579,
+      "35": 0.6832,
+      "40": 0.6701,
+      "45": 0.6244
+    },
+    "50": {
+      "25": 0.6786,
+      "30": 0.6674,
+      "35": 0.705,
+      "40": 0.6901
+    },
+    "55": {
+      "25": 0.6229,
+      "30": 0.6526,
+      "35": 0.6856
+    },
+    "60": {
+      "25": 0.5977,
+      "30": 0.6158
+    }
+  }
+}

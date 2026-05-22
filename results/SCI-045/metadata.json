@@ -1,0 +1,11 @@
+{
+  "experiment_id": "SCI-045",
+  "title": "エピジェネティッククロックの改良",
+  "project_id": "b738931f-be8a-4bc5-a9da-882211f371cb",
+  "prompt_length": 405,
+  "output_length": 738,
+  "file_count": 34,
+  "duration_seconds": 438,
+  "status": "success",
+  "timestamp": "2026-05-22T16:34:17.457Z"
+}

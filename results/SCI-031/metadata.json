@@ -1,0 +1,11 @@
+{
+  "experiment_id": "SCI-031",
+  "title": "変分量子固有値ソルバーの最適化",
+  "project_id": "e39b3f0a-7be6-4a2c-8df1-606130bd624d",
+  "prompt_length": 462,
+  "output_length": 1702,
+  "file_count": 27,
+  "duration_seconds": 1169,
+  "status": "success",
+  "timestamp": "2026-05-22T14:30:56.073Z"
+}

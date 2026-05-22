@@ -1,0 +1,130 @@
+{
+  "ssp126": {
+    "n_predictions": 45,
+    "metrics": {
+      "temperature": {
+        "rmse_mean": 261.4369,
+        "rmse_std": 0.1732,
+        "mae_mean": 261.1878,
+        "pattern_corr_mean": 0.9959,
+        "nrmse_mean": 21.1278,
+        "spatial_skill_score": 0.0,
+        "spread_skill_ratio": 0.0006
+      },
+      "precipitation": {
+        "rmse_mean": 1.0426,
+        "rmse_std": 0.0294,
+        "mae_mean": 0.9884,
+        "pattern_corr_mean": 0.9538,
+        "nrmse_mean": 1.0113,
+        "spatial_skill_score": 0.0165,
+        "spread_skill_ratio": 0.1197
+      },
+      "sea_level": {
+        "rmse_mean": 0.8583,
+        "rmse_std": 0.2952,
+        "mae_mean": 0.8497,
+        "pattern_corr_mean": 0.5204,
+        "nrmse_mean": 49.7571,
+        "spatial_skill_score": 0.0,
+        "spread_skill_ratio": 0.2768
+      }
+    }
+  },
+  "ssp245": {
+    "n_predictions": 45,
+    "metrics": {
+      "temperature": {
+        "rmse_mean": 261.7143,
+        "rmse_std": 0.2934,
+        "mae_mean": 261.4655,
+        "pattern_corr_mean": 0.9963,
+        "nrmse_mean": 21.1373,
+        "spatial_skill_score": 0.0,
+        "spread_skill_ratio": 0.0006
+      },
+      "precipitation": {
+        "rmse_mean": 1.0393,
+        "rmse_std": 0.0176,
+        "mae_mean": 0.9833,
+        "pattern_corr_mean": 0.9559,
+        "nrmse_mean": 0.9904,
+        "spatial_skill_score": 0.0334,
+        "spread_skill_ratio": 0.1176
+      },
+      "sea_level": {
+        "rmse_mean": 0.5857,
+        "rmse_std": 0.3563,
+        "mae_mean": 0.5708,
+        "pattern_corr_mean": 0.5792,
+        "nrmse_mean": 33.9757,
+        "spatial_skill_score": 0.0,
+        "spread_skill_ratio": 0.6073
+      }
+    }
+  },
+  "ssp370": {
+    "n_predictions": 45,
+    "metrics": {
+      "temperature": {
+        "rmse_mean": 261.955,
+        "rmse_std": 0.4117,
+        "mae_mean": 261.7068,
+        "pattern_corr_mean": 0.9958,
+        "nrmse_mean": 21.1654,
+        "spatial_skill_score": 0.0,
+        "spread_skill_ratio": 0.0006
+      },
+      "precipitation": {
+        "rmse_mean": 1.0496,
+        "rmse_std": 0.0144,
+        "mae_mean": 0.9921,
+        "pattern_corr_mean": 0.9573,
+        "nrmse_mean": 0.9844,
+        "spatial_skill_score": 0.0395,
+        "spread_skill_ratio": 0.1278
+      },
+      "sea_level": {
+        "rmse_mean": 0.7157,
+        "rmse_std": 0.3975,
+        "mae_mean": 0.7006,
+        "pattern_corr_mean": 0.5403,
+        "nrmse_mean": 41.567,
+        "spatial_skill_score": 0.0,
+        "spread_skill_ratio": 0.5106
+      }
+    }
+  },
+  "ssp585": {
+    "n_predictions": 45,
+    "metrics": {
+      "temperature": {
+        "rmse_mean": 262.2679,
+        "rmse_std": 0.605,
+        "mae_mean": 262.0197,
+        "pattern_corr_mean": 0.9932,
+        "nrmse_mean": 21.1676,
+        "spatial_skill_score": 0.0,
+        "spread_skill_ratio": 0.0006
+      },
+      "precipitation": {
+        "rmse_mean": 1.0554,
+        "rmse_std": 0.0115,
+        "mae_mean": 0.9916,
+        "pattern_corr_mean": 0.9578,
+        "nrmse_mean": 0.9706,
+        "spatial_skill_score": 0.0634,
+        "spread_skill_ratio": 0.1354
+      },
+      "sea_level": {
+        "rmse_mean": 1.0397,
+        "rmse_std": 0.6639,
+        "mae_mean": 1.0224,
+        "pattern_corr_mean": 0.4554,
+        "nrmse_mean": 60.2398,
+        "spatial_skill_score": 0.0,
+        "spread_skill_ratio": 0.4174
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "standard_fba": {
+    "objective_value": 0.873922,
+    "status": "optimal"
+  },
+  "pfba": {
+    "objective_value": 518.422086,
+    "total_flux_standard": 518.4221,
+    "total_flux_pfba": 518.4221,
+    "flux_reduction_pct": 0.0
+  },
+  "fva": {
+    "fraction_of_optimum": 0.9,
+    "mean_range": 31.8448,
+    "max_range": 1000.0,
+    "top_variable_reactions": [
+      "FRD7",
+      "SUCDi",
+      "FORt2",
+      "FORti",
+      "NADTRHD",
+      "THD2",
+      "ATPS4r",
+      "PGL",
+      "GND",
+      "PGI"
+    ]
+  },
+  "glucose_sensitivity": {
+    "max_growth": 1.790569
+  },
+  "oxygen_sensitivity": {
+    "aerobic": 0.873922,
+    "anaerobic": 0.211663
+  }
+}

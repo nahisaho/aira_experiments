@@ -1,0 +1,120 @@
+{
+  "waves": {
+    "wave6": {
+      "no_intervention": {
+        "label": "No intervention",
+        "peak_cases": 1915522.425506,
+        "peak_cases_date": "2022-02-15",
+        "total_cases": 47695845.342555,
+        "peak_hospitalizations": 55269.396249,
+        "deaths": 158081.598933,
+        "peak_reduction_vs_no_intervention_pct": 0.0,
+        "total_reduction_vs_no_intervention_pct": 0.0,
+        "relative_to_actual_total_pct": 953.916907
+      },
+      "quasi_emergency_only": {
+        "label": "Quasi-emergency only",
+        "peak_cases": 1355344.901625,
+        "peak_cases_date": "2022-02-28",
+        "total_cases": 44980628.613133,
+        "peak_hospitalizations": 39678.189955,
+        "deaths": 138471.762448,
+        "peak_reduction_vs_no_intervention_pct": 29.244112,
+        "total_reduction_vs_no_intervention_pct": 5.692774,
+        "relative_to_actual_total_pct": 899.612572
+      },
+      "vaccination_only": {
+        "label": "Vaccination only",
+        "peak_cases": 1636481.17886,
+        "peak_cases_date": "2022-02-17",
+        "total_cases": 46776176.744475,
+        "peak_hospitalizations": 31206.194734,
+        "deaths": 97312.070023,
+        "peak_reduction_vs_no_intervention_pct": 14.56737,
+        "total_reduction_vs_no_intervention_pct": 1.928194,
+        "relative_to_actual_total_pct": 935.523535
+      },
+      "combined_actual": {
+        "label": "Combined actual",
+        "peak_cases": 136669.536957,
+        "peak_cases_date": "2022-02-13",
+        "total_cases": 5000000.0,
+        "peak_hospitalizations": 2662.973604,
+        "deaths": 10142.039489,
+        "peak_reduction_vs_no_intervention_pct": 92.865156,
+        "total_reduction_vs_no_intervention_pct": 89.516907,
+        "relative_to_actual_total_pct": 100.0
+      }
+    },
+    "wave7": {
+      "no_intervention": {
+        "label": "No intervention",
+        "peak_cases": 2008495.876818,
+        "peak_cases_date": "2022-08-06",
+        "total_cases": 39253400.932766,
+        "peak_hospitalizations": 56986.922476,
+        "deaths": 129276.220021,
+        "peak_reduction_vs_no_intervention_pct": 0.0,
+        "total_reduction_vs_no_intervention_pct": 0.0,
+        "relative_to_actual_total_pct": 327.111674
+      },
+      "quasi_emergency_only": {
+        "label": "Quasi-emergency only",
+        "peak_cases": 1626678.276032,
+        "peak_cases_date": "2022-08-13",
+        "total_cases": 38944202.917636,
+        "peak_hospitalizations": 46697.253979,
+        "deaths": 129072.476994,
+        "peak_reduction_vs_no_intervention_pct": 19.010126,
+        "total_reduction_vs_no_intervention_pct": 0.787697,
+        "relative_to_actual_total_pct": 324.535024
+      },
+      "vaccination_only": {
+        "label": "Vaccination only",
+        "peak_cases": 1697308.140403,
+        "peak_cases_date": "2022-08-11",
+        "total_cases": 39021126.520966,
+        "peak_hospitalizations": 30493.459198,
+        "deaths": 76618.30475,
+        "peak_reduction_vs_no_intervention_pct": 15.493571,
+        "total_reduction_vs_no_intervention_pct": 0.591731,
+        "relative_to_actual_total_pct": 325.176054
+      },
+      "combined_actual": {
+        "label": "Combined actual",
+        "peak_cases": 304030.525308,
+        "peak_cases_date": "2022-09-03",
+        "total_cases": 12000000.0,
+        "peak_hospitalizations": 5761.070529,
+        "deaths": 23045.147088,
+        "peak_reduction_vs_no_intervention_pct": 84.862776,
+        "total_reduction_vs_no_intervention_pct": 69.4294,
+        "relative_to_actual_total_pct": 100.0
+      }
+    }
+  },
+  "key_findings": {
+    "R0_estimates": {
+      "wave6": 5.0,
+      "wave7": 8.0
+    },
+    "intervention_effectiveness": {
+      "wave6_peak_reduction_pct": 92.865156,
+      "wave6_total_reduction_pct": 89.516907,
+      "wave7_peak_reduction_pct": 84.862776,
+      "wave7_total_reduction_pct": 69.4294,
+      "wave6_no_intervention_total_cases": 47695845.342555,
+      "wave7_no_intervention_total_cases": 39253400.932766
+    },
+    "model_comparison_results": {
+      "wave6_best_model": "Age-structured SEIR",
+      "wave7_best_model": "Age-structured SEIR"
+    },
+    "lessons_learned": [
+      "Higher BA.5 transmissibility increased the fitted basic reproduction number from the BA.1 wave to the BA.5 wave.",
+      "Vaccination alone reduced severe outcomes more strongly than it reduced transmission, consistent with booster-era Omicron experience.",
+      "Combined interventions were required for Reff to fall sustainably below 1 in both waves.",
+      "Age-structured modelling improved severity fit because hospitalization and death burden concentrated in older adults despite similar case shares."
+    ]
+  }
+}

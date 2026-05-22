@@ -1,0 +1,150 @@
+{
+  "traditional_clocks": {
+    "horvath": {
+      "model": "Horvath-Style",
+      "MAE": 5.958,
+      "RMSE": 7.386,
+      "R2": 0.8715,
+      "Pearson_r": 0.955,
+      "Pearson_p": 2.57e-85,
+      "Median_AE": 5.145,
+      "n_samples": 160
+    },
+    "grimage": {
+      "model": "GrimAge-Style",
+      "MAE": 6.628,
+      "RMSE": 8.476,
+      "R2": 0.8308,
+      "Pearson_r": 0.9447,
+      "Pearson_p": 2.18e-78,
+      "Median_AE": 5.426,
+      "n_samples": 160
+    },
+    "improved_elasticnet": {
+      "model": "Improved-ElasticNet",
+      "MAE": 3.947,
+      "RMSE": 4.896,
+      "R2": 0.9435,
+      "Pearson_r": 0.9728,
+      "Pearson_p": 3.2e-102,
+      "Median_AE": 3.611,
+      "n_samples": 160
+    },
+    "horvath_cv": {
+      "model": "CV_overall",
+      "MAE": 5.494,
+      "RMSE": 6.868,
+      "R2": 0.8897,
+      "Pearson_r": 0.9595,
+      "Pearson_p": 0.0,
+      "Median_AE": 4.624,
+      "n_samples": 800
+    }
+  },
+  "deep_clock": {
+    "model": "Deep-Clock",
+    "MAE": 5.686,
+    "RMSE": 7.272,
+    "R2": 0.8755,
+    "Pearson_r": 0.9394,
+    "Pearson_p": 2.44e-75,
+    "Median_AE": 4.655,
+    "n_samples": 160
+  },
+  "tissue_specificity": {
+    "blood": {
+      "MAE": 55.889,
+      "R2": -7.0962,
+      "Pearson_r": 0.1224,
+      "n_samples": 300
+    },
+    "brain": {
+      "MAE": 55.442,
+      "R2": -6.9004,
+      "Pearson_r": -0.0014,
+      "n_samples": 300
+    },
+    "liver": {
+      "MAE": 54.999,
+      "R2": -7.7032,
+      "Pearson_r": -0.0717,
+      "n_samples": 300
+    },
+    "skin": {
+      "MAE": 55.254,
+      "R2": -7.4678,
+      "Pearson_r": 0.02,
+      "n_samples": 300
+    },
+    "muscle": {
+      "MAE": 54.466,
+      "R2": -7.2645,
+      "Pearson_r": 0.0456,
+      "n_samples": 300
+    }
+  },
+  "age_acceleration": {
+    "mean_acceleration": 0.0,
+    "std_acceleration": 4.1,
+    "range": [
+      -13.008,
+      16.032
+    ],
+    "correlation_with_true_offset": 0.0783,
+    "correlation_p_value": 0.0268,
+    "sex_difference": {
+      "male_mean": -0.271,
+      "female_mean": 0.272,
+      "t_statistic": -1.876,
+      "p_value": 0.061
+    }
+  },
+  "intervention_sensitivity": {
+    "control_mean_accel": -0.002,
+    "exer": {
+      "mean_accel": 0.002,
+      "delta_vs_control": -0.003,
+      "cohens_d": -0.257,
+      "t_statistic": -1.82,
+      "p_value": 0.0703,
+      "n_samples": 100,
+      "detectable": false
+    },
+    "calo": {
+      "mean_accel": 0.003,
+      "delta_vs_control": -0.005,
+      "cohens_d": -0.32,
+      "t_statistic": -2.262,
+      "p_value": 0.0248,
+      "n_samples": 100,
+      "detectable": true
+    },
+    "metf": {
+      "mean_accel": -0.001,
+      "delta_vs_control": -0.001,
+      "cohens_d": -0.059,
+      "t_statistic": -0.415,
+      "p_value": 0.6788,
+      "n_samples": 100,
+      "detectable": false
+    },
+    "rapa": {
+      "mean_accel": -0.002,
+      "delta_vs_control": 0.001,
+      "cohens_d": 0.049,
+      "t_statistic": 0.347,
+      "p_value": 0.7288,
+      "n_samples": 100,
+      "detectable": false
+    }
+  },
+  "longevity_validation": {
+    "longevity_mean_accel": -0.0,
+    "normal_mean_accel": -0.0,
+    "t_statistic": -0.0,
+    "p_value": 1.0,
+    "cohens_d": 0.0,
+    "longevity_n": 200,
+    "normal_n": 300
+  }
+}

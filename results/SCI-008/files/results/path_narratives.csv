@@ -1,0 +1,21 @@
+drug,narrative,path_length
+Remdesivir,"Remdesivir inhibits ACE2 (gene), which is associated_with COVID-19 (disease)",2
+Remdesivir,"Remdesivir inhibits ACE2 (gene), which is interacts_with TMPRSS2 (gene), ultimately affecting COVID-19",3
+Baricitinib,"Baricitinib inhibits STAT3 (gene), which is inhibits Cyclosporine (drug), ultimately affecting COVID-19",4
+Baricitinib,"Baricitinib inhibits STAT3 (gene), which is associated_with COVID-19 (disease)",2
+Tocilizumab,"Tocilizumab inhibits IL6 (gene), which is downregulates Dexamethasone (drug), ultimately affecting COVID-19",3
+Tocilizumab,"Tocilizumab inhibits IL6 (gene), which is downregulates Dexamethasone (drug), ultimately affecting COVID-19",3
+Dexamethasone,"Dexamethasone treats Inflammation (disease), which is associated_with TNF (gene), ultimately affecting COVID-19",4
+Dexamethasone,"Dexamethasone treats Inflammation (disease), which is associated_with TNF (gene), ultimately affecting COVID-19",4
+Dexamethasone,"Dexamethasone treats Inflammation (disease), which is associated_with TNF (gene), ultimately affecting COVID-19",4
+Colchicine,"Colchicine inhibits TNF (gene), which is downregulates Dexamethasone (drug), ultimately affecting COVID-19",3
+Colchicine,"Colchicine inhibits TNF (gene), which is downregulates Dexamethasone (drug), ultimately affecting COVID-19",3
+Hydroxychloroquine,"Hydroxychloroquine inhibits TNF (gene), which is downregulates Dexamethasone (drug), ultimately affecting COVID-19",3
+Hydroxychloroquine,"Hydroxychloroquine inhibits TNF (gene), which is downregulates Dexamethasone (drug), ultimately affecting COVID-19",3
+Hydroxychloroquine,"Hydroxychloroquine inhibits TNF (gene), which is downregulates Dexamethasone (drug), ultimately affecting COVID-19",4
+Atorvastatin,"Atorvastatin treats Diabetes-Mellitus (disease), which is treats Cyclosporine (drug), ultimately affecting COVID-19",4
+Atorvastatin,"Atorvastatin treats Diabetes-Mellitus (disease), which is treats Cyclosporine (drug), ultimately affecting COVID-19",4
+Atorvastatin,"Atorvastatin inhibits PTGS2 (gene), which is associated_with Inflammation (disease), ultimately affecting COVID-19",4
+Sulfasalazine,"Sulfasalazine investigated_for Inflammation (disease), which is treats Dexamethasone (drug), ultimately affecting COVID-19",3
+Sulfasalazine,"Sulfasalazine investigated_for Inflammation (disease), which is treats Dexamethasone (drug), ultimately affecting COVID-19",3
+Sulfasalazine,"Sulfasalazine investigated_for Inflammation (disease), which is treats Dexamethasone (drug), ultimately affecting COVID-19",4

@@ -1,0 +1,11 @@
+{
+  "experiment_id": "SCI-056",
+  "title": "感染症数理モデルの構造選択",
+  "project_id": "06440585-8e4f-40a9-9189-389b7c676906",
+  "prompt_length": 419,
+  "output_length": 1306,
+  "file_count": 30,
+  "duration_seconds": 684,
+  "status": "success",
+  "timestamp": "2026-05-22T17:30:27.740Z"
+}
