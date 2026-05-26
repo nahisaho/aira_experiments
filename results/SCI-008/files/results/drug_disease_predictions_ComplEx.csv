@@ -1,0 +1,21 @@
+drug,disease,score,is_novel,rank
+Nitazoxanide,Alzheimer Disease,61.728790283203125,True,1
+Nirmatrelvir,Rheumatoid Arthritis,59.90692138671875,True,2
+Ritonavir,COPD,56.88582992553711,True,3
+Molnupiravir,Breast Cancer,55.27479934692383,True,4
+Dexamethasone,Rheumatoid Arthritis,53.193660736083984,True,5
+Famotidine,Hepatitis C,51.1294059753418,True,6
+Sofosbuvir,Systemic Lupus Erythematosus,49.29682922363281,True,7
+Remdesivir,Multiple Sclerosis,47.71027755737305,True,8
+Fluvoxamine,Crohn Disease,47.54584884643555,True,9
+Sofosbuvir,COPD,46.529422760009766,True,10
+Baricitinib,Crohn Disease,46.14017105102539,True,11
+Interferon-beta,Hypertension,43.55693435668945,True,12
+Umifenovir,Type 2 Diabetes,43.372535705566406,True,13
+Nafamostat,Hypertension,43.01723861694336,True,14
+Nirmatrelvir,SARS,42.979896545410156,True,15
+Hydroxychloroquine,Ulcerative Colitis,42.0869026184082,True,16
+Atorvastatin,Hepatitis C,40.875919342041016,True,17
+Chloroquine,Hepatitis C,40.84222412109375,True,18
+Ruxolitinib,Type 2 Diabetes,39.96670913696289,True,19
+Hydroxychloroquine,Breast Cancer,38.58833312988281,True,20

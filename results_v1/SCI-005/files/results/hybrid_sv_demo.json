@@ -1,9 +1,0 @@
-{
-  "n_lr_calls": 40,
-  "n_sr_calls": 28,
-  "n_hybrid_merged": 40,
-  "n_both_support": 28,
-  "n_pass": 38,
-  "n_filtered": 2,
-  "mean_hybrid_score_pass": 0.7943690926328086
-}

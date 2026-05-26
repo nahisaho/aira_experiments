@@ -1,0 +1,196 @@
+{
+  "instance": {
+    "n_customers": 8,
+    "n_vehicles": 2,
+    "capacity": 31
+  },
+  "qubo_comparison": {
+    "Standard": {
+      "energy": -1552.658901962047,
+      "time": 0.1124274730682373,
+      "n_vars": 128
+    },
+    "Compact": {
+      "energy": -1057.0360914813143,
+      "time": 0.016464948654174805,
+      "n_vars": 16
+    },
+    "Adaptive": {
+      "energy": -1020.8202310569404,
+      "time": 0.017367839813232422,
+      "n_vars": 16
+    }
+  },
+  "embedding": {
+    "Standard": {
+      "n_logical_qubits": 128,
+      "n_edges": 2192,
+      "density": 0.26968503937007876,
+      "avg_degree": 34.25,
+      "max_degree": 36,
+      "clustering_coeff": 0.5058429118773946,
+      "n_components": 1,
+      "est_chain_length": 4.5,
+      "est_physical_qubits": 576.0
+    },
+    "Compact": {
+      "n_logical_qubits": 16,
+      "n_edges": 64,
+      "density": 0.5333333333333333,
+      "avg_degree": 8.0,
+      "max_degree": 8,
+      "clustering_coeff": 0.75,
+      "n_components": 1,
+      "est_chain_length": 1,
+      "est_physical_qubits": 16
+    },
+    "Adaptive": {
+      "n_logical_qubits": 16,
+      "n_edges": 64,
+      "density": 0.5333333333333333,
+      "avg_degree": 8.0,
+      "max_degree": 8,
+      "clustering_coeff": 0.75,
+      "n_components": 1,
+      "est_chain_length": 1,
+      "est_physical_qubits": 16
+    }
+  },
+  "solver_comparison": {
+    "SA": {
+      "energy": -1057.0360914813143,
+      "time": 0.030722856521606445
+    },
+    "SQA": {
+      "energy": -1057.0360914813143,
+      "time": 38.33637547492981
+    },
+    "QAOA": {
+      "energy": -1032.1985604580107,
+      "time": 0.5025017261505127
+    }
+  },
+  "schedules": {
+    "fast (100 sweeps)": {
+      "energy": -1057.0360914813143,
+      "time": 0.01552581787109375
+    },
+    "standard (1000 sweeps)": {
+      "energy": -1057.0360914813143,
+      "time": 0.015291929244995117
+    },
+    "slow (5000 sweeps)": {
+      "energy": -1057.0360914813143,
+      "time": 0.016530275344848633
+    },
+    "cold-start (high beta)": {
+      "energy": -1057.0360914813143,
+      "time": 0.01581120491027832
+    },
+    "warm-start (low beta)": {
+      "energy": -1057.0360914813143,
+      "time": 0.015120744705200195
+    }
+  },
+  "reverse_annealing": {
+    "forward_only": {
+      "energy": -1057.0360914813143,
+      "time": 0.007319927215576172
+    },
+    "reverse_noise_0.05": {
+      "energy": -1057.0360914813143,
+      "time": 0.04950118064880371
+    },
+    "reverse_noise_0.1": {
+      "energy": -1057.0360914813143,
+      "time": 0.05019664764404297
+    },
+    "reverse_noise_0.2": {
+      "energy": -1057.0360914813143,
+      "time": 0.0514979362487793
+    },
+    "reverse_noise_0.3": {
+      "energy": -1057.0360914813143,
+      "time": 0.05265092849731445
+    },
+    "reverse_noise_0.5": {
+      "energy": -1057.0360914813143,
+      "time": 0.050637006759643555
+    }
+  },
+  "scaling": {
+    "sizes": [
+      4,
+      6,
+      8,
+      10,
+      12
+    ],
+    "sa": [
+      {
+        "energy": -514.798662217341,
+        "time": 0.006789684295654297
+      },
+      {
+        "energy": -643.4575681438484,
+        "time": 0.01562047004699707
+      },
+      {
+        "energy": -941.864331854184,
+        "time": 0.01088857650756836
+      },
+      {
+        "energy": -1201.959857500909,
+        "time": 0.013228654861450195
+      },
+      {
+        "energy": -1252.4628806437659,
+        "time": 0.0490565299987793
+      }
+    ],
+    "sqa": [
+      {
+        "energy": -514.798662217341,
+        "time": 17.954796075820923
+      },
+      {
+        "energy": -643.4575681438484,
+        "time": 5.090762138366699
+      },
+      {
+        "energy": -941.864331854184,
+        "time": 12.750976800918579
+      },
+      {
+        "energy": -1201.959857500909,
+        "time": 18.687508821487427
+      },
+      {
+        "energy": -1252.4628806437659,
+        "time": 6.01256799697876
+      }
+    ],
+    "qaoa": [
+      {
+        "energy": -486.396935832056,
+        "time": 0.14172053337097168
+      },
+      {
+        "energy": -630.2650268313168,
+        "time": 0.22284483909606934
+      },
+      {
+        "energy": -865.0426281370485,
+        "time": 0.29579854011535645
+      },
+      {
+        "energy": null,
+        "time": null
+      },
+      {
+        "energy": null,
+        "time": null
+      }
+    ]
+  }
+}

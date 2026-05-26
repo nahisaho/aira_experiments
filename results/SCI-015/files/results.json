@@ -1,0 +1,208 @@
+{
+  "experiment1_phi": {
+    "integrated": {
+      "3": {
+        "phi": 0.05444198809079559,
+        "phi_si": 0.10350399957235146,
+        "mip": "([1], [0, 2])"
+      },
+      "4": {
+        "phi": 0.0177397953744709,
+        "phi_si": 0.07573139421196418,
+        "mip": "([2], [0, 1, 3])"
+      },
+      "5": {
+        "phi": 0.018660814806755965,
+        "phi_si": 0.14661004067293826,
+        "mip": "([0], [1, 2, 3, 4])"
+      }
+    },
+    "modular": {
+      "3": {
+        "phi": 0.0004262381212498667,
+        "phi_si": 0.01919263176282282,
+        "mip": "([0], [1, 2])"
+      },
+      "4": {
+        "phi": 0.0037852135261182696,
+        "phi_si": 0.015747842339334017,
+        "mip": "([1], [0, 2, 3])"
+      },
+      "5": {
+        "phi": 0.003586911855542496,
+        "phi_si": 0.02000411307664285,
+        "mip": "([0], [1, 2, 3, 4])"
+      }
+    },
+    "feedforward": {
+      "3": {
+        "phi": 0.000829718579983485,
+        "phi_si": 0,
+        "mip": "([0], [1, 2])"
+      },
+      "4": {
+        "phi": 0.002526576432078542,
+        "phi_si": 0.013681595498307608,
+        "mip": "([1], [0, 2, 3])"
+      },
+      "5": {
+        "phi": 0.0011989226755257931,
+        "phi_si": 0.009382359848763677,
+        "mip": "([3], [0, 1, 2, 4])"
+      }
+    },
+    "disconnected": {
+      "3": {
+        "phi": 0.0002941605804771541,
+        "phi_si": 0,
+        "mip": "([2], [0, 1])"
+      },
+      "4": {
+        "phi": 0.0007500976627063949,
+        "phi_si": 0.0026982045336292337,
+        "mip": "([1], [0, 2, 3])"
+      },
+      "5": {
+        "phi": 0.0015903484329307105,
+        "phi_si": 0.00436568745639665,
+        "mip": "([1, 3], [0, 2, 4])"
+      }
+    }
+  },
+  "experiment2_anesthesia": {
+    "awake": {
+      "shannon_entropy_mean": 2.284955691647818,
+      "shannon_entropy_std": 1.2952903845387072,
+      "spectral_entropy_mean": 2.589921550941927,
+      "spectral_entropy_std": 2.2430212638757236,
+      "permutation_entropy_mean": 2.410441495134755,
+      "permutation_entropy_std": 0.04578710028203312,
+      "lzc_mean": 0.4154486323668508,
+      "lzc_std": 0.05386581886236496,
+      "mean_connectivity": 0.7108107831209781,
+      "connectivity_variance": 0.5689860994455553,
+      "delta_ratio_ch0": 0.9362235422281193,
+      "alpha_ratio_ch0": 0.013115383027679063,
+      "delta_ratio_ch1": 0.7237780193486112,
+      "alpha_ratio_ch1": 0.07174303095265569,
+      "delta_ratio_ch2": 0.49501926818248254,
+      "alpha_ratio_ch2": 0.12293472304948978,
+      "delta_ratio_ch3": 0.5066051810982692,
+      "alpha_ratio_ch3": 0.12058552164225057
+    },
+    "light_sedation": {
+      "shannon_entropy_mean": 2.2645906600511028,
+      "shannon_entropy_std": 1.5176716094772704,
+      "spectral_entropy_mean": 2.839773599081913,
+      "spectral_entropy_std": 2.575962052975937,
+      "permutation_entropy_mean": 2.3862060230950495,
+      "permutation_entropy_std": 0.06986961496017877,
+      "lzc_mean": 0.28963060577299193,
+      "lzc_std": 0.05531557359021082,
+      "mean_connectivity": 0.5559343660691611,
+      "connectivity_variance": 0.3977553070388352,
+      "delta_ratio_ch0": 0.9089607390405818,
+      "alpha_ratio_ch0": 0.019118661405202735,
+      "delta_ratio_ch1": 0.6754369762703911,
+      "alpha_ratio_ch1": 0.08184104031032291,
+      "delta_ratio_ch2": 0.5280687130824331,
+      "alpha_ratio_ch2": 0.11638205072506322,
+      "delta_ratio_ch3": 0.5018821323474022,
+      "alpha_ratio_ch3": 0.12225139021910068
+    },
+    "deep_anesthesia": {
+      "shannon_entropy_mean": 1.1236968834139174,
+      "shannon_entropy_std": 0.6544701855388886,
+      "spectral_entropy_mean": 2.6273103781991516,
+      "spectral_entropy_std": 2.6023885224905485,
+      "permutation_entropy_mean": 2.3815669620346798,
+      "permutation_entropy_std": 0.07526800721527628,
+      "lzc_mean": 0.4378716470073405,
+      "lzc_std": 0.059426995124724366,
+      "mean_connectivity": 0.6561160919788025,
+      "connectivity_variance": 0.50930515438166,
+      "delta_ratio_ch0": 0.7800781742406946,
+      "alpha_ratio_ch0": 0.04248408720031139,
+      "delta_ratio_ch1": 0.6151184768708968,
+      "alpha_ratio_ch1": 0.08780147940225749,
+      "delta_ratio_ch2": 0.5277471757325116,
+      "alpha_ratio_ch2": 0.11519908320967656,
+      "delta_ratio_ch3": 0.4965995073799842,
+      "alpha_ratio_ch3": 0.12414909147498994
+    }
+  },
+  "experiment3_pci": {
+    "awake": {
+      "mean": 0.10184694000467434,
+      "std": 0.09240716441660544
+    },
+    "light_sedation": {
+      "mean": 0.0269414921440465,
+      "std": 0.01584524155803942
+    },
+    "deep_anesthesia": {
+      "mean": 0.010259111460984793,
+      "std": 0.008994777270574152
+    },
+    "vegetative": {
+      "mean": 0.007656368316736905,
+      "std": 0.006441270576498992
+    },
+    "mcs": {
+      "mean": 0.03805137734363005,
+      "std": 0.03462642752486239
+    }
+  },
+  "experiment4_gwt": {
+    "conscious": {
+      "ignition_rate": 0.0,
+      "mean_workspace_entropy": 2.8763163464387125,
+      "mean_synchrony": 0.9952210028875288,
+      "integration_proxy": -1231.9661395658236
+    },
+    "subliminal": {
+      "ignition_rate": 0.0,
+      "mean_workspace_entropy": 2.903691670775473,
+      "mean_synchrony": 0.9951839166614922,
+      "integration_proxy": -1231.4204368829005
+    },
+    "anesthesia": {
+      "ignition_rate": 0.0,
+      "mean_workspace_entropy": 2.959505203079262,
+      "mean_synchrony": 0.9951296288103715,
+      "integration_proxy": -1231.4798045802913
+    }
+  },
+  "experiment5_classification": {
+    "svm_accuracy": 0.5066666666666666,
+    "svm_std": 0.09043106644167023,
+    "rf_accuracy": 0.4933333333333333,
+    "rf_std": 0.053333333333333316
+  },
+  "experiment6_artificial": {
+    "Feedforward NN": {
+      "phi": 0.0011989226755257931,
+      "phi_si": 0.009382359848763677,
+      "n_nodes": 5,
+      "type": "feedforward"
+    },
+    "Recurrent NN": {
+      "phi": 0.018660814806755965,
+      "phi_si": 0.14661004067293826,
+      "n_nodes": 5,
+      "type": "integrated"
+    },
+    "Modular NN": {
+      "phi": 0.0037852135261182696,
+      "phi_si": 0.015747842339334017,
+      "n_nodes": 4,
+      "type": "modular"
+    },
+    "Disconnected": {
+      "phi": 0.0015903484329307105,
+      "phi_si": 0.00436568745639665,
+      "n_nodes": 5,
+      "type": "disconnected"
+    }
+  }
+}

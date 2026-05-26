@@ -1,11 +1,11 @@
 {
   "experiment_id": "SCI-006",
-  "title": "タンパク質-リガンド結合親和性予測",
-  "project_id": "e6ea42b5-6856-40e4-8bb5-28d53003c0cd",
-  "prompt_length": 1089,
-  "output_length": 1027,
-  "file_count": 27,
-  "duration_seconds": 863,
+  "title": "SCI-006",
+  "project_id": "c720ead2-64f7-4011-96cd-ce70bcf1b848",
+  "prompt_length": 2327,
+  "output_length": 1300,
+  "file_count": 26,
+  "duration_seconds": 711,
   "status": "success",
-  "timestamp": "2026-05-22T22:44:50.336Z"
+  "timestamp": "2026-05-25T21:18:53.046Z"
 }

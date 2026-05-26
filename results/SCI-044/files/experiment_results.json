@@ -1,0 +1,91 @@
+{
+  "experiment_1_baseline": {
+    "hairpin_1": {
+      "sensitivity": 1.0,
+      "ppv": 0.8,
+      "f1": 0.888888888888889,
+      "tp": 4.0,
+      "fp": 1.0,
+      "fn": 0.0,
+      "total_ref_pairs": 4.0,
+      "total_pred_pairs": 5.0,
+      "mfe": -5.6,
+      "time": 0.0002732276916503906
+    },
+    "two_stem": {
+      "sensitivity": 1.0,
+      "ppv": 0.8888888888888888,
+      "f1": 0.9411764705882353,
+      "tp": 8.0,
+      "fp": 1.0,
+      "fn": 0.0,
+      "total_ref_pairs": 8.0,
+      "total_pred_pairs": 9.0,
+      "mfe": -7.4,
+      "time": 0.004406929016113281
+    },
+    "tRNA_like": {
+      "sensitivity": 0.7692307692307693,
+      "ppv": 1.0,
+      "f1": 0.8695652173913044,
+      "tp": 10.0,
+      "fp": 0.0,
+      "fn": 3.0,
+      "total_ref_pairs": 13.0,
+      "total_pred_pairs": 10.0,
+      "mfe": -9.886612906502595,
+      "time": 0.016604185104370117
+    },
+    "hammerhead_like": {
+      "sensitivity": 0.5,
+      "ppv": 0.6,
+      "f1": 0.5454545454545454,
+      "tp": 6.0,
+      "fp": 4.0,
+      "fn": 6.0,
+      "total_ref_pairs": 12.0,
+      "total_pred_pairs": 10.0,
+      "mfe": -8.949329977580263,
+      "time": 0.00884389877319336
+    },
+    "multi_stem": {
+      "sensitivity": 0.7692307692307693,
+      "ppv": 1.0,
+      "f1": 0.8695652173913044,
+      "tp": 10.0,
+      "fp": 0.0,
+      "fn": 3.0,
+      "total_ref_pairs": 13.0,
+      "total_pred_pairs": 10.0,
+      "mfe": -5.0,
+      "time": 0.019886255264282227
+    }
+  },
+  "experiment_4_pseudoknots": {
+    "hairpin_1": {
+      "n_pseudoknots": 0,
+      "base_pairs": 5,
+      "pk_pairs": 0
+    },
+    "two_stem": {
+      "n_pseudoknots": 0,
+      "base_pairs": 9,
+      "pk_pairs": 0
+    },
+    "tRNA_like": {
+      "n_pseudoknots": 0,
+      "base_pairs": 10,
+      "pk_pairs": 0
+    },
+    "hammerhead_like": {
+      "n_pseudoknots": 0,
+      "base_pairs": 10,
+      "pk_pairs": 0
+    },
+    "multi_stem": {
+      "n_pseudoknots": 0,
+      "base_pairs": 10,
+      "pk_pairs": 0
+    }
+  }
+}

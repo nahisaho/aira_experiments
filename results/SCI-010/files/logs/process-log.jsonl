@@ -1,8 +1,0 @@
-{"timestamp": "2026-05-23T07:35:14.921702", "phase": "init", "event_type": "run_started", "actor": "co-scientist", "skill_or_tool": "adc-platform"}
-{"timestamp": "2026-05-23T07:35:16.127791", "phase": "module1", "event_type": "file_written", "actor": "co-scientist", "skill_or_tool": "adc-platform", "files_written": ["figures/fig1_dar_analysis.png"]}
-{"timestamp": "2026-05-23T07:35:17.220845", "phase": "module2", "event_type": "file_written", "actor": "co-scientist", "skill_or_tool": "adc-platform", "files_written": ["figures/fig2_linker_cleavage.png"]}
-{"timestamp": "2026-05-23T07:35:18.235652", "phase": "module3", "event_type": "file_written", "actor": "co-scientist", "skill_or_tool": "adc-platform", "files_written": ["figures/fig3_bystander_effect.png"]}
-{"timestamp": "2026-05-23T07:35:19.455807", "phase": "module4", "event_type": "file_written", "actor": "co-scientist", "skill_or_tool": "adc-platform", "files_written": ["figures/fig4_optimization.png"]}
-{"timestamp": "2026-05-23T07:35:22.397709", "phase": "module5", "event_type": "file_written", "actor": "co-scientist", "skill_or_tool": "adc-platform", "files_written": ["figures/fig5_pk_simulation.png"]}
-{"timestamp": "2026-05-23T07:35:26.080374", "phase": "module6", "event_type": "file_written", "actor": "co-scientist", "skill_or_tool": "adc-platform", "files_written": ["figures/fig6_tdxd_case_study.png"]}
-{"timestamp": "2026-05-23T07:35:26.087568", "phase": "final", "event_type": "run_completed", "actor": "co-scientist", "skill_or_tool": "adc-platform", "status": "ok"}

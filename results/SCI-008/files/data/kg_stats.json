@@ -1,22 +1,16 @@
 {
-  "total_entities": 130,
-  "total_triples": 329,
-  "entity_types": {
-    "Drug": 40,
-    "Gene": 35,
-    "Disease": 20,
-    "Pathway": 20,
-    "Phenotype": 15
-  },
-  "relation_types": {
-    "interacts_with": 84,
-    "associated_with": 76,
-    "targets": 69,
-    "participates_in": 43,
-    "has_phenotype": 29,
-    "treats": 28
-  },
-  "graph_density": 0.02303921568627451,
-  "avg_degree": 5.483333333333333,
-  "connected_components": 1
+  "num_entities": 111,
+  "num_triples": 266,
+  "num_relations": 10,
+  "num_drugs": 30,
+  "num_genes": 37,
+  "num_diseases": 17,
+  "num_pathways": 13,
+  "num_phenotypes": 14,
+  "avg_degree": 4.792792792792793,
+  "density": 0.021785421785421786,
+  "drugbank_triples": 118,
+  "disgenet_triples": 46,
+  "string_triples": 46,
+  "ctd_triples": 56
 }

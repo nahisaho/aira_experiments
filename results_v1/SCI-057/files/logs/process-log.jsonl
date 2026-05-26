@@ -1,5 +1,0 @@
-{"timestamp": "2026-05-23T02:29:12.299814", "phase": "EXECUTE", "event_type": "run_started", "actor": "co-scientist", "skill_or_tool": "simulation", "status": "ok"}
-{"timestamp": "2026-05-23T02:29:12.358894", "phase": "EXECUTE", "event_type": "file_written", "actor": "co-scientist", "skill_or_tool": "simulation", "status": "ok", "files_written": ["data/simulated_timeseries.csv"]}
-{"timestamp": "2026-05-23T02:29:12.842773", "phase": "EXECUTE", "event_type": "file_written", "actor": "co-scientist", "skill_or_tool": "simulation", "status": "ok", "files_written": ["data/simulated_cohort.csv"]}
-{"timestamp": "2026-05-23T02:29:21.050228", "phase": "EXECUTE", "event_type": "file_written", "actor": "co-scientist", "skill_or_tool": "simulation", "status": "ok", "files_written": ["figures/fig1-7", "results/cox_model_results.csv", "results/evalue_results.csv", "results/two_pollutant_results.csv", "results/dlnm_sensitivity.csv", "results/summary_results.csv"]}
-{"timestamp": "2026-05-23T02:29:21.050252", "phase": "REPORT", "event_type": "run_completed", "actor": "co-scientist", "skill_or_tool": "simulation", "status": "ok"}

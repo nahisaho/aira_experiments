@@ -1,0 +1,74 @@
+{
+  "Moons": {
+    "Classical-RBF": {
+      "accuracy_mean": 0.9650000000000001,
+      "accuracy_std": 0.03
+    },
+    "Classical-POLY": {
+      "accuracy_mean": 0.8699999999999999,
+      "accuracy_std": 0.018708286933869722
+    },
+    "Quantum-Angle": {
+      "accuracy_mean": 0.8333333333333334,
+      "accuracy_std": 0.0
+    },
+    "Quantum-IQP": {
+      "accuracy_mean": 0.8333333333333334,
+      "accuracy_std": 0.0
+    }
+  },
+  "Circles": {
+    "Classical-RBF": {
+      "accuracy_mean": 0.99,
+      "accuracy_std": 0.012247448713915901
+    },
+    "Classical-POLY": {
+      "accuracy_mean": 0.765,
+      "accuracy_std": 0.09695359714832656
+    },
+    "Quantum-Angle": {
+      "accuracy_mean": 1.0,
+      "accuracy_std": 0.0
+    },
+    "Quantum-IQP": {
+      "accuracy_mean": 0.9583333333333334,
+      "accuracy_std": 0.0
+    }
+  },
+  "XOR": {
+    "Classical-RBF": {
+      "accuracy_mean": 0.9600000000000002,
+      "accuracy_std": 0.025495097567963917
+    },
+    "Classical-POLY": {
+      "accuracy_mean": 0.8699999999999999,
+      "accuracy_std": 0.0367423461417477
+    },
+    "Quantum-Angle": {
+      "accuracy_mean": 0.9166666666666666,
+      "accuracy_std": 0.0
+    },
+    "Quantum-IQP": {
+      "accuracy_mean": 0.875,
+      "accuracy_std": 0.0
+    }
+  },
+  "Checkerboard": {
+    "Classical-RBF": {
+      "accuracy_mean": 0.7849999999999999,
+      "accuracy_std": 0.03741657386773941
+    },
+    "Classical-POLY": {
+      "accuracy_mean": 0.5349999999999999,
+      "accuracy_std": 0.04062019202317979
+    },
+    "Quantum-Angle": {
+      "accuracy_mean": 0.625,
+      "accuracy_std": 0.0
+    },
+    "Quantum-IQP": {
+      "accuracy_mean": 0.6666666666666666,
+      "accuracy_std": 0.0
+    }
+  }
+}

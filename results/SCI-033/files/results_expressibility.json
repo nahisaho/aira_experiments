@@ -1,0 +1,27 @@
+{
+  "C1: RY-CNOT linear": {
+    "expressibility_kl": 0.6954360384437326,
+    "entanglement_mw_mean": 0.41743400297199484,
+    "entanglement_mw_std": 0.19680718648114048
+  },
+  "C2: RY-RZ ring CNOT": {
+    "expressibility_kl": 0.3167735991085502,
+    "entanglement_mw_mean": 0.7936041569233501,
+    "entanglement_mw_std": 0.15062567965141355
+  },
+  "C3: IQP (H-ZZ-H)": {
+    "expressibility_kl": 0.4398039109002191,
+    "entanglement_mw_mean": 0.8857659462317028,
+    "entanglement_mw_std": 0.11298972990700983
+  },
+  "C4: Deep RX-RY-CNOT": {
+    "expressibility_kl": 0.030215234285237955,
+    "entanglement_mw_mean": 0.7477038935093282,
+    "entanglement_mw_std": 0.13996607476229173
+  },
+  "C5: All-to-all CZ": {
+    "expressibility_kl": 0.30232028772556846,
+    "entanglement_mw_mean": 0.4272557489434445,
+    "entanglement_mw_std": 0.22518949238691816
+  }
+}

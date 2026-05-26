@@ -1,0 +1,232 @@
+{
+  "constraint_strategies": {
+    "Default": 0.8739215069684279,
+    "Thermodynamic": 0.8583074080226889,
+    "Tightened Exchange": 0.559050599712026,
+    "pFBA": 0.8739215069684297,
+    "Loopless": 0.8739215069684307
+  },
+  "fva_fractions": [
+    0.5,
+    0.7,
+    0.9,
+    0.95,
+    0.99
+  ],
+  "fva_mean_ranges": [
+    60.40045846314492,
+    46.57721854889293,
+    31.844842431285883,
+    27.642598739532275,
+    23.060530654120015
+  ],
+  "13c_comparison": {
+    "reactions": [
+      "PFK",
+      "PYK",
+      "CS",
+      "ICDHyr",
+      "AKGDH",
+      "PDH",
+      "G6PDH2r",
+      "FBA",
+      "TPI",
+      "GAPD",
+      "PGK",
+      "ENO"
+    ],
+    "fba_fluxes": [
+      7.477381962160285,
+      1.7581774441067881,
+      6.0072495753503174,
+      6.007249575350319,
+      5.0643756614820825,
+      9.28253259916662,
+      4.959984944574657,
+      7.477381962160285,
+      7.477381962160285,
+      16.023526143167604,
+      -16.023526143167608,
+      14.716139568742836
+    ],
+    "mfa_fluxes": [
+      8.625,
+      5.27,
+      4.369999999999999,
+      3.999994084086337,
+      3.2199999999999998,
+      6.324999999999999,
+      2.6449999999999996,
+      8.625,
+      8.625,
+      17.64808334768868,
+      -17.648083347688683,
+      16.566545531586023
+    ],
+    "growth_unconstrained": 0.8739215069684279,
+    "growth_13c": 0.7229530856301193
+  },
+  "bayesian": {
+    "PFK": {
+      "FBA": 7.477381962160285,
+      "13C-MFA": 7.5,
+      "Bayesian": 7.4954763924320575,
+      "Variance": 0.4
+    },
+    "PYK": {
+      "FBA": 1.7581774441067881,
+      "13C-MFA": 6.2,
+      "Bayesian": 5.3116354888213575,
+      "Variance": 0.4
+    },
+    "CS": {
+      "FBA": 6.0072495753503174,
+      "13C-MFA": 3.8,
+      "Bayesian": 4.2414499150700635,
+      "Variance": 0.4
+    },
+    "PDH": {
+      "FBA": 9.28253259916662,
+      "13C-MFA": 5.5,
+      "Bayesian": 6.256506519833325,
+      "Variance": 0.4
+    },
+    "G6PDH2r": {
+      "FBA": 4.959984944574657,
+      "13C-MFA": 2.3,
+      "Bayesian": 2.8319969889149315,
+      "Variance": 0.4
+    }
+  },
+  "dfba": {
+    "final_biomass": 1.789203274255271,
+    "final_glucose": 0.0,
+    "final_acetate": 0.0,
+    "max_growth": 0.8515642517549903
+  },
+  "enzyme_constraints": {
+    "std_growth": 0.8739215069684305,
+    "ec_growth": 0.8739215069684317,
+    "saturation_protein": 0.05,
+    "flux_comparison": {
+      "PFK": {
+        "Standard": 7.477381962160285,
+        "Enzyme-constrained": 7.477381962160287
+      },
+      "PYK": {
+        "Standard": 1.7581774441067881,
+        "Enzyme-constrained": 1.7581774441067917
+      },
+      "CS": {
+        "Standard": 6.0072495753503174,
+        "Enzyme-constrained": 6.007249575350336
+      },
+      "ICDHyr": {
+        "Standard": 6.007249575350319,
+        "Enzyme-constrained": 6.007249575350337
+      },
+      "AKGDH": {
+        "Standard": 5.0643756614820825,
+        "Enzyme-constrained": 5.064375661482094
+      },
+      "PDH": {
+        "Standard": 9.28253259916662,
+        "Enzyme-constrained": 9.282532599166618
+      },
+      "G6PDH2r": {
+        "Standard": 4.959984944574657,
+        "Enzyme-constrained": 4.959984944574665
+      },
+      "ENO": {
+        "Standard": 14.716139568742836,
+        "Enzyme-constrained": 14.716139568742832
+      }
+    }
+  },
+  "context_specific": {
+    "Aerobic_Glucose": {
+      "growth": 0.7040369478590246,
+      "removed_reactions": 1,
+      "active_genes": 136,
+      "active_reactions": 94
+    },
+    "Anaerobic": {
+      "growth": 0,
+      "removed_reactions": 23,
+      "active_genes": 64,
+      "active_reactions": 72
+    },
+    "Oxidative_Stress": {
+      "growth": 0,
+      "removed_reactions": 19,
+      "active_genes": 82,
+      "active_reactions": 76
+    },
+    "Stationary_Phase": {
+      "growth": 0.8631595522084183,
+      "removed_reactions": 4,
+      "active_genes": 116,
+      "active_reactions": 91
+    }
+  },
+  "lysine": {
+    "baseline_growth": 0.8739215069684303,
+    "baseline_lysine": 0.0,
+    "max_lysine": 3.3333333333333344,
+    "knockout_results": {
+      "PYK": {
+        "lysine": 3.0800249999999996,
+        "growth": 0.1
+      },
+      "AKGDH": {
+        "lysine": 3.0800249999999996,
+        "growth": 0.1
+      },
+      "G6PDH2r": {
+        "lysine": 3.0800249999999996,
+        "growth": 0.1
+      },
+      "ME1": {
+        "lysine": 3.0800249999999996,
+        "growth": 0.1
+      },
+      "ME2": {
+        "lysine": 3.0800249999999996,
+        "growth": 0.1
+      },
+      "FRD7": {
+        "lysine": 3.0800249999999996,
+        "growth": 0.1
+      },
+      "SUCDi": {
+        "lysine": 3.0800249999999996,
+        "growth": 0.1
+      },
+      "MDH": {
+        "lysine": 3.0800249999999996,
+        "growth": 0.1
+      },
+      "PDH": {
+        "lysine": 2.9965795132743365,
+        "growth": 0.1
+      },
+      "PFK": {
+        "lysine": 1.4299366666666566,
+        "growth": 0.1
+      },
+      "CS": {
+        "lysine": 0,
+        "growth": 0
+      },
+      "ICDHyr": {
+        "lysine": 0,
+        "growth": 0
+      }
+    },
+    "combined": {
+      "strategy": "\u0394PYK + OE(pathway+PPP)",
+      "lysine": 3.0800249999999996,
+      "growth": 0.1
+    }
+  }
+}

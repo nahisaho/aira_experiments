@@ -1,6 +1,0 @@
-#!/app/projects/7a544465-35b9-4b63-943a-bd7061db509b/workspace/.venv/bin/python
-import sys
-from fontTools.ttx import main
-if __name__ == '__main__':
-    sys.argv[0] = sys.argv[0].removesuffix('.exe')
-    sys.exit(main())

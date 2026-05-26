@@ -1,0 +1,136 @@
+{
+  "spatiotemporal": {
+    "Logistic Regression": {
+      "accuracy": 0.6875,
+      "precision": 0.6582278481012658,
+      "recall": 0.5942857142857143,
+      "f1": 0.6246246246246246,
+      "auc": 0.735568253968254
+    },
+    "Random Forest": {
+      "accuracy": 0.6725,
+      "precision": 0.6325301204819277,
+      "recall": 0.6,
+      "f1": 0.6158357771260997,
+      "auc": 0.7186793650793651
+    },
+    "Gradient Boosting": {
+      "accuracy": 0.65,
+      "precision": 0.6114649681528662,
+      "recall": 0.5485714285714286,
+      "f1": 0.5783132530120482,
+      "auc": 0.6849523809523809
+    },
+    "MLP Neural Network": {
+      "accuracy": 0.67,
+      "precision": 0.6303030303030303,
+      "recall": 0.5942857142857143,
+      "f1": 0.611764705882353,
+      "auc": 0.6960507936507936
+    }
+  },
+  "nlp": {
+    "Logistic Regression": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "auc": 1.0
+    },
+    "SVM": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "auc": 1.0
+    },
+    "Random Forest": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "auc": 1.0
+    },
+    "MLP": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "auc": 1.0
+    },
+    "multi_class": {
+      "accuracy": 1.0,
+      "weighted_f1": 1.0
+    }
+  },
+  "microbial": {
+    "baranyi_fit": {
+      "rmse": 0.10559734638614396,
+      "r2": 0.9986211763141455,
+      "params": [
+        2.019473162638268,
+        8.927684333603327,
+        0.5482415756880922,
+        3.409912393802377
+      ]
+    },
+    "ml_prediction": {
+      "rmse": 0.012627509241746297,
+      "r2": 0.8425908839710576,
+      "mae": 0.00940231968875354
+    }
+  },
+  "haccp": {
+    "regression": {
+      "rmse": 1.0584783093028685,
+      "r2": 0.4200745169218263,
+      "mae": 0.8486913138845378
+    },
+    "classification": {
+      "accuracy": 0.9166666666666666,
+      "weighted_f1": 0.9065953059989876
+    }
+  },
+  "blockchain": {
+    "chain_valid": true,
+    "chain_length": 7,
+    "anomaly_detection": {
+      "accuracy": 1.0,
+      "f1": 1.0,
+      "auc": 1.0
+    }
+  },
+  "salmonella": {
+    "Logistic Regression": {
+      "accuracy": 0.6458333333333334,
+      "precision": 0.6762589928057554,
+      "recall": 0.7014925373134329,
+      "f1": 0.6886446886446886,
+      "auc": 0.6814981695297099
+    },
+    "Random Forest": {
+      "accuracy": 0.6375,
+      "precision": 0.6643356643356644,
+      "recall": 0.7089552238805971,
+      "f1": 0.6859205776173285,
+      "auc": 0.669811320754717
+    },
+    "Gradient Boosting": {
+      "accuracy": 0.6,
+      "precision": 0.6357142857142857,
+      "recall": 0.664179104477612,
+      "f1": 0.6496350364963503,
+      "auc": 0.6350675865953254
+    },
+    "MLP": {
+      "accuracy": 0.55,
+      "precision": 0.6083333333333333,
+      "recall": 0.5447761194029851,
+      "f1": 0.5748031496062992,
+      "auc": 0.5516051816389749
+    },
+    "cv_f1_mean": 0.6560793270482218,
+    "cv_f1_std": 0.04442688267023446,
+    "contamination_rate": 0.5325
+  }
+}

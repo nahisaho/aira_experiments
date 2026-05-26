@@ -1,0 +1,16 @@
+drug,score,known_treatment,rank
+Tocilizumab,-1.9434523582458496,True,1
+Dexamethasone,-1.984838843345642,True,2
+Baricitinib,-1.9933302402496338,True,3
+Metformin,-2.7862071990966797,False,4
+Ruxolitinib,-2.79052734375,False,5
+Ritonavir,-2.8315916061401367,False,6
+Ribavirin,-2.8360326290130615,False,7
+Fluvoxamine,-2.859116554260254,False,8
+Sofosbuvir,-2.906517267227173,False,9
+Interferon-beta,-2.939656972885132,False,10
+Losartan,-2.9483156204223633,False,11
+Colchicine,-2.968308210372925,False,12
+Ivermectin,-3.0018484592437744,False,13
+Atorvastatin,-3.0260095596313477,False,14
+Azithromycin,-3.0324511528015137,False,15

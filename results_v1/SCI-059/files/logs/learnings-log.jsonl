@@ -1,1 +1,0 @@
-{"timestamp": "2026-05-22T17:38:39.074213+00:00", "skill": "co-scientist-bayesian-statistics", "learning": "SPDE/FEM precision construction can become numerically unstable when the mass matrix is nearly singular on irregular meshes.", "action": "Added Gotcha recommending a 1e-6 diagonal regularizer before solving C^{-1}G.", "severity": "medium"}

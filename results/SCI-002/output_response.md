@@ -1,21 +1,28 @@
-Now I'll create the full simulation framework. Let me build this in parallel with multiple components.All simulations completed. Now let me verify the outputs and create the report and paper.Now let me create both report.md and paper.md in parallel.Now create the process log:全ファイルが正常に生成されました。以下が成果物のまとめです：
+Now I have comprehensive literature. Let me implement the simulation framework and generate results.
 
-## 完成した成果物
+Simulation completed successfully. Now let me verify the figures and create the report and paper documents.All 8 figures generated. Now let me read the sweep results and create both documents.Now let me create both documents in parallel.Let me verify all files are in place:すべてのファイルが生成されました。成果物の概要：
 
-**シミュレーションコード**: `prs_transferability.py` — 5つのPRS手法を実装
-- Standard PRS（直接転送）
-- Bayesian LD-Corrected PRS（LD補正ベイズ推定）
-- Multi-Ethnic Meta-Analysis PRS（DerSimonian-Laird変量効果）
-- Local Ancestry-Corrected PRS（局所祖先補正）
-- Penalized Transfer PRS（ペナルティ付き転移学習）
+## 完了した作業
 
-**主要結果**:
-| 手法 | R²（連続形質） | AUC（T2D） |
-|------|---------------|------------|
-| Standard | 0.295 | 0.723 |
-| Meta-Analysis | **0.308** | 0.701 |
-| Penalized Transfer | 0.199 | 0.631 |
+### ステップ1: 先行研究調査
+DOI付きの主要論文7件を特定（PRS-CSx, TL-PRS, CT-SLEB, BridgePRS, Privé et al., Martin et al. 等）
 
-**図表**: 7つの図（`figures/`）、5つの数値結果CSV（`results/`）
+### ステップ2&3: 実験実装・実施
+**`prs_simulation.py`** — 以下を含むシミュレーションフレームワーク:
+- Balding-Nicholsモデルによる集団分化シミュレーション
+- ベイズLD補正（LD空間射影法）
+- 多民族固定効果メタ解析
+- 局所祖先ベースPRS補正
+- 統合手法（Combined）
 
-**文書**: `report.md`（実験レポート）、`paper.md`（学術論文形式、Abstract〜References完備）
+### 主要結果（Fst=0.1, h²=0.5, T2D）
+| 手法 | AUC | R²(liability) |
+|------|-----|---------------|
+| Direct Transfer | 0.7914 | 0.2987 |
+| **Combined (提案)** | **0.8135** | **0.3582** |
+| 改善幅 | **+2.8%** | **+19.9%** |
+
+### 生成ファイル
+- **`report.md`** — 日本語レポート（図表8枚埋め込み）
+- **`paper.md`** — 英語学術論文（Abstract〜References、DOI付き参考文献8件、図表8枚埋め込み）
+- **`figures/`** — 8枚の図（手法比較、PRS分布、LD比較、効果量、Fst/サンプルサイズ/遺伝率スイープ等）

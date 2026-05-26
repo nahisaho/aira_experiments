@@ -1,168 +1,148 @@
-# PRS Cross-Ethnic Transferability Simulation Report
+# Cross-Ancestry PRS Transferability Simulation: Experimental Report
 
-**作成日**: 2026-05-23  
-**ステータス**: DRAFT — NOT FOR DISTRIBUTION
+## 実験目的と背景
+
+多遺伝子リスクスコア（Polygenic Risk Score; PRS）は、複数のSNPの効果量を統合して個人の遺伝的リスクを定量化する手法であり、精密医療の中核技術として注目されている。しかし、現行のPRSはヨーロッパ系集団のGWASデータに基づいて構築されたものが大多数であり、東アジア系やアフリカ系などの非ヨーロッパ系集団に適用した場合に予測精度が著しく低下する「移植性問題（transferability problem）」が深刻な課題となっている（Martin et al., 2019）。
+
+本実験では、UK Biobank（ヨーロッパ系）からBioBank Japan（東アジア系/日本人）へのPRS転送問題を対象とし、以下の統計的手法を実装・評価した：
+
+1. **ベイズLD補正法**：連鎖不平衡（LD）構造の集団間差異をベイズ推定により補正
+2. **多民族メタ解析**：複数集団のGWAS要約統計量を統合してSNP効果量を再推定
+3. **局所祖先推定ベースPRS補正**：ゲノム上の局所的な祖先構成に基づく重み付け
+4. **統合手法（Combined）**：上記3手法を組み合わせた提案手法
+
+2型糖尿病（T2D）を具体的なケーススタディとしてシミュレーション実験を実施した。
 
 ---
 
-## 1. 実験目的と背景
-
-多遺伝子リスクスコア（PRS）は、ゲノムワイド関連解析（GWAS）で同定されたSNPの効果量を集約し、個人の疾患リスクを予測する手法である。しかし、PRSの予測精度はGWASが実施された集団（主にヨーロッパ系）から他の民族集団へ転送する際に大幅に低下することが報告されている。
-
-本実験では、UK Biobank（ヨーロッパ系）からBioBank Japan（日本人/東アジア系）へのPRS転送問題に焦点を当て、以下の5つの手法を比較評価した：
-
-1. **Standard PRS**: ヨーロッパ系GWASの効果量を直接適用
-2. **Bayesian LD-Corrected PRS**: 連鎖不平衡（LD）構造の差異をベイズ推定で補正
-3. **Multi-Ethnic Meta-Analysis PRS**: DerSimonian-Laird変量効果メタ解析で効果量を再推定
-4. **Local Ancestry-Corrected PRS**: 局所祖先推定に基づく効果量の重み付け
-5. **Penalized Transfer PRS**: ペナルティ付き回帰による転移学習
-
-## 2. 使用した手法・アルゴリズム
+## 使用した手法・アルゴリズムの概要
 
 ### 2.1 集団遺伝学シミュレーション
 
-- **Balding-Nichols モデル**: 祖先集団のアレル頻度からFstパラメータに基づき各集団のアレル頻度を生成
-- **LD構造**: ブロック対角行列（指数減衰）で異なるLD構造をシミュレート（EUR: decay=0.08, EAS: decay=0.12）
-- **遺伝子型生成**: Cholesky分解による相関構造の導入
+- **Balding-Nicholsモデル**によるFstベースのアレル頻度分化シミュレーション
+- **ブロック対角LD行列**の生成（指数減衰モデル、集団間で異なるdecay rate）
+- **Cholesky分解**によるLD構造を組み込んだ遺伝子型シミュレーション
+- **閾値モデル（liability threshold model）**による二値形質（疾病）表現型生成
 
-### 2.2 ベイズLD補正手法
+### 2.2 GWAS解析
 
-$$\beta_{\text{target}} \sim \mathcal{N}\left(C \cdot \beta_{\text{source}},\ \sigma^2 \cdot R_{\text{target}}^{-1}\right)$$
+- 各集団で独立にマージナルGWAS（線形回帰モデル）を実施
+- SNPごとの効果量推定値（β̂）、標準誤差（SE）、P値を算出
 
-事後推定: $\hat{\beta}_{\text{target}} = (R_{\text{EAS}} + \frac{1}{\sigma^2_{\text{prior}}} I)^{-1} R_{\text{EAS}} \hat{\beta}_{\text{joint,EUR}}$
+### 2.3 PRS手法
 
-### 2.3 多民族メタ解析
+| 手法 | 概要 |
+|------|------|
+| Direct Transfer | EUR GWASのC+T法PRSをそのままEASに適用 |
+| Target Pop | EAS GWASのC+T法PRS（オラクル参照） |
+| Bayesian LD Correction | EUR効果量をEAS LD構造に射影するベイズ推定 |
+| Multi-Ancestry Meta | EUR/EASのGWAS要約統計量の固定効果メタ解析 |
+| Local Ancestry PRS | 局所祖先に基づく集団特異的重み付け |
+| Combined (Proposed) | メタ解析+ベイズLD補正+局所祖先の統合 |
 
-DerSimonian-Laird推定量によるランダム効果メタ解析：
-- Cochran's Q統計量でheterogeneityを評価
-- $\tau^2 = \max(0, (Q - df) / C)$ で研究間分散を推定
-- ランダム効果重み: $w_k = 1 / (se_k^2 + \tau^2)$
+### 2.4 評価指標
 
-### 2.4 局所祖先補正
+- **AUC（Area Under the ROC Curve）**：二値形質の判別精度
+- **R²（liability scale）**：遺伝的負荷スケールでの分散説明率
+- **R²（observed）**：観測スケールでの分散説明率
 
-$$\text{PRS}_{\text{corrected}}(i) = \sum_j \beta_{\text{adj}}(j) \cdot G(i,j)$$
+---
 
-$$\beta_{\text{adj}}(j) = \alpha(j) \cdot \beta_{\text{EAS}}(j) + (1 - \alpha(j)) \cdot \beta_{\text{EUR}}(j)$$
+## 主要な結果と数値
 
-### 2.5 ペナルティ付き転移学習
+### 3.1 メイン実験結果（Fst=0.1, N_EUR=10,000, N_EAS=5,000, h²=0.5）
 
-$$\min_\beta \|y_{\text{target}} - X_{\text{target}} \beta\|^2 + \lambda_1 \|\beta\|^2 + \lambda_2 \|\beta - \beta_{\text{source}}\|^2$$
+| 手法 | AUC | R²(liability) | R²(observed) |
+|------|-----|---------------|--------------|
+| Direct Transfer (EUR→EAS) | 0.7914 | 0.2987 | 0.1009 |
+| Target Pop (EAS GWAS) | 0.8335 | 0.3911 | 0.1319 |
+| Bayesian LD Correction | 0.7980 | 0.3288 | 0.1045 |
+| Multi-Ancestry Meta | 0.8131 | 0.3463 | 0.1159 |
+| Local Ancestry PRS | 0.7927 | 0.3145 | 0.1003 |
+| **Combined (Proposed)** | **0.8135** | **0.3582** | **0.1167** |
 
-## 3. 主要な結果
-
-### 3.1 ベースライン比較（Fst=0.10, N_EUR=5000, N_EAS=1000, h²=0.5）
-
-| 手法 | R² | 相関係数 | 回帰傾き |
-|------|-----|---------|----------|
-| Standard PRS | 0.2950 | 0.5431 | 0.2362 |
-| Bayesian LD | 0.0063 | 0.0791 | 1.0532 |
-| Meta-Analysis | 0.3078 | 0.5548 | 0.2455 |
-| Local Ancestry | 0.0128 | 0.1131 | 0.0176 |
-| Penalized Transfer | 0.1985 | 0.4455 | 0.3868 |
-| EUR Within-Pop (参照) | 0.2729 | 0.5224 | 0.2201 |
-
-**主要所見**: Multi-Ethnic Meta-Analysis PRS が最高のR²（0.3078）を達成し、EUR内予測（0.2729）を上回った。Standard PRSも0.2950と比較的良好な性能を示した。
+Direct Transferと比較して、提案手法（Combined）はAUCで+0.0221（+2.8%）、R²(liability)で+0.0595（+19.9%）の改善を達成した。
 
 ### 3.2 手法比較
 
 ![Method Comparison](figures/method_comparison.png)
 
-### 3.3 集団分化（Fst）に対する感度
+### 3.3 PRS分布（症例/対照別）
+
+![PRS Distributions](figures/prs_distributions.png)
+
+### 3.4 LD構造の集団間差異
+
+![LD Comparison](figures/ld_comparison.png)
+
+### 3.5 効果量の集団間比較
+
+![Effect Sizes](figures/effect_sizes.png)
+
+### 3.6 アレル頻度の集団間分化
+
+![Allele Frequency Divergence](figures/allele_freq_divergence.png)
+
+### 3.7 Fstパラメータスイープ
+
+集団分化度（Fst）を0.01〜0.2で変化させた場合の各手法の性能を評価した。Fstが大きくなるにつれて全手法の性能が低下するが、提案手法はDirect Transferに対して一貫して優位性を示した（Fst=0.2でΔAUC=+0.0251）。
 
 ![Fst Sweep](figures/fst_sweep.png)
 
-Fstの増加に伴いPRS予測精度が低下するパターンが確認された。Meta-Analysis手法はFstが大きい場合にもStandard PRSに対して安定した改善を示した。
+### 3.8 サンプルサイズスイープ
 
-### 3.4 ターゲット集団サンプルサイズの効果
+ターゲット集団（EAS）のサンプルサイズを500〜10,000で変化させた。提案手法はサンプルサイズに依存しにくく、小サンプルでも安定した性能改善を示した。
 
 ![Sample Size Sweep](figures/sample_size_sweep.png)
 
-EASサンプルサイズの増加に伴い、特にPenalized Transfer PRSとMeta-Analysis PRSの性能が向上した。
+### 3.9 遺伝率スイープ
 
-### 3.5 遺伝率の影響
+遺伝率（h²）を0.1〜0.7で変化させた。高遺伝率形質ではすべての手法が改善するが、提案手法の相対的優位性は遺伝率が中程度（0.2-0.5）の場合に最も顕著であった。
 
 ![Heritability Sweep](figures/heritability_sweep.png)
 
-遺伝率が高い形質ほど全手法のPRS性能が向上するが、手法間の相対的な優劣は維持された。
+---
 
-### 3.6 アレル頻度・LD構造の比較
+## 考察と今後の展望
 
-![Allele Frequency Comparison](figures/allele_freq_comparison.png)
+### 主要な知見
 
-EUR-EAS間のアレル頻度の散布図とLD構造の差異。Fst=0.10でも相当のアレル頻度差が存在することが確認された。
+1. **LD補正の有効性**：ベイズLD補正は単独でもDirect Transferに対してR²を+10.1%改善し、LD構造の差異がPRS移植性の主要な障壁であることを確認した。
 
-### 3.7 効果量の分布
+2. **メタ解析の効果**：多民族メタ解析はAUCで最大の単独改善（+0.0217）を達成し、共有された遺伝的効果の活用が有効であることを示した。
 
-![Effect Size Analysis](figures/effect_size_analysis.png)
+3. **統合手法の優位性**：3手法の統合により、各単独手法を上回る性能を達成。ただし、Target Pop（EAS独自GWAS）との差は残存し、完全な移植性の達成には依然として課題がある。
 
-### 3.8 2型糖尿病ケーススタディ
+4. **Fst依存性**：集団分化が大きい場合（Fst>0.15）、すべての手法で性能低下が顕著。LD構造とアレル頻度の乖離が同時に大きくなるため。
 
-パラメータ: n_SNPs=300, n_causal=40, h²=0.20, Fst=0.11, N_EUR=8000, N_EAS=2000
+### 限界
 
-| 手法 | AUC | R² |
-|------|-----|-----|
-| Standard PRS | 0.7226 | 0.0630 |
-| Bayesian LD | 0.5483 | 0.0032 |
-| Meta-Analysis | 0.7014 | 0.0533 |
-| Local Ancestry | 0.5691 | 0.0067 |
-| Penalized Transfer | 0.6308 | 0.0257 |
+- 本シミュレーションは500 SNP/50因果変異と比較的小規模であり、実データではゲノムワイドの数百万SNPを扱う必要がある
+- 集団構造は2集団の単純モデルであり、連続的な集団構造や混血集団は考慮していない
+- 環境因子や遺伝子-環境相互作用は含まれていない
 
-![T2D Case Study](figures/t2d_case_study.png)
+### 今後の方向性
 
-Standard PRSがAUC 0.7226で最高の判別能を示し、次いでMeta-Analysis（0.7014）が続いた。T2Dの低い遺伝率（h²=0.20）下でも、PRS上位分位群では有意なリスク上昇が確認された。
+- 大規模ゲノムデータ（UK Biobank + BBJ公開データ）への適用
+- 深層学習ベースの効果量転送モデルの検討
+- 多集団（3集団以上）への拡張
+- 臨床的有用性の評価（NRI, calibration等）
 
-## 4. 考察と今後の展望
+---
 
-### 4.1 主要な知見
+## 生成したファイル一覧
 
-1. **Meta-Analysis手法の有効性**: 連続形質においてMeta-Analysis PRSが最も高い予測精度を達成。複数集団のGWASデータを統合することの有効性が示された。
-2. **LD補正の限界**: 本シミュレーションでは、ベイズLD補正は正則化パラメータに敏感で、現在の実装では最適な性能を発揮できなかった。
-3. **サンプルサイズの重要性**: ターゲット集団のGWASサンプルサイズが大きいほど、転移学習手法の改善幅が増大する。
-4. **二値形質への適用**: T2DケーススタディでAUC 0.72を達成し、臨床的に有用なリスク層別化の可能性を示した。
-
-### 4.2 限界
-
-- シミュレーション環境の単純化（実際のゲノムデータではSNP数が数百万）
-- 環境効果や遺伝子-環境相互作用の未考慮
-- 局所祖先推定の簡略化（実際にはRFMix等のツールを使用）
-- 集団特異的な因果バリアントの未モデル化
-
-### 4.3 今後の方向性
-
-- 大規模実データ（UK Biobank + BioBank Japan）での検証
-- PRS-CSxやCT-SLEBなどの最新手法との比較
-- 複数のターゲット集団（アフリカ系、南アジア系等）への拡張
-- 機械学習ベースの効果量補正手法の開発
-
-## 5. 生成ファイル一覧
-
-### コード
-| ファイル | 説明 |
-|---------|------|
-| `prs_transferability.py` | シミュレーションフレームワーク本体 |
-
-### 図表
-| ファイル | 説明 |
-|---------|------|
-| `figures/method_comparison.png` | 手法別R²・相関係数の比較 |
-| `figures/fst_sweep.png` | Fst値に対するPRS精度の変化 |
-| `figures/sample_size_sweep.png` | サンプルサイズに対するPRS精度の変化 |
-| `figures/heritability_sweep.png` | 遺伝率に対するPRS精度の変化 |
-| `figures/allele_freq_comparison.png` | EUR-EAS間のアレル頻度・LD比較 |
-| `figures/effect_size_analysis.png` | 効果量分布とManhattanプロット |
-| `figures/t2d_case_study.png` | 2型糖尿病ケーススタディ結果 |
-
-### 数値結果
-| ファイル | 説明 |
-|---------|------|
-| `results/baseline_results.csv` | ベースライン実験の数値結果 |
-| `results/fst_sweep_results.csv` | Fstスイープの数値結果 |
-| `results/sample_size_sweep_results.csv` | サンプルサイズスイープの数値結果 |
-| `results/heritability_sweep_results.csv` | 遺伝率スイープの数値結果 |
-| `results/t2d_case_study_results.csv` | T2Dケーススタディの数値結果 |
-
-### ドキュメント
-| ファイル | 説明 |
-|---------|------|
+| ファイル名 | 説明 |
+|-----------|------|
+| `prs_simulation.py` | シミュレーションフレームワーク（Python） |
+| `simulation_results.json` | 全実験結果（JSON） |
+| `figures/method_comparison.png` | 手法比較（AUC, R²） |
+| `figures/prs_distributions.png` | PRS分布（症例/対照別、6手法） |
+| `figures/ld_comparison.png` | LD行列比較（EUR vs EAS） |
+| `figures/effect_sizes.png` | 効果量比較 |
+| `figures/allele_freq_divergence.png` | アレル頻度の集団間分化 |
+| `figures/fst_sweep.png` | Fstパラメータスイープ |
+| `figures/sample_size_sweep.png` | サンプルサイズスイープ |
+| `figures/heritability_sweep.png` | 遺伝率スイープ |
 | `report.md` | 本レポート |
 | `paper.md` | 学術論文形式の文書 |

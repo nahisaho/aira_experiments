@@ -1,0 +1,14 @@
+{
+  "material": "Cs2AgSbI6",
+  "bandgap_eV": 1.301,
+  "electron_affinity_eV": 4.0,
+  "dielectric_constant": 6.0,
+  "effective_mass_electron": 0.25,
+  "effective_mass_hole": 0.3,
+  "mobility_electron_cm2_Vs": 30,
+  "mobility_hole_cm2_Vs": 20,
+  "donor_density_cm3": 1000000000.0,
+  "acceptor_density_cm3": 1000000000000000.0,
+  "defect_density_cm3": 5760000000000.0,
+  "thickness_nm": 500
+}

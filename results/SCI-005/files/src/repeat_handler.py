@@ -1,204 +1,258 @@
-"""Repeat-aware processing utilities for repetitive long-read SV loci."""
-
-from __future__ import annotations
-
-from collections import Counter
-from typing import Any, Dict, List, Sequence, Tuple
+#!/usr/bin/env python3
+"""
+Repeat region handler for telomeric and centromeric regions.
+Provides specialized SV detection in repetitive genomic regions.
+"""
 
 import numpy as np
+from dataclasses import dataclass, field
+from typing import List, Tuple, Optional, Dict
+from collections import Counter
+import re
+import logging
+
+logger = logging.getLogger(__name__)
 
 
-class RepeatRegionHandler:
-    """Handle telomeric, centromeric and tandem-repeat-rich regions."""
+@dataclass
+class RepeatAnnotation:
+    """Annotation for a repeat region."""
+    chrom: str
+    start: int
+    end: int
+    repeat_type: str  # telomere, centromere, satellite, LINE, SINE, etc.
+    repeat_unit: str
+    copy_number: float
+    gc_content: float
 
-    def __init__(self, telomere_motifs: Sequence[str] = ("TTAGGG", "CCCTAA")) -> None:
-        self.telomere_motifs = tuple(motif.upper() for motif in telomere_motifs)
 
-    def detect_telomere_repeats(self, sequence: str, min_copies: int = 4) -> List[Dict[str, Any]]:
-        """Detect canonical telomere motifs (TTAGGG/CCCTAA) and report runs."""
+@dataclass
+class RepeatMaskedRegion:
+    """Region with repeat masking information."""
+    chrom: str
+    start: int
+    end: int
+    masked_fraction: float
+    repeat_classes: List[str]
+    complexity_score: float
 
-        seq = sequence.upper()
-        hits: List[Dict[str, Any]] = []
-        for motif in self.telomere_motifs:
-            motif_length = len(motif)
-            index = 0
-            while index <= len(seq) - motif_length * min_copies:
-                copies = 0
-                while seq[index + copies * motif_length : index + (copies + 1) * motif_length] == motif:
-                    copies += 1
-                if copies >= min_copies:
-                    start = index
-                    end = index + copies * motif_length
-                    hits.append(
-                        {
-                            "motif": motif,
-                            "start": start,
-                            "end": end,
-                            "copies": copies,
-                            "fraction": (copies * motif_length) / max(len(seq), 1),
-                        }
-                    )
-                    index = end
-                else:
-                    index += 1
-        return hits
 
-    def analyze_centromere(self, sequence: str, hor_unit_range: Tuple[int, int] = (150, 210)) -> Dict[str, Any]:
-        """Estimate alpha-satellite enrichment and higher-order repeat structure."""
+# Human telomere canonical repeat
+TELOMERE_REPEAT = "TTAGGG"
+TELOMERE_REVERSE = "CCCTAA"
 
-        seq = sequence.upper()
-        if not seq:
-            return {"alpha_satellite_score": 0.0, "estimated_hor_unit": None, "monomer_similarity": 0.0}
+# Human centromere alpha-satellite monomer length
+ALPHA_SATELLITE_LENGTH = 171
 
-        monomer_scores = []
-        for unit_size in range(hor_unit_range[0], hor_unit_range[1] + 1):
-            blocks = [seq[index : index + unit_size] for index in range(0, len(seq) - unit_size + 1, unit_size)]
-            if len(blocks) < 2:
-                continue
-            similarity = np.mean([self._sequence_identity(blocks[0], block) for block in blocks[1:]])
-            monomer_scores.append((unit_size, float(similarity)))
+# Known centromere positions (hg38, approximate)
+CENTROMERE_REGIONS = {
+    "chr1": (122026460, 125184587),
+    "chr2": (92188146, 94090557),
+    "chr3": (90772459, 93655574),
+    "chr4": (49708101, 51743951),
+    "chr5": (46485901, 50059807),
+    "chr6": (58553889, 59829934),
+    "chr7": (58169654, 60828234),
+    "chr8": (44033745, 45877265),
+    "chr9": (43236168, 45518558),
+    "chr10": (39686683, 41593521),
+    "chr11": (51078349, 54425074),
+    "chr12": (34769408, 37185252),
+    "chr13": (16000001, 18051248),
+    "chr14": (16000001, 18173523),
+    "chr15": (17083674, 19725254),
+    "chr16": (36311159, 38280682),
+    "chr17": (22813680, 26885980),
+    "chr18": (15460900, 20861206),
+    "chr19": (24498981, 27190874),
+    "chr20": (26436233, 30038348),
+    "chr21": (10864561, 12915808),
+    "chr22": (12954789, 15054318),
+    "chrX": (58605580, 62412542),
+    "chrY": (10316945, 10544039),
+}
 
-        if not monomer_scores:
-            return {"alpha_satellite_score": 0.0, "estimated_hor_unit": None, "monomer_similarity": 0.0}
 
-        monomer_length, monomer_similarity = max(monomer_scores, key=lambda item: item[1])
-        periodicities = self._autocorrelation_periods(seq, max_period=monomer_length * 20)
-        hor_length = periodicities[0][0] if periodicities else monomer_length
-        alpha_satellite_score = min(1.0, monomer_similarity * (hor_length / max(monomer_length, 1)) / 8.0)
+class TelomereAnalyzer:
+    """Analyze telomeric regions and detect telomere-associated SVs."""
+
+    def __init__(self, min_repeat_count: int = 3):
+        self.min_repeat_count = min_repeat_count
+        self.telomere_pattern = re.compile(
+            f"({TELOMERE_REPEAT}){{" + str(min_repeat_count) + ",}"
+        )
+        self.telomere_rev_pattern = re.compile(
+            f"({TELOMERE_REVERSE}){{" + str(min_repeat_count) + ",}"
+        )
+
+    def detect_telomere_reads(self, sequences: List[str]) -> List[Dict]:
+        """Identify reads containing telomeric repeats."""
+        telomere_reads = []
+        for i, seq in enumerate(sequences):
+            fwd_matches = list(self.telomere_pattern.finditer(seq))
+            rev_matches = list(self.telomere_rev_pattern.finditer(seq))
+
+            if fwd_matches or rev_matches:
+                all_matches = fwd_matches + rev_matches
+                total_telomere_bp = sum(m.end() - m.start() for m in all_matches)
+                telomere_reads.append({
+                    "read_index": i,
+                    "telomere_fraction": total_telomere_bp / len(seq),
+                    "n_telomere_blocks": len(all_matches),
+                    "is_terminal": (
+                        any(m.start() < 50 for m in all_matches) or
+                        any(m.end() > len(seq) - 50 for m in all_matches)
+                    ),
+                    "orientations": (
+                        ["forward"] * len(fwd_matches) +
+                        ["reverse"] * len(rev_matches)
+                    ),
+                })
+
+        return telomere_reads
+
+    def estimate_telomere_length(self, sequences: List[str]) -> Dict:
+        """Estimate telomere length from long reads spanning telomeric regions."""
+        lengths = []
+        for seq in sequences:
+            for match in self.telomere_pattern.finditer(seq):
+                lengths.append(match.end() - match.start())
+            for match in self.telomere_rev_pattern.finditer(seq):
+                lengths.append(match.end() - match.start())
+
+        if not lengths:
+            return {"mean_length": 0, "median_length": 0, "n_estimates": 0}
+
         return {
-            "alpha_satellite_score": alpha_satellite_score,
-            "estimated_monomer_length": monomer_length,
-            "estimated_hor_unit": hor_length,
-            "monomer_similarity": monomer_similarity,
-            "top_periodicities": periodicities[:5],
+            "mean_length": float(np.mean(lengths)),
+            "median_length": float(np.median(lengths)),
+            "std_length": float(np.std(lengths)),
+            "n_estimates": len(lengths),
+            "min_length": int(min(lengths)),
+            "max_length": int(max(lengths)),
         }
 
-    def detect_tandem_expansion(
-        self,
-        sequence: str,
-        motif_lengths: Sequence[int] = (1, 2, 3, 4, 5, 6),
-        min_repeats: int = 5,
-    ) -> List[Dict[str, Any]]:
-        """Detect candidate STR/VNTR expansions by scanning repeated motifs."""
 
-        seq = sequence.upper()
-        expansions: List[Dict[str, Any]] = []
-        for motif_length in motif_lengths:
-            for start in range(0, len(seq) - motif_length * min_repeats + 1):
-                motif = seq[start : start + motif_length]
-                if len(set(motif)) == 1 and motif_length > 3:
-                    continue
-                repeats = 1
-                while seq[start + repeats * motif_length : start + (repeats + 1) * motif_length] == motif:
-                    repeats += 1
-                if repeats >= min_repeats:
-                    end = start + repeats * motif_length
-                    expansions.append(
-                        {
-                            "motif": motif,
-                            "motif_length": motif_length,
-                            "start": start,
-                            "end": end,
-                            "repeat_count": repeats,
-                            "expansion_size": repeats * motif_length,
-                        }
-                    )
-        return self._deduplicate_regions(expansions)
+class CentromereAnalyzer:
+    """Analyze centromeric regions with alpha-satellite repeats."""
 
-    def kmer_frequency_filter(
-        self,
-        sequence: str,
-        candidate_score: float,
-        k: int = 5,
-        entropy_threshold: float = 1.5,
-    ) -> Dict[str, Any]:
-        """Filter repetitive false positives using k-mer complexity statistics."""
+    def __init__(self):
+        self.alpha_sat_length = ALPHA_SATELLITE_LENGTH
+        self.regions = CENTROMERE_REGIONS
 
-        seq = sequence.upper()
-        if len(seq) < k:
-            return {"pass_filter": True, "adjusted_score": candidate_score, "entropy": 0.0}
-        kmers = [seq[index : index + k] for index in range(0, len(seq) - k + 1)]
-        counts = Counter(kmers)
-        total = sum(counts.values())
-        probabilities = np.asarray([count / total for count in counts.values()], dtype=np.float64)
-        entropy = float(-np.sum(probabilities * np.log2(probabilities + 1e-12)))
-        dominant_fraction = max(probabilities) if probabilities.size else 0.0
-        adjusted_score = candidate_score * max(entropy / max(entropy_threshold, 1e-6), 0.25) * (1.0 - 0.5 * dominant_fraction)
-        return {
-            "pass_filter": entropy >= entropy_threshold or dominant_fraction < 0.7,
-            "adjusted_score": adjusted_score,
-            "entropy": entropy,
-            "dominant_kmer_fraction": float(dominant_fraction),
-        }
+    def is_centromeric(self, chrom: str, start: int, end: int) -> bool:
+        if chrom in self.regions:
+            cen_start, cen_end = self.regions[chrom]
+            return start < cen_end and end > cen_start
+        return False
 
-    def repeat_aware_alignment_score(
-        self,
-        query: str,
-        target: str,
-        match_score: float = 2.0,
-        mismatch_penalty: float = -2.5,
-        gap_penalty: float = -3.0,
-    ) -> float:
-        """Compute a simple repeat-aware alignment score.
-
-        Gaps traversing tandem-repeat tracts are penalized less harshly to avoid
-        overcalling rearrangements in low-complexity sequence.
-        """
-
-        query_upper = query.upper()
-        target_upper = target.upper()
-        rows = len(query_upper) + 1
-        cols = len(target_upper) + 1
-        dp = np.zeros((rows, cols), dtype=np.float64)
-
-        for index in range(1, rows):
-            dp[index, 0] = dp[index - 1, 0] + gap_penalty
-        for index in range(1, cols):
-            dp[0, index] = dp[0, index - 1] + gap_penalty
-
-        for row in range(1, rows):
-            for col in range(1, cols):
-                repeat_bonus = 0.6 if self._is_repetitive_context(query_upper, row - 1) or self._is_repetitive_context(target_upper, col - 1) else 1.0
-                match = dp[row - 1, col - 1] + (match_score if query_upper[row - 1] == target_upper[col - 1] else mismatch_penalty)
-                delete = dp[row - 1, col] + gap_penalty * repeat_bonus
-                insert = dp[row, col - 1] + gap_penalty * repeat_bonus
-                dp[row, col] = max(match, delete, insert)
-        return float(dp[-1, -1])
-
-    @staticmethod
-    def _sequence_identity(first: str, second: str) -> float:
-        length = min(len(first), len(second))
-        if length == 0:
+    def compute_repeat_complexity(self, sequence: str) -> float:
+        """Compute linguistic complexity of a sequence (0=simple repeat, 1=complex)."""
+        if len(sequence) < 4:
             return 0.0
-        matches = sum(1 for left, right in zip(first[:length], second[:length]) if left == right)
-        return matches / length
+
+        # Trigram complexity
+        possible_trigrams = min(len(sequence) - 2, 64)
+        observed = len(set(
+            sequence[i:i + 3] for i in range(len(sequence) - 2)
+        ))
+        return observed / possible_trigrams if possible_trigrams > 0 else 0.0
+
+    def detect_hor_variants(
+        self, sequence: str, monomer_length: int = 171
+    ) -> List[Dict]:
+        """Detect Higher-Order Repeat (HOR) structural variants."""
+        if len(sequence) < monomer_length * 2:
+            return []
+
+        monomers = []
+        for i in range(0, len(sequence) - monomer_length, monomer_length):
+            monomers.append(sequence[i:i + monomer_length])
+
+        variants = []
+        for i in range(len(monomers) - 1):
+            divergence = self._sequence_divergence(monomers[i], monomers[i + 1])
+            if divergence > 0.15:
+                variants.append({
+                    "position": i * monomer_length,
+                    "divergence": divergence,
+                    "type": "hor_variant",
+                })
+
+        return variants
 
     @staticmethod
-    def _autocorrelation_periods(sequence: str, max_period: int) -> List[Tuple[int, float]]:
-        encoded = np.fromiter((ord(base) for base in sequence), dtype=np.float64)
-        periods: List[Tuple[int, float]] = []
-        for period in range(1, min(max_period, len(sequence) // 2) + 1):
-            corr = np.corrcoef(encoded[:-period], encoded[period:])[0, 1]
-            if np.isnan(corr):
-                continue
-            periods.append((period, float(corr)))
-        return sorted(periods, key=lambda item: item[1], reverse=True)
+    def _sequence_divergence(seq1: str, seq2: str) -> float:
+        min_len = min(len(seq1), len(seq2))
+        if min_len == 0:
+            return 1.0
+        mismatches = sum(1 for i in range(min_len) if seq1[i] != seq2[i])
+        return mismatches / min_len
+
+
+class RepeatHandler:
+    """Unified handler for repeat regions in SV detection."""
+
+    def __init__(self):
+        self.telomere_analyzer = TelomereAnalyzer()
+        self.centromere_analyzer = CentromereAnalyzer()
+
+    def classify_region(
+        self, chrom: str, start: int, end: int, sequence: str
+    ) -> RepeatAnnotation:
+        """Classify a genomic region by its repeat content."""
+        # Check centromere
+        if self.centromere_analyzer.is_centromeric(chrom, start, end):
+            complexity = self.centromere_analyzer.compute_repeat_complexity(sequence)
+            gc = self._compute_gc(sequence)
+            return RepeatAnnotation(
+                chrom=chrom, start=start, end=end,
+                repeat_type="centromere",
+                repeat_unit="alpha-satellite",
+                copy_number=(end - start) / ALPHA_SATELLITE_LENGTH,
+                gc_content=gc
+            )
+
+        # Check telomere
+        tel_reads = self.telomere_analyzer.detect_telomere_reads([sequence])
+        if tel_reads and tel_reads[0]["telomere_fraction"] > 0.3:
+            gc = self._compute_gc(sequence)
+            return RepeatAnnotation(
+                chrom=chrom, start=start, end=end,
+                repeat_type="telomere",
+                repeat_unit=TELOMERE_REPEAT,
+                copy_number=tel_reads[0]["telomere_fraction"] * len(sequence) / 6,
+                gc_content=gc
+            )
+
+        # Default: non-repeat
+        gc = self._compute_gc(sequence)
+        return RepeatAnnotation(
+            chrom=chrom, start=start, end=end,
+            repeat_type="unique",
+            repeat_unit="",
+            copy_number=1.0,
+            gc_content=gc
+        )
+
+    def adjust_sv_confidence(
+        self, sv_call, repeat_annotation: RepeatAnnotation
+    ) -> float:
+        """Adjust SV confidence based on repeat context."""
+        base_quality = sv_call.quality
+
+        if repeat_annotation.repeat_type == "centromere":
+            return base_quality * 0.6  # Lower confidence in centromeric regions
+        elif repeat_annotation.repeat_type == "telomere":
+            return base_quality * 0.7
+        elif repeat_annotation.repeat_type in ("LINE", "SINE", "satellite"):
+            return base_quality * 0.8
+
+        return base_quality
 
     @staticmethod
-    def _deduplicate_regions(expansions: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-        deduplicated: List[Dict[str, Any]] = []
-        for expansion in sorted(expansions, key=lambda item: (item["start"], -item["expansion_size"])):
-            if deduplicated and expansion["start"] < deduplicated[-1]["end"] and expansion["motif"] == deduplicated[-1]["motif"]:
-                continue
-            deduplicated.append(expansion)
-        return deduplicated
-
-    @staticmethod
-    def _is_repetitive_context(sequence: str, index: int, window: int = 6) -> bool:
-        start = max(0, index - window)
-        end = min(len(sequence), index + window + 1)
-        segment = sequence[start:end]
-        return len(set(segment)) <= max(2, len(segment) // 4)
-
-
-__all__ = ["RepeatRegionHandler"]
+    def _compute_gc(sequence: str) -> float:
+        if not sequence:
+            return 0.0
+        gc_count = sum(1 for c in sequence.upper() if c in ('G', 'C'))
+        return gc_count / len(sequence)

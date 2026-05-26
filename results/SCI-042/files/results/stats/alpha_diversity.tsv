@@ -1,0 +1,10 @@
+Sample	Group	Shannon	Simpson	Observed_Features	Chao1
+sample_healthy_1	Healthy	2.7828	0.9226	20	20.0
+sample_healthy_2	Healthy	2.7834	0.9226	20	20.0
+sample_healthy_3	Healthy	2.7827	0.9225	20	20.0
+sample_ibd_1	IBD	2.817	0.9262	20	20.0
+sample_ibd_2	IBD	2.818	0.9262	20	20.0
+sample_ibd_3	IBD	2.8163	0.926	20	20.0
+sample_t2d_1	T2D	2.65	0.8959	20	20.0
+sample_t2d_2	T2D	2.6501	0.8956	20	20.0
+sample_t2d_3	T2D	2.6487	0.8953	20	20.0

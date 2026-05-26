@@ -1,0 +1,267 @@
+head	relation	tail
+Asthma	disease_has_phenotype	Hypoxia
+TNF signaling	pathway_involves_phenotype	Cytokine storm
+MYD88	gene_participates_pathway	Toll-like receptor signaling
+COVID-19	disease_has_phenotype	Lymphopenia
+CASP3	gene_participates_pathway	Apoptosis
+MAPK1	gene_associated_disease	Colorectal Cancer
+CCL2	gene_associated_disease	Alzheimer Disease
+Dexamethasone	drug_targets_gene	IL6
+Sirolimus	drug_inhibits_gene	CXCL8
+TNF	gene_participates_pathway	TNF signaling
+AKT1	gene_participates_pathway	mTOR signaling
+NFKB1	gene_associated_disease	Asthma
+MTOR	gene_associated_disease	Breast Cancer
+Remdesivir	drug_targets_gene	CXCL8
+Aspirin	drug_targets_gene	BCL2
+CCL2	gene_participates_pathway	Chemokine signaling
+Lopinavir	drug_targets_gene	TMPRSS2
+Complement and coagulation cascades	pathway_involves_phenotype	Thrombocytopenia
+Dexamethasone	drug_inhibits_gene	IFNG
+Chemokine signaling	pathway_involves_phenotype	Neuroinflammation
+Complement and coagulation cascades	pathway_involves_phenotype	Coagulopathy
+Remdesivir	drug_interacts_drug	Baricitinib
+NF-kB signaling	pathway_involves_phenotype	Cytokine storm
+Nirmatrelvir	drug_targets_gene	EGFR
+Dexamethasone	drug_targets_gene	TNF
+Nitazoxanide	drug_targets_gene	NSP3
+TNF	gene_associated_disease	Rheumatoid Arthritis
+IFNG	gene_participates_pathway	JAK-STAT signaling
+Nucleocapsid	gene_associated_disease	COVID-19
+Ritonavir	drug_targets_gene	Nucleocapsid
+Type 2 Diabetes	disease_has_phenotype	Endothelial dysfunction
+Baricitinib	drug_inhibits_gene	CASP3
+Losartan	drug_targets_gene	ORF3a
+Atorvastatin	drug_targets_gene	MAPK1
+Ritonavir	drug_targets_gene	PLpro
+Tocilizumab	drug_targets_gene	AKT1
+Dexamethasone	drug_treats_disease	Asthma
+MERS	disease_has_phenotype	Renal failure
+MTOR	gene_associated_disease	Type 2 Diabetes
+Lopinavir	drug_targets_gene	3CLpro
+Metformin	drug_targets_gene	AKT1
+Interferon-beta	drug_targets_gene	JAK2
+Molnupiravir	drug_targets_gene	RdRp
+Fluvoxamine	drug_targets_gene	JAK2
+TLR4	gene_participates_pathway	NF-kB signaling
+CXCL8	gene_participates_pathway	IL-17 signaling
+Rheumatoid Arthritis	disease_has_phenotype	Neuroinflammation
+COPD	disease_has_phenotype	Hypoxia
+Famotidine	drug_targets_gene	3CLpro
+CCL2	gene_associated_disease	COVID-19
+AKT1	gene_participates_pathway	PI3K-AKT signaling
+Lopinavir	drug_interacts_drug	Ritonavir
+TP53	gene_associated_disease	Breast Cancer
+Ruxolitinib	drug_targets_gene	JAK2
+TNF	gene_associated_disease	Ulcerative Colitis
+Baricitinib	drug_treats_disease	Rheumatoid Arthritis
+TLR4	gene_participates_pathway	Toll-like receptor signaling
+Hydroxychloroquine	drug_interacts_drug	Azithromycin
+STAT3	gene_associated_disease	Breast Cancer
+STAT3	gene_participates_pathway	PI3K-AKT signaling
+Sofosbuvir	drug_targets_gene	MAPK1
+Famotidine	drug_targets_gene	PPARG
+Molnupiravir	drug_targets_gene	NSP1
+TNF	gene_associated_disease	Crohn Disease
+IL1B	gene_participates_pathway	NF-kB signaling
+Alzheimer Disease	disease_has_phenotype	Neuroinflammation
+JAK-STAT signaling	pathway_involves_phenotype	Cytokine storm
+Hydroxychloroquine	drug_targets_gene	Nucleocapsid
+Colchicine	drug_targets_gene	CASP3
+Hydroxychloroquine	drug_targets_gene	NSP1
+Losartan	drug_treats_disease	Hypertension
+Tocilizumab	drug_treats_disease	Rheumatoid Arthritis
+NF-kB signaling	pathway_involves_phenotype	Neuroinflammation
+Favipiravir	drug_inhibits_gene	STAT3
+IL6	gene_associated_disease	Rheumatoid Arthritis
+VEGFA	gene_associated_disease	Lung Cancer
+Ruxolitinib	drug_treats_disease	Rheumatoid Arthritis
+Nucleocapsid	gene_associated_disease	SARS
+Interferon-beta	drug_targets_gene	STAT3
+COVID-19	disease_has_phenotype	Acute respiratory distress
+Baricitinib	drug_targets_gene	MTOR
+IFNG	gene_participates_pathway	Cytokine-cytokine receptor interaction
+IL6	gene_participates_pathway	Cytokine-cytokine receptor interaction
+COVID-19	disease_has_phenotype	Fever
+Spike	gene_associated_disease	COVID-19
+Nafamostat	drug_upregulates_gene	BCL2
+Hydroxychloroquine	drug_targets_gene	JAK1
+mTOR signaling	pathway_involves_phenotype	Viral replication
+MAPK1	gene_interacts_gene	AKT1
+Sirolimus	drug_targets_gene	MTOR
+TP53	gene_associated_disease	Colorectal Cancer
+COVID-19	disease_has_phenotype	Cytokine storm
+Ritonavir	drug_upregulates_gene	IFNG
+EGFR	gene_associated_disease	Lung Cancer
+CXCL8	gene_associated_disease	COPD
+TLR4	gene_associated_disease	Asthma
+Colchicine	drug_upregulates_gene	TNF
+Metformin	drug_targets_gene	MTOR
+Colchicine	drug_targets_gene	AKT1
+Ruxolitinib	drug_upregulates_gene	IFNG
+Dexamethasone	drug_treats_disease	COPD
+Remdesivir	drug_targets_gene	RdRp
+JAK2	gene_interacts_gene	STAT3
+NFKB1	gene_participates_pathway	NF-kB signaling
+Baricitinib	drug_targets_gene	JAK1
+Chloroquine	drug_inhibits_gene	CXCL8
+Ribavirin	drug_targets_gene	MTOR
+JAK1	gene_interacts_gene	JAK2
+IL6	gene_associated_disease	Crohn Disease
+MTOR	gene_participates_pathway	mTOR signaling
+Interferon-beta	drug_targets_gene	IFNG
+Baricitinib	drug_treats_disease	COVID-19
+Ivermectin	drug_targets_gene	IL6
+JAK1	gene_associated_disease	Rheumatoid Arthritis
+BCL2	gene_participates_pathway	Apoptosis
+COPD	disease_has_phenotype	Pulmonary fibrosis
+Famotidine	drug_inhibits_gene	JAK2
+Atorvastatin	drug_targets_gene	AKT1
+mTOR signaling	pathway_involves_phenotype	Immune evasion
+Spike	gene_interacts_gene	ACE2
+MAPK1	gene_participates_pathway	MAPK signaling
+MAPK1	gene_associated_disease	Lung Cancer
+Tocilizumab	drug_treats_disease	COVID-19
+Spike	gene_associated_disease	SARS
+IL6	gene_associated_disease	COVID-19
+Tocilizumab	drug_targets_gene	IL6
+TNF	gene_participates_pathway	NF-kB signaling
+Lopinavir	drug_upregulates_gene	JAK1
+BCL2	gene_associated_disease	Lung Cancer
+Nitazoxanide	drug_targets_gene	EGFR
+TMPRSS2	gene_associated_disease	COVID-19
+NFKB1	gene_associated_disease	Rheumatoid Arthritis
+TP53	gene_interacts_gene	BCL2
+Colchicine	drug_inhibits_gene	IFNG
+Ribavirin	drug_targets_gene	JAK1
+Favipiravir	drug_targets_gene	PLpro
+Dexamethasone	drug_targets_gene	JAK2
+Atorvastatin	drug_treats_disease	Hypertension
+Azithromycin	drug_targets_gene	CDK2
+Hypertension	disease_has_phenotype	Endothelial dysfunction
+COVID-19	disease_has_phenotype	Hypoxia
+HIF-1 signaling	pathway_involves_phenotype	Hypoxia
+JAK1	gene_interacts_gene	STAT3
+Ribavirin	drug_treats_disease	Hepatitis C
+EGFR	gene_associated_disease	Breast Cancer
+NFKB1	gene_interacts_gene	IL1B
+Molnupiravir	drug_targets_gene	NSP12
+Famotidine	drug_targets_gene	PLpro
+MTOR	gene_participates_pathway	PI3K-AKT signaling
+Sofosbuvir	drug_targets_gene	IFNG
+Ruxolitinib	drug_targets_gene	CXCL8
+PLpro	gene_associated_disease	COVID-19
+RdRp	gene_interacts_gene	NSP12
+ACE2	gene_interacts_gene	TMPRSS2
+Nirmatrelvir	drug_targets_gene	3CLpro
+Hydroxychloroquine	drug_treats_disease	Rheumatoid Arthritis
+Losartan	drug_upregulates_gene	TMPRSS2
+SARS	disease_has_phenotype	Lymphopenia
+Camostat	drug_targets_gene	TMPRSS2
+Azithromycin	drug_targets_gene	JAK1
+Metformin	drug_treats_disease	Type 2 Diabetes
+TLR4	gene_interacts_gene	MYD88
+Ritonavir	drug_targets_gene	HDAC1
+NFKB1	gene_interacts_gene	TNF
+IL1B	gene_associated_disease	Rheumatoid Arthritis
+Hypertension	disease_has_phenotype	Cardiac injury
+Nirmatrelvir	drug_interacts_drug	Ritonavir
+Ribavirin	drug_targets_gene	CCL2
+Ruxolitinib	drug_targets_gene	TLR4
+JAK2	gene_participates_pathway	JAK-STAT signaling
+IL6	gene_interacts_gene	STAT3
+Nitazoxanide	drug_inhibits_gene	MAPK1
+Camostat	drug_targets_gene	CXCL8
+Lung Cancer	disease_has_phenotype	Pulmonary fibrosis
+Colchicine	drug_targets_gene	NFKB1
+Metformin	drug_targets_gene	JAK2
+Favipiravir	drug_targets_gene	RdRp
+Famotidine	drug_targets_gene	CASP3
+NFKB1	gene_associated_disease	COVID-19
+Fluvoxamine	drug_targets_gene	IL1B
+Apoptosis	pathway_involves_phenotype	Lymphopenia
+Ibuprofen	drug_targets_gene	PPARG
+Nafamostat	drug_targets_gene	MYD88
+Famotidine	drug_targets_gene	EGFR
+Ruxolitinib	drug_targets_gene	ESR1
+NFKB1	gene_participates_pathway	TNF signaling
+Nafamostat	drug_targets_gene	EGFR
+Lopinavir	drug_targets_gene	MAPK1
+AKT1	gene_associated_disease	Type 2 Diabetes
+CXCL8	gene_associated_disease	COVID-19
+Losartan	drug_targets_gene	ACE2
+Remdesivir	drug_targets_gene	NSP12
+Camostat	drug_targets_gene	PPARG
+TP53	gene_associated_disease	Lung Cancer
+Rheumatoid Arthritis	disease_has_phenotype	Cytokine storm
+Remdesivir	drug_targets_gene	TMPRSS2
+Losartan	drug_targets_gene	CXCL8
+Dexamethasone	drug_treats_disease	COVID-19
+Chloroquine	drug_upregulates_gene	CASP3
+ACE2	gene_associated_disease	COVID-19
+RdRp	gene_associated_disease	COVID-19
+Lopinavir	drug_targets_gene	ORF3a
+Dexamethasone	drug_targets_gene	NFKB1
+STAT3	gene_associated_disease	Lung Cancer
+Aspirin	drug_targets_gene	NSP3
+Ritonavir	drug_targets_gene	3CLpro
+JAK1	gene_participates_pathway	JAK-STAT signaling
+Asthma	disease_has_phenotype	Acute respiratory distress
+Metformin	drug_targets_gene	MYD88
+Ritonavir	drug_inhibits_gene	NFKB1
+MERS	disease_has_phenotype	Acute respiratory distress
+ACE2	gene_associated_disease	Hypertension
+STAT3	gene_participates_pathway	JAK-STAT signaling
+Interferon-beta	drug_treats_disease	Multiple Sclerosis
+Nafamostat	drug_targets_gene	TGFB1
+COVID-19	disease_has_phenotype	Coagulopathy
+Hydroxychloroquine	drug_treats_disease	Systemic Lupus Erythematosus
+AKT1	gene_interacts_gene	MTOR
+IL1B	gene_associated_disease	COVID-19
+TP53	gene_interacts_gene	CASP3
+Ritonavir	drug_targets_gene	MTOR
+Umifenovir	drug_targets_gene	CXCL8
+3CLpro	gene_interacts_gene	NSP3
+Nitazoxanide	drug_targets_gene	IFNG
+Remdesivir	drug_targets_gene	STAT3
+Sofosbuvir	drug_targets_gene	IL6
+VEGFA	gene_associated_disease	Colorectal Cancer
+Nafamostat	drug_targets_gene	TMPRSS2
+Sofosbuvir	drug_treats_disease	Hepatitis C
+IL6	gene_participates_pathway	JAK-STAT signaling
+Molnupiravir	drug_targets_gene	CXCL8
+Chloroquine	drug_targets_gene	CCL2
+Hydroxychloroquine	drug_targets_gene	ACE2
+SARS	disease_has_phenotype	Acute respiratory distress
+MYD88	gene_interacts_gene	NFKB1
+Baricitinib	drug_targets_gene	JAK2
+Fluvoxamine	drug_upregulates_gene	IL6
+SARS	disease_has_phenotype	Fever
+COVID-19	disease_has_phenotype	Viral replication
+Ivermectin	drug_targets_gene	TMPRSS2
+Lung Cancer	disease_has_phenotype	Immune evasion
+JAK-STAT signaling	pathway_involves_phenotype	Immune evasion
+CXCL8	gene_participates_pathway	Chemokine signaling
+AKT1	gene_associated_disease	Breast Cancer
+Chloroquine	drug_targets_gene	TGFB1
+Atorvastatin	drug_targets_gene	IL10
+BCL2	gene_associated_disease	Breast Cancer
+Breast Cancer	disease_has_phenotype	Immune evasion
+EGFR	gene_interacts_gene	MAPK1
+Sofosbuvir	drug_targets_gene	RdRp
+Azithromycin	drug_targets_gene	STAT3
+Fluvoxamine	drug_targets_gene	JAK1
+EGFR	gene_interacts_gene	AKT1
+MYD88	gene_participates_pathway	NF-kB signaling
+Chloroquine	drug_targets_gene	NSP12
+TLR4	gene_associated_disease	COVID-19
+Hydroxychloroquine	drug_targets_gene	TLR4
+IL1B	gene_participates_pathway	IL-17 signaling
+Nirmatrelvir	drug_inhibits_gene	MTOR
+3CLpro	gene_associated_disease	COVID-19
+Fluvoxamine	drug_targets_gene	IL6
+Remdesivir	drug_treats_disease	COVID-19
+Interferon-beta	drug_treats_disease	Hepatitis C
+JAK2	gene_associated_disease	Rheumatoid Arthritis
+TNF signaling	pathway_involves_phenotype	Fever
+Ruxolitinib	drug_targets_gene	JAK1

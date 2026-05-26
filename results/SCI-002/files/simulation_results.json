@@ -1,0 +1,520 @@
+{
+  "main": {
+    "Direct Transfer (EUR\u2192EAS)": {
+      "AUC": 0.7913613333333334,
+      "R2_liability": 0.2987440496449376,
+      "R2_observed": 0.10087097581092692
+    },
+    "Target Pop (EAS GWAS)": {
+      "AUC": 0.8335426666666667,
+      "R2_liability": 0.39111293701404454,
+      "R2_observed": 0.13193864644213968
+    },
+    "Bayesian LD Correction": {
+      "AUC": 0.7979937777777778,
+      "R2_liability": 0.32879670711385167,
+      "R2_observed": 0.10450129637187501
+    },
+    "Multi-Ancestry Meta": {
+      "AUC": 0.8131275555555556,
+      "R2_liability": 0.3463159214947378,
+      "R2_observed": 0.11587734859828026
+    },
+    "Local Ancestry PRS": {
+      "AUC": 0.7927257777777778,
+      "R2_liability": 0.3144987667987246,
+      "R2_observed": 0.10027589333500224
+    },
+    "Combined (Proposed)": {
+      "AUC": 0.8135124444444445,
+      "R2_liability": 0.3581868607169484,
+      "R2_observed": 0.11666523114803957
+    }
+  },
+  "fst_sweep": {
+    "0.01": {
+      "Direct Transfer (EUR\u2192EAS)": {
+        "AUC": 0.7954315555555556,
+        "R2_liability": 0.2823706888763376,
+        "R2_observed": 0.10416114627314246
+      },
+      "Target Pop (EAS GWAS)": {
+        "AUC": 0.8294217777777778,
+        "R2_liability": 0.3697417157074868,
+        "R2_observed": 0.13247416899479827
+      },
+      "Bayesian LD Correction": {
+        "AUC": 0.8134306666666667,
+        "R2_liability": 0.3186891716995969,
+        "R2_observed": 0.11720032822092696
+      },
+      "Multi-Ancestry Meta": {
+        "AUC": 0.8076444444444444,
+        "R2_liability": 0.317468756975813,
+        "R2_observed": 0.114466264101545
+      },
+      "Local Ancestry PRS": {
+        "AUC": 0.8135666666666667,
+        "R2_liability": 0.3148688452762173,
+        "R2_observed": 0.11755502403908766
+      },
+      "Combined (Proposed)": {
+        "AUC": 0.8141235555555556,
+        "R2_liability": 0.32502997175511605,
+        "R2_observed": 0.11856443317521405
+      }
+    },
+    "0.05": {
+      "Direct Transfer (EUR\u2192EAS)": {
+        "AUC": 0.8052866666666667,
+        "R2_liability": 0.3058969741018326,
+        "R2_observed": 0.10721268487329493
+      },
+      "Target Pop (EAS GWAS)": {
+        "AUC": 0.8419013333333334,
+        "R2_liability": 0.39387392199162147,
+        "R2_observed": 0.13776000954206744
+      },
+      "Bayesian LD Correction": {
+        "AUC": 0.7903408888888888,
+        "R2_liability": 0.2894933425331198,
+        "R2_observed": 0.0951309975985675
+      },
+      "Multi-Ancestry Meta": {
+        "AUC": 0.8235720000000001,
+        "R2_liability": 0.3477762155896288,
+        "R2_observed": 0.12105628753622465
+      },
+      "Local Ancestry PRS": {
+        "AUC": 0.7764746666666666,
+        "R2_liability": 0.27173412471219033,
+        "R2_observed": 0.08482373365531368
+      },
+      "Combined (Proposed)": {
+        "AUC": 0.8173777777777779,
+        "R2_liability": 0.34313753354187065,
+        "R2_observed": 0.11430671922680914
+      }
+    },
+    "0.1": {
+      "Direct Transfer (EUR\u2192EAS)": {
+        "AUC": 0.8072960000000001,
+        "R2_liability": 0.3118566958760643,
+        "R2_observed": 0.10454474489357125
+      },
+      "Target Pop (EAS GWAS)": {
+        "AUC": 0.8357111111111112,
+        "R2_liability": 0.39425337369725716,
+        "R2_observed": 0.1301947045553464
+      },
+      "Bayesian LD Correction": {
+        "AUC": 0.7946093333333333,
+        "R2_liability": 0.272367855874485,
+        "R2_observed": 0.10010229736263714
+      },
+      "Multi-Ancestry Meta": {
+        "AUC": 0.8253617777777779,
+        "R2_liability": 0.357716463175371,
+        "R2_observed": 0.11934522449203236
+      },
+      "Local Ancestry PRS": {
+        "AUC": 0.7960217777777778,
+        "R2_liability": 0.27037438081478693,
+        "R2_observed": 0.10001618498157196
+      },
+      "Combined (Proposed)": {
+        "AUC": 0.8263635555555555,
+        "R2_liability": 0.34470465146356205,
+        "R2_observed": 0.12186328938225971
+      }
+    },
+    "0.15": {
+      "Direct Transfer (EUR\u2192EAS)": {
+        "AUC": 0.778715111111111,
+        "R2_liability": 0.2891769872889757,
+        "R2_observed": 0.08929844751710403
+      },
+      "Target Pop (EAS GWAS)": {
+        "AUC": 0.8143933333333333,
+        "R2_liability": 0.38122740850531656,
+        "R2_observed": 0.11576696741741342
+      },
+      "Bayesian LD Correction": {
+        "AUC": 0.7511026666666667,
+        "R2_liability": 0.22692534105625695,
+        "R2_observed": 0.0718632927742157
+      },
+      "Multi-Ancestry Meta": {
+        "AUC": 0.8026111111111112,
+        "R2_liability": 0.3449089493265778,
+        "R2_observed": 0.10551508523728623
+      },
+      "Local Ancestry PRS": {
+        "AUC": 0.7304195555555555,
+        "R2_liability": 0.19852443705248382,
+        "R2_observed": 0.059046164077360415
+      },
+      "Combined (Proposed)": {
+        "AUC": 0.7779159999999999,
+        "R2_liability": 0.29012608821107305,
+        "R2_observed": 0.0870912540667079
+      }
+    },
+    "0.2": {
+      "Direct Transfer (EUR\u2192EAS)": {
+        "AUC": 0.77318,
+        "R2_liability": 0.25876497925324343,
+        "R2_observed": 0.08828219567529955
+      },
+      "Target Pop (EAS GWAS)": {
+        "AUC": 0.82662,
+        "R2_liability": 0.3792747436527098,
+        "R2_observed": 0.1247127165646794
+      },
+      "Bayesian LD Correction": {
+        "AUC": 0.7699386666666667,
+        "R2_liability": 0.2438867030676857,
+        "R2_observed": 0.08773082402081932
+      },
+      "Multi-Ancestry Meta": {
+        "AUC": 0.8095684444444444,
+        "R2_liability": 0.3395251577781987,
+        "R2_observed": 0.1131056988774967
+      },
+      "Local Ancestry PRS": {
+        "AUC": 0.75318,
+        "R2_liability": 0.20685212798417418,
+        "R2_observed": 0.07501651981625648
+      },
+      "Combined (Proposed)": {
+        "AUC": 0.7983284444444444,
+        "R2_liability": 0.3094578507200446,
+        "R2_observed": 0.10680082770854099
+      }
+    }
+  },
+  "sample_size_sweep": {
+    "500": {
+      "Direct Transfer (EUR\u2192EAS)": {
+        "AUC": 0.7944888888888889,
+        "R2_liability": 0.2628495086830697,
+        "R2_observed": 0.11316034790046124
+      },
+      "Target Pop (EAS GWAS)": {
+        "AUC": 0.8864888888888889,
+        "R2_liability": 0.49369377946337145,
+        "R2_observed": 0.19203658508021107
+      },
+      "Bayesian LD Correction": {
+        "AUC": 0.8074666666666667,
+        "R2_liability": 0.2520309235576869,
+        "R2_observed": 0.11981650199864312
+      },
+      "Multi-Ancestry Meta": {
+        "AUC": 0.8228,
+        "R2_liability": 0.32135038100773866,
+        "R2_observed": 0.1403077899578457
+      },
+      "Local Ancestry PRS": {
+        "AUC": 0.7604888888888889,
+        "R2_liability": 0.21252747740738465,
+        "R2_observed": 0.08371866841630356
+      },
+      "Combined (Proposed)": {
+        "AUC": 0.8117777777777778,
+        "R2_liability": 0.3014320415836838,
+        "R2_observed": 0.12653342942790938
+      }
+    },
+    "1000": {
+      "Direct Transfer (EUR\u2192EAS)": {
+        "AUC": 0.794588888888889,
+        "R2_liability": 0.2952623438852888,
+        "R2_observed": 0.10268483493385173
+      },
+      "Target Pop (EAS GWAS)": {
+        "AUC": 0.8645333333333334,
+        "R2_liability": 0.4454446410897798,
+        "R2_observed": 0.16153552774037563
+      },
+      "Bayesian LD Correction": {
+        "AUC": 0.8173666666666666,
+        "R2_liability": 0.3354032196341319,
+        "R2_observed": 0.1206559914895827
+      },
+      "Multi-Ancestry Meta": {
+        "AUC": 0.8141666666666666,
+        "R2_liability": 0.33519400653639453,
+        "R2_observed": 0.1190435819510074
+      },
+      "Local Ancestry PRS": {
+        "AUC": 0.8090666666666667,
+        "R2_liability": 0.32007231954523835,
+        "R2_observed": 0.1129526887455765
+      },
+      "Combined (Proposed)": {
+        "AUC": 0.8177444444444445,
+        "R2_liability": 0.3432716122896896,
+        "R2_observed": 0.12146087276281198
+      }
+    },
+    "2000": {
+      "Direct Transfer (EUR\u2192EAS)": {
+        "AUC": 0.7902527777777778,
+        "R2_liability": 0.223405042902424,
+        "R2_observed": 0.10038422318381553
+      },
+      "Target Pop (EAS GWAS)": {
+        "AUC": 0.8537083333333333,
+        "R2_liability": 0.37116198729770145,
+        "R2_observed": 0.15906897382383486
+      },
+      "Bayesian LD Correction": {
+        "AUC": 0.7953666666666667,
+        "R2_liability": 0.25269348214101317,
+        "R2_observed": 0.10715169196937528
+      },
+      "Multi-Ancestry Meta": {
+        "AUC": 0.8207472222222221,
+        "R2_liability": 0.283965554988987,
+        "R2_observed": 0.12376979579507796
+      },
+      "Local Ancestry PRS": {
+        "AUC": 0.7906083333333334,
+        "R2_liability": 0.2465768616736024,
+        "R2_observed": 0.10464688723435336
+      },
+      "Combined (Proposed)": {
+        "AUC": 0.8207444444444444,
+        "R2_liability": 0.29488591390692265,
+        "R2_observed": 0.12546293074081236
+      }
+    },
+    "5000": {
+      "Direct Transfer (EUR\u2192EAS)": {
+        "AUC": 0.7997871111111112,
+        "R2_liability": 0.2979944806398359,
+        "R2_observed": 0.10377268101217521
+      },
+      "Target Pop (EAS GWAS)": {
+        "AUC": 0.843796888888889,
+        "R2_liability": 0.40958687251856807,
+        "R2_observed": 0.1439086087521773
+      },
+      "Bayesian LD Correction": {
+        "AUC": 0.7980844444444444,
+        "R2_liability": 0.2946960312472529,
+        "R2_observed": 0.10203454759840705
+      },
+      "Multi-Ancestry Meta": {
+        "AUC": 0.8184537777777778,
+        "R2_liability": 0.3447538391242164,
+        "R2_observed": 0.11967891842532166
+      },
+      "Local Ancestry PRS": {
+        "AUC": 0.789479111111111,
+        "R2_liability": 0.27679153951559565,
+        "R2_observed": 0.09691709528154142
+      },
+      "Combined (Proposed)": {
+        "AUC": 0.8184746666666667,
+        "R2_liability": 0.3442652112647143,
+        "R2_observed": 0.12019146764453358
+      }
+    },
+    "10000": {
+      "Direct Transfer (EUR\u2192EAS)": {
+        "AUC": 0.757526111111111,
+        "R2_liability": 0.24671487888729027,
+        "R2_observed": 0.07743267515764143
+      },
+      "Target Pop (EAS GWAS)": {
+        "AUC": 0.8338695555555555,
+        "R2_liability": 0.3928094308822479,
+        "R2_observed": 0.13577157137602203
+      },
+      "Bayesian LD Correction": {
+        "AUC": 0.7485419999999999,
+        "R2_liability": 0.23003025308863242,
+        "R2_observed": 0.07272494835381298
+      },
+      "Multi-Ancestry Meta": {
+        "AUC": 0.8091414444444446,
+        "R2_liability": 0.34431760053962884,
+        "R2_observed": 0.1147123436703994
+      },
+      "Local Ancestry PRS": {
+        "AUC": 0.7415877777777776,
+        "R2_liability": 0.21329717760985223,
+        "R2_observed": 0.06771172135660349
+      },
+      "Combined (Proposed)": {
+        "AUC": 0.7854802222222221,
+        "R2_liability": 0.29719594182183806,
+        "R2_observed": 0.09626979554909132
+      }
+    }
+  },
+  "heritability_sweep": {
+    "0.1": {
+      "Direct Transfer (EUR\u2192EAS)": {
+        "AUC": 0.6262115555555555,
+        "R2_liability": 0.050210809550641965,
+        "R2_observed": 0.01996229110723482
+      },
+      "Target Pop (EAS GWAS)": {
+        "AUC": 0.6748484444444445,
+        "R2_liability": 0.09913761346282332,
+        "R2_observed": 0.03770514412670949
+      },
+      "Bayesian LD Correction": {
+        "AUC": 0.6244133333333334,
+        "R2_liability": 0.03806441319983384,
+        "R2_observed": 0.0163142900702108
+      },
+      "Multi-Ancestry Meta": {
+        "AUC": 0.6551351111111111,
+        "R2_liability": 0.07534116377237635,
+        "R2_observed": 0.029327534726029482
+      },
+      "Local Ancestry PRS": {
+        "AUC": 0.6175697777777778,
+        "R2_liability": 0.03300715218592765,
+        "R2_observed": 0.014605322996714985
+      },
+      "Combined (Proposed)": {
+        "AUC": 0.6430004444444444,
+        "R2_liability": 0.05667191810890556,
+        "R2_observed": 0.02320109032623999
+      }
+    },
+    "0.2": {
+      "Direct Transfer (EUR\u2192EAS)": {
+        "AUC": 0.6649697777777778,
+        "R2_liability": 0.10196929622954362,
+        "R2_observed": 0.032378978752854115
+      },
+      "Target Pop (EAS GWAS)": {
+        "AUC": 0.7279093333333333,
+        "R2_liability": 0.1707788246013152,
+        "R2_observed": 0.06166932610032062
+      },
+      "Bayesian LD Correction": {
+        "AUC": 0.6762195555555555,
+        "R2_liability": 0.10183843550567888,
+        "R2_observed": 0.03519558433049864
+      },
+      "Multi-Ancestry Meta": {
+        "AUC": 0.69072,
+        "R2_liability": 0.13330825765306514,
+        "R2_observed": 0.042311727534101055
+      },
+      "Local Ancestry PRS": {
+        "AUC": 0.6717835555555555,
+        "R2_liability": 0.09849084374913689,
+        "R2_observed": 0.033601086949620176
+      },
+      "Combined (Proposed)": {
+        "AUC": 0.6874364444444444,
+        "R2_liability": 0.1228684084411221,
+        "R2_observed": 0.04048597399683912
+      }
+    },
+    "0.3": {
+      "Direct Transfer (EUR\u2192EAS)": {
+        "AUC": 0.7226648888888888,
+        "R2_liability": 0.16504441011470974,
+        "R2_observed": 0.05507755154243495
+      },
+      "Target Pop (EAS GWAS)": {
+        "AUC": 0.7721084444444444,
+        "R2_liability": 0.26192173740597713,
+        "R2_observed": 0.08293974127282311
+      },
+      "Bayesian LD Correction": {
+        "AUC": 0.6925377777777777,
+        "R2_liability": 0.10337045051467157,
+        "R2_observed": 0.043877661971047324
+      },
+      "Multi-Ancestry Meta": {
+        "AUC": 0.7518964444444445,
+        "R2_liability": 0.21892338963681898,
+        "R2_observed": 0.07077353402196658
+      },
+      "Local Ancestry PRS": {
+        "AUC": 0.6880786666666667,
+        "R2_liability": 0.0979441552819485,
+        "R2_observed": 0.04187719070072155
+      },
+      "Combined (Proposed)": {
+        "AUC": 0.7386875555555557,
+        "R2_liability": 0.17336791416395153,
+        "R2_observed": 0.06477008169938456
+      }
+    },
+    "0.5": {
+      "Direct Transfer (EUR\u2192EAS)": {
+        "AUC": 0.7660768888888889,
+        "R2_liability": 0.24108966347347732,
+        "R2_observed": 0.08034948707282566
+      },
+      "Target Pop (EAS GWAS)": {
+        "AUC": 0.8315848888888888,
+        "R2_liability": 0.3891501175111974,
+        "R2_observed": 0.1270950275899409
+      },
+      "Bayesian LD Correction": {
+        "AUC": 0.7481186666666667,
+        "R2_liability": 0.22558021605262898,
+        "R2_observed": 0.06907496555991016
+      },
+      "Multi-Ancestry Meta": {
+        "AUC": 0.7974822222222222,
+        "R2_liability": 0.3072050488676313,
+        "R2_observed": 0.1008385833999722
+      },
+      "Local Ancestry PRS": {
+        "AUC": 0.7401044444444443,
+        "R2_liability": 0.20552430311468803,
+        "R2_observed": 0.06351346798064642
+      },
+      "Combined (Proposed)": {
+        "AUC": 0.7861951111111111,
+        "R2_liability": 0.2883957736055582,
+        "R2_observed": 0.0917000570025402
+      }
+    },
+    "0.7": {
+      "Direct Transfer (EUR\u2192EAS)": {
+        "AUC": 0.8525644444444445,
+        "R2_liability": 0.4248190027180029,
+        "R2_observed": 0.14779046950466407
+      },
+      "Target Pop (EAS GWAS)": {
+        "AUC": 0.8909031111111112,
+        "R2_liability": 0.5378657331443369,
+        "R2_observed": 0.18447006125066426
+      },
+      "Bayesian LD Correction": {
+        "AUC": 0.8393013333333335,
+        "R2_liability": 0.38313919349050185,
+        "R2_observed": 0.1379824780526749
+      },
+      "Multi-Ancestry Meta": {
+        "AUC": 0.8677475555555555,
+        "R2_liability": 0.4690019045707316,
+        "R2_observed": 0.161456045010334
+      },
+      "Local Ancestry PRS": {
+        "AUC": 0.8304595555555556,
+        "R2_liability": 0.3632939654795079,
+        "R2_observed": 0.12990944574808896
+      },
+      "Combined (Proposed)": {
+        "AUC": 0.8668657777777778,
+        "R2_liability": 0.46344389194541596,
+        "R2_observed": 0.16310234577693825
+      }
+    }
+  }
+}

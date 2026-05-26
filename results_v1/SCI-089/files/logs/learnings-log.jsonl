@@ -1,1 +1,0 @@
-{"timestamp": "2026-05-22T19:40:33.005778+00:00", "skill": "co-scientist-data-analysis", "learning": "HELM の Padé 評価後はそのままでは電力ミスマッチが残る場合があり、減衰 Newton 補正で収束判定を安定化した", "action": "Gotchas追記", "severity": "medium"}

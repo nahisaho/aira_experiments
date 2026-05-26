@@ -1,11 +1,11 @@
 {
   "experiment_id": "SCI-005",
-  "title": "ロングリードシーケンスによる構造変異検出",
-  "project_id": "ac30ac4e-cdba-463b-bde3-c9e7182c3e1b",
-  "prompt_length": 1090,
-  "output_length": 1314,
-  "file_count": 44,
-  "duration_seconds": 860,
+  "title": "SCI-005",
+  "project_id": "94972747-013b-43de-b247-313696767c91",
+  "prompt_length": 1568,
+  "output_length": 1617,
+  "file_count": 24,
+  "duration_seconds": 781,
   "status": "success",
-  "timestamp": "2026-05-22T23:02:14.125Z"
+  "timestamp": "2026-05-25T21:06:54.770Z"
 }

@@ -1,0 +1,75 @@
+# =============================================================================
+# Shotgun Metagenome Functional Profiling Pipeline
+# Snakemake Workflow for Reproducible Metagenomics Analysis
+# =============================================================================
+
+import os
+import yaml
+
+configfile: "config/config.yaml"
+
+SAMPLES = {s["id"]: s for s in config["samples"]}
+SAMPLE_IDS = list(SAMPLES.keys())
+GROUPS = list(set(s["group"] for s in config["samples"]))
+
+# --- Include modular rule files ---
+include: "rules/qc.smk"
+include: "rules/taxonomy.smk"
+include: "rules/functional.smk"
+include: "rules/assembly.smk"
+include: "rules/binning.smk"
+include: "rules/mag_quality.smk"
+include: "rules/statistics.smk"
+
+# --- Target rule ---
+rule all:
+    input:
+        # Quality Control
+        expand("results/qc/{sample}_R1.clean.fastq.gz", sample=SAMPLE_IDS),
+        expand("results/qc/{sample}_R2.clean.fastq.gz", sample=SAMPLE_IDS),
+        expand("results/qc/{sample}_fastp.json", sample=SAMPLE_IDS),
+        "results/qc/multiqc_report.html",
+        # Taxonomy
+        expand("results/taxonomy/kraken2/{sample}.kreport", sample=SAMPLE_IDS),
+        expand("results/taxonomy/metaphlan4/{sample}_profile.tsv", sample=SAMPLE_IDS),
+        expand("results/taxonomy/bracken/{sample}.bracken", sample=SAMPLE_IDS),
+        "results/taxonomy/merged_metaphlan_profiles.tsv",
+        "results/taxonomy/merged_kraken2_profiles.tsv",
+        # Functional Annotation
+        expand("results/functional/humann3/{sample}_genefamilies.tsv", sample=SAMPLE_IDS),
+        expand("results/functional/humann3/{sample}_pathabundance.tsv", sample=SAMPLE_IDS),
+        expand("results/functional/humann3/{sample}_pathcoverage.tsv", sample=SAMPLE_IDS),
+        expand("results/functional/eggnog/{sample}.emapper.annotations", sample=SAMPLE_IDS),
+        "results/functional/merged_genefamilies.tsv",
+        "results/functional/merged_pathabundance.tsv",
+        # Assembly
+        expand("results/assembly/{sample}/final.contigs.fa", sample=SAMPLE_IDS),
+        # Binning
+        expand("results/binning/dastool/{sample}_DASTool_bins", sample=SAMPLE_IDS),
+        # MAG Quality
+        expand("results/mags/{sample}/checkm2_results.tsv", sample=SAMPLE_IDS),
+        expand("results/mags/{sample}/gtdbtk_results.tsv", sample=SAMPLE_IDS),
+        "results/mags/all_mags_summary.tsv",
+        # Statistics
+        "results/stats/alpha_diversity.tsv",
+        "results/stats/beta_diversity_pcoa.tsv",
+        "results/stats/permanova_results.tsv",
+        "results/stats/differential_abundance.tsv",
+        "results/stats/maaslin2_results/",
+        "figures/taxonomy_barplot.png",
+        "figures/alpha_diversity_boxplot.png",
+        "figures/beta_diversity_pcoa.png",
+        "figures/functional_heatmap.png",
+        "figures/mag_quality_scatter.png",
+        "figures/differential_abundance_volcano.png",
+
+# --- Utility rules ---
+rule clean:
+    shell:
+        "rm -rf results/ figures/"
+
+rule dag:
+    output:
+        "workflow/dag.png"
+    shell:
+        "snakemake --dag | dot -Tpng > {output}"

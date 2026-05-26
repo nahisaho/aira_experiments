@@ -1,11 +1,11 @@
 {
   "experiment_id": "SCI-001",
-  "title": "CRISPR-Cas9オフターゲット予測モデル",
-  "project_id": "95747d7c-fdeb-4f7c-b9c9-4cea3619f2cc",
-  "prompt_length": 1093,
-  "output_length": 886,
-  "file_count": 17,
-  "duration_seconds": 589,
+  "title": "SCI-001",
+  "project_id": "5da43da1-0833-4854-9cc9-7c102931dfda",
+  "prompt_length": 1571,
+  "output_length": 1383,
+  "file_count": 21,
+  "duration_seconds": 1323,
   "status": "success",
-  "timestamp": "2026-05-22T22:40:16.267Z"
+  "timestamp": "2026-05-25T21:15:57.377Z"
 }

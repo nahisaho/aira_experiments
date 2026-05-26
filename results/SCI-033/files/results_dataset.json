@@ -1,0 +1,56 @@
+{
+  "Linear": {
+    "description": "Simple linear boundary",
+    "SVM-Linear": 0.9466666666666667,
+    "SVM-RBF": 1.0,
+    "MLP": 0.9866666666666667,
+    "Quantum-VQC": 0.8444444444444444,
+    "separability_ratio": 0.7925469205268147,
+    "quantum_advantage": -0.15555555555555556
+  },
+  "XOR": {
+    "description": "Parity structure",
+    "SVM-Linear": 0.6466666666666667,
+    "SVM-RBF": 0.96,
+    "MLP": 0.8800000000000001,
+    "Quantum-VQC": 0.9333333333333333,
+    "separability_ratio": 0.12264326047762956,
+    "quantum_advantage": -0.026666666666666616
+  },
+  "Circles": {
+    "description": "Radial symmetry",
+    "SVM-Linear": 0.6466666666666667,
+    "SVM-RBF": 1.0,
+    "MLP": 0.8933333333333333,
+    "Quantum-VQC": 0.06666666666666667,
+    "separability_ratio": 0.07044774719236381,
+    "quantum_advantage": -0.9333333333333333
+  },
+  "Spiral": {
+    "description": "Complex topology",
+    "SVM-Linear": 0.19999999999999998,
+    "SVM-RBF": 0.04666666666666667,
+    "MLP": 0.14666666666666667,
+    "Quantum-VQC": 0.3111111111111111,
+    "separability_ratio": 0.1519972435482079,
+    "quantum_advantage": 0.16444444444444445
+  },
+  "Checkerboard": {
+    "description": "High-frequency pattern",
+    "SVM-Linear": 0.54,
+    "SVM-RBF": 0.5333333333333333,
+    "MLP": 0.4,
+    "Quantum-VQC": 0.5333333333333333,
+    "separability_ratio": 0.11068281159508671,
+    "quantum_advantage": 0.0
+  },
+  "Gaussian": {
+    "description": "Well-separated clusters",
+    "SVM-Linear": 1.0,
+    "SVM-RBF": 1.0,
+    "MLP": 1.0,
+    "Quantum-VQC": 1.0,
+    "separability_ratio": 2.181680185146788,
+    "quantum_advantage": 0.0
+  }
+}

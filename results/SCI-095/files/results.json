@@ -1,0 +1,63 @@
+{
+  "oaca": {
+    "ATT": 5.41,
+    "CI_lower": 5.27,
+    "CI_upper": 5.55,
+    "pct_advantage": 44.6,
+    "n_treated": 2650,
+    "n_control": 2650
+  },
+  "data_sharing": {
+    "mean_reuse": 10.0,
+    "metadata_effect": 4.0,
+    "code_effect": 2.6,
+    "open_license_mean": 12.1
+  },
+  "preprint": {
+    "preprint_first_days": 110.0,
+    "journal_first_days": 137.0,
+    "reduction_pct": 19.6,
+    "p_value": "3.50e-22",
+    "publication_rate": 73.8
+  },
+  "fair": {
+    "mean_F": 0.738,
+    "mean_A": 0.751,
+    "mean_I": 0.51,
+    "mean_R": 0.485,
+    "mean_total": 0.621
+  },
+  "citizen_science": {
+    "mean_participants": 1095,
+    "corr_participants_citations": 0.001,
+    "corr_participants_altmetric": 0.042,
+    "mean_altmetric": 166.0
+  },
+  "life_sciences": {
+    "GEO/ArrayExpress": {
+      "growth_pct": 244.0,
+      "citation_multiplier": 2.3,
+      "reuse_rate": 0.58
+    },
+    "PDB": {
+      "growth_pct": 175.0,
+      "citation_multiplier": 3.1,
+      "reuse_rate": 0.72
+    },
+    "GenBank": {
+      "growth_pct": 265.0,
+      "citation_multiplier": 1.8,
+      "reuse_rate": 0.45
+    },
+    "UniProt": {
+      "growth_pct": 106.0,
+      "citation_multiplier": 2.5,
+      "reuse_rate": 0.65
+    },
+    "PRIDE": {
+      "growth_pct": 820.0,
+      "citation_multiplier": 2.0,
+      "reuse_rate": 0.35
+    }
+  }
+}

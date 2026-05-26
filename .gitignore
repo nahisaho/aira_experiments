@@ -1,5 +1,6 @@
-.github/
-.vscode/
-mcpserver/
-AGENTS.md
 node_modules/
+.vscode/
+.github/
+AGENTS.md
+*.cpython-*.pyc
+__pycache__/

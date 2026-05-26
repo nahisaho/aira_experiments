@@ -1,0 +1,61 @@
+{
+  "power_flow": {
+    "nr_time_ms": 78.8164267600223,
+    "helm_time_ms": 22.283277610040386,
+    "nr_iterations": 50
+  },
+  "forecast": {
+    "solar_mae": 49.88488251096781,
+    "solar_rmse": 93.00308066080619,
+    "solar_nrmse": 12.010778302389317,
+    "wind_mae": 28.71478351974696,
+    "wind_rmse": 43.677891807100856,
+    "wind_nrmse": 11.497142768260108
+  },
+  "dispatch": {
+    "total_cost": 3702506.731442199,
+    "avg_curtailment": 196.2359617374751,
+    "avg_load_shed": 1140.0619290702482
+  },
+  "battery_dr": {
+    "baseline_cost": 8958993.627799328,
+    "optimized_cost": 8973930.772793312,
+    "savings_pct": -0.16672793412457754
+  },
+  "stability": {
+    "High Inertia (H=6s, 20% RE)": {
+      "nadir_hz": 49.98410500454523,
+      "nadir_time_s": 3.351117039013004
+    },
+    "Medium Inertia (H=4s, 50% RE)": {
+      "nadir_hz": 49.9806866516385,
+      "nadir_time_s": 2.6908969656552184
+    },
+    "Low Inertia (H=2.5s, 80% RE)": {
+      "nadir_hz": 49.97353375148948,
+      "nadir_time_s": 2.3007669223074356
+    },
+    "Very Low Inertia (H=1.5s, 95% RE)": {
+      "nadir_hz": 49.96407704024616,
+      "nadir_time_s": 1.8906302100700232
+    }
+  },
+  "kyushu": {
+    "Baseline": {
+      "curtailment_rate_pct": 2.4145110226712663,
+      "curtailed_gwh": 605.6006414717422
+    },
+    "Nuclear Reduction (50%)": {
+      "curtailment_rate_pct": 0.3114557483869464,
+      "curtailed_gwh": 78.1184261501201
+    },
+    "Enhanced Interconnection (+50%)": {
+      "curtailment_rate_pct": 0.7455055534170494,
+      "curtailed_gwh": 186.98553749844683
+    },
+    "Combined Measures": {
+      "curtailment_rate_pct": 0.017065829998372202,
+      "curtailed_gwh": 4.280401910457138
+    }
+  }
+}

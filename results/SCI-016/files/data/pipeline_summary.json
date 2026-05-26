@@ -1,0 +1,48 @@
+{
+  "total_records": 42000,
+  "n_samples": 90,
+  "n_clonotypes_total": 41758,
+  "n_public_tcrs": 25,
+  "binding_predictions": 4500,
+  "immune_age_r": 0.670709971254974,
+  "icb_models": {
+    "Random Forest": {
+      "cv_auc": 0.8666666666666668,
+      "cv_acc": 0.8333333333333334
+    },
+    "Gradient Boosting": {
+      "cv_auc": 0.9444444444444444,
+      "cv_acc": 0.8
+    },
+    "Logistic Regression": {
+      "cv_auc": 0.9555555555555555,
+      "cv_acc": 0.9333333333333333
+    }
+  },
+  "diversity_summary": {
+    "healthy": {
+      "shannon_mean": 8.006779126039236,
+      "clonality_mean": 0.10696277405016726
+    },
+    "responder": {
+      "shannon_mean": 7.561863045975013,
+      "clonality_mean": 0.15658655106043365
+    },
+    "non_responder": {
+      "shannon_mean": 7.782072894667923,
+      "clonality_mean": 0.13202541488971115
+    },
+    "tumor": {
+      "shannon_mean": 7.307423167792616,
+      "clonality_mean": 0.18496553834185558
+    },
+    "aged": {
+      "shannon_mean": 6.610223227425009,
+      "clonality_mean": 0.19669839912019416
+    },
+    "young": {
+      "shannon_mean": 7.7892271149744845,
+      "clonality_mean": 0.1312274679305366
+    }
+  }
+}

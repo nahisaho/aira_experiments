@@ -1,0 +1,67 @@
+{
+  "arg_detection": {
+    "total_genomes": 200,
+    "mean_args": 2.17,
+    "max_args": "7",
+    "species_distribution": {
+      "K.pneumoniae": 45,
+      "E.coli": 75,
+      "S.aureus": 27,
+      "P.aeruginosa": 22,
+      "A.baumannii": 31
+    },
+    "mdr_count": 9,
+    "xdr_count": 0,
+    "resistance_rates": {
+      "beta_lactam": 0.185,
+      "aminoglycoside": 0.165,
+      "fluoroquinolone": 0.185,
+      "tetracycline": 0.215,
+      "colistin": 0.195
+    }
+  },
+  "fitness_landscape": {
+    "n_loci": 5,
+    "n_genotypes": 32,
+    "peaks_by_conc": {
+      "0": 1,
+      "0.5": 4,
+      "1.0": 2,
+      "2.0": 1,
+      "4.0": 1,
+      "8.0": 1
+    }
+  },
+  "evolutionary_paths": {
+    "1.0": 98,
+    "4.0": 120,
+    "8.0": 120
+  },
+  "hgt_network": {
+    "n_nodes": 8,
+    "n_edges": 56,
+    "n_transfer_events": 633
+  },
+  "treatment_strategies": {
+    "Monotherapy (Drug A)": {
+      "final_total": 7850279.92169765,
+      "final_resistant": 7850279.92169765,
+      "resistance_fraction": 1.0
+    },
+    "Cycling (30-day)": {
+      "final_total": 7647058.82352941,
+      "final_resistant": 7647058.82352941,
+      "resistance_fraction": 1.0
+    },
+    "Combination": {
+      "final_total": 6470588.235294115,
+      "final_resistant": 6470588.235294115,
+      "resistance_fraction": 1.0
+    },
+    "Adaptive Switching": {
+      "final_total": 7647058.823529884,
+      "final_resistant": 7647058.823529884,
+      "resistance_fraction": 1.0
+    }
+  }
+}

@@ -1,0 +1,144 @@
+# =============================================================================
+# Shotgun Metagenome Functional Profiling Pipeline Configuration
+# =============================================================================
+
+# --- Sample Information ---
+samples:
+  - id: "sample_healthy_1"
+    group: "healthy"
+    r1: "data/raw/sample_healthy_1_R1.fastq.gz"
+    r2: "data/raw/sample_healthy_1_R2.fastq.gz"
+  - id: "sample_healthy_2"
+    group: "healthy"
+    r1: "data/raw/sample_healthy_2_R1.fastq.gz"
+    r2: "data/raw/sample_healthy_2_R2.fastq.gz"
+  - id: "sample_healthy_3"
+    group: "healthy"
+    r1: "data/raw/sample_healthy_3_R1.fastq.gz"
+    r2: "data/raw/sample_healthy_3_R2.fastq.gz"
+  - id: "sample_ibd_1"
+    group: "IBD"
+    r1: "data/raw/sample_ibd_1_R1.fastq.gz"
+    r2: "data/raw/sample_ibd_1_R2.fastq.gz"
+  - id: "sample_ibd_2"
+    group: "IBD"
+    r1: "data/raw/sample_ibd_2_R1.fastq.gz"
+    r2: "data/raw/sample_ibd_2_R2.fastq.gz"
+  - id: "sample_ibd_3"
+    group: "IBD"
+    r1: "data/raw/sample_ibd_3_R1.fastq.gz"
+    r2: "data/raw/sample_ibd_3_R2.fastq.gz"
+  - id: "sample_t2d_1"
+    group: "T2D"
+    r1: "data/raw/sample_t2d_1_R1.fastq.gz"
+    r2: "data/raw/sample_t2d_1_R2.fastq.gz"
+  - id: "sample_t2d_2"
+    group: "T2D"
+    r1: "data/raw/sample_t2d_2_R1.fastq.gz"
+    r2: "data/raw/sample_t2d_2_R2.fastq.gz"
+  - id: "sample_t2d_3"
+    group: "T2D"
+    r1: "data/raw/sample_t2d_3_R1.fastq.gz"
+    r2: "data/raw/sample_t2d_3_R2.fastq.gz"
+
+# --- Reference Databases ---
+databases:
+  host_genome: "data/reference/human_genome_GRCh38"
+  kraken2_db: "data/reference/kraken2_standard"
+  metaphlan_db: "data/reference/metaphlan4_db"
+  humann3_db: "data/reference/humann3_db"
+  eggnog_db: "data/reference/eggnog_db"
+  checkm2_db: "data/reference/checkm2_db"
+  gtdbtk_db: "data/reference/gtdbtk_db"
+
+# --- Quality Control Parameters ---
+qc:
+  adapter_file: "data/reference/adapters.fa"
+  min_quality: 20
+  min_length: 50
+  trim_front: 5
+  trim_tail: 5
+  dedup_accuracy: 4
+  host_removal_sensitivity: "--very-sensitive"
+
+# --- Assembly Parameters ---
+assembly:
+  assembler: "megahit"
+  min_contig_length: 1000
+  megahit_preset: "meta-sensitive"
+  k_list: "21,29,39,59,79,99,119,141"
+
+# --- Taxonomy Classification ---
+taxonomy:
+  kraken2:
+    confidence: 0.2
+    min_hit_groups: 2
+  metaphlan4:
+    analysis_type: "rel_ab_w_read_stats"
+    min_mapq: 5
+  bracken:
+    threshold: 10
+    read_length: 150
+    level: "S"
+
+# --- Functional Annotation ---
+functional:
+  humann3:
+    threads: 8
+    search_mode: "uniref90"
+    pathways_db: "metacyc"
+  eggnog:
+    threads: 8
+    tax_scope: "Bacteria"
+    target_orthologs: "all"
+
+# --- Binning Parameters ---
+binning:
+  metabat2:
+    min_contig: 1500
+    max_p: 95
+    min_s: 60
+  concoct:
+    min_contig: 1000
+    chunk_size: 10000
+  maxbin2:
+    min_contig: 1000
+    prob_threshold: 0.9
+  dastool:
+    score_threshold: 0.5
+    search_engine: "diamond"
+
+# --- MAG Quality Assessment ---
+mag_quality:
+  checkm2:
+    threads: 8
+  gtdbtk:
+    threads: 8
+  completeness_threshold: 50
+  contamination_threshold: 10
+  high_quality_completeness: 90
+  high_quality_contamination: 5
+
+# --- Statistical Analysis ---
+statistics:
+  alpha_diversity_metrics:
+    - "shannon"
+    - "simpson"
+    - "observed_features"
+    - "chao1"
+  beta_diversity_metrics:
+    - "bray_curtis"
+    - "jaccard"
+    - "aitchison"
+  multivariate:
+    permanova_permutations: 999
+    maaslin2_normalization: "TSS"
+    maaslin2_transform: "LOG"
+    min_prevalence: 0.1
+    min_abundance: 0.0001
+
+# --- Pipeline Settings ---
+resources:
+  threads: 16
+  memory_gb: 64
+  tmpdir: "/tmp/metagenomics"

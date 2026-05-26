@@ -1,11 +1,11 @@
 {
   "experiment_id": "SCI-002",
-  "title": "多遺伝子リスクスコアの民族間移植性",
-  "project_id": "d29552db-64f1-4288-b497-1bdfb546c26e",
-  "prompt_length": 1072,
-  "output_length": 871,
-  "file_count": 16,
-  "duration_seconds": 462,
+  "title": "SCI-002",
+  "project_id": "7c74914b-9e82-493d-8a47-7fb368386c9d",
+  "prompt_length": 1550,
+  "output_length": 1080,
+  "file_count": 12,
+  "duration_seconds": 877,
   "status": "success",
-  "timestamp": "2026-05-22T22:38:08.576Z"
+  "timestamp": "2026-05-25T21:08:31.004Z"
 }

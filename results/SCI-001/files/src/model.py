@@ -1,466 +1,261 @@
 """
 CRISPR-Cas9 Off-Target Prediction Model: CNN + Attention Architecture
+EpiCRISPR-Net: Epigenetics-integrated CNN-Attention model for off-target prediction.
 """
 
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-import numpy as np
-from typing import Dict, Optional, Tuple
+import math
+from typing import Optional, Tuple
 
 
 class MultiScaleCNNBlock(nn.Module):
-    """Multi-scale 1D CNN for capturing sequence motifs at different resolutions.
-    
-    Uses parallel convolutions with kernel sizes 3, 5, 7 to capture
-    local and extended sequence patterns.
-    """
-    
-    def __init__(self, in_channels: int, out_channels: int, dropout: float = 0.2):
+    """Multi-scale CNN block with parallel convolutions of different kernel sizes."""
+
+    def __init__(self, in_channels: int, out_channels: int):
         super().__init__()
-        # Three parallel conv branches
+        assert out_channels % 3 == 0, "out_channels must be divisible by 3"
+        branch_ch = out_channels // 3
+
         self.conv3 = nn.Sequential(
-            nn.Conv1d(in_channels, out_channels, kernel_size=3, padding=1),
-            nn.BatchNorm1d(out_channels),
-            nn.ReLU(),
+            nn.Conv1d(in_channels, branch_ch, kernel_size=3, padding=1),
+            nn.BatchNorm1d(branch_ch),
+            nn.GELU()
         )
         self.conv5 = nn.Sequential(
-            nn.Conv1d(in_channels, out_channels, kernel_size=5, padding=2),
-            nn.BatchNorm1d(out_channels),
-            nn.ReLU(),
+            nn.Conv1d(in_channels, branch_ch, kernel_size=5, padding=2),
+            nn.BatchNorm1d(branch_ch),
+            nn.GELU()
         )
         self.conv7 = nn.Sequential(
-            nn.Conv1d(in_channels, out_channels, kernel_size=7, padding=3),
-            nn.BatchNorm1d(out_channels),
-            nn.ReLU(),
+            nn.Conv1d(in_channels, branch_ch, kernel_size=7, padding=3),
+            nn.BatchNorm1d(branch_ch),
+            nn.GELU()
         )
-        # Fusion
-        self.fusion = nn.Sequential(
-            nn.Conv1d(out_channels * 3, out_channels, kernel_size=1),
-            nn.BatchNorm1d(out_channels),
-            nn.ReLU(),
-            nn.Dropout(dropout),
-        )
-    
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
-        """
-        Args:
-            x: (batch, channels, seq_len)
-        Returns:
-            (batch, out_channels, seq_len)
-        """
-        h3 = self.conv3(x)
-        h5 = self.conv5(x)
-        h7 = self.conv7(x)
-        h = torch.cat([h3, h5, h7], dim=1)
-        return self.fusion(h)
 
-
-class PositionalEncoding(nn.Module):
-    """Sinusoidal positional encoding for sequence positions."""
-    
-    def __init__(self, d_model: int, max_len: int = 30):
-        super().__init__()
-        pe = torch.zeros(max_len, d_model)
-        position = torch.arange(0, max_len, dtype=torch.float).unsqueeze(1)
-        div_term = torch.exp(
-            torch.arange(0, d_model, 2).float() * (-np.log(10000.0) / d_model)
-        )
-        pe[:, 0::2] = torch.sin(position * div_term)
-        pe[:, 1::2] = torch.cos(position * div_term[:d_model // 2])
-        pe = pe.unsqueeze(0)  # (1, max_len, d_model)
-        self.register_buffer('pe', pe)
-    
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        """Add positional encoding.
-        Args: x of shape (batch, seq_len, d_model)
-        """
-        return x + self.pe[:, :x.size(1), :]
+        return torch.cat([self.conv3(x), self.conv5(x), self.conv7(x)], dim=1)
 
 
 class MultiHeadSelfAttention(nn.Module):
-    """Multi-head self-attention for capturing long-range dependencies
-    in guide-target alignment.
-    """
-    
+    """Multi-head self-attention mechanism for sequence modeling."""
+
     def __init__(self, d_model: int, n_heads: int = 4, dropout: float = 0.1):
         super().__init__()
         assert d_model % n_heads == 0
         self.d_model = d_model
         self.n_heads = n_heads
         self.d_k = d_model // n_heads
-        
+
         self.W_q = nn.Linear(d_model, d_model)
         self.W_k = nn.Linear(d_model, d_model)
         self.W_v = nn.Linear(d_model, d_model)
         self.W_o = nn.Linear(d_model, d_model)
-        
         self.dropout = nn.Dropout(dropout)
         self.layer_norm = nn.LayerNorm(d_model)
-        
-        # Store attention weights for interpretability
-        self.attention_weights = None
-    
-    def forward(self, x: torch.Tensor, 
-                mask: Optional[torch.Tensor] = None) -> torch.Tensor:
-        """
-        Args:
-            x: (batch, seq_len, d_model)
-            mask: optional attention mask
-        Returns:
-            (batch, seq_len, d_model)
-        """
+
+    def forward(self, x: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor]:
         batch_size, seq_len, _ = x.shape
         residual = x
-        
+
         Q = self.W_q(x).view(batch_size, seq_len, self.n_heads, self.d_k).transpose(1, 2)
         K = self.W_k(x).view(batch_size, seq_len, self.n_heads, self.d_k).transpose(1, 2)
         V = self.W_v(x).view(batch_size, seq_len, self.n_heads, self.d_k).transpose(1, 2)
-        
-        # Scaled dot-product attention
-        scores = torch.matmul(Q, K.transpose(-2, -1)) / np.sqrt(self.d_k)
-        if mask is not None:
-            scores = scores.masked_fill(mask == 0, -1e9)
-        
-        attn = F.softmax(scores, dim=-1)
-        self.attention_weights = attn.detach()
-        attn = self.dropout(attn)
-        
-        context = torch.matmul(attn, V)
+
+        scores = torch.matmul(Q, K.transpose(-2, -1)) / math.sqrt(self.d_k)
+        attn_weights = F.softmax(scores, dim=-1)
+        attn_weights = self.dropout(attn_weights)
+
+        context = torch.matmul(attn_weights, V)
         context = context.transpose(1, 2).contiguous().view(batch_size, seq_len, self.d_model)
-        
+
         output = self.W_o(context)
         output = self.dropout(output)
         output = self.layer_norm(output + residual)
-        
-        return output
+
+        return output, attn_weights
 
 
-class GuideTargetCrossAttention(nn.Module):
-    """Cross-attention between guide RNA and target DNA representations.
-    
-    Captures position-specific interactions between guide and target,
-    emphasizing mismatch positions.
-    """
-    
-    def __init__(self, d_model: int, n_heads: int = 4, dropout: float = 0.1):
+class EpigeneticFusionModule(nn.Module):
+    """Gated fusion of sequence and epigenetic features."""
+
+    def __init__(self, seq_dim: int, epi_dim: int, out_dim: int):
         super().__init__()
-        self.d_model = d_model
-        self.n_heads = n_heads
-        self.d_k = d_model // n_heads
-        
-        self.W_q = nn.Linear(d_model, d_model)
-        self.W_k = nn.Linear(d_model, d_model)
-        self.W_v = nn.Linear(d_model, d_model)
-        self.W_o = nn.Linear(d_model, d_model)
-        
-        self.dropout = nn.Dropout(dropout)
-        self.layer_norm = nn.LayerNorm(d_model)
-        
-        self.cross_attention_weights = None
-    
-    def forward(self, query: torch.Tensor, 
-                key_value: torch.Tensor) -> torch.Tensor:
-        """
-        Args:
-            query: guide features (batch, guide_len, d_model)
-            key_value: target features (batch, target_len, d_model)
-        Returns:
-            (batch, guide_len, d_model)
-        """
-        batch_size = query.size(0)
-        guide_len = query.size(1)
-        target_len = key_value.size(1)
-        
-        Q = self.W_q(query).view(batch_size, guide_len, self.n_heads, self.d_k).transpose(1, 2)
-        K = self.W_k(key_value).view(batch_size, target_len, self.n_heads, self.d_k).transpose(1, 2)
-        V = self.W_v(key_value).view(batch_size, target_len, self.n_heads, self.d_k).transpose(1, 2)
-        
-        scores = torch.matmul(Q, K.transpose(-2, -1)) / np.sqrt(self.d_k)
-        attn = F.softmax(scores, dim=-1)
-        self.cross_attention_weights = attn.detach()
-        attn = self.dropout(attn)
-        
-        context = torch.matmul(attn, V)
-        context = context.transpose(1, 2).contiguous().view(batch_size, guide_len, self.d_model)
-        
-        output = self.W_o(context)
-        output = self.dropout(output)
-        output = self.layer_norm(output + query)
-        
-        return output
-
-
-class EpigeneticEncoder(nn.Module):
-    """MLP encoder for epigenetic features."""
-    
-    def __init__(self, input_dim: int = 7, hidden_dim: int = 32, 
-                 output_dim: int = 64, dropout: float = 0.2):
-        super().__init__()
-        self.mlp = nn.Sequential(
-            nn.Linear(input_dim, hidden_dim),
-            nn.ReLU(),
-            nn.Dropout(dropout),
-            nn.Linear(hidden_dim, hidden_dim),
-            nn.ReLU(),
-            nn.Dropout(dropout),
-            nn.Linear(hidden_dim, output_dim),
-            nn.ReLU(),
+        self.seq_proj = nn.Linear(seq_dim, out_dim)
+        self.epi_proj = nn.Linear(epi_dim, out_dim)
+        self.gate = nn.Sequential(
+            nn.Linear(seq_dim + epi_dim, out_dim),
+            nn.Sigmoid()
         )
-    
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
-        """
-        Args: x of shape (batch, input_dim)
-        Returns: (batch, output_dim)
-        """
-        return self.mlp(x)
+
+    def forward(self, seq_features: torch.Tensor, epi_features: torch.Tensor) -> torch.Tensor:
+        seq_proj = self.seq_proj(seq_features)
+        epi_proj = self.epi_proj(epi_features)
+        gate = self.gate(torch.cat([seq_features, epi_features], dim=-1))
+        return gate * seq_proj + (1 - gate) * epi_proj
 
 
-class CRISPROffTargetNet(nn.Module):
-    """Main model: CNN + Multi-Head Attention for CRISPR off-target prediction.
+class EpiCRISPRNet(nn.Module):
+    """
+    EpiCRISPR-Net: CNN + Attention model with epigenetic integration.
     
     Architecture:
-    1. Separate CNN encoders for guide RNA and target DNA
-    2. Mismatch pattern CNN encoder
-    3. Positional encoding
-    4. Self-attention on concatenated features
-    5. Cross-attention between guide and target
-    6. Epigenetic feature integration via gated fusion
-    7. Classification head
-    
-    Input:
-        guide_onehot: (B, 4, 20)
-        target_onehot: (B, 4, 23)
-        mismatch_features: (B, 14, 20)
-        pam_encoding: (B, 4, 3)
-        epigenetic_features: (B, 7)
-    
-    Output:
-        logits: (B, 1) off-target cleavage probability
+    1. Input splitting: sequence features (27 ch) + epigenetic features (4 ch)
+    2. Multi-scale CNN for local pattern extraction
+    3. Epigenetic fusion via gated mechanism
+    4. Multi-head self-attention for long-range dependencies
+    5. Classification head with dropout
     """
-    
-    def __init__(self, 
-                 cnn_channels: int = 64,
-                 d_model: int = 128,
-                 n_attention_heads: int = 4,
-                 n_attention_layers: int = 2,
-                 epigenetic_dim: int = 7,
-                 dropout: float = 0.2,
-                 use_epigenetics: bool = True):
+
+    def __init__(
+        self,
+        input_channels: int = 31,
+        seq_channels: int = 27,
+        epi_channels: int = 4,
+        cnn_channels: int = 96,
+        attention_dim: int = 96,
+        n_heads: int = 4,
+        n_attention_layers: int = 2,
+        dropout: float = 0.3,
+        seq_len: int = 23
+    ):
         super().__init__()
-        self.use_epigenetics = use_epigenetics
-        self.d_model = d_model
-        
-        # Guide RNA encoder
-        self.guide_cnn = nn.Sequential(
-            MultiScaleCNNBlock(4, cnn_channels, dropout),
-            MultiScaleCNNBlock(cnn_channels, cnn_channels, dropout),
+        self.seq_channels = seq_channels
+        self.epi_channels = epi_channels
+
+        # Multi-scale CNN for sequence features
+        self.cnn_block1 = MultiScaleCNNBlock(seq_channels, cnn_channels)
+        self.cnn_block2 = MultiScaleCNNBlock(cnn_channels, cnn_channels)
+        self.cnn_dropout = nn.Dropout(dropout)
+
+        # Epigenetic feature processing
+        self.epi_encoder = nn.Sequential(
+            nn.Linear(epi_channels, 32),
+            nn.GELU(),
+            nn.Linear(32, cnn_channels),
+            nn.GELU()
         )
-        
-        # Target DNA encoder
-        self.target_cnn = nn.Sequential(
-            MultiScaleCNNBlock(4, cnn_channels, dropout),
-            MultiScaleCNNBlock(cnn_channels, cnn_channels, dropout),
-        )
-        
-        # Mismatch pattern encoder
-        self.mismatch_cnn = nn.Sequential(
-            MultiScaleCNNBlock(14, cnn_channels, dropout),
-            MultiScaleCNNBlock(cnn_channels, cnn_channels, dropout),
-        )
-        
-        # PAM encoder
-        self.pam_encoder = nn.Sequential(
-            nn.Conv1d(4, cnn_channels, kernel_size=3, padding=1),
-            nn.BatchNorm1d(cnn_channels),
-            nn.ReLU(),
-            nn.AdaptiveAvgPool1d(1),
-            nn.Flatten(),
-            nn.Linear(cnn_channels, d_model),
-            nn.ReLU(),
-        )
-        
-        # Project CNN outputs to d_model
-        self.guide_proj = nn.Linear(cnn_channels, d_model)
-        self.target_proj = nn.Linear(cnn_channels, d_model)
-        self.mismatch_proj = nn.Linear(cnn_channels, d_model)
-        
-        # Positional encoding
-        self.pos_encoding = PositionalEncoding(d_model, max_len=30)
-        
-        # Self-attention layers
-        self.self_attention_layers = nn.ModuleList([
-            MultiHeadSelfAttention(d_model, n_attention_heads, dropout)
+
+        # Gated fusion
+        self.fusion = EpigeneticFusionModule(cnn_channels, cnn_channels, attention_dim)
+
+        # Attention layers
+        self.attention_layers = nn.ModuleList([
+            MultiHeadSelfAttention(attention_dim, n_heads, dropout)
             for _ in range(n_attention_layers)
         ])
-        
-        # Cross-attention: guide queries target
-        self.cross_attention = GuideTargetCrossAttention(
-            d_model, n_attention_heads, dropout)
-        
-        # Epigenetic encoder
-        if use_epigenetics:
-            self.epigenetic_encoder = EpigeneticEncoder(
-                epigenetic_dim, 32, d_model, dropout)
-            # Gated fusion for epigenetic features
-            self.epigenetic_gate = nn.Sequential(
-                nn.Linear(d_model * 2, d_model),
-                nn.Sigmoid(),
-            )
-        
+
         # Classification head
-        classifier_input = d_model * 2  # pooled features + PAM
-        if use_epigenetics:
-            classifier_input += d_model
-        
         self.classifier = nn.Sequential(
-            nn.Linear(classifier_input, d_model),
-            nn.ReLU(),
+            nn.Linear(attention_dim * seq_len, 128),
+            nn.GELU(),
             nn.Dropout(dropout),
-            nn.Linear(d_model, d_model // 2),
-            nn.ReLU(),
+            nn.Linear(128, 64),
+            nn.GELU(),
             nn.Dropout(dropout),
-            nn.Linear(d_model // 2, 1),
+            nn.Linear(64, 1)
         )
-        
-        # Initialize weights
-        self._init_weights()
-    
-    def _init_weights(self):
-        for m in self.modules():
-            if isinstance(m, nn.Linear):
-                nn.init.xavier_uniform_(m.weight)
-                if m.bias is not None:
-                    nn.init.zeros_(m.bias)
-            elif isinstance(m, nn.Conv1d):
-                nn.init.kaiming_normal_(m.weight, mode='fan_out', nonlinearity='relu')
-    
-    def forward(self, guide_onehot: torch.Tensor,
-                target_onehot: torch.Tensor,
-                mismatch_features: torch.Tensor,
-                pam_encoding: torch.Tensor,
-                epigenetic_features: Optional[torch.Tensor] = None
-                ) -> Tuple[torch.Tensor, Dict[str, torch.Tensor]]:
-        """
-        Forward pass.
-        
-        Returns:
-            logits: (B, 1) prediction scores
-            attention_info: dict of attention weights for interpretability
-        """
-        batch_size = guide_onehot.size(0)
-        
-        # === CNN Feature Extraction ===
-        guide_feat = self.guide_cnn(guide_onehot)       # (B, C, 20)
-        target_feat = self.target_cnn(target_onehot)     # (B, C, 23)
-        mismatch_feat = self.mismatch_cnn(mismatch_features)  # (B, C, 20)
-        
-        # Transpose for attention: (B, seq_len, C)
-        guide_feat = guide_feat.transpose(1, 2)
-        target_feat = target_feat.transpose(1, 2)
-        mismatch_feat = mismatch_feat.transpose(1, 2)
-        
-        # Project to d_model
-        guide_feat = self.guide_proj(guide_feat)      # (B, 20, d_model)
-        target_feat = self.target_proj(target_feat)    # (B, 23, d_model)
-        mismatch_feat = self.mismatch_proj(mismatch_feat)  # (B, 20, d_model)
-        
-        # Add positional encoding
-        guide_feat = self.pos_encoding(guide_feat)
-        target_feat = self.pos_encoding(target_feat)
-        
-        # Combine guide and mismatch features
-        combined = guide_feat + mismatch_feat  # (B, 20, d_model)
-        
-        # === Self-Attention ===
-        for attn_layer in self.self_attention_layers:
-            combined = attn_layer(combined)
-        
-        # === Cross-Attention (guide queries target) ===
-        cross_out = self.cross_attention(combined, target_feat)  # (B, 20, d_model)
-        
-        # === Global Pooling ===
-        # Average pooling + max pooling
-        avg_pool = cross_out.mean(dim=1)   # (B, d_model)
-        max_pool = cross_out.max(dim=1)[0]  # (B, d_model)
-        pooled = avg_pool + max_pool        # (B, d_model)
-        
-        # PAM features
-        pam_feat = self.pam_encoder(pam_encoding)  # (B, d_model)
-        
-        # === Feature Fusion ===
-        features = [pooled, pam_feat]
-        
-        if self.use_epigenetics and epigenetic_features is not None:
-            epi_feat = self.epigenetic_encoder(epigenetic_features)  # (B, d_model)
-            # Gated fusion
-            gate_input = torch.cat([pooled, epi_feat], dim=1)
-            gate = self.epigenetic_gate(gate_input)
-            gated_epi = gate * epi_feat
-            features.append(gated_epi)
-        
-        # Concatenate all features
-        final_features = torch.cat(features, dim=1)
-        
-        # === Classification ===
-        logits = self.classifier(final_features)
-        
-        # Collect attention weights for interpretability
-        attention_info = {
-            'self_attention': [
-                layer.attention_weights 
-                for layer in self.self_attention_layers
-                if layer.attention_weights is not None
-            ],
-            'cross_attention': self.cross_attention.cross_attention_weights,
-        }
-        
-        return logits, attention_info
-    
-    def get_num_parameters(self) -> int:
-        return sum(p.numel() for p in self.parameters())
-    
-    def get_trainable_parameters(self) -> int:
-        return sum(p.numel() for p in self.parameters() if p.requires_grad)
+
+        self._attention_weights = None
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        batch_size = x.shape[0]
+
+        # Split input: x shape = (batch, seq_len, total_channels)
+        seq_features = x[:, :, :self.seq_channels]  # (B, L, 27)
+        epi_features = x[:, :, self.seq_channels:]   # (B, L, 4)
+
+        # CNN expects (B, C, L)
+        seq_cnn = seq_features.transpose(1, 2)
+        seq_cnn = self.cnn_block1(seq_cnn)
+        seq_cnn = self.cnn_block2(seq_cnn)
+        seq_cnn = self.cnn_dropout(seq_cnn)
+        seq_cnn = seq_cnn.transpose(1, 2)  # (B, L, cnn_channels)
+
+        # Encode epigenetic features
+        epi_encoded = self.epi_encoder(epi_features)  # (B, L, cnn_channels)
+
+        # Gated fusion
+        fused = self.fusion(seq_cnn, epi_encoded)  # (B, L, attention_dim)
+
+        # Self-attention
+        attn_out = fused
+        for attn_layer in self.attention_layers:
+            attn_out, attn_w = attn_layer(attn_out)
+        self._attention_weights = attn_w
+
+        # Classify
+        flat = attn_out.reshape(batch_size, -1)
+        logits = self.classifier(flat)
+
+        return logits.squeeze(-1)
+
+    def get_attention_weights(self) -> Optional[torch.Tensor]:
+        return self._attention_weights
 
 
-def build_model(config: Optional[Dict] = None) -> CRISPROffTargetNet:
-    """Build model with configuration."""
-    default_config = {
-        'cnn_channels': 64,
-        'd_model': 128,
-        'n_attention_heads': 4,
-        'n_attention_layers': 2,
-        'epigenetic_dim': 7,
-        'dropout': 0.2,
-        'use_epigenetics': True,
-    }
-    if config:
-        default_config.update(config)
-    
-    model = CRISPROffTargetNet(**default_config)
-    return model
+class BaselineCNN(nn.Module):
+    """Simple CNN baseline without attention or epigenetic integration."""
+
+    def __init__(self, input_channels: int = 31, seq_len: int = 23):
+        super().__init__()
+        self.conv1 = nn.Sequential(
+            nn.Conv1d(input_channels, 64, kernel_size=3, padding=1),
+            nn.BatchNorm1d(64), nn.ReLU()
+        )
+        self.conv2 = nn.Sequential(
+            nn.Conv1d(64, 128, kernel_size=3, padding=1),
+            nn.BatchNorm1d(128), nn.ReLU()
+        )
+        self.pool = nn.AdaptiveAvgPool1d(1)
+        self.fc = nn.Sequential(
+            nn.Linear(128, 64), nn.ReLU(), nn.Dropout(0.3),
+            nn.Linear(64, 1)
+        )
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        x = x.transpose(1, 2)
+        x = self.conv1(x)
+        x = self.conv2(x)
+        x = self.pool(x).squeeze(-1)
+        return self.fc(x).squeeze(-1)
+
+
+class SequenceOnlyModel(nn.Module):
+    """Model using only sequence features (no epigenetics) for ablation."""
+
+    def __init__(self, seq_channels: int = 27, seq_len: int = 23):
+        super().__init__()
+        self.cnn = nn.Sequential(
+            nn.Conv1d(seq_channels, 64, kernel_size=3, padding=1),
+            nn.BatchNorm1d(64), nn.GELU(),
+            nn.Conv1d(64, 96, kernel_size=5, padding=2),
+            nn.BatchNorm1d(96), nn.GELU()
+        )
+        self.fc = nn.Sequential(
+            nn.Linear(96 * seq_len, 128), nn.GELU(), nn.Dropout(0.3),
+            nn.Linear(128, 1)
+        )
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        seq = x[:, :, :27].transpose(1, 2)
+        h = self.cnn(seq)
+        h = h.reshape(h.size(0), -1)
+        return self.fc(h).squeeze(-1)
 
 
 if __name__ == '__main__':
-    print("=== CRISPROffTargetNet Architecture ===")
-    
-    model = build_model()
-    print(f"Total parameters: {model.get_num_parameters():,}")
-    print(f"Trainable parameters: {model.get_trainable_parameters():,}")
-    
-    # Test forward pass
-    batch_size = 4
-    guide = torch.randn(batch_size, 4, 20)
-    target = torch.randn(batch_size, 4, 23)
-    mismatch = torch.randn(batch_size, 14, 20)
-    pam = torch.randn(batch_size, 4, 3)
-    epi = torch.randn(batch_size, 7)
-    
-    logits, attn_info = model(guide, target, mismatch, pam, epi)
-    print(f"\nOutput shape: {logits.shape}")
-    print(f"Self-attention layers: {len(attn_info['self_attention'])}")
-    
-    probs = torch.sigmoid(logits)
-    print(f"Prediction probabilities: {probs.detach().numpy().flatten()}")
-    print("\n✓ Model forward pass successful.")
+    model = EpiCRISPRNet()
+    print(f"EpiCRISPR-Net parameters: {sum(p.numel() for p in model.parameters()):,}")
+
+    x = torch.randn(8, 23, 31)
+    out = model(x)
+    print(f"Input: {x.shape} -> Output: {out.shape}")
+    print(f"Attention weights: {model.get_attention_weights().shape}")
+
+    baseline = BaselineCNN()
+    print(f"\nBaseline CNN parameters: {sum(p.numel() for p in baseline.parameters()):,}")
+
+    seq_only = SequenceOnlyModel()
+    print(f"Sequence-only parameters: {sum(p.numel() for p in seq_only.parameters()):,}")

@@ -1,0 +1,16 @@
+drug,score,known_treatment,rank
+Dexamethasone,43.352561950683594,True,1
+Baricitinib,41.63493728637695,True,2
+Tocilizumab,41.150882720947266,True,3
+Losartan,37.20549011230469,False,4
+Sofosbuvir,34.55759811401367,False,5
+Nirmatrelvir,30.938066482543945,False,6
+Camostat,28.988412857055664,False,7
+Atorvastatin,27.459056854248047,False,8
+Sirolimus,14.530320167541504,False,9
+Nafamostat,10.87121868133545,False,10
+Favipiravir,5.134463310241699,False,11
+Remdesivir,3.7115678787231445,True,12
+Nitazoxanide,1.7752591371536255,False,13
+Ritonavir,1.4002337455749512,False,14
+Chloroquine,1.3402615785598755,False,15

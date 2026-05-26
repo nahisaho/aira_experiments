@@ -1,202 +1,237 @@
-"""Short-read integration utilities for DeepSV-LR."""
-
-from __future__ import annotations
-
-from dataclasses import dataclass
-from enum import Enum
-from typing import Any, Dict, List, Mapping, Optional, Sequence, Tuple
+#!/usr/bin/env python3
+"""
+Hybrid integration module for combining short-read and long-read SV calls.
+Improves precision through cross-validation and breakpoint refinement.
+"""
 
 import numpy as np
+from dataclasses import dataclass, field
+from typing import List, Tuple, Optional, Dict
+from enum import Enum
+import logging
 
-try:
-    from .sv_detector import Breakpoint, EvidenceType, SVCandidate, SVEvidence, SVType, merge_sv_candidates, reciprocal_overlap
-except ImportError:  # pragma: no cover - fallback for flat module execution
-    from sv_detector import Breakpoint, EvidenceType, SVCandidate, SVEvidence, SVType, merge_sv_candidates, reciprocal_overlap
-
-
-class Genotype(str, Enum):
-    HOM_REF = "0/0"
-    HET = "0/1"
-    HOM_ALT = "1/1"
+logger = logging.getLogger(__name__)
 
 
-@dataclass(frozen=True)
-class ShortReadEvidence:
+class DataSource(Enum):
+    LONG_READ = "long_read"
+    SHORT_READ = "short_read"
+    HYBRID = "hybrid"
+
+
+@dataclass
+class HybridSVCall:
+    """SV call with evidence from multiple sequencing platforms."""
+    sv_type: str
     chrom: str
     start: int
     end: int
+    size: int
+    quality: float
+    genotype: str
+    long_read_support: int
+    short_read_support: int
+    source: DataSource
+    concordance_score: float = 0.0
+    refined_start: Optional[int] = None
+    refined_end: Optional[int] = None
+    info: Dict = field(default_factory=dict)
+
+
+@dataclass
+class ShortReadEvidence:
+    """Evidence from short-read sequencing for SV validation."""
+    chrom: str
+    start: int
+    end: int
+    sv_type: str
     split_reads: int
     discordant_pairs: int
-    reference_reads: int
-    precision_positions: Tuple[int, int] = (0, 0)
-    population_frequency: Optional[float] = None
+    read_depth_ratio: float
+    mapq_mean: float
 
 
-class HybridIntegrator:
-    """Combine short-read and long-read evidence for refined SV genotyping."""
+class BreakpointRefiner:
+    """Refine SV breakpoints using short-read precision."""
 
-    def __init__(self, overlap_threshold: float = 0.5) -> None:
-        self.overlap_threshold = overlap_threshold
+    def __init__(self, search_window: int = 200):
+        self.search_window = search_window
 
-    def overlay_short_read_evidence(
-        self,
-        sv_calls: Sequence[SVCandidate],
-        short_read_evidence: Sequence[ShortReadEvidence],
-    ) -> List[SVCandidate]:
-        """Attach short-read split/paired-end support to long-read calls."""
+    def refine(
+        self, long_read_sv: Dict, short_read_evidence: List[ShortReadEvidence]
+    ) -> Tuple[int, int]:
+        best_start = long_read_sv["start"]
+        best_end = long_read_sv["end"]
+        best_score = 0
 
-        augmented: List[SVCandidate] = []
-        for candidate in sv_calls:
-            updated = self._copy_candidate(candidate)
-            for evidence in short_read_evidence:
-                if evidence.chrom != candidate.chrom:
-                    continue
-                proxy = self._proxy_candidate(evidence)
-                if reciprocal_overlap(candidate, proxy) < self.overlap_threshold:
-                    continue
-                support = evidence.split_reads + 0.5 * evidence.discordant_pairs
-                updated.add_evidence(
-                    SVEvidence(
-                        source=EvidenceType.SHORT_READ,
-                        weight=1.1,
-                        support_reads=int(support),
-                        score=float(support) / max(evidence.reference_reads + support, 1.0),
-                        metadata={"precision_positions": evidence.precision_positions},
-                    )
-                )
-                updated = self.enhance_breakpoint_precision(updated, evidence.precision_positions)
-            augmented.append(updated)
-        return merge_sv_candidates(augmented, overlap_threshold=self.overlap_threshold)
+        for evidence in short_read_evidence:
+            if evidence.sv_type != long_read_sv.get("sv_type", ""):
+                continue
+            if abs(evidence.start - long_read_sv["start"]) > self.search_window:
+                continue
 
-    def refine_genotype(
-        self,
-        candidate: SVCandidate,
-        prior_alt_fraction: float = 0.01,
-    ) -> Tuple[str, float]:
-        """Infer genotype via a Bayesian binomial model over alt-support fractions."""
-
-        alt_reads = float(sum(item.support_reads for item in candidate.evidence if item.source != EvidenceType.READ_DEPTH))
-        ref_reads = float(candidate.info.get("reference_reads", max(2.0, alt_reads)))
-        total_reads = max(alt_reads + ref_reads, 1.0)
-        priors = {
-            Genotype.HOM_REF: max(1.0 - prior_alt_fraction, 1e-3),
-            Genotype.HET: 0.5,
-            Genotype.HOM_ALT: max(prior_alt_fraction, 1e-3),
-        }
-        expectations = {
-            Genotype.HOM_REF: 0.02,
-            Genotype.HET: 0.5,
-            Genotype.HOM_ALT: 0.98,
-        }
-        log_posteriors: Dict[Genotype, float] = {}
-        for genotype, expected_alt_fraction in expectations.items():
-            p = min(max(expected_alt_fraction, 1e-6), 1.0 - 1e-6)
-            log_likelihood = alt_reads * np.log(p) + ref_reads * np.log(1.0 - p)
-            log_posteriors[genotype] = np.log(priors[genotype]) + log_likelihood
-        normalization = _logsumexp(list(log_posteriors.values()))
-        posterior_probs = {genotype: float(np.exp(score - normalization)) for genotype, score in log_posteriors.items()}
-        genotype = max(posterior_probs, key=posterior_probs.get)
-        candidate.genotype = genotype.value
-        candidate.info["genotype_posterior"] = posterior_probs[genotype]
-        candidate.info["total_reads"] = total_reads
-        return genotype.value, posterior_probs[genotype]
-
-    def enhance_breakpoint_precision(
-        self,
-        candidate: SVCandidate,
-        split_read_positions: Tuple[int, int],
-    ) -> SVCandidate:
-        """Refine long-read breakpoints using high-accuracy short-read split reads."""
-
-        left, right = split_read_positions
-        if left > 0:
-            candidate.start = int(round((candidate.start + left) / 2))
-            candidate.left_breakpoint = type(candidate.left_breakpoint)(
-                candidate.left_breakpoint.chrom,
-                candidate.start,
-                candidate.left_breakpoint.orientation,
-                (-3, 3),
+            score = (
+                evidence.split_reads * 2 +
+                evidence.discordant_pairs +
+                evidence.mapq_mean / 60.0 * 10
             )
-        if right > 0:
-            candidate.end = int(round((candidate.end + right) / 2))
-            candidate.right_breakpoint = type(candidate.right_breakpoint)(
-                candidate.right_breakpoint.chrom,
-                candidate.end,
-                candidate.right_breakpoint.orientation,
-                (-3, 3),
-            )
-        candidate.size = max(candidate.end - candidate.start, 1)
-        return candidate
+            if score > best_score:
+                best_score = score
+                best_start = evidence.start
+                best_end = evidence.end
 
-    def annotate_population_frequency(
-        self,
-        sv_calls: Sequence[SVCandidate],
-        frequency_panel: Mapping[str, float],
-    ) -> List[SVCandidate]:
-        """Annotate population frequency using a keyed external SV panel."""
+        return best_start, best_end
 
-        annotated: List[SVCandidate] = []
-        for candidate in sv_calls:
-            updated = self._copy_candidate(candidate)
-            key = self._frequency_key(candidate)
-            if key in frequency_panel:
-                updated.info["population_frequency"] = float(frequency_panel[key])
-            annotated.append(updated)
-        return annotated
 
-    def call(
-        self,
-        sv_calls: Sequence[SVCandidate],
-        short_read_evidence: Sequence[ShortReadEvidence],
-        frequency_panel: Optional[Mapping[str, float]] = None,
-    ) -> List[SVCandidate]:
-        calls = self.overlay_short_read_evidence(sv_calls, short_read_evidence)
-        if frequency_panel is not None:
-            calls = self.annotate_population_frequency(calls, frequency_panel)
-        for candidate in calls:
-            self.refine_genotype(candidate, prior_alt_fraction=float(candidate.info.get("population_frequency", 0.01)))
-        return calls
+class ConcordanceCalculator:
+    """Calculate concordance between long-read and short-read SV calls."""
 
-    @staticmethod
-    def _frequency_key(candidate: SVCandidate) -> str:
-        return f"{candidate.chrom}:{candidate.start}-{candidate.end}:{candidate.svtype.value}"
+    def __init__(
+        self, position_tolerance: int = 500,
+        size_tolerance: float = 0.25,
+        reciprocal_overlap: float = 0.5
+    ):
+        self.position_tolerance = position_tolerance
+        self.size_tolerance = size_tolerance
+        self.reciprocal_overlap = reciprocal_overlap
 
-    @staticmethod
-    def _proxy_candidate(evidence: ShortReadEvidence) -> SVCandidate:
-        return SVCandidate(
-            chrom=evidence.chrom,
-            start=evidence.start,
-            end=evidence.end,
-            svtype=SVType.DEL if evidence.end > evidence.start else SVType.INS,
-            size=max(evidence.end - evidence.start, 1),
-            left_breakpoint=Breakpoint(evidence.chrom, evidence.start),
-            right_breakpoint=Breakpoint(evidence.chrom, evidence.end),
+    def compute_concordance(
+        self, lr_call: Dict, sr_call: ShortReadEvidence
+    ) -> float:
+        if lr_call.get("sv_type") != sr_call.sv_type:
+            return 0.0
+        if lr_call.get("chrom") != sr_call.chrom:
+            return 0.0
+
+        # Position concordance
+        start_diff = abs(lr_call["start"] - sr_call.start)
+        end_diff = abs(lr_call["end"] - sr_call.end)
+        pos_score = max(0, 1.0 - (start_diff + end_diff) / (2 * self.position_tolerance))
+
+        # Size concordance
+        lr_size = lr_call["end"] - lr_call["start"]
+        sr_size = sr_call.end - sr_call.start
+        if max(lr_size, sr_size) > 0:
+            size_ratio = min(lr_size, sr_size) / max(lr_size, sr_size)
+        else:
+            size_ratio = 1.0
+        size_score = size_ratio
+
+        # Reciprocal overlap
+        overlap_start = max(lr_call["start"], sr_call.start)
+        overlap_end = min(lr_call["end"], sr_call.end)
+        overlap = max(0, overlap_end - overlap_start)
+        lr_overlap = overlap / max(lr_size, 1)
+        sr_overlap = overlap / max(sr_size, 1)
+        overlap_score = min(lr_overlap, sr_overlap) / self.reciprocal_overlap
+        overlap_score = min(overlap_score, 1.0)
+
+        return (pos_score * 0.3 + size_score * 0.3 + overlap_score * 0.4)
+
+    def find_concordant_pairs(
+        self, lr_calls: List[Dict], sr_calls: List[ShortReadEvidence]
+    ) -> List[Tuple[int, int, float]]:
+        pairs = []
+        for i, lr in enumerate(lr_calls):
+            for j, sr in enumerate(sr_calls):
+                score = self.compute_concordance(lr, sr)
+                if score > 0.3:
+                    pairs.append((i, j, score))
+
+        pairs.sort(key=lambda x: -x[2])
+
+        used_lr: set = set()
+        used_sr: set = set()
+        matched = []
+        for i, j, score in pairs:
+            if i not in used_lr and j not in used_sr:
+                matched.append((i, j, score))
+                used_lr.add(i)
+                used_sr.add(j)
+
+        return matched
+
+
+class HybridSVIntegrator:
+    """Integrate long-read and short-read SV calls."""
+
+    def __init__(
+        self, concordance_threshold: float = 0.5,
+        lr_only_min_support: int = 5,
+        sr_validation_boost: float = 10.0
+    ):
+        self.refiner = BreakpointRefiner()
+        self.concordance_calc = ConcordanceCalculator()
+        self.concordance_threshold = concordance_threshold
+        self.lr_only_min_support = lr_only_min_support
+        self.sr_validation_boost = sr_validation_boost
+
+    def integrate(
+        self, lr_calls: List[Dict], sr_evidence: List[ShortReadEvidence]
+    ) -> List[HybridSVCall]:
+        matched_pairs = self.concordance_calc.find_concordant_pairs(
+            lr_calls, sr_evidence
         )
+        matched_lr = {i for i, _, _ in matched_pairs}
+        matched_sr = {j for _, j, _ in matched_pairs}
 
-    @staticmethod
-    def _copy_candidate(candidate: SVCandidate) -> SVCandidate:
-        return SVCandidate(
-            chrom=candidate.chrom,
-            start=candidate.start,
-            end=candidate.end,
-            svtype=candidate.svtype,
-            size=candidate.size,
-            left_breakpoint=candidate.left_breakpoint,
-            right_breakpoint=candidate.right_breakpoint,
-            evidence=list(candidate.evidence),
-            quality=candidate.quality,
-            sequence=candidate.sequence,
-            copy_number=candidate.copy_number,
-            genotype=candidate.genotype,
-            sample=candidate.sample,
-            info=dict(candidate.info),
-        )
+        results = []
 
+        # Process matched pairs (concordant calls)
+        for lr_idx, sr_idx, concordance in matched_pairs:
+            lr = lr_calls[lr_idx]
+            sr = sr_evidence[sr_idx]
+            refined_start, refined_end = self.refiner.refine(lr, [sr])
 
-def _logsumexp(values: Sequence[float]) -> float:
-    array = np.asarray(values, dtype=np.float64)
-    maximum = np.max(array)
-    return float(maximum + np.log(np.sum(np.exp(array - maximum))))
+            results.append(HybridSVCall(
+                sv_type=lr.get("sv_type", "UNK"),
+                chrom=lr.get("chrom", ""),
+                start=lr["start"], end=lr["end"],
+                size=lr["end"] - lr["start"],
+                quality=lr.get("quality", 0) + self.sr_validation_boost,
+                genotype=lr.get("genotype", "./."),
+                long_read_support=lr.get("support", 0),
+                short_read_support=sr.split_reads + sr.discordant_pairs,
+                source=DataSource.HYBRID,
+                concordance_score=concordance,
+                refined_start=refined_start,
+                refined_end=refined_end,
+            ))
 
+        # Long-read-only calls (unique to long reads)
+        for i, lr in enumerate(lr_calls):
+            if i in matched_lr:
+                continue
+            if lr.get("support", 0) >= self.lr_only_min_support:
+                results.append(HybridSVCall(
+                    sv_type=lr.get("sv_type", "UNK"),
+                    chrom=lr.get("chrom", ""),
+                    start=lr["start"], end=lr["end"],
+                    size=lr["end"] - lr["start"],
+                    quality=lr.get("quality", 0),
+                    genotype=lr.get("genotype", "./."),
+                    long_read_support=lr.get("support", 0),
+                    short_read_support=0,
+                    source=DataSource.LONG_READ,
+                ))
 
-__all__ = ["Genotype", "HybridIntegrator", "ShortReadEvidence"]
+        # Short-read-only calls (high-confidence)
+        for j, sr in enumerate(sr_evidence):
+            if j in matched_sr:
+                continue
+            total_support = sr.split_reads + sr.discordant_pairs
+            if total_support >= 10 and sr.mapq_mean >= 40:
+                results.append(HybridSVCall(
+                    sv_type=sr.sv_type,
+                    chrom=sr.chrom,
+                    start=sr.start, end=sr.end,
+                    size=sr.end - sr.start,
+                    quality=sr.mapq_mean,
+                    genotype="0/1",
+                    long_read_support=0,
+                    short_read_support=total_support,
+                    source=DataSource.SHORT_READ,
+                ))
+
+        results.sort(key=lambda x: (x.chrom, x.start))
+        return results

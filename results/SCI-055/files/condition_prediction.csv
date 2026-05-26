@@ -1,0 +1,11 @@
+Reaction,Pred_Solvent,Actual_Solvent,Solvent_Correct,Pred_Temp,Actual_Temp,Temp_Error,Pred_Catalyst,Actual_Catalyst,Catalyst_Correct,Solvent_Conf,Catalyst_Conf
+amide_coupling,DMF,DMF,True,25.0,25,0.0,HATU/DIPEA,HATU/DIPEA,True,1.0,1.0
+suzuki_coupling,THF/H2O,THF/H2O,True,80.0,80,0.0,Pd(PPh3)4,Pd(PPh3)4,True,1.0,1.0
+reduction_carbonyl,MeOH,MeOH,True,0.0,0,0.0,NaBH4,NaBH4,True,1.0,1.0
+ester_hydrolysis,THF/H2O,THF/H2O,True,60.0,60,0.0,LiOH,LiOH,True,1.0,1.0
+reductive_amination,DCE,DCE,True,25.0,25,0.0,NaBH(OAc)3,NaBH(OAc)3,True,1.0,1.0
+buchwald_hartwig,Toluene,Toluene,True,100.0,100,0.0,Pd2(dba)3/XPhos,Pd2(dba)3/XPhos,True,1.0,1.0
+grignard_addition,THF,THF,True,-78.0,-78,0.0,None,None,True,1.0,1.0
+wittig_reaction,THF,THF,True,-78.0,-78,0.0,n-BuLi,n-BuLi,True,1.0,1.0
+friedel_crafts,DCM,DCM,True,0.0,0,0.0,AlCl3,AlCl3,True,1.0,1.0
+snar,DMSO,DMSO,True,120.0,120,0.0,K2CO3,K2CO3,True,1.0,1.0

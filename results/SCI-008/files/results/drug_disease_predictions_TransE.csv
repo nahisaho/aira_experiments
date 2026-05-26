@@ -1,0 +1,21 @@
+drug,disease,score,is_novel,rank
+Nitazoxanide,COVID-19,-13.387331008911133,True,1
+Nitazoxanide,Hepatitis C,-13.599539756774902,True,2
+Famotidine,Asthma,-13.648968696594238,True,3
+Tocilizumab,Hepatitis C,-13.681098937988281,True,4
+Metformin,Hepatitis C,-13.791132926940918,True,5
+Ruxolitinib,COVID-19,-13.805489540100098,True,6
+Sofosbuvir,COVID-19,-13.924962997436523,True,7
+Interferon-beta,COVID-19,-13.927008628845215,True,8
+Losartan,Hepatitis C,-13.96738338470459,True,9
+Colchicine,COVID-19,-13.989943504333496,True,10
+Famotidine,COVID-19,-14.003890991210938,True,11
+Colchicine,Asthma,-14.005396842956543,True,12
+Ruxolitinib,Hepatitis C,-14.038679122924805,True,13
+Tocilizumab,Crohn Disease,-14.040404319763184,True,14
+Sirolimus,Asthma,-14.089679718017578,True,15
+Interferon-beta,Rheumatoid Arthritis,-14.097434043884277,True,16
+Umifenovir,Hepatitis C,-14.146708488464355,True,17
+Tocilizumab,Asthma,-14.202545166015625,True,18
+Camostat,COVID-19,-14.230232238769531,True,19
+Ribavirin,COVID-19,-14.292840003967285,True,20

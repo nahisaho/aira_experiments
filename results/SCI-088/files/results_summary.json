@@ -1,0 +1,30 @@
+{
+  "MARL + Rerouting": {
+    "speed_kmh": 41.6,
+    "delay_s": 463.2,
+    "queue_veh": 185.3,
+    "throughput": 504813,
+    "emission_gs": 95.5
+  },
+  "Fixed-Time": {
+    "speed_kmh": 50.0,
+    "delay_s": 3707.4,
+    "queue_veh": 1482.9,
+    "throughput": 389352,
+    "emission_gs": 88.9
+  },
+  "MARL Only": {
+    "speed_kmh": 50.0,
+    "delay_s": 456.2,
+    "queue_veh": 182.5,
+    "throughput": 504576,
+    "emission_gs": 89.3
+  },
+  "Rerouting Only": {
+    "speed_kmh": 41.6,
+    "delay_s": 3690.9,
+    "queue_veh": 1476.4,
+    "throughput": 387703,
+    "emission_gs": 95.2
+  }
+}

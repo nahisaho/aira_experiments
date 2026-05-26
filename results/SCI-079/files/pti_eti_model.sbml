@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SBML Model: Plant PTI-ETI Signaling Network -->
+<!-- Compatible with COPASI and CellDesigner -->
+<sbml xmlns="http://www.sbml.org/sbml/level3/version2/core" level="3" version="2">
+  <model id="PlantImmunityModel" name="PTI-ETI Signaling Network">
+    <listOfCompartments>
+      <compartment id="apoplast" name="Apoplast" size="1" constant="true"/>
+      <compartment id="cytoplasm" name="Cytoplasm" size="1" constant="true"/>
+      <compartment id="nucleus" name="Nucleus" size="1" constant="true"/>
+    </listOfCompartments>
+
+    <listOfSpecies>
+      <!-- Receptors -->
+      <species id="FLS2" name="FLS2" compartment="cytoplasm" initialConcentration="10"/>
+      <species id="flg22" name="flg22" compartment="apoplast" initialConcentration="5"/>
+      <species id="FLS2_flg22" name="FLS2:flg22 Complex" compartment="cytoplasm" initialConcentration="0"/>
+      <species id="BAK1" name="BAK1" compartment="cytoplasm" initialConcentration="5"/>
+      <species id="FLS2_BAK1" name="FLS2:BAK1 Active Complex" compartment="cytoplasm" initialConcentration="0"/>
+
+      <!-- NLR (ETI) -->
+      <species id="NLR" name="NLR Receptor" compartment="cytoplasm" initialConcentration="5"/>
+      <species id="Effector" name="Pathogen Effector" compartment="cytoplasm" initialConcentration="0"/>
+      <species id="NLR_Eff" name="NLR:Effector Complex" compartment="cytoplasm" initialConcentration="0"/>
+
+      <!-- MAPK Cascade -->
+      <species id="MAPKKK" name="MAPKKK (MEKK1)" compartment="cytoplasm" initialConcentration="1"/>
+      <species id="MAPKKK_P" name="MAPKKK-P" compartment="cytoplasm" initialConcentration="0"/>
+      <species id="MAPKK" name="MAPKK (MKK4/5)" compartment="cytoplasm" initialConcentration="1"/>
+      <species id="MAPKK_P" name="MAPKK-P" compartment="cytoplasm" initialConcentration="0"/>
+      <species id="MAPK" name="MAPK (MPK3/6)" compartment="cytoplasm" initialConcentration="1"/>
+      <species id="MAPK_P" name="MAPK-P" compartment="cytoplasm" initialConcentration="0"/>
+
+      <!-- Hormones -->
+      <species id="SA" name="Salicylic Acid" compartment="cytoplasm" initialConcentration="0"/>
+      <species id="JA" name="Jasmonic Acid" compartment="cytoplasm" initialConcentration="0"/>
+      <species id="NPR1_inactive" name="NPR1 (inactive)" compartment="cytoplasm" initialConcentration="5"/>
+      <species id="NPR1_active" name="NPR1 (active)" compartment="nucleus" initialConcentration="0"/>
+      <species id="JAZ" name="JAZ Repressor" compartment="nucleus" initialConcentration="5"/>
+
+      <!-- Transcription Factors -->
+      <species id="WRKY33" name="WRKY33" compartment="nucleus" initialConcentration="0"/>
+      <species id="WRKY70" name="WRKY70" compartment="nucleus" initialConcentration="0"/>
+      <species id="TGA2" name="TGA2" compartment="nucleus" initialConcentration="1"/>
+      <species id="MYC2" name="MYC2" compartment="nucleus" initialConcentration="0"/>
+
+      <!-- Defense Outputs -->
+      <species id="PR1" name="PR1" compartment="cytoplasm" initialConcentration="0"/>
+      <species id="PDF12" name="PDF1.2" compartment="cytoplasm" initialConcentration="0"/>
+      <species id="ROS" name="Reactive Oxygen Species" compartment="apoplast" initialConcentration="0"/>
+      <species id="Callose" name="Callose Deposit" compartment="cytoplasm" initialConcentration="0"/>
+    </listOfSpecies>
+
+    <listOfReactions>
+      <!-- R1: FLS2 + flg22 -> FLS2:flg22 -->
+      <reaction id="R1" name="PAMP binding" reversible="false">
+        <listOfReactants>
+          <speciesReference species="FLS2" stoichiometry="1"/>
+          <speciesReference species="flg22" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="FLS2_flg22" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply><times/><cn>0.1</cn><ci>FLS2</ci><ci>flg22</ci></apply>
+        </math></kineticLaw>
+      </reaction>
+
+      <!-- R2: FLS2:flg22 + BAK1 -> FLS2:BAK1 -->
+      <reaction id="R2" name="Co-receptor recruitment" reversible="false">
+        <listOfReactants>
+          <speciesReference species="FLS2_flg22" stoichiometry="1"/>
+          <speciesReference species="BAK1" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="FLS2_BAK1" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply><times/><cn>0.05</cn><ci>FLS2_flg22</ci><ci>BAK1</ci></apply>
+        </math></kineticLaw>
+      </reaction>
+
+      <!-- R3-R8: MAPK Cascade (phosphorylation/dephosphorylation) -->
+      <reaction id="R3" name="MAPKKK activation" reversible="false">
+        <listOfReactants><speciesReference species="MAPKKK" stoichiometry="1"/></listOfReactants>
+        <listOfProducts><speciesReference species="MAPKKK_P" stoichiometry="1"/></listOfProducts>
+        <kineticLaw><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply><divide/>
+            <apply><times/><cn>0.5</cn><ci>FLS2_BAK1</ci><ci>MAPKKK</ci></apply>
+            <apply><plus/><cn>0.5</cn><ci>MAPKKK</ci></apply>
+          </apply>
+        </math></kineticLaw>
+      </reaction>
+
+      <!-- R9: SA synthesis -->
+      <reaction id="R9" name="SA biosynthesis" reversible="false">
+        <listOfProducts><speciesReference species="SA" stoichiometry="1"/></listOfProducts>
+        <kineticLaw><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply><times/><cn>0.3</cn><ci>MAPK_P</ci></apply>
+        </math></kineticLaw>
+      </reaction>
+
+      <!-- R10: NPR1 activation by SA -->
+      <reaction id="R10" name="NPR1 activation" reversible="false">
+        <listOfReactants><speciesReference species="NPR1_inactive" stoichiometry="1"/></listOfReactants>
+        <listOfProducts><speciesReference species="NPR1_active" stoichiometry="1"/></listOfProducts>
+        <kineticLaw><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply><divide/>
+            <apply><times/><cn>0.2</cn><ci>SA</ci><ci>NPR1_inactive</ci></apply>
+            <apply><plus/><cn>1.0</cn><ci>SA</ci></apply>
+          </apply>
+        </math></kineticLaw>
+      </reaction>
+
+      <!-- R11: PR1 expression -->
+      <reaction id="R11" name="PR1 transcription" reversible="false">
+        <listOfProducts><speciesReference species="PR1" stoichiometry="1"/></listOfProducts>
+        <kineticLaw><math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply><divide/>
+            <apply><times/><cn>1.0</cn><ci>NPR1_active</ci><ci>TGA2</ci></apply>
+            <apply><plus/><cn>0.5</cn><ci>NPR1_active</ci></apply>
+          </apply>
+        </math></kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

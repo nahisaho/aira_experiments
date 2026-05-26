@@ -1,0 +1,102 @@
+{
+  "model_results": {
+    "ElasticNet (Horvath-like)": {
+      "MAE": 3.3743129566146335,
+      "RMSE": 4.3503345314152595,
+      "R2": 0.9575346048099008,
+      "Pearson_r": 0.9785754629380684,
+      "Median_AE": 2.7149460411026123
+    },
+    "Gradient Boosting": {
+      "MAE": 3.4124171784537873,
+      "RMSE": 4.4592737857666656,
+      "R2": 0.9553811743139904,
+      "Pearson_r": 0.9774710900522287,
+      "Median_AE": 2.6090567307852623
+    },
+    "Tissue-Aware ElasticNet": {
+      "MAE": 4.072142279926029,
+      "RMSE": 5.077909231263943,
+      "R2": 0.942142491484251,
+      "Pearson_r": 0.9709885515572442,
+      "Median_AE": 3.6908036273817295
+    },
+    "DeepEpiClock": {
+      "MAE": 4.277863058845002,
+      "RMSE": 5.46316861404591,
+      "R2": 0.9330301894558028,
+      "Pearson_r": 0.967225549030396,
+      "Median_AE": 3.560573973430621
+    }
+  },
+  "cv_maes": [
+    4.236777757097771,
+    4.615078328732158,
+    4.0584643589173135,
+    4.144307546569395,
+    4.136709044903538
+  ],
+  "cv_mean_mae": 4.238267407244035,
+  "cv_std_mae": 0.19670301582698205,
+  "tissue_results": {
+    "blood": {
+      "ElasticNet (Horvath-like)": 3.748411268718267,
+      "Gradient Boosting": 3.8319859232725193,
+      "Tissue-Aware ElasticNet": 4.632986515267637,
+      "DeepEpiClock": 5.073331855346368
+    },
+    "brain": {
+      "ElasticNet (Horvath-like)": 3.5371853378153872,
+      "Gradient Boosting": 3.9553984936865776,
+      "Tissue-Aware ElasticNet": 4.927736601808852,
+      "DeepEpiClock": 4.924590070389513
+    },
+    "liver": {
+      "ElasticNet (Horvath-like)": 3.3607604139209335,
+      "Gradient Boosting": 3.5748193920903115,
+      "Tissue-Aware ElasticNet": 3.705692946233597,
+      "DeepEpiClock": 4.4597521938273665
+    },
+    "muscle": {
+      "ElasticNet (Horvath-like)": 3.0991471612794204,
+      "Gradient Boosting": 3.1900450179021838,
+      "Tissue-Aware ElasticNet": 3.724184797047786,
+      "DeepEpiClock": 4.013641171885182
+    },
+    "skin": {
+      "ElasticNet (Horvath-like)": 3.3715603096656874,
+      "Gradient Boosting": 2.9560313182555786,
+      "Tissue-Aware ElasticNet": 3.917475111029917,
+      "DeepEpiClock": 3.550874100346748
+    }
+  },
+  "sensitivity_data": {
+    "ElasticNet (Horvath-like)": {
+      "exercise": -0.048434309432014766,
+      "diet": 0.17978719543270155,
+      "drug": -0.014203134599385936
+    },
+    "Gradient Boosting": {
+      "exercise": 0.0674646691563926,
+      "diet": 0.044336165411100636,
+      "drug": -0.13496509479204266
+    },
+    "Tissue-Aware ElasticNet": {
+      "exercise": 0.8213869645013899,
+      "diet": 0.8645886549018772,
+      "drug": 1.1166711222257213
+    },
+    "DeepEpiClock": {
+      "exercise": -0.33852596525056966,
+      "diet": 1.0555834976992393,
+      "drug": -0.06942528426612726
+    }
+  },
+  "n_selected_cpgs": 181,
+  "dataset_info": {
+    "n_samples": 1200,
+    "n_cpg_sites": 500,
+    "n_train": 960,
+    "n_test": 240
+  }
+}

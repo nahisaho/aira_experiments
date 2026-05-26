@@ -1,0 +1,70 @@
+{
+  "Butyrate_biosynthesis": [
+    "Butyrate",
+    "Acetate",
+    "Glutamate"
+  ],
+  "Propionate_biosynthesis": [
+    "Propionate",
+    "Valerate"
+  ],
+  "Acetate_biosynthesis": [
+    "Acetate",
+    "Isobutyrate"
+  ],
+  "Tryptophan_metabolism": [
+    "Tryptophan",
+    "Indole",
+    "Kynurenine",
+    "Serotonin",
+    "Indole_3_acetic_acid",
+    "Indole_3_propionic_acid",
+    "Quinolinic_acid",
+    "Xanthurenic_acid"
+  ],
+  "Bile_acid_biotransformation": [
+    "Deoxycholic_acid",
+    "Lithocholic_acid",
+    "Ursodeoxycholic_acid",
+    "Chenodeoxycholic_acid",
+    "Cholic_acid"
+  ],
+  "Indole_metabolism": [
+    "Indole",
+    "Indoxyl_sulfate",
+    "Indole_3_acetic_acid",
+    "Indole_3_propionic_acid"
+  ],
+  "Phenylpropanoid_degradation": [
+    "Hippuric_acid",
+    "p_Cresol_sulfate",
+    "Phenylacetic_acid",
+    "4_Hydroxyphenylacetic_acid"
+  ],
+  "Sphingolipid_metabolism": [
+    "Sphingomyelin_d18_1",
+    "Ceramide_d18_1_16_0"
+  ],
+  "Glycerophospholipid_metabolism": [
+    "LysoPC_16_0",
+    "LysoPC_18_1",
+    "LysoPE_16_0",
+    "PC_34_1",
+    "PE_36_2"
+  ],
+  "Branched_chain_amino_acid_metabolism": [
+    "Leucine",
+    "Isoleucine",
+    "Valine"
+  ],
+  "Aromatic_amino_acid_metabolism": [
+    "Tryptophan",
+    "Phenylalanine",
+    "Tyrosine"
+  ],
+  "Glutamate_metabolism": [
+    "Glutamine",
+    "Glutamate",
+    "Alanine"
+  ]
+}

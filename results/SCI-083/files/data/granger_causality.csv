@@ -1,0 +1,7 @@
+Cause,Effect,Lag,F_stat,p_value
+Faecalibacterium,Butyrate,1,95.593,0.0
+Faecalibacterium,Butyrate,2,43.05,0.0
+Faecalibacterium,Butyrate,3,27.426,0.0
+Escherichia,Indoxyl_sulfate,1,37.454,0.0
+Escherichia,Indoxyl_sulfate,2,16.43,5e-06
+Escherichia,Indoxyl_sulfate,3,10.06,4.5e-05

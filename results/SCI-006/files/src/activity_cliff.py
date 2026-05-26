@@ -1,334 +1,241 @@
 """
 Module 5: Activity Cliff Detection and Chemical Space Exploration
 
-Implements methods for identifying activity cliffs (structurally similar
-compounds with large activity differences) and strategies for exploring
-chemical space around lead compounds.
+Detects activity cliffs in molecular datasets and implements chemical
+space exploration strategies using molecular fingerprints and similarity.
 """
 
 import numpy as np
-from dataclasses import dataclass, field
-from typing import List, Dict, Tuple, Optional, Set
-from itertools import combinations
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+from sklearn.manifold import TSNE
+from sklearn.cluster import KMeans
+from scipy.spatial.distance import pdist, squareform
+from dataclasses import dataclass
+from typing import List, Tuple, Dict
 
 
 @dataclass
-class Compound:
-    """Compound with structural and activity information."""
-    compound_id: str
+class Molecule:
+    mol_id: str
     smiles: str
-    pki: float  # -log10(Ki)
-    fingerprint: Optional[np.ndarray] = None
-    mw: float = 0.0
-    logp: float = 0.0
-    hbd: int = 0
-    hba: int = 0
-    tpsa: float = 0.0
-    rotatable_bonds: int = 0
-    scaffold: str = ""
+    activity: float  # pIC50
+    fingerprint: np.ndarray
+    cluster_id: int = -1
+    is_cliff: bool = False
 
 
 @dataclass
 class ActivityCliff:
-    """An activity cliff pair."""
-    compound_a: str
-    compound_b: str
+    mol_a: str
+    mol_b: str
     similarity: float
-    activity_diff: float  # |pKi_a - pKi_b|
-    sali: float  # Structure-Activity Landscape Index
-    cliff_type: str = ""  # "potency_gain", "potency_loss", "scaffold_hop"
-    
-    structural_difference: str = ""  # Human-readable description
-    
-    def __post_init__(self):
-        if not self.cliff_type:
-            if self.activity_diff > 2:
-                self.cliff_type = "major_cliff"
-            elif self.activity_diff > 1:
-                self.cliff_type = "moderate_cliff"
-            else:
-                self.cliff_type = "minor_cliff"
+    activity_diff: float
+    cliff_score: float
 
 
-@dataclass
-class ChemicalSpaceAnalysis:
-    """Analysis of chemical space coverage."""
-    n_compounds: int
-    n_clusters: int
-    coverage_score: float  # 0-1
-    diversity_score: float  # 0-1
-    
-    # Principal component analysis
-    pca_variance_explained: List[float] = field(default_factory=list)
-    pca_coordinates: Optional[np.ndarray] = None
-    
-    # Cluster information
-    cluster_sizes: List[int] = field(default_factory=list)
-    cluster_centroids: Optional[np.ndarray] = None
-    
-    # Exploration recommendations
-    underexplored_regions: List[Dict] = field(default_factory=list)
+class ActivityCliffDetector:
+    """Detect activity cliffs based on structural similarity and activity difference."""
+
+    def __init__(self, similarity_threshold: float = 0.8,
+                 activity_threshold: float = 2.0):
+        self.sim_threshold = similarity_threshold
+        self.act_threshold = activity_threshold
+
+    def compute_tanimoto_similarity(self, fp1: np.ndarray, fp2: np.ndarray) -> float:
+        intersection = np.sum(np.minimum(fp1, fp2))
+        union = np.sum(np.maximum(fp1, fp2))
+        return intersection / max(union, 1e-10)
+
+    def detect_cliffs(self, molecules: List[Molecule]) -> List[ActivityCliff]:
+        cliffs = []
+        n = len(molecules)
+
+        for i in range(n):
+            for j in range(i + 1, n):
+                sim = self.compute_tanimoto_similarity(
+                    molecules[i].fingerprint, molecules[j].fingerprint
+                )
+                act_diff = abs(molecules[i].activity - molecules[j].activity)
+
+                if sim >= self.sim_threshold and act_diff >= self.act_threshold:
+                    cliff_score = act_diff * sim
+                    cliffs.append(ActivityCliff(
+                        mol_a=molecules[i].mol_id,
+                        mol_b=molecules[j].mol_id,
+                        similarity=sim,
+                        activity_diff=act_diff,
+                        cliff_score=cliff_score
+                    ))
+                    molecules[i].is_cliff = True
+                    molecules[j].is_cliff = True
+
+        return sorted(cliffs, key=lambda c: c.cliff_score, reverse=True)
 
 
-def compute_tanimoto_similarity(fp_a: np.ndarray, fp_b: np.ndarray) -> float:
-    """Compute Tanimoto similarity between two binary fingerprints."""
-    intersection = np.sum(np.logical_and(fp_a, fp_b))
-    union = np.sum(np.logical_or(fp_a, fp_b))
-    if union == 0:
-        return 0.0
-    return float(intersection / union)
+class ChemicalSpaceExplorer:
+    """Explore chemical space using dimensionality reduction and clustering."""
+
+    def __init__(self, n_clusters: int = 5):
+        self.n_clusters = n_clusters
+
+    def reduce_dimensions(self, fingerprints: np.ndarray, perplexity: int = 30) -> np.ndarray:
+        tsne = TSNE(n_components=2, perplexity=min(perplexity, len(fingerprints) - 1),
+                     random_state=42, n_iter=1000)
+        return tsne.fit_transform(fingerprints)
+
+    def cluster_molecules(self, fingerprints: np.ndarray) -> np.ndarray:
+        kmeans = KMeans(n_clusters=self.n_clusters, random_state=42, n_init=10)
+        return kmeans.fit_predict(fingerprints)
+
+    def compute_diversity(self, fingerprints: np.ndarray) -> float:
+        if len(fingerprints) < 2:
+            return 0.0
+        distances = pdist(fingerprints, metric='jaccard')
+        return float(np.mean(distances))
 
 
-def compute_sali(similarity: float, activity_diff: float) -> float:
-    """
-    Compute Structure-Activity Landscape Index (SALI).
-    SALI = |pKi_a - pKi_b| / (1 - Tanimoto)
-    Higher SALI indicates a more dramatic activity cliff.
-    """
-    if similarity >= 1.0:
-        return float('inf')
-    return activity_diff / (1.0 - similarity)
+def generate_molecular_dataset(n_molecules: int = 200, fp_size: int = 128,
+                                seed: int = 42) -> List[Molecule]:
+    """Generate a synthetic molecular dataset with activity cliffs."""
+    rng = np.random.RandomState(seed)
+    molecules = []
+
+    for i in range(n_molecules):
+        # Generate fingerprint
+        fp = (rng.random(fp_size) > 0.7).astype(float)
+
+        # Base activity from fingerprint
+        activity = 5.0 + np.sum(fp[:20]) * 0.3 + rng.normal(0, 0.5)
+
+        # Introduce activity cliffs for some molecules
+        if i > 0 and i % 15 == 0:
+            # Similar to previous molecule but different activity
+            fp = molecules[i - 1].fingerprint.copy()
+            fp[rng.randint(0, fp_size, 3)] = 1 - fp[rng.randint(0, fp_size, 3)]
+            activity = molecules[i - 1].activity + rng.choice([-3, 3]) + rng.normal(0, 0.3)
+
+        activity = np.clip(activity, 3.0, 11.0)
+        smiles = f"C{'C' * rng.randint(3, 10)}O{'N' * rng.randint(0, 3)}"
+
+        molecules.append(Molecule(
+            mol_id=f"MOL-{i + 1:04d}",
+            smiles=smiles,
+            activity=activity,
+            fingerprint=fp
+        ))
+
+    return molecules
 
 
-def detect_activity_cliffs(
-    compounds: List[Compound],
-    similarity_threshold: float = 0.7,
-    activity_threshold: float = 1.0,
-    sali_threshold: float = 5.0
-) -> List[ActivityCliff]:
-    """
-    Detect activity cliffs in a compound set.
-    
-    An activity cliff is defined as a pair of compounds with:
-    - Tanimoto similarity >= similarity_threshold
-    - |ΔpKi| >= activity_threshold
-    - SALI >= sali_threshold
-    """
-    cliffs = []
-    
-    for i, j in combinations(range(len(compounds)), 2):
-        comp_a = compounds[i]
-        comp_b = compounds[j]
-        
-        if comp_a.fingerprint is None or comp_b.fingerprint is None:
-            continue
-        
-        sim = compute_tanimoto_similarity(comp_a.fingerprint, comp_b.fingerprint)
-        
-        if sim < similarity_threshold:
-            continue
-        
-        activity_diff = abs(comp_a.pki - comp_b.pki)
-        
-        if activity_diff < activity_threshold:
-            continue
-        
-        sali = compute_sali(sim, activity_diff)
-        
-        if sali >= sali_threshold:
-            cliffs.append(ActivityCliff(
-                compound_a=comp_a.compound_id,
-                compound_b=comp_b.compound_id,
-                similarity=sim,
-                activity_diff=activity_diff,
-                sali=sali,
-            ))
-    
-    cliffs.sort(key=lambda c: c.sali, reverse=True)
-    return cliffs
+def run_activity_cliff_analysis(output_dir: str = "figures"):
+    """Run activity cliff detection and chemical space exploration."""
+    print("=" * 60)
+    print("Module 5: Activity Cliff Detection & Chemical Space Exploration")
+    print("=" * 60)
 
+    # Generate dataset
+    molecules = generate_molecular_dataset(n_molecules=200, seed=42)
+    print(f"Dataset: {len(molecules)} molecules")
 
-def analyze_chemical_space(
-    compounds: List[Compound],
-    n_components: int = 2
-) -> ChemicalSpaceAnalysis:
-    """Analyze chemical space coverage and diversity."""
-    fps = np.array([c.fingerprint for c in compounds if c.fingerprint is not None])
-    
-    if len(fps) == 0:
-        return ChemicalSpaceAnalysis(n_compounds=0, n_clusters=0,
-                                      coverage_score=0, diversity_score=0)
-    
-    # PCA
-    fps_centered = fps - fps.mean(axis=0)
-    try:
-        U, S, Vt = np.linalg.svd(fps_centered, full_matrices=False)
-        variance_explained = (S ** 2) / np.sum(S ** 2)
-        pca_coords = U[:, :n_components] * S[:n_components]
-    except np.linalg.LinAlgError:
-        pca_coords = fps_centered[:, :n_components]
-        variance_explained = np.ones(n_components) / n_components
-    
-    # Simple clustering (k-means style)
-    n_clusters = min(10, len(fps) // 5 + 1)
-    rng = np.random.RandomState(42)
-    centroids = fps[rng.choice(len(fps), n_clusters, replace=False)]
-    
-    for _ in range(20):
-        distances = np.array([
-            [np.sum((fp - c) ** 2) for c in centroids]
-            for fp in fps
-        ])
-        labels = distances.argmin(axis=1)
-        for k in range(n_clusters):
-            mask = labels == k
-            if mask.any():
-                centroids[k] = fps[mask].mean(axis=0)
-    
-    cluster_sizes = [int(np.sum(labels == k)) for k in range(n_clusters)]
-    
-    # Diversity: average pairwise distance
-    n_sample = min(100, len(fps))
-    sample_idx = rng.choice(len(fps), n_sample, replace=False)
-    dists = []
-    for i, j in combinations(sample_idx, 2):
-        dists.append(1 - compute_tanimoto_similarity(fps[i], fps[j]))
-    diversity = float(np.mean(dists)) if dists else 0.0
-    
-    # Coverage: fraction of space covered by clusters
-    coverage = min(1.0, n_clusters / 20 * diversity)
-    
-    return ChemicalSpaceAnalysis(
-        n_compounds=len(compounds),
-        n_clusters=n_clusters,
-        coverage_score=float(coverage),
-        diversity_score=float(diversity),
-        pca_variance_explained=variance_explained[:n_components].tolist(),
-        pca_coordinates=pca_coords,
-        cluster_sizes=cluster_sizes,
-        underexplored_regions=_find_underexplored(pca_coords, labels, n_clusters),
-    )
+    # Detect activity cliffs
+    detector = ActivityCliffDetector(similarity_threshold=0.75, activity_threshold=1.5)
+    cliffs = detector.detect_cliffs(molecules)
 
+    print(f"\nActivity Cliffs Detected: {len(cliffs)}")
+    print(f"Molecules involved in cliffs: {sum(1 for m in molecules if m.is_cliff)}")
 
-def _find_underexplored(coords, labels, n_clusters):
-    """Identify underexplored regions in chemical space."""
-    regions = []
-    grid_size = 10
-    x_range = (coords[:, 0].min(), coords[:, 0].max())
-    y_range = (coords[:, 1].min(), coords[:, 1].max())
-    
-    x_bins = np.linspace(x_range[0], x_range[1], grid_size + 1)
-    y_bins = np.linspace(y_range[0], y_range[1], grid_size + 1)
-    
-    for i in range(grid_size):
-        for j in range(grid_size):
-            mask = (
-                (coords[:, 0] >= x_bins[i]) & (coords[:, 0] < x_bins[i+1]) &
-                (coords[:, 1] >= y_bins[j]) & (coords[:, 1] < y_bins[j+1])
-            )
-            count = mask.sum()
-            if count == 0:
-                regions.append({
-                    "center_x": float((x_bins[i] + x_bins[i+1]) / 2),
-                    "center_y": float((y_bins[j] + y_bins[j+1]) / 2),
-                    "density": 0,
-                })
-    
-    return regions[:5]
-
-
-def generate_exploration_strategy(
-    cliffs: List[ActivityCliff],
-    space_analysis: ChemicalSpaceAnalysis,
-    compounds: List[Compound]
-) -> Dict:
-    """Generate chemical space exploration strategy based on cliff analysis."""
-    strategies = []
-    
-    # Strategy 1: Cliff investigation
     if cliffs:
-        top_cliffs = cliffs[:5]
-        strategies.append({
-            "name": "Activity Cliff Investigation",
-            "priority": "high",
-            "description": "Synthesize analogs that interpolate between cliff pairs",
-            "targets": [
-                {
-                    "pair": (c.compound_a, c.compound_b),
-                    "sali": c.sali,
-                    "expected_insight": "SAR discontinuity analysis"
-                }
-                for c in top_cliffs
-            ],
-        })
-    
-    # Strategy 2: Underexplored regions
-    if space_analysis.underexplored_regions:
-        strategies.append({
-            "name": "Chemical Space Expansion",
-            "priority": "medium",
-            "description": "Design compounds targeting underexplored regions",
-            "n_target_regions": len(space_analysis.underexplored_regions),
-        })
-    
-    # Strategy 3: Scaffold hopping
-    strategies.append({
-        "name": "Scaffold Hopping",
-        "priority": "medium",
-        "description": "Explore alternative scaffolds maintaining key pharmacophores",
-        "approach": "bioisostere_replacement",
-    })
-    
+        print(f"\nTop 5 Activity Cliffs:")
+        for i, cliff in enumerate(cliffs[:5]):
+            print(f"  {i + 1}. {cliff.mol_a} ↔ {cliff.mol_b}: "
+                  f"Sim={cliff.similarity:.3f}, ΔpIC50={cliff.activity_diff:.2f}, "
+                  f"Score={cliff.cliff_score:.2f}")
+
+    # Chemical space exploration
+    explorer = ChemicalSpaceExplorer(n_clusters=6)
+    fingerprints = np.array([m.fingerprint for m in molecules])
+    coords_2d = explorer.reduce_dimensions(fingerprints)
+    cluster_labels = explorer.cluster_molecules(fingerprints)
+    diversity = explorer.compute_diversity(fingerprints)
+
+    for mol, cl in zip(molecules, cluster_labels):
+        mol.cluster_id = cl
+
+    print(f"\nChemical Space Diversity: {diversity:.3f}")
+    print(f"Clusters: {len(set(cluster_labels))}")
+
+    # Figure 6: Activity cliff and chemical space
+    fig, axes = plt.subplots(2, 2, figsize=(14, 12))
+
+    # Chemical space colored by activity
+    ax = axes[0, 0]
+    activities = [m.activity for m in molecules]
+    sc = ax.scatter(coords_2d[:, 0], coords_2d[:, 1], c=activities,
+                    cmap='RdYlGn', s=30, alpha=0.7, edgecolors='gray', linewidths=0.3)
+    plt.colorbar(sc, ax=ax, label='pIC50')
+    ax.set_title('Chemical Space (colored by pIC50)')
+    ax.set_xlabel('t-SNE 1')
+    ax.set_ylabel('t-SNE 2')
+
+    # Chemical space colored by cluster
+    ax = axes[0, 1]
+    sc = ax.scatter(coords_2d[:, 0], coords_2d[:, 1], c=cluster_labels,
+                    cmap='Set2', s=30, alpha=0.7, edgecolors='gray', linewidths=0.3)
+    # Highlight cliff molecules
+    cliff_mask = [m.is_cliff for m in molecules]
+    if any(cliff_mask):
+        ax.scatter(coords_2d[cliff_mask, 0], coords_2d[cliff_mask, 1],
+                   facecolors='none', edgecolors='red', s=80, linewidths=2,
+                   label='Activity cliff')
+        ax.legend()
+    ax.set_title('Chemical Space (clusters + cliffs)')
+    ax.set_xlabel('t-SNE 1')
+    ax.set_ylabel('t-SNE 2')
+
+    # Activity distribution
+    ax = axes[1, 0]
+    cliff_activities = [m.activity for m in molecules if m.is_cliff]
+    non_cliff_activities = [m.activity for m in molecules if not m.is_cliff]
+    ax.hist(non_cliff_activities, bins=25, alpha=0.6, label='Non-cliff', color='steelblue', density=True)
+    if cliff_activities:
+        ax.hist(cliff_activities, bins=15, alpha=0.6, label='Cliff', color='red', density=True)
+    ax.set_xlabel('pIC50')
+    ax.set_ylabel('Density')
+    ax.set_title('Activity Distribution')
+    ax.legend()
+
+    # SALI (Structure-Activity Landscape Index)
+    ax = axes[1, 1]
+    if cliffs:
+        sims = [c.similarity for c in cliffs]
+        diffs = [c.activity_diff for c in cliffs]
+        scores = [c.cliff_score for c in cliffs]
+        sc = ax.scatter(sims, diffs, c=scores, cmap='hot_r', s=40, alpha=0.7,
+                        edgecolors='black', linewidths=0.3)
+        plt.colorbar(sc, ax=ax, label='Cliff Score')
+    ax.set_xlabel('Tanimoto Similarity')
+    ax.set_ylabel('|ΔpIC50|')
+    ax.set_title('Structure-Activity Landscape Index (SALI)')
+    ax.axhline(y=1.5, color='gray', linestyle='--', alpha=0.5)
+    ax.axvline(x=0.75, color='gray', linestyle='--', alpha=0.5)
+
+    plt.suptitle('Activity Cliff Detection & Chemical Space Analysis', fontsize=14, fontweight='bold')
+    plt.tight_layout()
+    plt.savefig(f'{output_dir}/activity_cliffs.png', dpi=150, bbox_inches='tight')
+    plt.close()
+
+    print(f"\nFigures saved to {output_dir}/")
+
     return {
-        "n_strategies": len(strategies),
-        "strategies": strategies,
-        "estimated_compounds_to_synthesize": sum(
-            len(s.get("targets", [])) * 3 for s in strategies
-        ) + 20,
-        "chemical_space_coverage_current": space_analysis.coverage_score,
-        "chemical_space_coverage_target": min(1.0, space_analysis.coverage_score + 0.2),
+        'n_cliffs': len(cliffs),
+        'n_cliff_molecules': sum(1 for m in molecules if m.is_cliff),
+        'diversity': diversity,
+        'n_clusters': len(set(cluster_labels)),
+        'top_cliff_score': cliffs[0].cliff_score if cliffs else 0.0,
     }
 
 
-def generate_synthetic_compounds(
-    n_compounds: int = 100,
-    seed: int = 42
-) -> List[Compound]:
-    """Generate synthetic compound dataset for demonstration."""
-    rng = np.random.RandomState(seed)
-    fp_size = 1024
-    
-    compounds = []
-    # Generate several scaffold classes
-    n_scaffolds = 5
-    scaffold_fps = [rng.randint(0, 2, fp_size) for _ in range(n_scaffolds)]
-    scaffold_base_pki = rng.uniform(5, 8, n_scaffolds)
-    
-    smiles_templates = [
-        "c1ccc(NC(=O)c2ccccc2)cc1",
-        "c1ccc(-c2cnc3ccccc3n2)cc1",
-        "O=C(Nc1ccccc1)c1ccc(O)cc1",
-        "c1ccc(CSc2nnc(-c3ccccc3)o2)cc1",
-        "c1ccc(-n2c(=O)c3ccccc3nc2=O)cc1",
-    ]
-    
-    for i in range(n_compounds):
-        scaffold_idx = i % n_scaffolds
-        
-        # Fingerprint: scaffold + random variation
-        fp = scaffold_fps[scaffold_idx].copy()
-        n_mutations = rng.randint(10, 50)
-        mutation_pos = rng.choice(fp_size, n_mutations, replace=False)
-        fp[mutation_pos] = 1 - fp[mutation_pos]
-        
-        # Activity: base + noise, with occasional cliffs
-        pki = scaffold_base_pki[scaffold_idx] + rng.normal(0, 0.5)
-        if rng.random() < 0.05:  # 5% chance of activity cliff
-            pki += rng.choice([-2.5, 2.5])
-        pki = np.clip(pki, 3, 11)
-        
-        compounds.append(Compound(
-            compound_id=f"CMPD_{i+1:04d}",
-            smiles=smiles_templates[scaffold_idx],
-            pki=float(pki),
-            fingerprint=fp.astype(float),
-            mw=float(rng.uniform(250, 600)),
-            logp=float(rng.uniform(0, 5)),
-            hbd=int(rng.randint(0, 5)),
-            hba=int(rng.randint(2, 10)),
-            tpsa=float(rng.uniform(40, 140)),
-            rotatable_bonds=int(rng.randint(1, 10)),
-            scaffold=f"Scaffold_{scaffold_idx + 1}",
-        ))
-    
-    return compounds
+if __name__ == '__main__':
+    run_activity_cliff_analysis()

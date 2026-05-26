@@ -1,0 +1,7 @@
+Taxon,Metabolite,Spearman_r,FDR_q
+Faecalibacterium,Butyrate,0.8996,0.0
+Roseburia,Propionate,0.9002,0.0
+Coprococcus,Tryptophan,0.3002,0.003915
+Coprococcus_sp2,Tryptophan,0.3105,0.00286
+Coprococcus_sp2,Kynurenine,-0.3074,0.00286
+Bifidobacterium,Acetate,0.8311,0.0

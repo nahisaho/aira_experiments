@@ -1,0 +1,77 @@
+{
+  "essential_gene_prediction": {
+    "Random Forest": {
+      "auc_mean": 0.9996483516483516,
+      "auc_std": 0.00043067951521463403,
+      "f1_mean": 0.9883205456095482,
+      "f1_std": 0.01098256294300966,
+      "acc_mean": 0.9920000000000002,
+      "acc_std": 0.007483314773547889
+    },
+    "Gradient Boosting": {
+      "auc_mean": 0.9602637362637363,
+      "auc_std": 0.026367545086427652,
+      "f1_mean": 0.9394398696130161,
+      "f1_std": 0.03273548344462074,
+      "acc_mean": 0.958,
+      "acc_std": 0.023151673805580433
+    }
+  },
+  "codon_optimization": {
+    "naive": {
+      "repeats_mean": 1.44,
+      "repeats_std": 2.14625254804741,
+      "cai_mean": 0.5643933333333333,
+      "cai_std": 0.018032278465758753
+    },
+    "diverse": {
+      "repeats_mean": 0.12,
+      "repeats_std": 0.32496153618543844,
+      "cai_mean": 0.4598533333333334,
+      "cai_std": 0.02262360222815496
+    },
+    "diverse_derepeat": {
+      "repeats_mean": 0.12,
+      "repeats_std": 0.32496153618543844,
+      "cai_mean": 0.4598533333333334,
+      "cai_std": 0.02262360222815496
+    }
+  },
+  "gene_arrangement": {
+    "original_leading_bias": 0.9166666666666666,
+    "optimized_leading_bias": 1.0
+  },
+  "genome_refactoring": {
+    "original_size_kb": 418.0604962366282,
+    "compressed_size_kb": 383.5546868321446,
+    "after_redundancy_kb": 314.5148432023586,
+    "final_minimal_kb": 298.78910104224065,
+    "overall_reduction_pct": 28.529697560057965
+  },
+  "assembly_strategy": {
+    "L1_oligo_assembly": {
+      "n_fragments": 364,
+      "mean_success_rate": 0.9051553999540167
+    },
+    "L2_gibson_assembly": {
+      "n_fragments": 68,
+      "mean_success_rate": 0.8311810574516976
+    },
+    "L3_gibson_assembly": {
+      "n_fragments": 11,
+      "mean_success_rate": 0.6946621845486314
+    },
+    "L4_final_assembly": {
+      "n_fragments": 1,
+      "mean_success_rate": 0.6250683560716578
+    }
+  },
+  "jcvi_case_study": {
+    "original_genes": 473,
+    "extension_genes": 46,
+    "extension_size_kb": 41.4,
+    "growth_improvement": 1.3350656752687904,
+    "fitness_original_mean": 0.648890775696975,
+    "fitness_extended_mean": 0.7731291884133674
+  }
+}

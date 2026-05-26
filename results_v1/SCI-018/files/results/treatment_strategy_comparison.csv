@@ -1,6 +1,0 @@
-label,efficacy,resistance_rate,objective
-monotherapy:ampicillin,0.7308,0.41436,0.68356
-monotherapy:ciprofloxacin,0.743675,0.37278,0.629105
-combination:ampicillin+gentamicin,0.679,0.2882634,0.6092633999999999
-cycling:ampicillin+ciprofloxacin+gentamicin,0.6824583333333334,0.2508012,0.5683428666666666
-mixing:ciprofloxacin+gentamicin,0.6746625,0.24599106,0.57132856

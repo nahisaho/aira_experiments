@@ -1,0 +1,4 @@
+Metric	F_statistic	R2	p_value	Permutations
+Bray-Curtis	15082.5812	0.9998	0.003	999
+Jaccard			0.001	999
+Aitchison	11913.9159	0.9997	0.006	999

@@ -1,0 +1,11 @@
+{
+  "experiment_id": "SCI-007",
+  "title": "SCI-007",
+  "project_id": "66508f36-3e6e-47fc-88d9-e880cf08ca43",
+  "prompt_length": 2273,
+  "output_length": 3075,
+  "file_count": 25,
+  "duration_seconds": 1087,
+  "status": "success",
+  "timestamp": "2026-05-25T21:26:44.374Z"
+}

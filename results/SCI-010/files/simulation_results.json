@@ -1,0 +1,55 @@
+{
+  "dar": {
+    "fractions": [
+      0.00179,
+      0.0162,
+      0.08749,
+      0.23297,
+      0.32195,
+      0.23228,
+      0.08829,
+      0.01737,
+      0.00166
+    ],
+    "optimal_dar": 1.292929292929293
+  },
+  "linker": {
+    "Acid": 4.040080160320642,
+    "Enzyme": 7.935871743486974,
+    "Reducible": 8.224448897795591
+  },
+  "bystander": {
+    "total_cells": 7668,
+    "final_alive": 9,
+    "kill_rate_pct": 99.88262910798123,
+    "agpos_kill_pct": 100.0,
+    "agneg_kill_pct": 99.69919786096256
+  },
+  "stability": {
+    "optimal_alpha": 0.005,
+    "optimal_beta": 1.0,
+    "optimal_score": 52.169263460618424
+  },
+  "pk": {
+    "Cmax_nM": 1023.7895309472502,
+    "AUC_0_21_nM_day": 3583.6213082071345,
+    "Ctrough_day21_nM": 57.04983609284825,
+    "Max_free_payload_nM": 0.12460961450731911,
+    "Max_tumor_ADC_nM": 552.552289003692
+  },
+  "case_study": {
+    "ORR_pct": 79.0,
+    "DCR_pct": 100.0,
+    "median_PFS_months": 8.8491860600689,
+    "grade3_AE_pct": 25.0,
+    "CR": 0,
+    "PR": 395,
+    "SD": 105,
+    "PD": 0,
+    "mean_tumor_shrinkage_pct": 46.843058282203536
+  },
+  "dar_mc": {
+    "optimal_dar": 1.0,
+    "max_ti": 3.9687071050508873
+  }
+}

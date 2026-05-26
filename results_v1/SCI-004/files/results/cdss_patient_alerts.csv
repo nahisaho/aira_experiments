@@ -1,9 +1,0 @@
-patient_id,diagnosis,overall_risk,alert_type,drug,gene,phenotype,recommendation_message,cpic_level
-PT001,Post-PCI + Epilepsy + Acute pain,HIGH,CONTRAINDICATION,Codeine,CYP2D6,Ultrarapid Metabolizer (UM),Excess morphine production; risk of opioid toxicity/death.,STRONG
-PT001,Post-PCI + Epilepsy + Acute pain,HIGH,DOSE_ADJUSTMENT,Clopidogrel,CYP2C19,Poor Metabolizer (PM),Markedly reduced active metabolite. Use prasugrel or ticagrelor.,STRONG
-PT001,Post-PCI + Epilepsy + Acute pain,HIGH,CONTRAINDICATION,Carbamazepine,HLA-B,HLA-B*15:02_positive,High risk of SJS/TEN (OR=80). Use alternative AED.,STRONG
-PT002,HIV + Chronic pain + Depression,HIGH,CONTRAINDICATION,Abacavir,HLA-B,HLA-B*57:01_positive,High risk of hypersensitivity reaction (OR=117). Absolute contraindication.,STRONG
-PT002,HIV + Chronic pain + Depression,HIGH,CONTRAINDICATION,Codeine,CYP2D6,Poor Metabolizer (PM),Poor conversion to morphine; inadequate analgesia. Use alternative analgesic.,STRONG
-PT002,HIV + Chronic pain + Depression,HIGH,DRUG_DRUG_INTERACTION,"['Codeine', 'Fluoxetine']",-,-,"Fluoxetine inhibits CYP2D6, may increase codeine-related toxicity.",MODERATE
-PT004,Gout + Atrial Fibrillation,HIGH,CONTRAINDICATION,Allopurinol,HLA-B,HLA-B*58:01_positive,Extremely high SJS/TEN risk (OR=580). Use febuxostat.,STRONG
-PT004,Gout + Atrial Fibrillation,HIGH,DOSE_ADJUSTMENT,Warfarin,CYP2C9_VKORC1,Sensitive,"CYP2C9*2/*3 or VKORC1 -1639A: start with reduced dose, frequent INR monitoring.",STRONG

@@ -1,9 +1,0 @@
-{
-  "total_pathways_tested": 12,
-  "significant_ora": 0,
-  "significant_gsea": 1,
-  "shared_categories": 1,
-  "top_pathway": "Neuroactive ligand-receptor interaction",
-  "microbial_pathways": 5,
-  "host_pathways": 5
-}

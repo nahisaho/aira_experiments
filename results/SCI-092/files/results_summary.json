@@ -1,0 +1,263 @@
+{
+  "meta_analysis": {
+    "Gene Editing": {
+      "pooled_effect": -0.10003188359356227,
+      "pooled_se": 0.11470347843763677,
+      "acceptance_probability": 0.4750128615230834,
+      "tau2": 0.06363389239025324,
+      "Q": 141.67694210005925,
+      "I2": 97.1766753709471,
+      "ci_lower": 0.41949405177377375,
+      "ci_upper": 0.5311563140886499,
+      "n_studies": 5
+    },
+    "AI/ML": {
+      "pooled_effect": 0.3744786082076134,
+      "pooled_se": 0.11012548119360877,
+      "acceptance_probability": 0.5925407231698189,
+      "tau2": 0.05916772256832273,
+      "Q": 190.01830098797987,
+      "I2": 97.89493960360532,
+      "ci_lower": 0.5395752107724318,
+      "ci_upper": 0.6434396093785647,
+      "n_studies": 5
+    },
+    "Nuclear Fusion": {
+      "pooled_effect": 0.34703484648574856,
+      "pooled_se": 0.08099525429844735,
+      "acceptance_probability": 0.585898352719201,
+      "tau2": 0.030046774373353333,
+      "Q": 53.038348386019834,
+      "I2": 92.45828702868442,
+      "ci_lower": 0.5469324689321752,
+      "ci_upper": 0.6238179893420844,
+      "n_studies": 5
+    }
+  },
+  "sentiment": {
+    "correlation": 0.014,
+    "total_posts": 3000
+  },
+  "psychometric": {
+    "variance_explained": [
+      24.4,
+      19.0
+    ],
+    "factor_loadings": {
+      "Dread Factor": {
+        "dread_risk": -0.39229535240760816,
+        "unknown_risk": 0.4617083677526497,
+        "voluntariness": 0.3939262358181006,
+        "controllability": 0.38535340543114827,
+        "catastrophic_potential": -0.14570022190056955,
+        "novelty": 0.5550009537122408
+      },
+      "Unknown Factor": {
+        "dread_risk": 0.4782093101954497,
+        "unknown_risk": 0.5292608212397625,
+        "voluntariness": -0.45499507944437695,
+        "controllability": -0.09392592167520804,
+        "catastrophic_potential": 0.3611512668093717,
+        "novelty": 0.38069147632152006
+      }
+    }
+  },
+  "framing": [
+    {
+      "technology": "Gene Editing",
+      "frame": "Benefit",
+      "cohens_d": 0.202,
+      "mean_diff": 0.037,
+      "t_statistic": 2.018,
+      "p_value": 0.04424,
+      "neutral_mean": 0.51,
+      "treatment_mean": 0.547
+    },
+    {
+      "technology": "Gene Editing",
+      "frame": "Risk",
+      "cohens_d": -0.508,
+      "mean_diff": -0.092,
+      "t_statistic": -5.083,
+      "p_value": 0.0,
+      "neutral_mean": 0.51,
+      "treatment_mean": 0.418
+    },
+    {
+      "technology": "Gene Editing",
+      "frame": "Expert",
+      "cohens_d": 0.228,
+      "mean_diff": 0.041,
+      "t_statistic": 2.279,
+      "p_value": 0.02322,
+      "neutral_mean": 0.51,
+      "treatment_mean": 0.552
+    },
+    {
+      "technology": "Gene Editing",
+      "frame": "Narrative",
+      "cohens_d": 0.299,
+      "mean_diff": 0.055,
+      "t_statistic": 2.994,
+      "p_value": 0.00293,
+      "neutral_mean": 0.51,
+      "treatment_mean": 0.565
+    },
+    {
+      "technology": "AI/ML",
+      "frame": "Benefit",
+      "cohens_d": 0.497,
+      "mean_diff": 0.082,
+      "t_statistic": 4.972,
+      "p_value": 0.0,
+      "neutral_mean": 0.486,
+      "treatment_mean": 0.568
+    },
+    {
+      "technology": "AI/ML",
+      "frame": "Risk",
+      "cohens_d": -0.42,
+      "mean_diff": -0.071,
+      "t_statistic": -4.201,
+      "p_value": 3e-05,
+      "neutral_mean": 0.486,
+      "treatment_mean": 0.415
+    },
+    {
+      "technology": "AI/ML",
+      "frame": "Expert",
+      "cohens_d": 0.301,
+      "mean_diff": 0.052,
+      "t_statistic": 3.013,
+      "p_value": 0.00275,
+      "neutral_mean": 0.486,
+      "treatment_mean": 0.538
+    },
+    {
+      "technology": "AI/ML",
+      "frame": "Narrative",
+      "cohens_d": 0.391,
+      "mean_diff": 0.065,
+      "t_statistic": 3.906,
+      "p_value": 0.00011,
+      "neutral_mean": 0.486,
+      "treatment_mean": 0.551
+    },
+    {
+      "technology": "Nuclear Fusion",
+      "frame": "Benefit",
+      "cohens_d": 0.187,
+      "mean_diff": 0.034,
+      "t_statistic": 1.866,
+      "p_value": 0.06272,
+      "neutral_mean": 0.534,
+      "treatment_mean": 0.567
+    },
+    {
+      "technology": "Nuclear Fusion",
+      "frame": "Risk",
+      "cohens_d": -0.77,
+      "mean_diff": -0.135,
+      "t_statistic": -7.703,
+      "p_value": 0.0,
+      "neutral_mean": 0.534,
+      "treatment_mean": 0.399
+    },
+    {
+      "technology": "Nuclear Fusion",
+      "frame": "Expert",
+      "cohens_d": 0.098,
+      "mean_diff": 0.018,
+      "t_statistic": 0.98,
+      "p_value": 0.32754,
+      "neutral_mean": 0.534,
+      "treatment_mean": 0.551
+    },
+    {
+      "technology": "Nuclear Fusion",
+      "frame": "Narrative",
+      "cohens_d": 0.166,
+      "mean_diff": 0.029,
+      "t_statistic": 1.659,
+      "p_value": 0.09781,
+      "neutral_mean": 0.534,
+      "treatment_mean": 0.563
+    }
+  ],
+  "sem": {
+    "paths": {
+      "institutional_trust ~ knowledge": {
+        "coefficients": {
+          "knowledge": 0.401
+        },
+        "r_squared": 0.176,
+        "rmse": 0.863
+      },
+      "scientist_trust ~ knowledge + institutional_trust": {
+        "coefficients": {
+          "knowledge": 0.397,
+          "institutional_trust": 0.34
+        },
+        "r_squared": 0.422,
+        "rmse": 0.711
+      },
+      "perceived_benefit ~ knowledge + scientist_trust": {
+        "coefficients": {
+          "knowledge": 0.256,
+          "scientist_trust": 0.357
+        },
+        "r_squared": 0.326,
+        "rmse": 0.752
+      },
+      "perceived_risk ~ knowledge + institutional_trust": {
+        "coefficients": {
+          "knowledge": -0.184,
+          "institutional_trust": -0.325
+        },
+        "r_squared": 0.228,
+        "rmse": 0.772
+      },
+      "acceptance ~ perceived_benefit + perceived_risk + scientist_trust + media_influence": {
+        "coefficients": {
+          "perceived_benefit": 0.345,
+          "perceived_risk": -0.293,
+          "scientist_trust": 0.223,
+          "media_influence": 0.156
+        },
+        "r_squared": 0.603,
+        "rmse": 0.493
+      }
+    },
+    "fit_indices": {
+      "chi_square": 55.03,
+      "df": 10,
+      "CFI": 0.987,
+      "TLI": 0.92,
+      "RMSEA": 0.064,
+      "SRMR": 0.046
+    }
+  },
+  "japan": {
+    "overall": {
+      "mean_acceptance": 0.504,
+      "std_acceptance": 0.191,
+      "mean_wtp": 0.376
+    },
+    "regression": {
+      "knowledge_coef": 0.076,
+      "trust_coef": 0.08,
+      "naturalness_coef": -0.064,
+      "r_squared": 0.317
+    },
+    "anova_age": {
+      "F": 31.358,
+      "p": 0.0
+    },
+    "labeling": {
+      "Mandatory": 65.0,
+      "Voluntary": 26.8,
+      "Not needed": 8.200000000000001
+    },
+    "n": 600
+  }
+}

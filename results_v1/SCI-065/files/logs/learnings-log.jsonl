@@ -1,2 +1,0 @@
-{"timestamp": "2026-05-22T18:03:19.974564+00:00", "skill": "co-scientist-data-analysis", "learning": "Expected Improvement の正規CDFを np.math.erf で書くと NumPy 2 系で失敗する", "action": "Gotchas追記と scipy.special.erf への置換", "severity": "high"}
-{"timestamp": "2026-05-22T18:05:21.371943+00:00", "skill": "co-scientist-data-analysis", "learning": "球対称反応拡散で least_squares を半径スイープに使うと臨界半径探索が著しく遅くなる", "action": "Gotchas追記と Picard 線形化＋二分探索への切替", "severity": "medium"}

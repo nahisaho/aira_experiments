@@ -1,0 +1,42 @@
+{
+  "Butyrate_biosynthesis": [
+    "Faecalibacterium",
+    "Roseburia",
+    "Eubacterium",
+    "Butyricicoccus",
+    "Anaerostipes"
+  ],
+  "Propionate_biosynthesis": [
+    "Bacteroides",
+    "Prevotella",
+    "Alistipes",
+    "Phascolarctobacterium"
+  ],
+  "Acetate_biosynthesis": [
+    "Bifidobacterium",
+    "Blautia",
+    "Ruminococcus"
+  ],
+  "Tryptophan_metabolism": [
+    "Escherichia",
+    "Lactobacillus",
+    "Clostridium",
+    "Bacteroides"
+  ],
+  "Bile_acid_biotransformation": [
+    "Clostridium",
+    "Bacteroides",
+    "Eubacterium",
+    "Lactobacillus"
+  ],
+  "Indole_metabolism": [
+    "Escherichia",
+    "Clostridium",
+    "Bacteroides"
+  ],
+  "Phenylpropanoid_degradation": [
+    "Clostridium",
+    "Blautia",
+    "Dorea"
+  ]
+}

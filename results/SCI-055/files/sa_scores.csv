@@ -1,0 +1,10 @@
+Molecule,SMILES,SA_Score,MW,Complexity,Rings,Stereocenters,SA_fragment_similarity,SA_molecular_complexity,SA_ring_complexity,SA_stereo_penalty,SA_size_penalty,SA_heteroatom_penalty,SA_sp3_penalty
+Benzene,c1ccccc1,2.95,78.11399999999999,71.96100505779535,1,0,0.43,0.048,0.06,0.0,0.0,0.0,0.0
+Aspirin,CC(=O)Oc1ccccc1C(=O)O,3.93,180.15899999999996,343.2228677267164,1,0,0.291,0.229,0.06,0.0,0.075,0.0,0.033
+Caffeine,Cn1c(=O)c2c(ncn2C)n(C)c1=O,5.47,194.194,616.5285919942219,2,0,0.084,0.411,0.24,0.0,0.1,0.0,0.112
+Taxol_fragment,CC1(C)C[C@H]2OC(=O)[C@@H](OC(=O)c3ccccc3)[C@]3(O)C[C@@H](OC(C)=O)[C@H](OC(=O)C(O)=Cc4ccccc4)C(=O)[C@]13[C@@H](OC(=O)c1ccccc1NC(=O)c1ccccc1)[C@@H]2OC(C)=O,10.0,903.8900000000002,2595.0502276814245,8,8,0.117,1.0,1.0,0.8,1.0,0.0,0.092
+Ethanol,CCO,3.22,46.069,2.7548875021634682,0,0,0.362,0.002,0.0,0.0,0.0,0.0,0.3
+Paracetamol,CC(=O)Nc1ccc(O)cc1,3.89,151.165,253.29949758389105,1,0,0.238,0.169,0.06,0.0,0.025,0.0,0.037
+Ibuprofen,CC(C)Cc1ccc(C(C)C(=O)O)cc1,4.47,206.28499999999997,324.8941190021566,1,1,0.201,0.217,0.06,0.1,0.125,0.0,0.138
+Vancomycin_frag,OC(=O)[C@@H](NC(=O)[C@H](CC(=O)N)NC=O)c1ccc(O)c(Oc2cc(Cl)c(O)cc2)c1,6.48,451.8190000000002,1013.6425614356868,2,2,0.107,0.676,0.12,0.2,0.525,0.0,0.047
+Penicillin_V,CC1(C)[C@@H](C(=O)O)N2C(=O)[C@@H](NC(=O)COc3ccccc3)[C@H]2S1,6.22,350.396,678.305160116001,3,3,0.156,0.452,0.313,0.3,0.35,0.0,0.131

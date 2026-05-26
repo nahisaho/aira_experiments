@@ -1,0 +1,11 @@
+{
+  "experiment_id": "SCI-059",
+  "title": "SCI-059",
+  "project_id": "e692af81-93ab-4ee4-9af8-ae0f055ca811",
+  "prompt_length": 1524,
+  "output_length": 839,
+  "file_count": 11,
+  "duration_seconds": 524,
+  "status": "success",
+  "timestamp": "2026-05-25T23:45:31.837Z"
+}

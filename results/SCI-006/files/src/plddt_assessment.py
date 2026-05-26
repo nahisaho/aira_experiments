@@ -2,286 +2,202 @@
 Module 1: AlphaFold2 pLDDT-based Docking Suitability Assessment
 
 Evaluates AlphaFold2 predicted structures for molecular docking suitability
-based on per-residue pLDDT confidence scores, with binding site quality
-metrics and adaptive docking strategy selection.
+based on per-residue pLDDT confidence scores in the binding site region.
 """
 
-import json
 import numpy as np
-from dataclasses import dataclass, field, asdict
-from typing import List, Dict, Tuple, Optional
-from enum import Enum
-
-
-class DockingSuitability(Enum):
-    """Docking suitability classification based on pLDDT scores."""
-    HIGH = "high"        # pLDDT >= 90: direct docking
-    MODERATE = "moderate" # 70 <= pLDDT < 90: docking with caution
-    LOW = "low"          # 50 <= pLDDT < 70: requires MD refinement
-    UNSUITABLE = "unsuitable"  # pLDDT < 50: not recommended
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+from dataclasses import dataclass
+from typing import List, Tuple, Optional
 
 
 @dataclass
-class ResidueConfidence:
-    """Per-residue confidence assessment."""
+class BindingSiteResidue:
     residue_id: int
     residue_name: str
-    chain_id: str
-    plddt: float
-    is_binding_site: bool = False
-    suitability: str = ""
-
-    def __post_init__(self):
-        if not self.suitability:
-            self.suitability = classify_plddt(self.plddt).value
+    plddt_score: float
+    is_binding_site: bool
+    sasa: float  # solvent accessible surface area
 
 
-@dataclass
-class BindingSiteAssessment:
-    """Comprehensive binding site quality assessment."""
-    site_residues: List[ResidueConfidence]
-    mean_plddt: float = 0.0
-    min_plddt: float = 0.0
-    max_plddt: float = 0.0
-    std_plddt: float = 0.0
-    fraction_high_confidence: float = 0.0
-    fraction_disordered: float = 0.0
-    overall_suitability: str = ""
-    recommended_strategy: str = ""
-    warnings: List[str] = field(default_factory=list)
+class PLDDTAssessor:
+    """Assesses docking suitability based on AlphaFold2 pLDDT scores."""
 
-    def __post_init__(self):
-        if self.site_residues:
-            self._compute_metrics()
+    QUALITY_THRESHOLDS = {
+        'very_high': 90.0,
+        'confident': 70.0,
+        'low': 50.0,
+    }
 
-    def _compute_metrics(self):
-        plddts = [r.plddt for r in self.site_residues]
-        self.mean_plddt = float(np.mean(plddts))
-        self.min_plddt = float(np.min(plddts))
-        self.max_plddt = float(np.max(plddts))
-        self.std_plddt = float(np.std(plddts))
-        self.fraction_high_confidence = sum(1 for p in plddts if p >= 90) / len(plddts)
-        self.fraction_disordered = sum(1 for p in plddts if p < 50) / len(plddts)
-        self.overall_suitability = classify_plddt(self.mean_plddt).value
-        self.recommended_strategy = self._determine_strategy()
-        self._generate_warnings()
+    def __init__(self, plddt_scores: np.ndarray, binding_site_indices: List[int]):
+        self.plddt_scores = plddt_scores
+        self.binding_site_indices = binding_site_indices
+        self.binding_site_plddt = plddt_scores[binding_site_indices]
 
-    def _determine_strategy(self) -> str:
-        if self.mean_plddt >= 90 and self.min_plddt >= 70:
-            return "rigid_docking"
-        elif self.mean_plddt >= 70:
-            if self.std_plddt > 15:
-                return "flexible_docking_with_ensemble"
-            return "flexible_docking"
-        elif self.mean_plddt >= 50:
-            return "md_refinement_then_docking"
+    def compute_suitability_score(self) -> float:
+        """Compute weighted docking suitability score (0-1)."""
+        mean_plddt = np.mean(self.binding_site_plddt)
+        fraction_confident = np.mean(self.binding_site_plddt > self.QUALITY_THRESHOLDS['confident'])
+        min_plddt = np.min(self.binding_site_plddt)
+
+        score = (
+            0.4 * (mean_plddt / 100.0) +
+            0.4 * fraction_confident +
+            0.2 * (min_plddt / 100.0)
+        )
+        return float(np.clip(score, 0, 1))
+
+    def classify_quality(self) -> str:
+        score = self.compute_suitability_score()
+        if score >= 0.85:
+            return "Excellent - suitable for high-confidence docking"
+        elif score >= 0.70:
+            return "Good - suitable for docking with minor caveats"
+        elif score >= 0.50:
+            return "Moderate - docking results should be interpreted cautiously"
         else:
-            return "homology_modeling_recommended"
+            return "Poor - structure refinement recommended before docking"
 
-    def _generate_warnings(self):
-        if self.fraction_disordered > 0.3:
-            self.warnings.append(
-                f"WARNING: {self.fraction_disordered:.0%} of binding site residues "
-                "have pLDDT < 50 (likely disordered)"
-            )
-        if self.std_plddt > 20:
-            self.warnings.append(
-                f"WARNING: High pLDDT variance (σ={self.std_plddt:.1f}) suggests "
-                "mixed confidence in binding site"
-            )
-        if self.min_plddt < 30:
-            self.warnings.append(
-                "WARNING: Extremely low confidence residues detected in binding site. "
-                "Consider experimental structure if available."
-            )
+    def identify_problematic_residues(self) -> List[int]:
+        return [idx for idx in self.binding_site_indices
+                if self.plddt_scores[idx] < self.QUALITY_THRESHOLDS['low']]
 
-
-def classify_plddt(score: float) -> DockingSuitability:
-    """Classify pLDDT score into docking suitability category."""
-    if score >= 90:
-        return DockingSuitability.HIGH
-    elif score >= 70:
-        return DockingSuitability.MODERATE
-    elif score >= 50:
-        return DockingSuitability.LOW
-    else:
-        return DockingSuitability.UNSUITABLE
+    def get_statistics(self) -> dict:
+        return {
+            'mean_plddt_overall': float(np.mean(self.plddt_scores)),
+            'mean_plddt_binding_site': float(np.mean(self.binding_site_plddt)),
+            'std_plddt_binding_site': float(np.std(self.binding_site_plddt)),
+            'min_plddt_binding_site': float(np.min(self.binding_site_plddt)),
+            'max_plddt_binding_site': float(np.max(self.binding_site_plddt)),
+            'fraction_confident': float(np.mean(self.binding_site_plddt > 70)),
+            'fraction_very_high': float(np.mean(self.binding_site_plddt > 90)),
+            'suitability_score': self.compute_suitability_score(),
+            'quality_class': self.classify_quality(),
+            'n_problematic_residues': len(self.identify_problematic_residues()),
+        }
 
 
-def parse_plddt_from_bfactor(pdb_path: str) -> List[ResidueConfidence]:
-    """
-    Parse pLDDT scores from B-factor column of AlphaFold2 PDB file.
-    AlphaFold2 stores pLDDT in the B-factor column for CA atoms.
-    """
-    residues = []
-    seen_residues = set()
-
-    try:
-        with open(pdb_path, 'r') as f:
-            for line in f:
-                if line.startswith("ATOM") and line[12:16].strip() == "CA":
-                    chain_id = line[21]
-                    res_id = int(line[22:26].strip())
-                    res_name = line[17:20].strip()
-                    plddt = float(line[60:66].strip())
-
-                    key = (chain_id, res_id)
-                    if key not in seen_residues:
-                        seen_residues.add(key)
-                        residues.append(ResidueConfidence(
-                            residue_id=res_id,
-                            residue_name=res_name,
-                            chain_id=chain_id,
-                            plddt=plddt
-                        ))
-    except FileNotFoundError:
-        pass
-
-    return residues
-
-
-def identify_binding_site(
-    residues: List[ResidueConfidence],
-    binding_site_residue_ids: List[int],
-    chain_id: str = "A"
-) -> List[ResidueConfidence]:
-    """Mark and extract binding site residues."""
-    binding_residues = []
-    for res in residues:
-        if res.residue_id in binding_site_residue_ids and res.chain_id == chain_id:
-            res.is_binding_site = True
-            binding_residues.append(res)
-    return binding_residues
-
-
-def assess_binding_site(
-    residues: List[ResidueConfidence],
-    binding_site_residue_ids: List[int],
-    chain_id: str = "A"
-) -> BindingSiteAssessment:
-    """
-    Perform comprehensive binding site assessment based on pLDDT scores.
-    """
-    site_residues = identify_binding_site(residues, binding_site_residue_ids, chain_id)
-    return BindingSiteAssessment(site_residues=site_residues)
-
-
-def compute_local_confidence_map(
-    residues: List[ResidueConfidence],
-    window_size: int = 5
-) -> Dict[int, float]:
-    """
-    Compute smoothed local confidence scores using sliding window average.
-    Useful for identifying confident structural regions.
-    """
-    plddts = [(r.residue_id, r.plddt) for r in residues]
-    plddts.sort(key=lambda x: x[0])
-
-    local_scores = {}
-    values = [p[1] for p in plddts]
-
-    for i, (res_id, _) in enumerate(plddts):
-        start = max(0, i - window_size // 2)
-        end = min(len(values), i + window_size // 2 + 1)
-        local_scores[res_id] = float(np.mean(values[start:end]))
-
-    return local_scores
-
-
-def generate_docking_recommendation(assessment: BindingSiteAssessment) -> Dict:
-    """Generate comprehensive docking recommendation report."""
-    return {
-        "overall_suitability": assessment.overall_suitability,
-        "recommended_strategy": assessment.recommended_strategy,
-        "binding_site_metrics": {
-            "mean_plddt": round(assessment.mean_plddt, 2),
-            "min_plddt": round(assessment.min_plddt, 2),
-            "max_plddt": round(assessment.max_plddt, 2),
-            "std_plddt": round(assessment.std_plddt, 2),
-            "fraction_high_confidence": round(assessment.fraction_high_confidence, 3),
-            "fraction_disordered": round(assessment.fraction_disordered, 3),
-        },
-        "strategy_parameters": _get_strategy_parameters(assessment),
-        "warnings": assessment.warnings,
-    }
-
-
-def _get_strategy_parameters(assessment: BindingSiteAssessment) -> Dict:
-    """Get recommended parameters for the selected docking strategy."""
-    strategy = assessment.recommended_strategy
-    params = {
-        "rigid_docking": {
-            "exhaustiveness": 32,
-            "num_poses": 9,
-            "energy_range": 3.0,
-            "flexible_residues": [],
-        },
-        "flexible_docking": {
-            "exhaustiveness": 64,
-            "num_poses": 20,
-            "energy_range": 5.0,
-            "flexible_residues": [
-                r.residue_id for r in assessment.site_residues
-                if r.plddt < 80
-            ],
-        },
-        "flexible_docking_with_ensemble": {
-            "exhaustiveness": 64,
-            "num_poses": 50,
-            "energy_range": 5.0,
-            "num_ensemble_structures": 5,
-            "md_equilibration_ns": 10,
-            "flexible_residues": [
-                r.residue_id for r in assessment.site_residues
-                if r.plddt < 80
-            ],
-        },
-        "md_refinement_then_docking": {
-            "md_production_ns": 100,
-            "clustering_method": "RMSD",
-            "num_representative_structures": 10,
-            "exhaustiveness": 64,
-            "num_poses": 50,
-        },
-        "homology_modeling_recommended": {
-            "note": "AlphaFold2 structure unreliable for this binding site. "
-                    "Use experimental structure or template-based homology model.",
-        },
-    }
-    return params.get(strategy, {})
-
-
-# --- Synthetic data generation for demonstration ---
-
-def generate_synthetic_plddt_profile(
-    n_residues: int = 300,
-    seed: int = 42
-) -> List[ResidueConfidence]:
-    """Generate a realistic synthetic pLDDT profile for demonstration."""
+def simulate_alphafold_structure(n_residues: int = 300, seed: int = 42) -> Tuple[np.ndarray, List[int]]:
+    """Generate simulated AlphaFold2 pLDDT scores for demonstration."""
     rng = np.random.RandomState(seed)
 
-    plddts = np.zeros(n_residues)
-    # Core structured regions (high confidence)
-    for start, end in [(20, 80), (100, 180), (200, 270)]:
-        plddts[start:end] = rng.normal(92, 4, end - start)
-    # Loop regions (moderate confidence)
-    for start, end in [(80, 100), (180, 200)]:
-        plddts[start:end] = rng.normal(72, 8, end - start)
-    # Terminal regions (low confidence)
-    plddts[:20] = rng.normal(45, 12, 20)
-    plddts[270:] = rng.normal(40, 15, n_residues - 270)
+    plddt = np.zeros(n_residues)
 
-    plddts = np.clip(plddts, 0, 100)
-
-    residues = []
-    amino_acids = ["ALA", "ARG", "ASN", "ASP", "CYS", "GLU", "GLN", "GLY",
-                   "HIS", "ILE", "LEU", "LYS", "MET", "PHE", "PRO", "SER",
-                   "THR", "TRP", "TYR", "VAL"]
+    # Divide into structured and loop regions proportionally
+    segment_len = n_residues // 6
     for i in range(n_residues):
-        residues.append(ResidueConfidence(
-            residue_id=i + 1,
-            residue_name=rng.choice(amino_acids),
-            chain_id="A",
-            plddt=float(plddts[i])
-        ))
-    return residues
+        region = i // segment_len
+        if region % 2 == 0:  # structured
+            plddt[i] = rng.normal(88, 5)
+        else:  # loop
+            plddt[i] = rng.normal(62, 12)
+
+    plddt = np.clip(plddt, 0, 100)
+
+    # Define binding site as ~15% of residues in the middle
+    bs_start = n_residues // 4
+    bs_size = max(15, n_residues // 7)
+    binding_site = list(range(bs_start, min(bs_start + bs_size, n_residues)))
+
+    return plddt, binding_site
+
+
+def run_plddt_analysis(output_dir: str = "figures"):
+    """Run the complete pLDDT analysis and generate figures."""
+    print("=" * 60)
+    print("Module 1: pLDDT-based Docking Suitability Assessment")
+    print("=" * 60)
+
+    # Simulate multiple protein targets
+    targets = {
+        'CDK2 (kinase)': (300, 42),
+        'BRD4 (bromodomain)': (250, 123),
+        'SARS-CoV-2 Mpro': (306, 456),
+        'PDE5 (phosphodiesterase)': (350, 789),
+        'EGFR (kinase)': (280, 321),
+    }
+
+    results = {}
+    all_plddt_data = {}
+
+    for target_name, (n_res, seed) in targets.items():
+        plddt, bs_indices = simulate_alphafold_structure(n_res, seed)
+        assessor = PLDDTAssessor(plddt, bs_indices)
+        stats = assessor.get_statistics()
+        results[target_name] = stats
+        all_plddt_data[target_name] = (plddt, bs_indices)
+
+        print(f"\n{target_name}:")
+        print(f"  Overall pLDDT: {stats['mean_plddt_overall']:.1f}")
+        print(f"  Binding site pLDDT: {stats['mean_plddt_binding_site']:.1f} ± {stats['std_plddt_binding_site']:.1f}")
+        print(f"  Suitability Score: {stats['suitability_score']:.3f}")
+        print(f"  Quality: {stats['quality_class']}")
+
+    # Figure 1: pLDDT profiles
+    fig, axes = plt.subplots(2, 3, figsize=(15, 8))
+    axes = axes.flatten()
+
+    for idx, (name, (plddt, bs_idx)) in enumerate(all_plddt_data.items()):
+        ax = axes[idx]
+        residues = np.arange(len(plddt))
+        ax.plot(residues, plddt, 'b-', alpha=0.5, linewidth=0.8, label='All residues')
+        ax.scatter(bs_idx, plddt[bs_idx], c='red', s=8, zorder=5, label='Binding site')
+        ax.axhline(y=70, color='orange', linestyle='--', alpha=0.5, label='Confidence threshold')
+        ax.axhline(y=90, color='green', linestyle='--', alpha=0.5, label='High confidence')
+        ax.set_title(name, fontsize=10)
+        ax.set_xlabel('Residue Index')
+        ax.set_ylabel('pLDDT')
+        ax.set_ylim(0, 105)
+        if idx == 0:
+            ax.legend(fontsize=7)
+
+    axes[-1].axis('off')
+    plt.suptitle('AlphaFold2 pLDDT Profiles with Binding Site Residues', fontsize=13, fontweight='bold')
+    plt.tight_layout()
+    plt.savefig(f'{output_dir}/plddt_profiles.png', dpi=150, bbox_inches='tight')
+    plt.close()
+
+    # Figure 2: Suitability scores comparison
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
+
+    names = list(results.keys())
+    scores = [results[n]['suitability_score'] for n in names]
+    colors = ['green' if s > 0.85 else 'orange' if s > 0.70 else 'red' for s in scores]
+
+    bars = ax1.barh(names, scores, color=colors, edgecolor='black', linewidth=0.5)
+    ax1.set_xlabel('Docking Suitability Score')
+    ax1.set_title('Docking Suitability Assessment')
+    ax1.set_xlim(0, 1)
+    ax1.axvline(x=0.85, color='green', linestyle='--', alpha=0.5, label='Excellent')
+    ax1.axvline(x=0.70, color='orange', linestyle='--', alpha=0.5, label='Good')
+    ax1.legend()
+    for bar, score in zip(bars, scores):
+        ax1.text(bar.get_width() + 0.01, bar.get_y() + bar.get_height() / 2,
+                 f'{score:.3f}', va='center', fontsize=9)
+
+    # pLDDT distribution comparison
+    bs_means = [results[n]['mean_plddt_binding_site'] for n in names]
+    overall_means = [results[n]['mean_plddt_overall'] for n in names]
+    x = np.arange(len(names))
+    width = 0.35
+    ax2.bar(x - width / 2, overall_means, width, label='Overall', color='steelblue', edgecolor='black', linewidth=0.5)
+    ax2.bar(x + width / 2, bs_means, width, label='Binding Site', color='coral', edgecolor='black', linewidth=0.5)
+    ax2.set_ylabel('Mean pLDDT')
+    ax2.set_title('pLDDT: Overall vs Binding Site')
+    ax2.set_xticks(x)
+    ax2.set_xticklabels([n.split('(')[0].strip() for n in names], rotation=30, ha='right')
+    ax2.legend()
+    ax2.set_ylim(0, 100)
+
+    plt.tight_layout()
+    plt.savefig(f'{output_dir}/plddt_suitability.png', dpi=150, bbox_inches='tight')
+    plt.close()
+
+    print(f"\nFigures saved to {output_dir}/")
+    return results
+
+
+if __name__ == '__main__':
+    run_plddt_analysis()

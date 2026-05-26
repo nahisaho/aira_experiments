@@ -1,7 +1,0 @@
-{
-  "training_triples": 263,
-  "testing_triples": 33,
-  "validation_triples": 33,
-  "num_entities": 120,
-  "num_relations": 6
-}

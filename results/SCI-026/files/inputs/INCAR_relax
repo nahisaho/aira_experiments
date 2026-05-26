@@ -1,0 +1,16 @@
+SYSTEM = Li6PS5Cl_LiCoO2_interface_relax
+ENCUT = 520
+EDIFF = 1E-5
+EDIFFG = -0.02
+IBRION = 2
+ISIF = 2
+NSW = 150
+ISPIN = 2
+PREC = Accurate
+ALGO = Normal
+ISMEAR = 0
+SIGMA = 0.05
+LASPH = .TRUE.
+LREAL = Auto
+LCHARG = .FALSE.
+LWAVE = .FALSE.

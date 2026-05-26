@@ -1,0 +1,5 @@
+Method,Final Best (mean),Final Best (std),Iterations
+EI,2.9218,0.1321,40
+UCB (β=2),2.9559,0.1268,40
+UCB (β=0.5),3.0797,0.1614,40
+KG,2.5795,0.7216,20

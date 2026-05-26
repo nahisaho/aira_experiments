@@ -1,0 +1,21 @@
+drug,disease,score,is_novel,rank
+Metformin,COVID-19,-2.7862071990966797,True,1
+Ruxolitinib,COVID-19,-2.79052734375,True,2
+Tocilizumab,Asthma,-2.8212201595306396,True,3
+Dexamethasone,Rheumatoid Arthritis,-2.8274197578430176,True,4
+Ritonavir,COVID-19,-2.8315916061401367,True,5
+Ribavirin,COVID-19,-2.8360326290130615,True,6
+Dexamethasone,SARS,-2.8419415950775146,True,7
+Fluvoxamine,COVID-19,-2.859116554260254,True,8
+Metformin,Rheumatoid Arthritis,-2.862733840942383,True,9
+Metformin,Hepatitis C,-2.890094041824341,True,10
+Fluvoxamine,Hepatitis C,-2.890963554382324,True,11
+Baricitinib,SARS,-2.895594358444214,True,12
+Sofosbuvir,COVID-19,-2.906517267227173,True,13
+Tocilizumab,Crohn Disease,-2.928630828857422,True,14
+Tocilizumab,SARS,-2.934743881225586,True,15
+Interferon-beta,Breast Cancer,-2.939441680908203,True,16
+Interferon-beta,COVID-19,-2.939656972885132,True,17
+Lopinavir,Hypertension,-2.946056365966797,True,18
+Losartan,COVID-19,-2.9483156204223633,True,19
+Baricitinib,Asthma,-2.9600648880004883,True,20

@@ -1,0 +1,30 @@
+{
+  "hele_shaw": {
+    "max_pressure_MPa": 80.0,
+    "max_velocity_m_s": 0.0013
+  },
+  "cooling": {
+    "final_center_T": 50
+  },
+  "stress_warpage": {
+    "max_stress_MPa": 2.4,
+    "max_warpage_mm": 0.3341
+  },
+  "data_assimilation": {
+    "prior_rmse": 9.87,
+    "enkf_rmse": 1.99,
+    "k_estimated": 0.0833,
+    "k_true": 0.08,
+    "rmse_reduction_pct": 79.8
+  },
+  "automotive": {
+    "r2_warpage": 0.9923,
+    "r2_shrinkage": 0.9709,
+    "r2_surface": 0.8347,
+    "mae_warpage_mm": 0.0063,
+    "mae_shrinkage_pct": 0.0166,
+    "feasible_count": 42,
+    "total_samples": 300,
+    "feasible_ratio": 0.14
+  }
+}

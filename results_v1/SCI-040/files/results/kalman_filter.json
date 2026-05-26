@@ -1,8 +1,0 @@
-{
-  "filter_rms_m3": 4.5728924144543993e+24,
-  "smoother_rms_m3": 4.6298991880412184e+24,
-  "mean_filter_uncertainty_m3": 6.146755802441708e+30,
-  "eruption_detected_day": 363,
-  "true_eruption_day": 200,
-  "n_epochs": 365
-}
