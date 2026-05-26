@@ -29,7 +29,8 @@ AlphaFoldによるタンパク質構造予測？ LLMによる論文要約？ そ
 
 :::note info
 **本記事のデータと成果物はすべて公開しています**
-GitHub: [aira_experiments](https://github.com/nahisaho/aira_experiments)（CC BY-NC 4.0）
+GitHub: [nahisaho/aira_experiments](https://github.com/nahisaho/aira_experiments)（CC BY-NC 4.0）
+AIRA本体: [nahisaho/aira](https://github.com/nahisaho/aira)
 :::
 
 ---
@@ -40,10 +41,10 @@ GitHub: [aira_experiments](https://github.com/nahisaho/aira_experiments)（CC BY
 
 | 項目 | 内容 |
 |------|------|
-| AIエージェント | AIRA (AI Research Assistant) ── ローカル実行 |
+| AIエージェント | [AIRA](https://github.com/nahisaho/aira) (AI Research Assistant) ── ローカル実行 |
 | 使用スキル | Co-Scientist（科学実験の自動実行を担当） |
-| 学術検索 | ToolUniverse MCP（Semantic Scholar / PubMed / Crossref） |
-| 自動化 | Playwright（5並列ワーカー） |
+| 学術検索 | [ToolUniverse](https://github.com/mims-harvard/ToolUniverse) MCP（Semantic Scholar / PubMed / Crossref） |
+| 自動化 | [Playwright](https://playwright.dev/)（5並列ワーカー） |
 | 実行日 | 2026年5月25〜26日 |
 
 ### プロンプト設計（v4.0 / Round-9）
@@ -63,7 +64,7 @@ GitHub: [aira_experiments](https://github.com/nahisaho/aira_experiments)（CC BY
   └ コード実装・可視化・レポート/論文生成
 ```
 
-各テーマに対して、AIは以下を自動生成する:
+各テーマに対して、[AIRA](https://github.com/nahisaho/aira)は以下を自動生成する:
 
 - **Pythonコード**: データ前処理・モデル実装・学習パイプライン
 - **図表（PNG）**: アーキテクチャ図・学習曲線・ベンチマーク比較
@@ -78,7 +79,7 @@ GitHub: [aira_experiments](https://github.com/nahisaho/aira_experiments)（CC BY
 | SCI-006 | AlphaFold2活用タンパク質-リガンド結合予測 |
 | SCI-007 | 深層生成モデル治療用抗体 de novo 設計 |
 | SCI-010 | ADCペイロード・リンカー最適化 |
-| ... | *（全100テーマは[GitHub](https://github.com/nahisaho/aira_experiments)で公開）* |
+| ... | *（全100テーマは[GitHub](https://github.com/nahisaho/aira_experiments/tree/main/results)で公開）* |
 
 テーマは生命科学・計算化学・物理学・データサイエンスなど多分野にわたる。
 
@@ -323,7 +324,8 @@ AIの強みは、人間が思いつかない技術の組み合わせを高速に
 
 ## リポジトリ
 
-- **GitHub**: [nahisaho/aira_experiments](https://github.com/nahisaho/aira_experiments)
+- **実験結果**: [nahisaho/aira_experiments](https://github.com/nahisaho/aira_experiments)
+- **AIRA本体**: [nahisaho/aira](https://github.com/nahisaho/aira)
 - **ライセンス**: CC BY-NC 4.0
 - **含まれるもの**: 100件分の入力プロンプト・AI応答全文・生成コード・論文・比較分析レポート
 
