@@ -91,4 +91,8 @@ aira_experiments/
 
 ## ライセンス
 
-ISC
+本リポジトリの内容は [Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/) の下で公開されています。
+
+- ✅ 学術研究・教育・個人利用での利用・改変・再配布が可能です
+- ✅ クレジット表示が必要です
+- ❌ 商用利用は禁止です

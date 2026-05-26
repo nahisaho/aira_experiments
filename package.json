@@ -6,7 +6,7 @@
     "type": "git",
     "url": "git+https://github.com/nahisaho/aira_experiments.git"
   },
-  "license": "ISC",
+  "license": "CC-BY-NC-4.0",
   "type": "commonjs",
   "dependencies": {
     "@playwright/test": "^1.60.0",
