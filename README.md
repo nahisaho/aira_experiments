@@ -55,6 +55,8 @@ AIRAのCo-Scientistスキルに対して、生命科学・計算科学・物理�
 - 97%がDOI付き実在文献を引用 — 先行研究調査プロンプトの効果を確認
 - **結論: AI for Scienceにおいても研究者による課題設定が不可替**
 
+詳細な実践ガイドは [ベストプラクティス](best-practices.md) を参照してください。
+
 ## ディレクトリ構成
 
 ```
@@ -62,6 +64,7 @@ aira_experiments/
 ├── README.md                 # このファイル
 ├── comparison-report.md      # バージョン間比較レポート (v1.0〜v4.0)
 ├── novelty-report.md         # 新規性評価レポート
+├── best-practices.md         # AI for Science ベストプラクティス
 ├── results/                  # 実験結果 (100実験)
 │   ├── summary.json          # 全実験のメタデータ集約
 │   ├── SCI-001/              # 各実験ディレクトリ
