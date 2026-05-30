@@ -1,0 +1,16 @@
+citation_key,system_type,platform,main_relevance,reported_benefit,study_role
+Licata-2023,Review,Multiple bioreactors,Perfusion and scale-up synthesis,Improved mass transfer and controllability,Review
+Saglam-Metiner-2023,Cerebral organoid,Dynamic culture,Dynamic maturation effects,Enhanced diversity and neuronal function,Primary study
+Seiler-2022,Cerebral cortex organoid,Microfluidic perfusion,Metabolic stress reduction,Reduced glycolytic stress,Primary study
+Suong-2021,Brain organoid,Vertical-mixing bioreactor,Mixing-induced morphology control,Improved morphology control,Primary study
+Zheng-2021,Organoid-on-chip,Numerical simulation,Simulation-guided design,Rationalized microenvironment design,Review
+Hofer-2021,General organoid,Engineering toolbox,Design principles,Controlled microenvironments,Review
+Zhao-2022,General organoid,Methods primer,Standardization and methods,Protocol guidance,Review
+Velasco-2020,General organoid,Microtechnology,Sensor integration,Miniaturized control and readout,Review
+Decarli-2021,Spheroid,High-throughput production,Transferable transport principles,Scalable spheroid manufacturing,Review
+Yang-2023,General organoid,Biomedical applications,Translational context,Broad biomedical utility,Review
+Schafer-2023,Brain organoid,In vivo maturation context,Neuroimmune maturation readouts,Advanced phenotype assessment,Primary study
+Lancaster-2013,Cerebral organoid,Spinning bioreactor,Foundational protocol,Long-term self-organization,Primary study
+Qian-2016,Brain-region organoid,Mini-bioreactor,Foundational dynamic culture,Regional patterning,Primary study
+Birey-2017,Forebrain spheroid,Fused spheroids,Maturation and circuitry endpoints,Functional integration,Primary study
+Kim-2020,Human organoid,Review,Clinical and biological context,Model-system positioning,Review

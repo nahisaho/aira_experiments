@@ -1,0 +1,20 @@
+record_id,title,year,source,decision,reason
+1,Optimal Detection of Changepoints With a Linear Computational Cost,2012,Crossref,include,Foundational scalable PELT reference
+2,Bayesian Online Change Point Detection for Baseline Shifts,2020,Crossref,include,Directly relevant BOCPD variant
+3,Reevaluating the Change Point Detection Problem with Segment-based Bayesian Online Detection,2021,Crossref,include,Recent BOCPD-related benchmark study
+4,Isolation Forest,2008,Crossref,include,Foundational large-scale anomaly baseline
+5,Deep Isolation Forest for Anomaly Detection,2023,Crossref,include,Recent nonlinear isolation extension
+6,VAE-based Deep SVDD for anomaly detection,2021,Crossref,include,Recent Deep SVDD variant with DOI
+7,Anomaly detection using improved deep SVDD model with data structure preservation,2021,Crossref,include,Recent Deep SVDD refinement
+8,Explaining anomalies detected by autoencoders using Shapley Additive Explanations,2022,web_search,include,Relevant SHAP explanation paper with DOI
+9,Temporal Attention for Few-Shot Concept Drift Detection in Streaming Data,2024,Crossref,include,Recent concept-drift detector with DOI
+10,Unsupervised Concept Drift Detection From Deep Learning Representations in Real-Time,2025,Crossref,include,Recent real-time drift paper with DOI
+11,PWPAE: An Ensemble Framework for Concept Drift Adaptation in IoT Data Streams,2021,Crossref,include,Useful adaptation baseline
+12,Challenges for Anomaly Detection in Large-Scale Cyber-Physical Systems,2023,Crossref,include,Problem framing for large scientific systems
+13,Anomaly detection for data quality monitoring of the Muon system at CMS,2025,Crossref,include,Scientific QC application in HEP
+14,Machine Learning Anomaly Detection Applications to Compact Muon Solenoid Data Quality Monitoring,2020,Crossref,exclude,Dissertation; lower priority than peer-reviewed items
+15,Solar Energy and Photovoltaic Cells in Andhra Pradesh: Potentials Deployments and Future Prospects,2025,Crossref,exclude,False positive unrelated to the topic
+16,Review for GWAK: Gravitational-Wave Anomalous Knowledge with Recurrent Autoencoders,2024,Crossref,exclude,Peer-review metadata rather than article record
+17,Review for Unsupervised/Semi-Supervised Magnetic Anomaly Detection Method Based on Deep Support Vector Data Description,2025,Crossref,exclude,Peer-review metadata rather than article record
+18,Anomaly Detection for Automated Data Quality Monitoring in the CMS Detector,2025,web_search,exclude,ArXiv DOI lookup not reliably verified through Crossref in this run
+19,Machine learning-based anomaly detection with Isolation Forest in large-scale data analysis,2025,Crossref,exclude,Too recent and weakly tied to scientific QC benchmark design

@@ -1,0 +1,8 @@
+Method,AUC (CV mean),AUC (CV SD),AUC (full),Population,ΔAUC vs Naive
+Naive EUR→EAS,0.5764,0.0154,0.5764,EAS,0.0
+LD-Corrected Bayes,0.615,0.0148,0.6144,EAS,0.0386
+Multi-Anc Meta (IVW),0.582,0.0171,0.5817,EAS,0.0056
+PRS-CSx (approx),0.5682,0.0179,0.5682,EAS,-0.0082
+Local Ancestry,0.6131,0.0307,0.6134,EAS,0.0367
+Oracle (true EAS),0.6836,0.0204,0.6833,EAS,0.1072
+EUR Baseline,0.6627,0.0254,0.662,EUR,0.0863

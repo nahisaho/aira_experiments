@@ -1,0 +1,5 @@
+scenario,carbon_mJPY,water_mJPY,sediment_mJPY,cultural_mJPY,total_mJPY
+Baseline,2282.29,1.14,0.01,66619.03,68902.47
+BAU (Deforestation),2035.28,1.17,0.01,63403.99,65440.45
+Conservation,2350.89,1.14,0.01,68576.9,70928.94
+Restoration,2291.18,1.13,0.01,67064.52,69356.84

@@ -1,0 +1,143 @@
+# =============================================================================
+# MetaFlow: Shotgun Metagenomics Functional Profiling Pipeline
+# Configuration File
+# =============================================================================
+
+# ---- Sample Configuration ----
+samples:
+  - SRR1: "data/raw/SRR1_{1,2}.fastq.gz"
+  - SRR2: "data/raw/SRR2_{1,2}.fastq.gz"
+  - SRR3: "data/raw/SRR3_{1,2}.fastq.gz"
+
+# ---- Reference Databases ----
+databases:
+  human_genome: "databases/hg38/hg38.fa"
+  kraken2_db: "databases/kraken2/standard"
+  metaphlan4_db: "databases/metaphlan4/mpa_vJan21_CHOCOPhlAnSGB_202103"
+  humann3_db: "databases/humann3"
+  eggnog_db: "databases/eggnog"
+  gtdbtk_db: "databases/gtdbtk/release214"
+  checkm2_db: "databases/checkm2/uniref100.KO.1.dmnd"
+
+# ---- Step 1: Quality Control ----
+qc:
+  fastp:
+    threads: 8
+    min_length: 75              # Minimum read length after trimming
+    quality_threshold: 30       # Phred score threshold (NatureLM: Q30 recommended)
+    complexity_threshold: 30    # Low-complexity filter
+    dedup: true                 # Enable deduplication
+  host_removal:
+    tool: "bowtie2"
+    threads: 16
+    sensitivity: "--very-sensitive"
+  multiqc: true
+
+# ---- Step 2: Assembly-Free Classification ----
+classification:
+  kraken2:
+    threads: 16
+    confidence: 0.1             # Confidence threshold
+    min_hit_groups: 3
+  bracken:
+    read_length: 150
+    level: "S"                  # Species level
+    threshold: 10
+  metaphlan4:
+    threads: 8
+    db_version: "mpa_vJan21_CHOCOPhlAnSGB_202103"
+    analysis_type: "rel_ab_w_read_stats"
+    min_reads: 5000
+
+# ---- Step 3: Functional Annotation ----
+functional:
+  humann3:
+    threads: 16
+    bypass_prescreen: false
+    nucleotide_db: "chocophlan"
+    protein_db: "uniref90_diamond"
+    pathways_db: "metacyc"
+  eggnog_mapper:
+    threads: 16
+    evalue: 0.001
+    score: 60
+    tax_scope: "Bacteria"
+    go_evidence: "non-electronic"
+    target_orthologs: "all"
+    seed_ortholog_evalue: 0.001
+
+# ---- Step 4: Assembly + Binning ----
+assembly:
+  megahit:
+    threads: 32
+    memory: "256G"
+    min_contig_len: 1000        # NatureLM: minimum 1000 bp for binning
+    k_list: "21,29,39,59,79,99,119,141"
+  metaspades:
+    threads: 32
+    memory: 256
+    only_assembler: false
+
+binning:
+  min_contig_length: 1500       # Slightly more conservative than minimum
+  metabat2:
+    threads: 16
+    min_contig_size: 1500
+  concoct:
+    threads: 16
+    chunk_size: 10000
+    overlap_size: 0
+    clusters: 400
+  maxbin2:
+    threads: 16
+    min_contig_length: 1500
+  das_tool:
+    threads: 16
+    score_threshold: 0.5
+    search_engine: "diamond"
+
+# ---- Step 5: MAG Quality & Phylogeny ----
+mag_quality:
+  checkm2:
+    threads: 16
+    # MIMAG thresholds (NatureLM confirmed):
+    # High-quality: completeness >= 90%, contamination <= 5%
+    # Medium-quality: completeness >= 50%, contamination <= 10%
+    hq_completeness: 90.0
+    hq_contamination: 5.0
+    mq_completeness: 50.0
+    mq_contamination: 10.0
+  gtdbtk:
+    threads: 32
+    extension: "fa"
+    pplacer_cpus: 1
+
+# ---- Step 6: Statistical Analysis ----
+statistics:
+  min_prevalence: 0.1           # Taxa must be present in >= 10% of samples
+  min_abundance: 1e-4           # Minimum relative abundance
+  alpha_diversity: ["shannon", "simpson", "chao1", "observed"]
+  beta_diversity: ["bray_curtis", "unweighted_unifrac", "weighted_unifrac"]
+  differential_abundance:
+    method: "maaslin2"          # or "ancom-bc", "deseq2", "lefse"
+    min_prevalence: 0.1
+    normalization: "TSS"
+    transform: "LOG"
+    fixed_effects: ["disease_status", "age", "sex", "BMI"]
+    random_effects: ["study_id"]
+  permanova:
+    permutations: 9999
+    strata: "study_id"
+
+# ---- Output Paths ----
+output:
+  base_dir: "results"
+  qc: "results/01_qc"
+  classification: "results/02_classification"
+  functional: "results/03_functional"
+  assembly: "results/04_assembly"
+  binning: "results/05_binning"
+  mag_quality: "results/06_mag_quality"
+  phylogeny: "results/06_phylogeny"
+  statistics: "results/07_statistics"
+  reports: "results/reports"

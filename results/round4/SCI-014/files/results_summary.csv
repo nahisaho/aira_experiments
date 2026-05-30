@@ -1,0 +1,5 @@
+Task,Best Classifier,AUROC,F1,Acc
+PD Gait,MLP,1.000 ± 0.000,0.990  ± 0.008,0.990 ± 0.008
+ALS Voice,SVM-RBF,0.999 ± 0.003,0.982  ± 0.026,0.983 ± 0.024
+Cognitive Touchscreen,SVM-RBF,1.000 ± 0.000,1.000  ± 0.000,1.000 ± 0.000
+Multimodal Fusion,RandomForest,1.000 ± 0.000,1.000  ± 0.000,1.000 ± 0.000

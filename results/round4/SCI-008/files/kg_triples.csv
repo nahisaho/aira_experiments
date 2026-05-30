@@ -1,0 +1,143 @@
+head,relation,tail
+IL-1beta,activates,NF-kB
+Umifenovir,inhibits,Viral_Entry
+JAK1,interacts_with,JAK2
+Heart Failure,associated_with,COVID-19
+RAB7,participates_in,Autophagy
+Camostat,synergizes_with,Remdesivir
+JAK2,associated_with,Rheumatoid Arthritis
+Baricitinib,treats,Rheumatoid Arthritis
+Baricitinib,inhibits,JAK1
+Zinc sulfate,inhibits,RdRp
+TNF-alpha,activates,NF-kB
+Cytokine_Signaling,associated_with,Cytokine Storm
+IL-6,biomarker_of,Cytokine Storm
+Interferon-beta,treats,COVID-19
+RdRp,interacts_with,NSP14
+Colchicine,treats,Inflammatory Bowel Disease
+Tofacitinib,inhibits,JAK1
+Coagulation,associated_with,Thrombosis
+Tocilizumab,treats,COVID-19
+Type 2 Diabetes,associated_with,COVID-19
+Coagulopathy,causes,Thrombosis
+NF-kB,participates_in,NF-kB_Pathway
+MAPK,participates_in,MAPK_Pathway
+Dexamethasone,synergizes_with,Remdesivir
+Selinexor,inhibits,ORF3a
+Remdesivir,treats,COVID-19
+Lopinavir,synergizes_with,Ritonavir
+Furin,participates_in,Viral_Entry
+MAPK,associated_with,Psoriasis
+NSP14,associated_with,COVID-19
+Niclosamide,inhibits,ESCRT
+IL-1beta,biomarker_of,Sepsis
+Cytokine Storm,causes,Multi_Organ_Failure
+Nafamostat,treats,COVID-19
+RNA_Replication,associated_with,COVID-19
+Spike,interacts_with,ACE2
+Oseltamivir,treats,Influenza
+IL-1beta,participates_in,Innate_Immunity
+Spike,participates_in,Viral_Entry
+Obesity,associated_with,COVID-19
+TLR_Signaling,participates_in,Innate_Immunity
+Aspirin,treats,Influenza
+Dexamethasone,treats,ARDS
+Remdesivir,inhibits,RdRp
+mTOR,associated_with,Cancer
+Lopinavir,treats,SARS
+NSP3,associated_with,COVID-19
+Furin,associated_with,COVID-19
+TNF-alpha,associated_with,Rheumatoid Arthritis
+IL-1beta,associated_with,Sepsis
+Remdesivir,synergizes_with,Baricitinib
+Remdesivir,causes,Viral_Load_Reduction
+ARDS,causes,Hypoxia
+IL-6,activates,JAK1
+PI3K,activates,mTOR
+Cytokine Storm,causes,Hyperinflammation
+Quercetin,inhibits,Viral_Entry
+Tocilizumab,treats,Rheumatoid Arthritis
+NSP12,interacts_with,RdRp
+Oseltamivir,inhibits,RNA_Replication
+Baricitinib,inhibits,JAK2
+Ritonavir,treats,SARS
+JAK1,interacts_with,STAT3
+RdRp,associated_with,SARS
+COVID-19,causes,Lymphopenia
+Ruxolitinib,treats,Cytokine Storm
+Azithromycin,associated_with,COVID-19
+ACE2,associated_with,COVID-19
+NF-kB,associated_with,Inflammatory Bowel Disease
+Colchicine,treats,COVID-19
+Ivermectin,inhibits,NSP3
+PI3K,associated_with,Cancer
+Furin,interacts_with,Spike
+Colchicine,inhibits,MAPK
+Tofacitinib,treats,Rheumatoid Arthritis
+RdRp,participates_in,RNA_Replication
+Baricitinib,synergizes_with,Ruxolitinib
+STAT3,associated_with,COVID-19
+TMPRSS2,participates_in,Viral_Entry
+CATHEPSIN,participates_in,Autophagy
+MAPK,activates,mTOR
+JAK-STAT_Pathway,associated_with,COVID-19
+Rituximab,treats,Lupus
+Niclosamide,inhibits,CATHEPSIN
+ORF7b,associated_with,COVID-19
+TLR_Signaling,associated_with,Innate_Immunity
+Viral_Entry,associated_with,COVID-19
+Camostat,treats,COVID-19
+COVID-19,causes,Respiratory_Failure
+Spike,associated_with,COVID-19
+Chloroquine,inhibits,CATHEPSIN
+Dexamethasone,inhibits,NF-kB
+IL-6,participates_in,Cytokine_Signaling
+ACE2,interacts_with,TMPRSS2
+Tocilizumab,inhibits,IL-6
+JAK1,participates_in,JAK-STAT_Pathway
+NSP12,participates_in,RNA_Replication
+Ferroptosis,associated_with,Multi_Organ_Failure
+COVID-19,causes,Hyperinflammation
+Nitazoxanide,inhibits,NSP5
+Sepsis,causes,Multi_Organ_Failure
+mTOR,participates_in,Autophagy
+Dexamethasone,treats,COVID-19
+VPS4,participates_in,ESCRT
+Baricitinib,causes,Mortality
+STAT3,participates_in,JAK-STAT_Pathway
+TNF-alpha,participates_in,NF-kB_Pathway
+NSP5,associated_with,COVID-19
+Quercetin,inhibits,JAK1
+Baricitinib,treats,COVID-19
+Hypertension,associated_with,COVID-19
+JAK1,associated_with,Rheumatoid Arthritis
+Rituximab,inhibits,NF-kB
+ACE2,participates_in,Viral_Entry
+Interferon-beta,treats,Multiple Sclerosis
+Ibuprofen,treats,Influenza
+Nafamostat,inhibits,TMPRSS2
+Favipiravir,treats,COVID-19
+NSP5,interacts_with,NSP3
+IL-6,activates,STAT3
+Baloxavir,inhibits,RNA_Replication
+Ruxolitinib,inhibits,JAK2
+Hydroxychloroquine,treats,Lupus
+Complement_System,associated_with,Coagulopathy
+Dexamethasone,causes,Mortality
+ORF3a,associated_with,COVID-19
+Dexamethasone,inhibits,TNF-alpha
+Methotrexate,treats,Rheumatoid Arthritis
+Lopinavir,inhibits,NSP5
+PI3K,participates_in,Autophagy
+JAK2,participates_in,JAK-STAT_Pathway
+COVID-19,causes,Thrombosis
+IL-6,associated_with,Cytokine Storm
+Lymphopenia,biomarker_of,COVID-19
+Camostat,inhibits,TMPRSS2
+Favipiravir,inhibits,RdRp
+Methotrexate,inhibits,MAPK
+Selinexor,treats,COVID-19
+Niclosamide,treats,COVID-19
+Apoptosis,associated_with,Cancer
+TMPRSS2,associated_with,COVID-19
+CATHEPSIN,activates,Viral_Entry

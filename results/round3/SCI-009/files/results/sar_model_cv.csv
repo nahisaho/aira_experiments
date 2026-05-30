@@ -1,0 +1,7 @@
+target,model,cv_rmse_mean,cv_rmse_std,cv_r2_mean,cv_r2_std,train_rmse,train_r2
+pDC50,GradientBoosting,0.2007,0.022,-0.3144,0.4537,0.1447,0.4249
+pDC50,RandomForest,0.1897,0.0246,-0.1866,0.45,0.1455,0.4186
+pDC50,Ridge,0.1749,0.0229,0.0512,0.1588,0.1617,0.2824
+Dmax_pct,GradientBoosting,15.7366,2.8058,-0.1745,0.3321,11.6268,0.4021
+Dmax_pct,RandomForest,14.7744,2.5776,-0.0125,0.2293,11.7056,0.394
+Dmax_pct,Ridge,14.5776,1.5847,0.0082,0.1598,13.652,0.1757

@@ -1,0 +1,7 @@
+__pycache__/
+.pytest_cache/
+*.pyc
+*.Rhistory
+*.RData
+.DS_Store
+*.log

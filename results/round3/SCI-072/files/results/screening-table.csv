@@ -1,0 +1,13 @@
+citation_key,title,year,decision,reason
+(Sharon, 2015),Conflict-based search for optimal multi-agent pathfinding,2015,include,Foundational optimal CBS paper
+(Stern, 2019),Multi-Agent Pathfinding: Definitions Variants and Benchmarks,2019,include,Canonical benchmark and taxonomy paper
+(Li, 2021a),EECBS: A Bounded-Suboptimal Search for Multi-Agent Path Finding,2021,include,Key bounded-suboptimal solver
+(Boyarski, 2021),ICBS: The Improved Conflict-Based Search Algorithm for Multi-Agent Pathfinding,2021,include,Important CBS improvement
+(Okumura, 2023a),LaCAM: Search-Based Algorithm for Quick Multi-Agent Pathfinding,2023,include,Fast search-based scalable solver
+(Andreychuk, 2022),Multi-agent pathfinding with continuous time,2022,include,Continuous-time extension
+(Li, 2021b),Lifelong Multi-Agent Path Finding in Large-Scale Warehouses,2021,include,Warehouse/lifelong benchmark relevance
+(Surynek, 2022),Migrating Techniques from Search-based Multi-Agent Path Finding Solvers to SAT-based Approach,2022,include,Cross-paradigm solver transfer
+(Okumura, 2022),Priority inheritance with backtracking for iterative multi-agent path finding,2022,include,Representative fast decentralized-style solver
+(Li, 2021c),Anytime Multi-Agent Path Finding via Large Neighborhood Search,2021,include,Anytime scalable method
+(Sharon, 2012),Meta-Agent Conflict-Based Search For Optimal Multi-Agent Path Finding,2012,include,Useful CBS extension baseline
+(Multi-robot pickup, 2023),Multi-Robot Pickup and Delivery via Distributed Resource Allocation,2023,exclude,Related warehouse coordination but not core MAPF benchmark paper

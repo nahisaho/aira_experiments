@@ -1,0 +1,4 @@
+model,cv_accuracy_mean,cv_accuracy_std
+RandomForest,1.0,0.0
+GradientBoosting,1.0,0.0
+LogisticRegression,1.0,0.0

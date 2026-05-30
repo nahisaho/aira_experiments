@@ -1,0 +1,12 @@
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - metabat2=2.15
+  - concoct=1.1.0
+  - maxbin2=2.2.7
+  - das_tool=1.1.6
+  - diamond=2.1.8
+  - python=3.11
+  - perl=5.32

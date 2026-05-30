@@ -1,0 +1,11 @@
+*.pyc
+__pycache__/
+.pytest_cache/
+.DS_Store
+.Rhistory
+.RData
+*.Rout
+data/raw/
+*.log
+*.tmp
+node_modules/

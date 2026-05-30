@@ -1,0 +1,12 @@
+citation_key,algorithm_family,setting,key_finding,doi_or_url
+(Sharon, 2015),Optimal/CBS,Discrete grid,CBS separates high-level conflict resolution from low-level single-agent search and remains optimal,10.1016/j.artint.2014.11.006
+(Stern, 2019),Survey/Benchmark,Definitions and benchmarks,Standardized MAPF terminology and benchmark variants for fair comparison,10.1609/socs.v10i1.18510
+(Li, 2021a),Bounded-suboptimal/EECBS,Discrete grid,EECBS offers bounded-suboptimal search with improved practical efficiency over strict optimal CBS,10.1609/aaai.v35i14.17466
+(Boyarski, 2021),Optimal/ICBS,Discrete grid,Improved conflict selection and bypassing make CBS variants stronger on hard instances,10.1609/socs.v6i1.18343
+(Okumura, 2023a),Fast search/LaCAM,Discrete grid,LaCAM emphasizes very fast search for large MAPF instances with strong empirical scaling,10.1609/aaai.v37i10.26377
+(Andreychuk, 2022),Continuous-time MAPF,Continuous time,Continuous-time collision models broaden MAPF realism beyond synchronous grid steps,10.1016/j.artint.2022.103662
+(Li, 2021b),Lifelong MAPF,Warehouse simulation,Lifelong MAPF in warehouses stresses throughput and repeated task assignment rather than one-shot optimality,10.1609/aaai.v35i13.17344
+(Surynek, 2022),SAT-based MAPF,SAT encoding,Migrating search-based ideas to SAT can improve solver effectiveness on structured MAPF instances,10.1613/jair.1.13318
+(Okumura, 2022),Fast/PIBT,Iterative MAPF,Priority inheritance with backtracking delivers fast iterative coordination and scales to many agents,10.1016/j.artint.2022.103752
+(Li, 2021c),Anytime/LNS,Large-scale MAPF,Large neighborhood search supports anytime improvement under tight runtime budgets,10.24963/ijcai.2021/568
+(Sharon, 2012),Optimal/MA-CBS,Discrete grid,Meta-agent merging alleviates repeated pairwise conflicts in hard optimal MAPF cases,10.1609/socs.v3i1.18244

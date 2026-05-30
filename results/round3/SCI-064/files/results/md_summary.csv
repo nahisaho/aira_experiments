@@ -1,0 +1,5 @@
+TF,PC1_var_%,PC2_var_%,Conformational_Sep,Mean_Coupling,RMSF_Apo_mean_A,RMSF_Holo_mean_A
+PbrR,100.0,0.0,60.308,0.3913,0.019,0.021
+CadC,100.0,0.0,54.209,0.3965,0.018,0.021
+MerR,100.0,0.0,61.057,0.3908,0.018,0.021
+ArsR,100.0,0.0,53.639,0.3901,0.019,0.022

@@ -1,0 +1,1 @@
+Now let me implement the platform. I'll use the DNA_codon_optimize tool and build comprehensive simulation code.

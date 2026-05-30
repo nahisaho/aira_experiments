@@ -1,0 +1,16 @@
+id,citation_key,year,database,title,decision,reason
+1,"(Zhang, 2021)",2021,PubMed,Drug repurposing for COVID-19 via knowledge graph completion.,include,Directly studies KG completion for COVID-19 drug repurposing.
+2,"(Al-Saleem, 2021)",2021,PubMed,Knowledge Graph-Based Approaches to Drug Repurposing for COVID-19.,include,Compares multiple KG-based repurposing pipelines for COVID-19.
+3,"(Lou, 2023)",2023,PubMed,Potential Target Discovery and Drug Repurposing for Coronaviruses: Study Involving a Knowledge Graph-Based Approach.,include,Extends KG reasoning to coronaviruses with target and drug candidate discovery.
+4,"(Zhu, 2023)",2023,PubMed,RDKG-115: Assisting drug repurposing and discovery for rare diseases by trimodal knowledge graph embedding.,include,"Demonstrates multimodal KG embeddings for repurposing, relevant to model design."
+5,"(Rivas-Barragan, 2022)",2022,PubMed,Ensembles of knowledge graph embedding models improve predictions for drug discovery.,include,Benchmarks multiple KGE models for drug discovery tasks and motivates baseline comparisons.
+6,"(Zeng, 2022)",2022,PubMed,Toward better drug discovery with knowledge graph.,include,Review paper summarizing knowledge graph opportunities and bottlenecks in drug discovery.
+7,"(MacLean, 2021)",2021,PubMed,Knowledge graphs and their applications in drug discovery.,include,Provides broad drug discovery context and motivates translational use cases.
+8,"(Bonner, 2022)",2022,PubMed,A review of biomedical datasets relating to drug discovery: a knowledge graph perspective.,include,Supports synthetic graph schema choices by cataloguing biomedical entity and relation types.
+9,"(Zhou, 2024)",2024,PubMed,TarKG: a comprehensive biomedical knowledge graph for target discovery.,include,Recent biomedical KG construction paper relevant to entity typing and graph coverage.
+10,"(Jiménez, 2024)",2024,PubMed,Explainable drug repurposing via path based knowledge graph completion.,include,Motivates path-based explanation module alongside embedding-based ranking.
+11,"(McCoy, 2021)",2021,PubMed,Biomedical Text Link Prediction for Drug Discovery: A Case Study with COVID-19.,include,"Uses link prediction for COVID-19 drug discovery, informing evaluation and case-study framing."
+12,"(Ozdemir, 2022)",2022,PubMed,How has artificial intelligence impacted COVID-19 drug repurposing and what lessons have we learned?,include,Provides broader COVID-19 computational repurposing context for discussion and limitations.
+13,"(Zhang, 2023 preprint)",2024,PubMed,Drug Repurposing using consilience of Knowledge Graph Completion methods.,exclude,Preprint retained as background only because peer-reviewed alternatives were available.
+14,"(Hsieh, 2022 preprint)",2022,PubMed,Drug repurposing for COVID-19 using graph neural network and harmonizing multiple evidence.,exclude,Relevant but preprint only; excluded from final evidence synthesis.
+15,"(Xiao, 2023 preprint)",2023,PubMed,Repurposing Non-pharmacological Interventions for Alzheimer's Diseases through Link Prediction on Biomedical Literature.,exclude,Outside drug repurposing scope and preprint status.

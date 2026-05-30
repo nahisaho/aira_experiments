@@ -1,0 +1,14 @@
+citation_key,system_or_scope,methods,key_takeaway,relevance
+"(Medford, 2015)","CatMAP software",descriptor-based microkinetics + scaling relations,"Provides an automated descriptor-to-rate workflow and formalizes map-based catalyst screening.",Framework architecture
+"(Grabow and Mavrikakis, 2011)","Methanol synthesis on Cu",DFT + microkinetic modeling,"Demonstrates how DFT energetics, BEP relations, and elementary rates combine into predictive surface kinetics.",Rate-constant implementation
+"(Stegelmann et al., 2009)","General catalysis",degree of rate control theory,"Quantifies how transition-state and intermediate energies control macroscopic rates.",DRC module
+"(Bruix et al., 2019)","Synthesis gas conversion",first-principles microkinetics,"Shows how syngas conversion selectivity depends on detailed energetic competition across metal surfaces.",FT-related benchmark
+"(Motagamwala and Dumesic, 2021)","Review",microkinetic review,"Explains why mechanistic completeness, thermodynamic consistency, and uncertainty quantification matter.",Methods and discussion
+"(Nørskov et al., 2002)","Heterogeneous catalysis descriptors",BEP/scaling theory,"Supplies the descriptor-universality basis for linear free-energy relations.",BEP relation
+"(Kozuch and Shaik, 2011)","Catalytic cycles",energetic span model,"Defines TDTS/TDI logic used to relate free-energy diagrams to catalytic turnover.",Energetic span analysis
+"(van Santen et al., 2011)","Fischer-Tropsch synthesis",mechanistic review + microkinetics,"Highlights the carbide versus CO-insertion debate and the importance of surface coverages.",FT mechanism rationale
+"(Andersen et al., 2019)","Surface kMC guidance",kinetic Monte Carlo review,"Clarifies when mean-field microkinetics breaks down due to spatial correlations and fluctuations.",Limitations section
+"(Campbell, 2017)","Catalysis methodology",DRC perspective,"Interprets DRC as a practical design metric rather than only a formal sensitivity.",RDS interpretation
+"(Rommens and Saeys, 2023)","Fischer-Tropsch synthesis",review of Co and Fe FTS,"Recent review emphasizing realistic coverages, dynamic surfaces, and active-site ambiguity.",Recent context
+"(Liu et al., 2023)","Fe-carbide FTS",machine-learning TS search + microkinetics,"Shows that detailed pathway enumeration can shift the apparent chain-growth bottleneck.",Future-work context
+"(Zhang et al., 2023)","Oscillatory FTS",experiment + microkinetic mechanism,"Demonstrates that dynamic non-isothermal behavior can emerge in FTS and be captured by mechanistic models.",Dynamic-behavior limitation

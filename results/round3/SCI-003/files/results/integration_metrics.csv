@@ -1,0 +1,4 @@
+Method,ARI,Silhouette,Batch_Mixing
+Unimodal RNA,1.0,0.7524,0.0
+Anchor (CCA/MNN),0.4604,0.2773,0.0081
+VAE (3-modal),0.9245,0.7265,0.0

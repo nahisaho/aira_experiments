@@ -1,0 +1,42 @@
+{"timestamp": "2026-05-28T13:07:03Z", "event_type": "phase_start", "phase": "ifc_parsing"}
+{"timestamp": "2026-05-28T13:07:03Z", "event_type": "file_written", "files": ["results/energyplus_input.json", "results/cfd_geometry.json"]}
+{"timestamp": "2026-05-28T13:07:03Z", "event_type": "phase_start", "phase": "thermal_simulation"}
+{"timestamp": "2026-05-28T13:07:03Z", "event_type": "phase_complete", "phase": "thermal_simulation", "EUI": 151.2}
+{"timestamp": "2026-05-28T13:07:03Z", "event_type": "phase_start", "phase": "cfd_ventilation"}
+{"timestamp": "2026-05-28T13:07:03Z", "event_type": "phase_complete", "phase": "cfd_ventilation", "CVI_score": 1.0}
+{"timestamp": "2026-05-28T13:07:03Z", "event_type": "phase_start", "phase": "daylighting"}
+{"timestamp": "2026-05-28T13:07:03Z", "event_type": "phase_complete", "phase": "daylighting", "lm83": {"DA_compliance_%": 0.0, "ASE_compliance_%": 100.0, "LEED_DA_credit": false, "LEED_ASE_pass": true}}
+{"timestamp": "2026-05-28T13:07:03Z", "event_type": "phase_start", "phase": "zeb_balance"}
+{"timestamp": "2026-05-28T13:07:03Z", "event_type": "phase_complete", "phase": "zeb_balance", "net_EUI": 188.89}
+{"timestamp": "2026-05-28T13:07:03Z", "event_type": "phase_start", "phase": "figures"}
+{"timestamp": "2026-05-28T13:07:04Z", "event_type": "phase_complete", "phase": "figures", "count": 5}
+{"timestamp": "2026-05-28T13:07:04Z", "event_type": "file_written", "files": ["results/all_results.json"]}
+{"timestamp": "2026-05-28T13:07:04Z", "event_type": "run_completed", "status": "ok", "net_EUI": 188.89}
+{"timestamp": "2026-05-28T13:08:01Z", "event_type": "phase_start", "phase": "ifc_parsing"}
+{"timestamp": "2026-05-28T13:08:01Z", "event_type": "file_written", "files": ["results/energyplus_input.json", "results/cfd_geometry.json"]}
+{"timestamp": "2026-05-28T13:08:01Z", "event_type": "phase_start", "phase": "thermal_simulation"}
+{"timestamp": "2026-05-28T13:08:01Z", "event_type": "phase_complete", "phase": "thermal_simulation", "EUI": 151.2}
+{"timestamp": "2026-05-28T13:08:01Z", "event_type": "phase_start", "phase": "cfd_ventilation"}
+{"timestamp": "2026-05-28T13:08:01Z", "event_type": "phase_complete", "phase": "cfd_ventilation", "CVI_score": 1.0}
+{"timestamp": "2026-05-28T13:08:01Z", "event_type": "phase_start", "phase": "daylighting"}
+{"timestamp": "2026-05-28T13:08:01Z", "event_type": "phase_complete", "phase": "daylighting", "lm83": {"DA_compliance_%": 0.0, "ASE_compliance_%": 100.0, "LEED_DA_credit": false, "LEED_ASE_pass": true}}
+{"timestamp": "2026-05-28T13:08:01Z", "event_type": "phase_start", "phase": "zeb_balance"}
+{"timestamp": "2026-05-28T13:08:01Z", "event_type": "phase_complete", "phase": "zeb_balance", "net_EUI": 187.81}
+{"timestamp": "2026-05-28T13:08:01Z", "event_type": "phase_start", "phase": "figures"}
+{"timestamp": "2026-05-28T13:08:02Z", "event_type": "phase_complete", "phase": "figures", "count": 5}
+{"timestamp": "2026-05-28T13:08:02Z", "event_type": "file_written", "files": ["results/all_results.json"]}
+{"timestamp": "2026-05-28T13:08:02Z", "event_type": "run_completed", "status": "ok", "net_EUI": 187.81}
+{"timestamp": "2026-05-28T13:10:46Z", "event_type": "phase_start", "phase": "ifc_parsing"}
+{"timestamp": "2026-05-28T13:10:46Z", "event_type": "file_written", "files": ["results/energyplus_input.json", "results/cfd_geometry.json"]}
+{"timestamp": "2026-05-28T13:10:46Z", "event_type": "phase_start", "phase": "thermal_simulation"}
+{"timestamp": "2026-05-28T13:10:46Z", "event_type": "phase_complete", "phase": "thermal_simulation", "EUI": 151.2}
+{"timestamp": "2026-05-28T13:10:46Z", "event_type": "phase_start", "phase": "cfd_ventilation"}
+{"timestamp": "2026-05-28T13:10:46Z", "event_type": "phase_complete", "phase": "cfd_ventilation", "CVI_score": 1.0}
+{"timestamp": "2026-05-28T13:10:46Z", "event_type": "phase_start", "phase": "daylighting"}
+{"timestamp": "2026-05-28T13:10:46Z", "event_type": "phase_complete", "phase": "daylighting", "lm83": {"DA_compliance_%": 100.0, "ASE_compliance_%": 0.0, "LEED_DA_credit": true, "LEED_ASE_pass": false}}
+{"timestamp": "2026-05-28T13:10:46Z", "event_type": "phase_start", "phase": "zeb_balance"}
+{"timestamp": "2026-05-28T13:10:46Z", "event_type": "phase_complete", "phase": "zeb_balance", "net_EUI": 166.69}
+{"timestamp": "2026-05-28T13:10:46Z", "event_type": "phase_start", "phase": "figures"}
+{"timestamp": "2026-05-28T13:10:47Z", "event_type": "phase_complete", "phase": "figures", "count": 5}
+{"timestamp": "2026-05-28T13:10:47Z", "event_type": "file_written", "files": ["results/all_results.json"]}
+{"timestamp": "2026-05-28T13:10:47Z", "event_type": "run_completed", "status": "ok", "net_EUI": 166.69}

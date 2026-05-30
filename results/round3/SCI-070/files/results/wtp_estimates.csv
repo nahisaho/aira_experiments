@@ -1,0 +1,5 @@
+Attribute,Beta,SE,t-stat,p-value,MWTP (JPY/HH/yr)
+Biodiversity conservation (per level),0.3881,0.0316,12.276,0.0000,923
+Water quality improvement (per level),0.2871,0.0312,9.200,0.0000,683
+Cultural landscape (binary),0.3270,0.0481,6.793,0.0000,778
+Payment (cost),-0.000420,0.000024,-17.332,0.0000,—

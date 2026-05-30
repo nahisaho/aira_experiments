@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+env/
+
+# Data
+*.nc
+*.trr
+*.xtc
+*.tpr
+*.gro.bak
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+*.swp
+*.swo
+.vscode/

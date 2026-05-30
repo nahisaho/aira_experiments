@@ -1,0 +1,10 @@
+chi_N,f_A,contact_OP,morphology_SCFT
+8,0.3,0.0553,Disordered
+8,0.5,0.0479,Disordered
+8,0.7,0.0000,Disordered
+20,0.3,0.0202,Cylinder
+20,0.5,0.0000,Lamellar
+20,0.7,0.0349,Cylinder
+40,0.3,0.0748,Cylinder
+40,0.5,0.0000,Lamellar
+40,0.7,0.1202,Cylinder

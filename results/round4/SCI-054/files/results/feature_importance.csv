@@ -1,0 +1,35 @@
+feature,importance,model
+num__PLD_A,0.9241062240895331,Random Forest
+num__functional_group_polarity,0.034365941262799474,Random Forest
+num__void_fraction,0.008360082588592579,Random Forest
+num__pore_volume_cm3_g,0.005650152057144367,Random Forest
+num__density_g_cm3,0.004351528886570328,Random Forest
+num__hydrophobicity,0.004132236002172671,Random Forest
+num__BET_m2_g,0.0037746965914733054,Random Forest
+num__coordination_geometry,0.0036746450052848978,Random Forest
+num__LCD_A,0.003538487260934833,Random Forest
+num__linker_flexibility,0.0031314284049367915,Random Forest
+num__linker_complexity,0.003097745433768167,Random Forest
+cat__metal_node_Zn,0.0005520769521291226,Random Forest
+cat__metal_node_Zr,0.0004432527635577567,Random Forest
+cat__metal_node_Cu,0.0002453360014029087,Random Forest
+cat__metal_node_Al,0.00019507607950487819,Random Forest
+cat__metal_node_Cr,0.00019481966703183305,Random Forest
+cat__metal_node_Mg,0.00018627095316289485,Random Forest
+num__PLD_A,0.672218382358551,XGBoost
+num__LCD_A,0.11852101236581802,XGBoost
+num__functional_group_polarity,0.05406559258699417,XGBoost
+num__void_fraction,0.02790103852748871,XGBoost
+cat__metal_node_Zn,0.022443093359470367,XGBoost
+num__hydrophobicity,0.015177200548350811,XGBoost
+num__pore_volume_cm3_g,0.013993494212627411,XGBoost
+num__density_g_cm3,0.012723815627396107,XGBoost
+cat__metal_node_Zr,0.011687629856169224,XGBoost
+cat__metal_node_Cu,0.008649171330034733,XGBoost
+num__BET_m2_g,0.008292595855891705,XGBoost
+num__coordination_geometry,0.007888163439929485,XGBoost
+num__linker_flexibility,0.006470321211963892,XGBoost
+cat__metal_node_Mg,0.006102873012423515,XGBoost
+num__linker_complexity,0.006048629526048899,XGBoost
+cat__metal_node_Cr,0.004699754994362593,XGBoost
+cat__metal_node_Al,0.003117318730801344,XGBoost

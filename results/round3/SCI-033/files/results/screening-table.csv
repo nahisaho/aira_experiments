@@ -1,0 +1,15 @@
+record_id,study,source,decision,reason
+Sim2019,Sim et al. 2019,SemanticScholar_get_paper,include,Core expressibility and entanglement benchmark paper
+SchuldKilloran2019,Schuld & Killoran 2019,Crossref_search_works,include,Feature Hilbert space interpretation of QML
+Liu2021,Liu et al. 2021,Crossref_search_works,include,Theoretical speed-up conditions
+Cerezo2021,Cerezo et al. 2021,web_search,include,VQA review and trainability context
+McClean2018,McClean et al. 2018,Crossref_search_works,include,Barren plateau foundation
+Havlicek2019,Havlíček et al. 2019,Crossref_search_works,include,Quantum kernel feature map benchmark
+Huang2021,Huang et al. 2021,Crossref_search_works,include,Data-dependent advantage conditions
+Abbas2021,Abbas et al. 2021,web_search,include,Expressive power of QNNs
+Schuld2021,Schuld 2021 kernel-method paper,web_search,include,Kernel interpretation of supervised QML
+Thanasilp2024,Thanasilp et al. 2024,web_search,include,Concentration and trainability of quantum kernels
+LaRose2020,LaRose & Coyle 2020,Crossref_search_works,include,Encoding robustness baseline
+Preskill2018,Preskill 2018,Crossref_search_works,include,NISQ noise context
+BroadQMLReview,Generic QML overview articles,Crossref_search_works,exclude,Too broad for benchmark design details
+UnverifiedKernelTitle,Exact title mismatch for Schuld reference,SemanticScholar_search_papers,exclude,No stable metadata resolution for requested exact title

@@ -1,0 +1,14 @@
+*.pyc
+__pycache__/
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+.DS_Store
+*.ipynb_checkpoints/
+.env
+*.h5
+*.pt
+*.pth
+data/raw/
+logs/*.tmp

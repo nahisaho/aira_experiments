@@ -1,0 +1,7 @@
+variant,dose_group,n,n_cases,VE,VE_95CI_lo,VE_95CI_hi
+Omicron_BA1,2-dose,4860,1210,0.5051,0.4018,0.5905
+Omicron_BA1,Booster,4860,1210,0.6731,0.6083,0.7272
+Omicron_BA45,2-dose,3540,892,0.3801,0.2284,0.5019
+Omicron_BA45,Booster,3540,892,0.5082,0.4043,0.594
+Delta,2-dose,3600,753,0.7568,0.6781,0.8162
+Delta,Booster,3600,753,0.8081,0.7503,0.8525

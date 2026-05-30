@@ -1,0 +1,11 @@
+name,smiles,n_heavy,mw,flexibility,rotatable_bonds,end_to_end_A,conformational_ddg,adme_penalty,composite_score
+rigid-biaryl,c1ccc(-c2ccccc2)cc1,12,154.1,0.3,1,15.57,0.243,0.0221,0.9128
+piperazinyl,CCN1CCN(CC1)CC,10,142.1,0.55,2,13.06,0.348,0.1473,0.7872
+triazolyl-C3,CCCc1cn[nH]n1,8,111.1,0.6,2,10.65,0.348,0.1402,0.6407
+amide-alkyl-C5,C(=O)NCCCCCC,9,129.1,0.7,6,10.19,1.424,0.1055,0.481
+alkyl-C8,CCCCCCCC,8,114.1,0.78,5,9.55,1.424,0.0229,0.458
+amide-PEG2,C(=O)NOCCO,7,105.0,0.74,4,8.78,1.214,0.2715,0.3534
+alkyl-C6,CCCCCC,6,86.1,0.76,3,7.88,1.219,0.0258,0.3414
+alkyl-C4,CCCC,4,58.1,0.72,1,5.66,0.243,0.0746,0.2658
+PEG2-amide,OCCONHC(=O)CC,0,0.0,0.8,0,0.0,0.0,0.1875,0.0398
+PEG3-amide,OCCCCONHC(=O)CC,0,0.0,0.82,0,0.0,0.0,0.1875,0.0398

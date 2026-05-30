@@ -1,0 +1,52 @@
+{
+  "phi_state_means": {
+    "vegetative": 0.03168556798491066,
+    "nrem_sleep": 0.08543597595842387,
+    "propofol_anesthesia": 0.1038298523342183,
+    "ketamine_dreaming": 0.21239576893645357,
+    "wakefulness": 0.29395712596505624
+  },
+  "phi_state_stds": {
+    "vegetative": 0.006116589267576466,
+    "nrem_sleep": 0.010494815940897703,
+    "propofol_anesthesia": 0.013161238738137739,
+    "ketamine_dreaming": 0.03681144509854715,
+    "wakefulness": 0.041035447284497074
+  },
+  "pci_state_means": {
+    "vegetative": 0.10807529318940479,
+    "nrem_sleep": 0.18863436703313868,
+    "propofol_anesthesia": 0.19389502306780831,
+    "minimally_conscious": 0.2626624115879669,
+    "ketamine_anesthesia": 0.28149866209989666,
+    "ketamine_dreaming": 0.31474368254948604,
+    "wakefulness": 0.47048337751118413
+  },
+  "pci_state_stds": {
+    "vegetative": 0.046498908947157115,
+    "nrem_sleep": 0.05341252925973204,
+    "propofol_anesthesia": 0.05734423351063535,
+    "minimally_conscious": 0.07384350689853389,
+    "ketamine_anesthesia": 0.05266554252354058,
+    "ketamine_dreaming": 0.08597452367450069,
+    "wakefulness": 0.10395831217410112
+  },
+  "pci_auc_mean": 0.8953125,
+  "pci_auc_std": 0.04746446496093452,
+  "anova_F": 53.96028612709527,
+  "anova_p": 2.7358404515531154e-33,
+  "doc_auc_mean": 0.8106666666666668,
+  "doc_auc_std": 0.06596084697252853,
+  "doc_f1_mean": 0.6188693178166862,
+  "doc_f1_std": 0.06313565461180981,
+  "doc_sens_mean": 0.6333333333333333,
+  "doc_sens_std": 0.07817359599705721,
+  "doc_spec_mean": 0.8166666666666668,
+  "doc_spec_std": 0.03908679799852859,
+  "baseline_pci_mean": 0.6541666666666668,
+  "baseline_pci_std": 0.09654446298640504,
+  "baseline_alpha_mean": 0.6540000000000001,
+  "baseline_alpha_std": 0.09578332028304536,
+  "iit_gwt_r": 0.13572714806959427,
+  "iit_gwt_p": 0.1296784553606306
+}

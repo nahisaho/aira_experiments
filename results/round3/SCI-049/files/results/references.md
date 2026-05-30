@@ -1,0 +1,13 @@
+1. Antwarg, L., Mindlin Miller, R., Shapira, B., & Rokach, L. (2022). Explaining anomalies detected by autoencoders using Shapley Additive Explanations. *Expert Systems with Applications*, 186, 115736. DOI: 10.1016/j.eswa.2021.115736
+2. Buonsante, M., Cruciani, M., Simone, F. M., & Venditti, R. (2025). Anomaly detection for data quality monitoring of the Muon system at CMS. *EPJ Web of Conferences*, 337, 01174. DOI: 10.1051/epjconf/202533701174
+3. Draayer, E., Cao, H., & Hao, Y. (2021). Reevaluating the Change Point Detection Problem with Segment-based Bayesian Online Detection. In *Proceedings of the 30th ACM International Conference on Information & Knowledge Management* (pp. 2989-2993). DOI: 10.1145/3459637.3482167
+4. Greco, S., Vacchetti, B., Apiletti, D., & Cerquitelli, T. (2025). Unsupervised Concept Drift Detection From Deep Learning Representations in Real-Time. *IEEE Transactions on Knowledge and Data Engineering*, 37(10), 6232-6245. DOI: 10.1109/TKDE.2025.3593123
+5. Killick, R., Fearnhead, P., & Eckley, I. A. (2012). Optimal Detection of Changepoints With a Linear Computational Cost. *Journal of the American Statistical Association*, 107(500), 1590-1598. DOI: 10.1080/01621459.2012.737745
+6. Lin, X., Chang, L., Nie, X., & Dong, F. (2024). Temporal Attention for Few-Shot Concept Drift Detection in Streaming Data. *Electronics*, 13(11), 2183. DOI: 10.3390/electronics13112183
+7. Liu, F. T., Ting, K. M., & Zhou, Z.-H. (2008). Isolation Forest. In *2008 Eighth IEEE International Conference on Data Mining* (pp. 413-422). DOI: 10.1109/ICDM.2008.17
+8. Michailidis, G. (2023). Challenges for Anomaly Detection in Large-Scale Cyber-Physical Systems. *Harvard Data Science Review*, 5(1). DOI: 10.1162/99608f92.7b8b6a89
+9. Xu, H., Pang, G., Wang, Y., & Wang, Y. (2023). Deep Isolation Forest for Anomaly Detection. *IEEE Transactions on Knowledge and Data Engineering*, 35(12), 12591-12604. DOI: 10.1109/TKDE.2023.3270293
+10. Yang, L., Manias, D. M., & Shami, A. (2021). PWPAE: An Ensemble Framework for Concept Drift Adaptation in IoT Data Streams. In *2021 IEEE Global Communications Conference (GLOBECOM)* (pp. 1-6). DOI: 10.1109/GLOBECOM46510.2021.9685338
+11. Yoshizawa, G. (2020). Bayesian Online Change Point Detection for Baseline Shifts. *Statistics, Optimization & Information Computing*, 9(1), 1-16. DOI: 10.19139/soic-2310-5070-1072
+12. Zhang, Z., & Deng, X. (2021). Anomaly detection using improved deep SVDD model with data structure preservation. *Pattern Recognition Letters*, 148, 1-6. DOI: 10.1016/j.patrec.2021.04.020
+13. Zhou, Y., Liang, X., Zhang, W., Zhang, L., & Song, X. (2021). VAE-based Deep SVDD for anomaly detection. *Neurocomputing*, 453, 131-140. DOI: 10.1016/j.neucom.2021.04.089

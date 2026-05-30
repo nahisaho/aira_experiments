@@ -1,6 +1,22 @@
+# Dependencies
 node_modules/
+
+# IDE / config
 .vscode/
 .github/
 AGENTS.md
+
+# Python cache / venv
 *.cpython-*.pyc
 __pycache__/
+.venv/
+
+# Exclude everything except results/*, README.md, LICENSE
+docs/
+scripts/
+*.js
+*.py
+*.json
+*.lock
+package.json
+package-lock.json

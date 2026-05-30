@@ -1,0 +1,17 @@
+Task,Classifier,AUC,AUC_std,F1,F1_std,Accuracy,Acc_std
+PD Gait,RandomForest,0.9993,0.0013,0.9899,0.0134,0.99,0.0133
+PD Gait,GradientBoosting,0.9886,0.0218,0.9704,0.0317,0.97,0.0323
+PD Gait,SVM-RBF,0.9996,0.0005,0.9827,0.0192,0.9833,0.0183
+PD Gait,LogisticReg,0.9991,0.0018,0.9864,0.0128,0.9867,0.0125
+PD Gait,MLP,0.9998,0.0004,0.9899,0.0082,0.99,0.0082
+ALS Voice,RandomForest,0.9958,0.0083,0.97,0.0262,0.9708,0.025
+ALS Voice,GradientBoosting,0.9786,0.0393,0.9427,0.0657,0.9458,0.0598
+ALS Voice,SVM-RBF,0.9986,0.0028,0.9824,0.0259,0.9833,0.0243
+ALS Voice,LogisticReg,0.9983,0.0035,0.987,0.0173,0.9875,0.0167
+ALS Voice,MLP,0.9986,0.0028,0.983,0.0248,0.9833,0.0243
+Cognitive Touchscreen,RandomForest,0.9997,0.0007,0.9874,0.0103,0.9875,0.0102
+Cognitive Touchscreen,GradientBoosting,0.9979,0.002,0.9712,0.0269,0.9708,0.0283
+Cognitive Touchscreen,SVM-RBF,1.0,0.0,1.0,0.0,1.0,0.0
+Cognitive Touchscreen,LogisticReg,1.0,0.0,1.0,0.0,1.0,0.0
+Cognitive Touchscreen,MLP,1.0,0.0,1.0,0.0,1.0,0.0
+Multimodal Fusion,RandomForest,1.0,0.0,1.0,0.0,1.0,0.0

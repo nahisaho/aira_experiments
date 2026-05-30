@@ -1,0 +1,4 @@
+Method,AUPRC,Precision,Recall,F1,N_Edges,Density,Clustering_Coef
+Correlation,0.0437,0.0475,0.49,0.0866,1032,0.4212,0.5553
+GENIE3,0.0405,0.0495,0.05,0.0498,101,0.0412,0.2739
+SCENIC-proxy,0.04,0.0396,0.04,0.0398,101,0.0412,0.3319

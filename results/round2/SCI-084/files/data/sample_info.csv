@@ -1,0 +1,5 @@
+sample,condition,library_size_millions,read_length
+normal_1,normal,26.6,75
+normal_2,normal,32.52,75
+cancer_1,cancer,26.54,75
+cancer_2,cancer,34.32,75

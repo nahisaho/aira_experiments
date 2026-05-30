@@ -1,0 +1,7 @@
+account_type,item,unit,physical_quantity,monetary_value_million_jpy,scenario
+Extent,Total ecosystem area,ha,2500.0,,Baseline 2024
+Condition,Mean Ecosystem Integrity Index (EII),index (0-1),0.719,,Baseline 2024
+Service Flow,Carbon storage,Mg C,298338.8,2282.29,Baseline 2024
+Service Flow,Water provision,1000 m³/yr,6314.4,1.14,Baseline 2024
+Service Flow,Sediment retention,Mg/yr,12.9,0.01,Baseline 2024
+Service Flow,Cultural services,visitor-days/yr,22206343.0,66619.03,Baseline 2024

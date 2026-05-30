@@ -1,0 +1,5 @@
+intervention,n,mean_acc,std_acc,p_vs_none
+diet,95,0.046,2.486,0.8397
+drug,93,-0.234,2.753,0.4781
+exercise,73,0.293,2.689,0.3717
+none,339,-0.012,2.319,

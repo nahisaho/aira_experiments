@@ -1,0 +1,21 @@
+formula,space_group,band_gap_soc_eV,m_dirac_eV,soc_eV,C1_inversion,C2_band_inversion,C3_gap_min,C4_gap_max,C5_heavy_element,Z2_SI,z2_indices,screening_score,is_TI_candidate
+TlBiTe2,166,0.25,-0.2,0.5,True,True,True,True,True,True,"(1, 0, 1, 1)",6,True
+SnBi2Te4,166,0.25,-0.2,0.4,True,True,True,True,True,True,"(0, 1, 0, 0)",6,True
+BiSbTeSe2,166,0.26,-0.22,0.37,True,True,True,True,True,True,"(1, 1, 1, 0)",6,True
+Bi2Te1Se2,166,0.27,-0.23,0.39,True,True,True,True,True,True,"(1, 1, 1, 0)",6,True
+Sb2Te3,166,0.22,-0.16,0.28,True,True,True,True,True,True,"(1, 1, 1, 0)",6,True
+Bi2Te2Se,166,0.28,-0.25,0.4,True,True,True,True,True,True,"(1, 1, 1, 0)",6,True
+Bi2Se3,166,0.3,-0.28,0.35,True,True,True,True,True,True,"(1, 1, 1, 0)",6,True
+GeBi2Te4,166,0.2,-0.18,0.38,True,True,True,True,True,True,"(0, 1, 0, 0)",6,True
+PbBi2Te4,166,0.3,-0.24,0.45,True,True,True,True,True,True,"(1, 1, 1, 1)",6,True
+MnBi2Te4,166,0.2,-0.18,0.41,True,True,True,True,True,True,"(0, 1, 0, 0)",6,True
+PbBi4Te7,166,0.18,-0.15,0.46,True,True,True,True,True,True,"(1, 1, 0, 0)",6,True
+HgBiTe2Cl,166,0.32,-0.28,0.46,True,True,True,True,True,True,"(1, 0, 1, 1)",6,True
+TlBiSe2,166,0.35,-0.3,0.44,True,True,True,True,True,True,"(1, 0, 1, 1)",6,True
+Bi2Te3,166,0.15,-0.22,0.42,True,True,True,True,True,True,"(1, 1, 1, 0)",6,True
+MnBi4Te7,166,0.15,-0.14,0.42,True,True,True,True,True,True,"(1, 1, 0, 0)",6,True
+Bi4I4,12,0.4,-0.2,0.3,True,True,True,True,True,True,"(1, 0, 1, 1)",6,True
+Bi4Se3,166,-0.05,0.08,0.33,True,False,False,True,True,True,"(0, 1, 0, 0)",4,False
+Sb2Se3,62,1.6,0.85,0.15,False,False,True,False,True,False,,2,False
+Bi2S3,62,1.1,0.7,0.2,False,False,True,False,True,False,,2,False
+TlBiS2,166,0.55,-0.1,0.38,True,True,True,False,True,True,"(1, 0, 1, 1)",5,False

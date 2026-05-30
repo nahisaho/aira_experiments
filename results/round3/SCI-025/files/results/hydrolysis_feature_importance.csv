@@ -1,0 +1,11 @@
+feature,importance
+num__physics_prior,0.9349351599829749
+bond__bond_type_anhydride,0.013432378647982322
+num__hydrophilicity,0.012995050745713591
+num__crystallinity,0.01088280485408112
+num__temperature,0.009237963522050226
+num__pH,0.009169882743941543
+num__molecular_weight,0.008232761555547443
+bond__bond_type_ester,0.0010366414684339375
+bond__bond_type_carbonate,6.200237081658098e-05
+bond__bond_type_amide,1.5354108458313496e-05

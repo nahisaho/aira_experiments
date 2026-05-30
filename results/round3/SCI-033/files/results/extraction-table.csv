@@ -1,0 +1,13 @@
+study,theme,key_method_or_claim,use_in_this_project
+Sim et al. 2019,Expressibility and entangling capability,KL divergence to Haar and Meyer-Wallach Q,Use expressibility saturation and entanglement capability as core PQC metrics
+Schuld & Killoran 2019,Quantum kernels,Feature Hilbert spaces and implicit kernels,Motivates kernel-based comparison with classical SVMs
+Liu et al. 2021,Advantage conditions,Structured learning problems needed for robust speed-up,Used to frame when advantage may emerge
+Huang et al. 2021,Data advantage conditions,Classical models can exploit data even for quantum targets,Motivates strong classical baseline
+McClean et al. 2018,Trainability,Gradient variance decays exponentially,Used for barren plateau experiment
+Cerezo et al. 2021,VQA review,"Depth, noise, and initialization influence trainability",Used to justify lightweight NISQ simulations
+Havlíček et al. 2019,Quantum kernel classifier,Quantum-enhanced feature spaces for supervised learning,Used for feature-map inspired kernel
+Abbas et al. 2021,QNN expressivity,Expressive advantage depends on architecture and observables,Used in discussion of expressivity-trainability trade-off
+Schuld 2021,Kernel interpretation,Supervised QML models can be recast as kernel methods,Used to compare encoding-induced kernels
+Thanasilp et al. 2024,Kernel concentration,"Expressibility, entanglement, measurement choice and noise can hurt trainability",Used in noise and concentration discussion
+LaRose & Coyle 2020,Data encoding,Robust encoding is task dependent,Used to motivate angle/amplitude/IQP comparison
+Preskill 2018,NISQ constraints,Noise limits achievable circuit depth and quantum volume,Used for IBM-style noise framing

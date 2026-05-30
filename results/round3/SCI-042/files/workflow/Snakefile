@@ -1,0 +1,385 @@
+"""
+Snakemake workflow for shotgun metagenomics functional profiling pipeline.
+
+Steps:
+  1. QC: fastp adapter trimming + quality filtering
+  2. Host removal: Bowtie2 against GRCh38
+  3. Taxonomic profiling: Kraken2 + MetaPhlAn4 (parallel)
+  4. Functional annotation: HUMAnN3 + eggNOG-mapper
+  5. Assembly: MEGAHIT per sample
+  6. Read mapping: Bowtie2 against assembly
+  7. Binning: MetaBAT2, MaxBin2, CONCOCT (parallel) + DAS_Tool ensemble
+  8. MAG quality: CheckM2
+  9. Taxonomy: GTDB-Tk
+  10. Statistical analysis: PERMANOVA, LEfSe, Random Forest
+
+Usage:
+    snakemake --cores 32 --use-conda --conda-frontend mamba all
+    snakemake --dag | dot -Tsvg > dag.svg
+"""
+
+configfile: "config/config.yaml"
+
+SAMPLES = config["samples"]
+HOST_DB  = config.get("host_db",       "databases/GRCh38_noalt_as")
+K2_DB    = config.get("kraken2_db",    "databases/kraken2_standard_16gb")
+MP4_DB   = config.get("metaphlan_db",  "databases/metaphlan4")
+HN3_DB   = config.get("humann_db",     "databases/humann3")
+EGG_DB   = config.get("eggnogdb",      "databases/eggnog")
+
+wildcard_constraints:
+    sample = "|".join(SAMPLES)
+
+# ───────────────────────
+rule all:
+    input:
+        expand("results/qc/{s}/{s}_fastp.json",          s=SAMPLES),
+        expand("results/taxonomy/kraken2/{s}.report",    s=SAMPLES),
+        expand("results/taxonomy/metaphlan4/{s}_profile.tsv", s=SAMPLES),
+        expand("results/functional/humann3/{s}_pathabundance.tsv", s=SAMPLES),
+        expand("results/functional/eggnog/{s}.emapper.annotations", s=SAMPLES),
+        "results/mag/checkm2/quality_report.tsv",
+        "results/mag/gtdbtk/classify/gtdbtk.bac120.summary.tsv",
+        "results/stats/permanova_results.json",
+        "results/stats/rf_cv_results.csv",
+        expand("results/figures/fig{n}.png", n=range(1, 8)),
+
+# ────────────────────────────────────────────────────
+# QC + host removal
+# ─
+rule fastp_trimming:
+    """Adapter trimming, quality filtering, and deduplication with fastp."""
+    input:
+        r1="data/raw/{sample}_R1.fastq.gz",
+        r2="data/raw/{sample}_R2.fastq.gz",
+    output:
+        r1="results/qc/{sample}/{sample}_R1_trimmed.fastq.gz",
+        r2="results/qc/{sample}/{sample}_R2_trimmed.fastq.gz",
+        json="results/qc/{sample}/{sample}_fastp.json",
+        html="results/qc/{sample}/{sample}_fastp.html",
+    threads: 8
+    conda: "envs/qc.yaml"
+    log: "logs/fastp/{sample}.log"
+    shell:
+        """
+        fastp --in1 {input.r1} --in2 {input.r2} \
+              --out1 {output.r1} --out2 {output.r2} \
+              --json {output.json} --html {output.html} \
+              --thread {threads} \
+              --qualified_quality_phred 20 --unqualified_percent_limit 40 \
+              --length_required 50 --detect_adapter_for_pe --dedup \
+              2> {log}
+        """
+
+rule host_removal:
+    """Remove human reads with Bowtie2 (GRCh38 reference)."""
+    input:
+        r1="results/qc/{sample}/{sample}_R1_trimmed.fastq.gz",
+        r2="results/qc/{sample}/{sample}_R2_trimmed.fastq.gz",
+    output:
+        r1="results/qc/{sample}/{sample}_R1_clean.fastq.gz",
+        r2="results/qc/{sample}/{sample}_R2_clean.fastq.gz",
+        stats="results/qc/{sample}/{sample}_host_removal.txt",
+    params: db=HOST_DB
+    threads: 8
+    conda: "envs/qc.yaml"
+    log: "logs/host_removal/{sample}.log"
+    shell:
+        """
+        bowtie2 -x {params.db} -1 {input.r1} -2 {input.r2} \
+          --threads {threads} --very-sensitive \
+          --un-conc-gz results/qc/{wildcards.sample}/{wildcards.sample}_R%_clean.fastq.gz \
+          -S /dev/null 2> {output.stats}
+        """
+
+# ──────────────
+# Taxonomic profiling
+# ────────────────────────────────────────────────────
+rule kraken2_classify:
+    """k-mer taxonomic classification (Kraken2 + Bracken re-estimation)."""
+    input:
+        r1="results/qc/{sample}/{sample}_R1_clean.fastq.gz",
+        r2="results/qc/{sample}/{sample}_R2_clean.fastq.gz",
+    output:
+        report="results/taxonomy/kraken2/{sample}.report",
+        out="results/taxonomy/kraken2/{sample}.kraken",
+    params: db=K2_DB, conf=0.1
+    threads: 8
+    conda: "envs/taxonomy.yaml"
+    log: "logs/kraken2/{sample}.log"
+    shell:
+        """
+        kraken2 --db {params.db} --threads {threads} \
+          --confidence {params.conf} --paired --gzip-compressed \
+          --output {output.out} --report {output.report} \
+          {input.r1} {input.r2} 2> {log}
+        bracken -d {params.db} -i {output.report} \
+          -o results/taxonomy/kraken2/{wildcards.sample}_bracken_species.txt \
+          -r 150 -l S 2>> {log}
+        """
+
+rule metaphlan4_profile:
+    """Marker-gene profiling with MetaPhlAn4."""
+    input:
+        r1="results/qc/{sample}/{sample}_R1_clean.fastq.gz",
+        r2="results/qc/{sample}/{sample}_R2_clean.fastq.gz",
+    output:
+        profile="results/taxonomy/metaphlan4/{sample}_profile.tsv",
+        bz2="results/taxonomy/metaphlan4/{sample}.bowtie2.bz2",
+    params: db=MP4_DB
+    threads: 8
+    conda: "envs/taxonomy.yaml"
+    log: "logs/metaphlan4/{sample}.log"
+    shell:
+        """
+        metaphlan {input.r1},{input.r2} \
+          --bowtie2db {params.db} --input_type fastq \
+          --nproc {threads} --bowtie2out {output.bz2} \
+          -o {output.profile} 2> {log}
+        """
+
+# ────────────────────────────────────────────────────
+# Functional annotation
+# ─────────────
+rule humann3_functional:
+    """Functional profiling with HUMAnN3 (UniRef90 + MetaCyc pathways)."""
+    input:
+        r1="results/qc/{sample}/{sample}_R1_clean.fastq.gz",
+        r2="results/qc/{sample}/{sample}_R2_clean.fastq.gz",
+        mp4="results/taxonomy/metaphlan4/{sample}_profile.tsv",
+    output:
+        pa="results/functional/humann3/{sample}_pathabundance.tsv",
+        pc="results/functional/humann3/{sample}_pathcoverage.tsv",
+        gf="results/functional/humann3/{sample}_genefamilies.tsv",
+    params: db=HN3_DB
+    threads: 8
+    conda: "envs/functional.yaml"
+    log: "logs/humann3/{sample}.log"
+    shell:
+        """
+        cat {input.r1} {input.r2} > /tmp/{wildcards.sample}_merged.fastq.gz
+        humann --input /tmp/{wildcards.sample}_merged.fastq.gz \
+          --output results/functional/humann3/ --threads {threads} \
+          --taxonomic-profile {input.mp4} \
+          --nucleotide-database {params.db}/chocophlan \
+          --protein-database {params.db}/uniref \
+          --output-basename {wildcards.sample} 2> {log}
+        rm -f /tmp/{wildcards.sample}_merged.fastq.gz
+        """
+
+rule prodigal_predict:
+    """ORF prediction from assembled contigs (metagenomic mode)."""
+    input: contigs="results/assembly/{sample}/final.contigs.fa"
+    output:
+        faa="results/annotation/{sample}/{sample}_proteins.faa",
+        gff="results/annotation/{sample}/{sample}.gff",
+    conda: "envs/functional.yaml"
+    shell:
+        "prodigal -i {input.contigs} -a {output.faa} -f gff -o {output.gff} -p meta -q"
+
+rule eggnog_mapper:
+    """Functional annotation with eggNOG-mapper v2 (COG / KEGG / GO)."""
+    input: faa="results/annotation/{sample}/{sample}_proteins.faa"
+    output: "results/functional/eggnog/{sample}.emapper.annotations"
+    params: db=EGG_DB
+    threads: 8
+    conda: "envs/functional.yaml"
+    log: "logs/eggnog/{sample}.log"
+    shell:
+        """
+        emapper.py -i {input.faa} \
+          --output results/functional/eggnog/{wildcards.sample} \
+          --data_dir {params.db} --cpu {threads} \
+          --itype proteins -m diamond \
+          --go_evidence all --target_orthologs all \
+          --seed_ortholog_evalue 0.001 2> {log}
+        """
+
+# ────────────────────────────────────────────────
+# Assembly + Binning
+# ────────────────────────────────────────────────────
+rule megahit_assembly:
+    input:
+        r1="results/qc/{sample}/{sample}_R1_clean.fastq.gz",
+        r2="results/qc/{sample}/{sample}_R2_clean.fastq.gz",
+    output: contigs="results/assembly/{sample}/final.contigs.fa"
+    params: outdir="results/assembly/{sample}", min_len=1000
+    threads: 16
+    conda: "envs/assembly.yaml"
+    log: "logs/megahit/{sample}.log"
+    shell:
+        """
+        megahit -1 {input.r1} -2 {input.r2} -o {params.outdir} \
+          --min-contig-len {params.min_len} --num-cpu-threads {threads} 2> {log}
+        """
+
+rule map_reads:
+    input:
+        r1="results/qc/{sample}/{sample}_R1_clean.fastq.gz",
+        r2="results/qc/{sample}/{sample}_R2_clean.fastq.gz",
+        contigs="results/assembly/{sample}/final.contigs.fa",
+    output:
+        bam="results/assembly/{sample}/{sample}_mapped.sorted.bam",
+        bai="results/assembly/{sample}/{sample}_mapped.sorted.bam.bai",
+    threads: 8
+    conda: "envs/qc.yaml"
+    shell:
+        """
+        bowtie2-build {input.contigs} results/assembly/{wildcards.sample}/assembly
+        bowtie2 -x results/assembly/{wildcards.sample}/assembly \
+          -1 {input.r1} -2 {input.r2} --threads {threads} \
+          | samtools sort -o {output.bam} -@ {threads}
+        samtools index {output.bam}
+        """
+
+rule metabat2:
+    input:
+        contigs="results/assembly/{sample}/final.contigs.fa",
+        bam="results/assembly/{sample}/{sample}_mapped.sorted.bam",
+    output:
+        depth="results/binning/metabat2/{sample}/depth.txt",
+        bins=directory("results/binning/metabat2/{sample}/bins"),
+    threads: 8
+    conda: "envs/binning.yaml"
+    shell:
+        """
+        mkdir -p {output.bins}
+        jgi_summarize_bam_contig_depths --outputDepth {output.depth} {input.bam}
+        metabat2 -i {input.contigs} -a {output.depth} \
+          -o {output.bins}/{wildcards.sample}_bin --minContig 2000 \
+          --numThreads {threads} --seed 42
+        """
+
+rule maxbin2:
+    input:
+        contigs="results/assembly/{sample}/final.contigs.fa",
+        depth="results/binning/metabat2/{sample}/depth.txt",
+    output: bins=directory("results/binning/maxbin2/{sample}/bins")
+    threads: 8
+    conda: "envs/binning.yaml"
+    shell:
+        """
+        mkdir -p {output.bins}
+        run_MaxBin.pl -thread {threads} -contig {input.contigs} \
+          -abund {input.depth} -out {output.bins}/{wildcards.sample}_maxbin
+        """
+
+rule concoct:
+    input:
+        contigs="results/assembly/{sample}/final.contigs.fa",
+        bam="results/assembly/{sample}/{sample}_mapped.sorted.bam",
+    output: bins=directory("results/binning/concoct/{sample}/bins")
+    threads: 8
+    conda: "envs/binning.yaml"
+    shell:
+        """
+        D=results/binning/concoct/{wildcards.sample}
+        mkdir -p $D {output.bins}
+        cut_up_fasta.py {input.contigs} -c 10000 -o 0 --merge_last \
+          -b $D/contigs_10K.bed > $D/contigs_10K.fa
+        concoct_coverage_table.py $D/contigs_10K.bed {input.bam} > $D/coverage.tsv
+        concoct --composition_file $D/contigs_10K.fa --coverage_file $D/coverage.tsv \
+          -b $D/ --threads {threads} --seed 42
+        merge_cutup_clustering.py $D/clustering_gt1000.csv > $D/clustering_merged.csv
+        extract_fasta_bins.py {input.contigs} $D/clustering_merged.csv \
+          --output_path {output.bins}
+        """
+
+rule dastool:
+    input:
+        contigs="results/assembly/{sample}/final.contigs.fa",
+        mb2="results/binning/metabat2/{sample}/bins",
+        mx2="results/binning/maxbin2/{sample}/bins",
+        cct="results/binning/concoct/{sample}/bins",
+    output:
+        bins=directory("results/binning/dastool/{sample}/bins"),
+        summary="results/binning/dastool/{sample}/{sample}_DASTool_summary.txt",
+    threads: 8
+    conda: "envs/binning.yaml"
+    shell:
+        """
+        D=results/binning/dastool/{wildcards.sample}
+        mkdir -p $D {output.bins}
+        Fasta_to_Contig2Bin.sh -i {input.mb2} -e fa > $D/mb2.tsv
+        Fasta_to_Contig2Bin.sh -i {input.mx2} -e fasta > $D/mx2.tsv
+        Fasta_to_Contig2Bin.sh -i {input.cct} -e fa > $D/cct.tsv
+        DAS_Tool -i $D/mb2.tsv,$D/mx2.tsv,$D/cct.tsv \
+          -l MetaBAT2,MaxBin2,CONCOCT -c {input.contigs} \
+          -o $D/{wildcards.sample} --threads {threads} \
+          --write_bins --score_threshold 0.5
+        cp $D/{wildcards.sample}_DASTool_bins/* {output.bins}/ 2>/dev/null || true
+        """
+
+# ────────────────────────────────────────────────────
+# MAG quality + phylogeny
+# ─────────────────────────────
+rule checkm2:
+    input: expand("results/binning/dastool/{s}/bins", s=SAMPLES)
+    output: "results/mag/checkm2/quality_report.tsv"
+    threads: 16
+    conda: "envs/mag_quality.yaml"
+    log: "logs/checkm2/checkm2.log"
+    shell:
+        """
+        mkdir -p results/mag/all_mags
+        for d in {input}; do cp $d/*.fa results/mag/all_mags/ 2>/dev/null || true; done
+        checkm2 predict --threads {threads} --input results/mag/all_mags/ \
+          --output-directory results/mag/checkm2/ --extension .fa 2> {log}
+        """
+
+rule gtdbtk:
+    input: "results/mag/checkm2/quality_report.tsv"
+    output: "results/mag/gtdbtk/classify/gtdbtk.bac120.summary.tsv"
+    params: outdir="results/mag/gtdbtk"
+    threads: 16
+    conda: "envs/mag_quality.yaml"
+    log: "logs/gtdbtk/gtdbtk.log"
+    shell:
+        """
+        python scripts/filter_mags.py --checkm2 {input} \
+          --mag_dir results/mag/all_mags \
+          --outdir results/mag/filtered_mags \
+          --min_completeness 50 --max_contamination 10
+        gtdbtk classify_wf --genome_dir results/mag/filtered_mags \
+          --extension .fa --out_dir {params.outdir} \
+          --cpus {threads} --skip_ani_screen 2> {log}
+        """
+
+# ─────────────────────────────────────────────────
+# Statistics + Figures
+# ────────────────────────────────────────────────────
+rule merge_profiles:
+    input:
+        mp4=expand("results/taxonomy/metaphlan4/{s}_profile.tsv", s=SAMPLES),
+        humann=expand("results/functional/humann3/{s}_pathabundance.tsv", s=SAMPLES),
+    output:
+        tax="results/stats/merged_metaphlan4.tsv",
+        func="results/stats/merged_pathabundance.tsv",
+    conda: "envs/stats.yaml"
+    shell:
+        """
+        merge_metaphlan_tables.py {input.mp4} > {output.tax}
+        humann_join_tables -i results/functional/humann3/ -o {output.func}
+        """
+
+rule statistical_analysis:
+    input:
+        tax="results/stats/merged_metaphlan4.tsv",
+        func="results/stats/merged_pathabundance.tsv",
+        meta="config/metadata.tsv",
+    output:
+        permanova="results/stats/permanova_results.json",
+        lefse="results/stats/lefse_results.csv",
+        rf_cv="results/stats/rf_cv_results.csv",
+    conda: "envs/stats.yaml"
+    script: "scripts/run_stats.py"
+
+rule generate_figures:
+    input:
+        permanova="results/stats/permanova_results.json",
+        rf_cv="results/stats/rf_cv_results.csv",
+        checkm2="results/mag/checkm2/quality_report.tsv",
+    output:
+        expand("results/figures/fig{n}.png", n=range(1, 8)),
+    conda: "envs/stats.yaml"
+    script: "scripts/generate_figures.py"

@@ -1,0 +1,5 @@
+,AUROC,AUPRC,F1
+CRISPRAttenNet (Ours),0.7949 ± 0.0325,0.0955 ± 0.0283,0.0975 ± 0.0405
+Logistic Regression,0.7166 ± 0.0123,N/A,N/A
+Random Forest,0.6972 ± 0.0301,N/A,N/A
+Gradient Boosting,0.7729 ± 0.0193,N/A,N/A

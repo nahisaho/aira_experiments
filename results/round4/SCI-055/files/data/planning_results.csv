@@ -1,0 +1,6 @@
+Molecule,MCTS Solved,MCTS Steps,MCTS Time(s),A* Solved,A* Steps,A* Time(s),A* Nodes
+Aspirin,True,1,0.064,True,1,0.006,5
+Paracetamol,True,1,0.03,True,1,0.002,5
+Ibuprofen,True,1,0.093,True,1,0.004,4
+Methyl benzoate,True,0,0.0,True,1,0.001,5
+Diclofenac,False,5,0.112,False,-,0.003,2

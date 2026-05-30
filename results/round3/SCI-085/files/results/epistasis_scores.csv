@@ -1,0 +1,6 @@
+combo,guide1,guide2,global_epistasis,global_epistasis_abs,pval,n_cells,n_sig_genes_synergy,n_sig_genes_antagonism,epistasis_type,padj
+guide_KRAS+guide_BRCA1,guide_KRAS,guide_BRCA1,0.10606289654970169,0.211534783244133,0.99,46,30,5,synergy,0.99
+guide_KRAS+guide_MYC,guide_KRAS,guide_MYC,0.17221802473068237,0.2210652232170105,0.94,46,66,1,synergy,0.99
+guide_KRAS+guide_EGFR,guide_KRAS,guide_EGFR,-0.06599915772676468,0.20218203961849213,0.54,60,12,15,antagonism,0.99
+guide_KRAS+guide_RB1,guide_KRAS,guide_RB1,0.06671968102455139,0.23149356245994568,0.93,67,45,0,synergy,0.99
+guide_KRAS+guide_TP53,guide_KRAS,guide_TP53,0.016933975741267204,0.17128954827785492,0.73,54,16,11,additive,0.99

@@ -1,0 +1,76 @@
+=== Simulating datasets ===
+PD gait dataset: (280, 12) (PD=137, Healthy=143)
+ALS voice dataset: (240, 13) (ALS=120, Healthy=120)
+MCI touchscreen dataset: (260, 12) (MCI=126, Healthy=134)
+
+=== PD Gait Classification ===
+  RF: AUC=0.745±0.012, F1=0.680±0.035, Acc=0.682±0.033
+  GBM: AUC=0.722±0.015, F1=0.659±0.012, Acc=0.661±0.011
+  LR: AUC=0.762±0.005, F1=0.706±0.025, Acc=0.707±0.024
+  SVM: AUC=0.752±0.045, F1=0.716±0.052, Acc=0.718±0.051
+
+=== ALS Voice Classification ===
+  RF: AUC=0.862±0.040, F1=0.781±0.058, Acc=0.783±0.057
+  GBM: AUC=0.836±0.044, F1=0.749±0.059, Acc=0.750±0.059
+  LR: AUC=0.865±0.046, F1=0.787±0.061, Acc=0.787±0.061
+  SVM: AUC=0.849±0.044, F1=0.769±0.059, Acc=0.771±0.057
+
+=== MCI Touchscreen Classification ===
+  RF: AUC=0.821±0.032, F1=0.714±0.033, Acc=0.715±0.033
+  GBM: AUC=0.804±0.021, F1=0.726±0.022, Acc=0.727±0.022
+  LR: AUC=0.850±0.034, F1=0.754±0.031, Acc=0.754±0.031
+  SVM: AUC=0.803±0.043, F1=0.730±0.034, Acc=0.731±0.034
+
+=== Longitudinal Change-Point Detection ===
+  CUSUM: Precision=0.938, Recall=0.900, F1=0.918, Mean Delay=3.2 weeks
+
+=== Multimodal Fusion ===
+  Gait AUC=0.794, Voice AUC=0.813, Touch AUC=0.790, Fusion AUC=0.831
+Saved fig1_roc_curves.png
+Saved fig2_feature_importance.png
+Saved fig3_model_comparison.png
+Saved fig4_longitudinal.png
+Saved fig5_multimodal_fusion.png
+Saved fig6_als_staging.png
+
+========================================================================
+FINAL RESULTS SUMMARY
+========================================================================
+
+PD GAIT SCREENING (5-fold CV):
+Model                 AUC             F1       Accuracy
+RF         0.745±0.012  0.680±0.035  0.682±0.033
+GBM        0.722±0.015  0.659±0.012  0.661±0.011
+LR         0.762±0.005  0.706±0.025  0.707±0.024
+SVM        0.752±0.045  0.716±0.052  0.718±0.051
+
+ALS VOICE DETECTION (5-fold CV):
+Model                 AUC             F1       Accuracy
+RF         0.862±0.040  0.781±0.058  0.783±0.057
+GBM        0.836±0.044  0.749±0.059  0.750±0.059
+LR         0.865±0.046  0.787±0.061  0.787±0.061
+SVM        0.849±0.044  0.769±0.059  0.771±0.057
+
+MCI TOUCHSCREEN DETECTION (5-fold CV):
+Model                 AUC             F1       Accuracy
+RF         0.821±0.032  0.714±0.033  0.715±0.033
+GBM        0.804±0.021  0.726±0.022  0.727±0.022
+LR         0.850±0.034  0.754±0.031  0.754±0.031
+SVM        0.803±0.043  0.730±0.034  0.731±0.034
+
+CHANGE-POINT DETECTION (CUSUM, n=50 subjects):
+  Precision: 0.938
+  Recall: 0.900
+  F1: 0.918
+  Mean Detection Delay: 3.2 weeks
+  PELT Mean Detection Delay: 2.3 weeks
+
+MULTIMODAL FUSION:
+  Gait-only AUC: 0.794
+  Voice-only AUC: 0.813
+  Touch-only AUC: 0.790
+  Fusion AUC: 0.831
+
+All figures saved to: /app/projects/e4b9c737-a41b-43ec-bb49-d9a4dd6a96f5/workspace/figures
+
+Results saved to results_summary.json

@@ -1,0 +1,12 @@
+citation_key,title,year,source,decision,reason
+"(Abi-Dargham, 2023)","Candidate biomarkers in psychiatric disorders: state of the field.",2023,PubMed,include,"Recent review; provides biomarker context and limitations for psychiatric neuroimaging"
+"(Gifford, 2020)","Resting state fMRI based multilayer network configuration in patients with schizophrenia.",2020,PubMed,include,"Directly relevant to dynamic modularity and schizophrenia connectomics"
+"(Liu, 2025)","Prediction of antipsychotic drug efficacy for schizophrenia treatment based on neural features of the resting-state functional connectome.",2025,PubMed,include,"Recent connectome-based predictive biomarker paper"
+"(Duda, 2022)","Spatially Constrained ICA Enables Robust Detection of Schizophrenia from Very Short Resting-state fMRI.",2022,PubMed,include,"Functional connectivity biomarker and acquisition efficiency relevance"
+"(Solders, 2022)","Diffusion MRI tractography of the locus coeruleus-transentorhinal cortex connections using GO-ESP.",2022,PubMed,include,"Structural tractography methodology relevant to white matter connectomes"
+"(Wang, 2024)","Edge Density Imaging Identifies White Matter Biomarkers of Late-Life Obesity and Cognition.",2024,PubMed,include,"Tractography-derived white matter biomarkers with validation"
+"(Taghvaei, 2024)","Impact of white matter hyperintensities on structural connectivity and cognition in cognitively intact ADNI participants.",2024,PubMed,include,"Structural disconnection and cognition in AD-relevant cohort"
+"(Ren, 2020)","Application of Structural and Functional Connectome Mismatch for Classification and Individualized Therapy in Alzheimer Disease.",2020,PubMed,include,"Integrated structural-functional connectomics in AD"
+"(Camp, 2024)","Test-Retest Reliability of Functional Connectivity in Adolescents With Depression.",2024,PubMed,include,"Recent ICC-oriented reliability paper applicable to FC"
+"(Knodt, 2023)","Test-retest reliability and predictive utility of a macroscale principal functional connectivity gradient.",2023,PubMed,include,"Recent reliability and predictive utility paper"
+"(Shuai, 2025)","Deterministic versus Probabilistic Tractography: Impact on White Matter Bundle Shape.",2025,PubMed,exclude,"Preprint and less directly tied to disease biomarker pipeline"

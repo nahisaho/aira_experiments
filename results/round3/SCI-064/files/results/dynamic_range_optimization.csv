@@ -1,0 +1,6 @@
+Biosensor,Opt_Kd_nM,Opt_Hill_n,Opt_Basal,DR_fold,Log10_DR,SNR_dB,LOD_nM,Success
+PbrR_WT,53.34,1.536,20.0,50.0,1.699,25.8,23.0,True
+PbrR_Eng,27.06,1.672,10.0,100.0,2.0,25.9,11.5,True
+CadC,53.65,1.138,20.0,50.0,1.699,25.8,23.0,True
+MerR,2.71,1.672,20.0,50.0,1.699,25.8,23.0,True
+ArsR,164.23,1.103,30.0,33.3,1.523,25.8,34.5,True

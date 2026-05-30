@@ -1,0 +1,15 @@
+Metric,Value
+N Patients,140.0
+N Subtypes,3.0
+Variant peptides total,180.0
+Variant peptides detected,15.0
+Variant peptide detection rate (%),8.3
+Translationally regulated genes,113.0
+Median RNA-Protein Spearman r,0.062
+MS-validated neoantigens,36.0
+MOFA F1+F2 variance explained (%),78.4
+5-CV Balanced Accuracy mean,0.667
+5-CV Balanced Accuracy SD,0.0
+5-CV Macro AUC mean,0.832
+5-CV Macro AUC SD,0.028
+Survival KW p-value,0.0002

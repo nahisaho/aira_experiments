@@ -1,0 +1,160 @@
+PennyLane version: 0.45.0
+
+=== EXPERIMENT 1: Expressibility Analysis ===
+
+Computing expressibility for each circuit...
+  Shallow (L=1): KL divergence = 0.5588
+  HEA (L=2): KL divergence = 0.0264
+  Deep (L=3): KL divergence = 0.0040
+  IQP: KL divergence = 0.0735
+Saved: figures/expressibility_analysis.png
+
+=== EXPERIMENT 2: Quantum Kernel vs Classical SVM ===
+
+  Dataset: Linear (n=100, features=4)
+    Computing quantum kernel matrix...
+    RBF:     0.850 ± 0.084
+    Linear:  0.650 ± 0.130
+    Quantum: 0.790 ± 0.097
+
+  Dataset: Moons (n=100, features=2)
+    Computing quantum kernel matrix...
+    RBF:     0.920 ± 0.068
+    Linear:  0.860 ± 0.086
+    Quantum: 0.810 ± 0.058
+
+  Dataset: Circles (n=100, features=2)
+    Computing quantum kernel matrix...
+    RBF:     0.950 ± 0.055
+    Linear:  0.430 ± 0.081
+    Quantum: 0.960 ± 0.037
+
+Saved: figures/kernel_comparison.png
+
+=== EXPERIMENT 3: Data Encoding Strategy Comparison ===
+
+  Evaluating Angle encoding...
+    Epoch 10/20, Loss: 0.9037
+    Epoch 20/20, Loss: 0.8964
+    Epoch 10/20, Loss: 1.8150
+    Epoch 20/20, Loss: 1.4867
+    Epoch 10/20, Loss: 1.0441
+    Epoch 20/20, Loss: 1.0134
+  Angle: 0.354 ± 0.118
+
+  Evaluating IQP encoding...
+    Epoch 10/20, Loss: 1.0809
+    Epoch 20/20, Loss: 1.0740
+    Epoch 10/20, Loss: 1.2155
+    Epoch 20/20, Loss: 1.2012
+    Epoch 10/20, Loss: 1.1939
+    Epoch 20/20, Loss: 1.1276
+  IQP: 0.542 ± 0.078
+
+  Evaluating Amplitude encoding...
+    Epoch 10/20, Loss: 1.3635
+    Epoch 20/20, Loss: 1.1148
+    Epoch 10/20, Loss: 1.7933
+    Epoch 20/20, Loss: 1.2127
+    Epoch 10/20, Loss: 1.1178
+    Epoch 20/20, Loss: 1.0103
+  Amplitude: 0.583 ± 0.029
+  Classical RBF: 0.900 ± 0.019
+
+Saved: figures/encoding_comparison.png
+
+=== EXPERIMENT 4: Barren Plateau Analysis ===
+  Computing gradient variance vs depth (n_qubits=4)...
+    depth=1: variance=5.30e-01
+    depth=2: variance=2.99e-01
+    depth=4: variance=8.85e-02
+    depth=6: variance=5.62e-02
+    depth=8: variance=4.02e-02
+    depth=10: variance=3.21e-02
+  Computing gradient variance vs width (n_layers=3)...
+    width=2: variance=2.16e-01
+    width=3: variance=1.67e-01
+    width=4: variance=1.55e-01
+    width=5: variance=1.60e-01
+    width=6: variance=1.70e-01
+    width=7: variance=1.52e-01
+    width=8: variance=1.28e-01
+
+Saved: figures/barren_plateau.png
+
+=== EXPERIMENT 5: Noise Robustness Analysis ===
+  Evaluating noise impact on classification...
+  Noise p=0.000: Accuracy=0.400
+  Noise p=0.005: Accuracy=0.400
+  Noise p=0.010: Accuracy=0.400
+  Noise p=0.020: Accuracy=0.400
+  Noise p=0.050: Accuracy=0.400
+  Noise p=0.100: Accuracy=0.400
+  Measuring expectation value degradation...
+
+Saved: figures/noise_analysis.png
+
+=== EXPERIMENT 6: Entanglement Capability Analysis ===
+Computing entanglement capability...
+  Shallow (L=1): MW measure = 0.4926 ± 0.1665
+  HEA (L=2): MW measure = 0.8210 ± 0.1314
+  Deep (L=3): MW measure = 0.9424 ± 0.0419
+  IQP: MW measure = 0.8037 ± 0.1434
+
+Saved: figures/expressibility_vs_entanglement.png
+
+=== SUMMARY RESULTS ===
+
+Expressibility Results (KL Divergence from Haar):
+  Shallow (L=1): 0.5588
+  HEA (L=2): 0.0264
+  Deep (L=3): 0.0040
+  IQP: 0.0735
+
+Kernel Comparison (5-fold CV Accuracy):
+  Linear - RBF: 0.850 ± 0.084
+  Linear - Linear: 0.650 ± 0.130
+  Linear - Quantum: 0.790 ± 0.097
+  Moons - RBF: 0.920 ± 0.068
+  Moons - Linear: 0.860 ± 0.086
+  Moons - Quantum: 0.810 ± 0.058
+  Circles - RBF: 0.950 ± 0.055
+  Circles - Linear: 0.430 ± 0.081
+  Circles - Quantum: 0.960 ± 0.037
+
+Encoding Comparison (3-fold CV Accuracy):
+  Angle: 0.354 ± 0.118
+  IQP: 0.542 ± 0.078
+  Amplitude: 0.583 ± 0.029
+  Classical RBF: 0.900 ± 0.019
+
+Barren Plateau:
+  depth=1: var=5.30e-01
+  depth=2: var=2.99e-01
+  depth=4: var=8.85e-02
+  depth=6: var=5.62e-02
+  depth=8: var=4.02e-02
+  depth=10: var=3.21e-02
+  width=2: var=2.16e-01
+  width=3: var=1.67e-01
+  width=4: var=1.55e-01
+  width=5: var=1.60e-01
+  width=6: var=1.70e-01
+  width=7: var=1.52e-01
+  width=8: var=1.28e-01
+
+Noise Robustness:
+  noise=0.000: acc=0.400
+  noise=0.005: acc=0.400
+  noise=0.010: acc=0.400
+  noise=0.020: acc=0.400
+  noise=0.050: acc=0.400
+  noise=0.100: acc=0.400
+
+Entanglement Capability:
+  Shallow (L=1): 0.4926 ± 0.1665
+  HEA (L=2): 0.8210 ± 0.1314
+  Deep (L=3): 0.9424 ± 0.0419
+  IQP: 0.8037 ± 0.1434
+
+All experiments completed successfully!

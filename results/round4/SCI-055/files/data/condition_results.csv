@@ -1,0 +1,6 @@
+Reaction,Category,Solvent,Temperature,Catalyst,Est. Yield
+Aspirin synthesis,Acylation,Pyridine,0–25°C,DMAP (0.1 eq),0.85
+Paracetamol synthesis,Acylation,Pyridine,0–25°C,DMAP (0.1 eq),0.85
+Ester hydrolysis,Hydrolysis,H₂O/THF (3:1),60–80°C,H₂SO₄ (5 mol%),0.82
+Peptide coupling,Coupling,DMF,25°C,EDC/HOBt (1.2 eq),0.78
+N-methylation,Alkylation,DMF,50–70°C,K₂CO₃ (2 eq),0.74

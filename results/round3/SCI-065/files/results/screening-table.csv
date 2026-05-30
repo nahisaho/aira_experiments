@@ -1,0 +1,17 @@
+record_id,citation_key,title,year,source,decision,reason
+1,Licata-2023,Bioreactor Technologies for Enhanced Organoid Culture,2023,OpenAlex,include,Direct review of organoid bioreactors
+2,Saglam-Metiner-2023,Spatio-temporal dynamics enhance cellular diversity neuronal function and further maturation of human cerebral organoids,2023,OpenAlex,include,Dynamic culture maturation study
+3,Seiler-2022,Modular automated microfluidic cell culture platform reduces glycolytic stress in cerebral cortex organoids,2022,OpenAlex,include,Microfluidic metabolic control
+4,Suong-2021,Induction of inverted morphology in brain organoids by vertical-mixing bioreactors,2021,OpenAlex,include,Brain organoid bioreactor configuration
+5,Zheng-2021,Patient-Specific Organoid and Organ-on-a-Chip 3D Cell-Culture Meets 3D Printing and Numerical Simulation,2021,OpenAlex,include,Simulation relevance
+6,Hofer-2021,Engineering organoids,2021,OpenAlex,include,Engineering design review
+7,Zhao-2022,Organoids,2022,OpenAlex,include,Methods primer
+8,Velasco-2020,Microtechnology-based methods for organoid models,2020,OpenAlex,include,Monitoring and microtechnology
+9,Decarli-2021,Cell spheroids as a versatile research platform,2021,OpenAlex,include,Transferable spheroid scale-up principles
+10,Yang-2023,Organoids The current status and biomedical applications,2023,OpenAlex,include,Translational context
+11,Schafer-2023,An in vivo neuroimmune organoid model to study human microglia phenotypes,2023,OpenAlex,include,Advanced maturation phenotypes
+12,Lancaster-2013,Cerebral organoids model human brain development and microcephaly,2013,Foundational,include,Foundational cerebral organoid paper
+13,Qian-2016,Brain-Region-Specific Organoids Using Mini-bioreactors for Modeling ZIKV Exposure,2016,Foundational,include,Foundational mini-bioreactor paper
+14,Birey-2017,Assembly of functionally integrated human forebrain spheroids,2017,Foundational,include,Functional maturation reference
+15,Kim-2020,Human organoids model systems for human biology and medicine,2020,Foundational,include,Foundational review
+16,deMarzi-2023,Bioreactor technologies to support liver organoid generation and maturation,2023,Web search,exclude,Non-neural organoid focus

@@ -67,36 +67,67 @@ AIRAのCo-Scientistスキルに対して、生命科学・計算科学・物理�
 
 詳細な実践ガイドは [ベストプラクティス](docs/best-practices.md) を参照してください。
 
+## 実験ラウンド構成
+
+本リポジトリでは、プロンプト設計と科学基盤モデル（MCP経由）の効果を体系的に検証するため、2×2要因計画＋追加実験として6ラウンドの実験を実施しています。
+
+### 2×2 要因計画（Round2〜5）
+
+|  | 自己批判プロンプトなし | 自己批判プロンプトあり |
+|--|:-:|:-:|
+| **科学基盤モデルなし** | Round3 (n=100) | Round5 (n=100) |
+| **NatureLM MCPあり** | Round2 (n=100) | Round4 (n=100) |
+
+### 各ラウンドの詳細
+
+| Round | 条件 | 科学基盤モデル | 自己批判 | プロンプト特徴 | 実験数 |
+|-------|------|---------------|---------|--------------|--------|
+| Round1 | Baseline | なし | なし | 最小限の指示のみ | 100 |
+| Round2 | NatureLM統合 | NatureLM MCP | なし | 品質向上プロンプト＋NatureLMツール活用指示 | 100 |
+| Round3 | プロンプトのみ | なし | なし | 品質向上プロンプト（NatureLMなし） | 100 |
+| Round4 | NatureLM＋自己批判 | NatureLM MCP | あり | 品質向上＋NatureLM＋自己批判的評価指示 | 100 |
+| Round5 | 自己批判のみ | なし | あり | 品質向上＋自己批判的評価指示（NatureLMなし） | 100 |
+| Round6 | GALACTICA＋自己批判 | GALACTICA MCP | あり | 品質向上＋GALACTICA＋自己批判的評価指示 | 100 |
+
+### プロンプト要素の説明
+
+- **品質向上プロンプト**: 不確実性の定量的記述、交差検証、合成データの限界明記などを指示
+- **自己批判的評価**: 研究の限界を自ら特定し批判的に評価するよう指示（limitations、caveats等）
+- **NatureLM MCP**: Microsoft Research の科学基盤モデル。分子生成（SMILES）、物性予測（LogP）、逆合成解析、タンパク質配列生成等のツールを提供
+- **GALACTICA MCP**: Meta AI の科学基盤モデル。科学的QA、引用予測、分子生成、タンパク質アノテーション予測、推論等のツールを提供
+
+### 主な知見
+
+- **自己批判プロンプトが批判的思考の主要因**: 批判的思考キーワード（limitation記述、自己批判表現、交差検証）の出現率に対して、自己批判プロンプトが最も大きな効果を示した（limitation記述 OR=2.63、self_critique OR=6.40、cross_validation OR=13.0、いずれも p<0.005）
+- **科学基盤モデルは批判的思考指標には限定的効果**: 上記キーワード指標に対するNatureLMの主効果は統計的に有意ではなかった（p=0.098）。ただし、科学基盤モデルは定量パラメータの取得、分子構造データの生成、引用予測など**論文内容の科学的充実度**に寄与しており、キーワード頻度では捉えられない品質向上がある
+- **交互作用なし**: 自己批判×NatureLMの交互作用は検出されず（全 p>0.49）
+
 ## ディレクトリ構成
 
 ```
 aira_experiments/
 ├── README.md                 # このファイル
-├── docs/                     # ドキュメント
-│   ├── methodology.md        # 実験方法論（実行条件・制約・評価手法）
-│   ├── comparison-report.md  # バージョン間比較レポート (v1.0〜v4.0)
-│   ├── novelty-report.md     # 新規性マーカー分析レポート
-│   └── best-practices.md     # AI for Science 実践ガイド
-├── results/                  # 実験結果 (100実験)
-│   ├── summary.json          # 全実験のメタデータ集約
-│   ├── SCI-001/              # 各実験ディレクトリ
-│   │   ├── input_prompt.txt  # 入力プロンプト
-│   │   ├── output_response.md # AIの応答全文
-│   │   ├── metadata.json     # 実行メタデータ (所要時間、ファイル数等)
-│   │   ├── file_list.json    # 生成ファイル一覧
-│   │   └── files/            # 生成された成果物
-│   │       ├── paper.md      # 学術論文
-│   │       ├── report.md     # 実験レポート
-│   │       ├── src/          # 実験コード (Python)
-│   │       ├── figures/      # 生成された図表 (PNG)
-│   │       └── results/      # 実験結果データ (JSON等)
-│   ├── SCI-002/
-│   │   └── ...
-│   └── SCI-100/
-│       └── ...
-├── scripts/
-│   └── run-experiments.js    # 実験自動実行スクリプト (Playwright)
-└── package.json
+├── LICENSE                   # CC BY-NC 4.0
+├── results/                  # 実験結果
+│   ├── round1/              # Baseline
+│   ├── round2/              # NatureLM統合
+│   ├── round3/              # プロンプトのみ
+│   ├── round4/              # NatureLM＋自己批判
+│   ├── round5/              # 自己批判のみ
+│   └── round6/              # GALACTICA＋自己批判
+│       ├── SCI-001/          # 各実験ディレクトリ
+│       │   ├── input_prompt.txt  # 入力プロンプト
+│       │   ├── output_response.md # AIの応答全文
+│       │   ├── metadata.json     # 実行メタデータ
+│       │   └── files/            # 生成された成果物
+│       │       ├── paper.md      # 学術論文
+│       │       ├── report.md     # 実験レポート
+│       │       ├── *.py          # 実験コード
+│       │       └── figures/      # 生成された図表
+│       ├── SCI-002/
+│       │   └── ...
+│       └── SCI-100/
+│           └── ...
 ```
 
 ## 実験テーマ一覧 (抜粋)

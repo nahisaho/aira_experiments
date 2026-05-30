@@ -1,0 +1,19 @@
+Metric,Value
+Patients (tumor),140
+Normal tissues,76
+Total somatic mutations,10597
+Coding mutations detected,4165
+Variant peptides (unique),372
+Neoantigen candidates,41
+MS-validated neoantigens,60
+Validation rate (%),5.0
+mRNA-protein median Spearman r,0.479
+Post-TC genes (r<0.2) (%),7.0
+Phosphosites analyzed,8000
+Kinases estimated,50
+MOFA+ factors,10
+Total variance explained (%),74.9
+Patient clusters,3
+Silhouette score,0.162
+Integrative AUROC (5-CV),0.948
+AUROC std,0.033

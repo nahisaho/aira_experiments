@@ -1,0 +1,89 @@
+# ============================================================
+# Shotgun Metagenomics Functional Profiling Pipeline
+# Configuration file — edit paths before running
+# ============================================================
+
+# Output directory (absolute path)
+outdir: "results"
+
+# Metadata file (TSV with columns: sample_id, group, ...)
+metadata: "config/metadata.tsv"
+
+# Sample list — must match keys in 'reads' below
+samples:
+  - S01
+  - S02
+  - S03
+  # Add all sample IDs here
+
+# Read paths — R1 and R2 for each sample
+reads:
+  S01:
+    r1: "data/S01_R1.fastq.gz"
+    r2: "data/S01_R2.fastq.gz"
+  S02:
+    r1: "data/S02_R1.fastq.gz"
+    r2: "data/S02_R2.fastq.gz"
+  # ...
+
+# ── Database paths (must be pre-downloaded) ────────────────
+databases:
+  # KneadData: human reference genome (Bowtie2 index)
+  human_bowtie2: "/db/kneaddata/human_genome"
+
+  # Kraken2 + Bracken database (PlusPF, ~49 GB)
+  kraken2_db: "/db/kraken2/k2_pluspf"
+
+  # MetaPhlAn4 database (mpa_vJan21_CHOCOPhlAnSGB_202103)
+  metaphlan4_db: "/db/metaphlan4"
+  metaphlan4_db_name: "mpa_vJan21_CHOCOPhlAnSGB_202103"
+
+  # HUMAnN3 databases
+  humann3_nucleotide: "/db/humann3/chocophlan"
+  humann3_protein: "/db/humann3/uniref"
+
+  # eggNOG-mapper database (eggNOG v5)
+  eggnog_db: "/db/eggnog"
+
+  # CheckM2 database
+  checkm2_db: "/db/checkm2/uniref100.KO.1.dmnd"
+
+  # GTDB-Tk database (release 220)
+  gtdbtk_db: "/db/gtdbtk/release220"
+  gtdbtk_mash_db: "/db/gtdbtk/release220/mash/gtdb_ref_sketch.msh"
+
+# ── Tool paths ─────────────────────────────────────────────
+tools:
+  trimmomatic_jar: "/opt/conda/envs/kneaddata/share/trimmomatic/trimmomatic.jar"
+
+# ── Quality Control ────────────────────────────────────────
+qc:
+  min_quality: 20       # Phred score threshold
+  min_length: 50        # Minimum read length after trimming (bp)
+
+# ── Kraken2 / Bracken ──────────────────────────────────────
+kraken2:
+  confidence: 0.1       # Confidence threshold (0.0–1.0; 0.1 recommended)
+  read_length: 150      # Read length for Bracken re-estimation
+  bracken_level: "S"    # Taxonomic level: S=species, G=genus, F=family
+
+# ── Assembly ───────────────────────────────────────────────
+assembly:
+  min_contig_length: 1000   # bp
+  kmer_list: "21,29,39,59,79,99,119,141"
+
+# ── Binning ────────────────────────────────────────────────
+binning:
+  min_contig_length: 2000   # bp (MetaBAT2 minimum)
+  concoct_chunk_size: 10000
+  concoct_overlap: 0
+  concoct_clusters: 400
+  dastool_score: 0.5        # DAS_Tool score threshold (0–1)
+
+# ── Statistics ─────────────────────────────────────────────
+stats:
+  lefse_lda_threshold: 2.0
+  lefse_alpha: 0.05
+  rf_n_estimators: 500
+  cv_folds: 5
+  random_state: 42

@@ -1,0 +1,11 @@
+name,category,gwp,amount,unit,gwp_intensity,share_pct
+"electricity, grid average China",energy,39.6,55.0,kWh,0.72,31.0011977735501
+battery cell assembly,manufacturing,35.0,1.0,kWh,35.0,27.400048537228624
+"transport, freight, sea",transport,13.2,1200.0,t*km,0.011,10.333732591183367
+NMC cathode material production,material,9.840000000000002,0.8,kg,12.3,7.70332793160942
+"transport, freight, lorry",transport,7.4399999999999995,120.0,t*km,0.062,5.82446746048517
+battery module assembly,manufacturing,5.2,1.0,kWh,5.2,4.070864354102539
+"aluminium production, primary",material,4.0249999999999995,0.35,kg,11.5,3.1510055817812916
+"electrolyte production, lithium hexafluorophosphate",material,3.33,0.18,kg,18.5,2.6069189036848948
+battery pack assembly,manufacturing,3.1,1.0,kWh,3.1,2.4268614418688212
+graphite anode production,material,2.09,0.55,kg,3.8,1.6361743269373665

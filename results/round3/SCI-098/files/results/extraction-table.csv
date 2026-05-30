@@ -1,0 +1,21 @@
+ref_id,first_author,year,title_short,doi,target,key_finding
+1,Aalbers,2023,LZ first results,10.1103/PhysRevLett.131.041002,Xe,SI limit 9.2e-48 cm2 at 36 GeV
+2,Aprile,2023,XENONnT first NR,10.1103/PhysRevLett.131.041003,Xe,Background <1 evt/t/yr/keV
+3,Billard,2014,Neutrino floor,10.1103/PhysRevD.89.023524,multi,Defines nu floor concept
+4,O'Hare,2021,Neutrino fog,10.1103/PhysRevLett.127.251802,multi,n-gradient definition
+5,Vahsen,2021,Directional review,10.1146/annurev-nucl-020821-035016,gas,CYGNUS roadmap
+6,Santos,2013,MIMAC,10.1051/eas/1253004,CF4,micro-TPC directional
+7,Bernabei,2020,DAMA/LIBRA,10.15407/jnpae2020.04.315,NaI,Annual modulation claim 12.9 sigma
+8,Adhikari,2021,COSINE-100,10.1103/PhysRevD.106.052005,NaI,No modulation 3yr
+9,Amare,2021,ANAIS-112,10.1103/PhysRevD.103.102005,NaI,Inconsistent with DAMA
+10,Carr,2020,PBH review,10.1146/annurev-nucl-050520-125911,N/A,PBH DM mass windows
+11,Sikivie,2021,Axion review,10.1103/RevModPhys.93.015004,N/A,Haloscope methods
+12,Caputo,2021,Dark photon,10.1103/PhysRevD.104.095029,multi,Kinetic mixing limits
+13,Agnes,2023,DarkSide Migdal,10.1103/PhysRevLett.130.101001,Ar,Low-mass DM
+14,Agnese,2018,SuperCDMS proj,10.1103/PhysRevD.95.082002,Ge,sub-GeV sensitivity
+15,Akerib,2020,LZ projection,10.1103/PhysRevD.101.052002,Xe,1.4e-48 cm2 reach
+16,Lewin,1996,Formalism,10.1016/S0927-6505(96)00047-3,multi,Helm form factor
+17,Schumann,2019,DD review,10.1088/1361-6471/ab2ea5,multi,Status review
+18,Cooley,2022,Snowmass DM,10.48550/arXiv.2209.07426,multi,Roadmap
+19,Akerib,2022,Snowmass DD,10.48550/arXiv.2203.08084,multi,Direct detection roadmap
+20,Drukier,1986,Annual mod,10.1103/PhysRevD.33.3495,multi,Foundational paper

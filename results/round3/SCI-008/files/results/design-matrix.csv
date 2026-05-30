@@ -1,0 +1,9 @@
+factor,levels,rationale
+embedding_model,TransE|RotatE|ComplEx,"Primary model comparison motivated by literature on translational, rotational, and complex-valued scoring."
+embedding_dim,48,Moderate latent dimension for fast but non-trivial training on synthetic biomedical KG.
+epochs,60,Enough to learn signal without saturating to unrealistic performance.
+negative_ratio,2,Adds ranking difficulty and keeps runtime low.
+cv_folds,3,Internal validation with fold-wise variability estimates.
+noise_rate,0.12,Injects imperfect links to simulate curation noise.
+baseline,DegreePrior|Random,Compares embedding models against simple heuristics.
+case_study,COVID-19 withheld drug-disease links,Measures novel indication ranking under plausible missing-edge conditions.

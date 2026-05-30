@@ -1,0 +1,14 @@
+name,dG_CO_raw,dG_CO_pzc,d_band_pred,ct_pred,ensemble_pred,stable,activity_class,selectivity
+Fe-N4,-0.3902,-0.3636,-0.5227,-0.1591,-0.3409,True,low,CO2→CH4/CO
+Co-N4,0.0111,0.0202,-0.2142,-0.2245,-0.2194,True,low,CO2→CH4/CO
+Ni-N4,0.5201,0.5055,0.0786,-0.3304,-0.1259,True,low,CO2→CO
+Cu-N4,-0.7139,-0.6817,-0.0984,-0.3496,-0.2240,True,low,CO2→CH4/CO
+Mn-N4,-0.7355,-0.6979,-0.4341,-0.1170,-0.2756,True,low,CO2→CH4/CO
+Cr-N4,-1.1675,-1.1284,-0.5638,-0.0626,-0.3132,True,low,HER-dominated
+Zn-N4,-0.1901,-0.1877,1.8584,-0.4414,0.7085,True,low,CO2→CH4/CO
+V-N4,-1.3763,-1.3482,-0.6531,0.0060,-0.3235,True,low,HER-dominated
+Ti-N4,-1.9307,-1.9295,-0.7926,0.0652,-0.3637,True,high,HER-dominated
+Mo-N4,-0.9453,-0.9067,-0.6461,-0.0728,-0.3594,True,low,HER-dominated
+FeMn-N4,-0.2918,-0.2596,-0.4665,-0.1458,-0.3061,True,low,CO2→CH4/CO
+FeCo-N4,-0.1868,-0.1697,-0.2662,-0.1996,-0.2329,True,low,CO2→CH4/CO
+NiCo-N4,0.1485,0.1286,-0.1063,-0.2727,-0.1895,True,low,CO2→CH4/CO

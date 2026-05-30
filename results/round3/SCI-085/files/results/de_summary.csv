@@ -1,0 +1,16 @@
+perturbation,n_sig_genes,n_upregulated,n_downregulated
+guide_EGFR,73,12,61
+guide_TP53,66,5,61
+guide_KRAS,121,53,68
+guide_CDKN2A,20,20,0
+guide_KRAS+guide_BRCA1,483,114,369
+guide_KRAS+guide_MYC,135,54,81
+guide_BRCA1,479,61,418
+guide_PIK3CA,55,53,2
+guide_PTEN,0,0,0
+guide_RB1,131,66,65
+guide_AKT1,88,12,76
+guide_KRAS+guide_EGFR,196,53,143
+guide_MYC,97,59,38
+guide_KRAS+guide_RB1,270,119,151
+guide_KRAS+guide_TP53,177,54,123

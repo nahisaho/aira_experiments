@@ -1,0 +1,13 @@
+1. (Abbas, 2021) Abbas, A., Sutter, D., Zoufal, C., Lucchi, A., Figalli, A., & Woerner, S. (2021). The power of quantum neural networks. *Nature Computational Science*, 1(6), 403–409. DOI: 10.1038/s43588-021-00084-1
+2. (Cerezo, 2021) Cerezo, M., Arrasmith, A., Babbush, R., Benjamin, S. C., Endo, S., Fujii, K., McClean, J. R., Mitarai, K., Yuan, X., Cincio, L., & Coles, P. J. (2021). Variational quantum algorithms. *Nature Reviews Physics*, 3, 625–644. DOI: 10.1038/s42254-021-00348-9
+3. (Havlíček, 2019) Havlíček, V., Córcoles, A. D., Temme, K., Harrow, A. W., Kandala, A., Chow, J. M., & Gambetta, J. M. (2019). Supervised learning with quantum-enhanced feature spaces. *Nature*, 567, 209–212. DOI: 10.1038/s41586-019-0980-2
+4. (Huang, 2021) Huang, H.-Y., Broughton, M., Mohseni, M., Babbush, R., Boixo, S., Neven, H., & McClean, J. R. (2021). Power of data in quantum machine learning. *Nature Communications*, 12, 2631. DOI: 10.1038/s41467-021-22539-9
+5. (LaRose, 2020) LaRose, R., & Coyle, B. (2020). Robust data encodings for quantum classifiers. *Physical Review A*, 102, 032420. DOI: 10.1103/PhysRevA.102.032420
+6. (Liu, 2021) Liu, Y., Arunachalam, S., & Temme, K. (2021). A rigorous and robust quantum speed-up in supervised machine learning. *Nature Physics*, 17, 1013–1017. DOI: 10.1038/s41567-021-01287-z
+7. (McClean, 2018) McClean, J. R., Boixo, S., Smelyanskiy, V. N., Babbush, R., & Neven, H. (2018). Barren plateaus in quantum neural network training landscapes. *Nature Communications*, 9, 4812. DOI: 10.1038/s41467-018-07090-4
+8. (Preskill, 2018) Preskill, J. (2018). Quantum computing in the NISQ era and beyond. *Quantum*, 2, 79. DOI: 10.22331/q-2018-08-06-79
+9. (Schuld, 2019) Schuld, M., & Killoran, N. (2019). Quantum machine learning in feature Hilbert spaces. *Physical Review Letters*, 122, 040504. DOI: 10.1103/PhysRevLett.122.040504
+10. (Schuld, 2021) Schuld, M. (2021). Supervised quantum machine learning models are kernel methods. *arXiv*. DOI: 10.48550/arXiv.2101.11020
+11. (Schuld, 2021b) Schuld, M., Sweke, R., & Meyer, J. J. (2021). The effect of data encoding on the expressive power of variational quantum machine learning models. *Physical Review A*, 103, 032430. DOI: 10.1103/PhysRevA.103.032430
+12. (Sim, 2019) Sim, S., Johnson, P. D., & Aspuru-Guzik, A. (2019). Expressibility and entangling capability of parameterized quantum circuits for hybrid quantum-classical algorithms. *Advanced Quantum Technologies*, 2(12), 1900070. DOI: 10.1002/qute.201900070
+13. (Thanasilp, 2024) Thanasilp, S., Wang, S., Cerezo, M., & Holmes, Z. (2024). Exponential concentration in quantum kernel methods. *Nature Communications*, 15, 5200. DOI: 10.1038/s41467-024-49287-w

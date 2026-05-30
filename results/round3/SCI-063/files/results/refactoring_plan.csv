@@ -1,0 +1,474 @@
+gene_id,category,action,compression_bp,notes
+syn3_0025,unknown,retain,0,essential or size mismatch
+syn3_0043,unknown,retain,0,essential or size mismatch
+syn3_0110,unknown,fuse_pair,245,fuse with syn3_0167
+syn3_0167,unknown,fuse_pair,0,partner of syn3_0110
+syn3_0241,unknown,retain,0,essential or size mismatch
+syn3_0295,unknown,retain,0,essential or size mismatch
+syn3_0296,unknown,retain,0,essential or size mismatch
+syn3_0388,unknown,retain,0,essential or size mismatch
+syn3_0394,unknown,retain,0,essential or size mismatch
+syn3_0428,unknown,retain,0,essential or size mismatch
+syn3_0318,unknown,retain,0,essential or size mismatch
+syn3_0325,unknown,retain,0,essential or size mismatch
+syn3_0275,unknown,retain,0,essential or size mismatch
+syn3_0242,unknown,retain,0,essential or size mismatch
+syn3_0383,unknown,fuse_pair,252,fuse with syn3_0092
+syn3_0092,unknown,fuse_pair,0,partner of syn3_0383
+syn3_0431,unknown,fuse_pair,252,fuse with syn3_0226
+syn3_0226,unknown,fuse_pair,0,partner of syn3_0431
+syn3_0430,unknown,retain,0,essential or size mismatch
+syn3_0380,unknown,retain,0,essential or size mismatch
+syn3_0046,unknown,retain,0,essential or size mismatch
+syn3_0216,unknown,retain,0,essential or size mismatch
+syn3_0433,unknown,retain,0,essential or size mismatch
+syn3_0402,unknown,retain,0,essential or size mismatch
+syn3_0031,unknown,retain,0,essential or size mismatch
+syn3_0219,unknown,retain,0,essential or size mismatch
+syn3_0293,unknown,fuse_pair,265,fuse with syn3_0003
+syn3_0003,unknown,fuse_pair,0,partner of syn3_0293
+syn3_0032,unknown,retain,0,essential or size mismatch
+syn3_0252,unknown,retain,0,essential or size mismatch
+syn3_0030,unknown,retain,0,essential or size mismatch
+syn3_0233,unknown,retain,0,essential or size mismatch
+syn3_0019,unknown,fuse_pair,270,fuse with syn3_0301
+syn3_0301,unknown,fuse_pair,0,partner of syn3_0019
+syn3_0418,unknown,fuse_pair,274,fuse with syn3_0137
+syn3_0137,unknown,fuse_pair,0,partner of syn3_0418
+syn3_0377,unknown,fuse_pair,275,fuse with syn3_0170
+syn3_0170,unknown,fuse_pair,0,partner of syn3_0377
+syn3_0042,unknown,fuse_pair,276,fuse with syn3_0105
+syn3_0105,unknown,fuse_pair,0,partner of syn3_0042
+syn3_0347,unknown,fuse_pair,277,fuse with syn3_0004
+syn3_0004,unknown,fuse_pair,0,partner of syn3_0347
+syn3_0049,unknown,fuse_pair,279,fuse with syn3_0439
+syn3_0439,unknown,fuse_pair,0,partner of syn3_0049
+syn3_0160,unknown,retain,0,essential or size mismatch
+syn3_0321,unknown,retain,0,essential or size mismatch
+syn3_0265,unknown,fuse_pair,282,fuse with syn3_0432
+syn3_0432,unknown,fuse_pair,0,partner of syn3_0265
+syn3_0238,unknown,retain,0,essential or size mismatch
+syn3_0116,unknown,retain,0,essential or size mismatch
+syn3_0468,unknown,retain,0,essential or size mismatch
+syn3_0007,unknown,retain,0,essential or size mismatch
+syn3_0053,unknown,fuse_pair,285,fuse with syn3_0382
+syn3_0382,unknown,fuse_pair,0,partner of syn3_0053
+syn3_0185,unknown,retain,0,essential or size mismatch
+syn3_0073,unknown,retain,0,essential or size mismatch
+syn3_0180,unknown,retain,0,essential or size mismatch
+syn3_0132,unknown,retain,0,essential or size mismatch
+syn3_0371,unknown,retain,0,essential or size mismatch
+syn3_0305,unknown,retain,0,essential or size mismatch
+syn3_0174,unknown,fuse_pair,290,fuse with syn3_0104
+syn3_0104,unknown,fuse_pair,0,partner of syn3_0174
+syn3_0198,unknown,retain,0,essential or size mismatch
+syn3_0327,unknown,retain,0,essential or size mismatch
+syn3_0390,unknown,retain,0,essential or size mismatch
+syn3_0056,unknown,retain,0,essential or size mismatch
+syn3_0236,unknown,fuse_pair,294,fuse with syn3_0291
+syn3_0291,unknown,fuse_pair,0,partner of syn3_0236
+syn3_0139,unknown,fuse_pair,300,fuse with syn3_0087
+syn3_0087,unknown,fuse_pair,0,partner of syn3_0139
+syn3_0201,unknown,retain,0,essential or size mismatch
+syn3_0117,unknown,retain,0,essential or size mismatch
+syn3_0443,unknown,fuse_pair,301,fuse with syn3_0370
+syn3_0370,unknown,fuse_pair,0,partner of syn3_0443
+syn3_0101,unknown,retain,0,essential or size mismatch
+syn3_0246,unknown,retain,0,essential or size mismatch
+syn3_0001,unknown,retain,0,essential or size mismatch
+syn3_0235,unknown,retain,0,essential or size mismatch
+syn3_0159,unknown,retain,0,essential or size mismatch
+syn3_0452,unknown,retain,0,essential or size mismatch
+syn3_0151,unknown,retain,0,essential or size mismatch
+syn3_0181,unknown,retain,0,essential or size mismatch
+syn3_0106,unknown,fuse_pair,312,fuse with syn3_0434
+syn3_0434,unknown,fuse_pair,0,partner of syn3_0106
+syn3_0064,unknown,retain,0,essential or size mismatch
+syn3_0080,unknown,retain,0,essential or size mismatch
+syn3_0342,unknown,retain,0,essential or size mismatch
+syn3_0143,unknown,retain,0,essential or size mismatch
+syn3_0459,unknown,retain,0,essential or size mismatch
+syn3_0299,unknown,retain,0,essential or size mismatch
+syn3_0162,unknown,retain,0,essential or size mismatch
+syn3_0102,unknown,retain,0,essential or size mismatch
+syn3_0466,unknown,retain,0,essential or size mismatch
+syn3_0256,unknown,retain,0,essential or size mismatch
+syn3_0211,unknown,fuse_pair,322,fuse with syn3_0118
+syn3_0118,unknown,fuse_pair,0,partner of syn3_0211
+syn3_0298,unknown,fuse_pair,324,fuse with syn3_0194
+syn3_0194,unknown,fuse_pair,0,partner of syn3_0298
+syn3_0012,unknown,retain,0,essential or size mismatch
+syn3_0331,unknown,retain,0,essential or size mismatch
+syn3_0334,unknown,fuse_pair,328,fuse with syn3_0224
+syn3_0224,unknown,fuse_pair,0,partner of syn3_0334
+syn3_0338,unknown,fuse_pair,333,fuse with syn3_0453
+syn3_0453,unknown,fuse_pair,0,partner of syn3_0338
+syn3_0189,unknown,retain,0,essential or size mismatch
+syn3_0420,unknown,retain,0,essential or size mismatch
+syn3_0367,unknown,retain,0,essential or size mismatch
+syn3_0024,unknown,retain,0,essential or size mismatch
+syn3_0357,unknown,retain,0,essential or size mismatch
+syn3_0345,unknown,retain,0,essential or size mismatch
+syn3_0408,unknown,retain,0,essential or size mismatch
+syn3_0257,unknown,retain,0,essential or size mismatch
+syn3_0406,unknown,retain,0,essential or size mismatch
+syn3_0055,unknown,retain,0,essential or size mismatch
+syn3_0215,unknown,retain,0,essential or size mismatch
+syn3_0045,unknown,retain,0,essential or size mismatch
+syn3_0397,unknown,retain,0,essential or size mismatch
+syn3_0441,unknown,retain,0,essential or size mismatch
+syn3_0320,unknown,retain,0,essential or size mismatch
+syn3_0083,unknown,retain,0,essential or size mismatch
+syn3_0191,unknown,fuse_pair,351,fuse with syn3_0358
+syn3_0358,unknown,fuse_pair,0,partner of syn3_0191
+syn3_0403,unknown,retain,0,essential or size mismatch
+syn3_0446,unknown,retain,0,essential or size mismatch
+syn3_0343,unknown,fuse_pair,362,fuse with syn3_0100
+syn3_0100,unknown,fuse_pair,0,partner of syn3_0343
+syn3_0280,unknown,retain,0,essential or size mismatch
+syn3_0152,unknown,retain,0,essential or size mismatch
+syn3_0387,unknown,retain,0,essential or size mismatch
+syn3_0426,unknown,retain,0,essential or size mismatch
+syn3_0346,unknown,fuse_pair,378,fuse with syn3_0168
+syn3_0168,unknown,fuse_pair,0,partner of syn3_0346
+syn3_0279,unknown,retain,0,essential or size mismatch
+syn3_0333,unknown,retain,0,essential or size mismatch
+syn3_0014,unknown,retain,0,essential or size mismatch
+syn3_0021,unknown,retain,0,essential or size mismatch
+syn3_0414,unknown,retain,0,essential or size mismatch
+syn3_0182,unknown,retain,0,essential or size mismatch
+syn3_0179,unknown,fuse_pair,405,fuse with syn3_0214
+syn3_0214,unknown,fuse_pair,0,partner of syn3_0179
+syn3_0340,unknown,retain,0,essential or size mismatch
+syn3_0262,unknown,retain,0,essential or size mismatch
+syn3_0361,unknown,retain,0,essential or size mismatch
+syn3_0008,unknown,retain,0,essential or size mismatch
+syn3_0463,unknown,retain,0,no fusion partner
+syn3_0317,genome_processing,retain,0,essential or size mismatch
+syn3_0253,genome_processing,retain,0,essential or size mismatch
+syn3_0015,genome_processing,retain,0,essential or size mismatch
+syn3_0034,genome_processing,retain,0,essential or size mismatch
+syn3_0149,genome_processing,retain,0,essential or size mismatch
+syn3_0057,genome_processing,retain,0,essential or size mismatch
+syn3_0286,genome_processing,retain,0,essential or size mismatch
+syn3_0379,genome_processing,retain,0,essential or size mismatch
+syn3_0111,genome_processing,retain,0,essential or size mismatch
+syn3_0400,genome_processing,retain,0,essential or size mismatch
+syn3_0248,genome_processing,retain,0,essential or size mismatch
+syn3_0119,genome_processing,retain,0,essential or size mismatch
+syn3_0072,genome_processing,retain,0,essential or size mismatch
+syn3_0471,genome_processing,retain,0,essential or size mismatch
+syn3_0399,genome_processing,retain,0,essential or size mismatch
+syn3_0010,genome_processing,retain,0,essential or size mismatch
+syn3_0134,genome_processing,retain,0,essential or size mismatch
+syn3_0220,genome_processing,retain,0,essential or size mismatch
+syn3_0276,genome_processing,retain,0,essential or size mismatch
+syn3_0107,genome_processing,retain,0,essential or size mismatch
+syn3_0458,genome_processing,retain,0,essential or size mismatch
+syn3_0041,genome_processing,retain,0,essential or size mismatch
+syn3_0249,genome_processing,retain,0,essential or size mismatch
+syn3_0070,genome_processing,retain,0,essential or size mismatch
+syn3_0082,genome_processing,retain,0,essential or size mismatch
+syn3_0124,genome_processing,retain,0,essential or size mismatch
+syn3_0187,genome_processing,retain,0,essential or size mismatch
+syn3_0373,genome_processing,retain,0,essential or size mismatch
+syn3_0366,genome_processing,retain,0,essential or size mismatch
+syn3_0094,genome_processing,retain,0,essential or size mismatch
+syn3_0097,genome_processing,retain,0,essential or size mismatch
+syn3_0022,genome_processing,retain,0,essential or size mismatch
+syn3_0288,genome_processing,retain,0,essential or size mismatch
+syn3_0002,genome_processing,retain,0,essential or size mismatch
+syn3_0250,genome_processing,retain,0,essential or size mismatch
+syn3_0047,genome_processing,retain,0,essential or size mismatch
+syn3_0396,genome_processing,retain,0,essential or size mismatch
+syn3_0307,genome_processing,retain,0,essential or size mismatch
+syn3_0166,genome_processing,retain,0,essential or size mismatch
+syn3_0312,genome_processing,retain,0,essential or size mismatch
+syn3_0011,genome_processing,retain,0,essential or size mismatch
+syn3_0314,genome_processing,retain,0,essential or size mismatch
+syn3_0093,genome_processing,retain,0,essential or size mismatch
+syn3_0177,genome_processing,retain,0,essential or size mismatch
+syn3_0385,genome_processing,retain,0,essential or size mismatch
+syn3_0232,genome_processing,retain,0,essential or size mismatch
+syn3_0315,genome_processing,retain,0,essential or size mismatch
+syn3_0378,genome_processing,retain,0,essential or size mismatch
+syn3_0037,translation,retain,0,essential or size mismatch
+syn3_0085,translation,retain,0,essential or size mismatch
+syn3_0123,translation,retain,0,essential or size mismatch
+syn3_0127,translation,retain,0,essential or size mismatch
+syn3_0200,translation,retain,0,essential or size mismatch
+syn3_0205,translation,retain,0,essential or size mismatch
+syn3_0221,translation,retain,0,essential or size mismatch
+syn3_0231,translation,retain,0,essential or size mismatch
+syn3_0254,translation,retain,0,essential or size mismatch
+syn3_0255,translation,retain,0,essential or size mismatch
+syn3_0415,translation,retain,0,essential or size mismatch
+syn3_0416,translation,retain,0,essential or size mismatch
+syn3_0455,translation,retain,0,essential or size mismatch
+syn3_0155,translation,retain,0,essential or size mismatch
+syn3_0184,translation,retain,0,essential or size mismatch
+syn3_0175,translation,retain,0,essential or size mismatch
+syn3_0372,translation,retain,0,essential or size mismatch
+syn3_0445,translation,retain,0,essential or size mismatch
+syn3_0190,translation,retain,0,essential or size mismatch
+syn3_0217,translation,retain,0,essential or size mismatch
+syn3_0374,translation,retain,0,essential or size mismatch
+syn3_0294,translation,retain,0,essential or size mismatch
+syn3_0451,translation,retain,0,essential or size mismatch
+syn3_0341,translation,retain,0,essential or size mismatch
+syn3_0077,translation,retain,0,essential or size mismatch
+syn3_0108,translation,retain,0,essential or size mismatch
+syn3_0059,translation,retain,0,essential or size mismatch
+syn3_0350,translation,retain,0,essential or size mismatch
+syn3_0332,translation,retain,0,essential or size mismatch
+syn3_0076,translation,retain,0,essential or size mismatch
+syn3_0259,translation,retain,0,essential or size mismatch
+syn3_0074,translation,retain,0,essential or size mismatch
+syn3_0171,translation,retain,0,essential or size mismatch
+syn3_0284,translation,retain,0,essential or size mismatch
+syn3_0272,translation,retain,0,essential or size mismatch
+syn3_0207,translation,retain,0,essential or size mismatch
+syn3_0039,translation,retain,0,essential or size mismatch
+syn3_0071,translation,retain,0,essential or size mismatch
+syn3_0417,translation,retain,0,essential or size mismatch
+syn3_0376,translation,retain,0,essential or size mismatch
+syn3_0218,translation,retain,0,essential or size mismatch
+syn3_0437,translation,retain,0,essential or size mismatch
+syn3_0044,translation,retain,0,essential or size mismatch
+syn3_0424,translation,retain,0,essential or size mismatch
+syn3_0427,translation,retain,0,essential or size mismatch
+syn3_0375,translation,retain,0,essential or size mismatch
+syn3_0273,translation,retain,0,essential or size mismatch
+syn3_0263,translation,retain,0,essential or size mismatch
+syn3_0163,translation,retain,0,essential or size mismatch
+syn3_0362,translation,retain,0,essential or size mismatch
+syn3_0464,translation,retain,0,essential or size mismatch
+syn3_0456,translation,retain,0,essential or size mismatch
+syn3_0419,translation,retain,0,essential or size mismatch
+syn3_0068,translation,retain,0,essential or size mismatch
+syn3_0128,translation,retain,0,essential or size mismatch
+syn3_0335,translation,retain,0,essential or size mismatch
+syn3_0319,translation,retain,0,essential or size mismatch
+syn3_0302,translation,retain,0,essential or size mismatch
+syn3_0113,translation,retain,0,essential or size mismatch
+syn3_0112,translation,retain,0,essential or size mismatch
+syn3_0136,translation,retain,0,essential or size mismatch
+syn3_0213,translation,retain,0,essential or size mismatch
+syn3_0270,translation,retain,0,essential or size mismatch
+syn3_0309,translation,retain,0,essential or size mismatch
+syn3_0389,translation,retain,0,essential or size mismatch
+syn3_0436,translation,retain,0,essential or size mismatch
+syn3_0469,translation,retain,0,essential or size mismatch
+syn3_0206,translation,retain,0,essential or size mismatch
+syn3_0192,translation,retain,0,essential or size mismatch
+syn3_0348,translation,retain,0,essential or size mismatch
+syn3_0195,translation,retain,0,essential or size mismatch
+syn3_0310,translation,retain,0,essential or size mismatch
+syn3_0075,translation,retain,0,essential or size mismatch
+syn3_0240,translation,retain,0,essential or size mismatch
+syn3_0281,translation,retain,0,essential or size mismatch
+syn3_0330,translation,retain,0,essential or size mismatch
+syn3_0407,translation,retain,0,essential or size mismatch
+syn3_0033,translation,retain,0,essential or size mismatch
+syn3_0098,translation,retain,0,essential or size mismatch
+syn3_0131,translation,retain,0,essential or size mismatch
+syn3_0103,translation,retain,0,essential or size mismatch
+syn3_0209,translation,retain,0,essential or size mismatch
+syn3_0290,translation,retain,0,essential or size mismatch
+syn3_0316,translation,retain,0,essential or size mismatch
+syn3_0196,translation,retain,0,essential or size mismatch
+syn3_0473,translation,retain,0,essential or size mismatch
+syn3_0147,translation,retain,0,essential or size mismatch
+syn3_0239,translation,retain,0,essential or size mismatch
+syn3_0109,translation,retain,0,essential or size mismatch
+syn3_0150,translation,retain,0,essential or size mismatch
+syn3_0404,translation,retain,0,essential or size mismatch
+syn3_0199,translation,retain,0,essential or size mismatch
+syn3_0164,translation,retain,0,essential or size mismatch
+syn3_0095,translation,retain,0,essential or size mismatch
+syn3_0227,translation,retain,0,essential or size mismatch
+syn3_0401,translation,retain,0,essential or size mismatch
+syn3_0009,translation,retain,0,essential or size mismatch
+syn3_0392,translation,retain,0,essential or size mismatch
+syn3_0271,translation,retain,0,essential or size mismatch
+syn3_0369,translation,retain,0,essential or size mismatch
+syn3_0204,translation,retain,0,essential or size mismatch
+syn3_0176,translation,retain,0,essential or size mismatch
+syn3_0454,translation,retain,0,essential or size mismatch
+syn3_0323,translation,retain,0,essential or size mismatch
+syn3_0395,translation,retain,0,essential or size mismatch
+syn3_0060,translation,retain,0,essential or size mismatch
+syn3_0282,translation,retain,0,essential or size mismatch
+syn3_0444,translation,retain,0,essential or size mismatch
+syn3_0435,translation,retain,0,essential or size mismatch
+syn3_0363,translation,retain,0,essential or size mismatch
+syn3_0048,translation,retain,0,essential or size mismatch
+syn3_0026,translation,retain,0,essential or size mismatch
+syn3_0449,translation,retain,0,essential or size mismatch
+syn3_0277,translation,retain,0,essential or size mismatch
+syn3_0352,translation,retain,0,essential or size mismatch
+syn3_0269,translation,retain,0,essential or size mismatch
+syn3_0029,translation,retain,0,essential or size mismatch
+syn3_0140,translation,retain,0,essential or size mismatch
+syn3_0091,translation,retain,0,essential or size mismatch
+syn3_0161,translation,retain,0,essential or size mismatch
+syn3_0292,translation,retain,0,essential or size mismatch
+syn3_0287,translation,retain,0,essential or size mismatch
+syn3_0268,translation,retain,0,essential or size mismatch
+syn3_0258,translation,retain,0,essential or size mismatch
+syn3_0016,translation,retain,0,essential or size mismatch
+syn3_0422,translation,retain,0,essential or size mismatch
+syn3_0153,translation,retain,0,essential or size mismatch
+syn3_0050,translation,retain,0,essential or size mismatch
+syn3_0169,translation,retain,0,essential or size mismatch
+syn3_0442,translation,retain,0,essential or size mismatch
+syn3_0099,translation,retain,0,essential or size mismatch
+syn3_0086,translation,retain,0,essential or size mismatch
+syn3_0173,translation,retain,0,essential or size mismatch
+syn3_0423,translation,retain,0,essential or size mismatch
+syn3_0225,translation,retain,0,essential or size mismatch
+syn3_0261,translation,retain,0,essential or size mismatch
+syn3_0028,translation,retain,0,essential or size mismatch
+syn3_0398,translation,retain,0,essential or size mismatch
+syn3_0462,translation,retain,0,essential or size mismatch
+syn3_0018,translation,retain,0,essential or size mismatch
+syn3_0243,translation,retain,0,essential or size mismatch
+syn3_0267,translation,retain,0,essential or size mismatch
+syn3_0089,translation,retain,0,essential or size mismatch
+syn3_0264,translation,retain,0,essential or size mismatch
+syn3_0283,translation,retain,0,essential or size mismatch
+syn3_0125,translation,retain,0,essential or size mismatch
+syn3_0313,translation,retain,0,essential or size mismatch
+syn3_0084,translation,retain,0,essential or size mismatch
+syn3_0409,translation,retain,0,essential or size mismatch
+syn3_0364,translation,retain,0,essential or size mismatch
+syn3_0230,translation,retain,0,essential or size mismatch
+syn3_0129,translation,retain,0,essential or size mismatch
+syn3_0005,translation,retain,0,essential or size mismatch
+syn3_0193,translation,retain,0,essential or size mismatch
+syn3_0339,translation,retain,0,essential or size mismatch
+syn3_0188,translation,retain,0,essential or size mismatch
+syn3_0266,translation,retain,0,essential or size mismatch
+syn3_0036,translation,retain,0,essential or size mismatch
+syn3_0429,translation,retain,0,essential or size mismatch
+syn3_0051,translation,retain,0,essential or size mismatch
+syn3_0146,translation,retain,0,essential or size mismatch
+syn3_0157,translation,retain,0,essential or size mismatch
+syn3_0069,translation,retain,0,essential or size mismatch
+syn3_0413,translation,retain,0,essential or size mismatch
+syn3_0052,translation,retain,0,essential or size mismatch
+syn3_0337,translation,retain,0,essential or size mismatch
+syn3_0115,translation,retain,0,no fusion partner
+syn3_0386,cell_division,retain,0,essential or size mismatch
+syn3_0023,cell_division,retain,0,essential or size mismatch
+syn3_0006,cell_division,retain,0,essential or size mismatch
+syn3_0178,cell_division,retain,0,essential or size mismatch
+syn3_0447,cell_division,retain,0,essential or size mismatch
+syn3_0457,cell_division,retain,0,essential or size mismatch
+syn3_0405,cell_division,retain,0,essential or size mismatch
+syn3_0410,cell_division,retain,0,essential or size mismatch
+syn3_0202,cell_division,retain,0,essential or size mismatch
+syn3_0297,cell_division,retain,0,essential or size mismatch
+syn3_0013,metabolism,retain,0,essential or size mismatch
+syn3_0061,metabolism,retain,0,essential or size mismatch
+syn3_0326,metabolism,retain,0,essential or size mismatch
+syn3_0349,metabolism,retain,0,essential or size mismatch
+syn3_0353,metabolism,retain,0,essential or size mismatch
+syn3_0354,metabolism,retain,0,essential or size mismatch
+syn3_0365,metabolism,retain,0,essential or size mismatch
+syn3_0245,metabolism,retain,0,essential or size mismatch
+syn3_0130,metabolism,fuse_pair,246,fuse with syn3_0425
+syn3_0425,metabolism,fuse_pair,0,partner of syn3_0130
+syn3_0300,metabolism,retain,0,essential or size mismatch
+syn3_0360,metabolism,retain,0,essential or size mismatch
+syn3_0421,metabolism,retain,0,essential or size mismatch
+syn3_0081,metabolism,retain,0,essential or size mismatch
+syn3_0450,metabolism,retain,0,essential or size mismatch
+syn3_0465,metabolism,retain,0,essential or size mismatch
+syn3_0133,metabolism,retain,0,essential or size mismatch
+syn3_0412,metabolism,retain,0,essential or size mismatch
+syn3_0078,metabolism,retain,0,essential or size mismatch
+syn3_0122,metabolism,retain,0,essential or size mismatch
+syn3_0329,metabolism,retain,0,essential or size mismatch
+syn3_0197,metabolism,retain,0,essential or size mismatch
+syn3_0020,metabolism,retain,0,essential or size mismatch
+syn3_0460,metabolism,retain,0,essential or size mismatch
+syn3_0120,metabolism,retain,0,essential or size mismatch
+syn3_0368,metabolism,retain,0,essential or size mismatch
+syn3_0448,metabolism,retain,0,essential or size mismatch
+syn3_0121,metabolism,retain,0,essential or size mismatch
+syn3_0208,metabolism,retain,0,essential or size mismatch
+syn3_0156,metabolism,retain,0,essential or size mismatch
+syn3_0251,metabolism,retain,0,essential or size mismatch
+syn3_0114,metabolism,retain,0,essential or size mismatch
+syn3_0391,metabolism,retain,0,essential or size mismatch
+syn3_0393,metabolism,retain,0,essential or size mismatch
+syn3_0336,metabolism,retain,0,essential or size mismatch
+syn3_0440,metabolism,retain,0,essential or size mismatch
+syn3_0186,metabolism,retain,0,essential or size mismatch
+syn3_0308,metabolism,retain,0,essential or size mismatch
+syn3_0285,metabolism,retain,0,essential or size mismatch
+syn3_0040,metabolism,retain,0,essential or size mismatch
+syn3_0158,metabolism,retain,0,essential or size mismatch
+syn3_0144,metabolism,retain,0,essential or size mismatch
+syn3_0063,metabolism,retain,0,essential or size mismatch
+syn3_0344,metabolism,retain,0,essential or size mismatch
+syn3_0054,metabolism,fuse_pair,333,fuse with syn3_0274
+syn3_0274,metabolism,fuse_pair,0,partner of syn3_0054
+syn3_0247,metabolism,retain,0,essential or size mismatch
+syn3_0212,metabolism,retain,0,essential or size mismatch
+syn3_0461,metabolism,fuse_pair,338,fuse with syn3_0065
+syn3_0065,metabolism,fuse_pair,0,partner of syn3_0461
+syn3_0411,metabolism,retain,0,essential or size mismatch
+syn3_0260,metabolism,retain,0,essential or size mismatch
+syn3_0467,metabolism,retain,0,essential or size mismatch
+syn3_0351,metabolism,retain,0,essential or size mismatch
+syn3_0229,metabolism,retain,0,essential or size mismatch
+syn3_0223,metabolism,retain,0,essential or size mismatch
+syn3_0135,metabolism,retain,0,essential or size mismatch
+syn3_0234,metabolism,retain,0,essential or size mismatch
+syn3_0096,metabolism,retain,0,essential or size mismatch
+syn3_0058,metabolism,retain,0,essential or size mismatch
+syn3_0079,membrane,fuse_pair,245,fuse with syn3_0244
+syn3_0244,membrane,fuse_pair,0,partner of syn3_0079
+syn3_0328,membrane,retain,0,essential or size mismatch
+syn3_0017,membrane,retain,0,essential or size mismatch
+syn3_0384,membrane,retain,0,essential or size mismatch
+syn3_0222,membrane,retain,0,essential or size mismatch
+syn3_0303,membrane,retain,0,essential or size mismatch
+syn3_0148,membrane,retain,0,essential or size mismatch
+syn3_0322,membrane,fuse_pair,262,fuse with syn3_0035
+syn3_0035,membrane,fuse_pair,0,partner of syn3_0322
+syn3_0172,membrane,retain,0,essential or size mismatch
+syn3_0210,membrane,retain,0,essential or size mismatch
+syn3_0355,membrane,retain,0,essential or size mismatch
+syn3_0304,membrane,retain,0,essential or size mismatch
+syn3_0356,membrane,retain,0,essential or size mismatch
+syn3_0278,membrane,retain,0,essential or size mismatch
+syn3_0289,membrane,retain,0,essential or size mismatch
+syn3_0324,membrane,retain,0,essential or size mismatch
+syn3_0027,membrane,retain,0,essential or size mismatch
+syn3_0359,membrane,retain,0,essential or size mismatch
+syn3_0141,membrane,retain,0,essential or size mismatch
+syn3_0062,membrane,retain,0,essential or size mismatch
+syn3_0470,membrane,retain,0,essential or size mismatch
+syn3_0472,membrane,retain,0,essential or size mismatch
+syn3_0126,membrane,retain,0,essential or size mismatch
+syn3_0138,membrane,retain,0,essential or size mismatch
+syn3_0066,membrane,fuse_pair,323,fuse with syn3_0183
+syn3_0183,membrane,fuse_pair,0,partner of syn3_0066
+syn3_0145,membrane,retain,0,essential or size mismatch
+syn3_0438,membrane,retain,0,essential or size mismatch
+syn3_0228,membrane,retain,0,essential or size mismatch
+syn3_0165,membrane,retain,0,essential or size mismatch
+syn3_0090,membrane,retain,0,essential or size mismatch
+syn3_0237,membrane,retain,0,essential or size mismatch
+syn3_0038,membrane,retain,0,essential or size mismatch
+syn3_0154,membrane,retain,0,essential or size mismatch
+syn3_0067,membrane,fuse_pair,350,fuse with syn3_0381
+syn3_0381,membrane,fuse_pair,0,partner of syn3_0067
+syn3_0142,membrane,retain,0,essential or size mismatch
+syn3_0203,membrane,retain,0,essential or size mismatch
+syn3_0311,membrane,retain,0,essential or size mismatch
+syn3_0088,membrane,retain,0,essential or size mismatch
+syn3_0306,membrane,retain,0,no fusion partner

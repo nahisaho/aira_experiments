@@ -1,0 +1,11 @@
+pathway,pathway_size,overlap,enrichment_ratio,p_value,neg_log10_p,p_adj
+Bile_acid_metabolism,10,9,3.27,0.0,4.37,0.0
+Tryptophan_metabolism,10,8,2.91,0.0006,3.22,0.003
+Short-chain_fatty_acids,10,7,2.55,0.0051,2.29,0.017
+Purine_metabolism,10,0,0.0,1.0,-0.0,1.0
+Amino_acid_metabolism,15,0,0.0,1.0,-0.0,1.0
+Lipid_metabolism,15,0,0.0,1.0,-0.0,1.0
+Carbohydrate_metabolism,15,0,0.0,1.0,-0.0,1.0
+Nucleotide_metabolism,10,0,0.0,1.0,-0.0,1.0
+Vitamin_metabolism,10,0,0.0,1.0,-0.0,1.0
+Glycolysis,10,0,0.0,1.0,-0.0,1.0

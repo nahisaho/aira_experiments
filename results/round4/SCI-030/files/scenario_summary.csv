@@ -1,0 +1,4 @@
+Scenario,T_inj (°C),T_prod_final (°C),Mean Power (MW),Cum. Heat (GWh)
+Cold inj. (20°C),20.0,400.3,12.36,3251.4
+Moderate (40°C),40.0,400.3,11.76,3093.6
+Warm inj. (70°C),70.0,400.3,10.86,2856.9

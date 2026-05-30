@@ -1,0 +1,6 @@
+,AUROC_mean,AUROC_std,F1_mean,F1_std,Accuracy_mean,Accuracy_std
+Random_Forest_Metabolome,0.944,0.0334,0.8376,0.039,0.84,0.0389
+Random_Forest_Microbiome,0.9404,0.0338,0.8842,0.0497,0.8867,0.0452
+Elastic_Net_Metabolome,0.9556,0.0146,0.8881,0.0285,0.8867,0.0267
+DIABLO_Integration (RF),0.9804,0.015,0.9122,0.0349,0.9133,0.034
+GBM_Integration,0.8889,0.0587,0.8102,0.0732,0.8067,0.0742

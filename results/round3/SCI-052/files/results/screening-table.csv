@@ -1,0 +1,16 @@
+citation_key,title,source,decision,reason
+"(Medford, 2015)","CatMAP: A Software Package for Descriptor-Based Microkinetic Mapping of Catalytic Trends",Semantic Scholar/Crossref,include,Direct microkinetic software framework
+"(Grabow and Mavrikakis, 2011)","Mechanism of Methanol Synthesis on Cu through CO2 and CO Hydrogenation",Crossref,include,Canonical DFT-to-microkinetic workflow
+"(Stegelmann et al., 2009)","Degree of Rate Control: How Much the Energies of Intermediates and Transition States Control Rates",Crossref/web,include,Foundational rate-control formalism
+"(Bruix et al., 2019)","First-principles-based microkinetics simulations of synthesis gas conversion over transition metal catalysts",Crossref,include,Modern syngas microkinetics benchmark
+"(Motagamwala and Dumesic, 2021)","Microkinetic Modeling: A Tool for Rational Catalyst Design",Crossref,include,Recent review of microkinetic methodology
+"(Nørskov et al., 2002)","Universality in Heterogeneous Catalysis",Crossref,include,Descriptor and BEP scaling foundation
+"(Kozuch and Shaik, 2011)","How to Conceptualize Catalytic Cycles? The Energetic Span Model",Crossref,include,Energetic span formalism
+"(van Santen et al., 2011)","Mechanistic Issues in Fischer-Tropsch Catalysis",web,include,Mechanistic FTS review
+"(Andersen et al., 2019)","A Practical Guide to Surface Kinetic Monte Carlo Simulations",web,include,Needed for mean-field versus kMC discussion
+"(Campbell, 2017)","The Degree of Rate Control: A Powerful Tool for Catalysis Research",Crossref/web,include,Practical DRC interpretation
+"(Rommens and Saeys, 2023)","Molecular Views on Fischer-Tropsch Synthesis",PubMed,include,Recent FTS mechanistic review
+"(Liu et al., 2023)","An optimal Fe-C coordination ensemble for hydrocarbon chain growth: a full Fischer-Tropsch synthesis mechanism from machine learning",PubMed,include,Recent FTS microkinetic/mechanistic study
+"(Zhang et al., 2023)","The oscillating Fischer-Tropsch reaction",PubMed,include,Recent dynamic microkinetic FTS example
+"(IJRASET, 2018)","Off-topic Crossref result for CatMAP query",Crossref,exclude,Not relevant to catalysis microkinetics
+"(Misc. lateral-interaction record, 2013)","General lateral-interaction catalysis record",Crossref,exclude,Used only to confirm topic coverage, not central

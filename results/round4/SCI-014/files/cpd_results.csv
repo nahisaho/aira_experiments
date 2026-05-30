@@ -1,0 +1,5 @@
+metric,value
+detection_rate,1.0
+MAE_weeks,13.0
+within_2wk,0.06
+within_4wk,0.14

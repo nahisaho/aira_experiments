@@ -1,0 +1,15 @@
+Molecule,SA Original,SA Improved,SMILES
+Aspirin,1.56,2.105,CC(=O)Oc1ccccc1C(=O)O
+Paracetamol,1.52,2.19,CC(=O)Nc1ccc(O)cc1
+Ibuprofen,2.0,2.91,CC(C)Cc1ccc(cc1)C(C)C(=O)O
+Caffeine,1.88,2.575,Cn1cnc2c1c(=O)n(c(=O)n2C)C
+Morphine,3.42,3.6149999999999998,OC1=CC=C2CC3N(CC2=C1OC)CCC34CCN(C4)C
+Diclofenac,1.98,2.335,OC(=O)Cc1ccccc1Nc1c(Cl)cccc1Cl
+Penicillin G,3.56,6.126307218000006,CC1(C)SC2C(NC(=O)Cc3ccccc3)C(=O)N2C1C(=O)O
+Taxol scaffold,1.6400000000000001,1.855,OC(=O)c1ccccc1NC(=O)OC(C)(C)C
+Simple aldehyde,1.46,2.465,O=Cc1ccccc1
+Methanol,1.04,2.275,CO
+Benzene,1.4200000000000002,2.375,c1ccccc1
+Estradiol,4.6,5.225,OC1CCC2C3CCc4cc(O)ccc4C3CCC2C1
+Metformin,1.18,2.45,CN(C)C(=N)NC(=N)N
+Chlorpromazine,2.32,3.2723802580000036,CN(C)CCCN1c2ccccc2Sc2cc(Cl)ccc21

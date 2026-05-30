@@ -1,0 +1,11 @@
+rank,drug_id,drug_name,consensus_score,TransE_score,RotatE_score,ComplEx_score,known_covid_signal,explanation_path
+1,drug_molnupiravir,Molnupiravir,1.1706,-0.9168,-0.3815,-3.3053,0,Molnupiravir -[targets]-> STAT3 | STAT3 -[associated_with]-> COVID-19
+2,drug_remdesivir,Remdesivir,1.1595,-0.9139,-0.3837,-3.3578,1,Remdesivir -[targets]-> ACE2 | ACE2 -[associated_with]-> COVID-19
+3,drug_dexamethasone,Dexamethasone,1.1536,-0.9186,-0.3874,-3.1712,1,Dexamethasone -[targets]-> IFNG | IFNG -[associated_with]-> COVID-19
+4,drug_favipiravir,Favipiravir,0.8312,-0.9733,-0.4025,-3.1255,0,Favipiravir -[targets]-> TMPRSS2 | TMPRSS2 -[associated_with]-> COVID-19
+5,drug_ritonavir,Ritonavir,0.8151,-0.9428,-0.4793,-1.5584,0,Ritonavir -[targets]-> ACE2 | ACE2 -[associated_with]-> COVID-19
+6,drug_015,Statipril-15,0.8054,-0.9555,-0.4479,-2.276,0,Statipril-15 -[targets]-> CCR8 | CCR8 -[associated_with]-> COVID-19
+7,drug_020,Immunoline-20,0.756,-0.9793,-0.4199,-2.8467,0,Immunoline-20 -[treats]-> Fibrotic disorder 13 | Fibrotic disorder 13 -[manifests_as]-> Lymphopenia | Lymphopenia -[manifests_as]-> COVID-19
+8,drug_nirmatrelvir,Nirmatrelvir,0.7544,-0.9827,-0.382,-3.9244,0,Nirmatrelvir -[targets]-> TMPRSS2 | TMPRSS2 -[associated_with]-> COVID-19
+9,drug_024,Immunopril-24,0.6986,-0.9885,-0.401,-3.503,0,Immunopril-24 -[targets]-> AKT16 | AKT16 -[interacts_with]-> IFNG | IFNG -[associated_with]-> COVID-19
+10,drug_039,Statiazole-39,0.6983,-0.8857,-0.4571,-4.084,0,Statiazole-39 -[targets]-> GSK11 | GSK11 -[interacts_with]-> STAT3 | STAT3 -[associated_with]-> COVID-19

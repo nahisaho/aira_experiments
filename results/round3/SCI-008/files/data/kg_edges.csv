@@ -1,0 +1,1236 @@
+source,relation,target,source_name,target_name,source_type,target_type,weight,is_noise
+gene_il6,interacts_with,gene_003,IL6,SMAD5,Gene,Gene,0.71,0
+disease_019,manifests_as,phenotype_009,Systemic inflammation 19,Mild Fatigue 9,Disease,Phenotype,0.815,0
+disease_015,associated_with,gene_036,Fibrotic vasculitis 15,STAT38,Disease,Gene,0.63,0
+drug_colchicine,targets,gene_030,Colchicine,GSK32,Drug,Gene,0.85,0
+drug_009,targets,gene_044,Hepatocept-9,PIK46,Drug,Gene,0.85,0
+disease_sepsis,manifests_as,phenotype_015,Sepsis,Transient Fatigue 15,Disease,Phenotype,0.623,0
+drug_033,targets,gene_016,Thoraline-33,CCR18,Drug,Gene,0.85,0
+gene_034,interacts_with,gene_036,SMAD36,STAT38,Gene,Gene,0.597,0
+disease_ards,associated_with,gene_049,Acute respiratory distress syndrome,CCR51,Disease,Gene,0.725,0
+gene_046,interacts_with,gene_042,STAT48,PIK44,Gene,Gene,0.686,0
+gene_006,interacts_with,gene_021,CCR8,SMAD23,Gene,Gene,0.238,1
+drug_027,treats,disease_003,Neurocept-27,Acute fibrosis 3,Drug,Disease,0.747,0
+gene_005,interacts_with,gene_008,TLR7,GSK10,Gene,Gene,0.38,0
+gene_054,interacts_with,gene_044,SMAD56,PIK46,Gene,Gene,0.857,0
+disease_ards,manifests_as,phenotype_001,Acute respiratory distress syndrome,Recurrent Pain 1,Disease,Phenotype,0.653,0
+disease_005,manifests_as,phenotype_008,Systemic myopathy 5,Chronic Pain 8,Disease,Phenotype,0.675,0
+disease_023,associated_with,gene_tlr4,Metabolic syndrome 23,TLR4,Disease,Gene,0.598,0
+drug_007,targets,gene_tmprss2,Viramab-7,TMPRSS2,Drug,Gene,0.85,0
+drug_038,targets,gene_051,Hepatovir-38,SMAD53,Drug,Gene,0.85,0
+gene_026,part_of,pathway_017,GSK28,Repair Program 17,Gene,Pathway,0.778,0
+disease_007,associated_with,gene_nfkb1,Immune fibrosis 7,NFKB1,Disease,Gene,0.617,0
+gene_mapk1,interacts_with,gene_022,MAPK1,MAPK24,Gene,Gene,0.769,0
+gene_crp,interacts_with,gene_045,CRP,MAPK47,Gene,Gene,0.596,0
+drug_budesonide,targets,gene_045,Budesonide,MAPK47,Drug,Gene,0.85,0
+drug_anakinra,targets,gene_001,Anakinra,CXCL3,Drug,Gene,0.85,0
+gene_044,interacts_with,gene_054,PIK46,SMAD56,Gene,Gene,0.557,0
+disease_covid19,manifests_as,phenotype_fever,COVID-19,Fever,Disease,Phenotype,1.0,0
+gene_056,part_of,pathway_016,AKT58,Repair Response 16,Gene,Pathway,0.251,1
+drug_036,treats,disease_covid19,Lipomab-36,COVID-19,Drug,Disease,0.512,0
+disease_023,associated_with,gene_003,Metabolic syndrome 23,SMAD5,Disease,Gene,0.805,0
+disease_021,manifests_as,phenotype_015,Chronic inflammation 21,Transient Fatigue 15,Disease,Phenotype,0.932,0
+disease_026,associated_with,gene_015,Fibrotic disorder 26,MAPK17,Disease,Gene,0.792,0
+disease_007,manifests_as,phenotype_011,Immune fibrosis 7,Severe Dyspnea 11,Disease,Phenotype,0.226,1
+disease_013,associated_with,gene_048,Fibrotic disorder 13,MAPK50,Disease,Gene,0.524,0
+disease_021,manifests_as,phenotype_016,Chronic inflammation 21,Transient Rash 16,Disease,Phenotype,0.748,0
+drug_017,targets,gene_035,Stativir-17,HSP37,Drug,Gene,0.85,0
+gene_023,part_of,pathway_019,MAPK25,Fibrotic Program 19,Gene,Pathway,0.844,0
+drug_013,treats,disease_005,Thoracept-13,Systemic myopathy 5,Drug,Disease,0.85,0
+gene_002,interacts_with,gene_030,GSK4,GSK32,Gene,Gene,0.371,0
+gene_032,interacts_with,gene_mtor,CXCL34,MTOR,Gene,Gene,0.819,0
+drug_019,targets,gene_035,Immunopril-19,HSP37,Drug,Gene,0.85,0
+gene_017,interacts_with,gene_023,CXCL19,MAPK25,Gene,Gene,0.772,0
+gene_047,interacts_with,gene_024,STAT49,PIK26,Gene,Gene,0.705,0
+gene_021,interacts_with,gene_nfkb1,SMAD23,NFKB1,Gene,Gene,0.696,0
+drug_032,treats,disease_016,Glycosone-32,Fibrotic inflammation 16,Drug,Disease,0.862,0
+drug_ruxolitinib,targets,gene_041,Ruxolitinib,CCR43,Drug,Gene,0.85,0
+disease_thrombosis,manifests_as,phenotype_027,Immunothrombosis,Chronic Pain 27,Disease,Phenotype,0.758,0
+drug_baricitinib,targets,gene_043,Baricitinib,GSK45,Drug,Gene,0.85,0
+drug_dexamethasone,targets,gene_stat3,Dexamethasone,STAT3,Drug,Gene,0.13,1
+disease_sarscov2,manifests_as,phenotype_fever,SARS-CoV-2 infection,Fever,Disease,Phenotype,1.0,0
+gene_026,interacts_with,gene_049,GSK28,CCR51,Gene,Gene,0.512,0
+gene_008,interacts_with,gene_tlr4,GSK10,TLR4,Gene,Gene,0.803,0
+drug_021,treats,disease_014,Neurocept-21,Metabolic myopathy 14,Drug,Disease,0.583,0
+gene_tnf,interacts_with,gene_017,TNF,CXCL19,Gene,Gene,0.491,0
+gene_048,interacts_with,gene_053,MAPK50,STAT55,Gene,Gene,0.502,0
+gene_049,interacts_with,gene_026,CCR51,GSK28,Gene,Gene,0.778,0
+drug_046,treats,disease_013,Cardiocept-46,Fibrotic disorder 13,Drug,Disease,0.625,0
+gene_026,interacts_with,gene_004,GSK28,STAT6,Gene,Gene,0.839,0
+drug_dexamethasone,treats,disease_ards,Dexamethasone,Acute respiratory distress syndrome,Drug,Disease,1.0,0
+drug_036,targets,gene_027,Lipomab-36,TLR29,Drug,Gene,0.85,0
+disease_covid19,manifests_as,phenotype_cough,COVID-19,Cough,Disease,Phenotype,1.0,0
+gene_007,interacts_with,gene_027,TLR9,TLR29,Gene,Gene,0.467,0
+gene_048,interacts_with,gene_016,MAPK50,CCR18,Gene,Gene,0.351,0
+disease_006,associated_with,gene_crp,Fibrotic myopathy 6,CRP,Disease,Gene,0.512,0
+disease_019,associated_with,gene_016,Systemic inflammation 19,CCR18,Disease,Gene,0.783,0
+drug_024,targets,gene_014,Immunopril-24,AKT16,Drug,Gene,0.85,0
+disease_012,manifests_as,phenotype_013,Systemic myopathy 12,Severe Dyspnea 13,Disease,Phenotype,0.583,0
+drug_029,targets,gene_mtor,Viravir-29,MTOR,Drug,Gene,0.85,0
+gene_033,interacts_with,gene_051,GSK35,SMAD53,Gene,Gene,0.33,0
+drug_ritonavir,targets,gene_043,Ritonavir,GSK45,Drug,Gene,0.85,0
+drug_dexamethasone,treats,disease_017,Dexamethasone,Fibrotic syndrome 17,Drug,Disease,0.473,0
+drug_017,targets,gene_021,Stativir-17,SMAD23,Drug,Gene,0.85,0
+gene_050,interacts_with,gene_043,AKT52,GSK45,Gene,Gene,0.461,0
+disease_015,associated_with,gene_jak1,Fibrotic vasculitis 15,JAK1,Disease,Gene,0.673,0
+drug_030,targets,gene_tlr4,Lipomab-30,TLR4,Drug,Gene,0.85,0
+gene_cxcl10,interacts_with,gene_015,CXCL10,MAPK17,Gene,Gene,0.706,0
+disease_007,manifests_as,phenotype_019,Immune fibrosis 7,Severe Edema 19,Disease,Phenotype,0.294,1
+gene_014,interacts_with,gene_041,AKT16,CCR43,Gene,Gene,0.574,0
+drug_043,targets,gene_020,Cardioex-43,STAT22,Drug,Gene,0.85,0
+gene_010,part_of,pathway_002,AKT12,Fibrotic Signal 2,Gene,Pathway,0.586,0
+gene_003,interacts_with,gene_033,SMAD5,GSK35,Gene,Gene,0.302,0
+drug_026,targets,gene_005,Lipocept-26,TLR7,Drug,Gene,0.85,0
+gene_022,part_of,pathway_018,MAPK24,Immune Program 18,Gene,Pathway,0.701,0
+gene_029,interacts_with,gene_nfkb1,PIK31,NFKB1,Gene,Gene,0.568,0
+disease_020,manifests_as,phenotype_hypoxia,Systemic carcinoma 20,Hypoxia,Disease,Phenotype,0.847,0
+drug_032,targets,gene_026,Glycosone-32,GSK28,Drug,Gene,0.141,1
+drug_019,treats,disease_016,Immunopril-19,Fibrotic inflammation 16,Drug,Disease,0.493,0
+drug_remdesivir,treats,disease_pneumonia,Remdesivir,Viral pneumonia,Drug,Disease,0.483,0
+disease_018,associated_with,gene_ace2,Systemic disorder 18,ACE2,Disease,Gene,0.872,0
+disease_covid19,associated_with,gene_ifng,COVID-19,IFNG,Disease,Gene,1.0,0
+drug_004,treats,disease_005,Immunodine-4,Systemic myopathy 5,Drug,Disease,0.842,0
+gene_crp,part_of,pathway_017,CRP,Repair Program 17,Gene,Pathway,0.653,0
+drug_baricitinib,treats,disease_covid19,Baricitinib,COVID-19,Drug,Disease,1.0,0
+disease_pneumonia,associated_with,gene_008,Viral pneumonia,GSK10,Disease,Gene,0.554,0
+gene_018,interacts_with,gene_035,STAT20,HSP37,Gene,Gene,0.482,0
+gene_043,interacts_with,gene_044,GSK45,PIK46,Gene,Gene,0.511,0
+drug_039,targets,gene_009,Statiazole-39,GSK11,Drug,Gene,0.85,0
+disease_025,manifests_as,phenotype_011,Fibrotic deficiency 25,Severe Dyspnea 11,Disease,Phenotype,0.648,0
+drug_baricitinib,treats,disease_013,Baricitinib,Fibrotic disorder 13,Drug,Disease,0.596,0
+gene_053,interacts_with,gene_015,STAT55,MAPK17,Gene,Gene,0.411,0
+gene_051,part_of,pathway_001,SMAD53,Immune Program 1,Gene,Pathway,0.835,0
+gene_043,interacts_with,gene_jak1,GSK45,JAK1,Gene,Gene,0.792,0
+gene_049,interacts_with,gene_042,CCR51,PIK44,Gene,Gene,0.833,0
+disease_016,associated_with,gene_054,Fibrotic inflammation 16,SMAD56,Disease,Gene,0.704,0
+gene_008,interacts_with,gene_005,GSK10,TLR7,Gene,Gene,0.44,0
+drug_013,targets,gene_045,Thoracept-13,MAPK47,Drug,Gene,0.85,0
+disease_004,manifests_as,phenotype_022,Systemic inflammation 4,Recurrent Fatigue 22,Disease,Phenotype,0.115,1
+drug_033,targets,gene_037,Thoraline-33,GSK39,Drug,Gene,0.85,0
+drug_008,targets,gene_029,Cardiovir-8,PIK31,Drug,Gene,0.85,0
+drug_021,targets,gene_053,Neurocept-21,STAT55,Drug,Gene,0.85,0
+gene_jak1,interacts_with,gene_jak2,JAK1,JAK2,Gene,Gene,1.0,0
+gene_030,interacts_with,gene_tlr4,GSK32,TLR4,Gene,Gene,0.483,0
+gene_nfkb1,part_of,pathway_016,NFKB1,Repair Response 16,Gene,Pathway,0.707,0
+gene_027,interacts_with,gene_il6,TLR29,IL6,Gene,Gene,0.648,0
+gene_001,interacts_with,gene_cxcl10,CXCL3,CXCL10,Gene,Gene,0.405,0
+gene_033,interacts_with,gene_055,GSK35,STAT57,Gene,Gene,0.427,0
+drug_003,targets,gene_jak1,Cardionib-3,JAK1,Drug,Gene,0.337,1
+gene_jak2,part_of,pathway_021,JAK2,Repair Program 21,Gene,Pathway,0.858,0
+gene_055,interacts_with,gene_042,STAT57,PIK44,Gene,Gene,0.414,0
+gene_ifng,interacts_with,gene_014,IFNG,AKT16,Gene,Gene,0.427,0
+gene_tnf,interacts_with,gene_nfkb1,TNF,NFKB1,Gene,Gene,1.0,0
+gene_047,interacts_with,gene_jak2,STAT49,JAK2,Gene,Gene,0.664,0
+gene_mtor,interacts_with,gene_022,MTOR,MAPK24,Gene,Gene,0.828,0
+disease_025,manifests_as,phenotype_013,Fibrotic deficiency 25,Severe Dyspnea 13,Disease,Phenotype,0.951,0
+drug_remdesivir,treats,disease_covid19,Remdesivir,COVID-19,Drug,Disease,1.0,0
+drug_tocilizumab,targets,gene_mtor,Tocilizumab,MTOR,Drug,Gene,0.85,0
+gene_tmprss2,part_of,pathway_interferon,TMPRSS2,Interferon Response,Gene,Pathway,0.856,0
+drug_028,targets,gene_047,Cardiomab-28,STAT49,Drug,Gene,0.85,0
+drug_anakinra,treats,disease_003,Anakinra,Acute fibrosis 3,Drug,Disease,0.558,0
+disease_023,manifests_as,phenotype_004,Metabolic syndrome 23,Severe Dyspnea 4,Disease,Phenotype,0.869,0
+gene_006,interacts_with,gene_015,CCR8,MAPK17,Gene,Gene,0.714,0
+gene_028,interacts_with,gene_019,TLR30,AKT21,Gene,Gene,0.434,0
+drug_047,targets,gene_002,Neurovir-47,GSK4,Drug,Gene,0.209,1
+gene_037,interacts_with,gene_033,GSK39,GSK35,Gene,Gene,0.728,0
+disease_018,manifests_as,phenotype_014,Systemic disorder 18,Mild Fibrosis 14,Disease,Phenotype,0.923,0
+drug_022,targets,gene_038,Lipoex-22,STAT40,Drug,Gene,0.85,0
+gene_047,interacts_with,gene_039,STAT49,CXCL41,Gene,Gene,0.644,0
+disease_018,manifests_as,phenotype_023,Systemic disorder 18,Mild Neuropathy 23,Disease,Phenotype,0.736,0
+drug_026,targets,gene_028,Lipocept-26,TLR30,Drug,Gene,0.85,0
+gene_il6,interacts_with,gene_020,IL6,STAT22,Gene,Gene,0.739,0
+drug_030,targets,gene_ace2,Lipomab-30,ACE2,Drug,Gene,0.294,1
+disease_pneumonia,manifests_as,phenotype_007,Viral pneumonia,Mild Neuropathy 7,Disease,Phenotype,0.579,0
+disease_006,associated_with,gene_tlr4,Fibrotic myopathy 6,TLR4,Disease,Gene,0.843,0
+disease_010,manifests_as,phenotype_012,Chronic deficiency 10,Transient Neuropathy 12,Disease,Phenotype,0.771,0
+disease_pneumonia,associated_with,gene_043,Viral pneumonia,GSK45,Disease,Gene,0.576,0
+gene_053,interacts_with,gene_crp,STAT55,CRP,Gene,Gene,0.549,0
+gene_014,interacts_with,gene_ifng,AKT16,IFNG,Gene,Gene,0.741,0
+drug_031,targets,gene_045,Cardiomab-31,MAPK47,Drug,Gene,0.85,0
+gene_036,interacts_with,gene_056,STAT38,AKT58,Gene,Gene,0.378,0
+gene_006,part_of,pathway_cytokine_storm,CCR8,Cytokine Storm,Gene,Pathway,0.818,0
+drug_038,treats,disease_022,Hepatovir-38,Metabolic deficiency 22,Drug,Disease,0.234,1
+gene_004,part_of,pathway_001,STAT6,Immune Program 1,Gene,Pathway,0.64,0
+disease_024,associated_with,gene_048,Systemic inflammation 24,MAPK50,Disease,Gene,0.832,0
+drug_038,targets,gene_025,Hepatovir-38,MAPK27,Drug,Gene,0.85,0
+drug_046,treats,disease_012,Cardiocept-46,Systemic myopathy 12,Drug,Disease,0.666,0
+drug_030,targets,gene_jak2,Lipomab-30,JAK2,Drug,Gene,0.85,0
+gene_039,interacts_with,gene_028,CXCL41,TLR30,Gene,Gene,0.48,0
+gene_055,interacts_with,gene_007,STAT57,TLR9,Gene,Gene,0.314,0
+gene_011,interacts_with,gene_023,SMAD13,MAPK25,Gene,Gene,0.456,0
+gene_027,interacts_with,gene_ace2,TLR29,ACE2,Gene,Gene,0.307,0
+gene_050,interacts_with,gene_009,AKT52,GSK11,Gene,Gene,0.308,0
+drug_017,treats,disease_012,Stativir-17,Systemic myopathy 12,Drug,Disease,0.791,0
+drug_012,targets,gene_003,Glycovir-12,SMAD5,Drug,Gene,0.85,0
+drug_043,treats,disease_001,Cardioex-43,Systemic vasculitis 1,Drug,Disease,0.546,0
+drug_044,treats,disease_010,Neuropril-44,Chronic deficiency 10,Drug,Disease,0.691,0
+drug_ruxolitinib,targets,gene_stat3,Ruxolitinib,STAT3,Drug,Gene,1.0,0
+drug_003,targets,gene_007,Cardionib-3,TLR9,Drug,Gene,0.85,0
+disease_014,associated_with,gene_006,Metabolic myopathy 14,CCR8,Disease,Gene,0.865,0
+gene_031,part_of,pathway_001,TLR33,Immune Program 1,Gene,Pathway,0.586,0
+gene_nfkb1,interacts_with,gene_tnf,NFKB1,TNF,Gene,Gene,0.675,0
+gene_017,part_of,pathway_viral_replication,CXCL19,Viral Replication,Gene,Pathway,0.682,0
+drug_045,treats,disease_013,Lipomab-45,Fibrotic disorder 13,Drug,Disease,0.73,0
+drug_015,targets,gene_006,Statipril-15,CCR8,Drug,Gene,0.85,0
+gene_006,interacts_with,gene_027,CCR8,TLR29,Gene,Gene,0.653,0
+gene_041,interacts_with,gene_014,CCR43,AKT16,Gene,Gene,0.318,0
+disease_022,manifests_as,phenotype_030,Metabolic deficiency 22,Chronic Fatigue 30,Disease,Phenotype,0.116,1
+disease_008,manifests_as,phenotype_027,Acute vasculitis 8,Chronic Pain 27,Disease,Phenotype,0.105,1
+drug_031,treats,disease_025,Cardiomab-31,Fibrotic deficiency 25,Drug,Disease,0.451,0
+gene_010,part_of,pathway_011,AKT12,Repair Cascade 11,Gene,Pathway,0.786,0
+drug_041,targets,gene_041,Hepatovir-41,CCR43,Drug,Gene,0.85,0
+disease_024,associated_with,gene_033,Systemic inflammation 24,GSK35,Disease,Gene,0.693,0
+drug_048,targets,gene_049,Thorapril-48,CCR51,Drug,Gene,0.85,0
+disease_thrombosis,associated_with,gene_tmprss2,Immunothrombosis,TMPRSS2,Disease,Gene,0.553,0
+drug_001,targets,gene_039,Immunoex-1,CXCL41,Drug,Gene,0.85,0
+drug_015,targets,gene_032,Statipril-15,CXCL34,Drug,Gene,0.85,0
+gene_jak1,interacts_with,gene_043,JAK1,GSK45,Gene,Gene,0.56,0
+gene_048,interacts_with,gene_033,MAPK50,GSK35,Gene,Gene,0.49,0
+gene_035,interacts_with,gene_018,HSP37,STAT20,Gene,Gene,0.538,0
+gene_055,interacts_with,gene_jak1,STAT57,JAK1,Gene,Gene,0.649,0
+drug_029,treats,disease_005,Viravir-29,Systemic myopathy 5,Drug,Disease,0.532,0
+drug_005,targets,gene_051,Immunocept-5,SMAD53,Drug,Gene,0.85,0
+drug_002,targets,gene_051,Lipovir-2,SMAD53,Drug,Gene,0.85,0
+gene_028,interacts_with,gene_039,TLR30,CXCL41,Gene,Gene,0.396,0
+drug_031,targets,gene_054,Cardiomab-31,SMAD56,Drug,Gene,0.85,0
+gene_nfkb1,interacts_with,gene_015,NFKB1,MAPK17,Gene,Gene,0.877,0
+gene_020,interacts_with,gene_il6,STAT22,IL6,Gene,Gene,0.473,0
+gene_054,interacts_with,gene_005,SMAD56,TLR7,Gene,Gene,0.764,0
+gene_004,interacts_with,gene_031,STAT6,TLR33,Gene,Gene,0.377,0
+gene_055,part_of,pathway_016,STAT57,Repair Response 16,Gene,Pathway,0.712,0
+disease_009,associated_with,gene_009,Chronic syndrome 9,GSK11,Disease,Gene,0.696,0
+drug_042,targets,gene_crp,Neuroex-42,CRP,Drug,Gene,0.85,0
+gene_022,interacts_with,gene_mtor,MAPK24,MTOR,Gene,Gene,0.548,0
+drug_030,treats,disease_012,Lipomab-30,Systemic myopathy 12,Drug,Disease,0.817,0
+disease_002,manifests_as,phenotype_027,Acute inflammation 2,Chronic Pain 27,Disease,Phenotype,0.603,0
+drug_015,treats,disease_sarscov2,Statipril-15,SARS-CoV-2 infection,Drug,Disease,0.666,0
+drug_045,treats,disease_ards,Lipomab-45,Acute respiratory distress syndrome,Drug,Disease,0.463,0
+drug_011,targets,gene_039,Cardiodine-11,CXCL41,Drug,Gene,0.85,0
+drug_027,targets,gene_022,Neurocept-27,MAPK24,Drug,Gene,0.85,0
+drug_024,treats,disease_008,Immunopril-24,Acute vasculitis 8,Drug,Disease,0.552,0
+drug_006,targets,gene_056,Glycoex-6,AKT58,Drug,Gene,0.85,0
+disease_thrombosis,manifests_as,phenotype_hyperinflam,Immunothrombosis,Hyperinflammation,Disease,Phenotype,0.641,0
+gene_056,interacts_with,gene_033,AKT58,GSK35,Gene,Gene,0.477,0
+drug_005,targets,gene_034,Immunocept-5,SMAD36,Drug,Gene,0.85,0
+gene_052,interacts_with,gene_nfkb1,GSK54,NFKB1,Gene,Gene,0.755,0
+gene_033,interacts_with,gene_056,GSK35,AKT58,Gene,Gene,0.561,0
+drug_043,targets,gene_044,Cardioex-43,PIK46,Drug,Gene,0.85,0
+gene_056,interacts_with,gene_010,AKT58,AKT12,Gene,Gene,0.332,0
+drug_014,targets,gene_045,Lipoex-14,MAPK47,Drug,Gene,0.85,0
+disease_016,associated_with,gene_001,Fibrotic inflammation 16,CXCL3,Disease,Gene,0.828,0
+gene_013,interacts_with,gene_035,PIK15,HSP37,Gene,Gene,0.314,0
+disease_pneumonia,associated_with,gene_jak1,Viral pneumonia,JAK1,Disease,Gene,0.88,0
+disease_008,associated_with,gene_il6,Acute vasculitis 8,IL6,Disease,Gene,0.93,0
+disease_pneumonia,associated_with,gene_nfkb1,Viral pneumonia,NFKB1,Disease,Gene,0.912,0
+drug_037,treats,disease_008,Reninib-37,Acute vasculitis 8,Drug,Disease,0.761,0
+gene_022,interacts_with,gene_015,MAPK24,MAPK17,Gene,Gene,0.618,0
+disease_017,associated_with,gene_053,Fibrotic syndrome 17,STAT55,Disease,Gene,0.533,0
+drug_039,treats,disease_thrombosis,Statiazole-39,Immunothrombosis,Drug,Disease,0.798,0
+drug_021,treats,disease_002,Neurocept-21,Acute inflammation 2,Drug,Disease,0.669,0
+disease_004,associated_with,gene_mtor,Systemic inflammation 4,MTOR,Disease,Gene,0.934,0
+drug_anakinra,treats,disease_pneumonia,Anakinra,Viral pneumonia,Drug,Disease,0.495,1
+gene_050,interacts_with,gene_010,AKT52,AKT12,Gene,Gene,0.761,0
+disease_003,manifests_as,phenotype_001,Acute fibrosis 3,Recurrent Pain 1,Disease,Phenotype,0.833,0
+gene_mapk1,part_of,pathway_013,MAPK1,Metabolic Signal 13,Gene,Pathway,0.613,0
+gene_037,interacts_with,gene_025,GSK39,MAPK27,Gene,Gene,0.512,0
+gene_038,interacts_with,gene_018,STAT40,STAT20,Gene,Gene,0.899,0
+disease_021,associated_with,gene_001,Chronic inflammation 21,CXCL3,Disease,Gene,0.917,0
+disease_015,manifests_as,phenotype_hypoxia,Fibrotic vasculitis 15,Hypoxia,Disease,Phenotype,0.744,0
+disease_013,manifests_as,phenotype_lymphopenia,Fibrotic disorder 13,Lymphopenia,Disease,Phenotype,0.852,0
+drug_molnupiravir,targets,gene_053,Molnupiravir,STAT55,Drug,Gene,0.85,0
+disease_006,manifests_as,phenotype_hypoxia,Fibrotic myopathy 6,Hypoxia,Disease,Phenotype,0.934,0
+gene_024,interacts_with,gene_046,PIK26,STAT48,Gene,Gene,0.858,0
+drug_009,treats,disease_016,Hepatocept-9,Fibrotic inflammation 16,Drug,Disease,0.499,0
+gene_tmprss2,part_of,pathway_viral_entry,TMPRSS2,Viral Entry,Gene,Pathway,1.0,0
+gene_006,part_of,pathway_009,CCR8,Metabolic Program 9,Gene,Pathway,0.579,0
+gene_030,interacts_with,gene_022,GSK32,MAPK24,Gene,Gene,0.472,0
+drug_043,targets,gene_ifng,Cardioex-43,IFNG,Drug,Gene,0.85,0
+disease_012,associated_with,gene_stat3,Systemic myopathy 12,STAT3,Disease,Gene,0.521,0
+gene_018,part_of,pathway_003,STAT20,Metabolic Signal 3,Gene,Pathway,0.82,0
+gene_mtor,interacts_with,gene_038,MTOR,STAT40,Gene,Gene,0.537,0
+gene_009,interacts_with,gene_035,GSK11,HSP37,Gene,Gene,0.884,0
+gene_ace2,interacts_with,gene_033,ACE2,GSK35,Gene,Gene,0.3,0
+gene_010,interacts_with,gene_052,AKT12,GSK54,Gene,Gene,0.66,0
+drug_tocilizumab,treats,disease_004,Tocilizumab,Systemic inflammation 4,Drug,Disease,0.464,0
+disease_026,manifests_as,phenotype_cough,Fibrotic disorder 26,Cough,Disease,Phenotype,0.734,0
+gene_025,interacts_with,gene_jak2,MAPK27,JAK2,Gene,Gene,0.492,0
+drug_046,targets,gene_041,Cardiocept-46,CCR43,Drug,Gene,0.85,0
+gene_033,interacts_with,gene_003,GSK35,SMAD5,Gene,Gene,0.859,0
+disease_pneumonia,manifests_as,phenotype_006,Viral pneumonia,Transient Edema 6,Disease,Phenotype,0.861,0
+gene_055,interacts_with,gene_033,STAT57,GSK35,Gene,Gene,0.331,0
+disease_022,associated_with,gene_039,Metabolic deficiency 22,CXCL41,Disease,Gene,0.891,0
+drug_034,targets,gene_jak1,Statiline-34,JAK1,Drug,Gene,0.85,0
+drug_tocilizumab,treats,disease_covid19,Tocilizumab,COVID-19,Drug,Disease,1.0,0
+drug_037,targets,gene_026,Reninib-37,GSK28,Drug,Gene,0.85,0
+gene_cxcl10,interacts_with,gene_001,CXCL10,CXCL3,Gene,Gene,0.876,0
+gene_mapk1,interacts_with,gene_tnf,MAPK1,TNF,Gene,Gene,0.598,0
+drug_035,treats,disease_003,Neurovir-35,Acute fibrosis 3,Drug,Disease,0.737,0
+gene_mtor,interacts_with,gene_032,MTOR,CXCL34,Gene,Gene,0.638,0
+gene_tmprss2,interacts_with,gene_017,TMPRSS2,CXCL19,Gene,Gene,0.759,0
+gene_mapk1,interacts_with,gene_020,MAPK1,STAT22,Gene,Gene,0.65,0
+drug_032,targets,gene_019,Glycosone-32,AKT21,Drug,Gene,0.85,0
+disease_008,associated_with,gene_044,Acute vasculitis 8,PIK46,Disease,Gene,0.665,0
+gene_tnf,interacts_with,gene_mapk1,TNF,MAPK1,Gene,Gene,0.539,0
+disease_003,manifests_as,phenotype_020,Acute fibrosis 3,Recurrent Edema 20,Disease,Phenotype,0.79,0
+drug_tocilizumab,targets,gene_mapk1,Tocilizumab,MAPK1,Drug,Gene,0.85,0
+drug_budesonide,targets,gene_mtor,Budesonide,MTOR,Drug,Gene,0.85,0
+gene_il6,part_of,pathway_019,IL6,Fibrotic Program 19,Gene,Pathway,0.646,0
+gene_049,interacts_with,gene_019,CCR51,AKT21,Gene,Gene,0.659,0
+gene_043,part_of,pathway_015,GSK45,Repair Axis 15,Gene,Pathway,0.354,1
+gene_036,interacts_with,gene_005,STAT38,TLR7,Gene,Gene,0.61,0
+drug_025,targets,gene_012,Immunodine-25,CCR14,Drug,Gene,0.85,0
+disease_017,associated_with,gene_003,Fibrotic syndrome 17,SMAD5,Disease,Gene,0.816,0
+gene_018,interacts_with,gene_038,STAT20,STAT40,Gene,Gene,0.335,0
+gene_026,part_of,pathway_jak_stat,GSK28,JAK-STAT Signaling,Gene,Pathway,0.738,0
+gene_001,interacts_with,gene_038,CXCL3,STAT40,Gene,Gene,0.813,0
+drug_002,targets,gene_052,Lipovir-2,GSK54,Drug,Gene,0.85,0
+gene_056,interacts_with,gene_043,AKT58,GSK45,Gene,Gene,0.689,0
+drug_002,treats,disease_007,Lipovir-2,Immune fibrosis 7,Drug,Disease,0.468,0
+gene_027,interacts_with,gene_044,TLR29,PIK46,Gene,Gene,0.667,0
+disease_sepsis,manifests_as,phenotype_029,Sepsis,Mild Edema 29,Disease,Phenotype,0.754,0
+disease_sarscov2,manifests_as,phenotype_009,SARS-CoV-2 infection,Mild Fatigue 9,Disease,Phenotype,0.692,0
+drug_002,targets,gene_056,Lipovir-2,AKT58,Drug,Gene,0.85,0
+disease_covid19,associated_with,gene_039,COVID-19,CXCL41,Disease,Gene,0.736,0
+gene_004,interacts_with,gene_027,STAT6,TLR29,Gene,Gene,0.603,0
+drug_018,targets,gene_055,Neuromab-18,STAT57,Drug,Gene,0.85,0
+drug_041,targets,gene_048,Hepatovir-41,MAPK50,Drug,Gene,0.85,0
+drug_027,targets,gene_004,Neurocept-27,STAT6,Drug,Gene,0.85,0
+disease_021,associated_with,gene_011,Chronic inflammation 21,SMAD13,Disease,Gene,0.534,0
+disease_sepsis,manifests_as,phenotype_009,Sepsis,Mild Fatigue 9,Disease,Phenotype,0.859,0
+disease_022,manifests_as,phenotype_004,Metabolic deficiency 22,Severe Dyspnea 4,Disease,Phenotype,0.566,0
+disease_covid19,manifests_as,phenotype_012,COVID-19,Transient Neuropathy 12,Disease,Phenotype,0.745,0
+gene_tlr4,interacts_with,gene_008,TLR4,GSK10,Gene,Gene,0.494,0
+gene_tmprss2,interacts_with,gene_029,TMPRSS2,PIK31,Gene,Gene,0.56,0
+gene_tmprss2,interacts_with,gene_cxcl10,TMPRSS2,CXCL10,Gene,Gene,0.508,0
+gene_053,interacts_with,gene_048,STAT55,MAPK50,Gene,Gene,0.374,0
+disease_011,associated_with,gene_037,Systemic deficiency 11,GSK39,Disease,Gene,0.614,0
+gene_tlr4,interacts_with,gene_030,TLR4,GSK32,Gene,Gene,0.609,0
+gene_046,interacts_with,gene_024,STAT48,PIK26,Gene,Gene,0.771,0
+gene_il6,interacts_with,gene_nfkb1,IL6,NFKB1,Gene,Gene,0.362,0
+gene_041,part_of,pathway_007,CCR43,Fibrotic Response 7,Gene,Pathway,0.617,0
+gene_047,interacts_with,gene_007,STAT49,TLR9,Gene,Gene,0.574,0
+gene_jak1,interacts_with,gene_044,JAK1,PIK46,Gene,Gene,0.619,0
+gene_021,part_of,pathway_021,SMAD23,Repair Program 21,Gene,Pathway,0.702,0
+gene_030,interacts_with,gene_049,GSK32,CCR51,Gene,Gene,0.561,0
+gene_ifng,part_of,pathway_interferon,IFNG,Interferon Response,Gene,Pathway,1.0,0
+gene_ace2,part_of,pathway_viral_entry,ACE2,Viral Entry,Gene,Pathway,1.0,0
+drug_021,targets,gene_008,Neurocept-21,GSK10,Drug,Gene,0.85,0
+gene_mapk1,interacts_with,gene_040,MAPK1,HSP42,Gene,Gene,0.49,0
+drug_001,treats,disease_005,Immunoex-1,Systemic myopathy 5,Drug,Disease,0.709,0
+drug_033,treats,disease_002,Thoraline-33,Acute inflammation 2,Drug,Disease,0.522,0
+gene_032,interacts_with,gene_039,CXCL34,CXCL41,Gene,Gene,0.597,0
+disease_002,associated_with,gene_024,Acute inflammation 2,PIK26,Disease,Gene,0.613,0
+gene_024,interacts_with,gene_047,PIK26,STAT49,Gene,Gene,0.45,0
+drug_dexamethasone,targets,gene_tnf,Dexamethasone,TNF,Drug,Gene,1.0,0
+gene_013,interacts_with,gene_038,PIK15,STAT40,Gene,Gene,0.645,0
+gene_047,interacts_with,gene_014,STAT49,AKT16,Gene,Gene,0.454,0
+gene_tmprss2,interacts_with,gene_044,TMPRSS2,PIK46,Gene,Gene,0.736,0
+gene_009,interacts_with,gene_050,GSK11,AKT52,Gene,Gene,0.877,0
+gene_055,interacts_with,gene_051,STAT57,SMAD53,Gene,Gene,0.696,0
+gene_006,interacts_with,gene_017,CCR8,CXCL19,Gene,Gene,0.891,0
+disease_003,associated_with,gene_020,Acute fibrosis 3,STAT22,Disease,Gene,0.246,1
+drug_034,treats,disease_004,Statiline-34,Systemic inflammation 4,Drug,Disease,0.484,0
+gene_013,interacts_with,gene_046,PIK15,STAT48,Gene,Gene,0.353,0
+drug_035,targets,gene_crp,Neurovir-35,CRP,Drug,Gene,0.85,0
+disease_ards,associated_with,gene_054,Acute respiratory distress syndrome,SMAD56,Disease,Gene,0.562,0
+gene_034,interacts_with,gene_052,SMAD36,GSK54,Gene,Gene,0.695,0
+drug_baricitinib,targets,gene_jak2,Baricitinib,JAK2,Drug,Gene,1.0,0
+drug_ruxolitinib,targets,gene_024,Ruxolitinib,PIK26,Drug,Gene,0.85,0
+gene_jak2,part_of,pathway_009,JAK2,Metabolic Program 9,Gene,Pathway,0.656,0
+disease_013,manifests_as,phenotype_007,Fibrotic disorder 13,Mild Neuropathy 7,Disease,Phenotype,0.574,0
+gene_021,interacts_with,gene_005,SMAD23,TLR7,Gene,Gene,0.788,0
+gene_009,interacts_with,gene_016,GSK11,CCR18,Gene,Gene,0.797,0
+disease_016,associated_with,gene_mapk1,Fibrotic inflammation 16,MAPK1,Disease,Gene,0.373,1
+gene_025,interacts_with,gene_024,MAPK27,PIK26,Gene,Gene,0.648,0
+gene_mapk1,interacts_with,gene_ifng,MAPK1,IFNG,Gene,Gene,0.715,0
+drug_018,targets,gene_008,Neuromab-18,GSK10,Drug,Gene,0.85,0
+gene_mapk1,interacts_with,gene_045,MAPK1,MAPK47,Gene,Gene,0.563,0
+disease_016,associated_with,gene_045,Fibrotic inflammation 16,MAPK47,Disease,Gene,0.738,0
+gene_031,interacts_with,gene_004,TLR33,STAT6,Gene,Gene,0.842,0
+gene_052,interacts_with,gene_014,GSK54,AKT16,Gene,Gene,0.514,0
+drug_remdesivir,targets,gene_036,Remdesivir,STAT38,Drug,Gene,0.85,0
+drug_remdesivir,targets,gene_jak2,Remdesivir,JAK2,Drug,Gene,0.85,0
+drug_041,treats,disease_018,Hepatovir-41,Systemic disorder 18,Drug,Disease,0.464,0
+drug_015,treats,disease_026,Statipril-15,Fibrotic disorder 26,Drug,Disease,0.739,0
+drug_colchicine,targets,gene_tnf,Colchicine,TNF,Drug,Gene,1.0,0
+disease_013,associated_with,gene_026,Fibrotic disorder 13,GSK28,Disease,Gene,0.816,0
+gene_052,interacts_with,gene_stat3,GSK54,STAT3,Gene,Gene,0.337,0
+drug_031,treats,disease_007,Cardiomab-31,Immune fibrosis 7,Drug,Disease,0.528,0
+disease_003,manifests_as,phenotype_030,Acute fibrosis 3,Chronic Fatigue 30,Disease,Phenotype,0.738,0
+gene_011,interacts_with,gene_il6,SMAD13,IL6,Gene,Gene,0.322,0
+gene_049,interacts_with,gene_030,CCR51,GSK32,Gene,Gene,0.793,0
+disease_020,associated_with,gene_052,Systemic carcinoma 20,GSK54,Disease,Gene,0.528,0
+gene_039,part_of,pathway_cytokine_storm,CXCL41,Cytokine Storm,Gene,Pathway,0.765,0
+disease_002,associated_with,gene_tlr4,Acute inflammation 2,TLR4,Disease,Gene,0.192,1
+disease_014,manifests_as,phenotype_001,Metabolic myopathy 14,Recurrent Pain 1,Disease,Phenotype,0.957,0
+disease_018,associated_with,gene_mapk1,Systemic disorder 18,MAPK1,Disease,Gene,0.753,0
+gene_002,interacts_with,gene_025,GSK4,MAPK27,Gene,Gene,0.105,1
+gene_056,part_of,pathway_cytokine_storm,AKT58,Cytokine Storm,Gene,Pathway,0.74,0
+disease_022,associated_with,gene_mapk1,Metabolic deficiency 22,MAPK1,Disease,Gene,0.742,0
+gene_052,interacts_with,gene_012,GSK54,CCR14,Gene,Gene,0.384,0
+drug_027,targets,gene_tlr4,Neurocept-27,TLR4,Drug,Gene,0.85,0
+gene_054,interacts_with,gene_020,SMAD56,STAT22,Gene,Gene,0.799,0
+drug_043,targets,gene_021,Cardioex-43,SMAD23,Drug,Gene,0.85,0
+drug_020,targets,gene_018,Immunoline-20,STAT20,Drug,Gene,0.85,0
+disease_013,associated_with,gene_003,Fibrotic disorder 13,SMAD5,Disease,Gene,0.513,0
+drug_dexamethasone,targets,gene_nfkb1,Dexamethasone,NFKB1,Drug,Gene,1.0,0
+drug_tocilizumab,targets,gene_il6,Tocilizumab,IL6,Drug,Gene,1.0,0
+gene_021,interacts_with,gene_017,SMAD23,CXCL19,Gene,Gene,0.337,0
+drug_034,targets,gene_045,Statiline-34,MAPK47,Drug,Gene,0.85,0
+gene_019,interacts_with,gene_043,AKT21,GSK45,Gene,Gene,0.413,0
+gene_023,part_of,pathway_006,MAPK25,Metabolic Axis 6,Gene,Pathway,0.579,0
+disease_012,associated_with,gene_nfkb1,Systemic myopathy 12,NFKB1,Disease,Gene,0.578,0
+gene_007,interacts_with,gene_ace2,TLR9,ACE2,Gene,Gene,0.62,0
+drug_016,treats,disease_005,Neurosone-16,Systemic myopathy 5,Drug,Disease,0.568,0
+gene_036,interacts_with,gene_jak1,STAT38,JAK1,Gene,Gene,0.735,0
+disease_sarscov2,associated_with,gene_tmprss2,SARS-CoV-2 infection,TMPRSS2,Disease,Gene,1.0,0
+drug_045,targets,gene_039,Lipomab-45,CXCL41,Drug,Gene,0.265,1
+disease_019,manifests_as,phenotype_thrombosis,Systemic inflammation 19,Thrombosis,Disease,Phenotype,0.944,0
+disease_sarscov2,associated_with,gene_003,SARS-CoV-2 infection,SMAD5,Disease,Gene,0.615,0
+gene_040,interacts_with,gene_035,HSP42,HSP37,Gene,Gene,0.302,0
+disease_020,manifests_as,phenotype_007,Systemic carcinoma 20,Mild Neuropathy 7,Disease,Phenotype,0.972,0
+gene_003,interacts_with,gene_cxcl10,SMAD5,CXCL10,Gene,Gene,0.367,0
+disease_021,manifests_as,phenotype_004,Chronic inflammation 21,Severe Dyspnea 4,Disease,Phenotype,0.456,1
+gene_nfkb1,interacts_with,gene_021,NFKB1,SMAD23,Gene,Gene,0.728,0
+drug_041,targets,gene_mtor,Hepatovir-41,MTOR,Drug,Gene,0.85,0
+disease_022,associated_with,gene_cxcl10,Metabolic deficiency 22,CXCL10,Disease,Gene,0.405,1
+disease_012,manifests_as,phenotype_001,Systemic myopathy 12,Recurrent Pain 1,Disease,Phenotype,0.896,0
+drug_024,targets,gene_tlr4,Immunopril-24,TLR4,Drug,Gene,0.85,0
+drug_030,targets,gene_031,Lipomab-30,TLR33,Drug,Gene,0.85,0
+disease_covid19,associated_with,gene_crp,COVID-19,CRP,Disease,Gene,1.0,0
+drug_038,targets,gene_cxcl10,Hepatovir-38,CXCL10,Drug,Gene,0.85,0
+disease_thrombosis,associated_with,gene_jak2,Immunothrombosis,JAK2,Disease,Gene,0.832,0
+disease_covid19,manifests_as,phenotype_thrombosis,COVID-19,Thrombosis,Disease,Phenotype,1.0,0
+drug_035,targets,gene_030,Neurovir-35,GSK32,Drug,Gene,0.85,0
+drug_anakinra,targets,gene_046,Anakinra,STAT48,Drug,Gene,0.85,0
+gene_015,interacts_with,gene_nfkb1,MAPK17,NFKB1,Gene,Gene,0.828,0
+gene_ace2,interacts_with,gene_tmprss2,ACE2,TMPRSS2,Gene,Gene,1.0,0
+disease_016,associated_with,gene_041,Fibrotic inflammation 16,CCR43,Disease,Gene,0.517,0
+drug_016,targets,gene_043,Neurosone-16,GSK45,Drug,Gene,0.85,0
+drug_nirmatrelvir,targets,gene_018,Nirmatrelvir,STAT20,Drug,Gene,0.85,0
+gene_015,interacts_with,gene_022,MAPK17,MAPK24,Gene,Gene,0.654,0
+disease_024,manifests_as,phenotype_013,Systemic inflammation 24,Severe Dyspnea 13,Disease,Phenotype,0.574,0
+gene_007,part_of,pathway_viral_replication,TLR9,Viral Replication,Gene,Pathway,0.835,0
+drug_dexamethasone,targets,gene_038,Dexamethasone,STAT40,Drug,Gene,0.85,0
+disease_ards,associated_with,gene_018,Acute respiratory distress syndrome,STAT20,Disease,Gene,0.599,0
+gene_011,interacts_with,gene_034,SMAD13,SMAD36,Gene,Gene,0.663,0
+gene_024,interacts_with,gene_026,PIK26,GSK28,Gene,Gene,0.687,0
+disease_013,associated_with,gene_014,Fibrotic disorder 13,AKT16,Disease,Gene,0.744,0
+disease_004,associated_with,gene_022,Systemic inflammation 4,MAPK24,Disease,Gene,0.771,0
+gene_047,interacts_with,gene_tmprss2,STAT49,TMPRSS2,Gene,Gene,0.458,0
+gene_040,interacts_with,gene_mapk1,HSP42,MAPK1,Gene,Gene,0.83,0
+disease_020,associated_with,gene_nfkb1,Systemic carcinoma 20,NFKB1,Disease,Gene,0.77,0
+disease_021,associated_with,gene_tmprss2,Chronic inflammation 21,TMPRSS2,Disease,Gene,0.613,0
+disease_005,associated_with,gene_055,Systemic myopathy 5,STAT57,Disease,Gene,0.609,0
+disease_022,associated_with,gene_028,Metabolic deficiency 22,TLR30,Disease,Gene,0.558,0
+drug_036,targets,gene_005,Lipomab-36,TLR7,Drug,Gene,0.85,0
+disease_014,associated_with,gene_047,Metabolic myopathy 14,STAT49,Disease,Gene,0.68,0
+gene_036,interacts_with,gene_032,STAT38,CXCL34,Gene,Gene,0.406,0
+drug_035,targets,gene_021,Neurovir-35,SMAD23,Drug,Gene,0.85,0
+gene_010,interacts_with,gene_020,AKT12,STAT22,Gene,Gene,0.726,0
+gene_020,interacts_with,gene_010,STAT22,AKT12,Gene,Gene,0.478,0
+disease_017,associated_with,gene_stat3,Fibrotic syndrome 17,STAT3,Disease,Gene,0.879,0
+gene_032,interacts_with,gene_mapk1,CXCL34,MAPK1,Gene,Gene,0.663,0
+gene_043,part_of,pathway_006,GSK45,Metabolic Axis 6,Gene,Pathway,0.848,0
+disease_005,manifests_as,phenotype_fever,Systemic myopathy 5,Fever,Disease,Phenotype,0.947,0
+disease_019,associated_with,gene_037,Systemic inflammation 19,GSK39,Disease,Gene,0.784,0
+drug_favipiravir,treats,disease_sarscov2,Favipiravir,SARS-CoV-2 infection,Drug,Disease,1.0,0
+disease_thrombosis,associated_with,gene_030,Immunothrombosis,GSK32,Disease,Gene,0.577,0
+gene_004,interacts_with,gene_tlr4,STAT6,TLR4,Gene,Gene,0.786,0
+drug_favipiravir,targets,gene_037,Favipiravir,GSK39,Drug,Gene,0.85,0
+gene_028,interacts_with,gene_023,TLR30,MAPK25,Gene,Gene,0.776,0
+disease_001,associated_with,gene_007,Systemic vasculitis 1,TLR9,Disease,Gene,0.759,0
+drug_041,targets,gene_cxcl10,Hepatovir-41,CXCL10,Drug,Gene,0.85,0
+gene_034,part_of,pathway_017,SMAD36,Repair Program 17,Gene,Pathway,0.674,0
+drug_028,targets,gene_001,Cardiomab-28,CXCL3,Drug,Gene,0.85,0
+gene_030,part_of,pathway_021,GSK32,Repair Program 21,Gene,Pathway,0.644,0
+disease_001,manifests_as,phenotype_hypoxia,Systemic vasculitis 1,Hypoxia,Disease,Phenotype,0.637,0
+drug_042,targets,gene_004,Neuroex-42,STAT6,Drug,Gene,0.85,0
+gene_049,interacts_with,gene_027,CCR51,TLR29,Gene,Gene,0.54,0
+gene_mapk1,interacts_with,gene_035,MAPK1,HSP37,Gene,Gene,0.366,0
+gene_020,interacts_with,gene_054,STAT22,SMAD56,Gene,Gene,0.402,0
+gene_048,interacts_with,gene_045,MAPK50,MAPK47,Gene,Gene,0.367,0
+gene_crp,interacts_with,gene_034,CRP,SMAD36,Gene,Gene,0.656,0
+gene_045,part_of,pathway_viral_entry,MAPK47,Viral Entry,Gene,Pathway,0.89,0
+drug_010,targets,gene_019,Viradine-10,AKT21,Drug,Gene,0.85,0
+gene_jak2,interacts_with,gene_025,JAK2,MAPK27,Gene,Gene,0.372,0
+disease_012,manifests_as,phenotype_019,Systemic myopathy 12,Severe Edema 19,Disease,Phenotype,0.553,0
+drug_colchicine,targets,gene_023,Colchicine,MAPK25,Drug,Gene,0.85,0
+drug_044,targets,gene_024,Neuropril-44,PIK26,Drug,Gene,0.85,0
+disease_003,associated_with,gene_044,Acute fibrosis 3,PIK46,Disease,Gene,0.584,0
+drug_020,treats,disease_013,Immunoline-20,Fibrotic disorder 13,Drug,Disease,0.663,0
+gene_027,interacts_with,gene_049,TLR29,CCR51,Gene,Gene,0.892,0
+gene_jak1,part_of,pathway_020,JAK1,Immune Signal 20,Gene,Pathway,0.815,0
+disease_025,associated_with,gene_012,Fibrotic deficiency 25,CCR14,Disease,Gene,0.702,0
+drug_014,treats,disease_007,Lipoex-14,Immune fibrosis 7,Drug,Disease,0.89,0
+gene_030,interacts_with,gene_031,GSK32,TLR33,Gene,Gene,0.45,0
+gene_016,interacts_with,gene_009,CCR18,GSK11,Gene,Gene,0.424,0
+drug_025,targets,gene_002,Immunodine-25,GSK4,Drug,Gene,0.85,0
+disease_012,associated_with,gene_009,Systemic myopathy 12,GSK11,Disease,Gene,0.58,0
+gene_026,interacts_with,gene_024,GSK28,PIK26,Gene,Gene,0.549,0
+drug_039,targets,gene_021,Statiazole-39,SMAD23,Drug,Gene,0.85,0
+gene_016,interacts_with,gene_048,CCR18,MAPK50,Gene,Gene,0.328,0
+disease_020,associated_with,gene_027,Systemic carcinoma 20,TLR29,Disease,Gene,0.725,0
+disease_010,manifests_as,phenotype_hyperinflam,Chronic deficiency 10,Hyperinflammation,Disease,Phenotype,0.86,0
+drug_010,treats,disease_021,Viradine-10,Chronic inflammation 21,Drug,Disease,0.548,0
+drug_001,treats,disease_019,Immunoex-1,Systemic inflammation 19,Drug,Disease,0.573,0
+drug_039,targets,gene_tlr4,Statiazole-39,TLR4,Drug,Gene,0.381,1
+gene_jak2,interacts_with,gene_002,JAK2,GSK4,Gene,Gene,0.3,0
+gene_jak1,interacts_with,gene_014,JAK1,AKT16,Gene,Gene,0.843,0
+drug_baricitinib,targets,gene_001,Baricitinib,CXCL3,Drug,Gene,0.85,0
+disease_025,manifests_as,phenotype_001,Fibrotic deficiency 25,Recurrent Pain 1,Disease,Phenotype,0.581,0
+gene_014,interacts_with,gene_047,AKT16,STAT49,Gene,Gene,0.886,0
+gene_040,interacts_with,gene_009,HSP42,GSK11,Gene,Gene,0.859,0
+disease_thrombosis,associated_with,gene_tnf,Immunothrombosis,TNF,Disease,Gene,1.0,0
+disease_007,manifests_as,phenotype_016,Immune fibrosis 7,Transient Rash 16,Disease,Phenotype,0.77,0
+disease_004,manifests_as,phenotype_011,Systemic inflammation 4,Severe Dyspnea 11,Disease,Phenotype,0.798,0
+gene_032,interacts_with,gene_030,CXCL34,GSK32,Gene,Gene,0.411,0
+drug_006,treats,disease_023,Glycoex-6,Metabolic syndrome 23,Drug,Disease,0.469,0
+drug_022,treats,disease_002,Lipoex-22,Acute inflammation 2,Drug,Disease,0.58,0
+drug_033,targets,gene_stat3,Thoraline-33,STAT3,Drug,Gene,0.85,0
+disease_005,manifests_as,phenotype_022,Systemic myopathy 5,Recurrent Fatigue 22,Disease,Phenotype,0.674,0
+gene_009,interacts_with,gene_stat3,GSK11,STAT3,Gene,Gene,0.403,0
+disease_024,associated_with,gene_040,Systemic inflammation 24,HSP42,Disease,Gene,0.574,0
+drug_040,targets,gene_036,Glycosone-40,STAT38,Drug,Gene,0.85,0
+drug_038,targets,gene_033,Hepatovir-38,GSK35,Drug,Gene,0.85,0
+drug_029,targets,gene_002,Viravir-29,GSK4,Drug,Gene,0.85,0
+gene_036,interacts_with,gene_il6,STAT38,IL6,Gene,Gene,0.873,0
+drug_molnupiravir,targets,gene_stat3,Molnupiravir,STAT3,Drug,Gene,0.85,0
+gene_018,interacts_with,gene_044,STAT20,PIK46,Gene,Gene,0.751,0
+gene_045,part_of,pathway_017,MAPK47,Repair Program 17,Gene,Pathway,0.917,0
+gene_031,part_of,pathway_021,TLR33,Repair Program 21,Gene,Pathway,0.782,0
+disease_026,associated_with,gene_030,Fibrotic disorder 26,GSK32,Disease,Gene,0.644,0
+gene_036,part_of,pathway_001,STAT38,Immune Program 1,Gene,Pathway,0.869,0
+gene_011,interacts_with,gene_038,SMAD13,STAT40,Gene,Gene,0.193,1
+gene_039,interacts_with,gene_019,CXCL41,AKT21,Gene,Gene,0.392,0
+gene_009,part_of,pathway_011,GSK11,Repair Cascade 11,Gene,Pathway,0.744,0
+gene_mtor,part_of,pathway_viral_entry,MTOR,Viral Entry,Gene,Pathway,0.868,0
+drug_remdesivir,targets,gene_ace2,Remdesivir,ACE2,Drug,Gene,0.85,0
+gene_044,interacts_with,gene_jak1,PIK46,JAK1,Gene,Gene,0.471,0
+gene_007,interacts_with,gene_020,TLR9,STAT22,Gene,Gene,0.713,0
+gene_033,interacts_with,gene_029,GSK35,PIK31,Gene,Gene,0.5,0
+gene_051,interacts_with,gene_017,SMAD53,CXCL19,Gene,Gene,0.357,0
+gene_054,part_of,pathway_017,SMAD56,Repair Program 17,Gene,Pathway,0.582,0
+drug_032,targets,gene_025,Glycosone-32,MAPK27,Drug,Gene,0.85,0
+gene_051,interacts_with,gene_033,SMAD53,GSK35,Gene,Gene,0.592,0
+drug_047,treats,disease_sarscov2,Neurovir-47,SARS-CoV-2 infection,Drug,Disease,0.795,0
+drug_020,targets,gene_030,Immunoline-20,GSK32,Drug,Gene,0.85,0
+gene_017,part_of,pathway_001,CXCL19,Immune Program 1,Gene,Pathway,0.724,0
+gene_003,interacts_with,gene_il6,SMAD5,IL6,Gene,Gene,0.64,0
+drug_032,treats,disease_sarscov2,Glycosone-32,SARS-CoV-2 infection,Drug,Disease,0.839,0
+gene_021,interacts_with,gene_011,SMAD23,SMAD13,Gene,Gene,0.541,0
+gene_031,interacts_with,gene_030,TLR33,GSK32,Gene,Gene,0.772,0
+drug_022,treats,disease_006,Lipoex-22,Fibrotic myopathy 6,Drug,Disease,0.883,0
+disease_015,manifests_as,phenotype_023,Fibrotic vasculitis 15,Mild Neuropathy 23,Disease,Phenotype,0.145,1
+drug_dexamethasone,targets,gene_055,Dexamethasone,STAT57,Drug,Gene,0.85,0
+drug_favipiravir,treats,disease_008,Favipiravir,Acute vasculitis 8,Drug,Disease,0.857,0
+gene_049,part_of,pathway_021,CCR51,Repair Program 21,Gene,Pathway,0.795,0
+gene_mtor,part_of,pathway_viral_replication,MTOR,Viral Replication,Gene,Pathway,1.0,0
+gene_052,interacts_with,gene_010,GSK54,AKT12,Gene,Gene,0.551,0
+disease_002,associated_with,gene_046,Acute inflammation 2,STAT48,Disease,Gene,0.904,0
+disease_001,manifests_as,phenotype_002,Systemic vasculitis 1,Severe Edema 2,Disease,Phenotype,0.705,0
+gene_044,interacts_with,gene_018,PIK46,STAT20,Gene,Gene,0.818,0
+disease_024,associated_with,gene_019,Systemic inflammation 24,AKT21,Disease,Gene,0.704,0
+gene_mtor,interacts_with,gene_nfkb1,MTOR,NFKB1,Gene,Gene,0.602,0
+drug_dexamethasone,treats,disease_022,Dexamethasone,Metabolic deficiency 22,Drug,Disease,0.575,0
+drug_tocilizumab,targets,gene_046,Tocilizumab,STAT48,Drug,Gene,0.85,0
+disease_018,associated_with,gene_044,Systemic disorder 18,PIK46,Disease,Gene,0.593,0
+drug_baricitinib,treats,disease_004,Baricitinib,Systemic inflammation 4,Drug,Disease,0.786,0
+disease_003,associated_with,gene_jak1,Acute fibrosis 3,JAK1,Disease,Gene,0.862,0
+gene_006,interacts_with,gene_053,CCR8,STAT55,Gene,Gene,0.626,0
+disease_thrombosis,manifests_as,phenotype_006,Immunothrombosis,Transient Edema 6,Disease,Phenotype,0.61,0
+disease_024,manifests_as,phenotype_hypoxia,Systemic inflammation 24,Hypoxia,Disease,Phenotype,0.703,0
+gene_028,interacts_with,gene_017,TLR30,CXCL19,Gene,Gene,0.671,0
+disease_sarscov2,associated_with,gene_038,SARS-CoV-2 infection,STAT40,Disease,Gene,0.872,0
+gene_046,interacts_with,gene_025,STAT48,MAPK27,Gene,Gene,0.36,0
+gene_012,interacts_with,gene_045,CCR14,MAPK47,Gene,Gene,0.487,0
+gene_055,interacts_with,gene_020,STAT57,STAT22,Gene,Gene,0.344,0
+drug_ruxolitinib,treats,disease_020,Ruxolitinib,Systemic carcinoma 20,Drug,Disease,0.619,0
+gene_jak2,interacts_with,gene_047,JAK2,STAT49,Gene,Gene,0.884,0
+gene_036,interacts_with,gene_034,STAT38,SMAD36,Gene,Gene,0.427,0
+drug_colchicine,treats,disease_ards,Colchicine,Acute respiratory distress syndrome,Drug,Disease,1.0,0
+drug_028,targets,gene_032,Cardiomab-28,CXCL34,Drug,Gene,0.85,0
+gene_cxcl10,part_of,pathway_013,CXCL10,Metabolic Signal 13,Gene,Pathway,0.626,0
+drug_020,treats,disease_001,Immunoline-20,Systemic vasculitis 1,Drug,Disease,0.651,0
+drug_018,targets,gene_018,Neuromab-18,STAT20,Drug,Gene,0.85,0
+drug_003,targets,gene_stat3,Cardionib-3,STAT3,Drug,Gene,0.85,0
+gene_056,part_of,pathway_010,AKT58,Oxidative Checkpoint 10,Gene,Pathway,0.62,0
+drug_045,targets,gene_032,Lipomab-45,CXCL34,Drug,Gene,0.85,0
+drug_nirmatrelvir,targets,gene_004,Nirmatrelvir,STAT6,Drug,Gene,0.85,0
+gene_025,interacts_with,gene_046,MAPK27,STAT48,Gene,Gene,0.794,0
+drug_023,targets,gene_044,Thoradine-23,PIK46,Drug,Gene,0.85,0
+drug_044,targets,gene_007,Neuropril-44,TLR9,Drug,Gene,0.32,1
+drug_ruxolitinib,targets,gene_jak1,Ruxolitinib,JAK1,Drug,Gene,1.0,0
+disease_002,associated_with,gene_stat3,Acute inflammation 2,STAT3,Disease,Gene,0.736,0
+gene_il6,interacts_with,gene_025,IL6,MAPK27,Gene,Gene,0.767,0
+drug_047,treats,disease_025,Neurovir-47,Fibrotic deficiency 25,Drug,Disease,0.766,0
+gene_044,interacts_with,gene_043,PIK46,GSK45,Gene,Gene,0.338,0
+gene_044,part_of,pathway_002,PIK46,Fibrotic Signal 2,Gene,Pathway,0.487,1
+disease_017,associated_with,gene_038,Fibrotic syndrome 17,STAT40,Disease,Gene,0.61,0
+disease_003,associated_with,gene_014,Acute fibrosis 3,AKT16,Disease,Gene,0.696,0
+gene_054,interacts_with,gene_040,SMAD56,HSP42,Gene,Gene,0.822,0
+drug_003,targets,gene_033,Cardionib-3,GSK35,Drug,Gene,0.85,0
+disease_008,manifests_as,phenotype_015,Acute vasculitis 8,Transient Fatigue 15,Disease,Phenotype,0.686,0
+gene_021,interacts_with,gene_054,SMAD23,SMAD56,Gene,Gene,0.876,0
+disease_014,associated_with,gene_042,Metabolic myopathy 14,PIK44,Disease,Gene,0.666,0
+drug_009,targets,gene_024,Hepatocept-9,PIK26,Drug,Gene,0.85,0
+drug_budesonide,treats,disease_016,Budesonide,Fibrotic inflammation 16,Drug,Disease,0.129,1
+gene_001,part_of,pathway_interferon,CXCL3,Interferon Response,Gene,Pathway,0.601,0
+gene_tlr4,part_of,pathway_016,TLR4,Repair Response 16,Gene,Pathway,0.729,0
+gene_tnf,part_of,pathway_011,TNF,Repair Cascade 11,Gene,Pathway,0.32,1
+drug_favipiravir,targets,gene_mapk1,Favipiravir,MAPK1,Drug,Gene,1.0,0
+disease_020,associated_with,gene_056,Systemic carcinoma 20,AKT58,Disease,Gene,0.808,0
+gene_036,interacts_with,gene_021,STAT38,SMAD23,Gene,Gene,0.795,0
+drug_042,targets,gene_005,Neuroex-42,TLR7,Drug,Gene,0.85,0
+drug_037,targets,gene_054,Reninib-37,SMAD56,Drug,Gene,0.85,0
+gene_027,interacts_with,gene_004,TLR29,STAT6,Gene,Gene,0.462,0
+gene_020,part_of,pathway_015,STAT22,Repair Axis 15,Gene,Pathway,0.805,0
+drug_024,targets,gene_009,Immunopril-24,GSK11,Drug,Gene,0.85,0
+gene_025,part_of,pathway_coagulation,MAPK27,Coagulation Cascade,Gene,Pathway,0.835,0
+gene_017,interacts_with,gene_028,CXCL19,TLR30,Gene,Gene,0.889,0
+gene_015,interacts_with,gene_046,MAPK17,STAT48,Gene,Gene,0.539,0
+gene_029,interacts_with,gene_tmprss2,PIK31,TMPRSS2,Gene,Gene,0.591,0
+gene_044,interacts_with,gene_002,PIK46,GSK4,Gene,Gene,0.837,0
+disease_012,associated_with,gene_045,Systemic myopathy 12,MAPK47,Disease,Gene,0.911,0
+gene_011,interacts_with,gene_021,SMAD13,SMAD23,Gene,Gene,0.361,0
+gene_039,interacts_with,gene_047,CXCL41,STAT49,Gene,Gene,0.866,0
+gene_008,part_of,pathway_007,GSK10,Fibrotic Response 7,Gene,Pathway,0.86,0
+drug_032,targets,gene_020,Glycosone-32,STAT22,Drug,Gene,0.444,1
+disease_001,associated_with,gene_033,Systemic vasculitis 1,GSK35,Disease,Gene,0.686,0
+disease_013,associated_with,gene_006,Fibrotic disorder 13,CCR8,Disease,Gene,0.833,0
+gene_038,interacts_with,gene_010,STAT40,AKT12,Gene,Gene,0.834,0
+drug_018,treats,disease_001,Neuromab-18,Systemic vasculitis 1,Drug,Disease,0.856,0
+gene_045,interacts_with,gene_crp,MAPK47,CRP,Gene,Gene,0.78,0
+drug_016,targets,gene_012,Neurosone-16,CCR14,Drug,Gene,0.85,0
+drug_baricitinib,targets,gene_tlr4,Baricitinib,TLR4,Drug,Gene,0.85,0
+drug_003,treats,disease_016,Cardionib-3,Fibrotic inflammation 16,Drug,Disease,0.848,0
+disease_025,associated_with,gene_mapk1,Fibrotic deficiency 25,MAPK1,Disease,Gene,0.587,0
+disease_014,manifests_as,phenotype_021,Metabolic myopathy 14,Mild Fatigue 21,Disease,Phenotype,0.459,1
+disease_025,associated_with,gene_023,Fibrotic deficiency 25,MAPK25,Disease,Gene,0.538,0
+drug_001,targets,gene_mtor,Immunoex-1,MTOR,Drug,Gene,0.85,0
+gene_042,interacts_with,gene_046,PIK44,STAT48,Gene,Gene,0.685,0
+disease_sarscov2,manifests_as,phenotype_028,SARS-CoV-2 infection,Severe Dyspnea 28,Disease,Phenotype,0.851,0
+gene_crp,interacts_with,gene_053,CRP,STAT55,Gene,Gene,0.707,0
+disease_009,manifests_as,phenotype_022,Chronic syndrome 9,Recurrent Fatigue 22,Disease,Phenotype,0.606,0
+gene_032,interacts_with,gene_026,CXCL34,GSK28,Gene,Gene,0.618,0
+disease_009,associated_with,gene_052,Chronic syndrome 9,GSK54,Disease,Gene,0.62,0
+gene_nfkb1,part_of,pathway_011,NFKB1,Repair Cascade 11,Gene,Pathway,0.585,0
+drug_040,targets,gene_032,Glycosone-40,CXCL34,Drug,Gene,0.85,0
+drug_047,targets,gene_016,Neurovir-47,CCR18,Drug,Gene,0.85,0
+drug_remdesivir,targets,gene_mapk1,Remdesivir,MAPK1,Drug,Gene,1.0,0
+drug_042,treats,disease_003,Neuroex-42,Acute fibrosis 3,Drug,Disease,0.549,0
+drug_045,treats,disease_010,Lipomab-45,Chronic deficiency 10,Drug,Disease,0.257,1
+disease_005,associated_with,gene_006,Systemic myopathy 5,CCR8,Disease,Gene,0.72,0
+gene_021,part_of,pathway_006,SMAD23,Metabolic Axis 6,Gene,Pathway,0.686,0
+gene_008,interacts_with,gene_025,GSK10,MAPK27,Gene,Gene,0.387,0
+drug_008,targets,gene_tnf,Cardiovir-8,TNF,Drug,Gene,0.85,0
+disease_002,associated_with,gene_tnf,Acute inflammation 2,TNF,Disease,Gene,0.818,0
+drug_ritonavir,targets,gene_002,Ritonavir,GSK4,Drug,Gene,0.85,0
+gene_mapk1,interacts_with,gene_032,MAPK1,CXCL34,Gene,Gene,0.573,0
+disease_013,associated_with,gene_054,Fibrotic disorder 13,SMAD56,Disease,Gene,0.769,0
+drug_favipiravir,targets,gene_029,Favipiravir,PIK31,Drug,Gene,0.85,0
+gene_015,part_of,pathway_nfkb,MAPK17,NF-kB Signaling,Gene,Pathway,0.304,1
+drug_010,targets,gene_cxcl10,Viradine-10,CXCL10,Drug,Gene,0.85,0
+gene_ifng,interacts_with,gene_003,IFNG,SMAD5,Gene,Gene,0.865,0
+disease_ards,manifests_as,phenotype_006,Acute respiratory distress syndrome,Transient Edema 6,Disease,Phenotype,0.84,0
+drug_023,targets,gene_002,Thoradine-23,GSK4,Drug,Gene,0.85,0
+drug_remdesivir,treats,disease_sarscov2,Remdesivir,SARS-CoV-2 infection,Drug,Disease,0.797,0
+drug_budesonide,targets,gene_053,Budesonide,STAT55,Drug,Gene,0.85,0
+drug_032,targets,gene_046,Glycosone-32,STAT48,Drug,Gene,0.85,0
+gene_mtor,interacts_with,gene_cxcl10,MTOR,CXCL10,Gene,Gene,0.524,0
+drug_036,targets,gene_044,Lipomab-36,PIK46,Drug,Gene,0.85,0
+drug_022,treats,disease_007,Lipoex-22,Immune fibrosis 7,Drug,Disease,0.152,1
+disease_008,manifests_as,phenotype_005,Acute vasculitis 8,Severe Rash 5,Disease,Phenotype,0.654,0
+disease_026,manifests_as,phenotype_011,Fibrotic disorder 26,Severe Dyspnea 11,Disease,Phenotype,0.401,1
+gene_032,part_of,pathway_021,CXCL34,Repair Program 21,Gene,Pathway,0.808,0
+disease_008,associated_with,gene_nfkb1,Acute vasculitis 8,NFKB1,Disease,Gene,0.676,0
+drug_038,treats,disease_021,Hepatovir-38,Chronic inflammation 21,Drug,Disease,0.837,0
+disease_sepsis,manifests_as,phenotype_016,Sepsis,Transient Rash 16,Disease,Phenotype,0.573,0
+drug_006,targets,gene_018,Glycoex-6,STAT20,Drug,Gene,0.85,0
+disease_ards,associated_with,gene_il6,Acute respiratory distress syndrome,IL6,Disease,Gene,1.0,0
+disease_011,associated_with,gene_021,Systemic deficiency 11,SMAD23,Disease,Gene,0.633,0
+drug_012,targets,gene_jak2,Glycovir-12,JAK2,Drug,Gene,0.85,0
+gene_037,interacts_with,gene_014,GSK39,AKT16,Gene,Gene,0.49,0
+gene_045,interacts_with,gene_012,MAPK47,CCR14,Gene,Gene,0.36,0
+drug_007,treats,disease_012,Viramab-7,Systemic myopathy 12,Drug,Disease,0.531,0
+gene_051,interacts_with,gene_055,SMAD53,STAT57,Gene,Gene,0.744,0
+gene_tmprss2,interacts_with,gene_054,TMPRSS2,SMAD56,Gene,Gene,0.689,0
+drug_008,treats,disease_019,Cardiovir-8,Systemic inflammation 19,Drug,Disease,0.78,0
+disease_011,associated_with,gene_011,Systemic deficiency 11,SMAD13,Disease,Gene,0.754,0
+gene_032,part_of,pathway_018,CXCL34,Immune Program 18,Gene,Pathway,0.708,0
+gene_055,interacts_with,gene_001,STAT57,CXCL3,Gene,Gene,0.781,0
+disease_007,associated_with,gene_053,Immune fibrosis 7,STAT55,Disease,Gene,0.504,0
+drug_dexamethasone,targets,gene_007,Dexamethasone,TLR9,Drug,Gene,0.85,0
+gene_054,interacts_with,gene_039,SMAD56,CXCL41,Gene,Gene,0.858,0
+disease_020,associated_with,gene_ace2,Systemic carcinoma 20,ACE2,Disease,Gene,0.604,0
+gene_006,interacts_with,gene_il6,CCR8,IL6,Gene,Gene,0.651,0
+drug_020,targets,gene_035,Immunoline-20,HSP37,Drug,Gene,0.85,0
+drug_016,targets,gene_007,Neurosone-16,TLR9,Drug,Gene,0.85,0
+gene_036,part_of,pathway_018,STAT38,Immune Program 18,Gene,Pathway,0.647,0
+drug_budesonide,treats,disease_003,Budesonide,Acute fibrosis 3,Drug,Disease,0.687,0
+gene_mtor,interacts_with,gene_011,MTOR,SMAD13,Gene,Gene,0.352,0
+gene_020,interacts_with,gene_mapk1,STAT22,MAPK1,Gene,Gene,0.643,0
+gene_035,part_of,pathway_010,HSP37,Oxidative Checkpoint 10,Gene,Pathway,0.749,0
+drug_011,targets,gene_009,Cardiodine-11,GSK11,Drug,Gene,0.85,0
+gene_crp,part_of,pathway_coagulation,CRP,Coagulation Cascade,Gene,Pathway,1.0,0
+drug_anakinra,treats,disease_ards,Anakinra,Acute respiratory distress syndrome,Drug,Disease,0.735,0
+gene_022,interacts_with,gene_mapk1,MAPK24,MAPK1,Gene,Gene,0.703,0
+disease_018,associated_with,gene_stat3,Systemic disorder 18,STAT3,Disease,Gene,0.843,0
+drug_ruxolitinib,treats,disease_022,Ruxolitinib,Metabolic deficiency 22,Drug,Disease,0.165,1
+gene_041,interacts_with,gene_003,CCR43,SMAD5,Gene,Gene,0.781,0
+gene_tlr4,interacts_with,gene_032,TLR4,CXCL34,Gene,Gene,0.211,1
+disease_006,associated_with,gene_stat3,Fibrotic myopathy 6,STAT3,Disease,Gene,0.853,0
+disease_004,associated_with,gene_026,Systemic inflammation 4,GSK28,Disease,Gene,0.536,0
+disease_covid19,associated_with,gene_cxcl10,COVID-19,CXCL10,Disease,Gene,1.0,0
+gene_035,interacts_with,gene_mapk1,HSP37,MAPK1,Gene,Gene,0.304,0
+gene_nfkb1,interacts_with,gene_il6,NFKB1,IL6,Gene,Gene,0.527,0
+gene_030,interacts_with,gene_012,GSK32,CCR14,Gene,Gene,0.728,0
+gene_041,interacts_with,gene_050,CCR43,AKT52,Gene,Gene,0.38,0
+drug_043,treats,disease_006,Cardioex-43,Fibrotic myopathy 6,Drug,Disease,0.867,0
+gene_052,interacts_with,gene_034,GSK54,SMAD36,Gene,Gene,0.674,0
+gene_tmprss2,interacts_with,gene_047,TMPRSS2,STAT49,Gene,Gene,0.343,0
+drug_047,targets,gene_047,Neurovir-47,STAT49,Drug,Gene,0.85,0
+disease_002,manifests_as,phenotype_009,Acute inflammation 2,Mild Fatigue 9,Disease,Phenotype,0.639,0
+drug_026,targets,gene_013,Lipocept-26,PIK15,Drug,Gene,0.85,0
+gene_008,interacts_with,gene_nfkb1,GSK10,NFKB1,Gene,Gene,0.296,1
+drug_019,treats,disease_018,Immunopril-19,Systemic disorder 18,Drug,Disease,0.693,0
+disease_001,manifests_as,phenotype_027,Systemic vasculitis 1,Chronic Pain 27,Disease,Phenotype,0.862,0
+disease_covid19,associated_with,gene_056,COVID-19,AKT58,Disease,Gene,0.703,0
+gene_014,part_of,pathway_017,AKT16,Repair Program 17,Gene,Pathway,0.593,0
+drug_009,targets,gene_045,Hepatocept-9,MAPK47,Drug,Gene,0.85,0
+disease_covid19,associated_with,gene_il6,COVID-19,IL6,Disease,Gene,1.0,0
+gene_047,part_of,pathway_018,STAT49,Immune Program 18,Gene,Pathway,0.717,0
+gene_002,interacts_with,gene_jak2,GSK4,JAK2,Gene,Gene,0.47,0
+gene_017,interacts_with,gene_tnf,CXCL19,TNF,Gene,Gene,0.874,0
+disease_021,associated_with,gene_049,Chronic inflammation 21,CCR51,Disease,Gene,0.801,0
+drug_nirmatrelvir,treats,disease_sarscov2,Nirmatrelvir,SARS-CoV-2 infection,Drug,Disease,1.0,0
+drug_027,targets,gene_048,Neurocept-27,MAPK50,Drug,Gene,0.85,0
+disease_008,associated_with,gene_027,Acute vasculitis 8,TLR29,Disease,Gene,0.272,1
+drug_028,targets,gene_027,Cardiomab-28,TLR29,Drug,Gene,0.85,0
+drug_032,targets,gene_018,Glycosone-32,STAT20,Drug,Gene,0.142,1
+gene_ifng,part_of,pathway_004,IFNG,Immune Axis 4,Gene,Pathway,0.645,0
+drug_044,targets,gene_053,Neuropril-44,STAT55,Drug,Gene,0.85,0
+gene_il6,interacts_with,gene_027,IL6,TLR29,Gene,Gene,0.421,0
+gene_046,interacts_with,gene_018,STAT48,STAT20,Gene,Gene,0.757,0
+gene_020,interacts_with,gene_023,STAT22,MAPK25,Gene,Gene,0.611,0
+gene_004,interacts_with,gene_017,STAT6,CXCL19,Gene,Gene,0.315,0
+gene_015,part_of,pathway_006,MAPK17,Metabolic Axis 6,Gene,Pathway,0.65,0
+disease_015,associated_with,gene_056,Fibrotic vasculitis 15,AKT58,Disease,Gene,0.52,0
+gene_027,part_of,pathway_viral_entry,TLR29,Viral Entry,Gene,Pathway,0.925,0
+gene_047,interacts_with,gene_stat3,STAT49,STAT3,Gene,Gene,0.714,0
+gene_030,interacts_with,gene_041,GSK32,CCR43,Gene,Gene,0.428,0
+disease_002,manifests_as,phenotype_021,Acute inflammation 2,Mild Fatigue 21,Disease,Phenotype,0.567,0
+drug_048,treats,disease_016,Thorapril-48,Fibrotic inflammation 16,Drug,Disease,0.538,0
+gene_021,interacts_with,gene_jak2,SMAD23,JAK2,Gene,Gene,0.701,0
+gene_048,part_of,pathway_017,MAPK50,Repair Program 17,Gene,Pathway,0.685,0
+disease_sepsis,associated_with,gene_047,Sepsis,STAT49,Disease,Gene,0.893,0
+drug_045,targets,gene_jak2,Lipomab-45,JAK2,Drug,Gene,0.85,0
+disease_ards,associated_with,gene_jak1,Acute respiratory distress syndrome,JAK1,Disease,Gene,0.887,0
+drug_dexamethasone,targets,gene_050,Dexamethasone,AKT52,Drug,Gene,0.85,0
+disease_012,associated_with,gene_cxcl10,Systemic myopathy 12,CXCL10,Disease,Gene,0.477,1
+gene_024,part_of,pathway_007,PIK26,Fibrotic Response 7,Gene,Pathway,0.92,0
+disease_008,manifests_as,phenotype_003,Acute vasculitis 8,Severe Neuropathy 3,Disease,Phenotype,0.579,0
+gene_015,interacts_with,gene_028,MAPK17,TLR30,Gene,Gene,0.836,0
+disease_024,associated_with,gene_011,Systemic inflammation 24,SMAD13,Disease,Gene,0.629,0
+drug_colchicine,targets,gene_035,Colchicine,HSP37,Drug,Gene,0.85,0
+disease_sepsis,associated_with,gene_035,Sepsis,HSP37,Disease,Gene,0.805,0
+disease_022,associated_with,gene_020,Metabolic deficiency 22,STAT22,Disease,Gene,0.639,0
+disease_022,manifests_as,phenotype_025,Metabolic deficiency 22,Mild Pain 25,Disease,Phenotype,0.657,0
+drug_favipiravir,targets,gene_044,Favipiravir,PIK46,Drug,Gene,0.85,0
+gene_041,interacts_with,gene_030,CCR43,GSK32,Gene,Gene,0.463,0
+gene_006,interacts_with,gene_056,CCR8,AKT58,Gene,Gene,0.366,1
+disease_008,associated_with,gene_038,Acute vasculitis 8,STAT40,Disease,Gene,0.86,0
+gene_026,interacts_with,gene_032,GSK28,CXCL34,Gene,Gene,0.857,0
+gene_ace2,interacts_with,gene_027,ACE2,TLR29,Gene,Gene,0.321,0
+gene_027,part_of,pathway_cytokine_storm,TLR29,Cytokine Storm,Gene,Pathway,0.787,0
+drug_anakinra,targets,gene_il6,Anakinra,IL6,Drug,Gene,1.0,0
+disease_covid19,associated_with,gene_051,COVID-19,SMAD53,Disease,Gene,0.649,0
+gene_038,interacts_with,gene_019,STAT40,AKT21,Gene,Gene,0.581,0
+disease_016,manifests_as,phenotype_031,Fibrotic inflammation 16,Chronic Pain 31,Disease,Phenotype,0.637,0
+gene_nfkb1,part_of,pathway_nfkb,NFKB1,NF-kB Signaling,Gene,Pathway,1.0,0
+drug_007,targets,gene_030,Viramab-7,GSK32,Drug,Gene,0.85,0
+disease_sepsis,associated_with,gene_029,Sepsis,PIK31,Disease,Gene,0.834,0
+disease_019,associated_with,gene_tmprss2,Systemic inflammation 19,TMPRSS2,Disease,Gene,0.616,0
+drug_026,targets,gene_046,Lipocept-26,STAT48,Drug,Gene,0.85,0
+gene_016,interacts_with,gene_046,CCR18,STAT48,Gene,Gene,0.623,0
+disease_pneumonia,associated_with,gene_005,Viral pneumonia,TLR7,Disease,Gene,0.834,0
+gene_tnf,interacts_with,gene_tmprss2,TNF,TMPRSS2,Gene,Gene,0.822,0
+disease_014,manifests_as,phenotype_015,Metabolic myopathy 14,Transient Fatigue 15,Disease,Phenotype,0.725,0
+gene_056,interacts_with,gene_036,AKT58,STAT38,Gene,Gene,0.309,0
+gene_jak2,interacts_with,gene_021,JAK2,SMAD23,Gene,Gene,0.303,0
+gene_tnf,part_of,pathway_001,TNF,Immune Program 1,Gene,Pathway,0.565,0
+gene_013,interacts_with,gene_047,PIK15,STAT49,Gene,Gene,0.834,0
+gene_029,interacts_with,gene_027,PIK31,TLR29,Gene,Gene,0.127,1
+drug_005,targets,gene_036,Immunocept-5,STAT38,Drug,Gene,0.85,0
+gene_027,interacts_with,gene_007,TLR29,TLR9,Gene,Gene,0.721,0
+drug_024,targets,gene_054,Immunopril-24,SMAD56,Drug,Gene,0.85,0
+gene_017,interacts_with,gene_021,CXCL19,SMAD23,Gene,Gene,0.331,0
+drug_038,targets,gene_052,Hepatovir-38,GSK54,Drug,Gene,0.85,0
+drug_budesonide,targets,gene_nfkb1,Budesonide,NFKB1,Drug,Gene,1.0,0
+gene_009,interacts_with,gene_029,GSK11,PIK31,Gene,Gene,0.45,0
+drug_036,targets,gene_cxcl10,Lipomab-36,CXCL10,Drug,Gene,0.85,0
+gene_005,part_of,pathway_007,TLR7,Fibrotic Response 7,Gene,Pathway,0.571,0
+disease_023,associated_with,gene_002,Metabolic syndrome 23,GSK4,Disease,Gene,0.533,0
+gene_jak1,interacts_with,gene_055,JAK1,STAT57,Gene,Gene,0.675,0
+gene_031,part_of,pathway_003,TLR33,Metabolic Signal 3,Gene,Pathway,0.274,1
+gene_tmprss2,interacts_with,gene_006,TMPRSS2,CCR8,Gene,Gene,0.332,0
+drug_017,treats,disease_007,Stativir-17,Immune fibrosis 7,Drug,Disease,0.789,0
+drug_009,treats,disease_025,Hepatocept-9,Fibrotic deficiency 25,Drug,Disease,0.517,0
+drug_ruxolitinib,targets,gene_010,Ruxolitinib,AKT12,Drug,Gene,0.85,0
+gene_cxcl10,interacts_with,gene_003,CXCL10,SMAD5,Gene,Gene,0.544,0
+disease_011,manifests_as,phenotype_013,Systemic deficiency 11,Severe Dyspnea 13,Disease,Phenotype,0.664,0
+gene_017,interacts_with,gene_004,CXCL19,STAT6,Gene,Gene,0.734,0
+disease_covid19,associated_with,gene_tnf,COVID-19,TNF,Disease,Gene,1.0,0
+drug_042,targets,gene_054,Neuroex-42,SMAD56,Drug,Gene,0.85,0
+gene_tlr4,interacts_with,gene_050,TLR4,AKT52,Gene,Gene,0.486,0
+gene_010,interacts_with,gene_038,AKT12,STAT40,Gene,Gene,0.691,0
+gene_042,interacts_with,gene_055,PIK44,STAT57,Gene,Gene,0.629,0
+disease_023,associated_with,gene_045,Metabolic syndrome 23,MAPK47,Disease,Gene,0.861,0
+gene_tmprss2,interacts_with,gene_042,TMPRSS2,PIK44,Gene,Gene,0.688,0
+drug_039,targets,gene_015,Statiazole-39,MAPK17,Drug,Gene,0.85,0
+disease_pneumonia,manifests_as,phenotype_026,Viral pneumonia,Severe Pain 26,Disease,Phenotype,0.949,0
+gene_055,part_of,pathway_004,STAT57,Immune Axis 4,Gene,Pathway,0.224,1
+drug_017,targets,gene_052,Stativir-17,GSK54,Drug,Gene,0.85,0
+drug_014,targets,gene_046,Lipoex-14,STAT48,Drug,Gene,0.85,0
+gene_030,interacts_with,gene_032,GSK32,CXCL34,Gene,Gene,0.837,0
+gene_032,interacts_with,gene_036,CXCL34,STAT38,Gene,Gene,0.325,0
+drug_favipiravir,treats,disease_009,Favipiravir,Chronic syndrome 9,Drug,Disease,0.883,0
+gene_046,interacts_with,gene_015,STAT48,MAPK17,Gene,Gene,0.557,0
+drug_remdesivir,targets,gene_041,Remdesivir,CCR43,Drug,Gene,0.85,0
+gene_033,interacts_with,gene_037,GSK35,GSK39,Gene,Gene,0.379,0
+drug_029,targets,gene_018,Viravir-29,STAT20,Drug,Gene,0.85,0
+gene_003,interacts_with,gene_ifng,SMAD5,IFNG,Gene,Gene,0.662,0
+drug_tocilizumab,targets,gene_tnf,Tocilizumab,TNF,Drug,Gene,0.85,0
+disease_thrombosis,associated_with,gene_007,Immunothrombosis,TLR9,Disease,Gene,0.714,0
+gene_015,part_of,pathway_016,MAPK17,Repair Response 16,Gene,Pathway,0.77,0
+drug_004,targets,gene_042,Immunodine-4,PIK44,Drug,Gene,0.85,0
+drug_dexamethasone,targets,gene_ifng,Dexamethasone,IFNG,Drug,Gene,0.85,0
+gene_045,interacts_with,gene_mapk1,MAPK47,MAPK1,Gene,Gene,0.369,0
+gene_020,interacts_with,gene_007,STAT22,TLR9,Gene,Gene,0.492,0
+disease_019,manifests_as,phenotype_hypoxia,Systemic inflammation 19,Hypoxia,Disease,Phenotype,0.576,0
+disease_001,manifests_as,phenotype_007,Systemic vasculitis 1,Mild Neuropathy 7,Disease,Phenotype,0.587,0
+gene_cxcl10,interacts_with,gene_tmprss2,CXCL10,TMPRSS2,Gene,Gene,0.738,0
+drug_011,treats,disease_003,Cardiodine-11,Acute fibrosis 3,Drug,Disease,0.566,0
+drug_027,targets,gene_002,Neurocept-27,GSK4,Drug,Gene,0.85,0
+drug_020,targets,gene_033,Immunoline-20,GSK35,Drug,Gene,0.85,0
+disease_006,manifests_as,phenotype_005,Fibrotic myopathy 6,Severe Rash 5,Disease,Phenotype,0.736,0
+gene_018,part_of,pathway_002,STAT20,Fibrotic Signal 2,Gene,Pathway,0.386,1
+disease_017,associated_with,gene_052,Fibrotic syndrome 17,GSK54,Disease,Gene,0.594,0
+drug_nirmatrelvir,targets,gene_009,Nirmatrelvir,GSK11,Drug,Gene,0.85,0
+disease_026,manifests_as,phenotype_001,Fibrotic disorder 26,Recurrent Pain 1,Disease,Phenotype,0.605,0
+gene_050,part_of,pathway_002,AKT52,Fibrotic Signal 2,Gene,Pathway,0.765,0
+gene_023,interacts_with,gene_008,MAPK25,GSK10,Gene,Gene,0.693,0
+gene_003,interacts_with,gene_031,SMAD5,TLR33,Gene,Gene,0.649,0
+disease_010,associated_with,gene_040,Chronic deficiency 10,HSP42,Disease,Gene,0.511,0
+disease_026,associated_with,gene_jak2,Fibrotic disorder 26,JAK2,Disease,Gene,0.787,0
+gene_013,interacts_with,gene_042,PIK15,PIK44,Gene,Gene,0.555,0
+gene_042,part_of,pathway_006,PIK44,Metabolic Axis 6,Gene,Pathway,0.596,0
+gene_022,interacts_with,gene_030,MAPK24,GSK32,Gene,Gene,0.42,0
+drug_ritonavir,treats,disease_019,Ritonavir,Systemic inflammation 19,Drug,Disease,0.46,0
+gene_007,interacts_with,gene_009,TLR9,GSK11,Gene,Gene,0.451,0
+gene_012,interacts_with,gene_037,CCR14,GSK39,Gene,Gene,0.888,0
+drug_colchicine,treats,disease_020,Colchicine,Systemic carcinoma 20,Drug,Disease,0.741,0
+disease_005,associated_with,gene_041,Systemic myopathy 5,CCR43,Disease,Gene,0.623,0
+gene_001,interacts_with,gene_055,CXCL3,STAT57,Gene,Gene,0.716,0
+gene_041,part_of,pathway_viral_replication,CCR43,Viral Replication,Gene,Pathway,0.559,0
+drug_dexamethasone,treats,disease_covid19,Dexamethasone,COVID-19,Drug,Disease,1.0,0
+disease_022,associated_with,gene_042,Metabolic deficiency 22,PIK44,Disease,Gene,0.844,0
+gene_017,interacts_with,gene_006,CXCL19,CCR8,Gene,Gene,0.486,0
+gene_037,interacts_with,gene_012,GSK39,CCR14,Gene,Gene,0.596,0
+drug_nirmatrelvir,targets,gene_052,Nirmatrelvir,GSK54,Drug,Gene,0.85,0
+gene_il6,interacts_with,gene_006,IL6,CCR8,Gene,Gene,0.792,0
+gene_029,interacts_with,gene_033,PIK31,GSK35,Gene,Gene,0.835,0
+gene_050,interacts_with,gene_032,AKT52,CXCL34,Gene,Gene,0.641,0
+drug_anakinra,targets,gene_025,Anakinra,MAPK27,Drug,Gene,0.85,0
+disease_026,manifests_as,phenotype_029,Fibrotic disorder 26,Mild Edema 29,Disease,Phenotype,0.59,0
+drug_044,targets,gene_056,Neuropril-44,AKT58,Drug,Gene,0.85,0
+drug_026,treats,disease_026,Lipocept-26,Fibrotic disorder 26,Drug,Disease,0.607,0
+gene_il6,part_of,pathway_001,IL6,Immune Program 1,Gene,Pathway,0.662,0
+gene_034,interacts_with,gene_011,SMAD36,SMAD13,Gene,Gene,0.352,0
+gene_011,interacts_with,gene_mtor,SMAD13,MTOR,Gene,Gene,0.477,0
+disease_covid19,manifests_as,phenotype_hyperinflam,COVID-19,Hyperinflammation,Disease,Phenotype,1.0,0
+drug_040,treats,disease_020,Glycosone-40,Systemic carcinoma 20,Drug,Disease,0.558,0
+gene_005,interacts_with,gene_036,TLR7,STAT38,Gene,Gene,0.572,0
+drug_013,targets,gene_027,Thoracept-13,TLR29,Drug,Gene,0.85,0
+drug_ruxolitinib,targets,gene_043,Ruxolitinib,GSK45,Drug,Gene,0.85,0
+drug_baricitinib,targets,gene_jak1,Baricitinib,JAK1,Drug,Gene,1.0,0
+disease_024,associated_with,gene_043,Systemic inflammation 24,GSK45,Disease,Gene,0.945,0
+disease_018,manifests_as,phenotype_018,Systemic disorder 18,Transient Neuropathy 18,Disease,Phenotype,0.795,0
+gene_jak2,interacts_with,gene_stat3,JAK2,STAT3,Gene,Gene,1.0,0
+drug_025,treats,disease_014,Immunodine-25,Metabolic myopathy 14,Drug,Disease,0.497,0
+gene_nfkb1,interacts_with,gene_052,NFKB1,GSK54,Gene,Gene,0.846,0
+disease_001,associated_with,gene_cxcl10,Systemic vasculitis 1,CXCL10,Disease,Gene,0.884,0
+gene_040,part_of,pathway_014,HSP42,Immune Program 14,Gene,Pathway,0.178,1
+gene_053,interacts_with,gene_006,STAT55,CCR8,Gene,Gene,0.456,0
+gene_014,part_of,pathway_007,AKT16,Fibrotic Response 7,Gene,Pathway,0.888,0
+gene_022,part_of,pathway_viral_entry,MAPK24,Viral Entry,Gene,Pathway,0.603,0
+gene_tmprss2,interacts_with,gene_tnf,TMPRSS2,TNF,Gene,Gene,0.608,0
+drug_032,targets,gene_006,Glycosone-32,CCR8,Drug,Gene,0.85,0
+drug_039,targets,gene_019,Statiazole-39,AKT21,Drug,Gene,0.85,0
+gene_025,part_of,pathway_009,MAPK27,Metabolic Program 9,Gene,Pathway,0.632,0
+drug_034,targets,gene_013,Statiline-34,PIK15,Drug,Gene,0.85,0
+drug_004,targets,gene_tnf,Immunodine-4,TNF,Drug,Gene,0.85,0
+drug_ritonavir,targets,gene_017,Ritonavir,CXCL19,Drug,Gene,0.85,0
+gene_004,part_of,pathway_019,STAT6,Fibrotic Program 19,Gene,Pathway,0.346,1
+disease_018,manifests_as,phenotype_020,Systemic disorder 18,Recurrent Edema 20,Disease,Phenotype,0.966,0
+gene_ifng,interacts_with,gene_015,IFNG,MAPK17,Gene,Gene,0.363,0
+gene_jak1,part_of,pathway_interferon,JAK1,Interferon Response,Gene,Pathway,0.898,0
+disease_ards,manifests_as,phenotype_hypoxia,Acute respiratory distress syndrome,Hypoxia,Disease,Phenotype,1.0,0
+gene_023,interacts_with,gene_011,MAPK25,SMAD13,Gene,Gene,0.767,0
+gene_mtor,part_of,pathway_016,MTOR,Repair Response 16,Gene,Pathway,0.602,0
+gene_025,interacts_with,gene_008,MAPK27,GSK10,Gene,Gene,0.742,0
+gene_013,part_of,pathway_jak_stat,PIK15,JAK-STAT Signaling,Gene,Pathway,0.625,0
+drug_041,targets,gene_ifng,Hepatovir-41,IFNG,Drug,Gene,0.85,0
+disease_ards,associated_with,gene_032,Acute respiratory distress syndrome,CXCL34,Disease,Gene,0.294,1
+drug_002,treats,disease_015,Lipovir-2,Fibrotic vasculitis 15,Drug,Disease,0.768,0
+disease_004,manifests_as,phenotype_015,Systemic inflammation 4,Transient Fatigue 15,Disease,Phenotype,0.951,0
+gene_033,part_of,pathway_019,GSK35,Fibrotic Program 19,Gene,Pathway,0.872,0
+gene_054,interacts_with,gene_tmprss2,SMAD56,TMPRSS2,Gene,Gene,0.311,0
+disease_covid19,manifests_as,phenotype_027,COVID-19,Chronic Pain 27,Disease,Phenotype,0.744,0
+drug_026,targets,gene_020,Lipocept-26,STAT22,Drug,Gene,0.422,1
+gene_011,interacts_with,gene_031,SMAD13,TLR33,Gene,Gene,0.4,0
+drug_035,treats,disease_026,Neurovir-35,Fibrotic disorder 26,Drug,Disease,0.69,0
+disease_covid19,associated_with,gene_jak1,COVID-19,JAK1,Disease,Gene,1.0,0
+gene_tlr4,interacts_with,gene_stat3,TLR4,STAT3,Gene,Gene,0.837,0
+gene_jak2,part_of,pathway_jak_stat,JAK2,JAK-STAT Signaling,Gene,Pathway,1.0,0
+gene_012,part_of,pathway_011,CCR14,Repair Cascade 11,Gene,Pathway,0.829,0
+disease_009,associated_with,gene_004,Chronic syndrome 9,STAT6,Disease,Gene,0.91,0
+gene_012,interacts_with,gene_013,CCR14,PIK15,Gene,Gene,0.463,0
+gene_049,interacts_with,gene_051,CCR51,SMAD53,Gene,Gene,0.674,0
+disease_sarscov2,manifests_as,phenotype_hyperinflam,SARS-CoV-2 infection,Hyperinflammation,Disease,Phenotype,0.569,0
+gene_011,part_of,pathway_001,SMAD13,Immune Program 1,Gene,Pathway,0.817,0
+gene_023,interacts_with,gene_017,MAPK25,CXCL19,Gene,Gene,0.64,0
+disease_013,manifests_as,phenotype_015,Fibrotic disorder 13,Transient Fatigue 15,Disease,Phenotype,0.942,0
+gene_004,part_of,pathway_008,STAT6,Metabolic Checkpoint 8,Gene,Pathway,0.622,0
+gene_045,interacts_with,gene_048,MAPK47,MAPK50,Gene,Gene,0.506,0
+gene_009,interacts_with,gene_028,GSK11,TLR30,Gene,Gene,0.722,0
+gene_tnf,part_of,pathway_cytokine_storm,TNF,Cytokine Storm,Gene,Pathway,1.0,0
+drug_009,targets,gene_042,Hepatocept-9,PIK44,Drug,Gene,0.85,0
+drug_022,targets,gene_008,Lipoex-22,GSK10,Drug,Gene,0.85,0
+gene_stat3,interacts_with,gene_009,STAT3,GSK11,Gene,Gene,0.692,0
+gene_017,interacts_with,gene_051,CXCL19,SMAD53,Gene,Gene,0.739,0
+drug_036,targets,gene_043,Lipomab-36,GSK45,Drug,Gene,0.452,1
+gene_027,interacts_with,gene_006,TLR29,CCR8,Gene,Gene,0.457,0
+drug_021,targets,gene_047,Neurocept-21,STAT49,Drug,Gene,0.277,1
+disease_007,associated_with,gene_016,Immune fibrosis 7,CCR18,Disease,Gene,0.727,0
+drug_004,treats,disease_009,Immunodine-4,Chronic syndrome 9,Drug,Disease,0.846,0
+disease_026,manifests_as,phenotype_fever,Fibrotic disorder 26,Fever,Disease,Phenotype,0.957,0
+gene_il6,interacts_with,gene_tlr4,IL6,TLR4,Gene,Gene,0.742,0
+gene_028,interacts_with,gene_015,TLR30,MAPK17,Gene,Gene,0.732,0
+drug_029,targets,gene_050,Viravir-29,AKT52,Drug,Gene,0.85,0
+disease_025,associated_with,gene_030,Fibrotic deficiency 25,GSK32,Disease,Gene,0.687,0
+drug_005,targets,gene_037,Immunocept-5,GSK39,Drug,Gene,0.295,1
+gene_stat3,interacts_with,gene_017,STAT3,CXCL19,Gene,Gene,0.712,0
+gene_042,part_of,pathway_018,PIK44,Immune Program 18,Gene,Pathway,0.933,0
+gene_025,interacts_with,gene_il6,MAPK27,IL6,Gene,Gene,0.551,0
+disease_018,associated_with,gene_001,Systemic disorder 18,CXCL3,Disease,Gene,0.821,0
+disease_ards,associated_with,gene_ace2,Acute respiratory distress syndrome,ACE2,Disease,Gene,0.245,1
+gene_050,interacts_with,gene_tlr4,AKT52,TLR4,Gene,Gene,0.59,0
+gene_007,interacts_with,gene_047,TLR9,STAT49,Gene,Gene,0.854,0
+disease_covid19,associated_with,gene_tmprss2,COVID-19,TMPRSS2,Disease,Gene,1.0,0
+drug_budesonide,targets,gene_ifng,Budesonide,IFNG,Drug,Gene,0.85,0
+drug_036,targets,gene_049,Lipomab-36,CCR51,Drug,Gene,0.85,0
+drug_024,targets,gene_035,Immunopril-24,HSP37,Drug,Gene,0.85,0
+gene_035,interacts_with,gene_013,HSP37,PIK15,Gene,Gene,0.644,0
+gene_024,interacts_with,gene_025,PIK26,MAPK27,Gene,Gene,0.403,0
+disease_020,associated_with,gene_024,Systemic carcinoma 20,PIK26,Disease,Gene,0.333,1
+drug_012,targets,gene_005,Glycovir-12,TLR7,Drug,Gene,0.85,0
+drug_colchicine,treats,disease_005,Colchicine,Systemic myopathy 5,Drug,Disease,0.613,0
+drug_034,treats,disease_022,Statiline-34,Metabolic deficiency 22,Drug,Disease,0.417,1
+gene_028,part_of,pathway_011,TLR30,Repair Cascade 11,Gene,Pathway,0.939,0
+disease_022,manifests_as,phenotype_014,Metabolic deficiency 22,Mild Fibrosis 14,Disease,Phenotype,0.594,0
+drug_010,targets,gene_il6,Viradine-10,IL6,Drug,Gene,0.85,0
+drug_032,targets,gene_mapk1,Glycosone-32,MAPK1,Drug,Gene,0.85,0
+disease_008,associated_with,gene_036,Acute vasculitis 8,STAT38,Disease,Gene,0.939,0
+drug_040,treats,disease_001,Glycosone-40,Systemic vasculitis 1,Drug,Disease,0.524,0
+gene_002,interacts_with,gene_044,GSK4,PIK46,Gene,Gene,0.705,0
+gene_stat3,part_of,pathway_jak_stat,STAT3,JAK-STAT Signaling,Gene,Pathway,1.0,0
+gene_030,interacts_with,gene_002,GSK32,GSK4,Gene,Gene,0.693,0
+gene_051,part_of,pathway_016,SMAD53,Repair Response 16,Gene,Pathway,0.832,0
+gene_025,interacts_with,gene_037,MAPK27,GSK39,Gene,Gene,0.589,0
+disease_011,associated_with,gene_004,Systemic deficiency 11,STAT6,Disease,Gene,0.66,0
+drug_044,treats,disease_025,Neuropril-44,Fibrotic deficiency 25,Drug,Disease,0.487,0
+disease_covid19,manifests_as,phenotype_hypoxia,COVID-19,Hypoxia,Disease,Phenotype,1.0,0
+disease_005,associated_with,gene_040,Systemic myopathy 5,HSP42,Disease,Gene,0.56,0
+drug_005,targets,gene_024,Immunocept-5,PIK26,Drug,Gene,0.85,0
+gene_046,interacts_with,gene_013,STAT48,PIK15,Gene,Gene,0.705,0
+drug_008,targets,gene_028,Cardiovir-8,TLR30,Drug,Gene,0.85,0
+disease_covid19,associated_with,gene_ace2,COVID-19,ACE2,Disease,Gene,1.0,0
+disease_010,associated_with,gene_052,Chronic deficiency 10,GSK54,Disease,Gene,0.784,0
+disease_covid19,manifests_as,phenotype_lymphopenia,COVID-19,Lymphopenia,Disease,Phenotype,1.0,0
+drug_012,targets,gene_014,Glycovir-12,AKT16,Drug,Gene,0.85,0
+disease_015,associated_with,gene_ifng,Fibrotic vasculitis 15,IFNG,Disease,Gene,0.688,0
+disease_011,associated_with,gene_043,Systemic deficiency 11,GSK45,Disease,Gene,0.632,0
+gene_il6,interacts_with,gene_013,IL6,PIK15,Gene,Gene,0.605,0
+gene_034,interacts_with,gene_tlr4,SMAD36,TLR4,Gene,Gene,0.529,0
+gene_013,interacts_with,gene_012,PIK15,CCR14,Gene,Gene,0.799,0
+gene_019,interacts_with,gene_039,AKT21,CXCL41,Gene,Gene,0.408,0
+disease_005,manifests_as,phenotype_023,Systemic myopathy 5,Mild Neuropathy 23,Disease,Phenotype,0.649,0
+gene_nfkb1,interacts_with,gene_029,NFKB1,PIK31,Gene,Gene,0.547,0
+gene_027,part_of,pathway_018,TLR29,Immune Program 18,Gene,Pathway,0.369,1
+drug_028,treats,disease_thrombosis,Cardiomab-28,Immunothrombosis,Drug,Disease,0.888,0
+gene_044,part_of,pathway_nfkb,PIK46,NF-kB Signaling,Gene,Pathway,0.659,0
+gene_008,part_of,pathway_018,GSK10,Immune Program 18,Gene,Pathway,0.869,0
+gene_tlr4,interacts_with,gene_034,TLR4,SMAD36,Gene,Gene,0.626,0
+drug_018,targets,gene_020,Neuromab-18,STAT22,Drug,Gene,0.85,0
+disease_sarscov2,associated_with,gene_ace2,SARS-CoV-2 infection,ACE2,Disease,Gene,1.0,0
+drug_028,treats,disease_002,Cardiomab-28,Acute inflammation 2,Drug,Disease,0.845,0
+drug_042,treats,disease_018,Neuroex-42,Systemic disorder 18,Drug,Disease,0.372,1
+disease_thrombosis,manifests_as,phenotype_007,Immunothrombosis,Mild Neuropathy 7,Disease,Phenotype,0.739,0
+drug_anakinra,treats,disease_011,Anakinra,Systemic deficiency 11,Drug,Disease,0.28,1
+drug_043,targets,gene_040,Cardioex-43,HSP42,Drug,Gene,0.85,0
+drug_019,targets,gene_005,Immunopril-19,TLR7,Drug,Gene,0.85,0
+gene_il6,part_of,pathway_cytokine_storm,IL6,Cytokine Storm,Gene,Pathway,1.0,0
+gene_014,interacts_with,gene_jak1,AKT16,JAK1,Gene,Gene,0.372,0
+gene_003,part_of,pathway_011,SMAD5,Repair Cascade 11,Gene,Pathway,0.853,0
+disease_003,manifests_as,phenotype_007,Acute fibrosis 3,Mild Neuropathy 7,Disease,Phenotype,0.241,1
+drug_045,targets,gene_tlr4,Lipomab-45,TLR4,Drug,Gene,0.85,0
+disease_004,associated_with,gene_005,Systemic inflammation 4,TLR7,Disease,Gene,0.807,0
+gene_019,interacts_with,gene_050,AKT21,AKT52,Gene,Gene,0.459,0
+gene_005,interacts_with,gene_054,TLR7,SMAD56,Gene,Gene,0.617,0
+gene_035,part_of,pathway_015,HSP37,Repair Axis 15,Gene,Pathway,0.193,1
+gene_stat3,interacts_with,gene_047,STAT3,STAT49,Gene,Gene,0.339,0
+gene_mapk1,part_of,pathway_viral_replication,MAPK1,Viral Replication,Gene,Pathway,1.0,0
+gene_ace2,part_of,pathway_017,ACE2,Repair Program 17,Gene,Pathway,0.882,0
+gene_045,interacts_with,gene_019,MAPK47,AKT21,Gene,Gene,0.606,0
+drug_012,treats,disease_016,Glycovir-12,Fibrotic inflammation 16,Drug,Disease,0.898,0
+gene_040,interacts_with,gene_054,HSP42,SMAD56,Gene,Gene,0.569,0
+gene_007,interacts_with,gene_055,TLR9,STAT57,Gene,Gene,0.759,0
+gene_037,part_of,pathway_006,GSK39,Metabolic Axis 6,Gene,Pathway,0.868,0
+disease_009,associated_with,gene_020,Chronic syndrome 9,STAT22,Disease,Gene,0.8,0
+gene_023,interacts_with,gene_020,MAPK25,STAT22,Gene,Gene,0.38,0
+gene_039,interacts_with,gene_054,CXCL41,SMAD56,Gene,Gene,0.689,0
+disease_008,associated_with,gene_042,Acute vasculitis 8,PIK44,Disease,Gene,0.497,1
+gene_052,part_of,pathway_014,GSK54,Immune Program 14,Gene,Pathway,0.598,0
+gene_008,interacts_with,gene_023,GSK10,MAPK25,Gene,Gene,0.661,0
+disease_019,associated_with,gene_jak1,Systemic inflammation 19,JAK1,Disease,Gene,0.727,0
+drug_005,targets,gene_035,Immunocept-5,HSP37,Drug,Gene,0.85,0
+disease_covid19,associated_with,gene_025,COVID-19,MAPK27,Disease,Gene,0.351,1
+gene_stat3,part_of,pathway_001,STAT3,Immune Program 1,Gene,Pathway,0.765,0
+gene_042,interacts_with,gene_028,PIK44,TLR30,Gene,Gene,0.492,0
+disease_001,manifests_as,phenotype_thrombosis,Systemic vasculitis 1,Thrombosis,Disease,Phenotype,0.218,1
+drug_006,targets,gene_017,Glycoex-6,CXCL19,Drug,Gene,0.85,0
+gene_il6,interacts_with,gene_011,IL6,SMAD13,Gene,Gene,0.672,0
+gene_cxcl10,interacts_with,gene_mtor,CXCL10,MTOR,Gene,Gene,0.709,0
+gene_042,interacts_with,gene_tmprss2,PIK44,TMPRSS2,Gene,Gene,0.521,0
+gene_019,part_of,pathway_021,AKT21,Repair Program 21,Gene,Pathway,0.852,0
+gene_021,interacts_with,gene_stat3,SMAD23,STAT3,Gene,Gene,0.672,0
+gene_023,interacts_with,gene_028,MAPK25,TLR30,Gene,Gene,0.677,0
+gene_007,part_of,pathway_017,TLR9,Repair Program 17,Gene,Pathway,0.289,1
+drug_004,targets,gene_025,Immunodine-4,MAPK27,Drug,Gene,0.85,0
+drug_molnupiravir,treats,disease_022,Molnupiravir,Metabolic deficiency 22,Drug,Disease,0.321,1
+gene_003,interacts_with,gene_041,SMAD5,CCR43,Gene,Gene,0.893,0
+disease_010,associated_with,gene_041,Chronic deficiency 10,CCR43,Disease,Gene,0.65,0
+drug_colchicine,targets,gene_040,Colchicine,HSP42,Drug,Gene,0.85,0
+drug_018,targets,gene_039,Neuromab-18,CXCL41,Drug,Gene,0.85,0
+gene_040,part_of,pathway_004,HSP42,Immune Axis 4,Gene,Pathway,0.919,0
+drug_ruxolitinib,treats,disease_004,Ruxolitinib,Systemic inflammation 4,Drug,Disease,0.462,0
+disease_020,associated_with,gene_016,Systemic carcinoma 20,CCR18,Disease,Gene,0.825,0
+gene_048,part_of,pathway_jak_stat,MAPK50,JAK-STAT Signaling,Gene,Pathway,0.746,0
+gene_il6,interacts_with,gene_stat3,IL6,STAT3,Gene,Gene,1.0,0
+drug_004,targets,gene_017,Immunodine-4,CXCL19,Drug,Gene,0.85,0
+disease_sarscov2,associated_with,gene_032,SARS-CoV-2 infection,CXCL34,Disease,Gene,0.531,0
+drug_015,targets,gene_014,Statipril-15,AKT16,Drug,Gene,0.85,0
+disease_013,associated_with,gene_007,Fibrotic disorder 13,TLR9,Disease,Gene,0.162,1
+drug_molnupiravir,targets,gene_tlr4,Molnupiravir,TLR4,Drug,Gene,1.0,0
+gene_il6,interacts_with,gene_036,IL6,STAT38,Gene,Gene,0.416,0
+disease_002,associated_with,gene_047,Acute inflammation 2,STAT49,Disease,Gene,0.701,0
+drug_023,treats,disease_022,Thoradine-23,Metabolic deficiency 22,Drug,Disease,0.831,0
+gene_stat3,interacts_with,gene_021,STAT3,SMAD23,Gene,Gene,0.835,0
+gene_046,interacts_with,gene_050,STAT48,AKT52,Gene,Gene,0.71,0
+gene_019,interacts_with,gene_049,AKT21,CCR51,Gene,Gene,0.343,0
+disease_003,associated_with,gene_031,Acute fibrosis 3,TLR33,Disease,Gene,0.131,1
+disease_025,associated_with,gene_015,Fibrotic deficiency 25,MAPK17,Disease,Gene,0.909,0
+drug_040,targets,gene_012,Glycosone-40,CCR14,Drug,Gene,0.85,0
+gene_044,interacts_with,gene_027,PIK46,TLR29,Gene,Gene,0.482,0
+drug_025,targets,gene_028,Immunodine-25,TLR30,Drug,Gene,0.85,0
+drug_004,targets,gene_ace2,Immunodine-4,ACE2,Drug,Gene,0.85,0
+disease_005,associated_with,gene_035,Systemic myopathy 5,HSP37,Disease,Gene,0.794,0
+gene_ace2,interacts_with,gene_040,ACE2,HSP42,Gene,Gene,0.76,0
+drug_019,targets,gene_crp,Immunopril-19,CRP,Drug,Gene,0.129,1
+drug_remdesivir,treats,disease_024,Remdesivir,Systemic inflammation 24,Drug,Disease,0.338,1
+disease_015,manifests_as,phenotype_lymphopenia,Fibrotic vasculitis 15,Lymphopenia,Disease,Phenotype,0.6,0
+gene_025,interacts_with,gene_009,MAPK27,GSK11,Gene,Gene,0.457,0
+disease_007,associated_with,gene_ifng,Immune fibrosis 7,IFNG,Disease,Gene,0.601,0
+gene_010,interacts_with,gene_050,AKT12,AKT52,Gene,Gene,0.399,0
+drug_003,targets,gene_029,Cardionib-3,PIK31,Drug,Gene,0.85,0
+disease_sarscov2,associated_with,gene_031,SARS-CoV-2 infection,TLR33,Disease,Gene,0.601,0
+gene_019,interacts_with,gene_028,AKT21,TLR30,Gene,Gene,0.457,0
+gene_053,part_of,pathway_004,STAT55,Immune Axis 4,Gene,Pathway,0.201,1
+gene_013,interacts_with,gene_il6,PIK15,IL6,Gene,Gene,0.491,0
+disease_003,manifests_as,phenotype_008,Acute fibrosis 3,Chronic Pain 8,Disease,Phenotype,0.669,0
+drug_011,targets,gene_047,Cardiodine-11,STAT49,Drug,Gene,0.85,0
+disease_023,associated_with,gene_005,Metabolic syndrome 23,TLR7,Disease,Gene,0.856,0
+drug_003,targets,gene_035,Cardionib-3,HSP37,Drug,Gene,0.85,0
+gene_031,interacts_with,gene_003,TLR33,SMAD5,Gene,Gene,0.713,0
+gene_032,interacts_with,gene_050,CXCL34,AKT52,Gene,Gene,0.791,0
+drug_013,targets,gene_ifng,Thoracept-13,IFNG,Drug,Gene,0.85,0
+gene_050,interacts_with,gene_019,AKT52,AKT21,Gene,Gene,0.617,0
+drug_028,targets,gene_021,Cardiomab-28,SMAD23,Drug,Gene,0.85,0
+drug_030,targets,gene_036,Lipomab-30,STAT38,Drug,Gene,0.85,0
+gene_052,part_of,pathway_001,GSK54,Immune Program 1,Gene,Pathway,0.763,0
+disease_covid19,manifests_as,phenotype_028,COVID-19,Severe Dyspnea 28,Disease,Phenotype,0.953,0
+drug_nirmatrelvir,treats,disease_022,Nirmatrelvir,Metabolic deficiency 22,Drug,Disease,0.513,0
+drug_014,targets,gene_mapk1,Lipoex-14,MAPK1,Drug,Gene,0.85,0
+gene_042,interacts_with,gene_013,PIK44,PIK15,Gene,Gene,0.63,0
+drug_022,targets,gene_054,Lipoex-22,SMAD56,Drug,Gene,0.85,0
+disease_008,associated_with,gene_030,Acute vasculitis 8,GSK32,Disease,Gene,0.346,1
+drug_031,targets,gene_025,Cardiomab-31,MAPK27,Drug,Gene,0.155,1
+drug_047,targets,gene_050,Neurovir-47,AKT52,Drug,Gene,0.85,0
+gene_015,interacts_with,gene_006,MAPK17,CCR8,Gene,Gene,0.651,0
+drug_017,targets,gene_033,Stativir-17,GSK35,Drug,Gene,0.85,0
+gene_040,interacts_with,gene_ace2,HSP42,ACE2,Gene,Gene,0.51,0
+drug_remdesivir,targets,gene_mtor,Remdesivir,MTOR,Drug,Gene,1.0,0
+drug_colchicine,targets,gene_049,Colchicine,CCR51,Drug,Gene,0.85,0
+gene_015,interacts_with,gene_ifng,MAPK17,IFNG,Gene,Gene,0.644,0
+gene_028,interacts_with,gene_009,TLR30,GSK11,Gene,Gene,0.503,0
+gene_043,interacts_with,gene_050,GSK45,AKT52,Gene,Gene,0.691,0
+disease_001,associated_with,gene_028,Systemic vasculitis 1,TLR30,Disease,Gene,0.533,0
+gene_tlr4,interacts_with,gene_il6,TLR4,IL6,Gene,Gene,0.342,0
+gene_015,interacts_with,gene_053,MAPK17,STAT55,Gene,Gene,0.775,0
+drug_035,targets,gene_009,Neurovir-35,GSK11,Drug,Gene,0.85,0
+gene_tmprss2,part_of,pathway_011,TMPRSS2,Repair Cascade 11,Gene,Pathway,0.684,0
+gene_034,interacts_with,gene_crp,SMAD36,CRP,Gene,Gene,0.862,0
+gene_012,interacts_with,gene_030,CCR14,GSK32,Gene,Gene,0.856,0
+disease_025,associated_with,gene_041,Fibrotic deficiency 25,CCR43,Disease,Gene,0.77,0
+disease_026,associated_with,gene_031,Fibrotic disorder 26,TLR33,Disease,Gene,0.814,0
+disease_002,manifests_as,phenotype_019,Acute inflammation 2,Severe Edema 19,Disease,Phenotype,0.372,1
+gene_054,interacts_with,gene_021,SMAD56,SMAD23,Gene,Gene,0.888,0
+gene_037,interacts_with,gene_007,GSK39,TLR9,Gene,Gene,0.571,0
+gene_033,interacts_with,gene_ace2,GSK35,ACE2,Gene,Gene,0.445,0
+gene_jak1,interacts_with,gene_036,JAK1,STAT38,Gene,Gene,0.341,0
+disease_016,manifests_as,phenotype_021,Fibrotic inflammation 16,Mild Fatigue 21,Disease,Phenotype,0.597,0
+gene_stat3,interacts_with,gene_052,STAT3,GSK54,Gene,Gene,0.467,0
+disease_019,associated_with,gene_tnf,Systemic inflammation 19,TNF,Disease,Gene,0.86,0
+disease_012,associated_with,gene_ifng,Systemic myopathy 12,IFNG,Disease,Gene,0.761,0
+gene_043,interacts_with,gene_019,GSK45,AKT21,Gene,Gene,0.674,0
+disease_014,associated_with,gene_044,Metabolic myopathy 14,PIK46,Disease,Gene,0.846,0
+gene_006,interacts_with,gene_002,CCR8,GSK4,Gene,Gene,0.86,0
+gene_055,part_of,pathway_nfkb,STAT57,NF-kB Signaling,Gene,Pathway,0.9,0
+disease_006,associated_with,gene_005,Fibrotic myopathy 6,TLR7,Disease,Gene,0.505,0
+drug_molnupiravir,targets,gene_017,Molnupiravir,CXCL19,Drug,Gene,0.85,0
+gene_038,part_of,pathway_001,STAT40,Immune Program 1,Gene,Pathway,0.753,0
+disease_017,manifests_as,phenotype_fever,Fibrotic syndrome 17,Fever,Disease,Phenotype,0.946,0
+gene_002,part_of,pathway_010,GSK4,Oxidative Checkpoint 10,Gene,Pathway,0.802,0
+gene_017,interacts_with,gene_tmprss2,CXCL19,TMPRSS2,Gene,Gene,0.407,0
+gene_020,interacts_with,gene_055,STAT22,STAT57,Gene,Gene,0.426,0
+gene_035,interacts_with,gene_040,HSP37,HSP42,Gene,Gene,0.836,0
+drug_015,targets,gene_028,Statipril-15,TLR30,Drug,Gene,0.85,0
+drug_048,targets,gene_ifng,Thorapril-48,IFNG,Drug,Gene,0.85,0
+gene_007,interacts_with,gene_037,TLR9,GSK39,Gene,Gene,0.808,0
+gene_018,part_of,pathway_jak_stat,STAT20,JAK-STAT Signaling,Gene,Pathway,0.767,0
+disease_covid19,associated_with,gene_006,COVID-19,CCR8,Disease,Gene,0.765,0
+gene_004,interacts_with,gene_026,STAT6,GSK28,Gene,Gene,0.703,0
+gene_054,part_of,pathway_011,SMAD56,Repair Cascade 11,Gene,Pathway,0.647,0
+gene_039,interacts_with,gene_032,CXCL41,CXCL34,Gene,Gene,0.775,0
+gene_ace2,interacts_with,gene_007,ACE2,TLR9,Gene,Gene,0.526,0
+disease_023,manifests_as,phenotype_001,Metabolic syndrome 23,Recurrent Pain 1,Disease,Phenotype,0.792,0
+gene_029,interacts_with,gene_009,PIK31,GSK11,Gene,Gene,0.623,0
+gene_ifng,interacts_with,gene_mapk1,IFNG,MAPK1,Gene,Gene,0.53,0
+gene_stat3,interacts_with,gene_tlr4,STAT3,TLR4,Gene,Gene,0.397,0
+drug_molnupiravir,treats,disease_026,Molnupiravir,Fibrotic disorder 26,Drug,Disease,0.681,0
+gene_035,interacts_with,gene_009,HSP37,GSK11,Gene,Gene,0.305,0
+disease_sarscov2,manifests_as,phenotype_011,SARS-CoV-2 infection,Severe Dyspnea 11,Disease,Phenotype,0.753,0
+disease_008,manifests_as,phenotype_017,Acute vasculitis 8,Transient Rash 17,Disease,Phenotype,0.665,0
+gene_019,interacts_with,gene_045,AKT21,MAPK47,Gene,Gene,0.731,0
+gene_043,part_of,pathway_010,GSK45,Oxidative Checkpoint 10,Gene,Pathway,0.884,0
+gene_009,interacts_with,gene_025,GSK11,MAPK27,Gene,Gene,0.598,0
+gene_006,interacts_with,gene_tmprss2,CCR8,TMPRSS2,Gene,Gene,0.748,0
+drug_014,targets,gene_002,Lipoex-14,GSK4,Drug,Gene,0.85,0
+drug_001,targets,gene_011,Immunoex-1,SMAD13,Drug,Gene,0.85,0
+gene_042,interacts_with,gene_049,PIK44,CCR51,Gene,Gene,0.321,0
+gene_cxcl10,part_of,pathway_interferon,CXCL10,Interferon Response,Gene,Pathway,1.0,0
+gene_tmprss2,interacts_with,gene_037,TMPRSS2,GSK39,Gene,Gene,0.653,0
+drug_019,targets,gene_043,Immunopril-19,GSK45,Drug,Gene,0.85,0
+drug_046,targets,gene_018,Cardiocept-46,STAT20,Drug,Gene,0.85,0
+drug_029,targets,gene_stat3,Viravir-29,STAT3,Drug,Gene,0.85,0
+disease_sepsis,associated_with,gene_056,Sepsis,AKT58,Disease,Gene,0.614,0
+drug_048,targets,gene_047,Thorapril-48,STAT49,Drug,Gene,0.85,0
+disease_021,associated_with,gene_025,Chronic inflammation 21,MAPK27,Disease,Gene,0.504,0
+gene_047,interacts_with,gene_013,STAT49,PIK15,Gene,Gene,0.625,0
+gene_055,interacts_with,gene_ace2,STAT57,ACE2,Gene,Gene,0.45,0
+disease_011,manifests_as,phenotype_009,Systemic deficiency 11,Mild Fatigue 9,Disease,Phenotype,0.944,0
+drug_remdesivir,targets,gene_009,Remdesivir,GSK11,Drug,Gene,0.85,0
+drug_ritonavir,targets,gene_ace2,Ritonavir,ACE2,Drug,Gene,1.0,0
+gene_044,interacts_with,gene_tmprss2,PIK46,TMPRSS2,Gene,Gene,0.563,0
+disease_007,manifests_as,phenotype_cough,Immune fibrosis 7,Cough,Disease,Phenotype,0.829,0
+drug_046,targets,gene_003,Cardiocept-46,SMAD5,Drug,Gene,0.85,0
+drug_011,treats,disease_005,Cardiodine-11,Systemic myopathy 5,Drug,Disease,0.492,0
+gene_tlr4,interacts_with,gene_004,TLR4,STAT6,Gene,Gene,0.778,0
+drug_016,treats,disease_025,Neurosone-16,Fibrotic deficiency 25,Drug,Disease,0.561,0
+gene_009,interacts_with,gene_007,GSK11,TLR9,Gene,Gene,0.874,0
+gene_046,part_of,pathway_004,STAT48,Immune Axis 4,Gene,Pathway,0.867,0
+gene_019,interacts_with,gene_038,AKT21,STAT40,Gene,Gene,0.366,0
+drug_038,treats,disease_024,Hepatovir-38,Systemic inflammation 24,Drug,Disease,0.613,0
+gene_nfkb1,interacts_with,gene_mtor,NFKB1,MTOR,Gene,Gene,0.731,0
+drug_031,targets,gene_028,Cardiomab-31,TLR30,Drug,Gene,0.85,0
+gene_037,interacts_with,gene_tmprss2,GSK39,TMPRSS2,Gene,Gene,0.678,0
+disease_002,manifests_as,phenotype_007,Acute inflammation 2,Mild Neuropathy 7,Disease,Phenotype,0.55,0
+gene_010,interacts_with,gene_056,AKT12,AKT58,Gene,Gene,0.559,0
+drug_026,treats,disease_007,Lipocept-26,Immune fibrosis 7,Drug,Disease,0.617,0
+gene_034,part_of,pathway_011,SMAD36,Repair Cascade 11,Gene,Pathway,0.678,0
+drug_014,targets,gene_047,Lipoex-14,STAT49,Drug,Gene,0.85,0
+drug_005,treats,disease_004,Immunocept-5,Systemic inflammation 4,Drug,Disease,0.859,0
+gene_038,interacts_with,gene_mtor,STAT40,MTOR,Gene,Gene,0.595,0
+disease_sarscov2,associated_with,gene_035,SARS-CoV-2 infection,HSP37,Disease,Gene,0.642,0
+gene_015,interacts_with,gene_cxcl10,MAPK17,CXCL10,Gene,Gene,0.355,0
+gene_053,interacts_with,gene_024,STAT55,PIK26,Gene,Gene,0.55,0
+disease_018,associated_with,gene_049,Systemic disorder 18,CCR51,Disease,Gene,0.588,0
+gene_038,interacts_with,gene_013,STAT40,PIK15,Gene,Gene,0.88,0
+gene_038,interacts_with,gene_001,STAT40,CXCL3,Gene,Gene,0.585,0
+gene_051,interacts_with,gene_049,SMAD53,CCR51,Gene,Gene,0.589,0
+drug_014,treats,disease_021,Lipoex-14,Chronic inflammation 21,Drug,Disease,0.787,0
+gene_jak1,part_of,pathway_jak_stat,JAK1,JAK-STAT Signaling,Gene,Pathway,1.0,0
+gene_005,interacts_with,gene_015,TLR7,MAPK17,Gene,Gene,0.758,0
+disease_009,manifests_as,phenotype_006,Chronic syndrome 9,Transient Edema 6,Disease,Phenotype,0.869,0
+disease_015,manifests_as,phenotype_024,Fibrotic vasculitis 15,Chronic Fibrosis 24,Disease,Phenotype,0.493,1
+drug_favipiravir,targets,gene_tmprss2,Favipiravir,TMPRSS2,Drug,Gene,0.85,0
+gene_021,interacts_with,gene_036,SMAD23,STAT38,Gene,Gene,0.598,0
+disease_017,manifests_as,phenotype_003,Fibrotic syndrome 17,Severe Neuropathy 3,Disease,Phenotype,0.83,0
+gene_015,interacts_with,gene_005,MAPK17,TLR7,Gene,Gene,0.568,0
+drug_021,targets,gene_038,Neurocept-21,STAT40,Drug,Gene,0.85,0
+drug_nirmatrelvir,targets,gene_tmprss2,Nirmatrelvir,TMPRSS2,Drug,Gene,1.0,0
+drug_034,treats,disease_008,Statiline-34,Acute vasculitis 8,Drug,Disease,0.625,0
+disease_022,associated_with,gene_001,Metabolic deficiency 22,CXCL3,Disease,Gene,0.921,0
+drug_047,targets,gene_043,Neurovir-47,GSK45,Drug,Gene,0.85,0
+drug_007,targets,gene_039,Viramab-7,CXCL41,Drug,Gene,0.85,0
+gene_014,interacts_with,gene_037,AKT16,GSK39,Gene,Gene,0.387,0
+disease_covid19,associated_with,gene_jak2,COVID-19,JAK2,Disease,Gene,1.0,0
+gene_ace2,interacts_with,gene_055,ACE2,STAT57,Gene,Gene,0.425,0
+gene_043,interacts_with,gene_056,GSK45,AKT58,Gene,Gene,0.317,0
+gene_012,interacts_with,gene_052,CCR14,GSK54,Gene,Gene,0.306,0
+disease_017,associated_with,gene_032,Fibrotic syndrome 17,CXCL34,Disease,Gene,0.681,0
+disease_015,associated_with,gene_042,Fibrotic vasculitis 15,PIK44,Disease,Gene,0.217,1
+gene_017,interacts_with,gene_stat3,CXCL19,STAT3,Gene,Gene,0.45,0
+gene_029,part_of,pathway_002,PIK31,Fibrotic Signal 2,Gene,Pathway,0.826,0
+drug_012,targets,gene_011,Glycovir-12,SMAD13,Drug,Gene,0.85,0
+gene_031,interacts_with,gene_011,TLR33,SMAD13,Gene,Gene,0.716,0
+gene_cxcl10,part_of,pathway_012,CXCL10,Repair Response 12,Gene,Pathway,0.935,0
+disease_010,associated_with,gene_002,Chronic deficiency 10,GSK4,Disease,Gene,0.614,0
+gene_050,interacts_with,gene_046,AKT52,STAT48,Gene,Gene,0.648,0
+disease_005,associated_with,gene_043,Systemic myopathy 5,GSK45,Disease,Gene,0.767,0
+gene_016,part_of,pathway_011,CCR18,Repair Cascade 11,Gene,Pathway,0.742,0
+gene_002,interacts_with,gene_006,GSK4,CCR8,Gene,Gene,0.376,0
+drug_023,targets,gene_cxcl10,Thoradine-23,CXCL10,Drug,Gene,0.85,0
+disease_covid19,associated_with,gene_stat3,COVID-19,STAT3,Disease,Gene,1.0,0
+disease_003,associated_with,gene_043,Acute fibrosis 3,GSK45,Disease,Gene,0.538,0
+drug_baricitinib,targets,gene_026,Baricitinib,GSK28,Drug,Gene,0.342,1
+drug_027,treats,disease_006,Neurocept-27,Fibrotic myopathy 6,Drug,Disease,0.499,0
+gene_028,interacts_with,gene_042,TLR30,PIK44,Gene,Gene,0.607,0
+gene_ace2,part_of,pathway_003,ACE2,Metabolic Signal 3,Gene,Pathway,0.304,1
+drug_047,targets,gene_tlr4,Neurovir-47,TLR4,Drug,Gene,0.85,0
+gene_009,interacts_with,gene_040,GSK11,HSP42,Gene,Gene,0.839,0
+drug_039,treats,disease_006,Statiazole-39,Fibrotic myopathy 6,Drug,Disease,0.661,0
+gene_005,interacts_with,gene_021,TLR7,SMAD23,Gene,Gene,0.395,0
+drug_budesonide,targets,gene_il6,Budesonide,IL6,Drug,Gene,0.85,0
+gene_018,interacts_with,gene_046,STAT20,STAT48,Gene,Gene,0.806,0
+gene_014,interacts_with,gene_052,AKT16,GSK54,Gene,Gene,0.775,0
+drug_tocilizumab,targets,gene_035,Tocilizumab,HSP37,Drug,Gene,0.85,0
+drug_037,targets,gene_tmprss2,Reninib-37,TMPRSS2,Drug,Gene,0.85,0
+disease_004,associated_with,gene_015,Systemic inflammation 4,MAPK17,Disease,Gene,0.67,0
+drug_nirmatrelvir,treats,disease_010,Nirmatrelvir,Chronic deficiency 10,Drug,Disease,0.829,0
+gene_050,interacts_with,gene_041,AKT52,CCR43,Gene,Gene,0.693,0
+gene_033,interacts_with,gene_048,GSK35,MAPK50,Gene,Gene,0.501,0
+gene_024,interacts_with,gene_053,PIK26,STAT55,Gene,Gene,0.356,0
+gene_046,interacts_with,gene_016,STAT48,CCR18,Gene,Gene,0.392,0
+gene_053,part_of,pathway_011,STAT55,Repair Cascade 11,Gene,Pathway,0.705,0

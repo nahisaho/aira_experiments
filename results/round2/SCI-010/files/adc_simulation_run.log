@@ -1,0 +1,89 @@
+{
+  "dar_model": {
+    "lambda": 4.1,
+    "window_probability": 0.39517278338220313,
+    "best_utility_dar": 4,
+    "mean_probability_weighted_dar": 3.962058207358056
+  },
+  "linker_model": {
+    "pH": 5.5,
+    "cathepsin_b": 1.4,
+    "gsh_mM": 4.5,
+    "rate_constants_per_h": {
+      "acid_sensitive": 0.015405405405405408,
+      "enzyme_cleavable": 0.041999999999999996,
+      "disulfide_reduction": 0.049499999999999995
+    },
+    "half_life_h": {
+      "acid_sensitive": 44.99376435213679,
+      "enzyme_cleavable": 16.50350429904632,
+      "disulfide_reduction": 14.00297334464536
+    },
+    "fraction_released_24h": {
+      "acid_sensitive": 0.30907895917844963,
+      "enzyme_cleavable": 0.6350518535455063,
+      "disulfide_reduction": 0.6951696845568032
+    }
+  },
+  "bystander_model": {
+    "radius_cm": 1.0,
+    "diffusion_coefficient_cm2_per_day": 0.01,
+    "elimination_per_day": 0.12,
+    "peak_center_concentration": 0.12535667665617814,
+    "peak_peripheral_concentration": 0.0014383121964562568,
+    "center_to_periphery_ratio_day2": 331.95115581290753
+  },
+  "pkpd_model": {
+    "half_life_days": 5.7,
+    "payload_auc": 1.0556682190573148,
+    "max_tumor_payload": 0.09595391938411187,
+    "max_pd_effect": 0.5821901831514118,
+    "time_of_peak_payload_days": 5.470941883767535
+  },
+  "monte_carlo": {
+    "n": 1000,
+    "mean_auc": 1.931809721728372,
+    "sd_auc": 0.6114676715019113,
+    "median_auc": 1.945477359691464,
+    "p5_auc": 0.9355325472005531,
+    "p95_auc": 2.913692183153683,
+    "mean_kcl": 0.12023238695595875,
+    "mean_tumor_uptake_fraction": 0.03839837177940916,
+    "type_summaries": {
+      "HER2+ breast": {
+        "n": 463,
+        "mean_auc": 1.936715139699595,
+        "sd_auc": 0.6187531186228292,
+        "median_auc": 1.946143094291805,
+        "p5_auc": 0.9359249219608886,
+        "p95_auc": 2.9129031078627445
+      },
+      "HER2-low breast": {
+        "n": 291,
+        "mean_auc": 1.8063133282558919,
+        "sd_auc": 0.5953599277822536,
+        "median_auc": 1.8095520980576842,
+        "p5_auc": 0.8859067468139241,
+        "p95_auc": 2.739953205832374
+      },
+      "Gastric": {
+        "n": 246,
+        "mean_auc": 2.071030217581282,
+        "sd_auc": 0.5872309953691387,
+        "median_auc": 2.049304469003629,
+        "p5_auc": 1.0572275924919947,
+        "p95_auc": 3.0929379160376866
+      }
+    }
+  },
+  "her2_case_study": {
+    "dar": 8,
+    "antibody_half_life_days": 5.7,
+    "tumor_uptake_fraction_id": 0.04,
+    "payload_auc_dar8": 2.309920112456487,
+    "payload_auc_dar4": 1.1549016146639723,
+    "auc_improvement_pct": 100.01012061348416,
+    "peak_effect_dar8": 1.5216749006708208,
+    "peak_effect_dar4": 0.7039708502477816
+  }
+}

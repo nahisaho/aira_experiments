@@ -1,0 +1,20 @@
+Metric,Value
+Model reactions,95.0
+Model metabolites,72.0
+Model genes,137.0
+FBA growth rate (h-1),0.8739
+pFBA growth rate (h-1),518.4221
+EC-FBA low protein (h-1),0.8739
+EC-FBA high protein (h-1),0.8739
+dFBA final biomass (g/L),7.642
+dFBA final glucose (g/L),0.0
+dFBA max mu (h-1),0.6886
+13C-MFA R2,0.9965
+CV R2 mean,0.9538
+CV R2 std,0.0153
+CV RMSE mean,2.1539
+CV RMSE std,1.446
+Aerobic growth (h-1),0.8739
+Anaerobic growth (h-1),0.2117
+Minimal growth (h-1),0.8739
+Essential genes (of 25),1.0

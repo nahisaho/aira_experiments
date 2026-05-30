@@ -1,0 +1,9 @@
+{"timestamp": "2026-05-28T13:25:16.601262Z", "phase": "INIT", "event_type": "run_started", "actor": "co-scientist", "skill": "main_experiment"}
+{"timestamp": "2026-05-28T13:25:16.601401Z", "phase": "INIT", "event_type": "prompt_received", "actor": "co-scientist", "topic": "hard_problem_consciousness_information_theory"}
+{"timestamp": "2026-05-28T13:25:16.601423Z", "phase": "HYPOTHESIS", "event_type": "skill_selected", "actor": "co-scientist", "skill": "hypothesis_framework"}
+{"timestamp": "2026-05-28T13:25:16.601645Z", "phase": "HYPOTHESIS", "event_type": "file_written", "actor": "co-scientist", "file": "results/hypothesis_evaluation.json"}
+{"timestamp": "2026-05-28T13:25:16.611030Z", "phase": "PHI", "event_type": "file_written", "actor": "co-scientist", "file": "results/phi_experiment.json"}
+{"timestamp": "2026-05-28T13:25:16.611450Z", "phase": "PCI", "event_type": "file_written", "actor": "co-scientist", "file": "results/pci_simulation.json"}
+{"timestamp": "2026-05-28T13:25:16.611559Z", "phase": "DECOHERENCE", "event_type": "file_written", "actor": "co-scientist", "file": "results/decoherence_analysis.json"}
+{"timestamp": "2026-05-28T13:25:17.711569Z", "phase": "FIGURES", "event_type": "file_written", "actor": "co-scientist", "files": ["/app/projects/126b5cd2-5b5d-4cfd-ab84-72ab90726866/workspace/figures/fig1_hypothesis_radar.png", "/app/projects/126b5cd2-5b5d-4cfd-ab84-72ab90726866/workspace/figures/fig2_phi_landscape.png", "/app/projects/126b5cd2-5b5d-4cfd-ab84-72ab90726866/workspace/figures/fig3_decoherence.png", "/app/projects/126b5cd2-5b5d-4cfd-ab84-72ab90726866/workspace/figures/fig4_pci_simulation.png", "/app/projects/126b5cd2-5b5d-4cfd-ab84-72ab90726866/workspace/figures/fig5_theory_comparison.png", "/app/projects/126b5cd2-5b5d-4cfd-ab84-72ab90726866/workspace/figures/fig6_experimental_roadmap.png"]}
+{"timestamp": "2026-05-28T13:25:17.711729Z", "phase": "RUN", "event_type": "run_completed", "actor": "co-scientist", "status": "ok"}

@@ -1,0 +1,16 @@
+,value
+total_genes,473.0
+essential_genes,149.0
+genome_size_bp,531560.0
+gc_content,0.2488
+coding_fraction,0.8923
+n_operons_predicted,89.0
+total_genes_input,473.0
+removable_genes,324.0
+estimated_total_bp,331100.0
+saved_bp_paralogs,27215.0
+saved_bp_regulatory,26488.0
+saved_bp_intergenic,49665.0
+total_saved_bp,103368.0
+compression_ratio,0.3122
+estimated_minimal_genome_bp,227732.0

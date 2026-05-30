@@ -1,0 +1,18 @@
+Step,Value
+QC: Cells passing filter,3473 / 4800
+QC: Guide detection rate,0.746
+QC: Mean UMI/cell (post-QC),1526.1
+DE: Mean DEGs/perturbation,63.0
+DE: Std DEGs/perturbation,45.2
+NMF: n_programs,8
+Graph: n_nodes,10
+Graph: n_edges,26
+Graph: density,0.289
+Epistasis: n_combos analyzed,5
+Epistasis: synergistic,0
+Epistasis: buffering,3
+Repr: 5-fold CV R²,-0.129
+Repr: CV R² std,0.027
+Essential: n_essential_genes,3
+Essential: Prediction AUC,1.000
+Essential: AUC std,0.000

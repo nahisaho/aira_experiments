@@ -1,0 +1,5 @@
+scenario,description,material_gwp,energy_gwp,recycling_credit,total_gwp,unit
+"Baseline (China Grid, 2023)",Current average Chinese grid electricity; no recycling credit,28.5,39.6,-0.0,68.1,kg CO2-eq / kWh
+EU Grid + Hydro Recycling,EU average grid; hydrometallurgical recycling at 85%,28.5,16.224999999999998,-19.3375,25.387499999999996,kg CO2-eq / kWh
+Renewable Electricity,100% renewable (solar/wind) electricity for manufacturing,28.5,2.64,-19.3375,11.802500000000002,kg CO2-eq / kWh
+Best Case 2030,Renewables + improved efficiency + high recycling,28.5,0.8,-23.5125,5.787500000000001,kg CO2-eq / kWh

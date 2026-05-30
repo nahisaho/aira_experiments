@@ -1,0 +1,81 @@
+# LAMMPS Input: LiPF6_ECDMC Concentrated Electrolyte
+# Generated: 2026-05-28
+# System: 50 Li+, 50 PF6-, 300 EC, 700 DMC
+# T = 298.15 K, Box = 4.50 nm
+
+units           real        # kcal/mol, Angstrom, ps, amu
+atom_style      full        # supports bonds, angles, dihedrals, charges
+boundary        p p p       # periodic in all directions
+
+# ---- Force field ----
+pair_style      lj/cut/coul/long 12.0  # LJ + PME Coulomb, cutoff 12 Angstrom
+pair_modify     mix arithmetic        # Lorentz-Berthelot
+bond_style      harmonic
+angle_style     harmonic
+dihedral_style  opls
+improper_style  cvff
+
+kspace_style    pppm 1.0e-5     # Particle-Particle Particle-Mesh
+
+# ---- Read structure ----
+read_data       LiPF6_ECDMC.lammps
+
+# ---- Pair coefficients (sample — actual from FF file) ----
+# pair_coeff  atom_i  atom_j  epsilon(kcal/mol)  sigma(Ang)
+pair_coeff  1  1  0.01826  1.409   # Li+
+pair_coeff  2  2  0.06000  4.354   # P (PF6-)
+pair_coeff  3  3  0.05000  3.118   # F (PF6-)
+pair_coeff  4  4  0.10500  3.750   # C_carbonyl (EC)
+pair_coeff  5  5  0.21000  2.960   # O_carbonyl (EC)
+pair_coeff  6  6  0.14000  2.900   # O_ether (EC)
+pair_coeff  7  7  0.09142  3.800   # CH2 (EC)
+pair_coeff  8  8  0.10500  3.750   # C_carbonyl (DMC)
+pair_coeff  9  9  0.21000  2.960   # O_carbonyl (DMC)
+pair_coeff 10 10  0.14000  2.900   # O_ether (DMC)
+pair_coeff 11 11  0.19473  3.750   # CH3 (DMC)
+
+# ---- ECC charge scaling ----
+# Scale all charges by 0.85 (electronic continuum correction)
+# Applied during data file generation
+
+# ---- Minimization ----
+minimize        1.0e-4 1.0e-6 10000 100000
+
+# ---- NVT Equilibration ----
+velocity        all create 298.15 87287 dist gaussian
+fix             1 all nvt temp 298.15 298.15 100.0
+thermo          1000
+thermo_style    custom step temp press etotal ke pe
+dump            1 all custom 10000 equil.lammpstrj id type x y z vx vy vz
+
+run             2000000
+unfix           1
+undump          1
+
+# ---- NPT Production ----
+fix             2 all npt temp 298.15 298.15 100.0 iso 1.0 1.0 1000.0
+thermo          500
+dump            2 all custom 1000 prod.lammpstrj id type x y z vx vy vz
+
+# Compute Green-Kubo current autocorrelation
+compute         charge all property/atom q
+compute         flux all heat/flux thermo_ke
+variable        Jx equal c_flux[1]
+variable        Jy equal c_flux[2]
+variable        Jz equal c_flux[3]
+
+fix             GK all ave/correlate 5 200 1000 &
+                v_Jx v_Jy v_Jz type auto file J_acf.dat ave running
+
+run             5000000
+unfix           2
+
+# ---- MSD calculation ----
+compute         msd_Li  Li  msd
+compute         msd_PF6 PF6 msd
+fix             msd_out all ave/time 100 1 100 &
+                c_msd_Li[4] c_msd_PF6[4] file msd.dat
+
+run             5000000
+
+print "Simulation complete. Analyze using analysis pipeline."

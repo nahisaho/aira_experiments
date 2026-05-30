@@ -1,0 +1,13 @@
+# References
+
+1. Andreychuk, A., Yakovlev, K., Boyarski, E., & Stern, R. (2022). Multi-agent pathfinding with continuous time. *Artificial Intelligence, 305*, 103662. DOI: 10.1016/j.artint.2022.103662
+2. Boyarski, E., Felner, A., Stern, R., Sharon, G., Tolpin, D., Betzalel, O., & Shimony, S. E. (2021). ICBS: The Improved Conflict-Based Search Algorithm for Multi-Agent Pathfinding. *Proceedings of the International Symposium on Combinatorial Search*. DOI: 10.1609/socs.v6i1.18343
+3. Li, J., Harabor, D., Stuckey, P. J., Felner, A., Ma, H., & Koenig, S. (2021). Anytime Multi-Agent Path Finding via Large Neighborhood Search. *Proceedings of the Thirtieth International Joint Conference on Artificial Intelligence*, 412-418. DOI: 10.24963/ijcai.2021/568
+4. Li, J., Harabor, D., Stuckey, P. J., Ma, H., & Koenig, S. (2021). Lifelong Multi-Agent Path Finding in Large-Scale Warehouses. *Proceedings of the AAAI Conference on Artificial Intelligence, 35*(13), 11272-11281. DOI: 10.1609/aaai.v35i13.17344
+5. Li, J., Ruml, W., & Koenig, S. (2021). EECBS: A bounded-suboptimal search for multi-agent path finding. *Proceedings of the AAAI Conference on Artificial Intelligence, 35*(14), 12353-12362. DOI: 10.1609/aaai.v35i14.17466
+6. Okumura, K., Machida, M., Défago, X., & Tamura, Y. (2022). Priority inheritance with backtracking for iterative multi-agent path finding. *Artificial Intelligence, 310*, 103752. DOI: 10.1016/j.artint.2022.103752
+7. Okumura, K., Machida, M., Défago, X., & Tamura, Y. (2023). LaCAM: Search-Based Algorithm for Quick Multi-Agent Pathfinding. *Proceedings of the AAAI Conference on Artificial Intelligence, 37*(10), 11639-11646. DOI: 10.1609/aaai.v37i10.26377
+8. Sharon, G., Stern, R., Felner, A., & Sturtevant, N. R. (2012). Meta-Agent Conflict-Based Search For Optimal Multi-Agent Path Finding. *Proceedings of the International Symposium on Combinatorial Search*. DOI: 10.1609/socs.v3i1.18244
+9. Sharon, G., Stern, R., Felner, A., & Sturtevant, N. R. (2015). Conflict-based search for optimal multi-agent pathfinding. *Artificial Intelligence, 219*, 40-66. DOI: 10.1016/j.artint.2014.11.006
+10. Stern, R., Sturtevant, N. R., Felner, A., Koenig, S., Ma, H., Walker, T. T., Li, J., Atzmon, D., Cohen, L., Kumar, T. K. S., Boyarski, E., & Barták, R. (2019). Multi-Agent Pathfinding: Definitions, Variants, and Benchmarks. *Proceedings of the International Symposium on Combinatorial Search*. DOI: 10.1609/socs.v10i1.18510
+11. Surynek, P. (2022). Migrating techniques from search-based multi-agent path finding solvers to SAT-based approach. *Journal of Artificial Intelligence Research, 73*, 125-181. DOI: 10.1613/jair.1.13318

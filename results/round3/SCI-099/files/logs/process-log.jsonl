@@ -1,0 +1,36 @@
+{"timestamp": "2026-05-28T16:04:04.324077Z", "actor": "co-scientist", "event_type": "run_started", "phase": "simulation"}
+{"timestamp": "2026-05-28T16:04:04.324115Z", "actor": "co-scientist", "event_type": "hallmarks_simulation_started"}
+{"timestamp": "2026-05-28T16:04:04.645844Z", "actor": "co-scientist", "event_type": "file_written", "file": "/app/projects/f50ab102-0569-4e8c-a49f-feab62de8f84/workspace/src/../figures/fig1_hallmarks_trajectories.png"}
+{"timestamp": "2026-05-28T16:04:04.645879Z", "actor": "co-scientist", "event_type": "intervention_comparison_started"}
+{"timestamp": "2026-05-28T16:04:04.848152Z", "actor": "co-scientist", "event_type": "file_written", "file": "/app/projects/f50ab102-0569-4e8c-a49f-feab62de8f84/workspace/src/../figures/fig2_intervention_comparison.png"}
+{"timestamp": "2026-05-28T16:04:04.848189Z", "actor": "co-scientist", "event_type": "senolytic_timing_started"}
+{"timestamp": "2026-05-28T16:04:05.003971Z", "actor": "co-scientist", "event_type": "file_written", "file": "/app/projects/f50ab102-0569-4e8c-a49f-feab62de8f84/workspace/src/../figures/fig3_senolytic_timing.png"}
+{"timestamp": "2026-05-28T16:04:05.004007Z", "actor": "co-scientist", "event_type": "allometry_analysis_started"}
+{"timestamp": "2026-05-28T16:04:05.239922Z", "actor": "co-scientist", "event_type": "file_written", "file": "/app/projects/f50ab102-0569-4e8c-a49f-feab62de8f84/workspace/src/../figures/fig4_species_allometry.png"}
+{"timestamp": "2026-05-28T16:04:05.239951Z", "actor": "co-scientist", "event_type": "stochastic_simulation_started"}
+{"timestamp": "2026-05-28T16:04:06.107895Z", "actor": "co-scientist", "event_type": "file_written", "file": "/app/projects/f50ab102-0569-4e8c-a49f-feab62de8f84/workspace/src/../figures/fig5_stochastic_bands.png"}
+{"timestamp": "2026-05-28T16:04:06.107931Z", "actor": "co-scientist", "event_type": "interaction_heatmap_started"}
+{"timestamp": "2026-05-28T16:04:06.232876Z", "actor": "co-scientist", "event_type": "file_written", "file": "/app/projects/f50ab102-0569-4e8c-a49f-feab62de8f84/workspace/src/../figures/fig6_interaction_heatmap.png"}
+{"timestamp": "2026-05-28T16:04:06.232910Z", "actor": "co-scientist", "event_type": "optimisation_started"}
+{"timestamp": "2026-05-28T16:04:07.353980Z", "actor": "co-scientist", "event_type": "optimisation_done", "best": "Caloric Restriction", "best_healthspan": 31.759999999999998}
+{"timestamp": "2026-05-28T16:04:07.420187Z", "actor": "co-scientist", "event_type": "file_written", "file": "/app/projects/f50ab102-0569-4e8c-a49f-feab62de8f84/workspace/src/../results/intervention_results.csv"}
+{"timestamp": "2026-05-28T16:04:07.497324Z", "actor": "co-scientist", "event_type": "file_written", "file": "/app/projects/f50ab102-0569-4e8c-a49f-feab62de8f84/workspace/src/../results/sensitivity_cr.csv"}
+{"timestamp": "2026-05-28T16:04:07.497518Z", "actor": "co-scientist", "event_type": "file_written", "file": "/app/projects/f50ab102-0569-4e8c-a49f-feab62de8f84/workspace/src/../results/allometry_summary.json"}
+{"timestamp": "2026-05-28T16:06:44.250007Z", "actor": "co-scientist", "event_type": "run_started", "phase": "simulation"}
+{"timestamp": "2026-05-28T16:06:44.250046Z", "actor": "co-scientist", "event_type": "hallmarks_simulation_started"}
+{"timestamp": "2026-05-28T16:06:44.543710Z", "actor": "co-scientist", "event_type": "file_written", "file": "/app/projects/f50ab102-0569-4e8c-a49f-feab62de8f84/workspace/src/../figures/fig1_hallmarks_trajectories.png"}
+{"timestamp": "2026-05-28T16:06:44.543744Z", "actor": "co-scientist", "event_type": "intervention_comparison_started"}
+{"timestamp": "2026-05-28T16:06:44.733713Z", "actor": "co-scientist", "event_type": "file_written", "file": "/app/projects/f50ab102-0569-4e8c-a49f-feab62de8f84/workspace/src/../figures/fig2_intervention_comparison.png"}
+{"timestamp": "2026-05-28T16:06:44.733749Z", "actor": "co-scientist", "event_type": "senolytic_timing_started"}
+{"timestamp": "2026-05-28T16:06:44.886902Z", "actor": "co-scientist", "event_type": "file_written", "file": "/app/projects/f50ab102-0569-4e8c-a49f-feab62de8f84/workspace/src/../figures/fig3_senolytic_timing.png"}
+{"timestamp": "2026-05-28T16:06:44.886937Z", "actor": "co-scientist", "event_type": "allometry_analysis_started"}
+{"timestamp": "2026-05-28T16:06:45.117237Z", "actor": "co-scientist", "event_type": "file_written", "file": "/app/projects/f50ab102-0569-4e8c-a49f-feab62de8f84/workspace/src/../figures/fig4_species_allometry.png"}
+{"timestamp": "2026-05-28T16:06:45.117268Z", "actor": "co-scientist", "event_type": "stochastic_simulation_started"}
+{"timestamp": "2026-05-28T16:06:45.985981Z", "actor": "co-scientist", "event_type": "file_written", "file": "/app/projects/f50ab102-0569-4e8c-a49f-feab62de8f84/workspace/src/../figures/fig5_stochastic_bands.png"}
+{"timestamp": "2026-05-28T16:06:45.986018Z", "actor": "co-scientist", "event_type": "interaction_heatmap_started"}
+{"timestamp": "2026-05-28T16:06:46.102649Z", "actor": "co-scientist", "event_type": "file_written", "file": "/app/projects/f50ab102-0569-4e8c-a49f-feab62de8f84/workspace/src/../figures/fig6_interaction_heatmap.png"}
+{"timestamp": "2026-05-28T16:06:46.102683Z", "actor": "co-scientist", "event_type": "optimisation_started"}
+{"timestamp": "2026-05-28T16:06:47.229176Z", "actor": "co-scientist", "event_type": "optimisation_done", "best": "Quadruple", "best_healthspan": 61.739999999999995}
+{"timestamp": "2026-05-28T16:06:47.270795Z", "actor": "co-scientist", "event_type": "file_written", "file": "/app/projects/f50ab102-0569-4e8c-a49f-feab62de8f84/workspace/src/../results/intervention_results.csv"}
+{"timestamp": "2026-05-28T16:06:47.323032Z", "actor": "co-scientist", "event_type": "file_written", "file": "/app/projects/f50ab102-0569-4e8c-a49f-feab62de8f84/workspace/src/../results/sensitivity_cr.csv"}
+{"timestamp": "2026-05-28T16:06:47.323249Z", "actor": "co-scientist", "event_type": "file_written", "file": "/app/projects/f50ab102-0569-4e8c-a49f-feab62de8f84/workspace/src/../results/allometry_summary.json"}

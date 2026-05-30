@@ -1,0 +1,22 @@
+# Metagenomics pipeline configuration
+samples:
+  - SRR1000
+  - SRR1001
+  - SRR1002
+  # ... add all sample IDs here
+
+host_db: "databases/GRCh38_noalt_as"
+kraken2_db: "databases/kraken2_standard_16gb"
+metaphlan_db: "databases/metaphlan4"
+humann_db: "databases/humann3"
+eggnogdb: "databases/eggnog"
+
+# Analysis parameters
+min_read_length: 50
+quality_threshold: 20
+min_contig_length: 1000
+min_bin_size: 200000
+min_mag_completeness: 50
+max_mag_contamination: 10
+hq_completeness: 90
+hq_contamination: 5

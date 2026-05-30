@@ -1,0 +1,4 @@
+Modality,Cells,Features,Mean features/cell,Median counts/cell
+scRNA-seq,400,500,185.3825,0.40897655487060547
+scATAC-seq,400,1997,286.5625,1.9619998931884766
+Methylation,400,500,500.0,0.0014222098980098963

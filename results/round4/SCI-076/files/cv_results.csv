@@ -1,0 +1,5 @@
+model,rmse_mean,rmse_std,mae_mean,mae_std,r2_mean,r2_std
+CNN-LSTM,0.4596,0.0452,0.3661,0.0345,0.5894,0.0999
+Gradient Boosting,0.2533,0.0152,0.2041,0.0128,0.876,0.0225
+Random Forest,0.2472,0.0193,0.1997,0.016,0.8813,0.0259
+Ridge Regression,0.2302,0.0142,0.1849,0.0123,0.8975,0.0182

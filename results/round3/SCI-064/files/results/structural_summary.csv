@@ -1,0 +1,5 @@
+TF,Metal,N_residues,Pocket_Volume_A3,Allosteric_Efficiency,Min_Path_Length,dG_kcal_mol,Kd_estimated_nM,Kd_WT_nM
+PbrR,Pb2+,142,7348.3,0.1127,2.0,-12.0,0.1,85.0
+CadC,Cd2+,122,26371.6,0.1358,0.0,-12.0,0.04,32.0
+MerR,Hg2+,145,4300.1,0.1182,3.0,-12.0,0.0,0.5
+ArsR,As3+,117,964.5,0.2447,1.0,-11.66,0.25,120.0

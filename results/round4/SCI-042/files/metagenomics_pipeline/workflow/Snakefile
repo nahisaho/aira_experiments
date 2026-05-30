@@ -1,0 +1,629 @@
+"""
+Shotgun Metagenomics Functional Profiling Pipeline
+Snakemake workflow — reproducible, Conda-based
+
+Steps:
+  1. Quality control (KneadData: host removal, adapter trimming, dedup)
+  2. Taxonomic classification (Kraken2 + MetaPhlAn4)
+  3. Functional annotation (HUMAnN3 + eggNOG-mapper)
+  4. Assembly (MEGAHIT)
+  5. Genome binning (MetaBAT2 + CONCOCT + MaxBin2 → DAS_Tool)
+  6. MAG QC (CheckM2 + GTDB-Tk)
+  7. Statistical analysis (diversity, LEfSe, Random Forest)
+"""
+
+configfile: "config/config.yaml"
+
+import os
+
+SAMPLES = config["samples"]
+OUTDIR  = config["outdir"]
+
+# ── Helper ────────────────────────────────────────────────────────────────────
+def get_r1(wildcards):
+    return config["reads"][wildcards.sample]["r1"]
+
+def get_r2(wildcards):
+    return config["reads"][wildcards.sample]["r2"]
+
+# ── Target rule ───────────────────────────────────────────────────────────────
+rule all:
+    input:
+        # QC reports
+        expand("{outdir}/01_qc/{sample}/{sample}_kneaddata.log",
+               outdir=OUTDIR, sample=SAMPLES),
+        # Taxonomic profiles
+        expand("{outdir}/02_taxonomy/kraken2/{sample}.report",
+               outdir=OUTDIR, sample=SAMPLES),
+        expand("{outdir}/02_taxonomy/metaphlan4/{sample}_profile.txt",
+               outdir=OUTDIR, sample=SAMPLES),
+        # Merged taxonomy tables
+        f"{OUTDIR}/02_taxonomy/merged_kraken2_table.txt",
+        f"{OUTDIR}/02_taxonomy/merged_metaphlan4_table.txt",
+        # Functional annotation
+        expand("{outdir}/03_function/humann3/{sample}_genefamilies.tsv",
+               outdir=OUTDIR, sample=SAMPLES),
+        expand("{outdir}/03_function/eggnog/{sample}.emapper.annotations",
+               outdir=OUTDIR, sample=SAMPLES),
+        # Merged functional tables
+        f"{OUTDIR}/03_function/humann3/merged_pathabundance.tsv",
+        # Assembly
+        expand("{outdir}/04_assembly/{sample}/final.contigs.fa",
+               outdir=OUTDIR, sample=SAMPLES),
+        # Binning
+        expand("{outdir}/05_binning/dastool/{sample}_DASTool_bins",
+               outdir=OUTDIR, sample=SAMPLES),
+        # MAG QC
+        expand("{outdir}/06_mag_qc/checkm2/{sample}/quality_report.tsv",
+               outdir=OUTDIR, sample=SAMPLES),
+        expand("{outdir}/06_mag_qc/gtdbtk/{sample}/classify/gtdbtk.bac120.summary.tsv",
+               outdir=OUTDIR, sample=SAMPLES),
+        # Statistical analysis
+        f"{OUTDIR}/07_stats/diversity_analysis.tsv",
+        f"{OUTDIR}/07_stats/lefse_results.tsv",
+        f"{OUTDIR}/07_stats/rf_classification_cv5.tsv",
+
+
+# ── Step 1: Quality Control ───────────────────────────────────────────────────
+rule kneaddata_qc:
+    """
+    Quality control: host read removal (human genome), adapter trimming
+    (Trimmomatic), and optical duplicate removal.
+    """
+    input:
+        r1 = get_r1,
+        r2 = get_r2,
+    output:
+        r1_clean = "{outdir}/01_qc/{sample}/{sample}_paired_1.fastq.gz",
+        r2_clean = "{outdir}/01_qc/{sample}/{sample}_paired_2.fastq.gz",
+        log      = "{outdir}/01_qc/{sample}/{sample}_kneaddata.log",
+    params:
+        human_db     = config["databases"]["human_bowtie2"],
+        trimmomatic  = config["tools"]["trimmomatic_jar"],
+        out_prefix   = lambda wc: f"{wc.outdir}/01_qc/{wc.sample}",
+        quality_score = config["qc"]["min_quality"],
+        min_length    = config["qc"]["min_length"],
+    threads: 8
+    conda: "../envs/kneaddata.yaml"
+    log: "{outdir}/logs/kneaddata/{sample}.log"
+    shell:
+        """
+        kneaddata \
+            --input {input.r1} --input {input.r2} \
+            --reference-db {params.human_db} \
+            --output {params.out_prefix} \
+            --trimmomatic {params.trimmomatic} \
+            --trimmomatic-options "LEADING:{params.quality_score} \
+                TRAILING:{params.quality_score} \
+                SLIDINGWINDOW:4:{params.quality_score} \
+                MINLEN:{params.min_length}" \
+            --decontaminate-pairs strict \
+            --remove-intermediate-output \
+            --threads {threads} \
+            --log {output.log} \
+            2> {log}
+        gzip {params.out_prefix}/{wildcards.sample}_paired_1.fastq
+        gzip {params.out_prefix}/{wildcards.sample}_paired_2.fastq
+        """
+
+rule fastqc_report:
+    """FastQC report on QC-passed reads."""
+    input:
+        r1 = "{outdir}/01_qc/{sample}/{sample}_paired_1.fastq.gz",
+        r2 = "{outdir}/01_qc/{sample}/{sample}_paired_2.fastq.gz",
+    output:
+        html1 = "{outdir}/01_qc/fastqc/{sample}_paired_1_fastqc.html",
+        html2 = "{outdir}/01_qc/fastqc/{sample}_paired_2_fastqc.html",
+    threads: 2
+    conda: "../envs/fastqc.yaml"
+    shell:
+        "fastqc {input.r1} {input.r2} -o {wildcards.outdir}/01_qc/fastqc/ -t {threads}"
+
+
+# ── Step 2a: Kraken2 Taxonomic Classification ─────────────────────────────────
+rule kraken2_classify:
+    """
+    k-mer-based taxonomic classification with Kraken2.
+    Confidence threshold 0.1 reduces false positives.
+    """
+    input:
+        r1 = "{outdir}/01_qc/{sample}/{sample}_paired_1.fastq.gz",
+        r2 = "{outdir}/01_qc/{sample}/{sample}_paired_2.fastq.gz",
+    output:
+        report  = "{outdir}/02_taxonomy/kraken2/{sample}.report",
+        out     = "{outdir}/02_taxonomy/kraken2/{sample}.kraken2",
+    params:
+        db         = config["databases"]["kraken2_db"],
+        confidence = config["kraken2"]["confidence"],
+    threads: 16
+    conda: "../envs/kraken2.yaml"
+    log: "{outdir}/logs/kraken2/{sample}.log"
+    shell:
+        """
+        kraken2 \
+            --db {params.db} \
+            --paired {input.r1} {input.r2} \
+            --output {output.out} \
+            --report {output.report} \
+            --confidence {params.confidence} \
+            --threads {threads} \
+            --gzip-compressed \
+            2> {log}
+        """
+
+rule bracken_abundance:
+    """Bracken re-estimation of species-level abundances from Kraken2 report."""
+    input:
+        report = "{outdir}/02_taxonomy/kraken2/{sample}.report",
+    output:
+        bracken = "{outdir}/02_taxonomy/kraken2/{sample}.bracken",
+    params:
+        db        = config["databases"]["kraken2_db"],
+        read_len  = config["kraken2"]["read_length"],
+        level     = config["kraken2"]["bracken_level"],
+    conda: "../envs/kraken2.yaml"
+    shell:
+        """
+        bracken \
+            -d {params.db} \
+            -i {input.report} \
+            -o {output.bracken} \
+            -r {params.read_len} \
+            -l {params.level}
+        """
+
+rule merge_kraken2:
+    """Merge Bracken reports into a single abundance table."""
+    input:
+        expand("{outdir}/02_taxonomy/kraken2/{sample}.bracken",
+               outdir=OUTDIR, sample=SAMPLES),
+    output:
+        table = f"{OUTDIR}/02_taxonomy/merged_kraken2_table.txt",
+    conda: "../envs/kraken2.yaml"
+    shell:
+        "combine_bracken_outputs.py --files {input} --output {output.table}"
+
+
+# ── Step 2b: MetaPhlAn4 Taxonomic Profiling ───────────────────────────────────
+rule metaphlan4_profile:
+    """
+    Marker-gene-based taxonomic profiling with MetaPhlAn4 (mpa_vJan21_CHOCOPhlAnSGB database).
+    More accurate at species level than Kraken2 but slower.
+    """
+    input:
+        r1 = "{outdir}/01_qc/{sample}/{sample}_paired_1.fastq.gz",
+        r2 = "{outdir}/01_qc/{sample}/{sample}_paired_2.fastq.gz",
+    output:
+        profile = "{outdir}/02_taxonomy/metaphlan4/{sample}_profile.txt",
+        bowtie2 = "{outdir}/02_taxonomy/metaphlan4/{sample}.bowtie2.bz2",
+    params:
+        db       = config["databases"]["metaphlan4_db"],
+        db_name  = config["databases"]["metaphlan4_db_name"],
+    threads: 8
+    conda: "../envs/metaphlan4.yaml"
+    log: "{outdir}/logs/metaphlan4/{sample}.log"
+    shell:
+        """
+        metaphlan \
+            {input.r1},{input.r2} \
+            --input_type fastq \
+            --bowtie2db {params.db} \
+            --index {params.db_name} \
+            --bowtie2out {output.bowtie2} \
+            --nproc {threads} \
+            -o {output.profile} \
+            2> {log}
+        """
+
+rule merge_metaphlan4:
+    """Merge MetaPhlAn4 profiles into a single table."""
+    input:
+        expand("{outdir}/02_taxonomy/metaphlan4/{sample}_profile.txt",
+               outdir=OUTDIR, sample=SAMPLES),
+    output:
+        table = f"{OUTDIR}/02_taxonomy/merged_metaphlan4_table.txt",
+    conda: "../envs/metaphlan4.yaml"
+    shell:
+        "merge_metaphlan_tables.py {input} > {output.table}"
+
+
+# ── Step 3a: HUMAnN3 Functional Annotation ────────────────────────────────────
+rule humann3_annotate:
+    """
+    Functional annotation via HUMAnN3 using MetaPhlAn4 taxonomy as input.
+    Databases: UniRef90 (protein families), MetaCyc (pathways).
+    """
+    input:
+        r1      = "{outdir}/01_qc/{sample}/{sample}_paired_1.fastq.gz",
+        r2      = "{outdir}/01_qc/{sample}/{sample}_paired_2.fastq.gz",
+        profile = "{outdir}/02_taxonomy/metaphlan4/{sample}_profile.txt",
+    output:
+        genefam = "{outdir}/03_function/humann3/{sample}_genefamilies.tsv",
+        pathab  = "{outdir}/03_function/humann3/{sample}_pathabundance.tsv",
+        pathcov = "{outdir}/03_function/humann3/{sample}_pathcoverage.tsv",
+    params:
+        nucdb      = config["databases"]["humann3_nucleotide"],
+        protdb     = config["databases"]["humann3_protein"],
+        outdir     = lambda wc: f"{wc.outdir}/03_function/humann3",
+    threads: 12
+    conda: "../envs/humann3.yaml"
+    log: "{outdir}/logs/humann3/{sample}.log"
+    shell:
+        """
+        cat {input.r1} {input.r2} > /tmp/{wildcards.sample}_cat.fastq.gz
+        humann \
+            --input /tmp/{wildcards.sample}_cat.fastq.gz \
+            --output {params.outdir} \
+            --nucleotide-database {params.nucdb} \
+            --protein-database {params.protdb} \
+            --taxonomic-profile {input.profile} \
+            --threads {threads} \
+            --output-basename {wildcards.sample} \
+            2> {log}
+        rm /tmp/{wildcards.sample}_cat.fastq.gz
+        """
+
+rule humann3_merge:
+    """Merge and normalize HUMAnN3 outputs across all samples."""
+    input:
+        pathab = expand("{outdir}/03_function/humann3/{sample}_pathabundance.tsv",
+                        outdir=OUTDIR, sample=SAMPLES),
+    output:
+        merged = f"{OUTDIR}/03_function/humann3/merged_pathabundance.tsv",
+        relab  = f"{OUTDIR}/03_function/humann3/merged_pathabundance_relab.tsv",
+    params:
+        indir = f"{OUTDIR}/03_function/humann3",
+    conda: "../envs/humann3.yaml"
+    shell:
+        """
+        humann_join_tables \
+            --input {params.indir} \
+            --output {output.merged} \
+            --file_name pathabundance
+        humann_renorm_table \
+            --input {output.merged} \
+            --output {output.relab} \
+            --units relab
+        """
+
+
+# ── Step 3b: eggNOG-mapper Functional Annotation ─────────────────────────────
+rule prodigal_predict:
+    """Predict ORFs on QC-filtered reads (after assembly, also applied to contigs)."""
+    input:
+        contigs = "{outdir}/04_assembly/{sample}/final.contigs.fa",
+    output:
+        proteins = "{outdir}/03_function/eggnog/{sample}_proteins.faa",
+        gff      = "{outdir}/03_function/eggnog/{sample}_proteins.gff",
+    conda: "../envs/prodigal.yaml"
+    shell:
+        """
+        prodigal \
+            -i {input.contigs} \
+            -a {output.proteins} \
+            -f gff -o {output.gff} \
+            -p meta -q
+        """
+
+rule eggnog_mapper:
+    """
+    Functional annotation of predicted proteins using eggNOG-mapper v2.
+    Assigns COG categories, KEGG orthologs, GO terms, and EC numbers.
+    """
+    input:
+        proteins = "{outdir}/03_function/eggnog/{sample}_proteins.faa",
+    output:
+        annotations = "{outdir}/03_function/eggnog/{sample}.emapper.annotations",
+    params:
+        db      = config["databases"]["eggnog_db"],
+        outdir  = lambda wc: f"{wc.outdir}/03_function/eggnog",
+        prefix  = lambda wc: wc.sample,
+    threads: 16
+    conda: "../envs/eggnog.yaml"
+    log: "{outdir}/logs/eggnog/{sample}.log"
+    shell:
+        """
+        emapper.py \
+            -i {input.proteins} \
+            --output_dir {params.outdir} \
+            --output {params.prefix} \
+            --data_dir {params.db} \
+            -m mmseqs \
+            --cpu {threads} \
+            --override \
+            2> {log}
+        """
+
+
+# ── Step 4: Metagenomic Assembly ──────────────────────────────────────────────
+rule megahit_assemble:
+    """
+    De novo metagenomic assembly with MEGAHIT.
+    Uses minimum contig length 1000 bp for binning.
+    """
+    input:
+        r1 = "{outdir}/01_qc/{sample}/{sample}_paired_1.fastq.gz",
+        r2 = "{outdir}/01_qc/{sample}/{sample}_paired_2.fastq.gz",
+    output:
+        contigs = "{outdir}/04_assembly/{sample}/final.contigs.fa",
+    params:
+        outdir    = lambda wc: f"{wc.outdir}/04_assembly/{wc.sample}",
+        min_contig = config["assembly"]["min_contig_length"],
+        kmer_list  = config["assembly"]["kmer_list"],
+    threads: 16
+    conda: "../envs/megahit.yaml"
+    log: "{outdir}/logs/megahit/{sample}.log"
+    shell:
+        """
+        rm -rf {params.outdir}
+        megahit \
+            -1 {input.r1} -2 {input.r2} \
+            -o {params.outdir} \
+            --min-contig-len {params.min_contig} \
+            -t {threads} \
+            --k-list {params.kmer_list} \
+            2> {log}
+        """
+
+rule bwa_index:
+    """Index assembled contigs for read mapping (depth calculation for binning)."""
+    input: "{outdir}/04_assembly/{sample}/final.contigs.fa"
+    output: "{outdir}/04_assembly/{sample}/final.contigs.fa.bwt"
+    conda: "../envs/bwa.yaml"
+    shell: "bwa index {input}"
+
+rule bwa_map:
+    """Map reads back to contigs to compute coverage depth for binning."""
+    input:
+        r1      = "{outdir}/01_qc/{sample}/{sample}_paired_1.fastq.gz",
+        r2      = "{outdir}/01_qc/{sample}/{sample}_paired_2.fastq.gz",
+        contigs = "{outdir}/04_assembly/{sample}/final.contigs.fa",
+        index   = "{outdir}/04_assembly/{sample}/final.contigs.fa.bwt",
+    output:
+        bam = "{outdir}/04_assembly/{sample}/mapped_sorted.bam",
+        bai = "{outdir}/04_assembly/{sample}/mapped_sorted.bam.bai",
+    threads: 8
+    conda: "../envs/bwa.yaml"
+    shell:
+        """
+        bwa mem -t {threads} {input.contigs} {input.r1} {input.r2} \
+            | samtools sort -@ {threads} -o {output.bam}
+        samtools index {output.bam}
+        """
+
+
+# ── Step 5: Genome Binning ────────────────────────────────────────────────────
+rule metabat2_bin:
+    """MetaBAT2 binning using tetranucleotide frequency + coverage."""
+    input:
+        contigs = "{outdir}/04_assembly/{sample}/final.contigs.fa",
+        bam     = "{outdir}/04_assembly/{sample}/mapped_sorted.bam",
+    output:
+        depth   = "{outdir}/05_binning/metabat2/{sample}/depth.txt",
+        flag    = touch("{outdir}/05_binning/metabat2/{sample}/done"),
+    params:
+        outdir  = lambda wc: f"{wc.outdir}/05_binning/metabat2/{wc.sample}/bin",
+        min_len = config["binning"]["min_contig_length"],
+    threads: 8
+    conda: "../envs/metabat2.yaml"
+    log: "{outdir}/logs/metabat2/{sample}.log"
+    shell:
+        """
+        jgi_summarize_bam_contig_depths \
+            --outputDepth {output.depth} {input.bam}
+        metabat2 \
+            -i {input.contigs} \
+            -a {output.depth} \
+            -o {params.outdir} \
+            -m {params.min_len} \
+            -t {threads} \
+            2> {log}
+        """
+
+rule concoct_bin:
+    """CONCOCT binning using Gaussian mixture model on coverage+composition."""
+    input:
+        contigs = "{outdir}/04_assembly/{sample}/final.contigs.fa",
+        bam     = "{outdir}/04_assembly/{sample}/mapped_sorted.bam",
+    output:
+        flag = touch("{outdir}/05_binning/concoct/{sample}/done"),
+    params:
+        outdir   = lambda wc: f"{wc.outdir}/05_binning/concoct/{wc.sample}",
+        chunk    = config["binning"]["concoct_chunk_size"],
+        overlap  = config["binning"]["concoct_overlap"],
+        clusters = config["binning"]["concoct_clusters"],
+    threads: 8
+    conda: "../envs/concoct.yaml"
+    log: "{outdir}/logs/concoct/{sample}.log"
+    shell:
+        """
+        cut_up_fasta.py {input.contigs} -c {params.chunk} -o {params.overlap} \
+            --merge_last -b {params.outdir}/contigs_10K.bed \
+            > {params.outdir}/contigs_10K.fa
+        concoct_coverage_table.py \
+            {params.outdir}/contigs_10K.bed {input.bam} \
+            > {params.outdir}/coverage_table.tsv
+        concoct \
+            --composition_file {params.outdir}/contigs_10K.fa \
+            --coverage_file {params.outdir}/coverage_table.tsv \
+            -c {params.clusters} \
+            -b {params.outdir} \
+            -t {threads} \
+            2> {log}
+        merge_cutup_clustering.py \
+            {params.outdir}/clustering_gt1000.csv \
+            > {params.outdir}/clustering_merged.csv
+        extract_fasta_bins.py {input.contigs} \
+            {params.outdir}/clustering_merged.csv \
+            --output_path {params.outdir}/bins
+        """
+
+rule maxbin2_bin:
+    """MaxBin2 binning based on Expectation-Maximization."""
+    input:
+        contigs = "{outdir}/04_assembly/{sample}/final.contigs.fa",
+        depth   = "{outdir}/05_binning/metabat2/{sample}/depth.txt",
+    output:
+        flag = touch("{outdir}/05_binning/maxbin2/{sample}/done"),
+    params:
+        outdir = lambda wc: f"{wc.outdir}/05_binning/maxbin2/{wc.sample}",
+    threads: 8
+    conda: "../envs/maxbin2.yaml"
+    log: "{outdir}/logs/maxbin2/{sample}.log"
+    shell:
+        """
+        mkdir -p {params.outdir}
+        run_MaxBin.pl \
+            -contig {input.contigs} \
+            -out {params.outdir}/bin \
+            -abund {input.depth} \
+            -thread {threads} \
+            2> {log}
+        """
+
+rule dastool_refine:
+    """
+    DAS_Tool ensemble refinement: integrates MetaBAT2, CONCOCT, MaxBin2
+    to produce optimized, non-redundant bin set.
+    """
+    input:
+        contigs    = "{outdir}/04_assembly/{sample}/final.contigs.fa",
+        metabat2   = "{outdir}/05_binning/metabat2/{sample}/done",
+        concoct    = "{outdir}/05_binning/concoct/{sample}/done",
+        maxbin2    = "{outdir}/05_binning/maxbin2/{sample}/done",
+    output:
+        bins = directory("{outdir}/05_binning/dastool/{sample}_DASTool_bins"),
+    params:
+        metabat2_dir  = lambda wc: f"{wc.outdir}/05_binning/metabat2/{wc.sample}",
+        concoct_dir   = lambda wc: f"{wc.outdir}/05_binning/concoct/{wc.sample}/bins",
+        maxbin2_dir   = lambda wc: f"{wc.outdir}/05_binning/maxbin2/{wc.sample}",
+        outdir        = lambda wc: f"{wc.outdir}/05_binning/dastool/{wc.sample}",
+        score_thresh  = config["binning"]["dastool_score"],
+    threads: 8
+    conda: "../envs/dastool.yaml"
+    log: "{outdir}/logs/dastool/{sample}.log"
+    shell:
+        """
+        Fasta_to_Scaffolds2Bin.sh -i {params.metabat2_dir} -e fa \
+            > {params.outdir}_metabat2.tsv
+        Fasta_to_Scaffolds2Bin.sh -i {params.concoct_dir} -e fa \
+            > {params.outdir}_concoct.tsv
+        Fasta_to_Scaffolds2Bin.sh -i {params.maxbin2_dir} -e fasta \
+            > {params.outdir}_maxbin2.tsv
+        DAS_Tool \
+            -i {params.outdir}_metabat2.tsv,{params.outdir}_concoct.tsv,{params.outdir}_maxbin2.tsv \
+            -l metabat2,concoct,maxbin2 \
+            -c {input.contigs} \
+            -o {params.outdir} \
+            --score_threshold {params.score_thresh} \
+            --threads {threads} \
+            --write_bins \
+            2> {log}
+        """
+
+
+# ── Step 6: MAG Quality Assessment ───────────────────────────────────────────
+rule checkm2_quality:
+    """
+    CheckM2 MAG quality assessment (completeness/contamination).
+    Uses deep learning model trained on GTDB.
+    """
+    input:
+        bins = "{outdir}/05_binning/dastool/{sample}_DASTool_bins",
+    output:
+        report = "{outdir}/06_mag_qc/checkm2/{sample}/quality_report.tsv",
+    params:
+        outdir = lambda wc: f"{wc.outdir}/06_mag_qc/checkm2/{wc.sample}",
+        db     = config["databases"]["checkm2_db"],
+    threads: 16
+    conda: "../envs/checkm2.yaml"
+    log: "{outdir}/logs/checkm2/{sample}.log"
+    shell:
+        """
+        checkm2 predict \
+            --input {input.bins} \
+            --output-directory {params.outdir} \
+            --database_path {params.db} \
+            --threads {threads} \
+            2> {log}
+        """
+
+rule gtdbtk_classify:
+    """
+    Phylogenetic placement of MAGs using GTDB-Tk (release 220).
+    Provides standardized taxonomy based on GTDB reference tree.
+    """
+    input:
+        bins   = "{outdir}/05_binning/dastool/{sample}_DASTool_bins",
+        report = "{outdir}/06_mag_qc/checkm2/{sample}/quality_report.tsv",
+    output:
+        summary = "{outdir}/06_mag_qc/gtdbtk/{sample}/classify/gtdbtk.bac120.summary.tsv",
+    params:
+        outdir = lambda wc: f"{wc.outdir}/06_mag_qc/gtdbtk/{wc.sample}",
+        db     = config["databases"]["gtdbtk_db"],
+        mash_db = config["databases"]["gtdbtk_mash_db"],
+    threads: 16
+    conda: "../envs/gtdbtk.yaml"
+    log: "{outdir}/logs/gtdbtk/{sample}.log"
+    shell:
+        """
+        gtdbtk classify_wf \
+            --genome_dir {input.bins} \
+            --out_dir {params.outdir} \
+            --cpus {threads} \
+            --mash_db {params.mash_db} \
+            2> {log}
+        """
+
+
+# ── Step 7: Statistical Analysis ─────────────────────────────────────────────
+rule alpha_beta_diversity:
+    """Compute alpha (Shannon, Chao1, observed species) and beta diversity (PERMANOVA)."""
+    input:
+        table = f"{OUTDIR}/02_taxonomy/merged_metaphlan4_table.txt",
+        meta  = config["metadata"],
+    output:
+        diversity = f"{OUTDIR}/07_stats/diversity_analysis.tsv",
+        pcoa      = f"{OUTDIR}/07_stats/pcoa_braycurtis.tsv",
+        permanova = f"{OUTDIR}/07_stats/permanova_results.tsv",
+    conda: "../envs/stats.yaml"
+    script: "scripts/diversity_analysis.py"
+
+rule lefse_analysis:
+    """
+    LEfSe (Linear discriminant analysis Effect Size) to identify
+    differentially abundant taxa and metabolic pathways.
+    """
+    input:
+        tax_table  = f"{OUTDIR}/02_taxonomy/merged_metaphlan4_table.txt",
+        func_table = f"{OUTDIR}/03_function/humann3/merged_pathabundance_relab.tsv",
+        meta       = config["metadata"],
+    output:
+        results = f"{OUTDIR}/07_stats/lefse_results.tsv",
+        plot    = f"{OUTDIR}/07_stats/lefse_plot.svg",
+    params:
+        lda_thresh  = config["stats"]["lefse_lda_threshold"],
+        alpha       = config["stats"]["lefse_alpha"],
+    conda: "../envs/stats.yaml"
+    script: "scripts/lefse_analysis.py"
+
+rule rf_classification:
+    """
+    5-fold stratified cross-validated Random Forest classification
+    (healthy vs disease) with feature importance ranking.
+    """
+    input:
+        tax_table  = f"{OUTDIR}/02_taxonomy/merged_metaphlan4_table.txt",
+        func_table = f"{OUTDIR}/03_function/humann3/merged_pathabundance_relab.tsv",
+        meta       = config["metadata"],
+    output:
+        cv_results = f"{OUTDIR}/07_stats/rf_classification_cv5.tsv",
+        importance = f"{OUTDIR}/07_stats/rf_feature_importance.tsv",
+        roc_data   = f"{OUTDIR}/07_stats/rf_roc_data.tsv",
+    params:
+        n_estimators    = config["stats"]["rf_n_estimators"],
+        cv_folds        = config["stats"]["cv_folds"],
+        random_state    = config["stats"]["random_state"],
+        feature_types   = ["taxonomy", "function", "combined"],
+    conda: "../envs/stats.yaml"
+    script: "scripts/rf_classification.py"

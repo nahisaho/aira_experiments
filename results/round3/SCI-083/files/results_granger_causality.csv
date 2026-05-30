@@ -1,0 +1,6 @@
+bacteria,metabolite,F_statistic,p_value,significant,direction
+Faecalibacterium_prausnitzii,Butyrate,20.041,0.0,True,bacteria→metabolite
+Roseburia_intestinalis,Propionate,0.243,0.6236,False,bacteria→metabolite
+Akkermansia_muciniphila,Acetate,102.977,0.0,True,bacteria→metabolite
+Escherichia_coli,LPS,15.931,0.0001,True,bacteria→metabolite
+Bacteroides_fragilis,Deoxycholic_acid,4.284,0.0418,True,bacteria→metabolite

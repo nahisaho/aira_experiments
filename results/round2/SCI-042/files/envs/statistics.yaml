@@ -1,0 +1,15 @@
+channels:
+  - conda-forge
+  - bioconda
+  - r
+  - defaults
+dependencies:
+  - r-base=4.3
+  - r-vegan=2.6
+  - bioconductor-maaslin2=1.14
+  - r-ggplot2=3.4
+  - r-dplyr=1.1
+  - python=3.11
+  - scikit-learn=1.4
+  - pandas=2.1
+  - numpy=1.26

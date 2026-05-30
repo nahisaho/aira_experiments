@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Data
+*.h5
+*.h5ad
+*.loom
+*.pkl
+
+# Environment
+.env
+.venv
+venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Logs (keep jsonl, ignore txt)
+logs/*.txt

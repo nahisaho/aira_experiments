@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+.env
+venv/
+.venv/
+
+# Data / Models
+*.pkl
+*.h5
+*.pt
+*.npy.bak
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/*.log

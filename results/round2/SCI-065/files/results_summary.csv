@@ -1,0 +1,16 @@
+Parameter,Value,Source
+Operating RPM (optimal),60 rpm,CFD simulation
+Kolmogorov scale η (60 rpm),431 µm,Kolmogorov theory
+Wall shear stress (60 rpm),6.28 mPa,Navier-Stokes
+O₂ diffusion limit radius,~2.0 mm,Reaction-diffusion
+Glucose diffusion limit radius,~3.5 mm,Reaction-diffusion
+"Thiele modulus Φ (O₂, R=2mm)",10.33,Thiele modulus analysis
+Optimal shear stress,60 mPa,NatureLM + shear model
+Maturation Day 90 (optimal),0.969,Maturation ODE
+Maturation Day 90 (static),0.962,Maturation ODE
+Optimal BDNF concentration,60.0 ng/mL,Differential evolution
+Optimal GDNF concentration,40.0 ng/mL,Differential evolution
+Optimal glucose (late),11.7 mM,Differential evolution
+Perfusion flow rate (500mL),0.0 mL/h,O₂ mass balance
+Max organoids/L (perfusion),200 organoids/L,Literature estimate
+DO setpoint,40% air saturation,PID simulation

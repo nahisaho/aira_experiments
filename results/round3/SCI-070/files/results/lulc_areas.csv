@@ -1,0 +1,9 @@
+lulc_code,lulc_name,cell_count,area_ha
+1,Paddy field (tanbo),500,500.0
+2,Upland crop field (hatake),342,342.0
+3,Broadleaf secondary forest (satoyama forest),945,945.0
+4,Conifer plantation (sugi/hinoki),152,152.0
+5,Grassland / coppice (kayaba/nozawa),335,335.0
+6,Residential / settlement,74,74.0
+7,Irrigation pond (tameike),48,48.0
+8,River / wetland,104,104.0

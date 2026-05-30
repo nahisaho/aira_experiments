@@ -1,0 +1,10 @@
+Method,Pearson_r,Pearson_r_SD,Growth_pred_h,Growth_err_pct
+"Standard
+FBA",0.782,0.045,0.8739,0.5%
+"13C-MFA
+Integrated",0.871,0.038,0.7328,15.8%
+dFBA,0.834,0.051,0.0000,100.0%
+"Enzyme-
+Constrained",0.856,0.041,0.8739,0.5%
+"RNA-seq
+Condition",0.891,0.033,0.4962,43.0%

@@ -1,0 +1,228 @@
+entity_id,name,entity_type,covid_relevance
+drug_remdesivir,Remdesivir,Drug,1
+drug_dexamethasone,Dexamethasone,Drug,1
+drug_baricitinib,Baricitinib,Drug,1
+drug_tocilizumab,Tocilizumab,Drug,1
+drug_favipiravir,Favipiravir,Drug,1
+drug_molnupiravir,Molnupiravir,Drug,1
+drug_ruxolitinib,Ruxolitinib,Drug,1
+drug_anakinra,Anakinra,Drug,1
+drug_colchicine,Colchicine,Drug,1
+drug_nirmatrelvir,Nirmatrelvir,Drug,1
+drug_ritonavir,Ritonavir,Drug,1
+drug_budesonide,Budesonide,Drug,1
+drug_001,Immunoex-1,Drug,0
+drug_002,Lipovir-2,Drug,0
+drug_003,Cardionib-3,Drug,0
+drug_004,Immunodine-4,Drug,0
+drug_005,Immunocept-5,Drug,0
+drug_006,Glycoex-6,Drug,0
+drug_007,Viramab-7,Drug,0
+drug_008,Cardiovir-8,Drug,0
+drug_009,Hepatocept-9,Drug,0
+drug_010,Viradine-10,Drug,0
+drug_011,Cardiodine-11,Drug,0
+drug_012,Glycovir-12,Drug,0
+drug_013,Thoracept-13,Drug,0
+drug_014,Lipoex-14,Drug,0
+drug_015,Statipril-15,Drug,0
+drug_016,Neurosone-16,Drug,0
+drug_017,Stativir-17,Drug,0
+drug_018,Neuromab-18,Drug,0
+drug_019,Immunopril-19,Drug,0
+drug_020,Immunoline-20,Drug,0
+drug_021,Neurocept-21,Drug,0
+drug_022,Lipoex-22,Drug,0
+drug_023,Thoradine-23,Drug,0
+drug_024,Immunopril-24,Drug,0
+drug_025,Immunodine-25,Drug,0
+drug_026,Lipocept-26,Drug,0
+drug_027,Neurocept-27,Drug,0
+drug_028,Cardiomab-28,Drug,0
+drug_029,Viravir-29,Drug,0
+drug_030,Lipomab-30,Drug,0
+drug_031,Cardiomab-31,Drug,0
+drug_032,Glycosone-32,Drug,0
+drug_033,Thoraline-33,Drug,0
+drug_034,Statiline-34,Drug,0
+drug_035,Neurovir-35,Drug,0
+drug_036,Lipomab-36,Drug,0
+drug_037,Reninib-37,Drug,0
+drug_038,Hepatovir-38,Drug,0
+drug_039,Statiazole-39,Drug,0
+drug_040,Glycosone-40,Drug,0
+drug_041,Hepatovir-41,Drug,0
+drug_042,Neuroex-42,Drug,0
+drug_043,Cardioex-43,Drug,0
+drug_044,Neuropril-44,Drug,0
+drug_045,Lipomab-45,Drug,0
+drug_046,Cardiocept-46,Drug,0
+drug_047,Neurovir-47,Drug,0
+drug_048,Thorapril-48,Drug,0
+disease_covid19,COVID-19,Disease,1
+disease_sarscov2,SARS-CoV-2 infection,Disease,1
+disease_ards,Acute respiratory distress syndrome,Disease,1
+disease_sepsis,Sepsis,Disease,1
+disease_pneumonia,Viral pneumonia,Disease,1
+disease_thrombosis,Immunothrombosis,Disease,1
+disease_001,Systemic vasculitis 1,Disease,0
+disease_002,Acute inflammation 2,Disease,0
+disease_003,Acute fibrosis 3,Disease,0
+disease_004,Systemic inflammation 4,Disease,0
+disease_005,Systemic myopathy 5,Disease,0
+disease_006,Fibrotic myopathy 6,Disease,0
+disease_007,Immune fibrosis 7,Disease,0
+disease_008,Acute vasculitis 8,Disease,0
+disease_009,Chronic syndrome 9,Disease,0
+disease_010,Chronic deficiency 10,Disease,0
+disease_011,Systemic deficiency 11,Disease,0
+disease_012,Systemic myopathy 12,Disease,0
+disease_013,Fibrotic disorder 13,Disease,0
+disease_014,Metabolic myopathy 14,Disease,0
+disease_015,Fibrotic vasculitis 15,Disease,0
+disease_016,Fibrotic inflammation 16,Disease,0
+disease_017,Fibrotic syndrome 17,Disease,0
+disease_018,Systemic disorder 18,Disease,0
+disease_019,Systemic inflammation 19,Disease,0
+disease_020,Systemic carcinoma 20,Disease,0
+disease_021,Chronic inflammation 21,Disease,0
+disease_022,Metabolic deficiency 22,Disease,0
+disease_023,Metabolic syndrome 23,Disease,0
+disease_024,Systemic inflammation 24,Disease,0
+disease_025,Fibrotic deficiency 25,Disease,0
+disease_026,Fibrotic disorder 26,Disease,0
+gene_ace2,ACE2,Gene,1
+gene_tmprss2,TMPRSS2,Gene,1
+gene_il6,IL6,Gene,1
+gene_jak1,JAK1,Gene,1
+gene_jak2,JAK2,Gene,1
+gene_stat3,STAT3,Gene,1
+gene_tnf,TNF,Gene,1
+gene_ifng,IFNG,Gene,1
+gene_cxcl10,CXCL10,Gene,1
+gene_crp,CRP,Gene,1
+gene_nfkb1,NFKB1,Gene,1
+gene_mapk1,MAPK1,Gene,1
+gene_mtor,MTOR,Gene,1
+gene_tlr4,TLR4,Gene,1
+gene_001,CXCL3,Gene,0
+gene_002,GSK4,Gene,0
+gene_003,SMAD5,Gene,0
+gene_004,STAT6,Gene,0
+gene_005,TLR7,Gene,0
+gene_006,CCR8,Gene,0
+gene_007,TLR9,Gene,0
+gene_008,GSK10,Gene,0
+gene_009,GSK11,Gene,0
+gene_010,AKT12,Gene,0
+gene_011,SMAD13,Gene,0
+gene_012,CCR14,Gene,0
+gene_013,PIK15,Gene,0
+gene_014,AKT16,Gene,0
+gene_015,MAPK17,Gene,0
+gene_016,CCR18,Gene,0
+gene_017,CXCL19,Gene,0
+gene_018,STAT20,Gene,0
+gene_019,AKT21,Gene,0
+gene_020,STAT22,Gene,0
+gene_021,SMAD23,Gene,0
+gene_022,MAPK24,Gene,0
+gene_023,MAPK25,Gene,0
+gene_024,PIK26,Gene,0
+gene_025,MAPK27,Gene,0
+gene_026,GSK28,Gene,0
+gene_027,TLR29,Gene,0
+gene_028,TLR30,Gene,0
+gene_029,PIK31,Gene,0
+gene_030,GSK32,Gene,0
+gene_031,TLR33,Gene,0
+gene_032,CXCL34,Gene,0
+gene_033,GSK35,Gene,0
+gene_034,SMAD36,Gene,0
+gene_035,HSP37,Gene,0
+gene_036,STAT38,Gene,0
+gene_037,GSK39,Gene,0
+gene_038,STAT40,Gene,0
+gene_039,CXCL41,Gene,0
+gene_040,HSP42,Gene,0
+gene_041,CCR43,Gene,0
+gene_042,PIK44,Gene,0
+gene_043,GSK45,Gene,0
+gene_044,PIK46,Gene,0
+gene_045,MAPK47,Gene,0
+gene_046,STAT48,Gene,0
+gene_047,STAT49,Gene,0
+gene_048,MAPK50,Gene,0
+gene_049,CCR51,Gene,0
+gene_050,AKT52,Gene,0
+gene_051,SMAD53,Gene,0
+gene_052,GSK54,Gene,0
+gene_053,STAT55,Gene,0
+gene_054,SMAD56,Gene,0
+gene_055,STAT57,Gene,0
+gene_056,AKT58,Gene,0
+pathway_viral_entry,Viral Entry,Pathway,1
+pathway_viral_replication,Viral Replication,Pathway,1
+pathway_jak_stat,JAK-STAT Signaling,Pathway,1
+pathway_cytokine_storm,Cytokine Storm,Pathway,1
+pathway_interferon,Interferon Response,Pathway,1
+pathway_coagulation,Coagulation Cascade,Pathway,1
+pathway_nfkb,NF-kB Signaling,Pathway,1
+pathway_001,Immune Program 1,Pathway,0
+pathway_002,Fibrotic Signal 2,Pathway,0
+pathway_003,Metabolic Signal 3,Pathway,0
+pathway_004,Immune Axis 4,Pathway,0
+pathway_005,Immune Checkpoint 5,Pathway,0
+pathway_006,Metabolic Axis 6,Pathway,0
+pathway_007,Fibrotic Response 7,Pathway,0
+pathway_008,Metabolic Checkpoint 8,Pathway,0
+pathway_009,Metabolic Program 9,Pathway,0
+pathway_010,Oxidative Checkpoint 10,Pathway,0
+pathway_011,Repair Cascade 11,Pathway,0
+pathway_012,Repair Response 12,Pathway,0
+pathway_013,Metabolic Signal 13,Pathway,0
+pathway_014,Immune Program 14,Pathway,0
+pathway_015,Repair Axis 15,Pathway,0
+pathway_016,Repair Response 16,Pathway,0
+pathway_017,Repair Program 17,Pathway,0
+pathway_018,Immune Program 18,Pathway,0
+pathway_019,Fibrotic Program 19,Pathway,0
+pathway_020,Immune Signal 20,Pathway,0
+pathway_021,Repair Program 21,Pathway,0
+phenotype_fever,Fever,Phenotype,1
+phenotype_cough,Cough,Phenotype,1
+phenotype_hypoxia,Hypoxia,Phenotype,1
+phenotype_hyperinflam,Hyperinflammation,Phenotype,1
+phenotype_thrombosis,Thrombosis,Phenotype,1
+phenotype_lymphopenia,Lymphopenia,Phenotype,1
+phenotype_001,Recurrent Pain 1,Phenotype,0
+phenotype_002,Severe Edema 2,Phenotype,0
+phenotype_003,Severe Neuropathy 3,Phenotype,0
+phenotype_004,Severe Dyspnea 4,Phenotype,0
+phenotype_005,Severe Rash 5,Phenotype,0
+phenotype_006,Transient Edema 6,Phenotype,0
+phenotype_007,Mild Neuropathy 7,Phenotype,0
+phenotype_008,Chronic Pain 8,Phenotype,0
+phenotype_009,Mild Fatigue 9,Phenotype,0
+phenotype_010,Mild Edema 10,Phenotype,0
+phenotype_011,Severe Dyspnea 11,Phenotype,0
+phenotype_012,Transient Neuropathy 12,Phenotype,0
+phenotype_013,Severe Dyspnea 13,Phenotype,0
+phenotype_014,Mild Fibrosis 14,Phenotype,0
+phenotype_015,Transient Fatigue 15,Phenotype,0
+phenotype_016,Transient Rash 16,Phenotype,0
+phenotype_017,Transient Rash 17,Phenotype,0
+phenotype_018,Transient Neuropathy 18,Phenotype,0
+phenotype_019,Severe Edema 19,Phenotype,0
+phenotype_020,Recurrent Edema 20,Phenotype,0
+phenotype_021,Mild Fatigue 21,Phenotype,0
+phenotype_022,Recurrent Fatigue 22,Phenotype,0
+phenotype_023,Mild Neuropathy 23,Phenotype,0
+phenotype_024,Chronic Fibrosis 24,Phenotype,0
+phenotype_025,Mild Pain 25,Phenotype,0
+phenotype_026,Severe Pain 26,Phenotype,0
+phenotype_027,Chronic Pain 27,Phenotype,0
+phenotype_028,Severe Dyspnea 28,Phenotype,0
+phenotype_029,Mild Edema 29,Phenotype,0
+phenotype_030,Chronic Fatigue 30,Phenotype,0
+phenotype_031,Chronic Pain 31,Phenotype,0
