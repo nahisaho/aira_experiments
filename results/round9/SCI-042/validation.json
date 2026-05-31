@@ -1,0 +1,194 @@
+{
+  "available": true,
+  "claims": [
+    {
+      "pattern": "sample-size",
+      "match": "n=120",
+      "index": 2551,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "Vmax: 0.3",
+      "index": 7063,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "p-value",
+      "match": "p=0.0043",
+      "index": 1803,
+      "cited": [
+        "5",
+        "6"
+      ],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "AUROC=0.986±0.018",
+      "index": 2307,
+      "cited": [
+        "9"
+      ],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "C=0.1",
+      "index": 12397,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n=60",
+      "index": 15318,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n=60",
+      "index": 15335,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-of",
+      "match": "AUROC of 0.986",
+      "index": 22635,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "Result: 0.986 ± 0.018",
+      "index": 29650,
+      "cited": [
+        "9"
+      ],
+      "source_file": "paper.md"
+    }
+  ],
+  "uncited_claims": [
+    {
+      "pattern": "sample-size",
+      "match": "n=120",
+      "index": 2551,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "Vmax: 0.3",
+      "index": 7063,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "C=0.1",
+      "index": 12397,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n=60",
+      "index": 15318,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n=60",
+      "index": 15335,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-of",
+      "match": "AUROC of 0.986",
+      "index": 22635,
+      "cited": [],
+      "source_file": "paper.md"
+    }
+  ],
+  "unknown_citations": [
+    {
+      "claim": {
+        "pattern": "p-value",
+        "match": "p=0.0043",
+        "index": 1803,
+        "cited": [
+          "5",
+          "6"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "5"
+    },
+    {
+      "claim": {
+        "pattern": "p-value",
+        "match": "p=0.0043",
+        "index": 1803,
+        "cited": [
+          "5",
+          "6"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "6"
+    },
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "AUROC=0.986±0.018",
+        "index": 2307,
+        "cited": [
+          "9"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "9"
+    },
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "Result: 0.986 ± 0.018",
+        "index": 29650,
+        "cited": [
+          "9"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "9"
+    }
+  ],
+  "gates": [
+    {
+      "name": "seed_presence",
+      "passed": true,
+      "detail": "All RNG-using cells have a seed set (in-cell or earlier)."
+    },
+    {
+      "name": "env_capture",
+      "passed": false,
+      "detail": "No requirements.txt and no `pip freeze`/`pip list` cell found."
+    },
+    {
+      "name": "no_error_in_cited",
+      "passed": true,
+      "detail": "No cited cell shows errors or stderr."
+    },
+    {
+      "name": "citation_coverage",
+      "passed": false,
+      "detail": "3/9 numeric claims cite a cell (33% ≥ 80% required)."
+    }
+  ],
+  "pass": false
+}

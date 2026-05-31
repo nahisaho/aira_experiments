@@ -1,0 +1,77 @@
+{
+  "simulation_metadata": {
+    "python_version": "3.11.2",
+    "numpy_version": "2.4.6",
+    "scipy_version": "1.17.1",
+    "sklearn_version": "1.8.0",
+    "random_seed": 42
+  },
+  "neuron_models": {
+    "HH_max_fr_hz": 87.0,
+    "Izh_max_fr_hz": 33.0,
+    "AdEx_max_fr_hz": 47.0,
+    "HH_time_ms": 2032.0442489974084,
+    "Izh_time_ms": 3.229534995625727,
+    "AdEx_time_ms": 50.31931599660311,
+    "HH_vs_Izh_ratio": 629.2064497674523,
+    "AdEx_vs_Izh_ratio": 15.580978705838012
+  },
+  "large_scale_snn": {
+    "N_exc": 800,
+    "N_inh": 200,
+    "N_total": 1000,
+    "T_sim_ms": 500,
+    "total_spikes": 7204,
+    "mean_fr_hz": 14.408,
+    "exc_fr_hz": 11.8175,
+    "inh_fr_hz": 24.77,
+    "sim_speed_x": 838.1594498527816,
+    "ISI_mean_ms": 85.3310415075121,
+    "ISI_CV": 0.48933039124825406
+  },
+  "pd_microcircuit": {
+    "N_total": 7713,
+    "scale": 0.1,
+    "T_sim_ms": 300,
+    "sim_speed_x": 175.94355232598042,
+    "pop_rates_hz": [
+      7.909413281753707,
+      27.684391080617495,
+      8.034383082306405,
+      28.049969530773918,
+      7.917525773195877,
+      27.89308176100629,
+      8.049571461663193,
+      28.435374149659864
+    ],
+    "kuramoto_R_mean": 0.13745909057438938,
+    "kuramoto_R_max": 0.35539159717044183,
+    "mi_l23_l4_bits": 0.4958469628566827,
+    "scaling_exponent": 1.7453755557849797,
+    "t_per_step_1M_s": 50.868237003245135
+  },
+  "working_memory": {
+    "cue_angle_deg": 45.0,
+    "peak_angle_deg": 10.8,
+    "angular_error_deg": 34.2,
+    "peak_delay_fr_hz": 2.0,
+    "fano_factor": 0.9749999960999997
+  },
+  "classification": {
+    "cv_auroc_mean": 0.990984375,
+    "cv_auroc_std": 0.007961025668059413,
+    "cv_folds": [
+      0.99046875,
+      0.9996875000000001,
+      0.99828125,
+      0.9774218749999999,
+      0.9890625000000001
+    ],
+    "test_auroc": 0.9969444444444444,
+    "feature_importances": {
+      "mean_fr": 0.49522460604549273,
+      "cv_isi": 0.2083284847337353,
+      "fano_factor": 0.2964469092207721
+    }
+  }
+}

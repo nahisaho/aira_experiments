@@ -1,0 +1,67 @@
+[
+  {
+    "id": "f7649911-6499-4bb1-ab61-f65e29dbefdb",
+    "project_id": "d03d1509-6d56-42d9-ae5b-a681ca3b6b85",
+    "filename": "execution-trace.jsonl",
+    "file_path": ".trace/execution-trace.jsonl",
+    "mime_type": null,
+    "size_bytes": 185,
+    "mtime_ms": 1780236268180.4973,
+    "content_hash": "0439fe5b0933495bc6727fe30b8d84c34d0c48aebda2b3ca6bb1ec38cee35cb3",
+    "source": "agent",
+    "created_at": "2026-05-31 14:04:37",
+    "updated_at": "2026-05-31 14:04:37"
+  },
+  {
+    "id": "0d0a1191-e777-4947-a48c-6e13b6f179e4",
+    "project_id": "d03d1509-6d56-42d9-ae5b-a681ca3b6b85",
+    "filename": "SOURCES.md",
+    "file_path": "data/SOURCES.md",
+    "mime_type": null,
+    "size_bytes": 320,
+    "mtime_ms": 1780235480311.3528,
+    "content_hash": "c880352cb4c0c95c83eb79c826552af0843725d3b44ee6736f53194a7ee98bb0",
+    "source": "agent",
+    "created_at": "2026-05-31 14:04:28",
+    "updated_at": "2026-05-31 14:04:37"
+  },
+  {
+    "id": "7a621653-065d-4f6e-a15b-fb4e946552c6",
+    "project_id": "d03d1509-6d56-42d9-ae5b-a681ca3b6b85",
+    "filename": "notebook.ipynb",
+    "file_path": "notebook.ipynb",
+    "mime_type": null,
+    "size_bytes": 243,
+    "mtime_ms": 1780235480312.6162,
+    "content_hash": "cad4747ed0bed230bbeb2062e8e77302a3c0fc5262625b7fd3476a817486d000",
+    "source": "agent",
+    "created_at": "2026-05-31 14:04:28",
+    "updated_at": "2026-05-31 14:04:37"
+  },
+  {
+    "id": "4261d20f-3519-48d9-ac4f-213cf71b7187",
+    "project_id": "d03d1509-6d56-42d9-ae5b-a681ca3b6b85",
+    "filename": "paper.md",
+    "file_path": "paper.md",
+    "mime_type": null,
+    "size_bytes": 27514,
+    "mtime_ms": 1780236164733.6506,
+    "content_hash": "6ae811ff26b397eda8ab61d3bb61195f3b1e3247057f82f4ad37b4645036d5fe",
+    "source": "agent",
+    "created_at": "2026-05-31 14:02:44",
+    "updated_at": "2026-05-31 14:04:37"
+  },
+  {
+    "id": "8fa208f4-f13b-498f-b62b-04dd79ed27cd",
+    "project_id": "d03d1509-6d56-42d9-ae5b-a681ca3b6b85",
+    "filename": "report.md",
+    "file_path": "report.md",
+    "mime_type": null,
+    "size_bytes": 12120,
+    "mtime_ms": 1780236251114.6846,
+    "content_hash": "53280a197a870834b1933bc6544e71d4542bbb987edbb26f78aceb2eaf8b5957",
+    "source": "agent",
+    "created_at": "2026-05-31 14:04:11",
+    "updated_at": "2026-05-31 14:04:37"
+  }
+]

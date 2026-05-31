@@ -1,0 +1,10 @@
+Material,E_form_vI_eV,E_form_vB_eV,E_form_vA_eV,E_NEB_I_eV,nonrad_rec_coeff,B_site
+MASnI3,0.15,0.95,0.45,0.28,1.2e-10,Sn
+CsSnI3,0.22,1.05,0.52,0.32,9e-11,Sn
+FASnI3,0.18,0.98,0.48,0.35,1.1e-10,Sn
+MAGeI3,0.28,1.45,0.55,0.38,2.1e-10,Ge
+CsGeI3,0.31,1.52,0.62,0.41,2.3e-10,Ge
+Cs3Bi2I9,0.48,1.8,0.7,0.55,3.5e-10,Bi
+Cs3Sb2I9,0.42,1.75,0.65,0.52,3.2e-10,Sb
+MASnBr3,0.35,1.15,0.58,0.45,1.8e-10,Sn
+CsSnBr3,0.4,1.2,0.62,0.48,1.9e-10,Sn

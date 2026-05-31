@@ -1,0 +1,62 @@
+{
+  "circuit_name": "repressilator",
+  "genes": [
+    {
+      "name": "lacI",
+      "promoter": "pCI",
+      "rbs": "RBS_B0034",
+      "cds": "lacI",
+      "terminator": "T1",
+      "repressor_of": [
+        "pLac"
+      ],
+      "activator_of": []
+    },
+    {
+      "name": "tetR",
+      "promoter": "pLac",
+      "rbs": "RBS_B0034",
+      "cds": "tetR",
+      "terminator": "T1",
+      "repressor_of": [
+        "pTet"
+      ],
+      "activator_of": []
+    },
+    {
+      "name": "cI",
+      "promoter": "pTet",
+      "rbs": "RBS_B0034",
+      "cds": "cI",
+      "terminator": "T1",
+      "repressor_of": [
+        "pCI"
+      ],
+      "activator_of": []
+    }
+  ],
+  "inputs": [],
+  "outputs": [
+    {
+      "signal": "GFP",
+      "source": "tetR"
+    }
+  ],
+  "feedback": [
+    {
+      "source": "cI",
+      "target": "pCI",
+      "mode": "repressive"
+    },
+    {
+      "source": "lacI",
+      "target": "pLac",
+      "mode": "repressive"
+    },
+    {
+      "source": "tetR",
+      "target": "pTet",
+      "mode": "repressive"
+    }
+  ]
+}

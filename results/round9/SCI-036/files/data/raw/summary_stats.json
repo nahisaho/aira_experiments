@@ -1,0 +1,20 @@
+{
+  "experiment": "NEO Bayesian Risk Assessment Pipeline",
+  "seed": 42,
+  "n_mc_clones": 10000,
+  "n_bayesian_samples": 50000,
+  "nominal_a_AU": 0.9224,
+  "nominal_e": 0.1914,
+  "nominal_i_deg": 3.3317,
+  "moid_mean_AU": 0.013248195508017693,
+  "moid_std_AU": 1.5623916890239514e-06,
+  "p_collision_initial": 0.0,
+  "p_collision_refined": 0.0,
+  "n_eff_initial": 43272.38697959031,
+  "apophis_energy_MT": 2590.8626110444206,
+  "apophis_blast_km": 54.93824552019257,
+  "dart_dv_mms_median": 0.21050303299151302,
+  "dart_dv_mms_std": 0.06858807420568923,
+  "yarkovsky_da_dt_AU_yr": -0.00025,
+  "ks_test_pvalue": 0.9992074462496565
+}

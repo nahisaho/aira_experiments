@@ -1,0 +1,295 @@
+{
+  "available": true,
+  "claims": [
+    {
+      "pattern": "metric-assignment",
+      "match": "C=1.0",
+      "index": 2809,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "AUROC = 0.998",
+      "index": 4119,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n=473",
+      "index": 6832,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "AUROC=0.828",
+      "index": 7554,
+      "cited": [
+        "4",
+        "5",
+        "7"
+      ],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n = 473",
+      "index": 1243,
+      "cited": [
+        "2"
+      ],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-of",
+      "match": "AUROC = 0.837",
+      "index": 1286,
+      "cited": [
+        "2"
+      ],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n = 473",
+      "index": 7625,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "C=1.0",
+      "index": 9118,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "Forest=0.998±0.002",
+      "index": 9384,
+      "cited": [
+        "2"
+      ],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n = 200",
+      "index": 9993,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "AUROC = 0.828",
+      "index": 13932,
+      "cited": [
+        "3"
+      ],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n=200",
+      "index": 15150,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-of",
+      "match": "AUROC = 0.837",
+      "index": 19124,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-of",
+      "match": "AUROC of 0.837",
+      "index": 22251,
+      "cited": [],
+      "source_file": "paper.md"
+    }
+  ],
+  "uncited_claims": [
+    {
+      "pattern": "metric-assignment",
+      "match": "C=1.0",
+      "index": 2809,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "AUROC = 0.998",
+      "index": 4119,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n=473",
+      "index": 6832,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n = 473",
+      "index": 7625,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "C=1.0",
+      "index": 9118,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n = 200",
+      "index": 9993,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n=200",
+      "index": 15150,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-of",
+      "match": "AUROC = 0.837",
+      "index": 19124,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-of",
+      "match": "AUROC of 0.837",
+      "index": 22251,
+      "cited": [],
+      "source_file": "paper.md"
+    }
+  ],
+  "unknown_citations": [
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "AUROC=0.828",
+        "index": 7554,
+        "cited": [
+          "4",
+          "5",
+          "7"
+        ],
+        "source_file": "report.md"
+      },
+      "bad_cell_id": "4"
+    },
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "AUROC=0.828",
+        "index": 7554,
+        "cited": [
+          "4",
+          "5",
+          "7"
+        ],
+        "source_file": "report.md"
+      },
+      "bad_cell_id": "5"
+    },
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "AUROC=0.828",
+        "index": 7554,
+        "cited": [
+          "4",
+          "5",
+          "7"
+        ],
+        "source_file": "report.md"
+      },
+      "bad_cell_id": "7"
+    },
+    {
+      "claim": {
+        "pattern": "sample-size",
+        "match": "n = 473",
+        "index": 1243,
+        "cited": [
+          "2"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "2"
+    },
+    {
+      "claim": {
+        "pattern": "metric-of",
+        "match": "AUROC = 0.837",
+        "index": 1286,
+        "cited": [
+          "2"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "2"
+    },
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "Forest=0.998±0.002",
+        "index": 9384,
+        "cited": [
+          "2"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "2"
+    },
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "AUROC = 0.828",
+        "index": 13932,
+        "cited": [
+          "3"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "3"
+    }
+  ],
+  "gates": [
+    {
+      "name": "seed_presence",
+      "passed": true,
+      "detail": "All RNG-using cells have a seed set (in-cell or earlier)."
+    },
+    {
+      "name": "env_capture",
+      "passed": false,
+      "detail": "No requirements.txt and no `pip freeze`/`pip list` cell found."
+    },
+    {
+      "name": "no_error_in_cited",
+      "passed": true,
+      "detail": "No cited cell shows errors or stderr."
+    },
+    {
+      "name": "citation_coverage",
+      "passed": false,
+      "detail": "5/14 numeric claims cite a cell (36% ≥ 80% required)."
+    }
+  ],
+  "pass": false
+}

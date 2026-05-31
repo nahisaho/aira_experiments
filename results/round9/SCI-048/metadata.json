@@ -1,0 +1,26 @@
+{
+  "experiment_id": "SCI-048",
+  "title": "SCI-048",
+  "project_id": "c4bc3bd5-ed5d-4e6e-9410-7afeca3d7864",
+  "prompt_length": 4502,
+  "output_length": 2875,
+  "file_count": 13,
+  "duration_seconds": 2208,
+  "status": "success",
+  "galactica_relevant": false,
+  "domain": "general-science",
+  "naturelm_used": true,
+  "galactica_used": true,
+  "jupyter_used": true,
+  "validation": {
+    "seed_presence": true,
+    "env_capture": false,
+    "no_error_in_cited": true,
+    "citation_coverage": false,
+    "total_claims": 5,
+    "uncited_claims": 4,
+    "unknown_citations": 1,
+    "gates_passed": 2
+  },
+  "timestamp": "2026-05-31T16:32:32.745Z"
+}

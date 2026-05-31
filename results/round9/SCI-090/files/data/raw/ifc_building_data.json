@@ -1,0 +1,23 @@
+{
+  "building": "ZEB_Office_Tokyo",
+  "floors": 5,
+  "floor_area_m2": 1200,
+  "total_area_m2": 6000,
+  "orientation_deg": 15,
+  "glazing_ratio_south": 0.45,
+  "glazing_ratio_north": 0.25,
+  "glazing_ratio_east": 0.3,
+  "glazing_ratio_west": 0.3,
+  "wall_U_value": 0.25,
+  "roof_U_value": 0.15,
+  "window_U_value": 1.2,
+  "SHGC": 0.3,
+  "infiltration_ACH": 0.1,
+  "occupancy_density": 0.1,
+  "lighting_W_m2": 8.0,
+  "equipment_W_m2": 15.0,
+  "location": "Tokyo, Japan",
+  "climate_zone": "Cfa (humid subtropical)",
+  "HDD": 1340,
+  "CDD": 1060
+}

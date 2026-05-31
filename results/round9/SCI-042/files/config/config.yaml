@@ -1,0 +1,21 @@
+# Metagenomics Pipeline Configuration
+samples:
+  - SRR9000000
+  - SRR9000001
+
+outdir: "results"
+threads: 16
+read_length: 150
+min_contig_length: 1000
+kraken2_confidence: 0.1
+
+# Database paths (update before running)
+host_genome_index: "databases/hg38/hg38"
+metaphlan4_db: "databases/metaphlan4/mpa_vJun23_CHOCOPhlAnSGB_202403"
+kraken2_db: "databases/kraken2/k2_standard_20240605"
+humann3_nt_db: "databases/humann3/chocophlan"
+humann3_prot_db: "databases/humann3/uniref"
+checkm2_db: "databases/checkm2/checkm2_database.dmnd"
+gtdbtk_db: "databases/gtdbtk/release220"
+adapters: "resources/adapters.fa"
+metadata: "data/metadata.csv"

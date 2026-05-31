@@ -1,0 +1,7 @@
+{
+  "brute_force_optimal": 22.7935,
+  "nearest_neighbor": 22.7935,
+  "sa_best_valid": 22.7935,
+  "sa_valid_rate": 0.94,
+  "sa_time_s": 0.0765
+}

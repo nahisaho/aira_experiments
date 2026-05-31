@@ -1,0 +1,6 @@
+Hypothesis,Model_Type,Key_Metric,Value,Uncertainty,Enceladus_Relevant
+Miller-Urey,ODE,Glycine yield (%),0.07,0.01,Yes
+RNA World (SSA),Gillespie SSA,Survival rate (%),100.0,0.0,Partial
+Metabolism-First,ODE,Biomass (au),15.16,0.05,Yes
+CME Biopolymer,CME/MatExp,P(>=1 polymer),1.0,0.0001,Yes
+Protocell ML,ML+ODE,AUROC,0.5712,0.0758,Partial

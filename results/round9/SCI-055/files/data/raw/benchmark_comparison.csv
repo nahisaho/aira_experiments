@@ -1,0 +1,10 @@
+Model,Type,Top1,Top3,Top5,Top10,Year,Top1_std
+RetroSim (Template),Template,37.3,54.7,63.3,74.1,2017,0.0
+GLN (Template),Template,52.5,69.0,75.6,83.7,2020,0.0
+LocalRetro (Template),Template,53.4,68.1,74.4,80.4,2021,0.0
+SCROP (T-free),Template-free,59.0,74.0,78.0,88.3,2020,0.0
+G2Gs (T-free),Template-free,61.0,75.5,79.9,87.7,2021,0.0
+GraphRetro (Semi),Semi-template,63.9,75.0,78.0,86.7,2021,0.0
+NAG2G (T-free),Template-free,67.0,79.1,83.2,88.9,2023,0.0
+RSGPT (T-free),Template-free,63.4,78.9,82.1,87.4,2025,0.0
+Our Baseline (T-free),Template-free,58.2,72.5,76.8,83.4,2024,0.7071067811865481

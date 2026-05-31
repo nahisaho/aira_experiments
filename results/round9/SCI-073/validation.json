@@ -1,0 +1,562 @@
+{
+  "available": true,
+  "claims": [
+    {
+      "pattern": "metric-assignment",
+      "match": "F_z = 3.0",
+      "index": 2328,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n=800",
+      "index": 3131,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n=160",
+      "index": 3379,
+      "cited": [
+        "13",
+        "9"
+      ],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "F1 = 0.98",
+      "index": 3409,
+      "cited": [
+        "13",
+        "9"
+      ],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n=1000",
+      "index": 3639,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "metric-of",
+      "match": "AUROC = 0.777",
+      "index": 3875,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n=1000",
+      "index": 3963,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n=200",
+      "index": 4194,
+      "cited": [
+        "10"
+      ],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n=800",
+      "index": 4374,
+      "cited": [
+        "6"
+      ],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n=50",
+      "index": 4931,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n=800",
+      "index": 7608,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n=1000",
+      "index": 7666,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n = 800",
+      "index": 1134,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-of",
+      "match": "RMSE = 1.636",
+      "index": 1327,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-of",
+      "match": "AUROC = 0.777",
+      "index": 1440,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-of",
+      "match": "AUROC = 0.887",
+      "index": 1567,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "F_z = 3.0",
+      "index": 8965,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "F_x = 1.2",
+      "index": 9090,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "F_y = 1.0",
+      "index": 9132,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "Acc = 97.62 ± 0.47",
+      "index": 13902,
+      "cited": [
+        "13",
+        "9"
+      ],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n=160",
+      "index": 13944,
+      "cited": [
+        "13",
+        "9"
+      ],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "F1 = 0.98",
+      "index": 13974,
+      "cited": [
+        "13",
+        "9"
+      ],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-of",
+      "match": "AUROC = 0.777",
+      "index": 14506,
+      "cited": [
+        "5"
+      ],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "RMSE = 1.563",
+      "index": 14976,
+      "cited": [
+        "10"
+      ],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-of",
+      "match": "AUROC = 0.887",
+      "index": 15382,
+      "cited": [
+        "6"
+      ],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-of",
+      "match": "AUROC of 0.777",
+      "index": 17350,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "Result: 0.9762 ± 0.0047",
+      "index": 26368,
+      "cited": [
+        "8"
+      ],
+      "source_file": "paper.md"
+    }
+  ],
+  "uncited_claims": [
+    {
+      "pattern": "metric-assignment",
+      "match": "F_z = 3.0",
+      "index": 2328,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n=800",
+      "index": 3131,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n=1000",
+      "index": 3639,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "metric-of",
+      "match": "AUROC = 0.777",
+      "index": 3875,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n=1000",
+      "index": 3963,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n=50",
+      "index": 4931,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n=800",
+      "index": 7608,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n=1000",
+      "index": 7666,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n = 800",
+      "index": 1134,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-of",
+      "match": "RMSE = 1.636",
+      "index": 1327,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-of",
+      "match": "AUROC = 0.777",
+      "index": 1440,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-of",
+      "match": "AUROC = 0.887",
+      "index": 1567,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "F_z = 3.0",
+      "index": 8965,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "F_x = 1.2",
+      "index": 9090,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "F_y = 1.0",
+      "index": 9132,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-of",
+      "match": "AUROC of 0.777",
+      "index": 17350,
+      "cited": [],
+      "source_file": "paper.md"
+    }
+  ],
+  "unknown_citations": [
+    {
+      "claim": {
+        "pattern": "sample-size",
+        "match": "n=160",
+        "index": 3379,
+        "cited": [
+          "13",
+          "9"
+        ],
+        "source_file": "report.md"
+      },
+      "bad_cell_id": "13"
+    },
+    {
+      "claim": {
+        "pattern": "sample-size",
+        "match": "n=160",
+        "index": 3379,
+        "cited": [
+          "13",
+          "9"
+        ],
+        "source_file": "report.md"
+      },
+      "bad_cell_id": "9"
+    },
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "F1 = 0.98",
+        "index": 3409,
+        "cited": [
+          "13",
+          "9"
+        ],
+        "source_file": "report.md"
+      },
+      "bad_cell_id": "13"
+    },
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "F1 = 0.98",
+        "index": 3409,
+        "cited": [
+          "13",
+          "9"
+        ],
+        "source_file": "report.md"
+      },
+      "bad_cell_id": "9"
+    },
+    {
+      "claim": {
+        "pattern": "sample-size",
+        "match": "n=200",
+        "index": 4194,
+        "cited": [
+          "10"
+        ],
+        "source_file": "report.md"
+      },
+      "bad_cell_id": "10"
+    },
+    {
+      "claim": {
+        "pattern": "sample-size",
+        "match": "n=800",
+        "index": 4374,
+        "cited": [
+          "6"
+        ],
+        "source_file": "report.md"
+      },
+      "bad_cell_id": "6"
+    },
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "Acc = 97.62 ± 0.47",
+        "index": 13902,
+        "cited": [
+          "13",
+          "9"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "13"
+    },
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "Acc = 97.62 ± 0.47",
+        "index": 13902,
+        "cited": [
+          "13",
+          "9"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "9"
+    },
+    {
+      "claim": {
+        "pattern": "sample-size",
+        "match": "n=160",
+        "index": 13944,
+        "cited": [
+          "13",
+          "9"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "13"
+    },
+    {
+      "claim": {
+        "pattern": "sample-size",
+        "match": "n=160",
+        "index": 13944,
+        "cited": [
+          "13",
+          "9"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "9"
+    },
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "F1 = 0.98",
+        "index": 13974,
+        "cited": [
+          "13",
+          "9"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "13"
+    },
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "F1 = 0.98",
+        "index": 13974,
+        "cited": [
+          "13",
+          "9"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "9"
+    },
+    {
+      "claim": {
+        "pattern": "metric-of",
+        "match": "AUROC = 0.777",
+        "index": 14506,
+        "cited": [
+          "5"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "5"
+    },
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "RMSE = 1.563",
+        "index": 14976,
+        "cited": [
+          "10"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "10"
+    },
+    {
+      "claim": {
+        "pattern": "metric-of",
+        "match": "AUROC = 0.887",
+        "index": 15382,
+        "cited": [
+          "6"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "6"
+    },
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "Result: 0.9762 ± 0.0047",
+        "index": 26368,
+        "cited": [
+          "8"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "8"
+    }
+  ],
+  "gates": [
+    {
+      "name": "seed_presence",
+      "passed": true,
+      "detail": "All RNG-using cells have a seed set (in-cell or earlier)."
+    },
+    {
+      "name": "env_capture",
+      "passed": false,
+      "detail": "No requirements.txt and no `pip freeze`/`pip list` cell found."
+    },
+    {
+      "name": "no_error_in_cited",
+      "passed": true,
+      "detail": "No cited cell shows errors or stderr."
+    },
+    {
+      "name": "citation_coverage",
+      "passed": false,
+      "detail": "11/27 numeric claims cite a cell (41% ≥ 80% required)."
+    }
+  ],
+  "pass": false
+}

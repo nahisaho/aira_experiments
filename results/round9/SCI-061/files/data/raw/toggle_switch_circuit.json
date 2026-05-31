@@ -1,0 +1,44 @@
+{
+  "circuit_name": "toggle_switch",
+  "genes": [
+    {
+      "name": "lacI",
+      "promoter": "pTet",
+      "rbs": "RBS_B0034",
+      "cds": "lacI",
+      "terminator": "T1",
+      "repressor_of": [
+        "pLac"
+      ],
+      "activator_of": []
+    },
+    {
+      "name": "tetR",
+      "promoter": "pLac",
+      "rbs": "RBS_B0034",
+      "cds": "tetR",
+      "terminator": "T1",
+      "repressor_of": [
+        "pTet"
+      ],
+      "activator_of": []
+    }
+  ],
+  "inputs": [
+    {
+      "signal": "aTc",
+      "target": "pTet"
+    },
+    {
+      "signal": "IPTG",
+      "target": "pLac"
+    }
+  ],
+  "outputs": [
+    {
+      "signal": "GFP",
+      "source": "lacI"
+    }
+  ],
+  "feedback": []
+}

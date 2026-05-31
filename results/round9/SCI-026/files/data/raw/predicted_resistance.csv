@@ -1,0 +1,6 @@
+Scenario,R_pred
+Direct interface (high mismatch),46.325512899721794
+Supercell-matched (low mismatch),22.46615141668361
+Li3PO4 coating 2nm,18.551821627063653
+Li3PO4 coating 5nm,13.359833886053837
+LiNbO3 coating 5nm,13.1818509739572

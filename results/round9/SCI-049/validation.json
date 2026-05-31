@@ -1,0 +1,291 @@
+{
+  "available": true,
+  "claims": [
+    {
+      "pattern": "metric-of",
+      "match": "AUROC = 0.9714",
+      "index": 2393,
+      "cited": [
+        "4"
+      ],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "DOI: 10.63561",
+      "index": 4849,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "DOI: 10.1145",
+      "index": 5130,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "metric-of",
+      "match": "recall = 1.000",
+      "index": 1458,
+      "cited": [
+        "2"
+      ],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-of",
+      "match": "precision of 0.105",
+      "index": 1481,
+      "cited": [
+        "2"
+      ],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "AUROC=0.9834",
+      "index": 21115,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "IF: 0.9602",
+      "index": 21179,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "Physical: 0.9381",
+      "index": 21191,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-of",
+      "match": "AUROC of 0.9714",
+      "index": 21450,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-of",
+      "match": "AUROC of 0.9834",
+      "index": 25749,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "AUROC=0.9924 ± 0.0086",
+      "index": 26233,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "DOI: 10.1109",
+      "index": 27171,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "DOI: 10.3390",
+      "index": 27372,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "DOI: 10.1145",
+      "index": 28055,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "DOI: 10.1080",
+      "index": 28284,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "DOI: 10.63561",
+      "index": 28622,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "DOI: 10.1145",
+      "index": 28804,
+      "cited": [],
+      "source_file": "paper.md"
+    }
+  ],
+  "uncited_claims": [
+    {
+      "pattern": "metric-assignment",
+      "match": "DOI: 10.63561",
+      "index": 4849,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "DOI: 10.1145",
+      "index": 5130,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "AUROC=0.9834",
+      "index": 21115,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "IF: 0.9602",
+      "index": 21179,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "Physical: 0.9381",
+      "index": 21191,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-of",
+      "match": "AUROC of 0.9714",
+      "index": 21450,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-of",
+      "match": "AUROC of 0.9834",
+      "index": 25749,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "AUROC=0.9924 ± 0.0086",
+      "index": 26233,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "DOI: 10.1109",
+      "index": 27171,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "DOI: 10.3390",
+      "index": 27372,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "DOI: 10.1145",
+      "index": 28055,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "DOI: 10.1080",
+      "index": 28284,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "DOI: 10.63561",
+      "index": 28622,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "DOI: 10.1145",
+      "index": 28804,
+      "cited": [],
+      "source_file": "paper.md"
+    }
+  ],
+  "unknown_citations": [
+    {
+      "claim": {
+        "pattern": "metric-of",
+        "match": "AUROC = 0.9714",
+        "index": 2393,
+        "cited": [
+          "4"
+        ],
+        "source_file": "report.md"
+      },
+      "bad_cell_id": "4"
+    },
+    {
+      "claim": {
+        "pattern": "metric-of",
+        "match": "recall = 1.000",
+        "index": 1458,
+        "cited": [
+          "2"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "2"
+    },
+    {
+      "claim": {
+        "pattern": "metric-of",
+        "match": "precision of 0.105",
+        "index": 1481,
+        "cited": [
+          "2"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "2"
+    }
+  ],
+  "gates": [
+    {
+      "name": "seed_presence",
+      "passed": true,
+      "detail": "All RNG-using cells have a seed set (in-cell or earlier)."
+    },
+    {
+      "name": "env_capture",
+      "passed": false,
+      "detail": "No requirements.txt and no `pip freeze`/`pip list` cell found."
+    },
+    {
+      "name": "no_error_in_cited",
+      "passed": true,
+      "detail": "No cited cell shows errors or stderr."
+    },
+    {
+      "name": "citation_coverage",
+      "passed": false,
+      "detail": "3/17 numeric claims cite a cell (18% ≥ 80% required)."
+    }
+  ],
+  "pass": false
+}

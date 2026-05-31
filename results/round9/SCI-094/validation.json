@@ -1,0 +1,305 @@
+{
+  "available": true,
+  "claims": [
+    {
+      "pattern": "metric-assignment",
+      "match": "ROC-AUC=0.901",
+      "index": 1365,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "AUC=0.507",
+      "index": 1389,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "CES = 0.874",
+      "index": 1507,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "AUROC = 0.468",
+      "index": 1616,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "p-value",
+      "match": "p < 0.001",
+      "index": 1967,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "CES = 0.25",
+      "index": 9694,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "C=1.0",
+      "index": 10655,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "AUROC = 1.000",
+      "index": 14676,
+      "cited": [
+        "3"
+      ],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "p-value",
+      "match": "p < 0.001",
+      "index": 16381,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "Age: 0.1191 ± 0.0138",
+      "index": 16592,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "Glucose: 0.0966 ± 0.0079",
+      "index": 16616,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "BMI: 0.0749 ± 0.0154",
+      "index": 16644,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "BP: 0.0335 ± 0.0047",
+      "index": 16677,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "Race: 0.0210 ± 0.0083",
+      "index": 16700,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "Insurance: 0.0136 ± 0.0057",
+      "index": 16750,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "CES = 0.874",
+      "index": 18976,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "CES = 0.874",
+      "index": 23118,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "ROC-AUC = 0.901",
+      "index": 23254,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "AUC = 0.507",
+      "index": 23324,
+      "cited": [],
+      "source_file": "paper.md"
+    }
+  ],
+  "uncited_claims": [
+    {
+      "pattern": "metric-assignment",
+      "match": "ROC-AUC=0.901",
+      "index": 1365,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "AUC=0.507",
+      "index": 1389,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "CES = 0.874",
+      "index": 1507,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "AUROC = 0.468",
+      "index": 1616,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "p-value",
+      "match": "p < 0.001",
+      "index": 1967,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "CES = 0.25",
+      "index": 9694,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "C=1.0",
+      "index": 10655,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "p-value",
+      "match": "p < 0.001",
+      "index": 16381,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "Age: 0.1191 ± 0.0138",
+      "index": 16592,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "Glucose: 0.0966 ± 0.0079",
+      "index": 16616,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "BMI: 0.0749 ± 0.0154",
+      "index": 16644,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "BP: 0.0335 ± 0.0047",
+      "index": 16677,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "Race: 0.0210 ± 0.0083",
+      "index": 16700,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "Insurance: 0.0136 ± 0.0057",
+      "index": 16750,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "CES = 0.874",
+      "index": 18976,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "CES = 0.874",
+      "index": 23118,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "ROC-AUC = 0.901",
+      "index": 23254,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "AUC = 0.507",
+      "index": 23324,
+      "cited": [],
+      "source_file": "paper.md"
+    }
+  ],
+  "unknown_citations": [
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "AUROC = 1.000",
+        "index": 14676,
+        "cited": [
+          "3"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "3"
+    }
+  ],
+  "gates": [
+    {
+      "name": "seed_presence",
+      "passed": true,
+      "detail": "All RNG-using cells have a seed set (in-cell or earlier)."
+    },
+    {
+      "name": "env_capture",
+      "passed": false,
+      "detail": "No requirements.txt and no `pip freeze`/`pip list` cell found."
+    },
+    {
+      "name": "no_error_in_cited",
+      "passed": true,
+      "detail": "No cited cell shows errors or stderr."
+    },
+    {
+      "name": "citation_coverage",
+      "passed": false,
+      "detail": "1/19 numeric claims cite a cell (5% ≥ 80% required)."
+    }
+  ],
+  "pass": false
+}

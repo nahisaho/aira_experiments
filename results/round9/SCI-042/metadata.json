@@ -1,0 +1,26 @@
+{
+  "experiment_id": "SCI-042",
+  "title": "SCI-042",
+  "project_id": "84f3aa9c-eb6f-451e-b5ef-f3fbe1657064",
+  "prompt_length": 4519,
+  "output_length": 610,
+  "file_count": 21,
+  "duration_seconds": 911,
+  "status": "success",
+  "galactica_relevant": true,
+  "domain": "genomics",
+  "naturelm_used": true,
+  "galactica_used": true,
+  "jupyter_used": true,
+  "validation": {
+    "seed_presence": true,
+    "env_capture": false,
+    "no_error_in_cited": true,
+    "citation_coverage": false,
+    "total_claims": 9,
+    "uncited_claims": 6,
+    "unknown_citations": 4,
+    "gates_passed": 2
+  },
+  "timestamp": "2026-05-31T15:49:46.496Z"
+}

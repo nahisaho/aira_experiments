@@ -1,0 +1,11 @@
+{
+  "sa_mean_across_instances": -30.1699,
+  "sa_std_across_instances": 7.7042,
+  "sqa_mean_across_instances": -30.1318,
+  "sqa_std_across_instances": 7.7425,
+  "wilcoxon_W": 19.0,
+  "wilcoxon_p": 0.4316,
+  "mannwhitney_U": 48.0,
+  "mannwhitney_p": 0.9097,
+  "significant": false
+}

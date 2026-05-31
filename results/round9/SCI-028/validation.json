@@ -1,0 +1,375 @@
+{
+  "available": true,
+  "claims": [
+    {
+      "pattern": "metric-assignment",
+      "match": "AUROC=0.947",
+      "index": 1988,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "AUROC=0.940",
+      "index": 2103,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n=100",
+      "index": 3657,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n=50",
+      "index": 3724,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n=8000",
+      "index": 3885,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "P99 = 0.76",
+      "index": 5259,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "P99=0.50",
+      "index": 5674,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "AP=0.45",
+      "index": 6955,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "metric-of",
+      "match": "AUROC = 0.696",
+      "index": 1133,
+      "cited": [
+        "6b"
+      ],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-of",
+      "match": "precision = 0.451",
+      "index": 1167,
+      "cited": [
+        "6b"
+      ],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "AUROC = 0.982",
+      "index": 1405,
+      "cited": [
+        "12"
+      ],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "AUROC = 0.977",
+      "index": 1457,
+      "cited": [
+        "12"
+      ],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-of",
+      "match": "sensitivity of 1.00",
+      "index": 1840,
+      "cited": [
+        "7"
+      ],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "AUROC = 0.947",
+      "index": 6096,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "AUROC = 0.940",
+      "index": 6492,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "JET = 1.0",
+      "index": 9514,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "KSTAR = 0.7",
+      "index": 9525,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "ITER = 1.8",
+      "index": 9538,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n=29",
+      "index": 15904,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-of",
+      "match": "AUROC of 0.696",
+      "index": 16468,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-of",
+      "match": "sensitivity of 0.7",
+      "index": 22939,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-of",
+      "match": "AUROC of 0.696",
+      "index": 24417,
+      "cited": [],
+      "source_file": "paper.md"
+    }
+  ],
+  "uncited_claims": [
+    {
+      "pattern": "metric-assignment",
+      "match": "AUROC=0.947",
+      "index": 1988,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "AUROC=0.940",
+      "index": 2103,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n=100",
+      "index": 3657,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n=50",
+      "index": 3724,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n=8000",
+      "index": 3885,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "P99 = 0.76",
+      "index": 5259,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "P99=0.50",
+      "index": 5674,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "AP=0.45",
+      "index": 6955,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "AUROC = 0.947",
+      "index": 6096,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "AUROC = 0.940",
+      "index": 6492,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "JET = 1.0",
+      "index": 9514,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "KSTAR = 0.7",
+      "index": 9525,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "ITER = 1.8",
+      "index": 9538,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n=29",
+      "index": 15904,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-of",
+      "match": "AUROC of 0.696",
+      "index": 16468,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-of",
+      "match": "sensitivity of 0.7",
+      "index": 22939,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-of",
+      "match": "AUROC of 0.696",
+      "index": 24417,
+      "cited": [],
+      "source_file": "paper.md"
+    }
+  ],
+  "unknown_citations": [
+    {
+      "claim": {
+        "pattern": "metric-of",
+        "match": "AUROC = 0.696",
+        "index": 1133,
+        "cited": [
+          "6b"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "6b"
+    },
+    {
+      "claim": {
+        "pattern": "metric-of",
+        "match": "precision = 0.451",
+        "index": 1167,
+        "cited": [
+          "6b"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "6b"
+    },
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "AUROC = 0.982",
+        "index": 1405,
+        "cited": [
+          "12"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "12"
+    },
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "AUROC = 0.977",
+        "index": 1457,
+        "cited": [
+          "12"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "12"
+    },
+    {
+      "claim": {
+        "pattern": "metric-of",
+        "match": "sensitivity of 1.00",
+        "index": 1840,
+        "cited": [
+          "7"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "7"
+    }
+  ],
+  "gates": [
+    {
+      "name": "seed_presence",
+      "passed": true,
+      "detail": "All RNG-using cells have a seed set (in-cell or earlier)."
+    },
+    {
+      "name": "env_capture",
+      "passed": false,
+      "detail": "No requirements.txt and no `pip freeze`/`pip list` cell found."
+    },
+    {
+      "name": "no_error_in_cited",
+      "passed": true,
+      "detail": "No cited cell shows errors or stderr."
+    },
+    {
+      "name": "citation_coverage",
+      "passed": false,
+      "detail": "5/22 numeric claims cite a cell (23% ≥ 80% required)."
+    }
+  ],
+  "pass": false
+}

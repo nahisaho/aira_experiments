@@ -1,0 +1,9 @@
+Compound,SMILES,MW,LogP,TPSA,HBD,HBA,RotBonds,Ester_bonds
+LA (lactic acid),CC(O)C(=O)O,90.08,-1.33,57.53,2,3,1,0
+LA-dimer (PLA u.),CC(OC(=O)C(C)O)=O,162.14,-0.95,66.76,1,4,3,2
+GA (glycolic a.),OCC(=O)O,76.05,-1.11,57.53,2,3,1,0
+HB (3-HBA),CC(O)CC(=O)O,104.1,-0.32,57.53,2,3,2,0
+HV (3-HVA),CCC(O)CC(=O)O,118.13,0.22,57.53,2,3,3,0
+BS (succinic a.),OC(=O)CCC(=O)O,118.09,-0.59,74.6,2,4,3,0
+"BD (1,4-butanediol)",OCCCCO,90.12,-0.67,40.46,2,2,3,0
+CL (caprolactone),O=C1CCCCCO1,114.14,0.46,26.3,0,2,0,1

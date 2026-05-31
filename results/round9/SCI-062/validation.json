@@ -1,0 +1,141 @@
+{
+  "available": true,
+  "claims": [
+    {
+      "pattern": "metric-assignment",
+      "match": "Python: 3.11",
+      "index": 8690,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n=200",
+      "index": 18693,
+      "cited": [
+        "4",
+        "4",
+        "4"
+      ],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "ND=1.5",
+      "index": 22622,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "RF: 0.916",
+      "index": 24366,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "GBM: 0.925",
+      "index": 24377,
+      "cited": [],
+      "source_file": "paper.md"
+    }
+  ],
+  "uncited_claims": [
+    {
+      "pattern": "metric-assignment",
+      "match": "Python: 3.11",
+      "index": 8690,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "ND=1.5",
+      "index": 22622,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "RF: 0.916",
+      "index": 24366,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "GBM: 0.925",
+      "index": 24377,
+      "cited": [],
+      "source_file": "paper.md"
+    }
+  ],
+  "unknown_citations": [
+    {
+      "claim": {
+        "pattern": "sample-size",
+        "match": "n=200",
+        "index": 18693,
+        "cited": [
+          "4",
+          "4",
+          "4"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "4"
+    },
+    {
+      "claim": {
+        "pattern": "sample-size",
+        "match": "n=200",
+        "index": 18693,
+        "cited": [
+          "4",
+          "4",
+          "4"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "4"
+    },
+    {
+      "claim": {
+        "pattern": "sample-size",
+        "match": "n=200",
+        "index": 18693,
+        "cited": [
+          "4",
+          "4",
+          "4"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "4"
+    }
+  ],
+  "gates": [
+    {
+      "name": "seed_presence",
+      "passed": true,
+      "detail": "All RNG-using cells have a seed set (in-cell or earlier)."
+    },
+    {
+      "name": "env_capture",
+      "passed": false,
+      "detail": "No requirements.txt and no `pip freeze`/`pip list` cell found."
+    },
+    {
+      "name": "no_error_in_cited",
+      "passed": true,
+      "detail": "No cited cell shows errors or stderr."
+    },
+    {
+      "name": "citation_coverage",
+      "passed": false,
+      "detail": "1/5 numeric claims cite a cell (20% ≥ 80% required)."
+    }
+  ],
+  "pass": false
+}

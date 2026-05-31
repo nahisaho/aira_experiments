@@ -1,0 +1,4 @@
+,growth_rate (h⁻¹),status,n_constrained_rxns,lysine (mmol/gDW/h)
+aerobic,0.8739,optimal,3,0.0
+microaerobic,0.8736,optimal,2,0.0
+lysine_producer,0.29,optimal,4,0.0

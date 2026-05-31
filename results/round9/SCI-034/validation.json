@@ -1,0 +1,653 @@
+{
+  "available": true,
+  "claims": [
+    {
+      "pattern": "metric-assignment",
+      "match": "F=0.8833",
+      "index": 4448,
+      "cited": [
+        "4"
+      ],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "T_mem=6.40",
+      "index": 4458,
+      "cited": [
+        "4"
+      ],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "F=0.99",
+      "index": 4846,
+      "cited": [
+        "5"
+      ],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "F=0.6306",
+      "index": 5307,
+      "cited": [
+        "7"
+      ],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "F=0.0793",
+      "index": 5335,
+      "cited": [
+        "7"
+      ],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "F=0.99",
+      "index": 6830,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "F = 0.8833",
+      "index": 1361,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "F = 0.99",
+      "index": 1497,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n = 200",
+      "index": 1697,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "DOI: 10.1007",
+      "index": 5283,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "DOI: 10.1088",
+      "index": 5487,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "DOI: 10.3390",
+      "index": 5645,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "DOI: 10.1109",
+      "index": 5904,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "DOI: 10.1103",
+      "index": 6146,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "DOI: 10.22331",
+      "index": 6488,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "F_0 = 0.98",
+      "index": 9863,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "F=0.8833",
+      "index": 16213,
+      "cited": [
+        "3",
+        "3"
+      ],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "F = 0.9661",
+      "index": 16356,
+      "cited": [
+        "3",
+        "4"
+      ],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "T_mem = 0.43",
+      "index": 16368,
+      "cited": [
+        "3",
+        "4"
+      ],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "Rate = 9.77",
+      "index": 16385,
+      "cited": [
+        "3",
+        "4"
+      ],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "F = 0.99",
+      "index": 16577,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "F=0.99",
+      "index": 16927,
+      "cited": [
+        "4"
+      ],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "F=0.6306",
+      "index": 17701,
+      "cited": [
+        "5"
+      ],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "F=0.0793",
+      "index": 17734,
+      "cited": [
+        "5"
+      ],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "F=0.1583",
+      "index": 17833,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "F=0.1",
+      "index": 17883,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "Average: 1316.9",
+      "index": 18727,
+      "cited": [
+        "7",
+        "9"
+      ],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n=16",
+      "index": 20561,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "F = 0.99",
+      "index": 20904,
+      "cited": [
+        "4"
+      ],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "F = 0.88",
+      "index": 25468,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "F = 0.99",
+      "index": 25595,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "DOI: 10.1038",
+      "index": 27969,
+      "cited": [],
+      "source_file": "paper.md"
+    }
+  ],
+  "uncited_claims": [
+    {
+      "pattern": "metric-assignment",
+      "match": "F=0.99",
+      "index": 6830,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "F = 0.8833",
+      "index": 1361,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "F = 0.99",
+      "index": 1497,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n = 200",
+      "index": 1697,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "DOI: 10.1007",
+      "index": 5283,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "DOI: 10.1088",
+      "index": 5487,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "DOI: 10.3390",
+      "index": 5645,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "DOI: 10.1109",
+      "index": 5904,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "DOI: 10.1103",
+      "index": 6146,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "DOI: 10.22331",
+      "index": 6488,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "F_0 = 0.98",
+      "index": 9863,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "F = 0.99",
+      "index": 16577,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "F=0.1583",
+      "index": 17833,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "F=0.1",
+      "index": 17883,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "sample-size",
+      "match": "n=16",
+      "index": 20561,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "F = 0.88",
+      "index": 25468,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "F = 0.99",
+      "index": 25595,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "DOI: 10.1038",
+      "index": 27969,
+      "cited": [],
+      "source_file": "paper.md"
+    }
+  ],
+  "unknown_citations": [
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "F=0.8833",
+        "index": 4448,
+        "cited": [
+          "4"
+        ],
+        "source_file": "report.md"
+      },
+      "bad_cell_id": "4"
+    },
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "T_mem=6.40",
+        "index": 4458,
+        "cited": [
+          "4"
+        ],
+        "source_file": "report.md"
+      },
+      "bad_cell_id": "4"
+    },
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "F=0.99",
+        "index": 4846,
+        "cited": [
+          "5"
+        ],
+        "source_file": "report.md"
+      },
+      "bad_cell_id": "5"
+    },
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "F=0.6306",
+        "index": 5307,
+        "cited": [
+          "7"
+        ],
+        "source_file": "report.md"
+      },
+      "bad_cell_id": "7"
+    },
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "F=0.0793",
+        "index": 5335,
+        "cited": [
+          "7"
+        ],
+        "source_file": "report.md"
+      },
+      "bad_cell_id": "7"
+    },
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "F=0.8833",
+        "index": 16213,
+        "cited": [
+          "3",
+          "3"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "3"
+    },
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "F=0.8833",
+        "index": 16213,
+        "cited": [
+          "3",
+          "3"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "3"
+    },
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "F = 0.9661",
+        "index": 16356,
+        "cited": [
+          "3",
+          "4"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "3"
+    },
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "F = 0.9661",
+        "index": 16356,
+        "cited": [
+          "3",
+          "4"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "4"
+    },
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "T_mem = 0.43",
+        "index": 16368,
+        "cited": [
+          "3",
+          "4"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "3"
+    },
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "T_mem = 0.43",
+        "index": 16368,
+        "cited": [
+          "3",
+          "4"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "4"
+    },
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "Rate = 9.77",
+        "index": 16385,
+        "cited": [
+          "3",
+          "4"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "3"
+    },
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "Rate = 9.77",
+        "index": 16385,
+        "cited": [
+          "3",
+          "4"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "4"
+    },
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "F=0.99",
+        "index": 16927,
+        "cited": [
+          "4"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "4"
+    },
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "F=0.6306",
+        "index": 17701,
+        "cited": [
+          "5"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "5"
+    },
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "F=0.0793",
+        "index": 17734,
+        "cited": [
+          "5"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "5"
+    },
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "Average: 1316.9",
+        "index": 18727,
+        "cited": [
+          "7",
+          "9"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "7"
+    },
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "Average: 1316.9",
+        "index": 18727,
+        "cited": [
+          "7",
+          "9"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "9"
+    },
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "F = 0.99",
+        "index": 20904,
+        "cited": [
+          "4"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "4"
+    }
+  ],
+  "gates": [
+    {
+      "name": "seed_presence",
+      "passed": true,
+      "detail": "All RNG-using cells have a seed set (in-cell or earlier)."
+    },
+    {
+      "name": "env_capture",
+      "passed": false,
+      "detail": "No requirements.txt and no `pip freeze`/`pip list` cell found."
+    },
+    {
+      "name": "no_error_in_cited",
+      "passed": true,
+      "detail": "No cited cell shows errors or stderr."
+    },
+    {
+      "name": "citation_coverage",
+      "passed": false,
+      "detail": "14/32 numeric claims cite a cell (44% ≥ 80% required)."
+    }
+  ],
+  "pass": false
+}

@@ -1,0 +1,474 @@
+{
+  "available": true,
+  "claims": [
+    {
+      "pattern": "metric-assignment",
+      "match": "A-=0.012",
+      "index": 2887,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "CV = 0.489",
+      "index": 4407,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "R = 0.1375",
+      "index": 5007,
+      "cited": [
+        "12",
+        "12",
+        "12"
+      ],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "metric-of",
+      "match": "AUROC = 0.9910",
+      "index": 6902,
+      "cited": [
+        "20"
+      ],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "R = 0.1375",
+      "index": 1220,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-of",
+      "match": "AUROC = 0.9910",
+      "index": 1651,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "E_L=-70.6",
+      "index": 7824,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "A_- = 0.012",
+      "index": 8374,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "Python: 3.11",
+      "index": 10975,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "NumPy: 2.4",
+      "index": 10991,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "SciPy: 1.17",
+      "index": 11005,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "Scikit-learn: 1.8",
+      "index": 11020,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "Matplotlib: 3.10",
+      "index": 11041,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "Pandas: 3.0",
+      "index": 11061,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "R = 0.1375",
+      "index": 15228,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "R: 0.3554",
+      "index": 15288,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-of",
+      "match": "AUROC of 0.9910",
+      "index": 18058,
+      "cited": [
+        "20"
+      ],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "R = 0.1375",
+      "index": 19712,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-of",
+      "match": "AUROC of 0.9910",
+      "index": 20716,
+      "cited": [
+        "20"
+      ],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "R = 0.1375",
+      "index": 23307,
+      "cited": [
+        "12",
+        "10",
+        "11"
+      ],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-of",
+      "match": "AUROC = 0.9910",
+      "index": 23595,
+      "cited": [
+        "20"
+      ],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "V = -65.0",
+      "index": 27206,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "A_plus=0.01",
+      "index": 27632,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "A_minus=0.012",
+      "index": 27645,
+      "cited": [],
+      "source_file": "paper.md"
+    }
+  ],
+  "uncited_claims": [
+    {
+      "pattern": "metric-assignment",
+      "match": "A-=0.012",
+      "index": 2887,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "CV = 0.489",
+      "index": 4407,
+      "cited": [],
+      "source_file": "report.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "R = 0.1375",
+      "index": 1220,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-of",
+      "match": "AUROC = 0.9910",
+      "index": 1651,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "E_L=-70.6",
+      "index": 7824,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "A_- = 0.012",
+      "index": 8374,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "Python: 3.11",
+      "index": 10975,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "NumPy: 2.4",
+      "index": 10991,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "SciPy: 1.17",
+      "index": 11005,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "Scikit-learn: 1.8",
+      "index": 11020,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "Matplotlib: 3.10",
+      "index": 11041,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "Pandas: 3.0",
+      "index": 11061,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "R = 0.1375",
+      "index": 15228,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "R: 0.3554",
+      "index": 15288,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "R = 0.1375",
+      "index": 19712,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "V = -65.0",
+      "index": 27206,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "A_plus=0.01",
+      "index": 27632,
+      "cited": [],
+      "source_file": "paper.md"
+    },
+    {
+      "pattern": "metric-assignment",
+      "match": "A_minus=0.012",
+      "index": 27645,
+      "cited": [],
+      "source_file": "paper.md"
+    }
+  ],
+  "unknown_citations": [
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "R = 0.1375",
+        "index": 5007,
+        "cited": [
+          "12",
+          "12",
+          "12"
+        ],
+        "source_file": "report.md"
+      },
+      "bad_cell_id": "12"
+    },
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "R = 0.1375",
+        "index": 5007,
+        "cited": [
+          "12",
+          "12",
+          "12"
+        ],
+        "source_file": "report.md"
+      },
+      "bad_cell_id": "12"
+    },
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "R = 0.1375",
+        "index": 5007,
+        "cited": [
+          "12",
+          "12",
+          "12"
+        ],
+        "source_file": "report.md"
+      },
+      "bad_cell_id": "12"
+    },
+    {
+      "claim": {
+        "pattern": "metric-of",
+        "match": "AUROC = 0.9910",
+        "index": 6902,
+        "cited": [
+          "20"
+        ],
+        "source_file": "report.md"
+      },
+      "bad_cell_id": "20"
+    },
+    {
+      "claim": {
+        "pattern": "metric-of",
+        "match": "AUROC of 0.9910",
+        "index": 18058,
+        "cited": [
+          "20"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "20"
+    },
+    {
+      "claim": {
+        "pattern": "metric-of",
+        "match": "AUROC of 0.9910",
+        "index": 20716,
+        "cited": [
+          "20"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "20"
+    },
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "R = 0.1375",
+        "index": 23307,
+        "cited": [
+          "12",
+          "10",
+          "11"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "12"
+    },
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "R = 0.1375",
+        "index": 23307,
+        "cited": [
+          "12",
+          "10",
+          "11"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "10"
+    },
+    {
+      "claim": {
+        "pattern": "metric-assignment",
+        "match": "R = 0.1375",
+        "index": 23307,
+        "cited": [
+          "12",
+          "10",
+          "11"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "11"
+    },
+    {
+      "claim": {
+        "pattern": "metric-of",
+        "match": "AUROC = 0.9910",
+        "index": 23595,
+        "cited": [
+          "20"
+        ],
+        "source_file": "paper.md"
+      },
+      "bad_cell_id": "20"
+    }
+  ],
+  "gates": [
+    {
+      "name": "seed_presence",
+      "passed": true,
+      "detail": "All RNG-using cells have a seed set (in-cell or earlier)."
+    },
+    {
+      "name": "env_capture",
+      "passed": false,
+      "detail": "No requirements.txt and no `pip freeze`/`pip list` cell found."
+    },
+    {
+      "name": "no_error_in_cited",
+      "passed": true,
+      "detail": "No cited cell shows errors or stderr."
+    },
+    {
+      "name": "citation_coverage",
+      "passed": false,
+      "detail": "6/24 numeric claims cite a cell (25% ≥ 80% required)."
+    }
+  ],
+  "pass": false
+}

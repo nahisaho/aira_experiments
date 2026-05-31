@@ -1,0 +1,4 @@
+mol_A,mol_B,Tanimoto,delta_pIC50
+Afatinib,Canertinib,0.402,1.6
+Gefitinib,Afatinib,0.47,1.3
+Afatinib,Pelitinib,0.623,1.2

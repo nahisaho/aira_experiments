@@ -1,0 +1,7 @@
+Metric,Batch,ContinuousFlow
+Yield [%],72.3,85.8
+Yield StdDev [%],5.8,1.9
+Purity [%],94.2,98.1
+E-factor,12.5,6.2
+PMI,45.3,21.4
+Temp [°C],65.0,78.5

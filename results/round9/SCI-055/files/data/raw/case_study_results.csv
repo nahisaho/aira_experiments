@@ -1,0 +1,5 @@
+Drug,Known_Steps,Heavy_Atoms,SA_Score,Template_Success_Rate,Template_Free_Success_Rate,Template_Route_Length,TF_Route_Length,LogP,TPSA
+Aspirin,2,13,7.35,0.705,0.794,2,2,1.31,63.6
+Ibuprofen,3,15,7.13,0.675,0.77,3,5,3.07,37.3
+Imatinib,5,37,7.23,0.345,0.506,6,5,4.59,86.3
+Atorvastatin,7,42,6.69,0.3,0.446,7,9,6.45,111.8

@@ -1,0 +1,1 @@
+Now let me set up the Jupyter notebook and parse all literature search results simultaneously:Good. Let me now set up the Jupyter notebook and search for more literature simultaneously:Good, `execute_code` works. Let me now run the full SOA analysis using the Jupyter kernel:Now let me search for more literature and write the paper:

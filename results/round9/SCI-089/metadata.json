@@ -1,0 +1,26 @@
+{
+  "experiment_id": "SCI-089",
+  "title": "SCI-089",
+  "project_id": "d79f1416-6a7b-4614-a002-6c25fb62500f",
+  "prompt_length": 4690,
+  "output_length": 1673,
+  "file_count": 19,
+  "duration_seconds": 1694,
+  "status": "success",
+  "galactica_relevant": true,
+  "domain": "materials",
+  "naturelm_used": true,
+  "galactica_used": true,
+  "jupyter_used": true,
+  "validation": {
+    "seed_presence": true,
+    "env_capture": false,
+    "no_error_in_cited": true,
+    "citation_coverage": false,
+    "total_claims": 20,
+    "uncited_claims": 20,
+    "unknown_citations": 0,
+    "gates_passed": 2
+  },
+  "timestamp": "2026-05-31T18:29:08.435Z"
+}

@@ -1,0 +1,19 @@
+Metric,Value,Method
+D(Li+) at 1.0 M (×10⁻¹⁰ m²/s),2.483,Green-Kubo MD
+D(Li+) at 4.0 M (×10⁻¹⁰ m²/s),0.519,Green-Kubo MD
+D(PF6-) at 1.0 M (×10⁻¹⁰ m²/s),2.260,Green-Kubo MD
+σ_NE at 1.0 M (mS/cm),17.81,Nernst-Einstein
+σ_GK at 1.0 M (mS/cm),11.26,Green-Kubo / Haven
+σ_GK max at 2.0 M (mS/cm),12.92,Green-Kubo
+σ_exp at 1.0 M (mS/cm),10.8,Literature
+Haven ratio at 1.0 M,0.632,GK/NE ratio
+t(Li+) at 1.0 M,0.524,Nernst-Einstein
+t(Li+) at 4.0 M,0.554,Nernst-Einstein
+gamma_pm (Pitzer) at 4.0 M,2.2418,Pitzer model
+Phi_osmotic at 1.0 M,0.9986,Pitzer model
+CN(Li-EC) at 1.0 M,4.5,RDF integration
+CN(Li-EC) at 4.0 M,3.2,RDF integration
+ΔG_solv(Li+) (kJ/mol),-527.4,TI/FEP
+GPR FF opt. R² (5-fold CV),0.968 ± 0.024,scikit-learn GPR
+σ*(Li+) optimized (nm),0.2000,Bayesian optimization
+α anomalous exponent (4 M),0.82,MSD analysis

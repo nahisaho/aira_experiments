@@ -1,0 +1,13 @@
+Material,Z2,Phase,Gap_Gamma_eV,Gap_full_eV,Gap_exp_eV
+Bi2Se3,1,TI,0.56,0.24,0.3
+Bi2Te3,1,TI,0.64,0.32,0.16
+Sb2Te3,1,TI,0.24,0.08,0.21
+Bi2S3,0,NI,0.7,0.702,1.3
+Sb2Se3,0,NI,0.6,0.602,1.1
+PbBi2Te4,1,TI,0.5,0.46,0.22
+GeBi2Te4,1,TI,0.36,0.36,0.2
+SnBi2Te4,1,TI,0.44,0.36,0.19
+TlBiSe2,1,TI,0.3,0.306,0.35
+TlBiTe2,1,TI,0.4,0.4,0.2
+BiSbTe3,1,TI,0.38,0.34,0.18
+Bi2Te2Se,1,TI,0.52,0.36,0.28

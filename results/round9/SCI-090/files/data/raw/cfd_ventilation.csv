@@ -1,0 +1,11 @@
+wind_speed_m_s,Q_wind_m3_s,ACH_wind,comfort
+0.5,6.67,6.67,Comfortable
+1.0,13.34,13.34,Comfortable
+1.5,20.01,20.01,Comfortable
+2.0,26.68,26.68,Comfortable
+2.5,33.35,33.35,Comfortable
+3.0,40.02,40.02,Comfortable
+3.5,46.69,46.69,Comfortable
+4.0,53.36,53.36,Comfortable
+4.5,60.03,60.03,Comfortable
+5.0,66.7,66.7,Comfortable

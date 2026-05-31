@@ -1,0 +1,15 @@
+Parameter,Value
+Initial reservoir temperature (T_init),450.0 °C
+Injection temperature (T_inj),200.0 °C
+Flow rate (Q),60 kg/s
+Production temperature at 30yr (T_prod),391.4 °C (±2.0°C)
+Thermal drawdown at 30yr (ΔT),59.7 °C
+Mean thermal power (30yr avg),71.5 MW
+Mean electrical power (η=20%),14.3 MW
+Max injection pressure,35.0 MPa
+Max Coulomb stress change (r=500m),4.194 MPa
+Estimated Mw_max,≤ Mw 1.0
+Cumulative thermal energy (30yr),18816 GWh
+Cumulative electrical energy (30yr),3763 GWh
+Heat recovery rate (30yr),11.457%
+Optimal well spacing,800 m (optimal trade-off)

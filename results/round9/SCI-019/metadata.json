@@ -1,0 +1,26 @@
+{
+  "experiment_id": "SCI-019",
+  "title": "SCI-019",
+  "project_id": "1bef2aa8-5c0b-48d5-b49e-5b0ab0530e9a",
+  "prompt_length": 5525,
+  "output_length": 1248,
+  "file_count": 18,
+  "duration_seconds": 855,
+  "status": "success",
+  "galactica_relevant": true,
+  "domain": "molecular",
+  "naturelm_used": true,
+  "galactica_used": true,
+  "jupyter_used": true,
+  "validation": {
+    "seed_presence": true,
+    "env_capture": false,
+    "no_error_in_cited": true,
+    "citation_coverage": false,
+    "total_claims": 54,
+    "uncited_claims": 52,
+    "unknown_citations": 2,
+    "gates_passed": 2
+  },
+  "timestamp": "2026-05-31T14:37:32.021Z"
+}

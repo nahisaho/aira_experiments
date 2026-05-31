@@ -1,0 +1,26 @@
+{
+  "experiment_id": "SCI-017",
+  "title": "SCI-017",
+  "project_id": "9da28c83-6c97-4bba-99d9-19522fce9cb3",
+  "prompt_length": 4656,
+  "output_length": 84,
+  "file_count": 10,
+  "duration_seconds": 727,
+  "status": "success",
+  "galactica_relevant": true,
+  "domain": "protein",
+  "naturelm_used": true,
+  "galactica_used": true,
+  "jupyter_used": true,
+  "validation": {
+    "seed_presence": true,
+    "env_capture": false,
+    "no_error_in_cited": true,
+    "citation_coverage": false,
+    "total_claims": 10,
+    "uncited_claims": 6,
+    "unknown_citations": 9,
+    "gates_passed": 2
+  },
+  "timestamp": "2026-05-31T14:32:46.118Z"
+}

@@ -1,0 +1,13 @@
+Metric,Value,Cell
+ODT (theory) χN,10.495,CELL1
+ODT (simulation) χN,30.00,CELL3
+OP disordered (χN=8),0.0039,CELL2
+OP weak (χN=20),0.0064,CELL2
+OP strong (χN=45),41.5391,CELL2
+Pearson r (χN vs OP),0.9079,CELL3
+RF accuracy (5-fold),0.9540±0.0185,CELL8
+T_ODT PS-PMMA (K),400,CELL5
+L0_AA (nm),31.37,CELL5
+L0_CG (nm),6.73,CELL7
+Nucleation time (sim),0.00,CELL9
+Final OP dynamics,951.7624,CELL9

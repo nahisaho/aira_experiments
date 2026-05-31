@@ -1,0 +1,8 @@
+Source,T_init (°C),T_prod (°C),Drawdown (°C),Power (MW),Duration (yr),Spacing (m)
+Lei et al. 2023 (Sci. Rep.),200,180,20,15.0,20.0,600
+Gudala et al. 2023 (JERT),250,220,30,25.0,20.0,500
+Xiao & Li 2024 (ESE),200,170,30,18.0,20.0,600
+IDDP-2 Iceland (actual),440,400,40,50.0,2.0,—
+Habanero EGS Australia,242,210,32,30.0,12.0,500
+Basel EGS (shut down 2006),190,165,25,3.0,0.2,450
+This Study (Kakkonda sim.),450,391,59,71.5,30.0,800

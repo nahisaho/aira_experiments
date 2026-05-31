@@ -1,0 +1,5 @@
+Design,Bistable,Robustness (%),SS Ratio,n1,n2,alpha1
+Original (Gardner 2000),False,6,1.0,2.0,2.0,156.2
+Symmetric,True,91,46654.0,2.0,2.0,216.0
+Robust Optimal,True,97,398742.0,3.28,2.53,398.7
+High Hill (n=3),True,98,216000.0,3.0,3.0,216.0
