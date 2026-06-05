@@ -1,5 +1,5 @@
 ---
-title: 'AIRA v3.4.10 バリデータ改善の効果検証 — Round 15 vs Round 16（VM歴代最良、FigOrp構造的課題の確定）'
+title: 'AIRA v3.4.10 効果検証 — Round 15 vs Round 16（VM歴代最良、FigOrp構造的課題の確定）'
 tags:
   - AIRA
   - AI
@@ -17,7 +17,7 @@ ignorePublish: false
 
 # はじめに
 
-AIRA v3.4.10（Round 16）で、Round 15 と同一のプロンプト（P1改善版）を使用し、**バリデータコード改善**（`provenance-validator.ts`）の効果を検証した。
+AIRA v3.4.10（Round 16）で、Round 15 と同一のプロンプト（P1改善版）を使用し、**v3.4.7〜v3.4.10 の累積的なバックエンド/skill 改善**の効果を検証した。
 
 ## Round 16 の変更内容
 
@@ -25,13 +25,20 @@ AIRA v3.4.10（Round 16）で、Round 15 と同一のプロンプト（P1改善�
 |---------|---------|---------|------|
 | プロンプト | P1改善版 | **同一** | なし |
 | AIRA バージョン | v3.4.8 | **v3.4.10** | ✅ |
-| バリデータ | 旧版 | **改善版** | ✅ |
+| バリデータコード | v3.4.8 | **v3.4.10** | ✅ |
+| Co-Scientist skill | v4.11.x | **v4.13.0** | ✅ |
 
-### バリデータ改善内容（PR #1）
+### Round 16 で初めて反映された AIRA 側の改善（累積）
 
-1. **FigOrp**: `figureHasProducerCell()` に動的パス検出を追加（f-string、os.path.join、stdout内パス）
-2. **VM**: `valueAppearsInCellOutputs()` の stdout スキャンを最終1行→最終5行に拡張
-3. **Repair**: 図修正ガイダンスをリテラルパス使用に改善
+| バージョン | 改善 | 性質 |
+|-----------|------|------|
+| **v3.4.7** | repair prompt の VM 表示を "spot-check"(上位3件 + count 非表示)に再定義 | agent 行動誘導 |
+| **v3.4.9** | Co-Scientist skill v4.13.0 で **Value transcription rules** + **Citation Ledger cell** パターンを導入 | agent 行動誘導 |
+| **v3.4.9** | API に `vm_ratio` / `vm_grade` を追加(telemetry 専用、repair prompt には出さない) | telemetry 改善 |
+| **v3.4.10** | `figureHasProducerCell()` に動的パス検出 3 系統を追加(literal / f-string + stem / runtime echo) | バリデータ検出精度 |
+| **v3.4.10** | repair prompt の図修正ガイダンスを literal path 推奨に改善 | agent 行動誘導 |
+
+> **方法論ノート**: aira PR #1 のレビュー結果として **`valueAppearsInCellOutputs()` の stdout 5-line scan 拡張は採用されず**、v3.4.4 以来の last-line bias を維持した状態で Round 16 を実施している。後述の VM 改善は **5-line scan 由来ではない**ことが、リリースされた v3.4.10 image (commit `f7bab01`) に Change 2 が含まれていないことから確定している。
 
 # 実験結果
 
@@ -87,9 +94,9 @@ VM=0 が **70%** に到達。R11(17%)の4倍。
 
 改善+同値で **73%**。8件が安定してVM=0を維持。
 
-## stdout 5行スキャンの効果
+## VM 改善の真要因(v3.4.7〜v3.4.9 累積効果)
 
-R15 でVM>0→R16 でVM=0 に改善した13件中、stdout スキャン拡張が寄与したと推定される代表例：
+R15 で VM>0 → R16 で VM=0 に改善した代表例:
 
 | ID | R15 VM | R16 VM | 改善幅 | Claims |
 |----|--------|--------|--------|--------|
@@ -99,7 +106,13 @@ R15 でVM>0→R16 でVM=0 に改善した13件中、stdout スキャン拡張が
 | SCI-020 | 60 | **0** | -60 | 34 |
 | SCI-051 | 47 | **0** | -47 | 39 |
 
-これらは `results-summary` セルが `print()` で複数値を出力するパターンで、旧バリデータでは最終行しかチェックしなかったため VM が検出されていた。5行スキャンにより解消。
+これらは いずれも `results-summary` セルで複数値を `print()` していたパターンで、旧設計(v3.4.4 last-line bias)では最終行しか見ないため VM が検出されていた。**Round 16 ではバリデータの scan 範囲は変わっていない**(stdout 5-line scan は採用見送り)が、以下の **agent 行動の改善** によって VM が解消している:
+
+1. **v3.4.9 skill v4.13.0 の Value transcription rules** — cell 出力を verbatim で引用するルールを明示
+2. **v3.4.9 skill v4.13.0 の Citation Ledger cell パターン** — 引用文字列を最終 print 行に固める(あるいは `text_output` に出す)cell を agent が用意するようになった
+3. **v3.4.7 の VM "spot-check" prompt** — count が見えなくなったので、agent が無闇に追加引用 / 再実行する perverse loop が消えた
+
+つまり VM 改善は **検出側の緩和ではなく、agent 側を 1-line scan に揃える誘導**で達成された。これは v3.4.4 設計意図(中間 print 誤一致を構造的に排除)と矛盾しないクリーンな改善である。
 
 ## VM 100+ の外れ値（2件）
 
@@ -174,21 +187,21 @@ results-summary の採用率が回復（59%→73%）。
 
 # 考察
 
-## バリデータ改善 vs プロンプト改善の効果分離
+## バリデータ vs skill / プロンプト の効果分離
 
-R15→R16 は「同一プロンプト + バリデータ改善」のため、効果の分離が可能：
+R15→R16 は「同一プロンプト + AIRA v3.4.8 → v3.4.10(累積バックエンド/skill 改善)」の差分。バリデータの **検出ロジック自体は 1-line bias を維持**(stdout 5-line 拡張は採用見送り)しているため、効果の帰属は以下のとおり整理できる:
 
 | 改善 | 効果の帰属 | 根拠 |
 |------|-----------|------|
-| VM -44% | **バリデータ改善** | stdout 5行スキャンが直接的に寄与 |
-| FigOrp +26% | **エージェント挙動**（v3.4.10の変更） | バリデータ改善にも関わらず悪化 |
-| Duration -7% | **v3.4.10 のパフォーマンス改善** | プロンプト同一のため |
+| VM -44% | **v3.4.7-v3.4.9 の skill / repair-prompt 改善**(累積) | バリデータの scan 範囲は不変。Citation Ledger pattern と VM "spot-check" 化が agent を 1-line scan に揃えた |
+| FigOrp +26% | **エージェント挙動の構造的問題** | v3.4.10 で動的パス検出を追加しても悪化が続いた → バリデータ側では潰せない |
+| Duration -7% | **複合**(v3.4.7-v3.4.10 + 評価ノイズ) | repair iteration の VM-chasing が消えた効果 + その他環境差 |
 
 ## 6ラウンドの教訓
 
-### 1. VM は「計測方法」で大きく変わる
+### 1. VM は「計測方法」よりも「agent をどう誘導するか」で変わる
 
-VM avg は R11(26.5)→R13(54.8)→R16(14.5) と4倍の変動。しかし、エージェントの出力品質が4倍変わったわけではない。**バリデータのスキャン範囲**（最終1行→5行）の変更だけで VM が半減した。
+VM avg は R11(26.5)→R13(54.8)→R16(14.5) と 4 倍の変動。しかし **バリデータの検出ロジックは Round 12 で確立した last-line bias のまま変えていない**(v3.4.4 Pillar A 以降 v3.4.10 まで不変)。VM 半減の真因は **agent 側を 1-line scan に揃える誘導**(v4.13.0 Citation Ledger pattern + v3.4.7 "spot-check" repair prompt)であり、計測方法は変えていないことに注意。
 
 ### 2. FigOrp はプロンプト/バリデータでは解決不能
 
@@ -211,7 +224,7 @@ R16 は VM=14.5（最良）と FigOrp=9.1（最悪）を同時に達成。これ
 
 ### VM の維持
 
-VM avg 14.5 は十分に低い。stdout 5行スキャンの効果が実証されたため、この改善はそのまま維持。
+VM avg 14.5 は十分に低い。これを支えているのは v3.4.7 / v3.4.9 で導入した **skill / repair-prompt の設計**(Citation Ledger / "spot-check")であり、これらを将来のリリースでも維持することが重要。**バリデータ検出ロジックを緩める方向の変更(stdout を 5 行に広げる等)は採用しない** — agent 側を 1-line scan に揃える誘導と矛盾するため。
 
 # まとめ
 
@@ -223,4 +236,4 @@ VM avg 14.5 は十分に低い。stdout 5行スキャンの効果が実証され
 | **FigOrp** | 7.2 → **9.1** (+26%) | **6位（最悪）** | ⚠️ 構造的課題 |
 | **Duration** | 26.8m → **24.9m** | **🥇 1位** | ✅ |
 
-**結論**: バリデータの stdout 5行スキャン拡張が VM 半減に劇的に貢献。一方、FigOrp は6ラウンドの実験を通じて**プロンプト・バリデータでは解決できない構造的課題**であることが確定した。次フェーズではエージェントのスキルコード（`copilot-instructions.md`）改修による抜本策が必要。
+**結論**: VM 半減は **v3.4.7-v3.4.9 の skill / repair-prompt 設計**(Citation Ledger + VM "spot-check" 化)が、agent を 1-line scan に揃えるよう誘導した累積効果。バリデータの検出ロジック自体は v3.4.4 の last-line bias のまま不変。一方 FigOrp は 6 ラウンドの実験を通じて **プロンプト・バリデータでは解決できない構造的課題**であることが確定した(v3.4.10 で動的パス検出を追加しても悪化継続)。次フェーズではエージェントのスキルコード(`copilot-instructions.md`)改修による抜本策が必要。
